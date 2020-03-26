@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>多线程之同步屏障CyclicBarrier的使用 - 邯城往事</title><meta name="description" content="工欲善其事，必先利其器，要想搞懂多线程，首先要把 JDK 自带的多线程工具搞懂"/><meta property="og:description" content="工欲善其事，必先利其器，要想搞懂多线程，首先要把 JDK 自带的多线程工具搞懂"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="多线程之同步屏障CyclicBarrier的使用 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/04/10/1554887221480.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="多线程之同步屏障CyclicBarrier的使用 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/04/10/1554887221480.html">        <link rel="stylesheet"
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+            <link rel="prev" title="设置APN让个人热点网速更快更稳定" href="https://cuijianzhe.github.io/articles/2019/04/10/1554867918639.html">
+            <link rel="next" title="部署 docker-solo 博客每日自动升级" href="https://cuijianzhe.github.io/articles/2019/04/10/1554909820806.html">
+    </head>
+<body>
+<header class="header">
+    <div class="wrapper">
+        <a href="https://cuijianzhe.github.io" rel="start" class="header__logo">
+            <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="邯城往事"/>
+            邯城往事
+        </a>
+
+        <nav class="header__nav mobile__none">
+            <a href="https://cuijianzhe.github.io/tags.html" rel="section">
+                Tags
+            </a>
+            <a href="https://cuijianzhe.github.io/archives.html">
+                Archives
+            </a>
+            <a rel="archive" href="https://cuijianzhe.github.io/links.html">
+                Links
+            </a>
+        </nav>
+
+        <div class="header__bar fn__none" onclick="$(this).next().slideToggle()">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                <path fill="#444" d="M0 3h20v2h-20v-2zM0 9h20v2h-20v-2zM0 15h20v2h-20v-2z"></path>
+            </svg>
+        </div>
+        <main class="header__menu fn__none">
+            <ul>
+                    <li>
+                        <a href="/my-github-repos" target="_self" rel="section">
+                            我的开源
+                        </a>
+                    </li>
+                <li>
+                    <a href="https://cuijianzhe.github.io/tags.html" rel="section">
+                        Tags
+                    </a>
+                </li>
+                <li>
+                    <a href="https://cuijianzhe.github.io/archives.html">
+                        Archives
+                    </a>
+                </li>
+                <li>
+                    <a rel="archive" href="https://cuijianzhe.github.io/links.html">
+                        Links
+                    </a>
+                </li>
+                <li>
+                    <a rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">
+                        RSS
+                    </a>
+                </li>
+            </ul>
+        </main>
+    </div>
+</header>
+<main id="pjax" class="fn__flex-1">
+    
+    <div class="post wrapper wrapper--miner">
+        <h2 class="item__title">
+            <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/04/10/1554887221480.html">
+                多线程之同步屏障CyclicBarrier的使用
+            </a>
+        </h2>
+        <div class="ft__fade item__meta">
+                Updated on
+            <time>
+                Apr 10, 2019
+            </time>
+            with <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/04/10/1554887221480.html">512</span> views
+                and <a href="#b3logsolocomments"><span data-uvstatcmt="1554887221480">0</span> comments</a>
+        </div>
+        <div class="item__tags">
+                <a rel="tag" class="tag tag--0" href="https://cuijianzhe.github.io/tags/%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF">
+                    <b># 进阶之路</b>
+                </a>
+        </div>
+        <div class="vditor-reset">
+            <h2 id="场景定义">场景定义</h2>
+<p>假设有一个场景，有一场百米赛跑运动会，在三名选手都跑完之后，要求算出所有人的平均成绩。那么就可以用到 CyclicBarrier 了。</p>
+<h3 id="要求1-所有人跑完之后才能计算平均值-">要求 1.所有人跑完之后才能计算平均值。</h3>
+<h3 id="要求2-计算平均值用多线程运算-因为换成三亿人进行赛跑时也适用-">要求 2.计算平均值用多线程运算(因为换成三亿人进行赛跑时也适用)</h3>
+<pre><code class="highlight-chroma">public class CyclicBarrier1 implements Runnable{
+
+    //创建初始化3个线程的线程池
+    private ExecutorService threadPool =Executors.newFixedThreadPool(3);
+
+    //创建3个CyclicBarrier对象,执行完后执行当前类的run方法
+    CyclicBarrier cb = new CyclicBarrier(3,this);
+
+    //保存三组随机数的平均值
+    private ConcurrentHashMap&lt;String, Integer&gt; map=new ConcurrentHashMap&lt;String,Integer&gt;();
+
+    //计算三组随机数的平均值
+    public void count(){
+        for (int i = 0; i &lt; 3; i++) {
+            threadPool.execute(() -&gt; {
+                //生成三个数，取值范围1-10
+                int random1 = (int)(Math.random()*10)+1;
+                int random2 = (int)(Math.random()*10)+1;
+                int random3 = (int)(Math.random()*10)+1;
+                int average = (random1+random2+random3)/3;
+                map.put(Thread.currentThread().getName(),average);
+                System.out.println(Thread.currentThread().getName()+"的平均数为"+average);
+                try {
+                    cb.await();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (BrokenBarrierException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+    }
+
+    @Override
+    public void run() {
+        Iterator&lt;Map.Entry&lt;String, Integer&gt;&gt; iterator = map.entrySet().iterator();
+        double add = 0;
+        while(iterator.hasNext()) {
+            Map.Entry&lt;String, Integer&gt; next = iterator.next();
+            String key=next.getKey();
+            int value=next.getValue();
+            add += value;
+            System.out.println(key+" "+value);
+        }
+        add /=3;
+        System.out.println("三组平均数为："+add);
+        threadPool.shutdownNow();
+    }
+
+    public static void main(String[] args) {
+        CyclicBarrier1 cb=new CyclicBarrier1();
+        cb.count();
+    }
+}
+</code></pre>
+<h3 id="方法简介">方法简介</h3>
+<p>CyclicBarrier 有两个构造函数：</p>
+<p>　　　　<code>CyclicBarrier(int parties): </code> int 类型的参数表示有几个线程来参与这个屏障拦截</p>
+<p>　　　　<code>CyclicBarrier(int parties,Runnable barrierAction): </code> 当所有线程到达一个屏障点时，优先执行 barrierAction 这个线程的 run().</p>
+<p>　　　　<code>await(): </code> 每个线程调用 await(),表示我已经到达屏障点，然后当前线程被阻塞</p>
+                <div>
+                    <style>
+.page-thunder-to-text {
+  position: relative;
+  overflow: hidden;
+}
+.page-thunder-to-text canvas {
+  display: block;
+}
+.page-thunder-to-text input {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: none;
+  outline: none;
+  background-color: rgba(38, 50, 56, 0.2);
+  color: #ffffff;
+  border: none;
+  width: 200px;
+  max-width: 200px;
+  margin: auto;
+  height: 60px;
+  line-height: 60px;
+  font-size: 40px;
+  padding: 0 20px;
+}
+.page-thunder-to-text input:hover, .page-thunder-to-text input:focus {
+  border: 1px solid rgba(38, 50, 56, 0.6);
+}
+.page-thunder-to-text input::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.1);
+}
+</style>
+
+</head>
+<body>
+<br/>
+<br/>
+<div class="page page-thunder-to-text">
+	<input id="input" type="text" maxlength="24" placeholder="">
+	<canvas id="canvas" width="80" height="160"></canvas>
+</div>
+
+<script>
+let canvas, ctx, w, h, thunder, text, particles, input;
+
+function Thunder(options) {
+    options = options || {};
+    this.lifespan = options.lifespan || Math.round(Math.random() * 10 + 10);
+    this.maxlife = this.lifespan;
+    this.color = options.color || '#fefefe';
+    this.glow = options.glow || '#2323fe';
+    this.x = options.x || Math.random() * w;
+    this.y = options.y || Math.random() * h;
+    this.width = options.width || 2;
+    this.direct = options.direct || Math.random() * Math.PI * 2;
+    this.max = options.max || Math.round(Math.random() * 10 + 20);
+    this.segments = [...new Array(this.max)].map(() => {//雷电特效速度
+        return {
+            direct: this.direct + (Math.PI * Math.random() * 0.2 - 0.1),
+            length: Math.random() * 20 + 80,
+            change: Math.random() * 0.04 - 0.02
+        };
+    });
+
+    this.update = function(index, array) {
+        this.segments.forEach(s => { (s.direct += s.change) && Math.random() > 0.96 && (s.change *= -1) });
+        (this.lifespan > 0 && this.lifespan--) || this.remove(index, array);
+    }
+
+    this.render = function(ctx) {
+        if (this.lifespan <= 0) return;
+        ctx.beginPath();
+        ctx.globalAlpha = this.lifespan / this.maxlife;
+        ctx.strokeStyle = this.color;
+        ctx.lineWidth = this.width;
+        ctx.shadowBlur = 32;
+        ctx.shadowColor = this.glow;
+        ctx.moveTo(this.x, this.y);
+        let prev = { x: this.x, y: this.y };
+        this.segments.forEach(s => {
+            const x = prev.x + Math.cos(s.direct) * s.length;
+            const y = prev.y + Math.sin(s.direct) * s.length;
+            prev = { x: x, y: y };
+            ctx.lineTo(x, y);
+        });
+        ctx.stroke();
+        ctx.closePath();
+        ctx.shadowBlur = 0;
+        const strength = Math.random() * 80 + 40;
+        const light = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, strength);
+        light.addColorStop(0, 'rgba(250, 200, 50, 0.6)');
+        light.addColorStop(0.1, 'rgba(250, 200, 50, 0.2)');
+        light.addColorStop(0.4, 'rgba(250, 200, 50, 0.06)');
+        light.addColorStop(0.65, 'rgba(250, 200, 50, 0.01)');
+        light.addColorStop(0.8, 'rgba(250, 200, 50, 0)');
+        ctx.beginPath();
+        ctx.fillStyle = light;
+        ctx.arc(this.x, this.y, strength, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    this.remove = function(index, array) {
+        array.splice(index, 1);
+    }
+}
+
+function Spark(options) {
+    options = options || {};
+    this.x = options.x || w * 0.5;
+    this.y = options.y || h * 0.5;
+    this.v = options.v || { direct: Math.random() * Math.PI * 2, weight: Math.random() * 14 + 2, friction: 0.88 };
+    this.a = options.a || { change: Math.random() * 0.4 - 0.2, min: this.v.direct - Math.PI * 0.4, max: this.v.direct + Math.PI * 0.4 };
+    this.g = options.g || { direct: Math.PI * 0.5 + (Math.random() * 0.4 - 0.2), weight: Math.random() * 0.25 + 0.25 };
+    this.width = options.width || Math.random() * 10;//火花效果
+    this.lifespan = options.lifespan || Math.round(Math.random() * 20 + 40);
+    this.maxlife = this.lifespan;
+    this.color = options.color || '#feca32';
+    this.prev = { x: this.x, y: this.y };
+
+    this.update = function(index, array) {
+        this.prev = { x: this.x, y: this.y };
+        this.x += Math.cos(this.v.direct) * this.v.weight;
+        this.x += Math.cos(this.g.direct) * this.g.weight;
+        this.y += Math.sin(this.v.direct) * this.v.weight;
+        this.y += Math.sin(this.g.direct) * this.g.weight;
+        this.v.weight > 0.2 && (this.v.weight *= this.v.friction);
+        this.v.direct += this.a.change;
+        (this.v.direct > this.a.max || this.v.direct < this.a.min) && (this.a.change *= -1);
+        this.lifespan > 0 && this.lifespan--;
+        this.lifespan <= 0 && this.remove(index, array);
+    }
+
+    this.render = function(ctx) {
+        if (this.lifespan <= 0) return;
+        ctx.beginPath();
+        ctx.globalAlpha = this.lifespan / this.maxlife;
+        ctx.strokeStyle = this.color;
+        ctx.lineWidth = this.width;
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.prev.x, this.prev.y);
+        ctx.stroke();
+        ctx.closePath();
+    }
+
+    this.remove = function(index, array) {
+        array.splice(index, 1);
+    }
+}
+
+function Particles(options) {//黄色火花速度
+    options = options || {};
+    this.max = options.max || Math.round(Math.random() * 10 + 10);
+    this.sparks = [...new Array(this.max)].map(() => new Spark(options));
+
+    this.update = function() {
+        this.sparks.forEach((s, i) => s.update(i, this.sparks));
+    }
+
+    this.render = function(ctx) {
+        this.sparks.forEach(s => s.render(ctx));
+    }
+}
+
+function Text(options) {
+    options = options || {};
+    const pool = document.createElement('canvas');
+    const buffer = pool.getContext('2d');
+    pool.width = w;
+    buffer.fillStyle = '#000000';
+    buffer.fillRect(0, 0, pool.width, pool.height);
+
+    this.size = 50;
+    this.copy = (options.copy || `Hello!`) + ' ';
+    this.color = options.color || '#cd96fe';
+    //this.delay = options.delay || 5;
+    this.delay = 0.1;//字体显示速度
+    this.basedelay = this.delay;
+    buffer.font = `${this.size}px Comic Sans MS`;
+    this.bound = buffer.measureText(this.copy);
+    this.bound.height = this.size * 1.8;
+    this.x = 60;
+    this.y = 0;
+
+    buffer.strokeStyle = this.color;
+    buffer.strokeText(this.copy, 0, this.bound.height * 0.8);
+    this.data = buffer.getImageData(0, 0, this.bound.width, this.bound.height);
+    this.index = 0;
+
+    this.update = function() {
+        if (this.index >= this.bound.width) {
+            this.index = 0;
+            return;
+        }
+        const data = this.data.data;
+        for (let i = this.index * 4; i < data.length; i += (4 * this.data.width)) {
+            const bitmap = data[i] + data[i + 1] + data[i + 2] + data[i + 3];
+            if (bitmap > 255 && Math.random() > 0.96) {
+                const x = this.x + this.index;
+                const y = this.y + (i / this.bound.width / 4);
+                thunder.push(new Thunder({
+                    x: x,
+                    y: y
+                }));
+                Math.random() > 0.5 && particles.push(new Particles({
+                    x: x,
+                    y: y
+                }));
+            }
+        }
+        if (this.delay-- < 0) {
+            this.index++;
+            this.delay += this.basedelay;
+        }
+    }
+
+    this.render = function(ctx) {
+        ctx.putImageData(this.data, this.x, this.y, 0, 0, this.index, this.bound.height);
+    }
+}
+
+function loop() {
+    update();
+    render();
+    requestAnimationFrame(loop);
+}
+
+function update() {
+    text.update();
+    thunder.forEach((l, i) => l.update(i, thunder));
+    particles.forEach(p => p.update());
+}
+
+function render() {
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0, 0, w, h);
+    //
+    ctx.globalCompositeOperation = 'screen';
+    text.render(ctx);
+    thunder.forEach(l => l.render(ctx));
+    particles.forEach(p => p.render(ctx));
+}
+
+(function () {
+    //
+    canvas = document.getElementById('canvas');
+    input = document.getElementById('input');
+    ctx = canvas.getContext('2d');
+    w = window.innerWidth;
+    h = window.innerHeight;
+    canvas.width = 740;
+    canvas.height = 140;
+    thunder = [];
+    particles = [];
+    //
+    text = new Text({
+        copy: '喜欢唱跳，rap和篮球'
+    });
+    canvas.addEventListener('click', (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+        thunder.push(new Thunder({
+            x: x,
+            y: y
+        }));
+        particles.push(new Particles({
+            x: x,
+            y: y
+        }));
+    });
+    let cb = 0;
+    input.addEventListener('keyup', (e) => {
+        clearTimeout(cb);
+        cb = setTimeout(() => {
+            text = new Text({
+                copy: input.value
+            });
+        }, 300);
+    });
+    //
+    loop();
+})()
+</script>
+</body>
+                </div>
+        </div>
+    </div>
+    <div class="post__toc">
+<ul class="article__toc">
+        <li class="toc__h2">
+            <a href="#场景定义">场景定义</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#要求1-所有人跑完之后才能计算平均值-">要求 1.所有人跑完之后才能计算平均值。</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#要求2-计算平均值用多线程运算-因为换成三亿人进行赛跑时也适用-">要求 2.计算平均值用多线程运算(因为换成三亿人进行赛跑时也适用)</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#方法简介">方法简介</a>
+        </li>
+</ul>    </div>
+    <div class="body--gray post__gray">
+        <div class="wrapper comment">
+                <div id="b3logsolocomments"></div>
+                <div id="vcomment" style="padding: 30px 0;" data-name="MaidongAndYida" data-postId="1554887221480"></div>
+
+            <div class="post__list fn__flex">
+                <div class="fn__flex-1">
+                    <div id="externalRelevantArticles"></div>
+                </div>
+                <div class="post__list-mid fn__flex-1">
+                    <div id="randomArticles"></div>
+                </div>
+                <div class="fn__flex-1">
+                    <div id="relevantArticles"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="post__fix">
+        <div class="wrapper">
+            <span class="post__share mobile__none">
+                Share
+                <span class="tag tag--4" data-type="weibo">WeiBo</span>
+                <span class="tag tag--5" data-type="twitter">Twitter</span>
+                <span class="tag tag--6" data-type="qqz">QZone</span>
+                <span class="post__code tag tag--7"
+                      data-type="wechat"
+                      data-title="多线程之同步屏障CyclicBarrier的使用"
+                      data-blogtitle="邯城往事"
+                      data-url="https://cuijianzhe.github.io/articles/2019/04/10/1554887221480.html"
+                      data-avatar="https://img.hacpai.com/avatar/1551616223515_1574851307648.png?imageView2/1/w/128/h/128/format/jpg/interlace/0/q/100">
+                    WeChat
+                    <span class="qrcode"></span>
+                </span>
+            </span>
+            <span class="post__arrow">
+                    <a href="https://cuijianzhe.github.io/articles/2019/04/10/1554867918639.html" rel="prev"
+                       class="vditor-tooltipped__n vditor-tooltipped"
+                       pjax-title="设置APN让个人热点网速更快更稳定"
+                       aria-label="旧一篇: 设置APN让个人热点网速更快更稳定">←</a>
+
+                    <a href="https://cuijianzhe.github.io/articles/2019/04/10/1554909820806.html" rel="next"
+                       class="vditor-tooltipped__n vditor-tooltipped"
+                       pjax-title="部署 docker-solo 博客每日自动升级"
+                       aria-label="新一篇: 部署 docker-solo 博客每日自动升级">→</a>
+                <a href="javascript:Util.goTop()" class="vditor-tooltipped__n vditor-tooltipped"
+                   aria-label="移动到顶部">↑</a>
+                <a href="javascript:Util.goBottom()" class="vditor-tooltipped__n vditor-tooltipped"
+                   aria-label="移动到底部">↓</a>
+            </span>
+        </div>
+    </div>
+    
+</main>
+<footer class="footer">
+    <div class="ft__center">
+    <a href="https://hacpai.com/member/cuijianzhe"
+       aria-label="https://hacpai.com/member/cuijianzhe"
+       class="vditor-tooltipped__n vditor-tooltipped  user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+
+        <a href="https://twitter.com/JianzheC"
+           aria-label="https://twitter.com/JianzheC"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32.003 6.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
+            </svg>
+        </a>
+        <a href="https://weibo.com/3796930704"
+           aria-label="https://weibo.com/3796930704"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+                <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+                <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+                <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+            </svg>
+        </a>
+        <a href="https://www.zhihu.com/people/wen-yang-24-36"
+           aria-label="https://www.zhihu.com/people/wen-yang-24-36"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32 26.67c0 2.931-2.382 5.33-5.33 5.33h-21.339c-2.948 0-5.33-2.382-5.33-5.33v-21.339c0-2.948 2.382-5.33 5.33-5.33h21.339c2.948 0 5.33 2.382 5.33 5.33v21.339zM12.358 17.191h4.713c0-1.114-0.531-1.748-0.531-1.748h-4.079c0.103-2.005 0.189-4.576 0.223-5.536h3.874s-0.017-1.645-0.463-1.645h-6.822s0.411-2.142 0.96-3.085c0 0-2.040-0.12-2.742 2.605-0.686 2.725-1.731 4.354-1.851 4.662s0.6 0.137 0.891 0c0.309-0.137 1.663-0.617 2.057-2.537h2.108c0.034 1.2 0.12 4.885 0.086 5.536h-4.336c-0.6 0.446-0.823 1.748-0.823 1.748h4.971c-0.206 1.371-0.566 3.137-1.080 4.062-0.806 1.491-1.234 2.828-4.131 5.176 0 0-0.48 0.36 0.994 0.223 1.474-0.12 2.845-0.514 3.839-2.434 0.514-0.994 1.011-2.28 1.423-3.565l4.079 4.713s0.548-1.268 0.137-2.657l-3.034-3.394-1.028 0.754c0.291-0.994 0.497-1.988 0.548-2.845 0.017 0.017 0.017 0 0.017-0.034zM18.048 7.936v16.3h1.714l0.703 1.954 2.965-1.954h3.754v-16.3h-9.136zM25.401 22.487h-1.937l-2.434 1.611-0.566-1.611h-0.6v-12.735h5.553v12.735h-0.017z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=598941324"
+           aria-label="598941324"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+        <a href="javascript:void(0)"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" aria-label="cjz5989">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+            </svg>
+        </a>
+    </div>
+    <nav class="footer__nav mobile__none">
+            <a class="ft__link" href="/my-github-repos" target="_self" rel="section">
+                我的开源
+            </a>
+        <a class="ft__link" rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">RSS</a>
+    </nav>
+    <div class="footer__border mobile__none"></div>
+    <div class="wrapper fn__flex">
+        <div class="fn__flex-1 mobile__none">
+            <div class="ft__fade">cuijianzhe - 啥也不是，就是想躺着……</div>
+            <br>
+                <!-- MetingJS音乐播放器 不能放到 head 导致系统功能加载异常-->
+<link rel="stylesheet" href="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css">
+<script src="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<meting-js server="netease" type="playlist" id="728729850"  autoplay="false" fixed ="true" order="random" </meting-js>
+
+<h1><p style="font-size:10px"><font color="#2F4F4F">红笺小字，说尽平生意。<br/>鸿雁在云鱼在水，惆怅此情难寄。<br/>             ——晏殊· 《清平乐》</font> </p></h1>
+        </div>
+
+            <div class="footer__mid fn__flex-1 mobile__none">
+                <div class="ft__fade">分类</div>
+                <br>
+                    <a href="https://cuijianzhe.github.io/category/python"
+                       aria-label="1 个标签"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        人生苦短,我用Python</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/java"
+                       aria-label="1 个标签"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        Java是世界上最好的语言</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/linux"
+                       aria-label="1 个标签"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        Linux系列</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/network"
+                       aria-label="1 个标签"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        Network系列</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/young"
+                       aria-label="7 个标签"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        江湖就是人情世故</a> &nbsp; &nbsp;
+            </div>
+
+        <div class="fn__flex-1 footer__copyright">
+            <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
+                107
+                文章
+            </a>
+           <br>
+            <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> <span class="ft-gray">浏览</span>
+ <br>
+            &copy; 2020
+            <a class="ft__link" href="https://cuijianzhe.github.io">邯城往事</a>
+            <img style="width: 20px; height: 20px;" src="https://img.hacpai.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">冀ICP备19005901号</a> 
+            <br>
+            Powered by <a class="ft__link" href="https://solo.b3log.org" target="_blank">Solo</a>
+            <br>
+            Theme Pinghsu
+            <sup>[<a class="ft__link" target="_blank" href="https://github.com/chakhsu/pinghsu">ref</a>]</sup>
+            by <a class="ft__link" href="http://vanessa.b3log.org" target="_blank">Vanessa</a>
+        </div>
+    </div>
+</footer>
+<script>
+  var Label = {
+    servePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cuijianzhe.github.io",
+    luteAvailable: true,
+    hljsStyle: 'monokai',
+    langLabel: "zh_CN",
+    version: "4.0.0",
+    staticSite: true,
+    showCodeBlockLn: false,
+  }
+</script>
+<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        charset="utf-8"></script>
+
+
+
+<script type="text/javascript">
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
+        "oId": "1554887221480",
+        "blogHost": "https://cuijianzhe.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "5";
+    page.loadExternalRelevantArticles("进阶之路",
+    '<h3>HACPAI POSTS</h3>');
+Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 65ms, 2020/03/26 16:18:20 -->

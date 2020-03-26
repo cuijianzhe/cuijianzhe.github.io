@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>全面理解Java内存模型(偷转) - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="全面理解Java内存模型(偷转) - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/23/1553319340134.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="全面理解Java内存模型(偷转) - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/23/1553319340134.html">        <link rel="stylesheet"
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+            <link rel="prev" title="uniq、sort命令理解" href="https://cuijianzhe.github.io/articles/2019/03/23/1553311254119.html">
+            <link rel="next" title="JDK11-juc包系列之atomic的AtomicBoolean类(一)" href="https://cuijianzhe.github.io/articles/2019/03/23/1553320766611.html">
+    </head>
+<body>
+<header class="header">
+    <div class="wrapper">
+        <a href="https://cuijianzhe.github.io" rel="start" class="header__logo">
+            <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="邯城往事"/>
+            邯城往事
+        </a>
+
+        <nav class="header__nav mobile__none">
+            <a href="https://cuijianzhe.github.io/tags.html" rel="section">
+                Tags
+            </a>
+            <a href="https://cuijianzhe.github.io/archives.html">
+                Archives
+            </a>
+            <a rel="archive" href="https://cuijianzhe.github.io/links.html">
+                Links
+            </a>
+        </nav>
+
+        <div class="header__bar fn__none" onclick="$(this).next().slideToggle()">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                <path fill="#444" d="M0 3h20v2h-20v-2zM0 9h20v2h-20v-2zM0 15h20v2h-20v-2z"></path>
+            </svg>
+        </div>
+        <main class="header__menu fn__none">
+            <ul>
+                    <li>
+                        <a href="/my-github-repos" target="_self" rel="section">
+                            我的开源
+                        </a>
+                    </li>
+                <li>
+                    <a href="https://cuijianzhe.github.io/tags.html" rel="section">
+                        Tags
+                    </a>
+                </li>
+                <li>
+                    <a href="https://cuijianzhe.github.io/archives.html">
+                        Archives
+                    </a>
+                </li>
+                <li>
+                    <a rel="archive" href="https://cuijianzhe.github.io/links.html">
+                        Links
+                    </a>
+                </li>
+                <li>
+                    <a rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">
+                        RSS
+                    </a>
+                </li>
+            </ul>
+        </main>
+    </div>
+</header>
+<main id="pjax" class="fn__flex-1">
+    
+    <div class="post wrapper wrapper--miner">
+        <h2 class="item__title">
+            <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/03/23/1553319340134.html">
+                全面理解Java内存模型(偷转)
+            </a>
+        </h2>
+        <div class="ft__fade item__meta">
+                Updated on
+            <time>
+                Mar 23, 2019
+            </time>
+                in <a href="https://cuijianzhe.github.io/category/java">Java是世界上最好的语言</a>
+            with <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/03/23/1553319340134.html">123</span> views
+                and <a href="#b3logsolocomments"><span data-uvstatcmt="1553319340134">0</span> comments</a>
+        </div>
+        <div class="item__tags">
+                <a rel="tag" class="tag tag--0" href="https://cuijianzhe.github.io/tags/java">
+                    <b># java</b>
+                </a>
+        </div>
+        <div class="vditor-reset">
+            <p><strong>Java 内存模型</strong>即 Java Memory Model，简称 JMM。JMM 定义了 Java 虚拟机(JVM)在计算机内存(RAM)中的工作方式。JVM 是整个计算机虚拟模型，所以 JMM 是隶属于 JVM 的。</p>
+<p>如果我们要想深入了解 Java 并发编程，就要先理解好 Java 内存模型。Java 内存模型定义了多线程之间共享变量的可见性以及如何在需要的时候对共享变量进行同步。原始的 Java 内存模型效率并不是很理想，因此 Java1.5 版本对其进行了重构，现在的 Java8 仍沿用了 Java1.5 的版本。</p>
+<h3 id="关于并发编程">关于并发编程</h3>
+<p>在并发编程领域，有两个关键问题：线程之间的<strong>通信</strong>和<strong>同步</strong>。</p>
+<h3 id="线程之间的通信">线程之间的通信</h3>
+<p>线程的通信是指线程之间以何种机制来交换信息。在命令式编程中，线程之间的通信机制有两种共享内存和消息传递。</p>
+<p>在共享内存的并发模型里，线程之间共享程序的公共状态，线程之间通过写-读内存中的公共状态来隐式进行通信，典型的共享内存通信方式就是通过共享对象进行通信。</p>
+<p>在消息传递的并发模型里，线程之间没有公共状态，线程之间必须通过明确的发送消息来显式进行通信，在 Java 中典型的消息传递方式就是 wait()和 notify()。</p>
+<h3 id="线程之间的同步">线程之间的同步</h3>
+<p>同步是指程序用于控制不同线程之间操作发生相对顺序的机制。</p>
+<p>在共享内存并发模型里，同步是显式进行的。程序员必须显式指定某个方法或某段代码需要在线程之间互斥执行。</p>
+<p>在消息传递的并发模型里，由于消息的发送必须在消息的接收之前，因此同步是隐式进行的。</p>
+<h3 id="Java的并发采用的是共享内存模型">Java 的并发采用的是共享内存模型</h3>
+<p>Java 线程之间的通信总是隐式进行，整个通信过程对程序员完全透明。如果编写多线程程序的 Java 程序员不理解隐式进行的线程之间通信的工作机制，很可能会遇到各种奇怪的内存可见性问题。</p>
+<h3 id="Java内存模型">Java 内存模型</h3>
+<p>上面讲到了 Java 线程之间的通信采用的是过共享内存模型，这里提到的共享内存模型指的就是 Java 内存模型(简称 JMM)，JMM 决定一个线程对共享变量的写入何时对另一个线程可见。从抽象的角度来看，JMM 定义了线程和主内存之间的抽象关系：线程之间的共享变量存储在主内存（main memory）中，每个线程都有一个私有的本地内存（local memory），本地内存中存储了该线程以读/写共享变量的副本。本地内存是 JMM 的一个抽象概念，并不真实存在。它涵盖了缓存，写缓冲区，寄存器以及其他的硬件和编译器优化。<br>
+<img src="https://img.hacpai.com/file/2019/03/1-abe7c54e.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="1.png"><br>
+从上图来看，线程 A 与线程 B 之间如要通信的话，必须要经历下面 2 个步骤：</p>
+<pre><code class="highlight-chroma">1. 首先，线程A把本地内存A中更新过的共享变量刷新到主内存中去。
+
+2. 然后，线程B到主内存中去读取线程A之前已更新过的共享变量。 
+</code></pre>
+<p>下面通过示意图来说明这两个步骤：<br>
+<img src="https://img.hacpai.com/file/2019/03/2-a11b72bf.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="2.png"><br>
+如上图所示，本地内存 A 和 B 有主内存中共享变量 x 的副本。假设初始时，这三个内存中的 x 值都为 0。线程 A 在执行时，把更新后的 x 值（假设值为 1）临时存放在自己的本地内存 A 中。当线程 A 和线程 B 需要通信时，线程 A 首先会把自己本地内存中修改后的 x 值刷新到主内存中，此时主内存中的 x 值变为了 1。随后，线程 B 到主内存中去读取线程 A 更新后的 x 值，此时线程 B 的本地内存的 x 值也变为了 1。</p>
+<p>从整体来看，这两个步骤实质上是线程 A 在向线程 B 发送消息，而且这个通信过程必须要经过主内存。JMM 通过控制主内存与每个线程的本地内存之间的交互，来为 Java 程序员提供内存可见性保证。</p>
+<p>上面也说到了，Java 内存模型只是一个抽象概念，那么它在 Java 中具体是怎么工作的呢？为了更好的理解上 Java 内存模型工作方式，下面就 JVM 对 Java 内存模型的实现、硬件内存模型及它们之间的桥接做详细介绍。</p>
+<h3 id="JVM对Java内存模型的实现">JVM 对 Java 内存模型的实现</h3>
+<p>在 JVM 内部，Java 内存模型把内存分成了两部分：线程栈区和堆区，下图展示了 Java 内存模型在 JVM 中的逻辑视图：<br>
+<img src="https://img.hacpai.com/file/2019/03/3-646b83ea.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="3.png"><br>
+JVM 中运行的每个线程都拥有自己的线程栈，线程栈包含了当前线程执行的方法调用相关信息，我们也把它称作调用栈。随着代码的不断执行，调用栈会不断变化。</p>
+<p>线程栈还包含了当前方法的所有本地变量信息。一个线程只能读取自己的线程栈，也就是说，线程中的本地变量对其它线程是不可见的。即使两个线程执行的是同一段代码，它们也会各自在自己的线程栈中创建本地变量，因此，每个线程中的本地变量都会有自己的版本。</p>
+<p>所有原始类型(boolean,byte,short,char,int,long,float,double)的本地变量都直接保存在线程栈当中，对于它们的值各个线程之间都是独立的。对于原始类型的本地变量，一个线程可以传递一个副本给另一个线程，当它们之间是无法共享的。</p>
+<p>堆区包含了 Java 应用创建的所有对象信息，不管对象是哪个线程创建的，其中的对象包括原始类型的封装类（如 Byte、Integer、Long 等等）。不管对象是属于一个成员变量还是方法中的本地变量，它都会被存储在堆区。</p>
+<p>下图展示了调用栈和本地变量都存储在栈区，对象都存储在堆区：<br>
+<img src="https://img.hacpai.com/file/2019/03/4-8a9e8f85.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="4.png"><br>
+一个本地变量如果是原始类型，那么它会被完全存储到栈区。<br>
+一个本地变量也有可能是一个对象的引用，这种情况下，这个本地引用会被存储到栈中，但是对象本身仍然存储在堆区。</p>
+<p>对于一个对象的成员方法，这些方法中包含本地变量，仍需要存储在栈区，即使它们所属的对象在堆区。<br>
+对于一个对象的成员变量，不管它是原始类型还是包装类型，都会被存储到堆区。</p>
+<p>Static 类型的变量以及类本身相关信息都会随着类本身存储在堆区。</p>
+<p>堆中的对象可以被多线程共享。如果一个线程获得一个对象的应用，它便可访问这个对象的成员变量。如果两个线程同时调用了同一个对象的同一个方法，那么这两个线程便可同时访问这个对象的成员变量，但是对于本地变量，每个线程都会拷贝一份到自己的线程栈中。</p>
+<p>下图展示了上面描述的过程：<br>
+<img src="https://img.hacpai.com/file/2019/03/5-126b1948.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="5.png"></p>
+<h3 id="硬件内存架构">硬件内存架构</h3>
+<p>不管是什么内存模型，最终还是运行在计算机硬件上的，所以我们有必要了解计算机硬件内存架构，下图就简单描述了当代计算机硬件内存架构：<br>
+<img src="https://img.hacpai.com/file/2019/03/6-6ead4c68.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="6.png"><br>
+现代计算机一般都有 2 个以上 CPU，而且每个 CPU 还有可能包含多个核心。因此，如果我们的应用是多线程的话，这些线程可能会在各个 CPU 核心中并行运行。</p>
+<p>在 CPU 内部有一组 CPU 寄存器，也就是 CPU 的储存器。CPU 操作寄存器的速度要比操作计算机主存快的多。在主存和 CPU 寄存器之间还存在一个 CPU 缓存，CPU 操作 CPU 缓存的速度快于主存但慢于 CPU 寄存器。某些 CPU 可能有多个缓存层（一级缓存和二级缓存）。计算机的主存也称作 RAM，所有的 CPU 都能够访问主存，而且主存比上面提到的缓存和寄存器大很多。</p>
+<p>当一个 CPU 需要访问主存时，会先读取一部分主存数据到 CPU 缓存，进而在读取 CPU 缓存到寄存器。当 CPU 需要写数据到主存时，同样会先 flush 寄存器到 CPU 缓存，然后再在某些节点把缓存数据 flush 到主存。</p>
+<h3 id="Java内存模型和硬件架构之间的桥接">Java 内存模型和硬件架构之间的桥接</h3>
+<p>正如上面讲到的，Java 内存模型和硬件内存架构并不一致。硬件内存架构中并没有区分栈和堆，从硬件上看，不管是栈还是堆，大部分数据都会存到主存中，当然一部分栈和堆的数据也有可能会存到 CPU 寄存器中，如下图所示，Java 内存模型和计算机硬件内存架构是一个交叉关系：<br>
+<img src="https://img.hacpai.com/file/2019/03/7-05396c2d.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="7.png"><br>
+当对象和变量存储到计算机的各个内存区域时，必然会面临一些问题，其中最主要的两个问题是：</p>
+<pre><code class="highlight-chroma">1. 共享对象对各个线程的可见性
+
+2. 共享对象的竞争现象
+</code></pre>
+<h3 id="共享对象的可见性">共享对象的可见性</h3>
+<p>当多个线程同时操作同一个共享对象时，如果没有合理的使用 volatile 和 synchronization 关键字，一个线程对共享对象的更新有可能导致其它线程不可见。</p>
+<p>想象一下我们的共享对象存储在主存，一个 CPU 中的线程读取主存数据到 CPU 缓存，然后对共享对象做了更改，但 CPU 缓存中的更改后的对象还没有 flush 到主存，此时线程对共享对象的更改对其它 CPU 中的线程是不可见的。最终就是每个线程最终都会拷贝共享对象，而且拷贝的对象位于不同的 CPU 缓存中。</p>
+<p>下图展示了上面描述的过程。左边 CPU 中运行的线程从主存中拷贝共享对象 obj 到它的 CPU 缓存，把对象 obj 的 count 变量改为 2。但这个变更对运行在右边 CPU 中的线程不可见，因为这个更改还没有 flush 到主存中：<br>
+<img src="https://img.hacpai.com/file/2019/03/8-7f88fc58.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="8.png"></p>
+<p>要解决共享对象可见性这个问题，我们可以使用 Java volatile 关键字。 Java’s volatile keyword. volatile 关键字可以保证变量会直接从主存读取，而对变量的更新也会直接写到主存。volatile 原理是基于 CPU 内存屏障指令实现的，后面会讲到。</p>
+<h3 id="竞争现象">竞争现象</h3>
+<p>如果多个线程共享一个对象，如果它们同时修改这个共享对象，这就产生了竞争现象。</p>
+<p>如下图所示，线程 A 和线程 B 共享一个对象 obj。假设线程 A 从主存读取 Obj.count 变量到自己的 CPU 缓存，同时，线程 B 也读取了 Obj.count 变量到它的 CPU 缓存，并且这两个线程都对 Obj.count 做了加 1 操作。此时，Obj.count 加 1 操作被执行了两次，不过都在不同的 CPU 缓存中。</p>
+<p>如果这两个加 1 操作是串行执行的，那么 Obj.count 变量便会在原始值上加 2，最终主存中的 Obj.count 的值会是 3。然而下图中两个加 1 操作是并行的，不管是线程 A 还是线程 B 先 flush 计算结果到主存，最终主存中的 Obj.count 只会增加 1 次变成 2，尽管一共有两次加 1 操作。<br>
+<img src="https://img.hacpai.com/file/2019/03/9-88e576b4.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="9.png"></p>
+<p>要解决上面的问题我们可以使用 Java synchronized 代码块。synchronized 代码块可以保证同一个时刻只能有一个线程进入代码竞争区，synchronized 代码块也能保证代码块中所有变量都将会从主存中读，当线程退出代码块时，对所有变量的更新将会 flush 到主存，不管这些变量是不是 volatile 类型的。</p>
+<h3 id="volatile和-synchronized区别">volatile 和 synchronized 区别</h3>
+<p>详细请见 <a href="http://blog.csdn.net/suifeng3051/article/details/52611233" target="_blank">volatile 和 synchronized 的区别</a></p>
+<h3 id="支撑Java内存模型的基础原理">支撑 Java 内存模型的基础原理</h3>
+<h3 id="指令重排序">指令重排序</h3>
+<p>在执行程序时，为了提高性能，编译器和处理器会对指令做重排序。但是，JMM 确保在不同的编译器和不同的处理器平台之上，通过插入特定类型的 Memory Barrier 来禁止特定类型的编译器重排序和处理器重排序，为上层提供一致的内存可见性保证。</p>
+<pre><code class="highlight-chroma">1.  编译器优化重排序：编译器在不改变单线程程序语义的前提下，可以重新安排语句的执行顺序。
+2.  指令级并行的重排序：如果不存l在数据依赖性，处理器可以改变语句对应机器指令的执行顺序。
+3.  内存系统的重排序：处理器使用缓存和读写缓冲区，这使得加载和存储操作看上去可能是在乱序执行。
+</code></pre>
+<h3 id="数据依赖性">数据依赖性</h3>
+<p>如果两个操作访问同一个变量，其中一个为写操作，此时这两个操作之间存在数据依赖性。<br>
+编译器和处理器不会改变存在数据依赖性关系的两个操作的执行顺序，即不会重排序。</p>
+<h3 id="as-if-serial">as-if-serial</h3>
+<p>不管怎么重排序，单线程下的执行结果不能被改变，编译器、runtime 和处理器都必须遵守 as-if-serial 语义。</p>
+<h3 id="内存屏障-Memory-Barrier--">内存屏障（Memory Barrier ）</h3>
+<p>上面讲到了，通过内存屏障可以禁止特定类型处理器的重排序，从而让程序按我们预想的流程去执行。内存屏障，又称内存栅栏，是一个 CPU 指令，基本上它是一条这样的指令：</p>
+<pre><code class="highlight-chroma">1.  保证特定操作的执行顺序。
+2.  影响某些数据（或则是某条指令的执行结果）的内存可见性。
+</code></pre>
+<p>编译器和 CPU 能够重排序指令，保证最终相同的结果，尝试优化性能。插入一条 Memory Barrier 会告诉编译器和 CPU：不管什么指令都不能和这条 Memory Barrier 指令重排序。</p>
+<p>Memory Barrier 所做的另外一件事是强制刷出各种 CPU cache，如一个 Write-Barrier（写入屏障）将刷出所有在 Barrier 之前写入 cache 的数据，因此，任何 CPU 上的线程都能读取到这些数据的最新版本。</p>
+<p>这和 Java 有什么关系？上面 Java 内存模型中讲到的 volatile 是基于 Memory Barrier 实现的。</p>
+<p>如果一个变量是 volatile 修饰的，JMM 会在写入这个字段之后插进一个 Write-Barrier 指令，并在读这个字段之前插入一个 Read-Barrier 指令。这意味着，如果写入一个 volatile 变量，就可以保证：</p>
+<pre><code class="highlight-chroma">1.  一个线程写入变量a后，任何线程访问该变量都会拿到最新值。
+2.  在写入变量a之前的写入操作，其更新的数据对于其他线程也是可见的。因为Memory Barrier会刷出cache中的所有先前的写入。
+</code></pre>
+<h3 id="happens-before">happens-before</h3>
+<p>从 jdk5 开始，Java 使用新的 JSR-133 内存模型，基于 happens-before 的概念来阐述操作之间的内存可见性。</p>
+<p>在 JMM 中，如果一个操作的执行结果需要对另一个操作可见，那么这两个操作之间必须要存在 happens-before 关系，这个的两个操作既可以在同一个线程，也可以在不同的两个线程中。</p>
+<p>与程序员密切相关的 happens-before 规则如下：</p>
+<pre><code class="highlight-chroma">1. 程序顺序规则：一个线程中的每个操作，happens-before于该线程中任意的后续操作。
+2. 监视器锁规则：对一个锁的解锁操作，happens-before于随后对这个锁的加锁操作。
+3. volatile域规则：对一个volatile域的写操作，happens-before于任意线程后续对这个volatile域的读。
+4. 传递性规则：如果 A happens-before B，且 B happens-before C，那么A happens-before C。
+</code></pre>
+<p>注意：两个操作之间具有 happens-before 关系，并不意味前一个操作必须要在后一个操作之前执行！仅仅要求前一个操作的执行结果，对于后一个操作是可见的，且前一个操作按顺序排在后一个操作之前。</p>
+<p>参考文档 :</p>
+<ul>
+<li>
+<p><a href="http://www.infoq.com/cn/articles/java-memory-model-1" target="_blank">http://www.infoq.com/cn/articles/java-memory-model-1</a></p>
+</li>
+<li>
+<p><a href="http://www.jianshu.com/p/d3fda02d4cae" target="_blank">http://www.jianshu.com/p/d3fda02d4cae</a></p>
+</li>
+</ul>
+        </div>
+    </div>
+    <div class="post__toc">
+<ul class="article__toc">
+        <li class="toc__h3">
+            <a href="#关于并发编程">关于并发编程</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#线程之间的通信">线程之间的通信</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#线程之间的同步">线程之间的同步</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#Java的并发采用的是共享内存模型">Java 的并发采用的是共享内存模型</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#Java内存模型">Java 内存模型</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#JVM对Java内存模型的实现">JVM 对 Java 内存模型的实现</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#硬件内存架构">硬件内存架构</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#Java内存模型和硬件架构之间的桥接">Java 内存模型和硬件架构之间的桥接</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#共享对象的可见性">共享对象的可见性</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#竞争现象">竞争现象</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#volatile和-synchronized区别">volatile 和 synchronized 区别</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#支撑Java内存模型的基础原理">支撑 Java 内存模型的基础原理</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#指令重排序">指令重排序</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#数据依赖性">数据依赖性</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#as-if-serial">as-if-serial</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#内存屏障-Memory-Barrier--">内存屏障（Memory Barrier ）</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#happens-before">happens-before</a>
+        </li>
+</ul>    </div>
+    <div class="body--gray post__gray">
+        <div class="wrapper comment">
+                <div id="b3logsolocomments"></div>
+                <div id="vcomment" style="padding: 30px 0;" data-name="MaidongAndYida" data-postId="1553319340134"></div>
+
+            <div class="post__list fn__flex">
+                <div class="fn__flex-1">
+                    <div id="externalRelevantArticles"></div>
+                </div>
+                <div class="post__list-mid fn__flex-1">
+                    <div id="randomArticles"></div>
+                </div>
+                <div class="fn__flex-1">
+                    <div id="relevantArticles"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="post__fix">
+        <div class="wrapper">
+            <span class="post__share mobile__none">
+                Share
+                <span class="tag tag--4" data-type="weibo">WeiBo</span>
+                <span class="tag tag--5" data-type="twitter">Twitter</span>
+                <span class="tag tag--6" data-type="qqz">QZone</span>
+                <span class="post__code tag tag--7"
+                      data-type="wechat"
+                      data-title="全面理解Java内存模型(偷转)"
+                      data-blogtitle="邯城往事"
+                      data-url="https://cuijianzhe.github.io/articles/2019/03/23/1553319340134.html"
+                      data-avatar="https://img.hacpai.com/avatar/1551616223515_1574851307648.png?imageView2/1/w/128/h/128/format/jpg/interlace/0/q/100">
+                    WeChat
+                    <span class="qrcode"></span>
+                </span>
+            </span>
+            <span class="post__arrow">
+                    <a href="https://cuijianzhe.github.io/articles/2019/03/23/1553311254119.html" rel="prev"
+                       class="vditor-tooltipped__n vditor-tooltipped"
+                       pjax-title="uniq、sort命令理解"
+                       aria-label="旧一篇: uniq、sort命令理解">←</a>
+
+                    <a href="https://cuijianzhe.github.io/articles/2019/03/23/1553320766611.html" rel="next"
+                       class="vditor-tooltipped__n vditor-tooltipped"
+                       pjax-title="JDK11-juc包系列之atomic的AtomicBoolean类(一)"
+                       aria-label="新一篇: JDK11-juc包系列之atomic的AtomicBoolean类(一)">→</a>
+                <a href="javascript:Util.goTop()" class="vditor-tooltipped__n vditor-tooltipped"
+                   aria-label="移动到顶部">↑</a>
+                <a href="javascript:Util.goBottom()" class="vditor-tooltipped__n vditor-tooltipped"
+                   aria-label="移动到底部">↓</a>
+            </span>
+        </div>
+    </div>
+    
+</main>
+<footer class="footer">
+    <div class="ft__center">
+    <a href="https://hacpai.com/member/cuijianzhe"
+       aria-label="https://hacpai.com/member/cuijianzhe"
+       class="vditor-tooltipped__n vditor-tooltipped  user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+
+        <a href="https://twitter.com/JianzheC"
+           aria-label="https://twitter.com/JianzheC"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32.003 6.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
+            </svg>
+        </a>
+        <a href="https://weibo.com/3796930704"
+           aria-label="https://weibo.com/3796930704"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+                <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+                <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+                <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+            </svg>
+        </a>
+        <a href="https://www.zhihu.com/people/wen-yang-24-36"
+           aria-label="https://www.zhihu.com/people/wen-yang-24-36"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32 26.67c0 2.931-2.382 5.33-5.33 5.33h-21.339c-2.948 0-5.33-2.382-5.33-5.33v-21.339c0-2.948 2.382-5.33 5.33-5.33h21.339c2.948 0 5.33 2.382 5.33 5.33v21.339zM12.358 17.191h4.713c0-1.114-0.531-1.748-0.531-1.748h-4.079c0.103-2.005 0.189-4.576 0.223-5.536h3.874s-0.017-1.645-0.463-1.645h-6.822s0.411-2.142 0.96-3.085c0 0-2.040-0.12-2.742 2.605-0.686 2.725-1.731 4.354-1.851 4.662s0.6 0.137 0.891 0c0.309-0.137 1.663-0.617 2.057-2.537h2.108c0.034 1.2 0.12 4.885 0.086 5.536h-4.336c-0.6 0.446-0.823 1.748-0.823 1.748h4.971c-0.206 1.371-0.566 3.137-1.080 4.062-0.806 1.491-1.234 2.828-4.131 5.176 0 0-0.48 0.36 0.994 0.223 1.474-0.12 2.845-0.514 3.839-2.434 0.514-0.994 1.011-2.28 1.423-3.565l4.079 4.713s0.548-1.268 0.137-2.657l-3.034-3.394-1.028 0.754c0.291-0.994 0.497-1.988 0.548-2.845 0.017 0.017 0.017 0 0.017-0.034zM18.048 7.936v16.3h1.714l0.703 1.954 2.965-1.954h3.754v-16.3h-9.136zM25.401 22.487h-1.937l-2.434 1.611-0.566-1.611h-0.6v-12.735h5.553v12.735h-0.017z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=598941324"
+           aria-label="598941324"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+        <a href="javascript:void(0)"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" aria-label="cjz5989">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+            </svg>
+        </a>
+    </div>
+    <nav class="footer__nav mobile__none">
+            <a class="ft__link" href="/my-github-repos" target="_self" rel="section">
+                我的开源
+            </a>
+        <a class="ft__link" rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">RSS</a>
+    </nav>
+    <div class="footer__border mobile__none"></div>
+    <div class="wrapper fn__flex">
+        <div class="fn__flex-1 mobile__none">
+            <div class="ft__fade">cuijianzhe - 啥也不是，就是想躺着……</div>
+            <br>
+                <!-- MetingJS音乐播放器 不能放到 head 导致系统功能加载异常-->
+<link rel="stylesheet" href="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css">
+<script src="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<meting-js server="netease" type="playlist" id="728729850"  autoplay="false" fixed ="true" order="random" </meting-js>
+
+<h1><p style="font-size:10px"><font color="#2F4F4F">红笺小字，说尽平生意。<br/>鸿雁在云鱼在水，惆怅此情难寄。<br/>             ——晏殊· 《清平乐》</font> </p></h1>
+        </div>
+
+            <div class="footer__mid fn__flex-1 mobile__none">
+                <div class="ft__fade">分类</div>
+                <br>
+                    <a href="https://cuijianzhe.github.io/category/python"
+                       aria-label="1 个标签"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        人生苦短,我用Python</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/java"
+                       aria-label="1 个标签"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        Java是世界上最好的语言</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/linux"
+                       aria-label="1 个标签"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        Linux系列</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/network"
+                       aria-label="1 个标签"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        Network系列</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/young"
+                       aria-label="7 个标签"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        江湖就是人情世故</a> &nbsp; &nbsp;
+            </div>
+
+        <div class="fn__flex-1 footer__copyright">
+            <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
+                107
+                文章
+            </a>
+           <br>
+            <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> <span class="ft-gray">浏览</span>
+ <br>
+            &copy; 2020
+            <a class="ft__link" href="https://cuijianzhe.github.io">邯城往事</a>
+            <img style="width: 20px; height: 20px;" src="https://img.hacpai.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">冀ICP备19005901号</a> 
+            <br>
+            Powered by <a class="ft__link" href="https://solo.b3log.org" target="_blank">Solo</a>
+            <br>
+            Theme Pinghsu
+            <sup>[<a class="ft__link" target="_blank" href="https://github.com/chakhsu/pinghsu">ref</a>]</sup>
+            by <a class="ft__link" href="http://vanessa.b3log.org" target="_blank">Vanessa</a>
+        </div>
+    </div>
+</footer>
+<script>
+  var Label = {
+    servePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cuijianzhe.github.io",
+    luteAvailable: true,
+    hljsStyle: 'monokai',
+    langLabel: "zh_CN",
+    version: "4.0.0",
+    staticSite: true,
+    showCodeBlockLn: false,
+  }
+</script>
+<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        charset="utf-8"></script>
+
+
+
+<script type="text/javascript">
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
+        "oId": "1553319340134",
+        "blogHost": "https://cuijianzhe.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "5";
+    page.loadExternalRelevantArticles("java",
+    '<h3>HACPAI POSTS</h3>');
+Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 65ms, 2020/03/26 16:18:21 -->

@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Scrapy学习 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Scrapy学习 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/11/08/1573185139639.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="Scrapy学习 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/11/08/1573185139639.html">        <link rel="stylesheet"
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+            <link rel="prev" title="openstack创建镜像，开启云主机" href="https://cuijianzhe.github.io/articles/2019/11/07/1573111362693.html">
+            <link rel="next" title="站点推荐【转】" href="https://cuijianzhe.github.io/articles/2019/11/13/1573637956893.html">
+    </head>
+<body>
+<header class="header">
+    <div class="wrapper">
+        <a href="https://cuijianzhe.github.io" rel="start" class="header__logo">
+            <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="邯城往事"/>
+            邯城往事
+        </a>
+
+        <nav class="header__nav mobile__none">
+            <a href="https://cuijianzhe.github.io/tags.html" rel="section">
+                Tags
+            </a>
+            <a href="https://cuijianzhe.github.io/archives.html">
+                Archives
+            </a>
+            <a rel="archive" href="https://cuijianzhe.github.io/links.html">
+                Links
+            </a>
+        </nav>
+
+        <div class="header__bar fn__none" onclick="$(this).next().slideToggle()">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                <path fill="#444" d="M0 3h20v2h-20v-2zM0 9h20v2h-20v-2zM0 15h20v2h-20v-2z"></path>
+            </svg>
+        </div>
+        <main class="header__menu fn__none">
+            <ul>
+                    <li>
+                        <a href="/my-github-repos" target="_self" rel="section">
+                            我的开源
+                        </a>
+                    </li>
+                <li>
+                    <a href="https://cuijianzhe.github.io/tags.html" rel="section">
+                        Tags
+                    </a>
+                </li>
+                <li>
+                    <a href="https://cuijianzhe.github.io/archives.html">
+                        Archives
+                    </a>
+                </li>
+                <li>
+                    <a rel="archive" href="https://cuijianzhe.github.io/links.html">
+                        Links
+                    </a>
+                </li>
+                <li>
+                    <a rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">
+                        RSS
+                    </a>
+                </li>
+            </ul>
+        </main>
+    </div>
+</header>
+<main id="pjax" class="fn__flex-1">
+    
+    <div class="post wrapper wrapper--miner">
+        <h2 class="item__title">
+            <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/11/08/1573185139639.html">
+                Scrapy学习
+            </a>
+        </h2>
+        <div class="ft__fade item__meta">
+                Updated on
+            <time>
+                Nov 15, 2019
+            </time>
+                in <a href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
+            with <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/11/08/1573185139639.html">48</span> views
+                and <a href="#b3logsolocomments"><span data-uvstatcmt="1573185139639">0</span> comments</a>
+        </div>
+        <div class="item__tags">
+                <a rel="tag" class="tag tag--0" href="https://cuijianzhe.github.io/tags/python">
+                    <b># python</b>
+                </a>
+        </div>
+        <div class="vditor-reset">
+            <h1 id="环境安装">环境安装</h1>
+<h2 id="scrapy安装"><a href="https://docs.scrapy.org/en/latest/intro/install.html" target="_blank">scrapy 安装</a></h2>
+<ul>
+<li>安装依赖：<br>
+1.<a href="https://docs.scrapy.org/en/latest/faq.html#scrapy-crashes-with-importerror-no-module-named-win32api" target="_blank">pywin32</a></li>
+</ul>
+<pre><code class="highlight-chroma">pip install pywin32
+</code></pre>
+<ol start="2">
+<li>安装 <strong>Twisted</strong></li>
+</ol>
+<pre><code class="highlight-chroma">pip install Twisted
+</code></pre>
+<p>查看版本：</p>
+<pre><code class="highlight-chroma">C:\Users\cjz&gt;python -m scrapy version
+Scrapy 1.8.0
+</code></pre>
+<h2 id="创建工程项目"><a href="https://docs.scrapy.org/en/latest/intro/tutorial.html" target="_blank">创建工程项目</a></h2>
+<pre><code class="highlight-chroma">D:\python_cuijianzhe&gt;scrapy startproject scrapy_test
+New Scrapy project 'scrapy_test', using template directory 'd:\programs\python\python37\lib\site-packages\scrapy\templates\project', created in:
+    D:\python_cuijianzhe\scrapy_test
+
+You can start your first spider with:
+    cd scrapy_test
+    scrapy genspider example example.com
+</code></pre>
+<p>查看 scrapy 创建的文件：</p>
+<pre><code class="highlight-chroma">D:\python_cuijianzhe&gt;tree /f
+
+└─scrapy_test
+    │  scrapy.cfg      #配置文件
+    │
+    └─scrapy_test     #工程模块
+        │  items.py      
+        │  middlewares.py    #定义数据条目的定义，可以理解为一行记录
+        │  pipelines.py      #定义数据导出类，用于数据导出
+        │  settings.py       #工程设置文件
+        │  __init__.py       #空文件
+        │
+        ├─spiders        #爬虫目录
+        │  │  __init__.py     #空文件
+        │  │
+        │  └─__pycache__
+        └─__pycache__
+</code></pre>
+<h2 id="创建爬虫"><a href="https://docs.scrapy.org/en/latest/intro/tutorial.html" target="_blank">创建爬虫</a></h2>
+<h3 id="创建爬虫代码"><a href="https://docs.scrapy.org/en/latest/intro/tutorial.html#our-first-spider" target="_blank">创建爬虫代码</a></h3>
+<p>在 scrapy_test 项目中的目录 spiders 中创建文件 quotes_spider.py</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">scrapy</span>
+<span class="highlight-k">class</span> <span class="highlight-nc">QuotesSpider</span><span class="highlight-p">(</span><span class="highlight-n">scrapy</span><span class="highlight-o">.</span><span class="highlight-n">Spider</span><span class="highlight-p">):</span>
+    <span class="highlight-n">name</span> <span class="highlight-o">=</span> <span class="highlight-s2">"quotes"</span>
+
+    <span class="highlight-k">def</span> <span class="highlight-nf">start_requests</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-n">urls</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span>
+            <span class="highlight-s1">'http://quotes.toscrape.com/page/1/'</span><span class="highlight-p">,</span>
+            <span class="highlight-s1">'http://quotes.toscrape.com/page/2/'</span><span class="highlight-p">,</span>
+        <span class="highlight-p">]</span>
+        <span class="highlight-k">for</span> <span class="highlight-n">url</span> <span class="highlight-ow">in</span> <span class="highlight-n">urls</span><span class="highlight-p">:</span>
+            <span class="highlight-k">yield</span> <span class="highlight-n">scrapy</span><span class="highlight-o">.</span><span class="highlight-n">Request</span><span class="highlight-p">(</span><span class="highlight-n">url</span><span class="highlight-o">=</span><span class="highlight-n">url</span><span class="highlight-p">,</span> <span class="highlight-n">callback</span><span class="highlight-o">=</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">parse</span><span class="highlight-p">)</span>
+
+    <span class="highlight-k">def</span> <span class="highlight-nf">parse</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">,</span> <span class="highlight-n">response</span><span class="highlight-p">):</span>
+        <span class="highlight-n">page</span> <span class="highlight-o">=</span> <span class="highlight-n">response</span><span class="highlight-o">.</span><span class="highlight-n">url</span><span class="highlight-o">.</span><span class="highlight-n">split</span><span class="highlight-p">(</span><span class="highlight-s2">"/"</span><span class="highlight-p">)[</span><span class="highlight-o">-</span><span class="highlight-mi">2</span><span class="highlight-p">]</span>
+        <span class="highlight-n">filename</span> <span class="highlight-o">=</span> <span class="highlight-s1">'quotes-</span><span class="highlight-si">%s</span><span class="highlight-s1">.html'</span> <span class="highlight-o">%</span> <span class="highlight-n">page</span>
+        <span class="highlight-k">with</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-n">filename</span><span class="highlight-p">,</span> <span class="highlight-s1">'wb'</span><span class="highlight-p">)</span> <span class="highlight-k">as</span> <span class="highlight-n">f</span><span class="highlight-p">:</span>
+            <span class="highlight-n">f</span><span class="highlight-o">.</span><span class="highlight-n">write</span><span class="highlight-p">(</span><span class="highlight-n">response</span><span class="highlight-o">.</span><span class="highlight-n">body</span><span class="highlight-p">)</span>
+        <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">log</span><span class="highlight-p">(</span><span class="highlight-s1">'Saved file </span><span class="highlight-si">%s</span><span class="highlight-s1">'</span> <span class="highlight-o">%</span> <span class="highlight-n">filename</span><span class="highlight-p">)</span>
+</code></pre>
+<p>我们的 Spider 子类 scrapy.Spider 并定义了一些属性和方法：</p>
+<ul>
+<li>name:识别蜘蛛。它在项目中必须是唯一的，也就是说，不能为不同的蜘蛛设置相同的名称</li>
+<li>start_requests():必须返回蜘蛛将开始从中爬行的请求的 iterable（您可以返回请求列表或编写生成器函数）。随后的请求将从这些初始请求中依次生成。</li>
+<li>parse():将调用的方法，用于处理为每个请求下载的响应。response 参数是 textreponse 的一个实例，它保存页面内容，并有其他有用的方法来处理它。<br>
+parse（）默认处理 response 流的方法，通常会返回一个 item 或者 dict 给 pipeline。</li>
+</ul>
+<h2 id="运行爬虫"><a href="https://docs.scrapy.org/en/latest/intro/tutorial.html#how-to-run-our-spider" target="_blank">运行爬虫</a></h2>
+<p>这个命令使用我们刚刚添加引号的名字 <code>name = "quotes"</code> 运行 spider，它将发送一些对 quotes.toscrape.com 的请求。将得到如下输出：</p>
+<pre><code class="highlight-chroma">D:\python_cuijianzhe\scrapy_test&gt;scrapy crawl quotes
+2019-11-08 14:16:33 [scrapy.utils.log] INFO: Scrapy 1.8.0 started (bot: scrapy_test)
+2019-11-08 14:16:33 [scrapy.utils.log] INFO: Versions: lxml 4.4.1.0, libxml2 2.9.5, cssselect 1.1.0, parsel 1.5.2, w3lib 1.21.0, Twisted 19.7.0, Python 3.7.4 (tags/v3.7.4:e09359112e, Jul  8 2019, 20:34:20)
+[MSC v.1916 64 bit (AMD64)], pyOpenSSL 19.0.0 (OpenSSL 1.1.1d  10 Sep 2019), cryptography 2.8, Platform Windows-10-10.0.18362-SP0
+2019-11-08 14:16:33 [scrapy.crawler] INFO: Overridden settings: {'BOT_NAME': 'scrapy_test', 'NEWSPIDER_MODULE': 'scrapy_test.spiders', 'ROBOTSTXT_OBEY': True, 'SPIDER_MODULES': ['scrapy_test.spiders']}
+2019-11-08 14:16:33 [scrapy.extensions.telnet] INFO: Telnet Password: 118fc5b3a4cf7fef
+2019-11-08 14:16:33 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2019-11-08 14:16:33 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2019-11-08 14:16:33 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2019-11-08 14:16:33 [scrapy.middleware] INFO: Enabled item pipelines:
+[]
+2019-11-08 14:16:33 [scrapy.core.engine] INFO: Spider opened
+2019-11-08 14:16:33 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-11-08 14:16:33 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2019-11-08 14:16:34 [scrapy.core.engine] DEBUG: Crawled (404) &lt;GET http://quotes.toscrape.com/robots.txt&gt; (referer: None)
+2019-11-08 14:16:35 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET http://quotes.toscrape.com/page/1/&gt; (referer: None)
+2019-11-08 14:16:35 [quotes] DEBUG: Saved file quotes-1.html
+2019-11-08 14:16:35 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET http://quotes.toscrape.com/page/2/&gt; (referer: None)
+2019-11-08 14:16:35 [quotes] DEBUG: Saved file quotes-2.html
+2019-11-08 14:16:35 [scrapy.core.engine] INFO: Closing spider (finished)
+2019-11-08 14:16:35 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+...
+2019-11-08 14:16:35 [scrapy.core.engine] INFO: Spider closed (finished)
+</code></pre>
+<p>运行爬虫后， 会提示一堆的信息，主要是完成以下几个部分工作：</p>
+<ul>
+<li>启动爬虫引擎</li>
+<li>加载设置文件</li>
+<li>启用扩展</li>
+<li>启用下载中间件</li>
+<li>启用爬虫中间件</li>
+<li>启动 pipeline</li>
+<li>爬虫启动，开始工作</li>
+<li>爬虫结束， 引擎收集统计信息，清理工作</li>
+</ul>
+<p>现在，检查当前目录中的文件。已经创建了两个新文件：quotes-1.html 和 quotes-2.html，其中包含了各自 url 的内容，正如我们的解析方法。<br>
+<img src="https://img.hacpai.com/file/2019/11/image-c9550901.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<h3 id="启动爬虫请求的快捷方式-CSS-">启动爬虫请求的快捷方式(CSS)</h3>
+<pre><code class="highlight-chroma">D:\python_cuijianzhe\scrapy_test&gt;scrapy shell "http://quotes.toscrape.com/page/1/"
+2019-11-08 14:27:53 [scrapy.utils.log] INFO: Scrapy 1.8.0 started (bot: scrapy_test)
+2019-11-08 14:27:53 [scrapy.utils.log] INFO: Versions: lxml 4.4.1.0, libxml2 2.9.5, cssselect 1.1.0, parsel 1.5.2, w3lib 1.21.0, Twisted 19.7.0, Python 3.7.4 (tags/v3.7.4:e09359112e, Jul  8 2019, 20:34:20)
+...
+</code></pre>
+<p>使用 shell，可以尝试使用 CSS 和 response 对象选择元素：</p>
+<pre><code class="highlight-chroma">In [1]: response.css('title')
+Out[1]: [&lt;Selector xpath='descendant-or-self::title' data='&lt;title&gt;Quotes to Scrape&lt;/title&gt;'&gt;]
+</code></pre>
+<p>运行 response.css（'title'）的结果是一个名为 <code>Selector list</code> 的类似列表的对象，它表示一个 Selector 对象列表，这些对象环绕 XML/HTML 元素，并允许运行进一步的查询来细化选择或提取数据。</p>
+<pre><code class="highlight-chroma">In [2]: response.css('title::text').getall()
+Out[2]: ['Quotes to Scrape']
+</code></pre>
+<p>这里有两件事需要注意：<br>
+一是我们在 CSS 查询中添加了 <code>::text</code> ，这意味着我们只想直接在<title>元素中选择文本元素。</title><br>
+如果我们不指定 <code>::text</code> ，我们将得到完整的 <code>title</code> 元素，包括它的标记：</p>
+<pre><code class="highlight-chroma">In [3]:  response.css('title').getall()
+Out[3]: ['&lt;title&gt;Quotes to Scrape&lt;/title&gt;']
+</code></pre>
+<p>另一个是，调用 <code>.getall()</code> 的结果是一个列表：选择器可能返回多个结果，因此我们将它们全部提取出来。当你知道你只想得到第一个结果时，在这种情况下，可以使用：</p>
+<pre><code class="highlight-chroma">In [4]: response.css('title::text').get()
+Out[4]: 'Quotes to Scrape'
+</code></pre>
+<p>另外，可以这么写：</p>
+<pre><code class="highlight-chroma">In [5]: response.css('title::text')[0].get()
+Out[5]: 'Quotes to Scrape'
+</code></pre>
+<ul>
+<li>除了 getall()和 get()方法外，还可以使用 re()方法使用正则表达式提取：</li>
+</ul>
+<pre><code class="highlight-chroma">In [6]: response.css('title::text').re(r'Quotes.*')
+Out[6]: ['Quotes to Scrape']
+
+In [7]: response.css('title::text').re(r'Q\w+')
+Out[7]: ['Quotes']
+
+In [8]: response.css('title::text').re(r'(\w+) to (\w+)')
+Out[8]: ['Quotes', 'Scrape']
+</code></pre>
+<h2 id="XPath-简介"><a href="https://docs.scrapy.org/en/latest/intro/tutorial.html#xpath-a-brief-intro" target="_blank">XPath：简介</a></h2>
+<p><a href="https://docs.scrapy.org/en/latest/topics/selectors.html#topics-selectors" target="_blank">参考 Xpath 实例</a><br>
+除了 CSS，Scrapy 选择器还支持使用 XPath 表达式：</p>
+<pre><code class="highlight-chroma">In [9]: response.xpath('//title')
+Out[9]: [&lt;Selector xpath='//title' data='&lt;title&gt;Quotes to Scrape&lt;/title&gt;'&gt;]
+
+In [10]: response.xpath('//title/text()').get()
+Out[10]: 'Quotes to Scrape'
+</code></pre>
+<h3 id="抽取引用和作者">抽取引用和作者</h3>
+<p>既然您已经对选择和提取有了一些了解，那么让我们通过编写代码从 Web 页面提取引号来完成 spider。</p>
+<p><a href="http://quotes.toscrape.com" target="_blank">http://quotes.toscrape.com</a> 中的每个引号都由如下所示的 HTML 元素表示：<br>
+<img src="https://img.hacpai.com/file/2019/11/image-4a907c6a.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<pre><code class="highlight-chroma">&lt;div class="quote" itemscope="" itemtype="http://schema.org/CreativeWork"&gt;
+        &lt;span class="text" itemprop="text"&gt;“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”&lt;/span&gt;
+        &lt;span&gt;by &lt;small class="author" itemprop="author"&gt;Albert Einstein&lt;/small&gt;
+        &lt;a href="/author/Albert-Einstein"&gt;(about)&lt;/a&gt;
+        &lt;/span&gt;
+        &lt;div class="tags"&gt;
+            Tags:
+            &lt;meta class="keywords" itemprop="keywords" content="change,deep-thoughts,thinking,world"&gt; 
+            
+            &lt;a class="tag" href="/tag/change/page/1/"&gt;change&lt;/a&gt;
+            
+            &lt;a class="tag" href="/tag/deep-thoughts/page/1/"&gt;deep-thoughts&lt;/a&gt;
+            
+            &lt;a class="tag" href="/tag/thinking/page/1/"&gt;thinking&lt;/a&gt;
+            
+            &lt;a class="tag" href="/tag/world/page/1/"&gt;world&lt;/a&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+<p>让我们打开 scrapy shell 并输出数据，了解如何提取所需的数据：</p>
+<pre><code class="highlight-chroma">D:\python_cuijianzhe\scrapy_test&gt;scrapy shell "http://quotes.toscrape.com"
+2019-11-08 14:51:13 [scrapy.utils.log] INFO: Scrapy 1.8.0 started (bot: scrapy_test)
+2019-11-08 14:51:13 [scrapy.utils.log] INFO: Versions: lxml 4.4.1.0, libxml2 2.9.5, cssselect 1.1.0, parsel 1.5.2, w3lib 1.21.0, Twisted 19.7.0, Python 3.7.4 (tags/v3.7.4:e09359112e, Jul  8 2019, 20:34:20)
+[MSC v.1916 64 bit (AMD64)], pyOpenSSL 19.0.0 (OpenSSL 1.1.1d  10 Sep 2019), cryptography 2.8, Platform Windows-10-10.0.18362-SP0
+2019-11-08 14:51:13 [scrapy.crawler] INFO: Overridden settings: {'BOT_NAME': 'scrapy_test', 'DUPEFILTER_CLASS': 'scrapy.dupefilters.BaseDupeFilter', 'LOGSTATS_INTERVAL': 0, 'NEWSPIDER_MODULE': 'scrapy_test.
+spiders', 'ROBOTSTXT_OBEY': True, 'SPIDER_MODULES': ['scrapy_test.spiders']}
+2019-11-08 14:51:13 [scrapy.extensions.telnet] INFO: Telnet Password: b9273deb5a53cb00
+2019-11-08 14:51:13 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole']
+2019-11-08 14:51:13 [scrapy.middleware] INFO: Enabled downloader middlewares:
+...
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2019-11-08 14:51:13 [scrapy.middleware] INFO: Enabled item pipelines:
+[]
+2019-11-08 14:51:13 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2019-11-08 14:51:13 [scrapy.core.engine] INFO: Spider opened
+2019-11-08 14:51:14 [scrapy.core.engine] DEBUG: Crawled (404) &lt;GET http://quotes.toscrape.com/robots.txt&gt; (referer: None)
+2019-11-08 14:51:14 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET http://quotes.toscrape.com&gt; (referer: None)
+...
+</code></pre>
+<p>我们得到了 quote HTML 元素的选择器列表，其中包含：</p>
+<pre><code class="highlight-chroma">In [1]: response.css("div.quote")
+Out[1]: 
+[&lt;Selector xpath="descendant-or-self::div[@class and contains(concat(' ', normalize-space(@class), ' '), ' quote ')]" data='&lt;div class="quote" itemscope itemtype...'&gt;,
+ &lt;Selector xpath="descendant-or-self::div[@class and contains(concat(' ', normalize-space(@class), ' '), ' quote ')]" data='&lt;div class="quote" itemscope itemtype...'&gt;,
+ &lt;Selector xpath="descendant-or-self::div[@class and contains(concat(' ', normalize-space(@class), ' '), ' quote ')]" data='&lt;div class="quote" itemscope itemtype...'&gt;,
+ &lt;Selector xpath="descendant-or-self::div[@class and contains(concat(' ', normalize-space(@class), ' '), ' quote ')]" data='&lt;div class="quote" itemscope itemtype...'&gt;,
+ &lt;Selector xpath="descendant-or-self::div[@class and contains(concat(' ', normalize-space(@class), ' '), ' quote ')]" data='&lt;div class="quote" itemscope itemtype...'&gt;,
+ &lt;Selector xpath="descendant-or-self::div[@class and contains(concat(' ', normalize-space(@class), ' '), ' quote ')]" data='&lt;div class="quote" itemscope itemtype...'&gt;,
+ &lt;Selector xpath="descendant-or-self::div[@class and contains(concat(' ', normalize-space(@class), ' '), ' quote ')]" data='&lt;div class="quote" itemscope itemtype...'&gt;,
+ &lt;Selector xpath="descendant-or-self::div[@class and contains(concat(' ', normalize-space(@class), ' '), ' quote ')]" data='&lt;div class="quote" itemscope itemtype...'&gt;,
+ &lt;Selector xpath="descendant-or-self::div[@class and contains(concat(' ', normalize-space(@class), ' '), ' quote ')]" data='&lt;div class="quote" itemscope itemtype...'&gt;,
+ &lt;Selector xpath="descendant-or-self::div[@class and contains(concat(' ', normalize-space(@class), ' '), ' quote ')]" data='&lt;div class="quote" itemscope itemtype...'&gt;]
+</code></pre>
+<p>上面查询返回的每个选择器都允许我们对其子元素运行进一步的查询。让我们将第一个选择器分配给一个变量，这样就可以直接在特定的引号上运行 CSS 选择器：</p>
+<pre><code class="highlight-chroma">In [2]: quote = response.css("div.quote")[0]
+</code></pre>
+<p>现在，使用刚刚创建的 quote 对象从该 quote 中提取 <code>text</code>、<code>author</code> 和 <code>tags</code>：</p>
+<pre><code class="highlight-chroma">In [3]: text = quote.css("span.text::text").get()
+
+In [4]: text
+Out[4]: '“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”'
+In [5]: author = quote.css("small.author::text").get()
+
+In [6]: author
+Out[6]: 'Albert Einstein'
+</code></pre>
+<p>鉴于 <code>tags</code> 是字符串列表，我们可以使用 <code>.getall()</code> 方法获取所有 <code>tags</code>：</p>
+<pre><code class="highlight-chroma">In [7]: tags = quote.css("div.tags a.tag::text").getall()
+
+In [8]: tags
+Out[8]: ['change', 'deep-thoughts', 'thinking', 'world']
+</code></pre>
+<p>在知道如何提取每个位之后，现在可以遍历所有引号元素，并将它们放在一个 Python 字典中：</p>
+<pre><code class="highlight-chroma">In [9]: for quote in response.css("div.quote"):
+   ...:     text = quote.css("span.text::text").get()
+   ...:     author = quote.css("small.author::text").get()
+   ...:     tags = quote.css("div.tags a.tag::text").getall()
+   ...:     print(dict(text=text, author=author, tags=tags))
+   ...: 
+{'text': '“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”', 'author': 'Albert Einstein', 'tags': ['change', 'deep-thoughts', 'thinking',
+ 'world']}
+{'text': '“It is our choices, Harry, that show what we truly are, far more than our abilities.”', 'author': 'J.K. Rowling', 'tags': ['abilities', 'choices']}
+{'text': '“There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”', 'author': 'Albert Einstein', 'tags': ['inspirational', 'life
+', 'live', 'miracle', 'miracles']}
+{'text': '“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”', 'author': 'Jane Austen', 'tags': ['aliteracy', 'books', 'classic', 'humor']}
+{'text': "“Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring.”", 'author': 'Marilyn Monroe', 'tags': ['be-yourself', 'inspirational']}
+{'text': '“Try not to become a man of success. Rather become a man of value.”', 'author': 'Albert Einstein', 'tags': ['adulthood', 'success', 'value']}
+{'text': '“It is better to be hated for what you are than to be loved for what you are not.”', 'author': 'André Gide', 'tags': ['life', 'love']}
+{'text': "“I have not failed. I've just found 10,000 ways that won't work.”", 'author': 'Thomas A. Edison', 'tags': ['edison', 'failure', 'inspirational', 'paraphrased']}
+{'text': "“A woman is like a tea bag; you never know how strong it is until it's in hot water.”", 'author': 'Eleanor Roosevelt', 'tags': ['misattributed-eleanor-roosevelt']}
+{'text': '“A day without sunshine is like, you know, night.”', 'author': 'Steve Martin', 'tags': ['humor', 'obvious', 'simile']}
+</code></pre>
+<h3 id="在scrapy中提取数据">在 scrapy 中提取数据</h3>
+<p>Scrapy spider 通常生成许多字典，其中包含从页面提取的数据。为此，我们在回调中使用 <code>yield</code> Python 关键字，如下所示：</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">scrapy</span>
+<span class="highlight-k">class</span> <span class="highlight-nc">QuotesSpider</span><span class="highlight-p">(</span><span class="highlight-n">scrapy</span><span class="highlight-o">.</span><span class="highlight-n">Spider</span><span class="highlight-p">):</span>
+    <span class="highlight-n">name</span> <span class="highlight-o">=</span> <span class="highlight-s2">"quotes"</span>
+    <span class="highlight-n">start_urls</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span>
+        <span class="highlight-s1">'http://quotes.toscrape.com/page/1/'</span><span class="highlight-p">,</span>
+        <span class="highlight-s1">'http://quotes.toscrape.com/page/2/'</span><span class="highlight-p">,</span>
+    <span class="highlight-p">]</span>
+
+    <span class="highlight-k">def</span> <span class="highlight-nf">parse</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">,</span> <span class="highlight-n">response</span><span class="highlight-p">):</span>
+        <span class="highlight-k">for</span> <span class="highlight-n">quote</span> <span class="highlight-ow">in</span> <span class="highlight-n">response</span><span class="highlight-o">.</span><span class="highlight-n">css</span><span class="highlight-p">(</span><span class="highlight-s1">'div.quote'</span><span class="highlight-p">):</span>
+            <span class="highlight-k">yield</span> <span class="highlight-p">{</span>
+                <span class="highlight-s1">'text'</span><span class="highlight-p">:</span> <span class="highlight-n">quote</span><span class="highlight-o">.</span><span class="highlight-n">css</span><span class="highlight-p">(</span><span class="highlight-s1">'span.text::text'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(),</span>
+                <span class="highlight-s1">'author'</span><span class="highlight-p">:</span> <span class="highlight-n">quote</span><span class="highlight-o">.</span><span class="highlight-n">css</span><span class="highlight-p">(</span><span class="highlight-s1">'small.author::text'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(),</span>
+                <span class="highlight-s1">'tags'</span><span class="highlight-p">:</span> <span class="highlight-n">quote</span><span class="highlight-o">.</span><span class="highlight-n">css</span><span class="highlight-p">(</span><span class="highlight-s1">'div.tags a.tag::text'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">getall</span><span class="highlight-p">(),</span>
+            <span class="highlight-p">}</span>
+</code></pre>
+<p>运行此 spider，它将输出提取的数据和日志：</p>
+<pre><code class="highlight-chroma">D:\python_cuijianzhe\scrapy_test&gt;scrapy crawl quotes
+2019-11-08 15:01:27 [scrapy.utils.log] INFO: Scrapy 1.8.0 started (bot: scrapy_test)
+2019-11-08 15:01:27 [scrapy.utils.log] INFO: Versions: lxml 4.4.1.0, libxml2 2.9.5, cssselect 1.1.0, parsel 1.5.2, w3lib 1.21.0, Twisted 19.7.0, Python 3.7.4 (tags/v3.7.4:e09359112e, Jul  8 2019, 20:34:20)
+[MSC v.1916 64 bit (AMD64)], pyOpenSSL 19.0.0 (OpenSSL 1.1.1d  10 Sep 2019), cryptography 2.8, Platform Windows-10-10.0.18362-SP0
+2019-11-08 15:01:27 [scrapy.crawler] INFO: Overridden settings: {'BOT_NAME': 'scrapy_test', 'NEWSPIDER_MODULE': 'scrapy_test.spiders', 'ROBOTSTXT_OBEY': True, 'SPIDER_MODULES': ['scrapy_test.spiders']}
+2019-11-08 15:01:27 [scrapy.extensions.telnet] INFO: Telnet Password: 4914bcc0ab6bc5c7
+2019-11-08 15:01:27 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2019-11-08 15:01:28 [scrapy.middleware] INFO: Enabled downloader middlewares:
+...
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+...
+2019-11-08 15:01:29 [scrapy.core.engine] INFO: Spider closed (finished)
+</code></pre>
+<h2 id="存储所抓取的数据-json数据-">存储所抓取的数据（JSON 数据）</h2>
+<pre><code class="highlight-chroma">D:\python_cuijianzhe\scrapy_test&gt;scrapy crawl quotes -o quotes.json
+D:\python_cuijianzhe\scrapy_test&gt;scrapy crawl quotes -o quotes.xml
+D:\python_cuijianzhe\scrapy_test&gt;scrapy crawl quotes -o quotes.csv
+D:\python_cuijianzhe\scrapy_test&gt;scrapy crawl quotes -o quotes.jl
+</code></pre>
+<h2 id="链接追踪">链接追踪</h2>
+<p>既然知道了如何从页面中提取数据，那么看看如何跟踪页面中的链接</p>
+<ul>
+<li>第一件事是提取到我们要跟踪的页面的链接。检查我们的页面，我们可以看到有一个指向下一页的链接，其中包含以下标记：</li>
+</ul>
+<pre><code class="highlight-chroma">&lt;ul class="pager"&gt;                       
+            &lt;li class="next"&gt;
+                &lt;a href="/page/2/"&gt;Next &lt;span aria-hidden="true"&gt;→&lt;/span&gt;&lt;/a&gt;
+            &lt;/li&gt;            
+        &lt;/ul&gt;
+</code></pre>
+<p>我们可以试着从 shell 中提取出来：</p>
+<pre><code class="highlight-chroma">In [1]: response.css('li.next a').get()
+Out[1]: '&lt;a href="/page/2/"&gt;Next &lt;span aria-hidden="true"&gt;→&lt;/span&gt;&lt;/a&gt;'
+</code></pre>
+<p>这将获取锚定元素，但我们需要属性 <code>href</code>。为此，Scrapy 支持 CSS 扩展，允许您选择属性内容，如下所示：</p>
+<pre><code class="highlight-chroma">In [2]: response.css('li.next a::attr(href)').get()
+Out[2]: '/page/2/'
+</code></pre>
+<p>还有一个 attrib 属性可用（有关详细信息，请参见选择元素属性）：</p>
+<pre><code class="highlight-chroma">In [3]:  response.css('li.next a').attrib['href']
+Out[3]: '/page/2/'
+</code></pre>
+<ul>
+<li>现在让我们看看我们的 spider 被修改为递归地跟随到下一页的链接，从中提取数据：</li>
+</ul>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">scrapy</span>
+<span class="highlight-k">class</span> <span class="highlight-nc">QuotesSpider</span><span class="highlight-p">(</span><span class="highlight-n">scrapy</span><span class="highlight-o">.</span><span class="highlight-n">Spider</span><span class="highlight-p">):</span>
+    <span class="highlight-n">name</span> <span class="highlight-o">=</span> <span class="highlight-s2">"quotes"</span>
+    <span class="highlight-n">start_urls</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span>
+        <span class="highlight-s1">'http://quotes.toscrape.com/page/1/'</span><span class="highlight-p">,</span>
+    <span class="highlight-p">]</span>
+
+    <span class="highlight-k">def</span> <span class="highlight-nf">parse</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">,</span> <span class="highlight-n">response</span><span class="highlight-p">):</span>
+        <span class="highlight-k">for</span> <span class="highlight-n">quote</span> <span class="highlight-ow">in</span> <span class="highlight-n">response</span><span class="highlight-o">.</span><span class="highlight-n">css</span><span class="highlight-p">(</span><span class="highlight-s1">'div.quote'</span><span class="highlight-p">):</span>
+            <span class="highlight-k">yield</span> <span class="highlight-p">{</span>
+                <span class="highlight-s1">'text'</span><span class="highlight-p">:</span> <span class="highlight-n">quote</span><span class="highlight-o">.</span><span class="highlight-n">css</span><span class="highlight-p">(</span><span class="highlight-s1">'span.text::text'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(),</span>
+                <span class="highlight-s1">'author'</span><span class="highlight-p">:</span> <span class="highlight-n">quote</span><span class="highlight-o">.</span><span class="highlight-n">css</span><span class="highlight-p">(</span><span class="highlight-s1">'small.author::text'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(),</span>
+                <span class="highlight-s1">'tags'</span><span class="highlight-p">:</span> <span class="highlight-n">quote</span><span class="highlight-o">.</span><span class="highlight-n">css</span><span class="highlight-p">(</span><span class="highlight-s1">'div.tags a.tag::text'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">getall</span><span class="highlight-p">(),</span>
+            <span class="highlight-p">}</span>
+
+        <span class="highlight-n">next_page</span> <span class="highlight-o">=</span> <span class="highlight-n">response</span><span class="highlight-o">.</span><span class="highlight-n">css</span><span class="highlight-p">(</span><span class="highlight-s1">'li.next a::attr(href)'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">()</span>
+        <span class="highlight-k">if</span> <span class="highlight-n">next_page</span> <span class="highlight-ow">is</span> <span class="highlight-ow">not</span> <span class="highlight-bp">None</span><span class="highlight-p">:</span>
+            <span class="highlight-n">next_page</span> <span class="highlight-o">=</span> <span class="highlight-n">response</span><span class="highlight-o">.</span><span class="highlight-n">urljoin</span><span class="highlight-p">(</span><span class="highlight-n">next_page</span><span class="highlight-p">)</span>
+            <span class="highlight-k">yield</span> <span class="highlight-n">scrapy</span><span class="highlight-o">.</span><span class="highlight-n">Request</span><span class="highlight-p">(</span><span class="highlight-n">next_page</span><span class="highlight-p">,</span> <span class="highlight-n">callback</span><span class="highlight-o">=</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">parse</span><span class="highlight-p">)</span>
+</code></pre>
+<p>代码简介：<br>
+next_page 是我们从页面提取的下一页的网址，然后 urljoin 去拼接完整 url,然后使用 request 去请求下一页，还是使用 parse 去解析响应流，当然我们可以在写一个 parse 的。</p>
+<p>这段代码执行后发现后面几页全部住取出来了<br>
+<img src="https://img.hacpai.com/file/2019/11/image-51491f18.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<h2 id="给爬虫使用spider参数">给爬虫使用 spider 参数</h2>
+<p>代码示例：</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">scrapy</span>
+<span class="highlight-k">class</span> <span class="highlight-nc">QuotesSpider</span><span class="highlight-p">(</span><span class="highlight-n">scrapy</span><span class="highlight-o">.</span><span class="highlight-n">Spider</span><span class="highlight-p">):</span>
+    <span class="highlight-n">name</span> <span class="highlight-o">=</span> <span class="highlight-s2">"quotes"</span>
+    <span class="highlight-k">def</span> <span class="highlight-nf">start_requests</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-n">url</span> <span class="highlight-o">=</span> <span class="highlight-s1">'http://quotes.toscrape.com/'</span>
+        <span class="highlight-n">tag</span> <span class="highlight-o">=</span> <span class="highlight-nb">getattr</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">,</span> <span class="highlight-s1">'tag'</span><span class="highlight-p">,</span> <span class="highlight-bp">None</span><span class="highlight-p">)</span>
+        <span class="highlight-k">if</span> <span class="highlight-n">tag</span> <span class="highlight-ow">is</span> <span class="highlight-ow">not</span> <span class="highlight-bp">None</span><span class="highlight-p">:</span>
+            <span class="highlight-n">url</span> <span class="highlight-o">=</span> <span class="highlight-n">url</span> <span class="highlight-o">+</span> <span class="highlight-s1">'tag/'</span> <span class="highlight-o">+</span> <span class="highlight-n">tag</span>
+        <span class="highlight-k">yield</span> <span class="highlight-n">scrapy</span><span class="highlight-o">.</span><span class="highlight-n">Request</span><span class="highlight-p">(</span><span class="highlight-n">url</span><span class="highlight-p">,</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">parse</span><span class="highlight-p">)</span>
+    <span class="highlight-k">def</span> <span class="highlight-nf">parse</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">,</span> <span class="highlight-n">response</span><span class="highlight-p">):</span>
+        <span class="highlight-k">for</span> <span class="highlight-n">quote</span> <span class="highlight-ow">in</span> <span class="highlight-n">response</span><span class="highlight-o">.</span><span class="highlight-n">css</span><span class="highlight-p">(</span><span class="highlight-s1">'div.quote'</span><span class="highlight-p">):</span>
+            <span class="highlight-k">yield</span> <span class="highlight-p">{</span>
+                <span class="highlight-s1">'text'</span><span class="highlight-p">:</span> <span class="highlight-n">quote</span><span class="highlight-o">.</span><span class="highlight-n">css</span><span class="highlight-p">(</span><span class="highlight-s1">'span.text::text'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(),</span>
+                <span class="highlight-s1">'author'</span><span class="highlight-p">:</span> <span class="highlight-n">quote</span><span class="highlight-o">.</span><span class="highlight-n">css</span><span class="highlight-p">(</span><span class="highlight-s1">'small.author::text'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(),</span>
+            <span class="highlight-p">}</span>
+        <span class="highlight-n">next_page</span> <span class="highlight-o">=</span> <span class="highlight-n">response</span><span class="highlight-o">.</span><span class="highlight-n">css</span><span class="highlight-p">(</span><span class="highlight-s1">'li.next a::attr(href)'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">()</span>
+        <span class="highlight-k">if</span> <span class="highlight-n">next_page</span> <span class="highlight-ow">is</span> <span class="highlight-ow">not</span> <span class="highlight-bp">None</span><span class="highlight-p">:</span>
+            <span class="highlight-k">yield</span> <span class="highlight-n">response</span><span class="highlight-o">.</span><span class="highlight-n">follow</span><span class="highlight-p">(</span><span class="highlight-n">next_page</span><span class="highlight-p">,</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">parse</span><span class="highlight-p">)</span>
+</code></pre>
+<p>这些参数被传递给 Spider 的__init__方法，并在默认情况下成为 Spider 属性。<br>
+在本例中，为 tag 参数提供的值可以通过 self.tag 获得。您可以使用此选项使爬行器仅获取带有特定标记的引号，并基于参数构建 URL：</p>
+<p>通过在运行 spider 时使用-a 选项，可以为它们提供命令行参数：</p>
+<pre><code class="highlight-chroma">&lt;a class="tag" href="/tag/choices/page/1/"&gt;choices&lt;/a&gt;  
+</code></pre>
+<pre><code class="highlight-chroma">D:\python_cuijianzhe\scrapy_test&gt;scrapy crawl quotes -o quotes-humor.json -a tag=choices  
+</code></pre>
+                <div>
+                    <span class="name">搭讪 你就破功了，老弟！</span>
+<style>
+.name{   
+    font-size:30px;
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #FF512F;
+    font-weight: 650;
+    text-shadow: 0px 0px 7px #ffd800;
+    background-image: linear-gradient(90deg, #ffd800 0%, #ff512f 100%, #fff);
+    animation: glow-animation 2s infinite linear;
+    color: #FFC0CB;
+    box-sizing: border-box;
+    vertical-align: inherit;
+}
+@keyframes glow-animation{
+    0%{filter:hue-rotate(-360deg)}
+    100%{filter:hue-rotate(360deg)}
+}
+</style>
+
+                </div>
+        </div>
+    </div>
+    <div class="post__toc">
+<ul class="article__toc">
+        <li class="toc__h1">
+            <a href="#环境安装">环境安装</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#scrapy安装">scrapy 安装</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#创建工程项目">创建工程项目</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#创建爬虫">创建爬虫</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#创建爬虫代码">创建爬虫代码</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#运行爬虫">运行爬虫</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#启动爬虫请求的快捷方式-CSS-">启动爬虫请求的快捷方式(CSS)</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#XPath-简介">XPath：简介</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#抽取引用和作者">抽取引用和作者</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#在scrapy中提取数据">在 scrapy 中提取数据</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#存储所抓取的数据-json数据-">存储所抓取的数据（JSON 数据）</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#链接追踪">链接追踪</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#给爬虫使用spider参数">给爬虫使用 spider 参数</a>
+        </li>
+</ul>    </div>
+    <div class="body--gray post__gray">
+        <div class="wrapper comment">
+                <div id="b3logsolocomments"></div>
+                <div id="vcomment" style="padding: 30px 0;" data-name="cuijianzhe" data-postId="1573185139639"></div>
+
+            <div class="post__list fn__flex">
+                <div class="fn__flex-1">
+                    <div id="externalRelevantArticles"></div>
+                </div>
+                <div class="post__list-mid fn__flex-1">
+                    <div id="randomArticles"></div>
+                </div>
+                <div class="fn__flex-1">
+                    <div id="relevantArticles"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="post__fix">
+        <div class="wrapper">
+            <span class="post__share mobile__none">
+                Share
+                <span class="tag tag--4" data-type="weibo">WeiBo</span>
+                <span class="tag tag--5" data-type="twitter">Twitter</span>
+                <span class="tag tag--6" data-type="qqz">QZone</span>
+                <span class="post__code tag tag--7"
+                      data-type="wechat"
+                      data-title="Scrapy学习"
+                      data-blogtitle="邯城往事"
+                      data-url="https://cuijianzhe.github.io/articles/2019/11/08/1573185139639.html"
+                      data-avatar="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100">
+                    WeChat
+                    <span class="qrcode"></span>
+                </span>
+            </span>
+            <span class="post__arrow">
+                    <a href="https://cuijianzhe.github.io/articles/2019/11/07/1573111362693.html" rel="prev"
+                       class="vditor-tooltipped__n vditor-tooltipped"
+                       pjax-title="openstack创建镜像，开启云主机"
+                       aria-label="旧一篇: openstack创建镜像，开启云主机">←</a>
+
+                    <a href="https://cuijianzhe.github.io/articles/2019/11/13/1573637956893.html" rel="next"
+                       class="vditor-tooltipped__n vditor-tooltipped"
+                       pjax-title="站点推荐【转】"
+                       aria-label="新一篇: 站点推荐【转】">→</a>
+                <a href="javascript:Util.goTop()" class="vditor-tooltipped__n vditor-tooltipped"
+                   aria-label="移动到顶部">↑</a>
+                <a href="javascript:Util.goBottom()" class="vditor-tooltipped__n vditor-tooltipped"
+                   aria-label="移动到底部">↓</a>
+            </span>
+        </div>
+    </div>
+    
+</main>
+<footer class="footer">
+    <div class="ft__center">
+    <a href="https://hacpai.com/member/cuijianzhe"
+       aria-label="https://hacpai.com/member/cuijianzhe"
+       class="vditor-tooltipped__n vditor-tooltipped  user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+
+        <a href="https://twitter.com/JianzheC"
+           aria-label="https://twitter.com/JianzheC"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32.003 6.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
+            </svg>
+        </a>
+        <a href="https://weibo.com/3796930704"
+           aria-label="https://weibo.com/3796930704"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+                <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+                <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+                <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+            </svg>
+        </a>
+        <a href="https://www.zhihu.com/people/wen-yang-24-36"
+           aria-label="https://www.zhihu.com/people/wen-yang-24-36"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32 26.67c0 2.931-2.382 5.33-5.33 5.33h-21.339c-2.948 0-5.33-2.382-5.33-5.33v-21.339c0-2.948 2.382-5.33 5.33-5.33h21.339c2.948 0 5.33 2.382 5.33 5.33v21.339zM12.358 17.191h4.713c0-1.114-0.531-1.748-0.531-1.748h-4.079c0.103-2.005 0.189-4.576 0.223-5.536h3.874s-0.017-1.645-0.463-1.645h-6.822s0.411-2.142 0.96-3.085c0 0-2.040-0.12-2.742 2.605-0.686 2.725-1.731 4.354-1.851 4.662s0.6 0.137 0.891 0c0.309-0.137 1.663-0.617 2.057-2.537h2.108c0.034 1.2 0.12 4.885 0.086 5.536h-4.336c-0.6 0.446-0.823 1.748-0.823 1.748h4.971c-0.206 1.371-0.566 3.137-1.080 4.062-0.806 1.491-1.234 2.828-4.131 5.176 0 0-0.48 0.36 0.994 0.223 1.474-0.12 2.845-0.514 3.839-2.434 0.514-0.994 1.011-2.28 1.423-3.565l4.079 4.713s0.548-1.268 0.137-2.657l-3.034-3.394-1.028 0.754c0.291-0.994 0.497-1.988 0.548-2.845 0.017 0.017 0.017 0 0.017-0.034zM18.048 7.936v16.3h1.714l0.703 1.954 2.965-1.954h3.754v-16.3h-9.136zM25.401 22.487h-1.937l-2.434 1.611-0.566-1.611h-0.6v-12.735h5.553v12.735h-0.017z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=598941324"
+           aria-label="598941324"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+        <a href="javascript:void(0)"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" aria-label="cjz5989">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+            </svg>
+        </a>
+    </div>
+    <nav class="footer__nav mobile__none">
+            <a class="ft__link" href="/my-github-repos" target="_self" rel="section">
+                我的开源
+            </a>
+        <a class="ft__link" rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">RSS</a>
+    </nav>
+    <div class="footer__border mobile__none"></div>
+    <div class="wrapper fn__flex">
+        <div class="fn__flex-1 mobile__none">
+            <div class="ft__fade">cuijianzhe - 啥也不是，就是想躺着……</div>
+            <br>
+                <!-- MetingJS音乐播放器 不能放到 head 导致系统功能加载异常-->
+<link rel="stylesheet" href="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css">
+<script src="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<meting-js server="netease" type="playlist" id="728729850"  autoplay="false" fixed ="true" order="random" </meting-js>
+
+<h1><p style="font-size:10px"><font color="#2F4F4F">红笺小字，说尽平生意。<br/>鸿雁在云鱼在水，惆怅此情难寄。<br/>             ——晏殊· 《清平乐》</font> </p></h1>
+        </div>
+
+            <div class="footer__mid fn__flex-1 mobile__none">
+                <div class="ft__fade">分类</div>
+                <br>
+                    <a href="https://cuijianzhe.github.io/category/python"
+                       aria-label="1 个标签"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        人生苦短,我用Python</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/java"
+                       aria-label="1 个标签"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        Java是世界上最好的语言</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/linux"
+                       aria-label="1 个标签"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        Linux系列</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/network"
+                       aria-label="1 个标签"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        Network系列</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/young"
+                       aria-label="7 个标签"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        江湖就是人情世故</a> &nbsp; &nbsp;
+            </div>
+
+        <div class="fn__flex-1 footer__copyright">
+            <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
+                107
+                文章
+            </a>
+           <br>
+            <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> <span class="ft-gray">浏览</span>
+ <br>
+            &copy; 2020
+            <a class="ft__link" href="https://cuijianzhe.github.io">邯城往事</a>
+            <img style="width: 20px; height: 20px;" src="https://img.hacpai.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">冀ICP备19005901号</a> 
+            <br>
+            Powered by <a class="ft__link" href="https://solo.b3log.org" target="_blank">Solo</a>
+            <br>
+            Theme Pinghsu
+            <sup>[<a class="ft__link" target="_blank" href="https://github.com/chakhsu/pinghsu">ref</a>]</sup>
+            by <a class="ft__link" href="http://vanessa.b3log.org" target="_blank">Vanessa</a>
+        </div>
+    </div>
+</footer>
+<script>
+  var Label = {
+    servePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cuijianzhe.github.io",
+    luteAvailable: true,
+    hljsStyle: 'monokai',
+    langLabel: "zh_CN",
+    version: "4.0.0",
+    staticSite: true,
+    showCodeBlockLn: false,
+  }
+</script>
+<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        charset="utf-8"></script>
+
+
+
+<script type="text/javascript">
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
+        "oId": "1573185139639",
+        "blogHost": "https://cuijianzhe.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "5";
+    page.loadExternalRelevantArticles("python",
+    '<h3>HACPAI POSTS</h3>');
+Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 55ms, 2020/03/26 16:18:18 -->

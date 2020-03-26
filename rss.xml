@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>邯城往事</title>
+    <link>https://cuijianzhe.github.io</link>
+    <atom:link href="https://cuijianzhe.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+    <description>啥也不是，就是想躺着……</description>
+    <generator>Solo, v4.0.0, https://solo.b3log.org</generator>
+    <lastBuildDate>Thu, 26 Mar 2020 16:18:17 +0800</lastBuildDate>
+    <language>zh-cn</language>
+    <item>
+      <title>ssh-key改变后出现的错误解决方法</title>
+      <link>https://cuijianzhe.github.io/articles/2019/11/02/1572658327824.html</link>
+      <description/>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2019/11/02/1572658327824.html</guid>
+      <category>Linux</category>
+      <pubDate>Thu, 26 Mar 2020 14:19:55 +0800</pubDate>
+    </item>
+    <item>
+      <title>利用爬虫爬取我的solo博客</title>
+      <link>https://cuijianzhe.github.io/articles/2020/03/25/1585126708916.html</link>
+      <description><![CDATA[<p><img src="https://img.hacpai.com/file/2019/09/IMG20190831074102-95e6d9f7.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt=""></p>
+<p>在看到你第一眼的时候  上帝在我耳边说了四个字  在劫难逃</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/03/25/1585126708916.html</guid>
+      <category>Python</category>
+      <pubDate>Thu, 26 Mar 2020 12:09:07 +0800</pubDate>
+    </item>
+    <item>
+      <title>windows系统ping加上时间戳并且cmd隐藏运行实现方法</title>
+      <link>https://cuijianzhe.github.io/articles/2019/05/15/1557907158513.html</link>
+      <description><![CDATA[<p><img src="https://img.hacpai.com/bing/20180813.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2019/05/15/1557907158513.html</guid>
+      <category>网络</category>
+      <pubDate>Wed, 25 Mar 2020 13:05:02 +0800</pubDate>
+    </item>
+    <item>
+      <title>学生管理系统</title>
+      <link>https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html</link>
+      <description/>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html</guid>
+      <category>mysql</category>
+      <category>Python</category>
+      <pubDate>Sat, 21 Mar 2020 12:59:05 +0800</pubDate>
+    </item>
+    <item>
+      <title>部署 docker-solo 博客每日自动升级</title>
+      <link>https://cuijianzhe.github.io/articles/2019/04/10/1554909820806.html</link>
+      <description><![CDATA[<p>docker-solo 自动升级脚本-最终</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2019/04/10/1554909820806.html</guid>
+      <category>Linux</category>
+      <category>solo</category>
+      <pubDate>Wed, 18 Mar 2020 16:08:57 +0800</pubDate>
+    </item>
+    <item>
+      <title>利用飞书BOT发送消息</title>
+      <link>https://cuijianzhe.github.io/articles/2020/02/20/1582192919773.html</link>
+      <description><![CDATA[<p><img src="https://img.hacpai.com/file/2020/02/QQ%E5%9B%BE%E7%89%8720200229145551-52fe0658.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image"></p>
+<p>飞书还是挺不错的</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/02/20/1582192919773.html</guid>
+      <category>Python</category>
+      <pubDate>Mon, 16 Mar 2020 16:20:06 +0800</pubDate>
+    </item>
+    <item>
+      <title>Excel中使用宏+按钮来简化操作</title>
+      <link>https://cuijianzhe.github.io/articles/2020/03/15/1584269974131.html</link>
+      <description/>
+      <author>MaidongAndYida</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/03/15/1584269974131.html</guid>
+      <category>Excel</category>
+      <pubDate>Sun, 15 Mar 2020 19:01:34 +0800</pubDate>
+    </item>
+    <item>
+      <title>python的TCP、UDP小程序</title>
+      <link>https://cuijianzhe.github.io/articles/2020/03/09/1583744881835.html</link>
+      <description/>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/03/09/1583744881835.html</guid>
+      <category>Python</category>
+      <pubDate>Fri, 13 Mar 2020 18:11:14 +0800</pubDate>
+    </item>
+    <item>
+      <title>zabbix自动发现华为AC6605管理AP状态以及连接数</title>
+      <link>https://cuijianzhe.github.io/articles/2019/08/05/1564987766272.html</link>
+      <description/>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2019/08/05/1564987766272.html</guid>
+      <category>Linux</category>
+      <category>zabbix</category>
+      <pubDate>Thu, 12 Mar 2020 10:08:19 +0800</pubDate>
+    </item>
+    <item>
+      <title>利用程序算法分析北京新闻广播里都卖了啥好吃的</title>
+      <link>https://cuijianzhe.github.io/articles/2020/03/04/1583318600177.html</link>
+      <description><![CDATA[<p>科大讯飞要是免费使用 sdk 就好了，可惜啊，只有五个小时，我已然用了四个半小时的实际使用时长了。。。。</p>]]></description>
+      <author>MaidongAndYida</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/03/04/1583318600177.html</guid>
+      <category>java</category>
+      <pubDate>Wed, 04 Mar 2020 18:47:49 +0800</pubDate>
+    </item>
+  </channel>
+</rss>
