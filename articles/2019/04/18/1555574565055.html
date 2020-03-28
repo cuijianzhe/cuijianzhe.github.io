@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>centos7 安装NVIDIA P4000 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="centos7 安装NVIDIA P4000 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/04/18/1555574565055.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="centos7 安装NVIDIA P4000 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/04/18/1555574565055.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="记一次grafana变量取值的过程" href="https://cuijianzhe.github.io/articles/2019/04/16/1555410740995.html">
             <link rel="next" title="通过命令查看服务器硬件信息" href="https://cuijianzhe.github.io/articles/2019/04/23/1556013126298.html">
     </head>
@@ -85,8 +85,8 @@
                 </a>
         </div>
         <div class="vditor-reset">
-            <p>Quadro P4000 显卡在 CentOS7 安装</p>
-<p>官网下载对应 RedHat 驱动： <a href="https://www.dell.com/support/home/cn/zh/cnbsd1/product-support/servicetag/2xhzrt2/drivers" target="_blank">https://www.dell.com/support/home/cn/zh/cnbsd1/product-support/servicetag/2xhzrt2/drivers</a><br>
+            <p>Quadro P4000显卡在centos7安装</p>
+<p>官网下载对应redhat驱动： <a href="https://www.dell.com/support/home/cn/zh/cnbsd1/product-support/servicetag/2xhzrt2/drivers" target="_blank">https://www.dell.com/support/home/cn/zh/cnbsd1/product-support/servicetag/2xhzrt2/drivers</a><br>
 执行：<br>
 <code>[root@localhost ~]# sh NVIDIA-Linux-x86_64-396.37.run</code><br>
 出现如下报错：</p>
@@ -134,7 +134,7 @@ blacklist nouveau
 </code></pre>
 <p>解决方法：<br>
 <code>[root@localhost ~]# yum install  kernel-* -y</code><br>
-然后再次执行 reboot，&amp;&amp;执行驱动文件：对于 nvidia 显卡的话可以用 nvidia-smi 命令来查，查看 GPU 也是用这个命令</p>
+然后再次执行reboot，&amp;&amp;执行驱动文件：对于nvidia显卡的话可以用nvidia-smi命令来查，查看GPU也是用这个命令</p>
 <pre><code class="highlight-chroma">
 [root@localhost ~]# nvidia-smi
 
@@ -158,7 +158,7 @@ Thu Apr 18 16:08:11 2019
 [root@localhost ~]# 
 
 </code></pre>
-<p>如上可以看到显卡 GPU 型号 P4000，安装执行成功。</p>
+<p>如上可以看到显卡GPU型号P4000，安装执行成功。</p>
                 <div>
                     <span class="name">搭讪 你就破功了，老弟！</span>
 <style>
@@ -345,7 +345,7 @@ Thu Apr 18 16:08:11 2019
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -377,13 +377,13 @@ Thu Apr 18 16:08:11 2019
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1555574565055",
@@ -403,4 +403,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 57ms, 2020/03/26 16:18:20 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 75ms, 2020/03/28 15:04:00 -->

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>K8S基础搭建使用 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="K8S基础搭建使用 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/12/12/1576117964389.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="K8S基础搭建使用 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/12/12/1576117964389.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="Our love history" href="https://cuijianzhe.github.io/articles/2019/12/11/1576058698755.html">
             <link rel="next" title="K8S二进制部署过程-v1.17.0" href="https://cuijianzhe.github.io/articles/2019/12/24/1577178596028.html">
     </head>
@@ -88,9 +88,9 @@
                 </a>
         </div>
         <div class="vditor-reset">
-            <h1 id="一--K8S架构">一、 K8S 架构</h1>
+            <h1 id="一--K8S架构">一、 K8S架构</h1>
 <p><img src="https://www.qstack.com.cn/wp-content/uploads/2019/08/1563068809299.png" alt="1563068809299"><br>
-除了核心组件，还有一些推荐的 Add-ons：</p>
+除了核心组件，还有一些推荐的Add-ons：</p>
 <table>
 <thead>
 <tr>
@@ -101,7 +101,7 @@
 <tbody>
 <tr>
 <td><strong>kube-dns</strong></td>
-<td align="center">负责为整个集群提供 DNS 服务</td>
+<td align="center">负责为整个集群提供DNS服务</td>
 </tr>
 <tr>
 <td><strong>Ingress Controller</strong></td>
@@ -113,7 +113,7 @@
 </tr>
 <tr>
 <td><strong>Dashboard</strong></td>
-<td align="center">提供 GUI</td>
+<td align="center">提供GUI</td>
 </tr>
 <tr>
 <td><strong>Federation</strong></td>
@@ -125,22 +125,22 @@
 </tr>
 </tbody>
 </table>
-<h2 id="K8S核心功能-">K8S 核心功能：</h2>
+<h2 id="K8S核心功能-">K8S核心功能：</h2>
 <ul>
 <li>
-<p>自愈： 重新启动失败的容器，在节点不可用时，替换和重新调度节点上的容器，对用户定义的健康检查不响应的容器会被中止，并且在容器准备好服务之前不会把其向客户端广播。</p>
+<p>自愈: 重新启动失败的容器，在节点不可用时，替换和重新调度节点上的容器，对用户定义的健康检查不响应的容器会被中止，并且在容器准备好服务之前不会把其向客户端广播。</p>
 </li>
 <li>
-<p>弹性伸缩： 通过监控容器的 CPU 的负载值，如果这个平均高于 80%,增加容器的数量，如果这个平均低于 10%,减少容器的数量</p>
+<p>弹性伸缩: 通过监控容器的cpu的负载值,如果这个平均高于80%,增加容器的数量,如果这个平均低于10%,减少容器的数量</p>
 </li>
 <li>
-<p>服务的自动发现和负载均衡： 不需要修改您的应用程序来使用不熟悉的服务发现机制，Kubernetes 为容器提供了自己的 IP 地址和一组容器的单个 DNS 名称，并可以在它们之间进行负载均衡。</p>
+<p>服务的自动发现和负载均衡: 不需要修改您的应用程序来使用不熟悉的服务发现机制，Kubernetes 为容器提供了自己的 IP 地址和一组容器的单个 DNS 名称，并可以在它们之间进行负载均衡。</p>
 </li>
 <li>
-<p>滚动升级和一键回滚： Kubernetes 逐渐部署对应用程序或其配置的更改，同时监视应用程序运行状况，以确保它不会同时终止所有实例。 如果出现问题，Kubernetes 会为您恢复更改，利用日益增长的部署解决方案的生态系统。</p>
+<p>滚动升级和一键回滚: Kubernetes 逐渐部署对应用程序或其配置的更改，同时监视应用程序运行状况，以确保它不会同时终止所有实例。 如果出现问题，Kubernetes会为您恢复更改，利用日益增长的部署解决方案的生态系统。</p>
 </li>
 </ul>
-<h2 id="1-1环境准备">1.1 环境准备</h2>
+<h2 id="1-1环境准备">1.1环境准备</h2>
 <pre><code class="language-bash highlight-chroma">cat &gt;&gt; /etc/hosts <span class="highlight-s">&lt;&lt;EOF
 </span><span class="highlight-s">10.0.0.202 master
 </span><span class="highlight-s">10.0.0.215 etcd
@@ -148,7 +148,7 @@
 </span><span class="highlight-s">10.0.0.163 node2
 </span><span class="highlight-s">EOF</span>
 </code></pre>
-<h2 id="1-2-etcd节点安装">1.2 etcd 节点安装</h2>
+<h2 id="1-2-etcd节点安装">1.2 etcd节点安装</h2>
 <pre><code class="highlight-chroma">[root@etcd ~]# yum install etcd -y
 vim /etc/etcd/etcd.conf
 6行：ETCD_LISTEN_CLIENT_URLS="http://0.0.0.0:2379"
@@ -160,7 +160,7 @@ systemctl enable etcd.service
 member 8e9e05c52164694d is healthy: got healthy result from http://10.0.0.215:2379
 cluster is healthy
 </code></pre>
-<h2 id="1-3-master节点安装-">1.3 master 节点安装：</h2>
+<h2 id="1-3-master节点安装-">1.3 master节点安装：</h2>
 <pre><code class="language-bash highlight-chroma">yum install kubernetes-master.x86_64 -y
 </code></pre>
 <pre><code class="language-bash highlight-chroma">vim /etc/kubernetes/apiserver 
@@ -186,7 +186,7 @@ scheduler            Healthy   ok
 controller-manager   Healthy   ok                  
 etcd-0               Healthy   <span class="highlight-o">{</span><span class="highlight-s2">"health"</span>:<span class="highlight-s2">"true"</span><span class="highlight-o">}</span>   
 </code></pre>
-<h2 id="1-3-node节点安装">1.3 node 节点安装</h2>
+<h2 id="1-3-node节点安装">1.3 node节点安装</h2>
 <pre><code class="language-bash highlight-chroma">yum install kubernetes-node.x86_64 -y
 
 vim /etc/kubernetes/config 
@@ -204,13 +204,13 @@ systemctl restart kubelet.service
 systemctl <span class="highlight-nb">enable</span> kube-proxy.service
 systemctl restart kube-proxy.service
 </code></pre>
-<p><strong>在 master 节点检查</strong></p>
+<p><strong>在master节点检查</strong></p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@master ~<span class="highlight-o">]</span><span class="highlight-c1"># kubectl get node</span>
 NAME         STATUS    AGE
 10.0.0.163   Ready     1d
 10.0.0.197   Ready     1d
 </code></pre>
-<h2 id="1-4-所有节点配置flannel网络">1.4 所有节点配置 flannel 网络</h2>
+<h2 id="1-4-所有节点配置flannel网络">1.4 所有节点配置flannel网络</h2>
 <pre><code class="language-bash highlight-chroma">yum install flannel -y
 sed -i <span class="highlight-s1">'s#http://127.0.0.1:2379#http://10.0.0.215:2379#g'</span> /etc/sysconfig/flanneld
 
@@ -239,7 +239,7 @@ vim /usr/lib/systemd/system/docker.service
 systemctl daemon-reload 
 systemctl restart docker
 </code></pre>
-<h2 id="1-5-配置master为镜像仓库">1.5 配置 master 为镜像仓库</h2>
+<h2 id="1-5-配置master为镜像仓库">1.5 配置master为镜像仓库</h2>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-c1">#所有节点</span>
 vim /etc/sysconfig/docker
 <span class="highlight-nv">OPTIONS</span><span class="highlight-o">=</span><span class="highlight-s1">'--selinux-enabled --log-driver=journald --signature-verification=false --registry-mirror=https://registry.docker-cn.com --insecure-registry=10.0.0.202:5000'</span>
@@ -249,17 +249,17 @@ systemctl restart docker
 <span class="highlight-c1">#master节点（如有网络问题，多试几次）</span>
 docker run -d -p 5000:5000 --restart<span class="highlight-o">=</span>always --name registry -v /opt/myregistry:/var/lib/registry  registry
 </code></pre>
-<h1 id="二--K8S常用资源">二、 K8S 常用资源</h1>
-<h2 id="2-1-pod资源">2.1 pod 资源</h2>
-<p>pod 是最小资源单位。</p>
-<p>k8s YAML 的主要组成</p>
+<h1 id="二--K8S常用资源">二、 K8S常用资源</h1>
+<h2 id="2-1-pod资源">2.1 pod资源</h2>
+<p>pod是最小资源单位.</p>
+<p>k8s yaml的主要组成</p>
 <pre><code class="highlight-chroma">apiVersion: v1  api版本
 kind: pod   资源类型
 metadata:   属性
 spec:       详细
 </code></pre>
 <ol>
-<li>创建一个 YAML 文件：</li>
+<li>创建一个yaml文件：</li>
 </ol>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># cat k8s_pod.yaml</span> 
 apiVersion: v1
@@ -275,7 +275,7 @@ spec:
       ports:
         - containerPort: <span class="highlight-m">80</span>
 </code></pre>
-<p>基于 YAML 创建 pod：</p>
+<p>基于yaml创建pod：</p>
 <pre><code class="highlight-chroma">[root@master pod]# kubectl create -f k8s_pod.yaml 
 pod "nginx1" created
 [root@master pod]# kubectl get pod
@@ -283,7 +283,7 @@ NAME      READY     STATUS              RESTARTS   AGE
 nginx     0/1       ContainerCreating   0          12s
 </code></pre>
 <blockquote>
-<p>此时发现 pod 创建没能成功，通过 <code>kubectl describe  pod nginx</code> 查看详细信息：</p>
+<p>此时发现pod创建没能成功，通过<code>kubectl describe  pod nginx</code>查看详细信息：</p>
 </blockquote>
 <pre><code class="highlight-chroma">Events:
   FirstSeen	LastSeen	Count	From			SubObjectPath	Type		Reason		Message
@@ -293,8 +293,8 @@ nginx     0/1       ContainerCreating   0          12s
 
   1m	6s	6	{kubelet 10.0.0.197}		Warning	FailedSync	Error syncing pod, skipping: failed to "StartContainer" for "POD" with ImagePullBackOff: "Back-off pulling image \"registry.access.redhat.com/rhel7/pod-infrastructure:latest\""
 </code></pre>
-<p>由上可见，需要本地镜像仓库需要 pod-infrastructure:latest 这个 pod 基础镜像，所以需要在拉取镜像<br>
-<code>docker pull tianyebj/pod-infrastructure</code>，并且 push 到本地镜像仓库</p>
+<p>由上可见，需要本地镜像仓库需要pod-infrastructure:latest 这个pod基础镜像，所以需要在拉取镜像<br>
+<code>docker pull tianyebj/pod-infrastructure</code>，并且push到本地镜像仓库</p>
 <pre><code class="highlight-chroma">docker pull tianyebj/pod-infrastructure
 docker tag docker.io/tianyebj/pod-infrastructure 10.0.0.202:5000/rhel7/pod-infrastructure:latest
 docker push 10.0.0.202:5000/rhel7/pod-infrastructure:latest
@@ -303,7 +303,7 @@ docker push 10.0.0.202:5000/rhel7/pod-infrastructure:latest
 
 systemctl restart kubelet.service
 </code></pre>
-<p>在此查看 pod 创建过程：</p>
+<p>在此查看pod创建过程：</p>
 <pre><code class="highlight-chroma">Events:
   FirstSeen	LastSeen	Count	From			SubObjectPath	Type		Reason		Message
   ---------	--------	-----	----			-------------	--------	------		-------
@@ -318,9 +318,9 @@ systemctl restart kubelet.service
   41s	41s	1	{kubelet 10.0.0.197}	spec.containers{nginx}	Normal	Created			Created container with docker id 9254a49fc62c; Security:[seccomp=unconfined]
   41s	41s	1	{kubelet 10.0.0.197}	spec.containers{nginx}	Normal	Started			Started container with docker id 9254a49fc62c
 </code></pre>
-<p><strong>到此 pod 创建完成</strong></p>
+<p><strong>到此pod创建完成</strong></p>
 <h3 id="详细">详细</h3>
-<p><strong>在这里需要把 pod 容器 tag 改成需要用的：</strong></p>
+<p><strong>在这里需要把pod容器tag改成需要用的：</strong></p>
 <pre><code class="highlight-chroma">[root@master pod]# docker tag docker.io/tianyebj/pod-infrastructure 10.0.0.202:5000/rhel7/pod-infrastructure:latest
 [root@master pod]# docker images
 REPOSITORY                                 TAG                 IMAGE ID            CREATED             SIZE
@@ -328,12 +328,12 @@ docker.io/registry                         latest              f32a97de94e1     
 docker.io/tianyebj/pod-infrastructure      latest              34d3450d733b        2 years ago         205 MB
 10.0.0.202:5000/rhel7/pod-infrastructure   latest              34d3450d733b        2 years ago         205 MB
 </code></pre>
-<p><strong>强制删除 pod 资源：</strong></p>
+<p><strong>强制删除pod资源：</strong></p>
 <pre><code class="highlight-chroma">[root@master pod]# kubectl delete pod nginx --force  --grace-period=0 -n  default
 warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
 pod "nginx" deleted
 </code></pre>
-<h4 id="安装docker镜像并且push到本地镜像仓库">安装 docker 镜像并且 push 到本地镜像仓库</h4>
+<h4 id="安装docker镜像并且push到本地镜像仓库">安装docker镜像并且push到本地镜像仓库</h4>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># docker images</span>
 REPOSITORY                                 TAG                 IMAGE ID            CREATED             SIZE
 docker.io/b3log/solo                       latest              4e49320bec76        <span class="highlight-m">2</span> days ago          <span class="highlight-m">152</span> MB
@@ -349,14 +349,14 @@ docker.io/tianyebj/pod-infrastructure      latest              34d3450d733b     
 <span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># docker tag docker.io/mysql:5.7  10.0.0.202:5000/mysql:5.7</span>
 <span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># docker push 10.0.0.202:5000/mysql</span>
 </code></pre>
-<h4 id="创建pod">创建 pod</h4>
+<h4 id="创建pod">创建pod</h4>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># kubectl create -f k8s_pod.yaml</span> 
 pod <span class="highlight-s2">"nginx"</span> created
 <span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># kubectl get pod</span>
 NAME      READY     STATUS    RESTARTS   AGE
 nginx     1/1       Running   <span class="highlight-m">0</span>          7s
 </code></pre>
-<h4 id="pod运行多个容器-">pod 运行多个容器：</h4>
+<h4 id="pod运行多个容器-">pod运行多个容器：</h4>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># cat k8s_pod2.yaml</span>   
 apiVersion: v1  
 kind: Pod  
@@ -380,30 +380,30 @@ NAME      READY     STATUS    RESTARTS   AGE       IP            NODE
 nginx     1/1       Running   <span class="highlight-m">0</span>          15h       172.18.57.2   10.0.0.197  
 <span class="highlight-nb">test</span>      2/2       Running   <span class="highlight-m">0</span>          15s       172.18.39.2   10.0.0.163  
 </code></pre>
-<h4 id="查看k8s-pod的容器资源详细信息-">查看 k8s pod 的容器资源详细信息：</h4>
+<h4 id="查看k8s-pod的容器资源详细信息-">查看k8s pod的容器资源详细信息：</h4>
 <pre><code class="highlight-chroma">docker inspect 3f6cdafa32f5  
 </code></pre>
-<p><strong>创建一个 pod 资源，才能实现 k8s 的高级功能。</strong><br>
-pod 容器：基础架构容器<br>
-nginx 容器： 业务容器</p>
+<p><strong>创建一个pod资源，才能实现k8s的高级功能.</strong><br>
+pod容器：基础架构容器<br>
+nginx容器： 业务容器</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># docker ps</span>   
 CONTAINER ID        IMAGE                                             COMMAND                  CREATED             STATUS              PORTS               NAMES  
 3f6cdafa32f5        10.0.0.202:5000/nginx:latest                      <span class="highlight-s2">"nginx -g 'daemon ..."</span>   <span class="highlight-m">17</span> hours ago        Up <span class="highlight-m">17</span> hours                             k8s_nginx.c74a033c_nginx_default_e5a7a5ea-1bf8-11ea-950d-fa163ef9cf10_5e72b386  
 d0198f64f479        10.0.0.202:5000/rhel7/pod-infrastructure:latest   <span class="highlight-s2">"/pod"</span>                   <span class="highlight-m">17</span> hours ago        Up <span class="highlight-m">17</span> hours                             k8s_POD.7b6a03f3_nginx_default_e5a7a5ea-1bf8-11ea-950d-fa163ef9cf10_7ee05d13  
 </code></pre>
-<h2 id="2-2-ReplicationController资源">2.2 ReplicationController 资源</h2>
+<h2 id="2-2-ReplicationController资源">2.2 ReplicationController资源</h2>
 <blockquote>
-<p>k8s 资源的常见操作：<br>
+<p>k8s资源的常见操作:<br>
 kubectl create -f xxx.yaml<br>
 kubectl get pod|rc<br>
 kubectl describe pod nginx<br>
-kubectl delete pod nginx 或者 kubectl delete -f xxx.yaml<br>
+kubectl delete pod nginx 或者kubectl delete -f xxx.yaml<br>
 kubectl edit pod nginx<br>
-rc:保证指定数量的 pod 始终存活，rc 通过标签选择器来关联 pod</p>
+rc:保证指定数量的pod始终存活,rc通过标签选择器来关联pod</p>
 </blockquote>
-<p>POD 资源被关闭也会及时启动自愈。</p>
-<h2 id="rc资源">rc 资源</h2>
-<h3 id="pod资源的高可用行">pod 资源的高可用行</h3>
+<p>POD资源被关闭也会及时启动自愈。</p>
+<h2 id="rc资源">rc资源</h2>
+<h3 id="pod资源的高可用行">pod资源的高可用行</h3>
 <pre><code class="highlight-chroma">[root@node2 ~]# docker ps -a -q
 f14a9650d408
 5a4a70671124
@@ -414,11 +414,11 @@ f14a9650d408
 7f4142ea7eb9
 2ec639b32132
 </code></pre>
-<p>pod 资源被强制删除停止后，这些资源会立即重新生成并启动。</p>
-<h3 id="rc创建">rc 创建</h3>
-<p>rc:保证指定数量的 pod 始终够存活，rc 通过标签选择器来关联 pod</p>
+<p>pod资源被强制删除停止后，这些资源会立即重新生成并启动。</p>
+<h3 id="rc创建">rc创建</h3>
+<p>rc:保证指定数量的pod始终够存活，rc通过标签选择器来关联pod</p>
 <ul>
-<li>创建 YAML 文件</li>
+<li>创建yaml文件</li>
 </ul>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@master rc<span class="highlight-o">]</span><span class="highlight-c1"># cat  k8s_rc.yaml</span> 
 apiVersion: v1
@@ -441,7 +441,7 @@ spec:
         - containerPort: <span class="highlight-m">80</span>
 </code></pre>
 <ul>
-<li>创建 rc：</li>
+<li>创建rc：</li>
 </ul>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@master rc<span class="highlight-o">]</span><span class="highlight-c1"># pwd</span>
 /root/k8s/rc
@@ -454,13 +454,13 @@ NAME      DESIRED   CURRENT   READY     AGE
 nginx     <span class="highlight-m">5</span>         <span class="highlight-m">5</span>         <span class="highlight-m">5</span>         9m
 </code></pre>
 <ul>
-<li>启动了多个 pod</li>
+<li>启动了多个pod</li>
 </ul>
 <p><img src="https://img.hacpai.com/file/2019/12/image-a9d3296e.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>rc 作用：<br>
-当 node 节点上的 pod 资源在其中一个 node 挂掉之后，rc 会将挂掉的 node 上的 pod 资源驱逐到存活的 node 之上。</p>
-<p><strong>示例 1：</strong><br>
-pod 资源删除后，会马上重新创建新的 pod。</p>
+<p>rc作用：<br>
+当node节点上的pod资源在其中一个node挂掉之后，rc会将挂掉的node上的pod资源驱逐到存活的node之上。</p>
+<p><strong>示例1：</strong><br>
+pod资源删除后，会马上重新创建新的pod。</p>
 <pre><code class="highlight-chroma">[root@master rc]# kubectl get pod -o wide 
 NAME          READY     STATUS    RESTARTS   AGE       IP            NODE
 nginx         1/1       Running   0          3d        172.18.42.2   10.0.0.197
@@ -485,7 +485,7 @@ nginxmysql    2/2       Running   0          1h        172.18.42.3   10.0.0.197
 test          1/1       Running   0          1h        172.18.96.2   10.0.0.163
 </code></pre>
 <ul>
-<li>示例 2：把 node2 删掉，会出现如下现象</li>
+<li>示例2：把node2删掉，会出现如下现象</li>
 </ul>
 <pre><code class="highlight-chroma">[root@master rc]# kubectl get pod -o wide 
 NAME          READY     STATUS    RESTARTS   AGE       IP            NODE
@@ -511,12 +511,12 @@ nginxmysql    2/2       Running   1          3h        172.18.42.3   10.0.0.197
 </code></pre>
 <p><img src="https://img.hacpai.com/file/2019/12/image-e9cf09d5.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <p><img src="https://img.hacpai.com/file/2019/12/image-dae346c1.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p><strong>node2 的 kubelet 重启后会自动注册到集群</strong></p>
-<h3 id="rc是通过什么来关联pod的呢-">rc 是通过什么来关联 pod 的呢？</h3>
-<p>通过更改 <code>[root@master rc]# kubectl edit pod nginx </code> 同一标签为 myweb 后，默认会把 pod 存活年龄最小的剔除<br>
-所以 rc 的 pod 资源是有标签选择器来进行维护。</p>
+<p><strong>node2的kubelet重启后会自动注册到集群</strong></p>
+<h3 id="rc是通过什么来关联pod的呢-">rc是通过什么来关联pod的呢？</h3>
+<p>通过更改<code>[root@master rc]# kubectl edit pod nginx </code>同一标签为myweb后，默认会把pod存活年龄最小的剔除<br>
+所以rc的pod资源是有标签选择器来进行维护。</p>
 <p><img src="https://img.hacpai.com/file/2019/12/image-55c155e6.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<h3 id="rc滚动升级">rc 滚动升级</h3>
+<h3 id="rc滚动升级">rc滚动升级</h3>
 <ul>
 <li>版本升级：<br>
 <img src="https://img.hacpai.com/file/2019/12/image-06c91e57.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></li>
@@ -524,10 +524,10 @@ nginxmysql    2/2       Running   1          3h        172.18.42.3   10.0.0.197
 <pre><code class="highlight-chroma">[root@master rc]# kubectl rolling-update nginx -f k8s_rc1.yaml --update-period=10s
 </code></pre>
 <blockquote>
-<p>--update-period=10s：升级间隔 10s</p>
+<p>--update-period=10s：升级间隔10s</p>
 </blockquote>
 <p><img src="https://img.hacpai.com/file/2019/12/image-149b6e69.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>找一个 pod 容器进行 nginx 版本测试<br>
+<p>找一个pod容器进行nginx版本测试<br>
 <img src="https://img.hacpai.com/file/2019/12/image-fc6c83ca.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"><br>
 <strong>升级成功</strong></p>
 <ul>
@@ -542,15 +542,15 @@ nginxmysql    2/2       Running   1          3h        172.18.42.3   10.0.0.197
 <li>升级回滚配置文件：<br>
 <img src="https://img.hacpai.com/file/2019/12/image-46856f78.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></li>
 </ul>
-<p><strong>最后总结一下 RC（Replica Set）的一些特性与作用。</strong></p>
-<p>◎　在大多数情况下，我们通过定义一个 RC 实现 Pod 的创建及副本数量的自动控制。<br>
-◎　在 RC 里包括完整的 Pod 定义模板。<br>
-◎　RC 通过 Label Selector 机制实现对 Pod 副本的自动控制。<br>
-◎　通过改变 RC 里的 Pod 副本数量，可以实现 Pod 的扩容或缩容。<br>
-◎　通过改变 RC 里 Pod 模板中的镜像版本，可以实现 Pod 的滚动升级。</p>
-<h2 id="2-3-service资源">2.3 service 资源</h2>
-<p>service 帮助 pod 暴露端口，通过架构图看出通过任何服务可通过 kube-proxy 组件进行通信。</p>
-<h3 id="创建一个service">创建一个 service</h3>
+<p><strong>最后总结一下RC（Replica Set）的一些特性与作用。</strong></p>
+<p>◎　在大多数情况下，我们通过定义一个RC实现Pod的创建及副本数量的自动控制。<br>
+◎　在RC里包括完整的Pod定义模板。<br>
+◎　RC通过Label Selector机制实现对Pod副本的自动控制。<br>
+◎　通过改变RC里的Pod副本数量，可以实现Pod的扩容或缩容。<br>
+◎　通过改变RC里Pod模板中的镜像版本，可以实现Pod的滚动升级。</p>
+<h2 id="2-3-service资源">2.3 service资源</h2>
+<p>service帮助pod暴露端口，通过架构图看出通过任何服务可通过kube-proxy组件进行通信。</p>
+<h3 id="创建一个service">创建一个service</h3>
 <pre><code class="highlight-chroma">[root@master svc]# cat k8s_svc.yaml 
 apiVersion: v1
 kind: Service
@@ -570,21 +570,21 @@ spec:
 <p><img src="https://img.hacpai.com/file/2019/12/image-6dfbc9aa.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <blockquote>
 <p><strong>注意：</strong><br>
-svc 标签选择器和 rc 的标签需要一致，不然访问不了后端服务。</p>
+svc标签选择器和rc的标签需要一致，不然访问不了后端服务。</p>
 </blockquote>
 <p><img src="https://img.hacpai.com/file/2019/12/image-7647eb53.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>通过：<code>[root@master svc]# kubectl edit svc myweb</code> 修改标签和 rc 标签一致。</p>
+<p>通过：<code>[root@master svc]# kubectl edit svc myweb</code> 修改标签和rc标签一致。</p>
 <ul>
 <li>再次查看：</li>
 </ul>
 <p><img src="https://img.hacpai.com/file/2019/12/image-7fc5ae92.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <ul>
 <li>
-<p>并且现在和 pod 的 ip 相对应<br>
+<p>并且现在和pod的ip相对应<br>
 <img src="https://img.hacpai.com/file/2019/12/image-57d29fb9.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 </li>
 <li>
-<p>查看 node 服务 L:<br>
+<p>查看node服务L:<br>
 <img src="https://img.hacpai.com/file/2019/12/image-e2daf64e.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 </li>
 <li>
@@ -594,7 +594,7 @@ svc 标签选择器和 rc 的标签需要一致，不然访问不了后端服务
 </ul>
 <h3 id="测试负载均衡">测试负载均衡</h3>
 <ul>
-<li>减少 pod 节点进行测试</li>
+<li>减少pod节点进行测试</li>
 </ul>
 <pre><code class="highlight-chroma">[root@master svc]# kubectl scale rc nginx --replicas=2
 </code></pre>
@@ -603,7 +603,7 @@ svc 标签选择器和 rc 的标签需要一致，不然访问不了后端服务
 <img src="https://img.hacpai.com/file/2019/12/image-770f1a01.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 </blockquote>
 <ul>
-<li>进入容器修改 index 页面</li>
+<li>进入容器修改index页面</li>
 </ul>
 <pre><code class="highlight-chroma">[root@master svc]# kubectl exec -it nginx-175x8 /bin/bash
 root@nginx-175x8:/# cd /usr/share/nginx/html/
@@ -614,8 +614,8 @@ root@nginx-175x8:/usr/share/nginx/html# echo 'cuijianzhe' &gt; index.html
 <p>测试：<br>
 <img src="https://img.hacpai.com/file/2019/12/image-7232ecd5.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <ul>
-<li>默认端口范围是 30000-32767<br>
-修改 ports 端口数量：</li>
+<li>默认端口范围是30000-32767<br>
+修改ports端口数量：</li>
 </ul>
 <pre><code class="highlight-chroma">[root@master svc]# vim /etc/kubernetes/apiserver
 KUBE_API_ARGS="--service-node-port-range=3000-50000"
@@ -623,7 +623,7 @@ KUBE_API_ARGS="--service-node-port-range=3000-50000"
 [root@master svc]# systemctl restart kube-apiserver
 </code></pre>
 <ul>
-<li>添加 svc 3000 端口</li>
+<li>添加svc 3000端口</li>
 </ul>
 <pre><code class="highlight-chroma">[root@master svc]# cat k8s_svc2.yaml 
 apiVersion: v1
@@ -640,7 +640,7 @@ spec:
     app: myweb2
 
 </code></pre>
-<p><strong>修改 svc 统一标签 myweb</strong></p>
+<p><strong>修改svc统一标签myweb</strong></p>
 <pre><code class="highlight-chroma">kubectl edit svc myweb
 </code></pre>
 <pre><code class="highlight-chroma">[root@master svc]# kubectl  get svc -o wide
@@ -650,16 +650,16 @@ myweb        10.254.134.169   &lt;nodes&gt;       80:30000/TCP   55m       app=m
 myweb2       10.254.55.214    &lt;nodes&gt;       80:3000/TCP    2m        app=myweb
 </code></pre>
 <p><img src="https://img.hacpai.com/file/2019/12/image-2ced6720.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<h3 id="通过一条命令添加service资源">通过一条命令添加 service 资源</h3>
+<h3 id="通过一条命令添加service资源">通过一条命令添加service资源</h3>
 <pre><code class="highlight-chroma">kubectl scale rc nginx --replicas=2
 kubectl exec -it pod_name /bin/bash
 kubectl expose rc nginx --type=NodePort --port=80
 </code></pre>
 <p><img src="https://img.hacpai.com/file/2019/12/image-9f3051f7.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<h2 id="2-4-deployment资源">2.4 deployment 资源</h2>
-<p>有 rc 在滚动升级之后，会造成服务访问中断，于是 k8s 引入了 deployment 资源</p>
+<h2 id="2-4-deployment资源">2.4 deployment资源</h2>
+<p>有rc在滚动升级之后,会造成服务访问中断,于是k8s引入了deployment资源</p>
 <ul>
-<li>创建 deployment</li>
+<li>创建deployment</li>
 </ul>
 <pre><code class="highlight-chroma">[root@master deploy]# cat k8s_deploy.yaml 
 apiVersion: extensions/v1beta1
@@ -690,7 +690,7 @@ deployment "nginx-deployment" created
 NAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 nginx-deployment   3         3         3            3           18s
 </code></pre>
-<p>给 deployment 分配端口，出现一个新的 svc：</p>
+<p>给deployment分配端口，出现一个新的svc：</p>
 <pre><code class="highlight-chroma">[root@master deploy]# kubectl expose deployment nginx-deployment --type=NodePort --port=80
 service "nginx-deployment" exposed
 [root@master deploy]# kubectl get svc 
@@ -700,15 +700,15 @@ myweb              10.254.134.169   &lt;nodes&gt;       80:30000/TCP   17h
 myweb2             10.254.55.214    &lt;nodes&gt;       80:3000/TCP    16h
 nginx-deployment   10.254.2.186     &lt;nodes&gt;       80:33604/TCP   13s
 </code></pre>
-<p>通过 curl 测试：<br>
+<p>通过curl测试：<br>
 <img src="https://img.hacpai.com/file/2019/12/image-a50cf025.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <h4 id="滚动升级-">滚动升级：</h4>
-<p>更改 <code>[root@master deploy]# kubectl edit deployment nginx-deployment </code> 配置文件</p>
+<p>更改<code>[root@master deploy]# kubectl edit deployment nginx-deployment </code>配置文件</p>
 <pre><code class="highlight-chroma">[root@master deploy]# kubectl edit deployment nginx-deployment 
 #将 - image: 10.0.0.202:5000/nginx:1.13 改为
 - image: 10.0.0.202:5000/nginx:latest
 </code></pre>
-<p>curl 测试升级完成：<br>
+<p>curl测试升级完成：<br>
 <img src="https://img.hacpai.com/file/2019/12/image-91898a31.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <h4 id="升级策略">升级策略</h4>
 <pre><code class="highlight-chroma">[root@master deploy]# kubectl edit deployment nginx-deployment
@@ -745,7 +745,7 @@ deployment "nginx-deployment" rolled back
 </code></pre>
 <p><img src="https://img.hacpai.com/file/2019/12/image-bd584960.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <ul>
-<li>第二种：因为第一种版本号镜像版本没有详细版本，删除 deplotment 用命令行启动 deployment，再次查看会发现具体到相关镜像版本号等信息</li>
+<li>第二种：因为第一种版本号镜像版本没有详细版本，删除deplotment用命令行启动deployment，再次查看会发现具体到相关镜像版本号等信息</li>
 </ul>
 <pre><code class="highlight-chroma">[root@master deploy]# kubectl delete deployment nginx-deployment
 deployment "nginx-deployment" deleted
@@ -774,22 +774,22 @@ REVISION	CHANGE-CAUSE
 4		kubectl set image deployment nginx nginx=10.0.0.202:5000/nginx:latest
 </code></pre>
 <blockquote>
-<p><strong>deployment 升级和回滚</strong><br>
-命令行创建 deployment<br>
+<p><strong>deployment升级和回滚</strong><br>
+命令行创建deployment<br>
 <code>kubectl run nginx --image=10.0.0.202:5000/nginx:1.13 --replicas=3 --record</code><br>
 命令行升级版本<br>
 <code>kubectl set image deploy nginx nginx=10.0.0.202:5000/nginx:1.15</code><br>
-查看 deployment 所有历史版本<br>
+查看deployment所有历史版本<br>
 <code>kubectl rollout history deployment nginx</code><br>
-deployment 回滚到上一个版本<br>
+deployment回滚到上一个版本<br>
 <code>kubectl rollout undo deployment nginx</code><br>
-deployment 回滚到指定版本<br>
+deployment回滚到指定版本<br>
 <code>kubectl rollout undo deployment nginx --to-revision=2</code></p>
 </blockquote>
-<h1 id="三--Tomcat-Mysql练习">三、 Tomcat+Mysql 练习</h1>
-<p>在 K8S 容器之间相互访问，通过 VIP 地址！</p>
+<h1 id="三--Tomcat-Mysql练习">三、 Tomcat+Mysql练习</h1>
+<p>在K8S容器之间相互访问,通过VIP地址!</p>
 <ol>
-<li>启动 MySQL YAML 配置文件，创建 Rc 资源</li>
+<li>启动Mysql yaml配置文件，创建Rc资源</li>
 </ol>
 <pre><code class="highlight-chroma">[root@master tomcat_demo]# cat mysql-rc.yaml 
 apiVersion: v1
@@ -817,7 +817,7 @@ spec:
 <pre><code class="highlight-chroma">[root@master tomcat_demo]# kubectl create -f mysql-rc.yaml 
 replicationcontroller "mysql" created
 </code></pre>
-<p>2.创建 Mysql-svc YAML 配置文件，创建 Service 资源</p>
+<p>2.创建Mysql-svc yaml配置文件，创建Service资源</p>
 <pre><code class="highlight-chroma">[root@master tomcat_demo]# cat mysql-svc.yaml 
 apiVersion: v1
 kind: Service
@@ -842,7 +842,7 @@ myweb2             10.254.55.214    &lt;nodes&gt;       80:3000/TCP    1d
 nginx-deployment   10.254.2.186     &lt;nodes&gt;       80:33604/TCP   1d
 </code></pre>
 <ol start="3">
-<li>Tomcat YAML 配置文件，创建 Tomcat Rc 资源</li>
+<li>Tomcat yaml配置文件，创建Tomcat Rc资源</li>
 </ol>
 <pre><code class="highlight-chroma">[root@master tomcat_demo]# cat tomcat-rc.yaml 
 apiVersion: v1
@@ -870,7 +870,7 @@ spec:
           value: '3306'
 </code></pre>
 <ol start="4">
-<li>创建 tomcat-svc YAML 配置文件，启动 tomcat-svc 资源</li>
+<li>创建tomcat-svc yaml配置文件，启动tomcat-svc资源</li>
 </ol>
 <pre><code class="highlight-chroma">[root@master tomcat_demo]# cat tomcat-svc.yaml 
 apiVersion: v1
@@ -889,7 +889,7 @@ spec:
 <pre><code class="highlight-chroma">[root@master tomcat_demo]# kubectl create -f tomcat-svc.yaml 
 service "tomcat" created
 </code></pre>
-<p>测试 Tomcat 服务：<br>
+<p>测试tomcat服务：<br>
 <img src="https://img.hacpai.com/file/2019/12/image-a7e1d5c9.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
                 <div>
                     <pre><p style="font-size:15px"><font color="#008000">
@@ -904,82 +904,82 @@ service "tomcat" created
     <div class="post__toc">
 <ul class="article__toc">
         <li class="toc__h1">
-            <a href="#一--K8S架构">一、 K8S 架构</a>
+            <a href="#一--K8S架构">一、 K8S架构</a>
         </li>
         <li class="toc__h2">
-            <a href="#K8S核心功能-">K8S 核心功能：</a>
+            <a href="#K8S核心功能-">K8S核心功能：</a>
         </li>
         <li class="toc__h2">
-            <a href="#1-1环境准备">1.1 环境准备</a>
+            <a href="#1-1环境准备">1.1环境准备</a>
         </li>
         <li class="toc__h2">
-            <a href="#1-2-etcd节点安装">1.2 etcd 节点安装</a>
+            <a href="#1-2-etcd节点安装">1.2 etcd节点安装</a>
         </li>
         <li class="toc__h2">
-            <a href="#1-3-master节点安装-">1.3 master 节点安装：</a>
+            <a href="#1-3-master节点安装-">1.3 master节点安装：</a>
         </li>
         <li class="toc__h2">
-            <a href="#1-3-node节点安装">1.3 node 节点安装</a>
+            <a href="#1-3-node节点安装">1.3 node节点安装</a>
         </li>
         <li class="toc__h2">
-            <a href="#1-4-所有节点配置flannel网络">1.4 所有节点配置 flannel 网络</a>
+            <a href="#1-4-所有节点配置flannel网络">1.4 所有节点配置flannel网络</a>
         </li>
         <li class="toc__h2">
-            <a href="#1-5-配置master为镜像仓库">1.5 配置 master 为镜像仓库</a>
+            <a href="#1-5-配置master为镜像仓库">1.5 配置master为镜像仓库</a>
         </li>
         <li class="toc__h1">
-            <a href="#二--K8S常用资源">二、 K8S 常用资源</a>
+            <a href="#二--K8S常用资源">二、 K8S常用资源</a>
         </li>
         <li class="toc__h2">
-            <a href="#2-1-pod资源">2.1 pod 资源</a>
+            <a href="#2-1-pod资源">2.1 pod资源</a>
         </li>
         <li class="toc__h3">
             <a href="#详细">详细</a>
         </li>
         <li class="toc__h4">
-            <a href="#安装docker镜像并且push到本地镜像仓库">安装 docker 镜像并且 push 到本地镜像仓库</a>
+            <a href="#安装docker镜像并且push到本地镜像仓库">安装docker镜像并且push到本地镜像仓库</a>
         </li>
         <li class="toc__h4">
-            <a href="#创建pod">创建 pod</a>
+            <a href="#创建pod">创建pod</a>
         </li>
         <li class="toc__h4">
-            <a href="#pod运行多个容器-">pod 运行多个容器：</a>
+            <a href="#pod运行多个容器-">pod运行多个容器：</a>
         </li>
         <li class="toc__h4">
-            <a href="#查看k8s-pod的容器资源详细信息-">查看 k8s pod 的容器资源详细信息：</a>
+            <a href="#查看k8s-pod的容器资源详细信息-">查看k8s pod的容器资源详细信息：</a>
         </li>
         <li class="toc__h2">
-            <a href="#2-2-ReplicationController资源">2.2 ReplicationController 资源</a>
+            <a href="#2-2-ReplicationController资源">2.2 ReplicationController资源</a>
         </li>
         <li class="toc__h2">
-            <a href="#rc资源">rc 资源</a>
+            <a href="#rc资源">rc资源</a>
         </li>
         <li class="toc__h3">
-            <a href="#pod资源的高可用行">pod 资源的高可用行</a>
+            <a href="#pod资源的高可用行">pod资源的高可用行</a>
         </li>
         <li class="toc__h3">
-            <a href="#rc创建">rc 创建</a>
+            <a href="#rc创建">rc创建</a>
         </li>
         <li class="toc__h3">
-            <a href="#rc是通过什么来关联pod的呢-">rc 是通过什么来关联 pod 的呢？</a>
+            <a href="#rc是通过什么来关联pod的呢-">rc是通过什么来关联pod的呢？</a>
         </li>
         <li class="toc__h3">
-            <a href="#rc滚动升级">rc 滚动升级</a>
+            <a href="#rc滚动升级">rc滚动升级</a>
         </li>
         <li class="toc__h2">
-            <a href="#2-3-service资源">2.3 service 资源</a>
+            <a href="#2-3-service资源">2.3 service资源</a>
         </li>
         <li class="toc__h3">
-            <a href="#创建一个service">创建一个 service</a>
+            <a href="#创建一个service">创建一个service</a>
         </li>
         <li class="toc__h3">
             <a href="#测试负载均衡">测试负载均衡</a>
         </li>
         <li class="toc__h3">
-            <a href="#通过一条命令添加service资源">通过一条命令添加 service 资源</a>
+            <a href="#通过一条命令添加service资源">通过一条命令添加service资源</a>
         </li>
         <li class="toc__h2">
-            <a href="#2-4-deployment资源">2.4 deployment 资源</a>
+            <a href="#2-4-deployment资源">2.4 deployment资源</a>
         </li>
         <li class="toc__h4">
             <a href="#滚动升级-">滚动升级：</a>
@@ -991,7 +991,7 @@ service "tomcat" created
             <a href="#升级回滚">升级回滚</a>
         </li>
         <li class="toc__h1">
-            <a href="#三--Tomcat-Mysql练习">三、 Tomcat+Mysql 练习</a>
+            <a href="#三--Tomcat-Mysql练习">三、 Tomcat+Mysql练习</a>
         </li>
 </ul>    </div>
     <div class="body--gray post__gray">
@@ -1152,7 +1152,7 @@ service "tomcat" created
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -1184,13 +1184,13 @@ service "tomcat" created
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1576117964389",
@@ -1210,4 +1210,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 64ms, 2020/03/26 16:18:17 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 614ms, 2020/03/28 15:03:56 -->

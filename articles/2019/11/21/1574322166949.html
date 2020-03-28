@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Python之@函数装饰器 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Python之@函数装饰器 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/11/21/1574322166949.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="Python之@函数装饰器 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/11/21/1574322166949.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="openstack配额调整" href="https://cuijianzhe.github.io/articles/2019/11/15/1573804234510.html">
             <link rel="next" title="Python之生成器" href="https://cuijianzhe.github.io/articles/2019/11/23/1574490126718.html">
     </head>
@@ -92,11 +92,11 @@
 开放 ： 对扩展是开放的<br>
 封闭 ： 对修改是封闭的</p>
 <h2 id="示例">示例</h2>
-<p>当程序使用“@函数”（比如函数 A ）装饰另一个函数（比如函数 B ）时， 实际上完成如下两<br>
+<p>当程序使用“@函数”（比如函数A ）装饰另一个函数（比如函数B ）时， 实际上完成如下两<br>
 步。</p>
 <ol>
-<li>将被修饰的函数（函数 B ）作为参数传给＠符号引用的函数（函数 A ）。</li>
-<li>将函数 B 替换（装饰）成第 ①步的返回值。<br>
+<li>将被修饰的函数（函数B ）作为参数传给＠符号引用的函数（函数A ）。</li>
+<li>将函数B 替换（装饰）成第①步的返回值。<br>
 从上面介绍不难看出，被“＠函数”修饰的函数不再是原来的函数，而是被替换成一个新的东西。</li>
 </ol>
 <p>看一下实例：</p>
@@ -114,15 +114,15 @@
     <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-s1">'B'</span><span class="highlight-p">)</span>
 <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-n">funB</span><span class="highlight-p">)</span>
 </code></pre>
-<p><strong>上面程序使用＠funA 修饰 funB ，这意味着程序要完成两步操作。</strong><br>
-①将 funB 作为 funA()的参数，也就是上面的粗体字代码相当于执行 funA(funB)。<br>
-②将 funB 替换成 ①第步执行的结果， funA()执行完成后返回 asdf，因此 funB 就不再是函数，而是被替换成一个字符串。<br>
+<p><strong>上面程序使用＠funA 修饰funB ，这意味着程序要完成两步操作。</strong><br>
+①将funB 作为funA()的参数，也就是上面的粗体字代码相当于执行funA(funB)。<br>
+②将funB 替换成①第步执行的结果， funA()执行完成后返回asdf，因此funB 就不再是函数，而是被替换成一个字符串。<br>
 查看运行结果：</p>
 <pre><code class="highlight-chroma">A
 B
 asdf
 </code></pre>
-<p>实例 2：</p>
+<p>实例2：</p>
 <pre><code class="language-python highlight-chroma"><span class="highlight-k">def</span> <span class="highlight-nf">wapper</span><span class="highlight-p">(</span><span class="highlight-n">func</span><span class="highlight-p">):</span>
     <span class="highlight-k">def</span> <span class="highlight-nf">inner</span><span class="highlight-p">(</span><span class="highlight-o">*</span><span class="highlight-n">args</span><span class="highlight-p">,</span><span class="highlight-o">**</span><span class="highlight-n">kargs</span><span class="highlight-p">):</span>
         <span class="highlight-n">ret</span> <span class="highlight-o">=</span> <span class="highlight-n">func</span><span class="highlight-p">(</span><span class="highlight-o">*</span><span class="highlight-n">args</span><span class="highlight-p">,</span><span class="highlight-o">**</span><span class="highlight-n">kargs</span><span class="highlight-p">)</span>
@@ -158,8 +158,8 @@ asdf
 <span class="highlight-c1"># my_test(10)</span>
 <span class="highlight-n">my_test</span><span class="highlight-p">(</span><span class="highlight-mi">5</span><span class="highlight-p">,</span><span class="highlight-mi">6</span><span class="highlight-p">)</span>
 </code></pre>
-<p>上面程序定义了一个装饰器函数 foo ，该函数执行完成后并不是返回普通值，而是返回 bar 函数（这是关键〉，这意味着被该@foo 修饰的函数最终都会被替换成 bar 函数。</p>
-<p>上面程序使用＠foo 修饰 my_test()函数，因此程序同样会执行 foo(my_test），并将 my_test 替换成 foo()函数的返回值： bar 函数。所以，上面程序代码 <code>print(my_test)</code> 在打印 my_test 函数时，实际上输出的是 bar 函数，这说明 my_test 已经被替换成 bar 函数。接下来程序两次调用 my_test()函数，实际上就是调用 bar()函数。</p>
+<p>上面程序定义了一个装饰器函数foo ，该函数执行完成后并不是返回普通值，而是返回bar 函数（这是关键〉，这意味着被该@foo修饰的函数最终都会被替换成bar 函数。</p>
+<p>上面程序使用＠foo 修饰my_test()函数，因此程序同样会执行foo(my_test），并将my_test 替换成foo()函数的返回值： bar 函数。所以，上面程序代码<code>print(my_test)</code>在打印my_test 函数时，实际上输出的是bar 函数，这说明my_test 已经被替换成bar 函数。接下来程序两次调用my_test()函数，实际上就是调用bar()函数。</p>
 <p>运行结果：</p>
 <pre><code class="highlight-chroma">&lt;function foo.&lt;locals&gt;.bar at 0x000001E2ECA52708&gt;
 1 (5, 6)
@@ -169,7 +169,7 @@ my_test
 ***************
 ==3== 20
 </code></pre>
-<p>通过＠符号来修饰函数是 Python 的一个非常实用的功能，它既可以在被修饰函数的前面添加一些额外的处理逻辑（比如权限检查），也可以在被修饰函数的后面添加－些额外的处理逻辑（ 比如记录日志），还可以在目标方法抛出异常时进行一些修复操作……这种改变不需要修改被修饰函数的代码，只要增加一个修饰即可。</p>
+<p>通过＠符号来修饰函数是Python 的一个非常实用的功能，它既可以在被修饰函数的前面添加一些额外的处理逻辑（比如权限检查），也可以在被修饰函数的后面添加－些额外的处理逻辑（ 比如记录日志），还可以在目标方法抛出异常时进行一些修复操作……这种改变不需要修改被修饰函数的代码，只要增加一个修饰即可。</p>
 <p>总结装饰器语法：</p>
 <pre><code class="language-python highlight-chroma"><span class="highlight-nd">@deco</span>
 <span class="highlight-k">def</span> <span class="highlight-nf">target</span><span class="highlight-p">():</span>
@@ -211,8 +211,8 @@ target = deco(target)
     <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-s2">"执行test函数，参数a: </span><span class="highlight-si">%s</span><span class="highlight-s2">,参数b: </span><span class="highlight-si">%s</span><span class="highlight-s2">"</span><span class="highlight-o">%</span><span class="highlight-p">(</span><span class="highlight-n">a</span><span class="highlight-p">,</span><span class="highlight-n">b</span><span class="highlight-p">))</span>
 <span class="highlight-n">test</span><span class="highlight-p">(</span><span class="highlight-mi">100</span><span class="highlight-p">,</span><span class="highlight-mi">13</span><span class="highlight-p">)</span>
 </code></pre>
-<p>上面程序使用＠auth 修饰了 test()函数，这会使得 test()函数被替换成 auth()函数所返回的 auth_fn<br>
-函数，而 auth_fn 函数的执行流程是：<br>
+<p>上面程序使用＠auth 修饰了test()函数，这会使得test()函数被替换成auth()函数所返回的auth_fn<br>
+函数，而auth_fn 函数的执行流程是：<br>
 ①先执行权限检查；<br>
 ②回调被修饰的目标函数——简单来说， auth_fn 函数就为被修饰函数添加了一个权限检查的功能。</p>
 <h2 id="多个装饰器装饰一个函数">多个装饰器装饰一个函数</h2>
@@ -248,7 +248,7 @@ target = deco(target)
     <span class="highlight-k">return</span> <span class="highlight-s1">'哈哈哈'</span>
 <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-n">f</span><span class="highlight-p">())</span>
 </code></pre>
-<p>返回值 L:</p>
+<p>返回值L:</p>
 <pre><code class="highlight-chroma">wrapper2 ,before func
 wrapper1 ,before func
 in f
@@ -262,7 +262,7 @@ wrapper2 ,after func
 <p>可大概看下是行顺序：<br>
 <img src="https://img.hacpai.com/file/2019/11/image-6327acfc.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <ul>
-<li>装饰器会先找离自己最近的函数，因为@wrapper2 没找到，则在@wrapper1 那里进行执行。</li>
+<li>装饰器会先找离自己最近的函数，因为@wrapper2没找到，则在@wrapper1那里进行执行。</li>
 </ul>
 <p>大致代码执行过程：<br>
 <img src="https://img.hacpai.com/file/2019/11/image-9dc26bdb.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
@@ -450,7 +450,7 @@ wrapper2 ,after func
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -482,13 +482,13 @@ wrapper2 ,after func
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1574322166949",
@@ -508,4 +508,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 64ms, 2020/03/26 16:18:18 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 46ms, 2020/03/28 15:03:57 -->

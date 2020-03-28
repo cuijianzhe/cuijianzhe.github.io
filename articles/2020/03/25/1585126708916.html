@@ -2,8 +2,9 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>利用爬虫爬取我的solo博客 - 邯城往事</title><meta name="description" content="在看到你第一眼的时候 上帝在我耳边说了四个字 在劫难逃"/><meta property="og:description" content="在看到你第一眼的时候 上帝在我耳边说了四个字 在劫难逃"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="利用爬虫爬取我的solo博客 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/03/25/1585126708916.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="利用爬虫爬取我的solo博客 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/03/25/1585126708916.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="Excel中使用宏+按钮来简化操作" href="https://cuijianzhe.github.io/articles/2020/03/15/1584269974131.html">
+            <link rel="next" title="利用Python实现网易云音乐自动签到" href="https://cuijianzhe.github.io/articles/2020/03/27/1585293177882.html">
     </head>
 <body>
 <header class="header">
@@ -86,9 +87,9 @@
         <div class="vditor-reset">
             <h1 id="选项一直都有--但我选择了你">选项一直都有  但我选择了你</h1>
 <blockquote>
-<p><strong>之前写的对接飞书的接口发送消息，顺便爬取一下博客把文章 title 和 link 爬取出来集成到富文本中。</strong></p>
+<p><strong>之前写的对接飞书的接口发送消息，顺便爬取一下博客把文章title和link爬取出来集成到富文本中。</strong></p>
 <ul>
-<li><strong>注意的是只能爬取 solo 的内置皮肤 pingsu 里面的文章</strong></li>
+<li><strong>注意的是只能爬取solo的内置皮肤pingsu里面的文章</strong></li>
 </ul>
 </blockquote>
 <pre><code class="language-python highlight-chroma"><span class="highlight-ch">#!/usr/bin/env python</span>
@@ -108,7 +109,7 @@
     <span class="highlight-n">response</span> <span class="highlight-o">=</span> <span class="highlight-n">urllib</span><span class="highlight-o">.</span><span class="highlight-n">request</span><span class="highlight-o">.</span><span class="highlight-n">urlopen</span><span class="highlight-p">(</span><span class="highlight-n">url</span><span class="highlight-p">)</span>
     <span class="highlight-n">html</span> <span class="highlight-o">=</span> <span class="highlight-n">response</span><span class="highlight-o">.</span><span class="highlight-n">read</span><span class="highlight-p">()</span><span class="highlight-o">.</span><span class="highlight-n">decode</span><span class="highlight-p">()</span>
     <span class="highlight-n">parseHtml</span> <span class="highlight-o">=</span> <span class="highlight-n">etree</span><span class="highlight-o">.</span><span class="highlight-n">HTML</span><span class="highlight-p">(</span><span class="highlight-n">html</span><span class="highlight-p">)</span>
-    <span class="highlight-n">article_num</span> <span class="highlight-o">=</span> <span class="highlight-n">parseHtml</span><span class="highlight-o">.</span><span class="highlight-n">xpath</span><span class="highlight-p">(</span><span class="highlight-s1">'//*[@id="pjax"]/div/main/article'</span><span class="highlight-p">)</span>  <span class="highlight-c1">#单个页面体现出来的文章数</span>
+    <span class="highlight-c1">#article_num = parseHtml.xpath('//*[@id="pjax"]/div/main/article')  #单个页面体现出来的文章数</span>
     <span class="highlight-c1">#遍历单个页数的文章标题</span>
     <span class="highlight-c1"># for i in range(1,len(article_num)):</span>
     <span class="highlight-c1">#     titles = parseHtml.xpath('//*[@id="pjax"]/div/main/article[%s]/div/div[5]/h2/a/text()'%i)</span>
@@ -298,6 +299,39 @@
 </code></pre>
 <h2 id="效果如下-">效果如下：</h2>
 <p><img src="https://img.hacpai.com/file/2020/03/image-2d7d4033.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<h2 id="Casper皮肤文章标题以及链接爬取"><a href="https://hacpai.com/article/1492881378588#--%E7%9A%AE%E8%82%A4" target="_blank">Casper</a>皮肤文章标题以及链接爬取</h2>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">urllib.request</span>
+<span class="highlight-kn">from</span> <span class="highlight-nn">lxml</span> <span class="highlight-kn">import</span> <span class="highlight-n">etree</span>
+<span class="highlight-kn">import</span> <span class="highlight-nn">random</span>
+<span class="highlight-k">def</span> <span class="highlight-nf">get_ArticlesNums</span><span class="highlight-p">():</span>
+    <span class="highlight-n">url</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://sszsj.top/"</span>
+    <span class="highlight-n">response</span> <span class="highlight-o">=</span> <span class="highlight-n">urllib</span><span class="highlight-o">.</span><span class="highlight-n">request</span><span class="highlight-o">.</span><span class="highlight-n">urlopen</span><span class="highlight-p">(</span><span class="highlight-n">url</span><span class="highlight-p">)</span>
+    <span class="highlight-n">html</span> <span class="highlight-o">=</span> <span class="highlight-n">response</span><span class="highlight-o">.</span><span class="highlight-n">read</span><span class="highlight-p">()</span><span class="highlight-o">.</span><span class="highlight-n">decode</span><span class="highlight-p">()</span>
+    <span class="highlight-n">parseHtml</span> <span class="highlight-o">=</span> <span class="highlight-n">etree</span><span class="highlight-o">.</span><span class="highlight-n">HTML</span><span class="highlight-p">(</span><span class="highlight-n">html</span><span class="highlight-p">)</span>
+    <span class="highlight-n">all_article</span> <span class="highlight-o">=</span> <span class="highlight-nb">len</span><span class="highlight-p">(</span><span class="highlight-n">parseHtml</span><span class="highlight-o">.</span><span class="highlight-n">xpath</span><span class="highlight-p">(</span><span class="highlight-s1">'//*[@id="pjax"]/div/nav/a'</span><span class="highlight-p">))</span> <span class="highlight-o">+</span> <span class="highlight-mi">1</span> <span class="highlight-c1">#文章全部分页数</span>
+    <span class="highlight-k">return</span> <span class="highlight-n">all_article</span>
+<span class="highlight-k">def</span> <span class="highlight-nf">get_ArticleInfo</span><span class="highlight-p">(</span><span class="highlight-n">all_article</span><span class="highlight-p">):</span>
+    <span class="highlight-n">titles_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
+    <span class="highlight-n">links_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
+    <span class="highlight-k">for</span> <span class="highlight-n">i</span> <span class="highlight-ow">in</span> <span class="highlight-nb">range</span><span class="highlight-p">(</span><span class="highlight-mi">1</span><span class="highlight-p">,</span><span class="highlight-n">all_article</span><span class="highlight-o">+</span><span class="highlight-mi">1</span><span class="highlight-p">):</span>
+        <span class="highlight-n">url_1</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://sszsj.top/?p=</span><span class="highlight-si">%s</span><span class="highlight-s2">"</span> <span class="highlight-o">%</span> <span class="highlight-n">i</span>  <span class="highlight-c1"># 分页数里面的链接</span>
+        <span class="highlight-n">response_1</span> <span class="highlight-o">=</span> <span class="highlight-n">urllib</span><span class="highlight-o">.</span><span class="highlight-n">request</span><span class="highlight-o">.</span><span class="highlight-n">urlopen</span><span class="highlight-p">(</span><span class="highlight-n">url_1</span><span class="highlight-p">)</span>
+        <span class="highlight-n">html_1</span> <span class="highlight-o">=</span> <span class="highlight-n">response_1</span><span class="highlight-o">.</span><span class="highlight-n">read</span><span class="highlight-p">()</span><span class="highlight-o">.</span><span class="highlight-n">decode</span><span class="highlight-p">()</span>
+        <span class="highlight-n">parseHtml_1</span> <span class="highlight-o">=</span> <span class="highlight-n">etree</span><span class="highlight-o">.</span><span class="highlight-n">HTML</span><span class="highlight-p">(</span><span class="highlight-n">html_1</span><span class="highlight-p">)</span>
+        <span class="highlight-n">article_num</span> <span class="highlight-o">=</span> <span class="highlight-nb">len</span><span class="highlight-p">(</span><span class="highlight-n">parseHtml_1</span><span class="highlight-o">.</span><span class="highlight-n">xpath</span><span class="highlight-p">(</span><span class="highlight-s1">'//*[@id="pjax"]/div/div/article'</span><span class="highlight-p">))</span>  <span class="highlight-c1">#返回每页的文章数量</span>
+        <span class="highlight-k">for</span> <span class="highlight-n">n</span> <span class="highlight-ow">in</span> <span class="highlight-nb">range</span><span class="highlight-p">(</span><span class="highlight-mi">1</span><span class="highlight-p">,</span><span class="highlight-n">article_num</span><span class="highlight-o">+</span><span class="highlight-mi">1</span><span class="highlight-p">):</span> <span class="highlight-c1">#遍历单个页数的包含的文章标题以及链接</span>
+            <span class="highlight-n">titles</span> <span class="highlight-o">=</span> <span class="highlight-n">parseHtml_1</span><span class="highlight-o">.</span><span class="highlight-n">xpath</span><span class="highlight-p">(</span><span class="highlight-s1">'//*[@id="pjax"]/div/div/article[</span><span class="highlight-si">%s</span><span class="highlight-s1">]/div/h2/a/text()'</span> <span class="highlight-o">%</span> <span class="highlight-n">n</span><span class="highlight-p">)</span>
+            <span class="highlight-n">links</span> <span class="highlight-o">=</span> <span class="highlight-n">parseHtml_1</span><span class="highlight-o">.</span><span class="highlight-n">xpath</span><span class="highlight-p">(</span><span class="highlight-s1">'//*[@id="pjax"]/div/div/article[</span><span class="highlight-si">%s</span><span class="highlight-s1">]/div/h2/a//@href'</span> <span class="highlight-o">%</span> <span class="highlight-n">n</span><span class="highlight-p">)</span>
+            <span class="highlight-n">new_titles</span> <span class="highlight-o">=</span> <span class="highlight-s1">''</span><span class="highlight-o">.</span><span class="highlight-n">join</span><span class="highlight-p">(</span><span class="highlight-n">titles</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">strip</span><span class="highlight-p">()</span><span class="highlight-o">.</span><span class="highlight-n">rsplit</span><span class="highlight-p">(</span><span class="highlight-s1">'</span><span class="highlight-se">\n</span><span class="highlight-s1">'</span><span class="highlight-p">)</span>
+            <span class="highlight-n">links_list</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">links</span><span class="highlight-p">)</span>
+            <span class="highlight-n">titles_list</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">new_titles</span><span class="highlight-p">)</span>
+    <span class="highlight-k">return</span> <span class="highlight-n">titles_list</span><span class="highlight-p">,</span><span class="highlight-n">links_list</span>
+<span class="highlight-k">if</span> <span class="highlight-vm">__name__</span> <span class="highlight-o">==</span> <span class="highlight-s2">"__main__"</span><span class="highlight-p">:</span>
+    <span class="highlight-n">Article_Nums</span> <span class="highlight-o">=</span> <span class="highlight-n">get_ArticlesNums</span><span class="highlight-p">()</span>
+    <span class="highlight-n">articles_info</span> <span class="highlight-o">=</span> <span class="highlight-n">get_ArticleInfo</span><span class="highlight-p">(</span><span class="highlight-n">Article_Nums</span><span class="highlight-p">)</span>
+    <span class="highlight-n">num</span> <span class="highlight-o">=</span> <span class="highlight-nb">int</span><span class="highlight-p">(</span><span class="highlight-n">random</span><span class="highlight-o">.</span><span class="highlight-n">randint</span><span class="highlight-p">(</span><span class="highlight-mi">1</span><span class="highlight-p">,</span> <span class="highlight-nb">len</span><span class="highlight-p">(</span><span class="highlight-n">articles_info</span><span class="highlight-p">[</span><span class="highlight-mi">0</span><span class="highlight-p">])))</span>
+    <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-n">articles_info</span><span class="highlight-p">[</span><span class="highlight-mi">0</span><span class="highlight-p">][</span><span class="highlight-n">num</span><span class="highlight-p">],</span><span class="highlight-n">articles_info</span><span class="highlight-p">[</span><span class="highlight-mi">1</span><span class="highlight-p">][</span><span class="highlight-n">num</span><span class="highlight-p">])</span>
+</code></pre>
                 <div>
                     <span class="name">搭讪 你就破功了，老弟！</span>
 <style>
@@ -331,6 +365,9 @@
         </li>
         <li class="toc__h2">
             <a href="#效果如下-">效果如下：</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#Casper皮肤文章标题以及链接爬取">Casper皮肤文章标题以及链接爬取</a>
         </li>
 </ul>    </div>
     <div class="body--gray post__gray">
@@ -375,6 +412,10 @@
                        pjax-title="Excel中使用宏+按钮来简化操作"
                        aria-label="旧一篇: Excel中使用宏+按钮来简化操作">←</a>
 
+                    <a href="https://cuijianzhe.github.io/articles/2020/03/27/1585293177882.html" rel="next"
+                       class="vditor-tooltipped__n vditor-tooltipped"
+                       pjax-title="利用Python实现网易云音乐自动签到"
+                       aria-label="新一篇: 利用Python实现网易云音乐自动签到">→</a>
                 <a href="javascript:Util.goTop()" class="vditor-tooltipped__n vditor-tooltipped"
                    aria-label="移动到顶部">↑</a>
                 <a href="javascript:Util.goBottom()" class="vditor-tooltipped__n vditor-tooltipped"
@@ -487,7 +528,7 @@
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -519,13 +560,13 @@
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1585126708916",
@@ -545,4 +586,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 62ms, 2020/03/26 16:18:17 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 115ms, 2020/03/28 15:03:55 -->

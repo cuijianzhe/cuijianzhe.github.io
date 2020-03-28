@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>通过查看nginx 日志进行分析 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="通过查看nginx 日志进行分析 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/19/1552967425056.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="通过查看nginx 日志进行分析 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/19/1552967425056.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="阿里云机器和本地IDC建立ipsec VPN" href="https://cuijianzhe.github.io/articles/2019/03/16/1552720730829.html">
             <link rel="next" title="网络设备配置输出一口气" href="https://cuijianzhe.github.io/articles/2019/03/20/1553084486763.html">
     </head>
@@ -85,15 +85,15 @@
                 </a>
         </div>
         <div class="vditor-reset">
-            <h3 id="1-根据访问ip统计UV-">1.根据访问 ip 统计 UV；</h3>
+            <h3 id="1-根据访问ip统计UV-">1.根据访问ip统计UV；</h3>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@blog_server logs<span class="highlight-o">]</span><span class="highlight-c1"># awk '{print $1}'  access.log|sort | uniq -c |wc -l</span>
 <span class="highlight-m">138</span>
 </code></pre>
-<h3 id="2-统计访问URL统计PV-">2.统计访问 URL 统计 PV；</h3>
+<h3 id="2-统计访问URL统计PV-">2.统计访问URL统计PV；</h3>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@blog_server logs<span class="highlight-o">]</span><span class="highlight-c1"># awk '{print $7}' access.log|wc -l</span>
 <span class="highlight-m">637</span>
 </code></pre>
-<h3 id="3-查询访问最频繁的URL-">3.查询访问最频繁的 URL;</h3>
+<h3 id="3-查询访问最频繁的URL-">3.查询访问最频繁的URL;</h3>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@blog_server logs<span class="highlight-o">]</span><span class="highlight-c1"># awk '{print $7}' access.log|sort | uniq -c |sort -n -k 1 -r|more</span>
      <span class="highlight-m">55</span> /solo/console/article/
      <span class="highlight-m">52</span> /
@@ -101,7 +101,7 @@
      <span class="highlight-m">17</span> /solo/articles/2019/03/16/1552701584725.html
      ……从高往低一次排列
 </code></pre>
-<h3 id="4-查询访问最频繁-TOP10-的ip">4.查询访问最频繁{TOP10}的 ip</h3>
+<h3 id="4-查询访问最频繁-TOP10-的ip">4.查询访问最频繁{TOP10}的ip</h3>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@blog_server logs<span class="highlight-o">]</span><span class="highlight-c1"># awk '{print $1}' access.log|sort | uniq -c |sort -n -k 1 -r|head -n 10</span>
 
     <span class="highlight-m">351</span> 49.4.136.242
@@ -115,7 +115,7 @@
       <span class="highlight-m">8</span> 222.82.54.223
       <span class="highlight-m">4</span> 203.208.60.115
 </code></pre>
-<h3 id="5-查看nginx并发连接数-">5.查看 nginx 并发连接数；</h3>
+<h3 id="5-查看nginx并发连接数-">5.查看nginx并发连接数；</h3>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@blog_server logs<span class="highlight-o">]</span><span class="highlight-c1"># netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'</span>
 ESTABLISHED <span class="highlight-m">6</span>
 TIME_WAIT <span class="highlight-m">13</span>
@@ -159,18 +159,18 @@ LAST_ACK  //等待所有分组死掉</p>
       <span class="highlight-m">2</span> <span class="highlight-m">400</span>
       <span class="highlight-m">2</span> <span class="highlight-m">173</span>
 </code></pre>
-<h3 id="8-统计nginx流量-">8.统计 nginx 流量：</h3>
+<h3 id="8-统计nginx流量-">8.统计nginx流量：</h3>
 <pre><code class="language-bash highlight-chroma">$ grep <span class="highlight-s2">"03/May/2019"</span> /usr/local/nginx/logs/access.log <span class="highlight-p">|</span> awk <span class="highlight-s1">'{sum+=$10}END{print sum}'</span>
 
 <span class="highlight-m">19381073</span>
 </code></pre>
-<h3 id="9--查看请求出现404次数多少的ip">9. 查看请求出现 404 次数多少的 ip</h3>
+<h3 id="9--查看请求出现404次数多少的ip">9. 查看请求出现404次数多少的ip</h3>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@localhost~<span class="highlight-o">]</span><span class="highlight-c1"># cat /usr/local/nginx/logs/access.log | awk '{if($9="404"){ip_code[$1" "$9]++}} END{for (i in ip_code){print i,ip_code[i]}}'</span>
 
 192.168.88.98 <span class="highlight-m">404</span> <span class="highlight-m">18</span>
 192.168.89.234 <span class="highlight-m">404</span> <span class="highlight-m">2</span>
 </code></pre>
-<h3 id="10---统计每个ip访问状态码数量">10.  统计每个 ip 访问状态码数量</h3>
+<h3 id="10---统计每个ip访问状态码数量">10.  统计每个ip访问状态码数量</h3>
 <pre><code class="language-bash highlight-chroma">cat /usr/local/nginx/logs/access.log <span class="highlight-p">|</span> awk <span class="highlight-s1">'{ip_code[$1" "$9]++} END{for (i in ip_code){print i,ip_code[i]}}'</span> <span class="highlight-p">|</span>sort -k1 -rn<span class="highlight-p">|</span>head -n10
 
 223.104.3.193 <span class="highlight-m">200</span> <span class="highlight-m">10</span>
@@ -197,19 +197,19 @@ LAST_ACK  //等待所有分组死掉</p>
     <div class="post__toc">
 <ul class="article__toc">
         <li class="toc__h3">
-            <a href="#1-根据访问ip统计UV-">1.根据访问 ip 统计 UV；</a>
+            <a href="#1-根据访问ip统计UV-">1.根据访问ip统计UV；</a>
         </li>
         <li class="toc__h3">
-            <a href="#2-统计访问URL统计PV-">2.统计访问 URL 统计 PV；</a>
+            <a href="#2-统计访问URL统计PV-">2.统计访问URL统计PV；</a>
         </li>
         <li class="toc__h3">
-            <a href="#3-查询访问最频繁的URL-">3.查询访问最频繁的 URL;</a>
+            <a href="#3-查询访问最频繁的URL-">3.查询访问最频繁的URL;</a>
         </li>
         <li class="toc__h3">
-            <a href="#4-查询访问最频繁-TOP10-的ip">4.查询访问最频繁{TOP10}的 ip</a>
+            <a href="#4-查询访问最频繁-TOP10-的ip">4.查询访问最频繁{TOP10}的ip</a>
         </li>
         <li class="toc__h3">
-            <a href="#5-查看nginx并发连接数-">5.查看 nginx 并发连接数；</a>
+            <a href="#5-查看nginx并发连接数-">5.查看nginx并发连接数；</a>
         </li>
         <li class="toc__h3">
             <a href="#6-根据时间段查看相应的连接日志">6.根据时间段查看相应的连接日志</a>
@@ -218,13 +218,13 @@ LAST_ACK  //等待所有分组死掉</p>
             <a href="#7-统计状态码-">7.统计状态码：</a>
         </li>
         <li class="toc__h3">
-            <a href="#8-统计nginx流量-">8.统计 nginx 流量：</a>
+            <a href="#8-统计nginx流量-">8.统计nginx流量：</a>
         </li>
         <li class="toc__h3">
-            <a href="#9--查看请求出现404次数多少的ip">9. 查看请求出现 404 次数多少的 ip</a>
+            <a href="#9--查看请求出现404次数多少的ip">9. 查看请求出现404次数多少的ip</a>
         </li>
         <li class="toc__h3">
-            <a href="#10---统计每个ip访问状态码数量">10. 统计每个 ip 访问状态码数量</a>
+            <a href="#10---统计每个ip访问状态码数量">10. 统计每个ip访问状态码数量</a>
         </li>
 </ul>    </div>
     <div class="body--gray post__gray">
@@ -385,7 +385,7 @@ LAST_ACK  //等待所有分组死掉</p>
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -417,13 +417,13 @@ LAST_ACK  //等待所有分组死掉</p>
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1552967425056",
@@ -443,4 +443,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 66ms, 2020/03/26 16:18:20 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 49ms, 2020/03/28 15:04:01 -->

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>vim常用快捷键以及方法 - 邯城往事</title><meta name="description" content="VIM 平常会用到的方法"/><meta property="og:description" content="VIM 平常会用到的方法"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="vim常用快捷键以及方法 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/05/03/1556870431824.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="vim常用快捷键以及方法 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/05/03/1556870431824.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>vim常用快捷键以及方法 - 邯城往事</title><meta name="description" content="vim平常会用到的方法"/><meta property="og:description" content="vim平常会用到的方法"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="vim常用快捷键以及方法 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/05/03/1556870431824.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="vim常用快捷键以及方法 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/05/03/1556870431824.html">        <link rel="stylesheet"
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="讲一个向外借钱的故事" href="https://cuijianzhe.github.io/articles/2019/04/30/1556596263829.html">
             <link rel="next" title="我的主机./bashrc定制自己环境，and推荐zsh美化linux界面" href="https://cuijianzhe.github.io/articles/2019/05/08/1557298336838.html">
     </head>
@@ -86,26 +86,26 @@
         </div>
         <div class="vditor-reset">
             <h1 id="一-替换文本-">一、替换文本：</h1>
-<p>一个顺口令：%s###g(口头语：百分号 sg 三个#)<br>
-<code>:%s#$2#$b#g</code> 此命令是将文本中的 $2 替换成 $b</p>
-<p>格式 : 范围（其中 % 所有内容）   s 分隔符 旧的内容 分隔符 新的内容  （分隔符可以自定义）</p>
-<p>默认是每一行的第一个符合要求的词   (/g 全部)<br>
-:1,3 s/bin/test    替换第 1 到 3 行中出现的第一个 bin 进行替换为 test<br>
-:1,3 s/bin/test/g  替换第 1 到 3 行中查找到所有的 bin 进行替换为 test<br>
-:3 s/xue/aaaaa     #只把第 3 行中内容替换了<br>
-:% s/do/test/g  	将文本中所有的 do 替换成 xuegod<br>
-:% s/do/test/gi	将文本中所有的 do 替换成 xuegod, 并且忽略 do 的大小写<br>
-:% s@a@b@g	   将文本中所有的 a 替换成 b</p>
-<h1 id="二-ctrl-v模式">二、ctrl+v 模式</h1>
-<p>V 模式（列）<br>
-进入 v 模式 移动光标选择区域、<br>
+<p>一个顺口令：%s###g(口头语：百分号sg三个#)<br>
+<code>:%s#$2#$b#g</code> 此命令是将文本中的$2替换成$b</p>
+<p>格式 : 范围（其中%所有内容）   s分隔符 旧的内容 分隔符 新的内容  （分隔符可以自定义）</p>
+<p>默认是每一行的第一个符合要求的词   (/g全部)<br>
+:1,3 s/bin/test    替换第1到3行中出现的第一个bin进行替换为test<br>
+:1,3 s/bin/test/g  替换第1到3行中查找到所有的bin进行替换为test<br>
+:3 s/xue/aaaaa     #只把第3行中内容替换了<br>
+:% s/do/test/g  	将文本中所有的do替换成xuegod<br>
+:% s/do/test/gi	将文本中所有的do替换成xuegod, 并且忽略do的大小写<br>
+:% s@a@b@g	   将文本中所有的a替换成b</p>
+<h1 id="二-ctrl-v模式">二、ctrl+v模式</h1>
+<p>V模式（列）<br>
+进入v模式 移动光标选择区域、<br>
 编程的时候需要进行多行注释：<br>
 1)、ctrl+v 进入列编辑模式<br>
 2)、向下或向上移动光标，把需要注释、编辑的行的开头选中起来<br>
-4)、然后按大写的 I<br>
-5)、再插入注释符或者你需要插入的符号，比如"#"<br>
-6)、再按 Esc,就会全部注释或添加了</p>
-<p>删除：再按 ctrl+v 进入列编辑模式；向下或向上移动光标 ；选中注释部分，然后按 d, 就会删除注释符号。</p>
+4)、然后按大写的I<br>
+5)、再插入注释符或者你需要插入的符号,比如"#"<br>
+6)、再按Esc,就会全部注释或添加了</p>
+<p>删除：再按ctrl+v 进入列编辑模式；向下或向上移动光标 ；选中注释部分,然后按d, 就会删除注释符号。</p>
 <h1 id="三-移动光标">三、移动光标</h1>
 <p>h,j,k,l 上，下，左，右<br>
 ctrl-e 移动页面<br>
@@ -114,20 +114,20 @@ ctrl-b 下翻一页<br>
 ctrl-u 上翻半页<br>
 ctrl-d 下翻半页<br>
 w 跳到下一个字首，按标点或单词分割<br>
-W 跳到下一个字首，长跳，如 end-of-line 被认为是一个字<br>
+W 跳到下一个字首，长跳，如end-of-line被认为是一个字<br>
 e 跳到下一个字尾<br>
 E 跳到下一个字尾，长跳<br>
 b 跳到上一个字<br>
 B 跳到上一个字，长跳<br>
-0 跳至行首，不管有无缩进，就是跳到第 0 个字符<br>
+0 跳至行首，不管有无缩进，就是跳到第0个字符<br>
 ^ 跳至行首的第一个字符<br>
 $ 跳至行尾<br>
 gg 跳至文首<br>
 G 调至文尾<br>
-5gg/5G 调至第 5 行<br>
+5gg/5G 调至第5行<br>
 gd 跳至当前光标所在的变量的声明处<br>
-fx 在当前行中找 x 字符，找到了就跳转至<br>
-; 重复上一个 f 命令，而不用重复的输入 fx</p>
+fx 在当前行中找x字符，找到了就跳转至<br>
+; 重复上一个f命令，而不用重复的输入fx</p>
 <ul>
 <li>查找光标所在处的单词，向下查找<br>
 #查找光标所在处的单词，向上查找</li>
@@ -148,7 +148,7 @@ fx 在当前行中找 x 字符，找到了就跳转至<br>
             <a href="#一-替换文本-">一、替换文本：</a>
         </li>
         <li class="toc__h1">
-            <a href="#二-ctrl-v模式">二、ctrl+v 模式</a>
+            <a href="#二-ctrl-v模式">二、ctrl+v模式</a>
         </li>
         <li class="toc__h1">
             <a href="#三-移动光标">三、移动光标</a>
@@ -312,7 +312,7 @@ fx 在当前行中找 x 字符，找到了就跳转至<br>
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -344,13 +344,13 @@ fx 在当前行中找 x 字符，找到了就跳转至<br>
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1556870431824",
@@ -370,4 +370,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 63ms, 2020/03/26 16:18:20 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 70ms, 2020/03/28 15:04:00 -->

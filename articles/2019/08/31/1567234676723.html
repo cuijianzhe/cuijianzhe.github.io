@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>python 实现 AI 换脸 - 邯城往事</title><meta name="description" content="AI 换脸实现 科普：我们人眼看到连续画面的帧数为 24 帧，大约 0.04 秒，低于 0.04 就会卡成 ppt。电影胶片是 24 帧 也就是每秒钟可以看到 24 张图像 低于这个数值就会感觉画面不流畅 所以以 24 帧为界限 实现思路： 先把源视频文件转换成图片，在用 API 面部识别进行融合更换面部内容变成其他图形，并且利用软件完成对源文件音频的提取，再次把更换过的图片转换成为视频，并和音频进行融合。 原视频转图片 提取原视频音源 图片面部识别并更换 变化后的图片转视频 音频和视频融合 环境：python3.7 + pycharm-2019.1 + FFMPEG FFMPEG 官网 使用实例： 提取音频： FFMPEG -i 1.mp4 -f mp3 1.mp3 2.合成视频和音频 FFMPEG -i 没有声音.mp4 -i 提取生成的.mp3 -strict -2 -f mp4 合成的.mp4 需要的库文件： opencv-python pillow（PIL） subprocess Face++ 面部识别 在此使用旷视科技的人脸识别 API 进行完成。先对图片进行脸部识别并进行融合，看这里： F...."/><meta property="og:description" content="AI 换脸实现 科普：我们人眼看到连续画面的帧数为 24 帧，大约 0.04 秒，低于 0.04 就会卡成 ppt。电影胶片是 24 帧 也就是每秒钟可以看到 24 张图像 低于这个数值就会感觉画面不流畅 所以以 24 帧为界限 实现思路： 先把源视频文件转换成图片，在用 API 面部识别进行融合更换面部内容变成其他图形，并且利用软件完成对源文件音频的提取，再次把更换过的图片转换成为视频，并和音频进行融合。 原视频转图片 提取原视频音源 图片面部识别并更换 变化后的图片转视频 音频和视频融合 环境：python3.7 + pycharm-2019.1 + FFMPEG FFMPEG 官网 使用实例： 提取音频： FFMPEG -i 1.mp4 -f mp3 1.mp3 2.合成视频和音频 FFMPEG -i 没有声音.mp4 -i 提取生成的.mp3 -strict -2 -f mp4 合成的.mp4 需要的库文件： opencv-python pillow（PIL） subprocess Face++ 面部识别 在此使用旷视科技的人脸识别 API 进行完成。先对图片进行脸部识别并进行融合，看这里： F...."/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="python 实现 AI 换脸 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="python 实现 AI 换脸 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>python 实现 AI 换脸 - 邯城往事</title><meta name="description" content="AI 换脸实现 科普：我们人眼看到连续画面的帧数为24 帧，大约 0.04秒，低于0.04就会卡成ppt。电影胶片是24帧 也就是每秒钟可以看到24张图像 低于这个数值就会感觉画面不流畅 所以以24帧为界限 实现思路： 先把源视频文件转换成图片，在用API面部识别进行融合更换面部内容变成其他图形，并且利用软件完成对源文件音频的提取，再次把更换过的图片转换成为视频，并和音频进行融合。 原视频转图片 提取原视频音源 图片面部识别并更换 变化后的图片转视频 音频和视频融合 环境：python3.7 + pycharm-2019.1 + ffmpeg FFmpeg官网 使用实例： 提取音频： ffmpeg -i 1.mp4 -f mp3 1.mp3 2.合成视频和音频 ffmpeg -i 没有声音.mp4 -i 提取生成的.mp3 -strict -2 -f mp4 合成的.mp4 需要的库文件： opencv-python pillow（PIL） subprocess Face++ 面部识别 在此使用旷视科技的人脸识别API进行完成。先对图片进行脸部识别并进行融合，看这里： F...."/><meta property="og:description" content="AI 换脸实现 科普：我们人眼看到连续画面的帧数为24 帧，大约 0.04秒，低于0.04就会卡成ppt。电影胶片是24帧 也就是每秒钟可以看到24张图像 低于这个数值就会感觉画面不流畅 所以以24帧为界限 实现思路： 先把源视频文件转换成图片，在用API面部识别进行融合更换面部内容变成其他图形，并且利用软件完成对源文件音频的提取，再次把更换过的图片转换成为视频，并和音频进行融合。 原视频转图片 提取原视频音源 图片面部识别并更换 变化后的图片转视频 音频和视频融合 环境：python3.7 + pycharm-2019.1 + ffmpeg FFmpeg官网 使用实例： 提取音频： ffmpeg -i 1.mp4 -f mp3 1.mp3 2.合成视频和音频 ffmpeg -i 没有声音.mp4 -i 提取生成的.mp3 -strict -2 -f mp4 合成的.mp4 需要的库文件： opencv-python pillow（PIL） subprocess Face++ 面部识别 在此使用旷视科技的人脸识别API进行完成。先对图片进行脸部识别并进行融合，看这里： F...."/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="python 实现 AI 换脸 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="python 实现 AI 换脸 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html">        <link rel="stylesheet"
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="【福利】python3爬取妹子图" href="https://cuijianzhe.github.io/articles/2019/08/20/1566301838555.html">
             <link rel="next" title="python获取数据实现echarts出图" href="https://cuijianzhe.github.io/articles/2019/09/06/1567757692612.html">
     </head>
@@ -88,10 +88,10 @@
             <p><img src="https://img.hacpai.com/file/2019/09/AI-8c675fea.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="AI.png"></p>
 <h1 id="AI-换脸实现">AI	换脸实现</h1>
 <blockquote>
-<p><strong>科普：我们人眼看到连续画面的帧数为 24 帧，大约 0.04 秒，低于 0.04 就会卡成 ppt。电影胶片是 24 帧 也就是每秒钟可以看到 24 张图像 低于这个数值就会感觉画面不流畅 所以以 24 帧为界限</strong></p>
+<p><strong>科普：我们人眼看到连续画面的帧数为24 帧，大约 0.04秒，低于0.04就会卡成ppt。电影胶片是24帧 也就是每秒钟可以看到24张图像 低于这个数值就会感觉画面不流畅 所以以24帧为界限</strong></p>
 </blockquote>
 <h2 id="实现思路-">实现思路：</h2>
-<p>先把源视频文件转换成图片，在用 API 面部识别进行融合更换面部内容变成其他图形，并且利用软件完成对源文件音频的提取，再次把更换过的图片转换成为视频，并和音频进行融合。</p>
+<p>先把源视频文件转换成图片，在用API面部识别进行融合更换面部内容变成其他图形，并且利用软件完成对源文件音频的提取，再次把更换过的图片转换成为视频，并和音频进行融合。</p>
 <ol>
 <li>原视频转图片</li>
 <li>提取原视频音源</li>
@@ -99,27 +99,27 @@
 <li>变化后的图片转视频</li>
 <li>音频和视频融合</li>
 </ol>
-<h2 id="环境-python3-7---pycharm-2019-1---ffmpeg">环境：python3.7 + pycharm-2019.1 + FFMPEG</h2>
-<p><a href="http://ffmpeg.org/" target="_blank">FFmpeg 官网</a><br>
+<h2 id="环境-python3-7---pycharm-2019-1---ffmpeg">环境：python3.7 + pycharm-2019.1 + ffmpeg</h2>
+<p><a href="http://ffmpeg.org/" target="_blank">FFmpeg官网</a><br>
 使用实例：</p>
 <ol>
 <li>提取音频：<br>
-<strong>FFMPEG -i</strong> 1.mp4  <strong>-f mp3</strong> 1.mp3<br>
+<strong>ffmpeg -i</strong> 1.mp4  <strong>-f mp3</strong> 1.mp3<br>
 2.合成视频和音频<br>
-<strong>FFMPEG -i 没有声音.mp4 -i 提取生成的.mp3 -strict -2 -f mp4 合成的.mp4</strong></li>
+<strong>ffmpeg -i 没有声音.mp4 -i 提取生成的.mp3 -strict -2 -f mp4 合成的.mp4</strong></li>
 </ol>
 <p><strong>需要的库文件：</strong></p>
 <p><strong>opencv-python</strong><br>
 <strong>pillow</strong>（PIL）<br>
 <strong>subprocess</strong></p>
 <h2 id="Face---面部识别">Face++ 面部识别</h2>
-<p>在此使用旷视科技的人脸识别 API 进行完成。先对图片进行脸部识别并进行融合，看这里：</p>
+<p>在此使用旷视科技的人脸识别API进行完成。先对图片进行脸部识别并进行融合，看这里：</p>
 <ul>
-<li><a href="https://www.faceplusplus.com.cn/" target="_blank">Face ++ 官方网址</a></li>
-<li><a href="https://console.faceplusplus.com.cn/documents/4888373" target="_blank">使用脸部识别 API</a></li>
-<li><a href="https://console.faceplusplus.com.cn/documents/20813963" target="_blank">图像识别融合 API</a></li>
+<li><a href="https://www.faceplusplus.com.cn/" target="_blank">Face ++官方网址</a></li>
+<li><a href="https://console.faceplusplus.com.cn/documents/4888373" target="_blank">使用脸部识别API</a></li>
+<li><a href="https://console.faceplusplus.com.cn/documents/20813963" target="_blank">图像识别融合API</a></li>
 </ul>
-<p>这就得注册并且拥有自己的 API key 进行 API 调用了<br>
+<p>这就得注册并且拥有自己的API key进行API调用了<br>
 <img src="https://img.hacpai.com/file/2019/09/image-127d14ee.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <p><del>代码如下：</del></p>
 <pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">requests</span>
@@ -227,7 +227,7 @@
 </code></pre>
 <p>如下：<br>
 <img src="https://img.hacpai.com/file/2019/08/image-b1facb4e.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<h2 id="利用ffmpeg把视频文件中的音源提取出来">利用 FFMPEG 把视频文件中的音源提取出来</h2>
+<h2 id="利用ffmpeg把视频文件中的音源提取出来">利用ffmpeg把视频文件中的音源提取出来</h2>
 <pre><code class="language-python highlight-chroma"><span class="highlight-c1"># 调用ffmpeg获取mp3音频文件</span>
 <span class="highlight-k">def</span> <span class="highlight-nf">video2mp3</span><span class="highlight-p">():</span>
     <span class="highlight-n">outfile_name</span><span class="highlight-o">=</span> <span class="highlight-s1">'ccc'</span> <span class="highlight-o">+</span> <span class="highlight-s1">'.mp3'</span>
@@ -244,7 +244,7 @@
 <p><img src="https://img.hacpai.com/file/2019/09/image-bbd6a7d6.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"><br>
 <img src="https://img.hacpai.com/file/2019/09/image-e76d5543.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <h2 id="整合代码">整合代码</h2>
-<p>到此分拆步骤完成，接下来整合成一个 APP 进行工作</p>
+<p>到此分拆步骤完成，接下来整合成一个APP进行工作</p>
 <pre><code class="language-python highlight-chroma"><span class="highlight-ch">#!/usr/bin/python</span>
 <span class="highlight-c1"># -*- coding: utf-8 -*-</span>
 <span class="highlight-c1"># @Time  : 2019/9/1 8:50</span>
@@ -427,7 +427,7 @@
     <span class="highlight-n">video2mp3</span><span class="highlight-p">(</span><span class="highlight-n">INPUT</span><span class="highlight-p">)</span>
     <span class="highlight-n">video_add_mp3</span><span class="highlight-p">(</span><span class="highlight-n">INPUT</span><span class="highlight-o">.</span><span class="highlight-n">split</span><span class="highlight-p">(</span><span class="highlight-s1">'.'</span><span class="highlight-p">)[</span><span class="highlight-mi">0</span><span class="highlight-p">]</span> <span class="highlight-o">+</span> <span class="highlight-s1">'.avi'</span><span class="highlight-p">,</span> <span class="highlight-n">INPUT</span><span class="highlight-o">.</span><span class="highlight-n">split</span><span class="highlight-p">(</span><span class="highlight-s1">'.'</span><span class="highlight-p">)[</span><span class="highlight-mi">0</span><span class="highlight-p">]</span> <span class="highlight-o">+</span> <span class="highlight-s1">'.mp3'</span><span class="highlight-p">)</span>
 </code></pre>
-<p>在视频截图中的最终效果看起来不怎么好，看来应该是面部特征越明显才能融合越好。不过目前是实现了从宋祖儿---&gt; 朴信惠换脸术，</p>
+<p>在视频截图中的最终效果看起来不怎么好，看来应该是面部特征越明显才能融合越好。不过目前是实现了从宋祖儿---&gt;朴信惠换脸术，</p>
 <p><img src="https://img.hacpai.com/file/2019/09/image-011b7f1c.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <p><img src="https://img.hacpai.com/file/2019/09/image-79037cc6.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
                 <div>
@@ -465,7 +465,7 @@
             <a href="#实现思路-">实现思路：</a>
         </li>
         <li class="toc__h2">
-            <a href="#环境-python3-7---pycharm-2019-1---ffmpeg">环境：python3.7 + pycharm-2019.1 + FFMPEG</a>
+            <a href="#环境-python3-7---pycharm-2019-1---ffmpeg">环境：python3.7 + pycharm-2019.1 + ffmpeg</a>
         </li>
         <li class="toc__h2">
             <a href="#Face---面部识别">Face++ 面部识别</a>
@@ -477,7 +477,7 @@
             <a href="#把图片整合成视频-">把图片整合成视频：</a>
         </li>
         <li class="toc__h2">
-            <a href="#利用ffmpeg把视频文件中的音源提取出来">利用 FFMPEG 把视频文件中的音源提取出来</a>
+            <a href="#利用ffmpeg把视频文件中的音源提取出来">利用ffmpeg把视频文件中的音源提取出来</a>
         </li>
         <li class="toc__h2">
             <a href="#将提取出来的音源和图片合成的视频整合">将提取出来的音源和图片合成的视频整合</a>
@@ -644,7 +644,7 @@
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -676,13 +676,13 @@
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1567234676723",
@@ -702,4 +702,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 71ms, 2020/03/26 16:18:19 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 94ms, 2020/03/28 15:03:59 -->

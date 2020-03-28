@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>LINUX脚本使用实战，持续更新 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="LINUX脚本使用实战，持续更新 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/16/1552705047941.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="LINUX脚本使用实战，持续更新 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/16/1552705047941.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="linux使用sendEmail发送邮件" href="https://cuijianzhe.github.io/articles/2019/03/16/1552701584725.html">
             <link rel="next" title="使用python发送邮件告知SSL证书到期时间" href="https://cuijianzhe.github.io/articles/2019/03/16/1552707556605.html">
     </head>
@@ -94,7 +94,7 @@
 tar zcf /data/rsyslog/<span class="highlight-sb">`</span>date +%F<span class="highlight-sb">`</span>_rsyslog.tar.gz /data/rsyslog    <span class="highlight-c1">##备份日志文件</span>
 find ./ -name <span class="highlight-s2">"*.tar.gz"</span> -mtime +2 -exec rm -rf <span class="highlight-o">{}</span> <span class="highlight-se">\;</span>        <span class="highlight-c1">##筛选出2天以前的文件并且删除</span>
 </code></pre>
-<h2 id="1-1统计文本出现字符的频率-">1.1 统计文本出现字符的频率：</h2>
+<h2 id="1-1统计文本出现字符的频率-">1.1统计文本出现字符的频率：</h2>
 <pre><code class="language-bash highlight-chroma">$ awk -F<span class="highlight-s1">' '</span> <span class="highlight-s1">'{for(i=1;i&lt;=NF;i=i+1){print $i}}'</span> word.txt <span class="highlight-p">|</span>sort<span class="highlight-p">|</span>uniq -c<span class="highlight-p">|</span>sort -nr<span class="highlight-p">|</span>awk -F<span class="highlight-s1">' '</span> <span class="highlight-s1">'{printf("%s %s\n",$2,$1)}'</span>
 
 the <span class="highlight-m">4</span>
@@ -102,7 +102,7 @@ is <span class="highlight-m">3</span>
 sunny <span class="highlight-m">2</span>
 day <span class="highlight-m">1</span>
 </code></pre>
-<h1 id="2-URL检测脚本">2.URL 检测脚本</h1>
+<h1 id="2-URL检测脚本">2.URL检测脚本</h1>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@zabbix shell<span class="highlight-o">]</span><span class="highlight-c1"># vim checkurl.sh</span> 
 <span class="highlight-c1">#!/bin/sh</span>
 <span class="highlight-o">[</span> -f /etc/init.d/functions <span class="highlight-o">]&amp;&amp;</span> . /etc/init.d/functions
@@ -136,7 +136,7 @@ main <span class="highlight-nv">$*</span>
 </code></pre>
 <p>结果测试<br>
 <code>[root@zabbix shell]# sh checkurl.sh www.baidu.com www.baidu.com url                                          [  确定  ] </code></p>
-<h1 id="3-expect脚本">3.expect 脚本</h1>
+<h1 id="3-expect脚本">3.expect脚本</h1>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-cp">#!/usr/bin/expect -f 
 </span><span class="highlight-cp"></span><span class="highlight-nb">set</span> ip <span class="highlight-o">[</span>lindex <span class="highlight-nv">$argv</span> 0<span class="highlight-o">]</span>
 <span class="highlight-c1">#set password [lindex $argv 1]</span>
@@ -156,7 +156,7 @@ send <span class="highlight-s2">"quit\r"</span>
 
 expect eof
 </code></pre>
-<h1 id="4-zabbix数据库备份脚本">4.zabbix 数据库备份脚本</h1>
+<h1 id="4-zabbix数据库备份脚本">4.zabbix数据库备份脚本</h1>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-cp">#!/bin/bash
 </span><span class="highlight-cp"></span><span class="highlight-c1">#--------------------------------------------------------------------------------#</span>
   <span class="highlight-c1">#Shell Command For Backup MySQL Databaes Everyday Automatically By Crontab</span>
@@ -261,7 +261,7 @@ cat /var/log/mesg.tmp &gt;&gt; /var/log/messages
 mv /var/log/mesg.tmp /var/log/messages
 <span class="highlight-nb">echo</span> <span class="highlight-s2">"Logs clean up"</span>
 </code></pre>
-<h1 id="6-nginx日志切割脚本">6.nginx 日志切割脚本</h1>
+<h1 id="6-nginx日志切割脚本">6.nginx日志切割脚本</h1>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-cp">#!/bin/bash
 </span><span class="highlight-cp"></span><span class="highlight-c1">#!/bin/bash</span>
 <span class="highlight-nv">date</span><span class="highlight-o">=</span><span class="highlight-k">$(</span>date +%F -d -1day<span class="highlight-k">)</span>
@@ -286,7 +286,7 @@ cat &gt;&gt;/var/spool/cron/root<span class="highlight-s">&lt;&lt;eof
 </span><span class="highlight-s">eof</span>
 find -type f -mtime +5 <span class="highlight-p">|</span> xargs rm -rf
 </code></pre>
-<h1 id="7-通过snmp时间间隔计算网络设备带宽使用百分比">7.通过 snmp 时间间隔计算网络设备带宽使用百分比</h1>
+<h1 id="7-通过snmp时间间隔计算网络设备带宽使用百分比">7.通过snmp时间间隔计算网络设备带宽使用百分比</h1>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-cp">#!/bin/bash 
 </span><span class="highlight-cp"></span><span class="highlight-nv">RX_pre</span><span class="highlight-o">=</span><span class="highlight-k">$(</span>snmpwalk -v 2c -c limi@2018 10.200.0.1 1.3.6.1.2.1.31.1.1.1.6.6 <span class="highlight-p">|</span> awk <span class="highlight-s1">'{print $4}'</span> <span class="highlight-o">&amp;&amp;</span> sleep 1<span class="highlight-k">)</span>
 <span class="highlight-nv">RX_next</span><span class="highlight-o">=</span><span class="highlight-k">$(</span>snmpwalk -v 2c -c limi@2018 10.200.0.1 1.3.6.1.2.1.31.1.1.1.6.6 <span class="highlight-p">|</span> awk <span class="highlight-s1">'{print $4}'</span><span class="highlight-k">)</span>
@@ -303,8 +303,8 @@ awk  <span class="highlight-s1">'BEGIN{printf"%0.2f",('</span><span class="highl
 <span class="highlight-nv">RX</span><span class="highlight-o">=</span><span class="highlight-k">$((</span><span class="highlight-si">${</span><span class="highlight-nv">RX_next</span><span class="highlight-si">}</span><span class="highlight-o">-</span><span class="highlight-si">${</span><span class="highlight-nv">RX_pre</span><span class="highlight-si">}</span><span class="highlight-k">))</span>
 <span class="highlight-nb">echo</span> <span class="highlight-s2">"scale=2;</span><span class="highlight-nv">$RX</span><span class="highlight-s2">/20971520*100"</span><span class="highlight-p">|</span>bc
 </code></pre>
-<p>此脚本：带宽 20M 专线，转化 bps 为 20x1024x1024=20971520bps</p>
-<p>通过 snmp 监测 L2TP 登陆用户名称和 ip：</p>
+<p>此脚本：带宽20M专线，转化bps为20x1024x1024=20971520bps</p>
+<p>通过snmp监测L2TP登陆用户名称和ip：</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-cp">#!/bin/bash
 </span><span class="highlight-cp"></span>
 <span class="highlight-nv">date</span><span class="highlight-o">=</span><span class="highlight-sb">`</span>date +<span class="highlight-s1">'%Y-%m-%d %H:%M:%S'</span><span class="highlight-sb">`</span>
@@ -325,7 +325,7 @@ awk  <span class="highlight-s1">'BEGIN{printf"%0.2f",('</span><span class="highl
 当前登录IP：”103.219.187.194 111.194.46.165 103.219.187.194
 <span class="highlight-o">================================================================================================================</span>
 </code></pre>
-<h1 id="8-zabbix自动发现之拼接json格式">8.zabbix 自动发现之拼接 JSON 格式</h1>
+<h1 id="8-zabbix自动发现之拼接json格式">8.zabbix自动发现之拼接json格式</h1>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-cp">#!/bin/bash
 </span><span class="highlight-cp"></span>
 <span class="highlight-nv">id</span><span class="highlight-o">=</span><span class="highlight-k">$(</span>snmpwalk -v 2c -c limi@2018  10.200.252.8 1.3.6.1.4.1.2011.6.139.13.3.10.1.5 <span class="highlight-p">|</span> cut -f1 -d <span class="highlight-s2">"="</span> <span class="highlight-p">|</span> cut -f10 -d <span class="highlight-s2">"."</span><span class="highlight-k">)</span>
@@ -350,7 +350,7 @@ awk  <span class="highlight-s1">'BEGIN{printf"%0.2f",('</span><span class="highl
 
 {"data":[ {"{#APID}":"0","{#APNAME}":"446a-2e13-01e0" },{"{#APID}":"1","{#APNAME}":"446a-2e13-0900" },{"{#APID}":"2","{#APNAME}":"446a-2e13-01c0" },{"{#APID}":"3","{#APNAME}":"446a-2e13-01a0" },{"{#APID}":"4","{#APNAME}":"446a-2e13-0260" },{"{#APID}":"5","{#APNAME}":"446a-2e13-1220" },{"{#APID}":"6","{#APNAME}":"446a-2e17-db80" },{"{#APID}":"7","{#APNAME}":"446a-2e17-dac0" },{"{#APID}":"8","{#APNAME}":"446a-2e17-db00" },{"{#APID}":"9","{#APNAME}":"3F_DONG" },{"{#APID}":"10","{#APNAME}":"446a-2e17-db40" },{"{#APID}":"11","{#APNAME}":"446a-2e17-da60" },{"{#APID}":"12","{#APNAME}":"446a-2e13-2660" },{"{#APID}":"13","{#APNAME}":"446a-2e13-2680" },{"{#APID}":"14","{#APNAME}":"446a-2e13-0e20" },{"{#APID}":"15","{#APNAME}":"446a-2e13-25e0" },{"{#APID}":"16","{#APNAME}":"446a-2e13-2620" },{"{#APID}":"17","{#APNAME}":"446a-2e13-0160" },{"{#APID}":"18","{#APNAME}":"446a-2e13-0980" },{"{#APID}":"19","{#APNAME}":"446a-2e13-2580" },{"{#APID}":"20","{#APNAME}":"446a-2e13-18e0" },{"{#APID}":"21","{#APNAME}":"446a-2e13-2600" },{"{#APID}":"22","{#APNAME}":"446a-2e20-6780" },{"{#APID}":"23","{#APNAME}":"446a-2e20-6760" } ]}
 </code></pre>
-<p>可用 python tools 判断是否是 JSON 格式。</p>
+<p>可用python tools判断是否是json格式。</p>
 <pre><code class="language-bash highlight-chroma">$ sh /usr/lib/zabbix/externalscripts/apdiscovery.sh <span class="highlight-p">|</span> python -m json.tool 
 
 <span class="highlight-o">{</span>
@@ -366,7 +366,7 @@ awk  <span class="highlight-s1">'BEGIN{printf"%0.2f",('</span><span class="highl
     <span class="highlight-o">]</span>
 <span class="highlight-o">}</span>
 </code></pre>
-<h2 id="8-1-python3写法json">8.1 python3 写法 JSON</h2>
+<h2 id="8-1-python3写法json">8.1 python3写法json</h2>
 <pre><code class="language-python highlight-chroma"><span class="highlight-ch">#!/bin/env python3</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">json</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">os</span>
@@ -396,7 +396,7 @@ awk  <span class="highlight-s1">'BEGIN{printf"%0.2f",('</span><span class="highl
     <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">dumps</span><span class="highlight-p">({</span><span class="highlight-s1">'data'</span><span class="highlight-p">:</span><span class="highlight-n">ap_list</span><span class="highlight-p">},</span><span class="highlight-n">sort_keys</span><span class="highlight-o">=</span><span class="highlight-bp">True</span><span class="highlight-p">,</span><span class="highlight-n">indent</span><span class="highlight-o">=</span><span class="highlight-mi">4</span><span class="highlight-p">,</span><span class="highlight-n">separators</span><span class="highlight-o">=</span><span class="highlight-p">(</span><span class="highlight-s1">','</span><span class="highlight-p">,</span><span class="highlight-s1">':'</span><span class="highlight-p">)))</span>
 
 </code></pre>
-<h1 id="9--zabbix监控--端口自动发现">9. zabbix 监控  端口自动发现</h1>
+<h1 id="9--zabbix监控--端口自动发现">9. zabbix监控  端口自动发现</h1>
 <pre><code class="language-python highlight-chroma"><span class="highlight-ch">#!/bin/env python3</span>
 
 <span class="highlight-kn">import</span> <span class="highlight-nn">subprocess</span>
@@ -428,7 +428,7 @@ awk  <span class="highlight-s1">'BEGIN{printf"%0.2f",('</span><span class="highl
 </code></pre>
 <p>测试：<br>
 <img src="https://img.hacpai.com/file/2019/09/image-4b2b4d9b.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>端口自动发现之 shell 脚本：</p>
+<p>端口自动发现之shell脚本：</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-cp">#!/bin/bash
 </span><span class="highlight-cp"></span><span class="highlight-nv">portarray</span><span class="highlight-o">=(</span><span class="highlight-sb">`</span>sudo netstat -tnlp<span class="highlight-p">|</span>egrep -i <span class="highlight-s2">"</span><span class="highlight-nv">$1</span><span class="highlight-s2">"</span><span class="highlight-p">|</span>awk <span class="highlight-o">{</span><span class="highlight-s1">'print $4'</span><span class="highlight-o">}</span><span class="highlight-p">|</span>awk -F<span class="highlight-s1">':'</span> <span class="highlight-s1">'{if ($NF~/^[0-9]*$/) print$NF}'</span><span class="highlight-p">|</span>sort<span class="highlight-p">|</span>uniq<span class="highlight-sb">`</span><span class="highlight-o">)</span>
 <span class="highlight-nv">length</span><span class="highlight-o">=</span><span class="highlight-si">${#</span><span class="highlight-nv">portarray</span><span class="highlight-p">[@]</span><span class="highlight-si">}</span>
@@ -478,7 +478,7 @@ awk  <span class="highlight-s1">'BEGIN{printf"%0.2f",('</span><span class="highl
 <span class="highlight-k">else</span><span class="highlight-p">:</span>
     <span class="highlight-k">print</span> <span class="highlight-mi">200</span>
 </code></pre>
-<h1 id="10--查看nginx流量">10. 查看 nginx 流量</h1>
+<h1 id="10--查看nginx流量">10. 查看nginx流量</h1>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-cp">#!/bin/bash 
 </span><span class="highlight-cp"></span>
 <span class="highlight-nb">exec</span> &lt; access.log
@@ -495,7 +495,7 @@ awk  <span class="highlight-s1">'BEGIN{printf"%0.2f",('</span><span class="highl
 <span class="highlight-k">done</span>
 <span class="highlight-o">[</span> -n <span class="highlight-s2">"</span><span class="highlight-nv">$sum</span><span class="highlight-s2">"</span> <span class="highlight-o">]</span> <span class="highlight-o">&amp;&amp;</span> <span class="highlight-nb">echo</span> <span class="highlight-nv">$su</span>
 </code></pre>
-<h1 id="11---nmap扫描存活主机以及端口">11.  <strong>nmap 扫描存活主机以及端口</strong></h1>
+<h1 id="11---nmap扫描存活主机以及端口">11.  <strong>nmap扫描存活主机以及端口</strong></h1>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-cp">#!/bin/bash
 </span><span class="highlight-cp"></span>
 <span class="highlight-nv">ip</span><span class="highlight-o">=</span><span class="highlight-s2">"192.168.51.200-214"</span>
@@ -542,40 +542,40 @@ Port
             <a href="#1-自动备份系统文件">1.自动备份系统文件</a>
         </li>
         <li class="toc__h2">
-            <a href="#1-1统计文本出现字符的频率-">1.1 统计文本出现字符的频率：</a>
+            <a href="#1-1统计文本出现字符的频率-">1.1统计文本出现字符的频率：</a>
         </li>
         <li class="toc__h1">
-            <a href="#2-URL检测脚本">2.URL 检测脚本</a>
+            <a href="#2-URL检测脚本">2.URL检测脚本</a>
         </li>
         <li class="toc__h1">
-            <a href="#3-expect脚本">3.expect 脚本</a>
+            <a href="#3-expect脚本">3.expect脚本</a>
         </li>
         <li class="toc__h1">
-            <a href="#4-zabbix数据库备份脚本">4.zabbix 数据库备份脚本</a>
+            <a href="#4-zabbix数据库备份脚本">4.zabbix数据库备份脚本</a>
         </li>
         <li class="toc__h1">
             <a href="#5-系统日志文件清除">5.系统日志文件清除</a>
         </li>
         <li class="toc__h1">
-            <a href="#6-nginx日志切割脚本">6.nginx 日志切割脚本</a>
+            <a href="#6-nginx日志切割脚本">6.nginx日志切割脚本</a>
         </li>
         <li class="toc__h1">
-            <a href="#7-通过snmp时间间隔计算网络设备带宽使用百分比">7.通过 snmp 时间间隔计算网络设备带宽使用百分比</a>
+            <a href="#7-通过snmp时间间隔计算网络设备带宽使用百分比">7.通过snmp时间间隔计算网络设备带宽使用百分比</a>
         </li>
         <li class="toc__h1">
-            <a href="#8-zabbix自动发现之拼接json格式">8.zabbix 自动发现之拼接 JSON 格式</a>
+            <a href="#8-zabbix自动发现之拼接json格式">8.zabbix自动发现之拼接json格式</a>
         </li>
         <li class="toc__h2">
-            <a href="#8-1-python3写法json">8.1 python3 写法 JSON</a>
+            <a href="#8-1-python3写法json">8.1 python3写法json</a>
         </li>
         <li class="toc__h1">
-            <a href="#9--zabbix监控--端口自动发现">9. zabbix 监控 端口自动发现</a>
+            <a href="#9--zabbix监控--端口自动发现">9. zabbix监控 端口自动发现</a>
         </li>
         <li class="toc__h1">
-            <a href="#10--查看nginx流量">10. 查看 nginx 流量</a>
+            <a href="#10--查看nginx流量">10. 查看nginx流量</a>
         </li>
         <li class="toc__h1">
-            <a href="#11---nmap扫描存活主机以及端口">11. nmap 扫描存活主机以及端口</a>
+            <a href="#11---nmap扫描存活主机以及端口">11. nmap扫描存活主机以及端口</a>
         </li>
 </ul>    </div>
     <div class="body--gray post__gray">
@@ -736,7 +736,7 @@ Port
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -768,13 +768,13 @@ Port
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1552705047941",
@@ -794,4 +794,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 62ms, 2020/03/26 16:18:20 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 68ms, 2020/03/28 15:04:01 -->

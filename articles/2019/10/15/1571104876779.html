@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>openstack系列-neutron系列安装部署 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="openstack系列-neutron系列安装部署 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/15/1571104876779.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="openstack系列-neutron系列安装部署 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/15/1571104876779.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="openstack系列-nova节点部署" href="https://cuijianzhe.github.io/articles/2019/10/13/1570962040262.html">
             <link rel="next" title="openstack系列-dashboard部署" href="https://cuijianzhe.github.io/articles/2019/10/15/1571128802984.html">
     </head>
@@ -89,7 +89,7 @@
         </div>
         <div class="vditor-reset">
             <h1 id="neutron-部署"><a href="https://docs.openstack.org/neutron/rocky/install/controller-install-rdo.html" target="_blank">neutron 部署</a></h1>
-<h2 id="mysql-库创建">MySQL 库创建</h2>
+<h2 id="mysql-库创建">mysql 库创建</h2>
 <pre><code class="highlight-chroma">CREATE DATABASE neutron;
  GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'localhost' \
   IDENTIFIED BY 'neutron';
@@ -121,7 +121,7 @@ Repeat User Password:
 <pre><code class="highlight-chroma">openstack role add --project service --user neutron admin
 </code></pre>
 <ul>
-<li>创建 neutron 服务实体</li>
+<li>创建neutron服务实体</li>
 </ul>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># openstack service create --name neutron \</span>
 &gt;   --description <span class="highlight-s2">"OpenStack Networking"</span> network
@@ -135,7 +135,7 @@ Repeat User Password:
 <span class="highlight-p">|</span> <span class="highlight-nb">type</span>        <span class="highlight-p">|</span> network                          <span class="highlight-p">|</span>
 +-------------+----------------------------------+
 </code></pre>
-<h2 id="创建网络服务API-endpoint">创建网络服务 API endpoint</h2>
+<h2 id="创建网络服务API-endpoint">创建网络服务API endpoint</h2>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1">#   openstack endpoint create --region RegionOne \</span>
 &gt;   network public http://10.200.51.100:9696
 +--------------+----------------------------------+
@@ -192,11 +192,11 @@ Repeat User Password:
 <li><a href="https://docs.openstack.org/neutron/rocky/install/controller-install-option1-rdo.html" target="_blank">Networking Option 1: Provider networks</a></li>
 <li><a href="https://docs.openstack.org/neutron/rocky/install/controller-install-option2-rdo.html" target="_blank">Networking Option 2: Self-service networks</a></li>
 </ul>
-<p>选项 1 部署了最简单的架构，该架构仅支持将实例附加到提供商（外部）网络。没有自助（私有）网络，路由器或浮动 IP 地址。只有该 <code>admin</code> 特权用户或其他特权用户才能管理提供商网络。</p>
+<p>选项1部署了最简单的架构，该架构仅支持将实例附加到提供商（外部）网络。没有自助（私有）网络，路由器或浮动IP地址。只有该<code>admin</code>特权用户或其他特权用户才能管理提供商网络。</p>
 <pre><code class="highlight-chroma">yum install openstack-neutron openstack-neutron-ml2 \
   openstack-neutron-linuxbridge ebtables -y
 </code></pre>
-<h3 id="编辑-文件">编辑 <code>/etc/neutron/neutron.conf</code> 文件</h3>
+<h3 id="编辑-文件">编辑 <code>/etc/neutron/neutron.conf</code>文件</h3>
 <ul>
 <li>在[database]部分中，配置数据库访问：</li>
 </ul>
@@ -229,7 +229,7 @@ connection = mysql+pymysql://neutron:neutron@10.200.51.100/neutron
 <span class="highlight-nv">password</span> <span class="highlight-o">=</span> <span class="highlight-m">598941324</span>
 </code></pre>
 <ul>
-<li>在[default]和[nova]部分中，配置 networking 以通知 compute 网络拓扑更改</li>
+<li>在[default]和[nova]部分中，配置networking以通知compute网络拓扑更改</li>
 </ul>
 <pre><code class="highlight-chroma">[DEFAULT]
 notify_nova_on_port_status_changes = true
@@ -251,10 +251,10 @@ password = 598941324
 <pre><code class="highlight-chroma">[oslo_concurrency]
 lock_path = /var/lib/neutron/tmp
 </code></pre>
-<h3 id="配置模块化第2层-ML2-插件">配置模块化第 2 层（ML2）插件</h3>
+<h3 id="配置模块化第2层-ML2-插件">配置模块化第2层（ML2）插件</h3>
 <p>####配置 /etc/neutron/plugins/ml2/ml2_conf.ini</p>
 <ul>
-<li>在[ML2]部分中，启用平面和 VLAN 网络</li>
+<li>在[ML2]部分中，启用平面和VLAN网络</li>
 </ul>
 <pre><code class="highlight-chroma">[ml2]
 type_drivers = flat,vlan
@@ -266,7 +266,7 @@ type_drivers = flat,vlan
 tenant_network_types =
 </code></pre>
 <ul>
-<li>在[ml2]部分中，启用 Linux 网桥机制</li>
+<li>在[ml2]部分中，启用Linux网桥机制</li>
 </ul>
 <pre><code class="highlight-chroma">[ml2]
 mechanism_drivers = linuxbridge
@@ -288,13 +288,13 @@ extension_drivers = port_security
 flat_networks = provider
 </code></pre>
 <ul>
-<li>在[SecurityGroup]部分中，启用 IPset 以提高安全组规则的效率</li>
+<li>在[SecurityGroup]部分中，启用IPset以提高安全组规则的效率</li>
 </ul>
 <pre><code class="highlight-chroma">[securitygroup]
 # ...
 enable_ipset = true
 </code></pre>
-<h4 id="配置Linux网桥代理">配置 Linux 网桥代理</h4>
+<h4 id="配置Linux网桥代理">配置Linux网桥代理</h4>
 <p>编辑/etc/neutron/plugins/ml2/linuxbridge_agent.ini</p>
 <ul>
 <li>在[Linux_Bridge]部分中，将提供程序虚拟网络映射到提供程序物理网络接口：</li>
@@ -303,20 +303,20 @@ enable_ipset = true
 physical_interface_mappings = provider:ens33
 </code></pre>
 <ul>
-<li>在[vxlan]部分，禁用 vxlan 覆盖网络：</li>
+<li>在[vxlan]部分，禁用vxlan覆盖网络：</li>
 </ul>
 <pre><code class="highlight-chroma">[vxlan]
 enable_vxlan = false
 </code></pre>
 <ul>
-<li>在[SecurityGroup]部分中，启用安全组并配置 Linux 网桥 iptables 防火墙驱动程序：</li>
+<li>在[SecurityGroup]部分中，启用安全组并配置Linux网桥iptables防火墙驱动程序：</li>
 </ul>
 <pre><code class="highlight-chroma">[securitygroup]
 enable_security_group = true
 firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
 </code></pre>
 <ul>
-<li>通过验证以下所有 sysctl 值均设置为 1，确保 Linux 操作系统内核支持网络桥筛选器</li>
+<li>通过验证以下所有sysctl值均设置为1，确保Linux操作系统内核支持网络桥筛选器</li>
 </ul>
 <pre><code class="language-bash highlight-chroma">vim /etc/sysctl.conf
 <span class="highlight-c1">#...</span>
@@ -328,16 +328,16 @@ net.bridge.bridge-nf-call-ip6tables <span class="highlight-o">=</span> <span cla
 net.bridge.bridge-nf-call-iptables <span class="highlight-o">=</span> <span class="highlight-m">1</span>
 </code></pre>
 <blockquote>
-<p>要启用网桥支持，通常需要加载 bru netfilter 内核模块。</p>
+<p>要启用网桥支持，通常需要加载bru netfilter内核模块.</p>
 </blockquote>
 <pre><code class="highlight-chroma">[root@linux-node1 ~]#  modprobe br_netfilter
 [root@linux-node1 ~]#  ls /proc/sys/net/bridge
 bridge-nf-call-arptables  bridge-nf-call-ip6tables  bridge-nf-call-iptables  bridge-nf-filter-pppoe-tagged  bridge-nf-filter-vlan-tagged  bridge-nf-pass-vlan-input-dev
 </code></pre>
-<h3 id="配置DHCP代理">配置 DHCP 代理</h3>
-<p>编辑 <code>/etc/neutron/dhcp_agent.ini</code> 文件</p>
+<h3 id="配置DHCP代理">配置DHCP代理</h3>
+<p>编辑<code>/etc/neutron/dhcp_agent.ini</code>文件</p>
 <ul>
-<li>在[默认]部分中，配置 Linux 网桥接口驱动程序 dnsmasq dhcp 驱动程序，并启用隔离元数据，以便提供程序网络上的实例可以通过网络访问元数据：</li>
+<li>在[默认]部分中，配置Linux网桥接口驱动程序dnsmasq dhcp驱动程序，并启用隔离元数据，以便提供程序网络上的实例可以通过网络访问元数据：</li>
 </ul>
 <pre><code class="highlight-chroma">[DEFAULT]
 # ...
@@ -346,7 +346,7 @@ dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
 enable_isolated_metadata = true
 </code></pre>
 <h3 id="Networking-Option-2--Self-service-networks"><a href="https://docs.openstack.org/neutron/rocky/install/controller-install-option2-rdo.html" target="_blank">Networking Option 2: Self-service networks</a></h3>
-<p>网络配置选项 2：</p>
+<p>网络配置选项2：</p>
 <h3 id="配置元数据代理">配置元数据代理</h3>
 <ul>
 <li>在[DEFAULT]部分中，配置元数据主机和共享密钥：</li>
@@ -357,7 +357,7 @@ metadata_proxy_shared_secret = 598941324
 </code></pre>
 <h3 id="将计算服务配置为使用网络服务">将计算服务配置为使用网络服务</h3>
 <ul>
-<li>编辑/etc/nova/nova.conf 文件</li>
+<li>编辑/etc/nova/nova.conf文件</li>
 </ul>
 <pre><code class="highlight-chroma">[neutron]
 url = http://10.200.51.100:9696
@@ -374,7 +374,7 @@ metadata_proxy_shared_secret = 598941324
 </code></pre>
 <h3 id="最后安装">最后安装</h3>
 <ul>
-<li>网络服务初始化脚本需要一个指向 ml2 插件配置文件/etc/neutron/plugins/ml2/ml2_conf.ini 的符号链接/etc/neutron/plugins.ini。如果此符号链接不存在，则使用以下命令创建它：</li>
+<li>网络服务初始化脚本需要一个指向ml2插件配置文件/etc/neutron/plugins/ml2/ml2_conf.ini的符号链接/etc/neutron/plugins.ini。如果此符号链接不存在，则使用以下命令创建它：</li>
 </ul>
 <pre><code class="highlight-chroma">ln -s /etc/neutron/plugins/ml2/ml2_conf.ini /etc/neutron/plugin.ini
 </code></pre>
@@ -383,7 +383,7 @@ metadata_proxy_shared_secret = 598941324
   --config-file /etc/neutron/plugins/ml2/ml2_conf.ini upgrade head" neutron
 </code></pre>
 <ul>
-<li>重新启动计算 API 服务：</li>
+<li>重新启动计算API服务：</li>
 </ul>
 <pre><code class="highlight-chroma">systemctl restart openstack-nova-api.service
 </code></pre>
@@ -397,14 +397,14 @@ metadata_proxy_shared_secret = 598941324
   neutron-linuxbridge-agent.service neutron-dhcp-agent.service \
   neutron-metadata-agent.service
 </code></pre>
-<p><del>对于网络选项 2，还启用并启动第 3 层服务</del></p>
+<p><del>对于网络选项2，还启用并启动第3层服务</del></p>
 <pre><code class="highlight-chroma"># systemctl enable neutron-l3-agent.service
 # systemctl start neutron-l3-agent.service
 </code></pre>
 <blockquote>
 <p>这里我是第一种</p>
 </blockquote>
-<h1 id="neutron计算节点安装"><a href="https://docs.openstack.org/neutron/rocky/install/compute-install-rdo.html" target="_blank">neutron 计算节点安装</a></h1>
+<h1 id="neutron计算节点安装"><a href="https://docs.openstack.org/neutron/rocky/install/compute-install-rdo.html" target="_blank">neutron计算节点安装</a></h1>
 <pre><code class="highlight-chroma">yum install openstack-neutron-linuxbridge ebtables ipset
 </code></pre>
 <h2 id="配置公共组件">配置公共组件</h2>
@@ -442,8 +442,8 @@ lock_path = /var/lib/neutron/tmp
 <li><a href="https://docs.openstack.org/neutron/rocky/install/compute-install-option2-rdo.html" target="_blank">Networking Option 2: Self-service networks</a></li>
 </ul>
 <h3 id="toc_h3_17"><a href="https://docs.openstack.org/neutron/rocky/install/compute-install-option1-rdo.html" target="_blank"></a></h3>
-<h4 id="配置Linux网桥代理">配置 Linux 网桥代理</h4>
-<p>编辑 <code>/etc/neutron/plugins/ml2/linuxbridge_agent.ini</code> 文件</p>
+<h4 id="配置Linux网桥代理">配置Linux网桥代理</h4>
+<p>编辑 <code>/etc/neutron/plugins/ml2/linuxbridge_agent.ini</code>文件</p>
 <ul>
 <li>[Linux_Bridge]部分中，将提供程序虚拟网络映射到提供程序物理网络接口</li>
 </ul>
@@ -451,13 +451,13 @@ lock_path = /var/lib/neutron/tmp
 physical_interface_mappings = provider:ens33
 </code></pre>
 <ul>
-<li>在[vxlan]部分，禁用 vxlan 覆盖网络：</li>
+<li>在[vxlan]部分，禁用vxlan覆盖网络：</li>
 </ul>
 <pre><code class="highlight-chroma">[vxlan]
 enable_vxlan = false
 </code></pre>
 <ul>
-<li>在[SecurityGroup]部分中，启用安全组并配置 Linux 网桥 iptables 防火墙驱动程序：</li>
+<li>在[SecurityGroup]部分中，启用安全组并配置Linux网桥iptables防火墙驱动程序：</li>
 </ul>
 <pre><code class="highlight-chroma">[securitygroup]
 # ...
@@ -465,7 +465,7 @@ enable_security_group = true
 firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
 </code></pre>
 <ul>
-<li>通过验证以下所有 sysctl 值均设置为 1，确保 Linux 操作系统内核支持网络桥筛选器：</li>
+<li>通过验证以下所有sysctl值均设置为1，确保Linux操作系统内核支持网络桥筛选器：</li>
 </ul>
 <pre><code class="highlight-chroma">[root@linux-node2 ~]# modprobe br_netfilter
 [root@linux-node2 ~]# ls /proc/sys/net/bridge
@@ -482,7 +482,7 @@ net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 </code></pre>
 <ul>
-<li>编辑/etc/nova/nova.conf 文件并完成以下操作：</li>
+<li>编辑/etc/nova/nova.conf文件并完成以下操作：</li>
 </ul>
 <pre><code class="highlight-chroma">[neutron]
 url = http://10.200.51.100:9696
@@ -504,14 +504,14 @@ password = 598941324
 <pre><code class="highlight-chroma">systemctl restart openstack-nova-compute.service
 </code></pre>
 <ul>
-<li>启动 Linux 网桥代理并将其配置为在系统引导时启动</li>
+<li>启动Linux网桥代理并将其配置为在系统引导时启动</li>
 </ul>
 <pre><code class="highlight-chroma">systemctl enable neutron-linuxbridge-agent.service 
 systemctl start neutron-linuxbridge-agent.service
 </code></pre>
 <h2 id="验证操作"><a href="https://docs.openstack.org/neutron/rocky/install/verify.html" target="_blank">验证操作</a></h2>
 <ul>
-<li>列出 neutron 验证成功的代理</li>
+<li>列出neutron验证成功的代理</li>
 </ul>
 <pre><code class="highlight-chroma">[root@linux-node1 ~]# openstack network agent list
 +--------------------------------------+--------------------+-------------+-------------------+-------+-------+---------------------------+
@@ -525,7 +525,7 @@ systemctl start neutron-linuxbridge-agent.service
 </code></pre>
 <h1 id="创建网络"><a href="https://docs.openstack.org/install-guide/launch-instance-networks-provider.html" target="_blank">创建网络</a></h1>
 <blockquote>
-<p>首先需要创建一个虚拟网络，根据配置 Neutron 时选择的网络选项进行虚拟网络的配置。</p>
+<p>首先需要创建一个虚拟网络，根据配置Neutron时选择的网络选项进行虚拟网络的配置。</p>
 </blockquote>
 <h2 id="创建网络">创建网络</h2>
 <pre><code class="highlight-chroma">[root@linux-node1 ~]# . admin-openrc 
@@ -565,14 +565,14 @@ systemctl start neutron-linuxbridge-agent.service
 +---------------------------+--------------------------------------+
 </code></pre>
 <blockquote>
-<p>--share 选项允许所有项目使用虚拟网络。<br>
---external 选项将虚拟网络定义为外部网络。如果希望创建内部网络，可以使用--internal 代替。默认值为内部。<br>
---provider physical network provider 为在/etc/neutron/plugins/ml2/ml2_conf.ini 中配置的 flat_networks。</p>
+<p>--share选项允许所有项目使用虚拟网络。<br>
+--external选项将虚拟网络定义为外部网络。如果希望创建内部网络，可以使用--internal代替。默认值为内部。<br>
+--provider physical network provider 为在/etc/neutron/plugins/ml2/ml2_conf.ini中配置的flat_networks。</p>
 </blockquote>
 <pre><code class="highlight-chroma">[ml2_type_flat]  
 flat_networks = provider  
 </code></pre>
-<p>--provider network type flat 选项使用来自以下文件的信息将扁平虚拟网络连接到主机上 ens0 接口上的扁平（本机/未标记）物理网络：在 /etc/neutron/plugins/ml2/linuxbridge_agent.ini</p>
+<p>--provider network type flat选项使用来自以下文件的信息将扁平虚拟网络连接到主机上ens0接口上的扁平（本机/未标记）物理网络：在 /etc/neutron/plugins/ml2/linuxbridge_agent.ini</p>
 <pre><code class="highlight-chroma"> [linux_bridge]
 physical_interface_mappings = provider:enp61s0f0
 </code></pre>
@@ -607,10 +607,10 @@ physical_interface_mappings = provider:enp61s0f0
 +-------------------+--------------------------------------+
 </code></pre>
 <blockquote>
-<p>PROVIDER_NETWORK_CIDR 采用物理网络上的 CIDR 子网表示。<br>
-<code>START_IP_ADDRESS</code> and <code>END_IP_ADDRESS</code>：子网中要为实例分配的范围的第一个和最后一个 IP 地址。此范围不得包含任何现有的活动 IP 地址。<br>
-DNS_RESOLVER 使用 DNS 解析程序的 IP 地址。在大多数情况下，可以使用主机上/etc/resolv.conf 文件中的一个。<br>
-<code>PROVIDER_NETWORK_GATEWAY</code> 提供程序网络上的网关 IP 地址，通常是“.1”IP 地址。</p>
+<p>PROVIDER_NETWORK_CIDR 采用物理网络上的CIDR子网表示。<br>
+<code>START_IP_ADDRESS</code> and <code>END_IP_ADDRESS</code>：子网中要为实例分配的范围的第一个和最后一个IP地址。此范围不得包含任何现有的活动IP地址。<br>
+DNS_RESOLVER使用DNS解析程序的IP地址。在大多数情况下，可以使用主机上/etc/resolv.conf文件中的一个。<br>
+<code>PROVIDER_NETWORK_GATEWAY</code> 提供程序网络上的网关IP地址，通常是“.1”IP地址。</p>
 </blockquote>
 <p>验证：</p>
 <pre><code class="highlight-chroma">[root@linux-node1 ~]# ip netns
@@ -658,10 +658,10 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
 +-------+-------------------------------------------------+
 </code></pre>
 <h3 id="添加安全组规则">添加安全组规则</h3>
-<p>默认情况下，默认安全组应用于所有实例，并包含拒绝远程访问实例的防火墙规则。对于 cirros 等 Linux 映像，我们建议至少允许 icmp（ping）和 secure shell（SSH）。</p>
+<p>默认情况下，默认安全组应用于所有实例，并包含拒绝远程访问实例的防火墙规则。对于cirros等linux映像，我们建议至少允许icmp（ping）和secure shell（ssh）。</p>
 <ul>
 <li>向默认安全组添加规则：<br>
-允许 ICMP（ping）：</li>
+允许ICMP（ping）：</li>
 </ul>
 <pre><code class="highlight-chroma">[root@linux-node1 ~]#  openstack security group rule create --proto icmp default
 +-------------------+--------------------------------------+
@@ -684,7 +684,7 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
 | updated_at        | 2019-10-19T06:31:41Z                 |
 +-------------------+--------------------------------------+
 </code></pre>
-<p>允许安全（SSH）访问：</p>
+<p>允许安全（ssh）访问：</p>
 <pre><code class="highlight-chroma">[root@linux-node1 ~]# openstack security group rule create --proto tcp --dst-port 22 default
 +-------------------+--------------------------------------+
 | Field             | Value                                |
@@ -708,7 +708,7 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
 </code></pre>
 <h3 id="启动网络实例"><a href="https://docs.openstack.org/install-guide/launch-instance-provider.html" target="_blank">启动网络实例</a></h3>
 <ul>
-<li>Flavor 指定了一个虚拟资源分配配置文件，其中包括处理器、内存和存储。列出可用的口味：</li>
+<li>Flavor指定了一个虚拟资源分配配置文件，其中包括处理器、内存和存储。列出可用的口味：</li>
 </ul>
 <pre><code class="highlight-chroma">[root@linux-node1 ~]# . myuser-openrc 
 [root@linux-node1 ~]#  openstack flavor list
@@ -795,7 +795,7 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
 </code></pre>
 <h3 id="使用虚拟主控台存取执行个体">使用虚拟主控台存取执行个体</h3>
 <ul>
-<li>获取实例的虚拟网络计算（VNC）会话 URL 并从 Web 浏览器访问它：</li>
+<li>获取实例的虚拟网络计算（VNC）会话URL并从Web浏览器访问它：</li>
 </ul>
 <h2 id="创建实例-"><a href="https://docs.openstack.org/install-guide/launch-instance.html#launch-instance-networks" target="_blank">创建实例：</a></h2>
 <pre><code class="highlight-chroma">[root@controller ~]# openstack flavor create --id 0 --vcpus 1 --ram 64 --disk 1 m1.nano
@@ -816,7 +816,7 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
 +----------------------------+---------+
 </code></pre>
 <ul>
-<li>创建 SSH key</li>
+<li>创建ssh key</li>
 </ul>
 <pre><code class="highlight-chroma">[root@controller ~]#  ssh-keygen -q -N ""
 Enter file in which to save the key (/root/.ssh/id_rsa): 
@@ -837,7 +837,7 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
 +-------+-------------------------------------------------+
 </code></pre>
 <ul>
-<li>安全组配置（放通 ping 和 SSH 远程端口）</li>
+<li>安全组配置（放通ping和ssh远程端口）</li>
 </ul>
 <pre><code class="highlight-chroma">[root@controller ~]# openstack security group rule create --proto icmp default
 +-------------------+--------------------------------------+
@@ -992,28 +992,28 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
             <a href="#neutron-部署">neutron 部署</a>
         </li>
         <li class="toc__h2">
-            <a href="#mysql-库创建">MySQL 库创建</a>
+            <a href="#mysql-库创建">mysql 库创建</a>
         </li>
         <li class="toc__h2">
             <a href="#创建服务凭据">创建服务凭据</a>
         </li>
         <li class="toc__h2">
-            <a href="#创建网络服务API-endpoint">创建网络服务 API endpoint</a>
+            <a href="#创建网络服务API-endpoint">创建网络服务API endpoint</a>
         </li>
         <li class="toc__h2">
             <a href="#配置网络选项">配置网络选项</a>
         </li>
         <li class="toc__h3">
-            <a href="#编辑-文件">编辑 /etc/neutron/neutron.conf 文件</a>
+            <a href="#编辑-文件">编辑 /etc/neutron/neutron.conf文件</a>
         </li>
         <li class="toc__h3">
-            <a href="#配置模块化第2层-ML2-插件">配置模块化第 2 层（ML2）插件</a>
+            <a href="#配置模块化第2层-ML2-插件">配置模块化第2层（ML2）插件</a>
         </li>
         <li class="toc__h4">
-            <a href="#配置Linux网桥代理">配置 Linux 网桥代理</a>
+            <a href="#配置Linux网桥代理">配置Linux网桥代理</a>
         </li>
         <li class="toc__h3">
-            <a href="#配置DHCP代理">配置 DHCP 代理</a>
+            <a href="#配置DHCP代理">配置DHCP代理</a>
         </li>
         <li class="toc__h3">
             <a href="#Networking-Option-2--Self-service-networks">Networking Option 2: Self-service networks</a>
@@ -1031,7 +1031,7 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
             <a href="#填充数据库-">填充数据库：</a>
         </li>
         <li class="toc__h1">
-            <a href="#neutron计算节点安装">neutron 计算节点安装</a>
+            <a href="#neutron计算节点安装">neutron计算节点安装</a>
         </li>
         <li class="toc__h2">
             <a href="#配置公共组件">配置公共组件</a>
@@ -1043,7 +1043,7 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
             <a href="#toc_h3_17"></a>
         </li>
         <li class="toc__h4">
-            <a href="#配置Linux网桥代理">配置 Linux 网桥代理</a>
+            <a href="#配置Linux网桥代理">配置Linux网桥代理</a>
         </li>
         <li class="toc__h3">
             <a href="#第二种网络方法选项">第二种网络方法选项</a>
@@ -1234,7 +1234,7 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -1266,13 +1266,13 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1571104876779",
@@ -1292,4 +1292,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 65ms, 2020/03/26 16:18:18 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 64ms, 2020/03/28 15:03:59 -->

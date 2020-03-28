@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>org.apache.http工具类使用 - 邯城往事</title><meta name="description" content="昨天下雪了，虽然不大"/><meta property="og:description" content="昨天下雪了，虽然不大"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="org.apache.http工具类使用 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/11/30/1575084956460.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="org.apache.http工具类使用 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/11/30/1575084956460.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="分享一个免费无限量存储" href="https://cuijianzhe.github.io/articles/2019/11/28/1573885158540.html">
             <link rel="next" title="@Scheduled 增加 @Transactional 事务" href="https://cuijianzhe.github.io/articles/2019/11/30/1575099482173.html">
     </head>
@@ -86,16 +86,16 @@
         </div>
         <div class="vditor-reset">
             <p><img src="https://img.hacpai.com/bing/20180524.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
-<h3 id="Maven的pom引入-">Maven 的 pom 引入：</h3>
+<h3 id="Maven的pom引入-">Maven的pom引入：</h3>
 <pre><code class="highlight-chroma">&lt;dependency&gt;
 	&lt;groupId&gt;org.apache.httpcomponents&lt;/groupId&gt;
 	&lt;artifactId&gt;httpclient&lt;/artifactId&gt;
 	&lt;version&gt;4.5.7&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
-<h3 id="依赖的jar文件-">依赖的 jar 文件：</h3>
-<p><img src="https://img.hacpai.com/file/2019/11/jar%E5%8C%85%E4%BE%9D%E8%B5%96-bd107cb6.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="jar 包依赖.png"></p>
-<h3 id="GET方法-">GET 方法：</h3>
+<h3 id="依赖的jar文件-">依赖的jar文件:</h3>
+<p><img src="https://img.hacpai.com/file/2019/11/jar%E5%8C%85%E4%BE%9D%E8%B5%96-bd107cb6.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="jar包依赖.png"></p>
+<h3 id="GET方法-">GET方法：</h3>
 <pre><code class="highlight-chroma">import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -123,7 +123,7 @@ public static String get(String url) throws Exception{
         }
     }
 </code></pre>
-<h3 id="POST方法访问http-">POST 方法访问 http：</h3>
+<h3 id="POST方法访问http-">POST方法访问http：</h3>
 <pre><code class="highlight-chroma">import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -154,8 +154,8 @@ public static String post(String url,String json) throws Exception{
         }
     }
 </code></pre>
-<h3 id="POST方法访问https-">POST 方法访问 https：</h3>
-<h5 id="去除ssl验证">去除 ssl 验证</h5>
+<h3 id="POST方法访问https-">POST方法访问https：</h3>
+<h5 id="去除ssl验证">去除ssl验证</h5>
 <pre><code class="language-go highlight-chroma"><span class="highlight-kn">package</span> <span class="highlight-nx">com</span><span class="highlight-p">.</span><span class="highlight-nx">ulane</span><span class="highlight-p">.</span><span class="highlight-nx">spring</span><span class="highlight-p">.</span><span class="highlight-nx">util</span><span class="highlight-p">;</span>
 
 <span class="highlight-cm">/**
@@ -511,22 +511,22 @@ function render() {
     <div class="post__toc">
 <ul class="article__toc">
         <li class="toc__h3">
-            <a href="#Maven的pom引入-">Maven 的 pom 引入：</a>
+            <a href="#Maven的pom引入-">Maven的pom引入：</a>
         </li>
         <li class="toc__h3">
-            <a href="#依赖的jar文件-">依赖的 jar 文件：</a>
+            <a href="#依赖的jar文件-">依赖的jar文件:</a>
         </li>
         <li class="toc__h3">
-            <a href="#GET方法-">GET 方法：</a>
+            <a href="#GET方法-">GET方法：</a>
         </li>
         <li class="toc__h3">
-            <a href="#POST方法访问http-">POST 方法访问 http：</a>
+            <a href="#POST方法访问http-">POST方法访问http：</a>
         </li>
         <li class="toc__h3">
-            <a href="#POST方法访问https-">POST 方法访问 https：</a>
+            <a href="#POST方法访问https-">POST方法访问https：</a>
         </li>
         <li class="toc__h5">
-            <a href="#去除ssl验证">去除 ssl 验证</a>
+            <a href="#去除ssl验证">去除ssl验证</a>
         </li>
 </ul>    </div>
     <div class="body--gray post__gray">
@@ -687,7 +687,7 @@ function render() {
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -719,13 +719,13 @@ function render() {
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1575084956460",
@@ -745,4 +745,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 62ms, 2020/03/26 16:18:18 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 69ms, 2020/03/28 15:03:57 -->

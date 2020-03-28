@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>kolla-ansible部署openstack多节点 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="kolla-ansible部署openstack多节点 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/11/01/1572607586305.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="kolla-ansible部署openstack多节点 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/11/01/1572607586305.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="ceph集群搭建" href="https://cuijianzhe.github.io/articles/2019/10/30/1572426357896.html">
             <link rel="next" title="ssh-key改变后出现的错误解决方法" href="https://cuijianzhe.github.io/articles/2019/11/02/1572658327824.html">
     </head>
@@ -89,9 +89,9 @@
         </div>
         <div class="vditor-reset">
             <h1 id="环境介绍">环境介绍</h1>
-<p><del>ceph 搭建先搞定</del><br>
+<p><del>ceph搭建先搞定</del><br>
 <img src="https://img.hacpai.com/file/2019/11/image-50dcc3d1.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"><br>
-对接 openstack 配置<a href="https://docs.ceph.com/docs/master/rbd/rbd-openstack/" target="_blank">参考这里:</a></p>
+对接openstack配置<a href="https://docs.ceph.com/docs/master/rbd/rbd-openstack/" target="_blank">参考这里:</a></p>
 <ul>
 <li>主机：</li>
 </ul>
@@ -126,34 +126,34 @@
 </tr>
 <tr>
 <td>192.168.51.212</td>
-<td>control 节点</td>
+<td>control节点</td>
 <td>control</td>
 </tr>
 </tbody>
 </table>
 <ul>
 <li>同步时间<br>
-在 ceph1 上安装 ntp 服务，是 2、3 同步 1 的时间</li>
+在ceph1上安装ntp服务，是2、3同步1的时间</li>
 </ul>
 <pre><code class="highlight-chroma">[root@ceph1 ~]# yum install ntp -y &amp;&amp; systemctl enable ntpd.service &amp;&amp; systemctl start ntpd.service
 [root@ceph1 ~]# systemctl start ntpd
 [root@ceph2 ~]# ntpdate 192.168.51.212
 [root@ceph3 ~]# ntpdate 192.168.51.212
 </code></pre>
-<p>或者所有节点配置统一互联网 ntp 服务</p>
+<p>或者所有节点配置统一互联网ntp服务</p>
 <pre><code class="highlight-chroma">ntpdate ntp1.aliyun.com
 timedatectl set-timezone Asia/Shanghai
 </code></pre>
 <h2 id="基础环境">基础环境</h2>
 <ul>
-<li>controller 配置</li>
+<li>controller配置</li>
 </ul>
 <pre><code class="highlight-chroma">yum install python-devel libffi-devel gcc openssl-devel git python-pip -y
 pip install -U pip 
 yum install -y yum-utils device-mapper-persistent-data lvm2
 yum install ansible
 </code></pre>
-<p>controller 网卡（外网桥接网卡）配置：</p>
+<p>controller网卡（外网桥接网卡）配置：</p>
 <blockquote>
 <p>注意：各个节点网卡名称必须一致</p>
 </blockquote>
@@ -175,23 +175,23 @@ DEVICE=eth3
 ONBOOT=yes
 </code></pre>
 <ul>
-<li>添加 docker-ce yum 源配置文件并安装 docker（在 controller、cinder、computer 节点配置）</li>
+<li>添加docker-ce yum源配置文件并安装docker（在controller、cinder、computer节点配置）</li>
 </ul>
 <pre><code class="highlight-chroma">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 </code></pre>
 <ul>
-<li>更新并安装 Docker-CE 社区版本(在 controller、cinder、computer 节点都配置)</li>
+<li>更新并安装 Docker-CE社区版本(在controller、cinder、computer节点都配置)</li>
 </ul>
 <pre><code class="highlight-chroma">yum -y install docker-ce
 </code></pre>
 <ul>
-<li>开启 Docker 服务</li>
+<li>开启Docker服务</li>
 </ul>
 <pre><code class="highlight-chroma">systemctl start docker &amp;&amp; systemctl enable docker &amp;&amp; systemctl status docker
 </code></pre>
-<h3 id="设置3台服务器的docker-volume卷挂载方式和docker镜像加速器">设置 3 台服务器的 docker volume 卷挂载方式和 docker 镜像加速器</h3>
+<h3 id="设置3台服务器的docker-volume卷挂载方式和docker镜像加速器">设置3台服务器的docker volume卷挂载方式和docker镜像加速器</h3>
 <ul>
-<li>卷挂载方式（在 controller、cinder、computer 节点都配置）</li>
+<li>卷挂载方式（在controller、cinder、computer节点都配置）</li>
 </ul>
 <pre><code class="highlight-chroma">[root@computer ~]# mkdir /etc/systemd/system/docker.service.d
 </code></pre>
@@ -201,14 +201,14 @@ MountFlags=shared
 EOF
 </code></pre>
 <ul>
-<li>设置 docker 镜像加速器（在 controller、cinder、computer 节点都配置）</li>
+<li>设置 docker 镜像加速器（在controller、cinder、computer节点都配置）</li>
 </ul>
 <pre><code class="highlight-chroma">curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io  
 systemctl daemon-reload
 systemctl enable docker &amp;&amp; systemctl restart docker &amp;&amp; systemctl status docker
 </code></pre>
 <ul>
-<li>配置 pip 软件源</li>
+<li>配置pip软件源</li>
 </ul>
 <pre><code class="highlight-chroma">mkdir ~/.pip
 vim ~/.pip/pip.conf
@@ -218,7 +218,7 @@ index-url = http://mirrors.aliyun.com/pypi/simple/
 trusted-host=mirrors.aliyun.com
 </code></pre>
 <ul>
-<li><a href="https://docs.openstack.org/kolla-ansible/latest/reference/storage/cinder-guide.html" target="_blank">LVM 存储环境配置</a></li>
+<li><a href="https://docs.openstack.org/kolla-ansible/latest/reference/storage/cinder-guide.html" target="_blank">LVM存储环境配置</a></li>
 </ul>
 <pre><code class="highlight-chroma">[root@localhost ~]# pvcreate /dev/sda4
 WARNING: xfs signature detected on /dev/sda4 at offset 0. Wipe it? [y/n]: y
@@ -232,21 +232,21 @@ WARNING: xfs signature detected on /dev/sda4 at offset 0. Wipe it? [y/n]: y
   cinder-volumes   1   0   0 wz--n- 461.12g 461.12g
 </code></pre>
 <p>基础环境完成。</p>
-<h2 id="storage配置cinder存储信息">storage 配置 cinder 存储信息</h2>
+<h2 id="storage配置cinder存储信息">storage配置cinder存储信息</h2>
 <ul>
-<li>安装 lvm 相关的软件包</li>
+<li>安装lvm相关的软件包</li>
 </ul>
 <pre><code class="highlight-chroma">yum install -y yum-utils device-mapper-persistent-data lvm2
 </code></pre>
-<h2 id="在controller节点安装kolla-ansible">在 controller 节点安装 kolla-ansible</h2>
+<h2 id="在controller节点安装kolla-ansible">在controller节点安装kolla-ansible</h2>
 <pre><code class="highlight-chroma">pip install kolla-ansible --ignore-installed PyYAML
 #赋值kolla相关配置文件
 cp -r /usr/share/kolla-ansible/etc_examples/kolla /etc/
 cp /usr/share/kolla-ansible/ansible/inventory/* /etc/kolla/
 </code></pre>
-<h3 id="自定义kolla-ansible安装openstack的相关配置文件">自定义 kolla-ansible 安装 openstack 的相关配置文件</h3>
+<h3 id="自定义kolla-ansible安装openstack的相关配置文件">自定义kolla-ansible安装openstack的相关配置文件</h3>
 <ol>
-<li>自动生成 openstack 各服务的密码</li>
+<li>自动生成openstack各服务的密码</li>
 </ol>
 <pre><code class="highlight-chroma">[root@controller ~]# kolla-genpwd
 [root@controller ~]# vim /etc/kolla/passwords.yml
@@ -281,14 +281,14 @@ tempest_public_network_id:
 tempest_floating_network_name:
 </code></pre>
 <blockquote>
-<p>cinder_volume_group: "cinder-volumes"对应 cinder 中 lvm 挂载卷</p>
+<p>cinder_volume_group: "cinder-volumes"对应cinder中lvm挂载卷</p>
 </blockquote>
 <pre><code class="highlight-chroma">[root@cinder ~]# vgs
   VG             #PV #LV #SN Attr   VSize   VFree  
   cinder-volumes   1   0   0 wz--n- 461.12g 461.12g
 </code></pre>
 <ol start="3">
-<li>配置 SSH key，授信节点</li>
+<li>配置ssh key，授信节点</li>
 </ol>
 <pre><code class="highlight-chroma">ssh-keygen 
 ssh-copy-id -i ~/.ssh/id_rsa.pub root@computer
@@ -297,7 +297,7 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub root@cinder
 ssh-copy-id -i ~/.ssh/id_rsa.pub root@controller
 </code></pre>
 <ul>
-<li>配置 nultinode 多节点主机清单文件</li>
+<li>配置nultinode多节点主机清单文件</li>
 </ul>
 <pre><code class="highlight-chroma">[control]
 # These hostname must be resolvable from your deployment host
@@ -337,7 +337,7 @@ monitoring
 </code></pre>
 <p>其他配置不用修改</p>
 <ul>
-<li>配置完成后，我们可以进入部署阶段。 首先，我们需要设置基本的主机的软件包的依赖项，例如 docker。Kolla-Ansible 提供了一个将以正确版本安装所有必需服务的剧本 playbook。先安装具有 kolla 部署依赖关系的引导服务 bootstrap-servers</li>
+<li>配置完成后，我们可以进入部署阶段。 首先，我们需要设置基本的主机的软件包的依赖项，例如docker。Kolla-Ansible提供了一个将以正确版本安装所有必需服务的剧本playbook。先安装具有kolla部署依赖关系的引导服务bootstrap-servers</li>
 </ul>
 <pre><code class="highlight-chroma">kolla-ansible -i /etc/kolla/multinode bootstrap-servers
 </code></pre>
@@ -362,7 +362,7 @@ ok: [cinder]
 ok: [controller]
 fatal: [computer]: FAILED! =&gt; {"changed": false, "msg": "Download error on https://pypi.python.org/simple/pip/: [Errno 101] Network is unreachable -- Some packages may not be found!\nCouldn't find index page for 'pip' (maybe misspelled?)\nDownload error on https://pypi.python.org/simple/: [Errno 101] Network is unreachable -- Some packages may not be found!\nNo local packages or download links found for pip\nerror: Could not find suitable distribution for Requirement.parse('pip')\n"}
 </code></pre>
-<p>解决：（在对应节点 computer 进行配置）</p>
+<p>解决：（在对应节点computer进行配置）</p>
 <pre><code class="highlight-chroma">pip install --upgrade pip
 </code></pre>
 <h3 id="对主机进行预部署检查">对主机进行预部署检查</h3>
@@ -378,7 +378,7 @@ fatal: [computer]: FAILED! =&gt; {"changed": false, "msg": "Download error on ht
 </ul>
 <pre><code class="highlight-chroma">kolla-ansible -i /etc/kolla/multinode post-deploy
 </code></pre>
-<h1 id="安装openstack-client端">安装 openstack client 端</h1>
+<h1 id="安装openstack-client端">安装openstack client端</h1>
 <pre><code class="highlight-chroma">pip install python-openstackclient python-glanceclient python-neutronclient
 </code></pre>
 <p>如有报错：</p>
@@ -389,7 +389,7 @@ fatal: [computer]: FAILED! =&gt; {"changed": false, "msg": "Download error on ht
 pip install --upgrade decorate
 </code></pre>
 <ul>
-<li>报错 2：</li>
+<li>报错2：</li>
 </ul>
 <pre><code class="highlight-chroma">ERROR: Package 'more-itertools' requires a different Python: 2.7.5 not in '&gt;=3.4'
 </code></pre>
@@ -413,7 +413,7 @@ pip install python-openstackclient
 <pre><code class="highlight-chroma">pip install requests urllib3 pyOpenSSL --force --upgrade
 </code></pre>
 <h3 id="调整配置及重新部署">调整配置及重新部署</h3>
-<p>如果需要调整配置。 那么编辑 globals.yml 后， 然后运行 reconfigure. 使用 -t 参数可以只对变动的模块进行调整。</p>
+<p>如果需要调整配置. 那么编辑globals.yml后, 然后运行reconfigure. 使用 -t 参数可以只对变动的模块进行调整.</p>
 <pre><code class="highlight-chroma">kolla-ansible -i /etc/kolla/multinode reconfigure -t neutron
 kolla-ansible -i /etc/kolla/multinode  deploy -t neutron
 </code></pre>
@@ -441,7 +441,7 @@ openstack server create \
  --network demo-net \  
  demo1  
 </code></pre>
-<p>执行如上命令即可创建 demo1 实例</p>
+<p>执行如上命令即可创建demo1实例</p>
 <pre><code class="highlight-chroma">[root@controller kolla-ansible]# openstack server create \  
 &gt;     --image cirros \  
 &gt;     --flavor m1.tiny \  
@@ -483,7 +483,7 @@ openstack server create \
 | volumes_attached                    |                                               |  
 +-------------------------------------+-----------------------------------------------+  
 </code></pre>
-<h2 id="使用openstack">使用 openstack</h2>
+<h2 id="使用openstack">使用openstack</h2>
 <ul>
 <li>添加公网</li>
 </ul>
@@ -522,7 +522,7 @@ openstack server create \
 +---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 </code></pre>
 <ul>
-<li>给 public 添加子网</li>
+<li>给public添加子网</li>
 </ul>
 <pre><code class="highlight-chroma">[root@controller ~]# openstack subnet create --no-dhcp --allocation-pool 'start=192.168.50.10,end=192.168.50.100' --network public --subnet-range 192.168.50.0/24 --gateway 192.168.50.1 public-subnet
 +-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -685,28 +685,28 @@ neutron CLI is deprecated and will be removed in the future. Use openstack CLI i
             <a href="#基础环境">基础环境</a>
         </li>
         <li class="toc__h3">
-            <a href="#设置3台服务器的docker-volume卷挂载方式和docker镜像加速器">设置 3 台服务器的 docker volume 卷挂载方式和 docker 镜像加速器</a>
+            <a href="#设置3台服务器的docker-volume卷挂载方式和docker镜像加速器">设置3台服务器的docker volume卷挂载方式和docker镜像加速器</a>
         </li>
         <li class="toc__h2">
-            <a href="#storage配置cinder存储信息">storage 配置 cinder 存储信息</a>
+            <a href="#storage配置cinder存储信息">storage配置cinder存储信息</a>
         </li>
         <li class="toc__h2">
-            <a href="#在controller节点安装kolla-ansible">在 controller 节点安装 kolla-ansible</a>
+            <a href="#在controller节点安装kolla-ansible">在controller节点安装kolla-ansible</a>
         </li>
         <li class="toc__h3">
-            <a href="#自定义kolla-ansible安装openstack的相关配置文件">自定义 kolla-ansible 安装 openstack 的相关配置文件</a>
+            <a href="#自定义kolla-ansible安装openstack的相关配置文件">自定义kolla-ansible安装openstack的相关配置文件</a>
         </li>
         <li class="toc__h3">
             <a href="#对主机进行预部署检查">对主机进行预部署检查</a>
         </li>
         <li class="toc__h1">
-            <a href="#安装openstack-client端">安装 openstack client 端</a>
+            <a href="#安装openstack-client端">安装openstack client端</a>
         </li>
         <li class="toc__h3">
             <a href="#调整配置及重新部署">调整配置及重新部署</a>
         </li>
         <li class="toc__h2">
-            <a href="#使用openstack">使用 openstack</a>
+            <a href="#使用openstack">使用openstack</a>
         </li>
         <li class="toc__h2">
             <a href="#引用认证">引用认证</a>
@@ -870,7 +870,7 @@ neutron CLI is deprecated and will be removed in the future. Use openstack CLI i
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -902,13 +902,13 @@ neutron CLI is deprecated and will be removed in the future. Use openstack CLI i
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1572607586305",
@@ -928,4 +928,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 65ms, 2020/03/26 16:18:18 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 70ms, 2020/03/28 15:03:58 -->

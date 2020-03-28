@@ -6,16 +6,16 @@
     <atom:link href="https://cuijianzhe.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>啥也不是，就是想躺着……</description>
     <generator>Solo, v4.0.0, https://solo.b3log.org</generator>
-    <lastBuildDate>Thu, 26 Mar 2020 16:18:17 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 28 Mar 2020 15:03:54 +0800</lastBuildDate>
     <language>zh-cn</language>
     <item>
-      <title>ssh-key改变后出现的错误解决方法</title>
-      <link>https://cuijianzhe.github.io/articles/2019/11/02/1572658327824.html</link>
-      <description/>
+      <title>利用Python实现网易云音乐自动签到</title>
+      <link>https://cuijianzhe.github.io/articles/2020/03/27/1585293177882.html</link>
+      <description><![CDATA[<p>一生至少该有一次，为了某个人而忘记自己，不求结果，不求同行，不求曾经拥有，甚至不求你爱我，只求在最美的年华里，遇到你。</p>]]></description>
       <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2019/11/02/1572658327824.html</guid>
-      <category>Linux</category>
-      <pubDate>Thu, 26 Mar 2020 14:19:55 +0800</pubDate>
+      <guid>https://cuijianzhe.github.io/articles/2020/03/27/1585293177882.html</guid>
+      <category>Python</category>
+      <pubDate>Sat, 28 Mar 2020 13:43:20 +0800</pubDate>
     </item>
     <item>
       <title>利用爬虫爬取我的solo博客</title>
@@ -25,7 +25,16 @@
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/03/25/1585126708916.html</guid>
       <category>Python</category>
-      <pubDate>Thu, 26 Mar 2020 12:09:07 +0800</pubDate>
+      <pubDate>Thu, 26 Mar 2020 17:09:41 +0800</pubDate>
+    </item>
+    <item>
+      <title>ssh-key改变后出现的错误解决方法</title>
+      <link>https://cuijianzhe.github.io/articles/2019/11/02/1572658327824.html</link>
+      <description/>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2019/11/02/1572658327824.html</guid>
+      <category>Linux</category>
+      <pubDate>Thu, 26 Mar 2020 14:19:55 +0800</pubDate>
     </item>
     <item>
       <title>windows系统ping加上时间戳并且cmd隐藏运行实现方法</title>
@@ -42,8 +51,8 @@
       <description/>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html</guid>
-      <category>mysql</category>
       <category>Python</category>
+      <category>mysql</category>
       <pubDate>Sat, 21 Mar 2020 12:59:05 +0800</pubDate>
     </item>
     <item>
@@ -93,15 +102,6 @@
       <category>Linux</category>
       <category>zabbix</category>
       <pubDate>Thu, 12 Mar 2020 10:08:19 +0800</pubDate>
-    </item>
-    <item>
-      <title>利用程序算法分析北京新闻广播里都卖了啥好吃的</title>
-      <link>https://cuijianzhe.github.io/articles/2020/03/04/1583318600177.html</link>
-      <description><![CDATA[<p>科大讯飞要是免费使用 sdk 就好了，可惜啊，只有五个小时，我已然用了四个半小时的实际使用时长了。。。。</p>]]></description>
-      <author>MaidongAndYida</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/03/04/1583318600177.html</guid>
-      <category>java</category>
-      <pubDate>Wed, 04 Mar 2020 18:47:49 +0800</pubDate>
     </item>
   </channel>
 </rss>

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>python获取数据实现echarts出图 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="python获取数据实现echarts出图 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/09/06/1567757692612.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="python获取数据实现echarts出图 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/09/06/1567757692612.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="python 实现 AI 换脸" href="https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html">
             <link rel="next" title="web状态码检测监控提醒" href="https://cuijianzhe.github.io/articles/2019/09/07/1567826678848.html">
     </head>
@@ -89,8 +89,8 @@
         </div>
         <div class="vditor-reset">
             <h1 id="一--python3---echarts">一、 python3 + echarts</h1>
-<h2 id="1-1--python3获取数据展示无线节点图例-">1.1. python3 获取数据展示无线节点图例：</h2>
-<h3 id="1-1-1-通过snmp获取源数据">1.1.1 通过 snmp 获取源数据</h3>
+<h2 id="1-1--python3获取数据展示无线节点图例-">1.1. python3获取数据展示无线节点图例：</h2>
+<h3 id="1-1-1-通过snmp获取源数据">1.1.1 通过snmp获取源数据</h3>
 <pre><code class="language-python highlight-chroma"><span class="highlight-ch">#!/bin/env python3</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">json</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">subprocess</span>
@@ -113,9 +113,9 @@
      <span class="highlight-n">f</span><span class="highlight-o">.</span><span class="highlight-n">write</span><span class="highlight-p">(</span><span class="highlight-n">data</span><span class="highlight-p">)</span>
 
 </code></pre>
-<h3 id="1-1-2--echarts渲染">1.1.2  echarts 渲染</h3>
+<h3 id="1-1-2--echarts渲染">1.1.2  echarts渲染</h3>
 <blockquote>
-<p>在此表示 echarts 很强大</p>
+<p>在此表示echarts很强大</p>
 </blockquote>
 <pre><code class="language-html highlight-chroma"><span class="highlight-cp">&lt;!DOCTYPE html&gt;</span>
 <span class="highlight-p">&lt;</span><span class="highlight-nt">html</span><span class="highlight-p">&gt;</span>
@@ -163,7 +163,7 @@
 <h3 id="效果图-">效果图：</h3>
 <p><img src="https://img.hacpai.com/file/2019/09/image-07a468e0.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <h2 id="2--展示网络设备上下行流量">2. 展示网络设备上下行流量</h2>
-<h2 id="2-1首先检索主机列表-找到hostid-">2.1 首先检索主机列表，找到 hostid：</h2>
+<h2 id="2-1首先检索主机列表-找到hostid-">2.1首先检索主机列表，找到hostid：</h2>
 <pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">requests</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">json</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">os</span>
@@ -213,7 +213,7 @@
     <span class="highlight-n">get_data</span><span class="highlight-p">(</span><span class="highlight-n">auth</span><span class="highlight-p">)</span>
 
 </code></pre>
-<h3 id="2-2-从zabbix源获取数据-">2.2 从 zabbix 源获取数据：</h3>
+<h3 id="2-2-从zabbix源获取数据-">2.2 从zabbix源获取数据：</h3>
 <pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">requests</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">json</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">os</span>
@@ -330,13 +330,13 @@
             <a href="#一--python3---echarts">一、 python3 + echarts</a>
         </li>
         <li class="toc__h2">
-            <a href="#1-1--python3获取数据展示无线节点图例-">1.1. python3 获取数据展示无线节点图例：</a>
+            <a href="#1-1--python3获取数据展示无线节点图例-">1.1. python3获取数据展示无线节点图例：</a>
         </li>
         <li class="toc__h3">
-            <a href="#1-1-1-通过snmp获取源数据">1.1.1 通过 snmp 获取源数据</a>
+            <a href="#1-1-1-通过snmp获取源数据">1.1.1 通过snmp获取源数据</a>
         </li>
         <li class="toc__h3">
-            <a href="#1-1-2--echarts渲染">1.1.2 echarts 渲染</a>
+            <a href="#1-1-2--echarts渲染">1.1.2 echarts渲染</a>
         </li>
         <li class="toc__h3">
             <a href="#效果图-">效果图：</a>
@@ -345,10 +345,10 @@
             <a href="#2--展示网络设备上下行流量">2. 展示网络设备上下行流量</a>
         </li>
         <li class="toc__h2">
-            <a href="#2-1首先检索主机列表-找到hostid-">2.1 首先检索主机列表，找到 hostid：</a>
+            <a href="#2-1首先检索主机列表-找到hostid-">2.1首先检索主机列表，找到hostid：</a>
         </li>
         <li class="toc__h3">
-            <a href="#2-2-从zabbix源获取数据-">2.2 从 zabbix 源获取数据：</a>
+            <a href="#2-2-从zabbix源获取数据-">2.2 从zabbix源获取数据：</a>
         </li>
         <li class="toc__h3">
             <a href="#图例-">图例：</a>
@@ -512,7 +512,7 @@
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -544,13 +544,13 @@
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1567757692612",
@@ -570,4 +570,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 58ms, 2020/03/26 16:18:19 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 103ms, 2020/03/28 15:03:58 -->

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Scrapy学习 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Scrapy学习 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/11/08/1573185139639.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="Scrapy学习 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/11/08/1573185139639.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="openstack创建镜像，开启云主机" href="https://cuijianzhe.github.io/articles/2019/11/07/1573111362693.html">
             <link rel="next" title="站点推荐【转】" href="https://cuijianzhe.github.io/articles/2019/11/13/1573637956893.html">
     </head>
@@ -86,7 +86,7 @@
         </div>
         <div class="vditor-reset">
             <h1 id="环境安装">环境安装</h1>
-<h2 id="scrapy安装"><a href="https://docs.scrapy.org/en/latest/intro/install.html" target="_blank">scrapy 安装</a></h2>
+<h2 id="scrapy安装"><a href="https://docs.scrapy.org/en/latest/intro/install.html" target="_blank">scrapy安装</a></h2>
 <ul>
 <li>安装依赖：<br>
 1.<a href="https://docs.scrapy.org/en/latest/faq.html#scrapy-crashes-with-importerror-no-module-named-win32api" target="_blank">pywin32</a></li>
@@ -94,7 +94,7 @@
 <pre><code class="highlight-chroma">pip install pywin32
 </code></pre>
 <ol start="2">
-<li>安装 <strong>Twisted</strong></li>
+<li>安装<strong>Twisted</strong></li>
 </ol>
 <pre><code class="highlight-chroma">pip install Twisted
 </code></pre>
@@ -111,7 +111,7 @@ You can start your first spider with:
     cd scrapy_test
     scrapy genspider example example.com
 </code></pre>
-<p>查看 scrapy 创建的文件：</p>
+<p>查看scrapy创建的文件：</p>
 <pre><code class="highlight-chroma">D:\python_cuijianzhe&gt;tree /f
 
 └─scrapy_test
@@ -132,7 +132,7 @@ You can start your first spider with:
 </code></pre>
 <h2 id="创建爬虫"><a href="https://docs.scrapy.org/en/latest/intro/tutorial.html" target="_blank">创建爬虫</a></h2>
 <h3 id="创建爬虫代码"><a href="https://docs.scrapy.org/en/latest/intro/tutorial.html#our-first-spider" target="_blank">创建爬虫代码</a></h3>
-<p>在 scrapy_test 项目中的目录 spiders 中创建文件 quotes_spider.py</p>
+<p>在scrapy_test项目中的目录spiders 中创建文件quotes_spider.py</p>
 <pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">scrapy</span>
 <span class="highlight-k">class</span> <span class="highlight-nc">QuotesSpider</span><span class="highlight-p">(</span><span class="highlight-n">scrapy</span><span class="highlight-o">.</span><span class="highlight-n">Spider</span><span class="highlight-p">):</span>
     <span class="highlight-n">name</span> <span class="highlight-o">=</span> <span class="highlight-s2">"quotes"</span>
@@ -152,15 +152,15 @@ You can start your first spider with:
             <span class="highlight-n">f</span><span class="highlight-o">.</span><span class="highlight-n">write</span><span class="highlight-p">(</span><span class="highlight-n">response</span><span class="highlight-o">.</span><span class="highlight-n">body</span><span class="highlight-p">)</span>
         <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">log</span><span class="highlight-p">(</span><span class="highlight-s1">'Saved file </span><span class="highlight-si">%s</span><span class="highlight-s1">'</span> <span class="highlight-o">%</span> <span class="highlight-n">filename</span><span class="highlight-p">)</span>
 </code></pre>
-<p>我们的 Spider 子类 scrapy.Spider 并定义了一些属性和方法：</p>
+<p>我们的Spider子类scrapy.Spider并定义了一些属性和方法：</p>
 <ul>
 <li>name:识别蜘蛛。它在项目中必须是唯一的，也就是说，不能为不同的蜘蛛设置相同的名称</li>
-<li>start_requests():必须返回蜘蛛将开始从中爬行的请求的 iterable（您可以返回请求列表或编写生成器函数）。随后的请求将从这些初始请求中依次生成。</li>
-<li>parse():将调用的方法，用于处理为每个请求下载的响应。response 参数是 textreponse 的一个实例，它保存页面内容，并有其他有用的方法来处理它。<br>
-parse（）默认处理 response 流的方法，通常会返回一个 item 或者 dict 给 pipeline。</li>
+<li>start_requests():必须返回蜘蛛将开始从中爬行的请求的iterable（您可以返回请求列表或编写生成器函数）。随后的请求将从这些初始请求中依次生成。</li>
+<li>parse():将调用的方法，用于处理为每个请求下载的响应。response参数是textreponse的一个实例，它保存页面内容，并有其他有用的方法来处理它。<br>
+parse（）默认处理response流的方法，通常会返回一个item或者dict 给pipeline。</li>
 </ul>
 <h2 id="运行爬虫"><a href="https://docs.scrapy.org/en/latest/intro/tutorial.html#how-to-run-our-spider" target="_blank">运行爬虫</a></h2>
-<p>这个命令使用我们刚刚添加引号的名字 <code>name = "quotes"</code> 运行 spider，它将发送一些对 quotes.toscrape.com 的请求。将得到如下输出：</p>
+<p>这个命令使用我们刚刚添加引号的名字 <code>name = "quotes"</code> 运行spider，它将发送一些对quotes.toscrape.com的请求。将得到如下输出：</p>
 <pre><code class="highlight-chroma">D:\python_cuijianzhe\scrapy_test&gt;scrapy crawl quotes
 2019-11-08 14:16:33 [scrapy.utils.log] INFO: Scrapy 1.8.0 started (bot: scrapy_test)
 2019-11-08 14:16:33 [scrapy.utils.log] INFO: Versions: lxml 4.4.1.0, libxml2 2.9.5, cssselect 1.1.0, parsel 1.5.2, w3lib 1.21.0, Twisted 19.7.0, Python 3.7.4 (tags/v3.7.4:e09359112e, Jul  8 2019, 20:34:20)
@@ -212,11 +212,11 @@ parse（）默认处理 response 流的方法，通常会返回一个 item 或�
 <li>启用扩展</li>
 <li>启用下载中间件</li>
 <li>启用爬虫中间件</li>
-<li>启动 pipeline</li>
+<li>启动pipeline</li>
 <li>爬虫启动，开始工作</li>
 <li>爬虫结束， 引擎收集统计信息，清理工作</li>
 </ul>
-<p>现在，检查当前目录中的文件。已经创建了两个新文件：quotes-1.html 和 quotes-2.html，其中包含了各自 url 的内容，正如我们的解析方法。<br>
+<p>现在，检查当前目录中的文件。已经创建了两个新文件：quotes-1.html和quotes-2.html，其中包含了各自url的内容，正如我们的解析方法。<br>
 <img src="https://img.hacpai.com/file/2019/11/image-c9550901.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <h3 id="启动爬虫请求的快捷方式-CSS-">启动爬虫请求的快捷方式(CSS)</h3>
 <pre><code class="highlight-chroma">D:\python_cuijianzhe\scrapy_test&gt;scrapy shell "http://quotes.toscrape.com/page/1/"
@@ -224,21 +224,21 @@ parse（）默认处理 response 流的方法，通常会返回一个 item 或�
 2019-11-08 14:27:53 [scrapy.utils.log] INFO: Versions: lxml 4.4.1.0, libxml2 2.9.5, cssselect 1.1.0, parsel 1.5.2, w3lib 1.21.0, Twisted 19.7.0, Python 3.7.4 (tags/v3.7.4:e09359112e, Jul  8 2019, 20:34:20)
 ...
 </code></pre>
-<p>使用 shell，可以尝试使用 CSS 和 response 对象选择元素：</p>
+<p>使用shell，可以尝试使用CSS和response对象选择元素：</p>
 <pre><code class="highlight-chroma">In [1]: response.css('title')
 Out[1]: [&lt;Selector xpath='descendant-or-self::title' data='&lt;title&gt;Quotes to Scrape&lt;/title&gt;'&gt;]
 </code></pre>
-<p>运行 response.css（'title'）的结果是一个名为 <code>Selector list</code> 的类似列表的对象，它表示一个 Selector 对象列表，这些对象环绕 XML/HTML 元素，并允许运行进一步的查询来细化选择或提取数据。</p>
+<p>运行response.css（'title'）的结果是一个名为<code>Selector list</code>的类似列表的对象，它表示一个Selector对象列表，这些对象环绕XML/HTML元素，并允许运行进一步的查询来细化选择或提取数据。</p>
 <pre><code class="highlight-chroma">In [2]: response.css('title::text').getall()
 Out[2]: ['Quotes to Scrape']
 </code></pre>
 <p>这里有两件事需要注意：<br>
-一是我们在 CSS 查询中添加了 <code>::text</code> ，这意味着我们只想直接在<title>元素中选择文本元素。</title><br>
-如果我们不指定 <code>::text</code> ，我们将得到完整的 <code>title</code> 元素，包括它的标记：</p>
+一是我们在CSS查询中添加了 <code>::text</code> ，这意味着我们只想直接在<title>元素中选择文本元素。</title><br>
+如果我们不指定 <code>::text</code> ，我们将得到完整的<code>title</code>元素，包括它的标记：</p>
 <pre><code class="highlight-chroma">In [3]:  response.css('title').getall()
 Out[3]: ['&lt;title&gt;Quotes to Scrape&lt;/title&gt;']
 </code></pre>
-<p>另一个是，调用 <code>.getall()</code> 的结果是一个列表：选择器可能返回多个结果，因此我们将它们全部提取出来。当你知道你只想得到第一个结果时，在这种情况下，可以使用：</p>
+<p>另一个是，调用<code>.getall()</code>的结果是一个列表：选择器可能返回多个结果，因此我们将它们全部提取出来。当你知道你只想得到第一个结果时，在这种情况下，可以使用：</p>
 <pre><code class="highlight-chroma">In [4]: response.css('title::text').get()
 Out[4]: 'Quotes to Scrape'
 </code></pre>
@@ -247,7 +247,7 @@ Out[4]: 'Quotes to Scrape'
 Out[5]: 'Quotes to Scrape'
 </code></pre>
 <ul>
-<li>除了 getall()和 get()方法外，还可以使用 re()方法使用正则表达式提取：</li>
+<li>除了getall()和get()方法外，还可以使用re()方法使用正则表达式提取：</li>
 </ul>
 <pre><code class="highlight-chroma">In [6]: response.css('title::text').re(r'Quotes.*')
 Out[6]: ['Quotes to Scrape']
@@ -259,8 +259,8 @@ In [8]: response.css('title::text').re(r'(\w+) to (\w+)')
 Out[8]: ['Quotes', 'Scrape']
 </code></pre>
 <h2 id="XPath-简介"><a href="https://docs.scrapy.org/en/latest/intro/tutorial.html#xpath-a-brief-intro" target="_blank">XPath：简介</a></h2>
-<p><a href="https://docs.scrapy.org/en/latest/topics/selectors.html#topics-selectors" target="_blank">参考 Xpath 实例</a><br>
-除了 CSS，Scrapy 选择器还支持使用 XPath 表达式：</p>
+<p><a href="https://docs.scrapy.org/en/latest/topics/selectors.html#topics-selectors" target="_blank">参考Xpath实例</a><br>
+除了CSS，Scrapy选择器还支持使用XPath表达式：</p>
 <pre><code class="highlight-chroma">In [9]: response.xpath('//title')
 Out[9]: [&lt;Selector xpath='//title' data='&lt;title&gt;Quotes to Scrape&lt;/title&gt;'&gt;]
 
@@ -268,8 +268,8 @@ In [10]: response.xpath('//title/text()').get()
 Out[10]: 'Quotes to Scrape'
 </code></pre>
 <h3 id="抽取引用和作者">抽取引用和作者</h3>
-<p>既然您已经对选择和提取有了一些了解，那么让我们通过编写代码从 Web 页面提取引号来完成 spider。</p>
-<p><a href="http://quotes.toscrape.com" target="_blank">http://quotes.toscrape.com</a> 中的每个引号都由如下所示的 HTML 元素表示：<br>
+<p>既然您已经对选择和提取有了一些了解，那么让我们通过编写代码从web页面提取引号来完成spider。</p>
+<p><a href="http://quotes.toscrape.com" target="_blank">http://quotes.toscrape.com</a>中的每个引号都由如下所示的HTML元素表示：<br>
 <img src="https://img.hacpai.com/file/2019/11/image-4a907c6a.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <pre><code class="highlight-chroma">&lt;div class="quote" itemscope="" itemtype="http://schema.org/CreativeWork"&gt;
         &lt;span class="text" itemprop="text"&gt;“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”&lt;/span&gt;
@@ -291,7 +291,7 @@ Out[10]: 'Quotes to Scrape'
         &lt;/div&gt;
     &lt;/div&gt;
 </code></pre>
-<p>让我们打开 scrapy shell 并输出数据，了解如何提取所需的数据：</p>
+<p>让我们打开scrapy shell并输出数据，了解如何提取所需的数据：</p>
 <pre><code class="highlight-chroma">D:\python_cuijianzhe\scrapy_test&gt;scrapy shell "http://quotes.toscrape.com"
 2019-11-08 14:51:13 [scrapy.utils.log] INFO: Scrapy 1.8.0 started (bot: scrapy_test)
 2019-11-08 14:51:13 [scrapy.utils.log] INFO: Versions: lxml 4.4.1.0, libxml2 2.9.5, cssselect 1.1.0, parsel 1.5.2, w3lib 1.21.0, Twisted 19.7.0, Python 3.7.4 (tags/v3.7.4:e09359112e, Jul  8 2019, 20:34:20)
@@ -317,7 +317,7 @@ spiders', 'ROBOTSTXT_OBEY': True, 'SPIDER_MODULES': ['scrapy_test.spiders']}
 2019-11-08 14:51:14 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET http://quotes.toscrape.com&gt; (referer: None)
 ...
 </code></pre>
-<p>我们得到了 quote HTML 元素的选择器列表，其中包含：</p>
+<p>我们得到了quote HTML元素的选择器列表，其中包含：</p>
 <pre><code class="highlight-chroma">In [1]: response.css("div.quote")
 Out[1]: 
 [&lt;Selector xpath="descendant-or-self::div[@class and contains(concat(' ', normalize-space(@class), ' '), ' quote ')]" data='&lt;div class="quote" itemscope itemtype...'&gt;,
@@ -331,10 +331,10 @@ Out[1]:
  &lt;Selector xpath="descendant-or-self::div[@class and contains(concat(' ', normalize-space(@class), ' '), ' quote ')]" data='&lt;div class="quote" itemscope itemtype...'&gt;,
  &lt;Selector xpath="descendant-or-self::div[@class and contains(concat(' ', normalize-space(@class), ' '), ' quote ')]" data='&lt;div class="quote" itemscope itemtype...'&gt;]
 </code></pre>
-<p>上面查询返回的每个选择器都允许我们对其子元素运行进一步的查询。让我们将第一个选择器分配给一个变量，这样就可以直接在特定的引号上运行 CSS 选择器：</p>
+<p>上面查询返回的每个选择器都允许我们对其子元素运行进一步的查询。让我们将第一个选择器分配给一个变量，这样就可以直接在特定的引号上运行CSS选择器：</p>
 <pre><code class="highlight-chroma">In [2]: quote = response.css("div.quote")[0]
 </code></pre>
-<p>现在，使用刚刚创建的 quote 对象从该 quote 中提取 <code>text</code>、<code>author</code> 和 <code>tags</code>：</p>
+<p>现在，使用刚刚创建的quote对象从该quote中提取<code>text</code>、<code>author</code>和<code>tags</code>：</p>
 <pre><code class="highlight-chroma">In [3]: text = quote.css("span.text::text").get()
 
 In [4]: text
@@ -344,13 +344,13 @@ In [5]: author = quote.css("small.author::text").get()
 In [6]: author
 Out[6]: 'Albert Einstein'
 </code></pre>
-<p>鉴于 <code>tags</code> 是字符串列表，我们可以使用 <code>.getall()</code> 方法获取所有 <code>tags</code>：</p>
+<p>鉴于<code>tags</code>是字符串列表，我们可以使用<code>.getall()</code>方法获取所有<code>tags</code>：</p>
 <pre><code class="highlight-chroma">In [7]: tags = quote.css("div.tags a.tag::text").getall()
 
 In [8]: tags
 Out[8]: ['change', 'deep-thoughts', 'thinking', 'world']
 </code></pre>
-<p>在知道如何提取每个位之后，现在可以遍历所有引号元素，并将它们放在一个 Python 字典中：</p>
+<p>在知道如何提取每个位之后，现在可以遍历所有引号元素，并将它们放在一个Python字典中：</p>
 <pre><code class="highlight-chroma">In [9]: for quote in response.css("div.quote"):
    ...:     text = quote.css("span.text::text").get()
    ...:     author = quote.css("small.author::text").get()
@@ -370,8 +370,8 @@ Out[8]: ['change', 'deep-thoughts', 'thinking', 'world']
 {'text': "“A woman is like a tea bag; you never know how strong it is until it's in hot water.”", 'author': 'Eleanor Roosevelt', 'tags': ['misattributed-eleanor-roosevelt']}
 {'text': '“A day without sunshine is like, you know, night.”', 'author': 'Steve Martin', 'tags': ['humor', 'obvious', 'simile']}
 </code></pre>
-<h3 id="在scrapy中提取数据">在 scrapy 中提取数据</h3>
-<p>Scrapy spider 通常生成许多字典，其中包含从页面提取的数据。为此，我们在回调中使用 <code>yield</code> Python 关键字，如下所示：</p>
+<h3 id="在scrapy中提取数据">在scrapy中提取数据</h3>
+<p>Scrapy spider通常生成许多字典，其中包含从页面提取的数据。为此，我们在回调中使用<code>yield</code> Python关键字，如下所示:</p>
 <pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">scrapy</span>
 <span class="highlight-k">class</span> <span class="highlight-nc">QuotesSpider</span><span class="highlight-p">(</span><span class="highlight-n">scrapy</span><span class="highlight-o">.</span><span class="highlight-n">Spider</span><span class="highlight-p">):</span>
     <span class="highlight-n">name</span> <span class="highlight-o">=</span> <span class="highlight-s2">"quotes"</span>
@@ -388,7 +388,7 @@ Out[8]: ['change', 'deep-thoughts', 'thinking', 'world']
                 <span class="highlight-s1">'tags'</span><span class="highlight-p">:</span> <span class="highlight-n">quote</span><span class="highlight-o">.</span><span class="highlight-n">css</span><span class="highlight-p">(</span><span class="highlight-s1">'div.tags a.tag::text'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">getall</span><span class="highlight-p">(),</span>
             <span class="highlight-p">}</span>
 </code></pre>
-<p>运行此 spider，它将输出提取的数据和日志：</p>
+<p>运行此spider，它将输出提取的数据和日志：</p>
 <pre><code class="highlight-chroma">D:\python_cuijianzhe\scrapy_test&gt;scrapy crawl quotes
 2019-11-08 15:01:27 [scrapy.utils.log] INFO: Scrapy 1.8.0 started (bot: scrapy_test)
 2019-11-08 15:01:27 [scrapy.utils.log] INFO: Versions: lxml 4.4.1.0, libxml2 2.9.5, cssselect 1.1.0, parsel 1.5.2, w3lib 1.21.0, Twisted 19.7.0, Python 3.7.4 (tags/v3.7.4:e09359112e, Jul  8 2019, 20:34:20)
@@ -409,7 +409,7 @@ Out[8]: ['change', 'deep-thoughts', 'thinking', 'world']
 ...
 2019-11-08 15:01:29 [scrapy.core.engine] INFO: Spider closed (finished)
 </code></pre>
-<h2 id="存储所抓取的数据-json数据-">存储所抓取的数据（JSON 数据）</h2>
+<h2 id="存储所抓取的数据-json数据-">存储所抓取的数据（json数据）</h2>
 <pre><code class="highlight-chroma">D:\python_cuijianzhe\scrapy_test&gt;scrapy crawl quotes -o quotes.json
 D:\python_cuijianzhe\scrapy_test&gt;scrapy crawl quotes -o quotes.xml
 D:\python_cuijianzhe\scrapy_test&gt;scrapy crawl quotes -o quotes.csv
@@ -426,20 +426,20 @@ D:\python_cuijianzhe\scrapy_test&gt;scrapy crawl quotes -o quotes.jl
             &lt;/li&gt;            
         &lt;/ul&gt;
 </code></pre>
-<p>我们可以试着从 shell 中提取出来：</p>
+<p>我们可以试着从shell中提取出来：</p>
 <pre><code class="highlight-chroma">In [1]: response.css('li.next a').get()
 Out[1]: '&lt;a href="/page/2/"&gt;Next &lt;span aria-hidden="true"&gt;→&lt;/span&gt;&lt;/a&gt;'
 </code></pre>
-<p>这将获取锚定元素，但我们需要属性 <code>href</code>。为此，Scrapy 支持 CSS 扩展，允许您选择属性内容，如下所示：</p>
+<p>这将获取锚定元素，但我们需要属性<code>href</code>。为此，Scrapy支持CSS扩展，允许您选择属性内容，如下所示：</p>
 <pre><code class="highlight-chroma">In [2]: response.css('li.next a::attr(href)').get()
 Out[2]: '/page/2/'
 </code></pre>
-<p>还有一个 attrib 属性可用（有关详细信息，请参见选择元素属性）：</p>
+<p>还有一个attrib属性可用（有关详细信息，请参见选择元素属性）：</p>
 <pre><code class="highlight-chroma">In [3]:  response.css('li.next a').attrib['href']
 Out[3]: '/page/2/'
 </code></pre>
 <ul>
-<li>现在让我们看看我们的 spider 被修改为递归地跟随到下一页的链接，从中提取数据：</li>
+<li>现在让我们看看我们的spider被修改为递归地跟随到下一页的链接，从中提取数据：</li>
 </ul>
 <pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">scrapy</span>
 <span class="highlight-k">class</span> <span class="highlight-nc">QuotesSpider</span><span class="highlight-p">(</span><span class="highlight-n">scrapy</span><span class="highlight-o">.</span><span class="highlight-n">Spider</span><span class="highlight-p">):</span>
@@ -462,10 +462,10 @@ Out[3]: '/page/2/'
             <span class="highlight-k">yield</span> <span class="highlight-n">scrapy</span><span class="highlight-o">.</span><span class="highlight-n">Request</span><span class="highlight-p">(</span><span class="highlight-n">next_page</span><span class="highlight-p">,</span> <span class="highlight-n">callback</span><span class="highlight-o">=</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">parse</span><span class="highlight-p">)</span>
 </code></pre>
 <p>代码简介：<br>
-next_page 是我们从页面提取的下一页的网址，然后 urljoin 去拼接完整 url,然后使用 request 去请求下一页，还是使用 parse 去解析响应流，当然我们可以在写一个 parse 的。</p>
+next_page是我们从页面提取的下一页的网址，然后urljoin去拼接完整url,然后使用request去请求下一页，还是使用parse去解析响应流，当然我们可以在写一个parse的。</p>
 <p>这段代码执行后发现后面几页全部住取出来了<br>
 <img src="https://img.hacpai.com/file/2019/11/image-51491f18.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<h2 id="给爬虫使用spider参数">给爬虫使用 spider 参数</h2>
+<h2 id="给爬虫使用spider参数">给爬虫使用spider参数</h2>
 <p>代码示例：</p>
 <pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">scrapy</span>
 <span class="highlight-k">class</span> <span class="highlight-nc">QuotesSpider</span><span class="highlight-p">(</span><span class="highlight-n">scrapy</span><span class="highlight-o">.</span><span class="highlight-n">Spider</span><span class="highlight-p">):</span>
@@ -486,9 +486,9 @@ next_page 是我们从页面提取的下一页的网址，然后 urljoin 去拼�
         <span class="highlight-k">if</span> <span class="highlight-n">next_page</span> <span class="highlight-ow">is</span> <span class="highlight-ow">not</span> <span class="highlight-bp">None</span><span class="highlight-p">:</span>
             <span class="highlight-k">yield</span> <span class="highlight-n">response</span><span class="highlight-o">.</span><span class="highlight-n">follow</span><span class="highlight-p">(</span><span class="highlight-n">next_page</span><span class="highlight-p">,</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">parse</span><span class="highlight-p">)</span>
 </code></pre>
-<p>这些参数被传递给 Spider 的__init__方法，并在默认情况下成为 Spider 属性。<br>
-在本例中，为 tag 参数提供的值可以通过 self.tag 获得。您可以使用此选项使爬行器仅获取带有特定标记的引号，并基于参数构建 URL：</p>
-<p>通过在运行 spider 时使用-a 选项，可以为它们提供命令行参数：</p>
+<p>这些参数被传递给Spider的__init__方法，并在默认情况下成为Spider属性。<br>
+在本例中，为tag参数提供的值可以通过self.tag获得。您可以使用此选项使爬行器仅获取带有特定标记的引号，并基于参数构建URL：</p>
+<p>通过在运行spider时使用-a选项，可以为它们提供命令行参数：</p>
 <pre><code class="highlight-chroma">&lt;a class="tag" href="/tag/choices/page/1/"&gt;choices&lt;/a&gt;  
 </code></pre>
 <pre><code class="highlight-chroma">D:\python_cuijianzhe\scrapy_test&gt;scrapy crawl quotes -o quotes-humor.json -a tag=choices  
@@ -525,7 +525,7 @@ next_page 是我们从页面提取的下一页的网址，然后 urljoin 去拼�
             <a href="#环境安装">环境安装</a>
         </li>
         <li class="toc__h2">
-            <a href="#scrapy安装">scrapy 安装</a>
+            <a href="#scrapy安装">scrapy安装</a>
         </li>
         <li class="toc__h2">
             <a href="#创建工程项目">创建工程项目</a>
@@ -549,16 +549,16 @@ next_page 是我们从页面提取的下一页的网址，然后 urljoin 去拼�
             <a href="#抽取引用和作者">抽取引用和作者</a>
         </li>
         <li class="toc__h3">
-            <a href="#在scrapy中提取数据">在 scrapy 中提取数据</a>
+            <a href="#在scrapy中提取数据">在scrapy中提取数据</a>
         </li>
         <li class="toc__h2">
-            <a href="#存储所抓取的数据-json数据-">存储所抓取的数据（JSON 数据）</a>
+            <a href="#存储所抓取的数据-json数据-">存储所抓取的数据（json数据）</a>
         </li>
         <li class="toc__h2">
             <a href="#链接追踪">链接追踪</a>
         </li>
         <li class="toc__h2">
-            <a href="#给爬虫使用spider参数">给爬虫使用 spider 参数</a>
+            <a href="#给爬虫使用spider参数">给爬虫使用spider参数</a>
         </li>
 </ul>    </div>
     <div class="body--gray post__gray">
@@ -719,7 +719,7 @@ next_page 是我们从页面提取的下一页的网址，然后 urljoin 去拼�
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -751,13 +751,13 @@ next_page 是我们从页面提取的下一页的网址，然后 urljoin 去拼�
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1573185139639",
@@ -777,4 +777,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 55ms, 2020/03/26 16:18:18 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 68ms, 2020/03/28 15:03:58 -->

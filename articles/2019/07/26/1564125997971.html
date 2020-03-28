@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>python脚本操作数据库 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="python脚本操作数据库 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/07/26/1564125997971.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="python脚本操作数据库 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/07/26/1564125997971.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="语录" href="https://cuijianzhe.github.io/articles/2019/07/23/1563852507972.html">
             <link rel="next" title="java.lang.IllegalArgumentException: Argument for @NotNull parameter 'file' of com/intellij/openapi/module/ModuleUtilCore.findModuleForFile must not be null" href="https://cuijianzhe.github.io/articles/2019/07/26/1564126881261.html">
     </head>
@@ -85,14 +85,14 @@
                 </a>
         </div>
         <div class="vditor-reset">
-            <h1 id="python数据库基本操作">python 数据库基本操作</h1>
+            <h1 id="python数据库基本操作">python数据库基本操作</h1>
 <hr>
 <p>操作关键字<br>
-创建连接     connect [k əˈnekt] 连接<br>
-实例化游标   cursor [ˈk ɜːs ə(r)] 游标<br>
-执行 SQL 语句 execute [ˈeks ɪkju ːt] 实行;执行;<br>
-提交修改     commit [k əˈm ɪt] 做出<br>
-事务回滚     rollback [ˈr əʊlb æk] 回落;<br>
+创建连接     connect [kəˈnekt] 连接<br>
+实例化游标   cursor [ˈkɜːsə(r)] 游标<br>
+执行sql语句 execute [ˈeksɪkjuːt] 实行;执行;<br>
+提交修改     commit [kəˈmɪt] 做出<br>
+事务回滚     rollback [ˈrəʊlbæk] 回落;<br>
 关闭游标和链接 close</p>
 <h2 id="一-用脚本连接数据库-">一、用脚本连接数据库：</h2>
 <pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">pymysql</span>
@@ -253,10 +253,10 @@ mysql&gt; show tables;
 
 </code></pre>
 <h2 id="五-数据库查询操作">五、数据库查询操作</h2>
-<p>Python 查询 MySQL 使用 fetchone() 方法获取单条数据， 使用 fetchall() 方法获取多条数据。<br>
+<p>Python查询Mysql使用 fetchone() 方法获取单条数据, 使用fetchall() 方法获取多条数据。<br>
 fetchone(): 	该方法获取下一个查询结果集。结果集是一个对象<br>
-fetchall(): 	接收全部的返回结果行。<br>
-rowcount: 	这是一个只读属性，并返回执行 execute()方法后影响的行数。</p>
+fetchall(): 	接收全部的返回结果行.<br>
+rowcount: 	这是一个只读属性，并返回执行execute()方法后影响的行数。</p>
 <pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span>  <span class="highlight-nn">pymysql</span>
 <span class="highlight-c1">#连接下数据库</span>
 <span class="highlight-n">db</span> <span class="highlight-o">=</span> <span class="highlight-n">pymysql</span><span class="highlight-o">.</span><span class="highlight-n">connect</span><span class="highlight-p">(</span><span class="highlight-n">host</span> <span class="highlight-o">=</span> <span class="highlight-s1">'10.200.36.66'</span><span class="highlight-p">,</span><span class="highlight-n">user</span> <span class="highlight-o">=</span> <span class="highlight-s1">'root'</span><span class="highlight-p">,</span><span class="highlight-n">password</span> <span class="highlight-o">=</span><span class="highlight-s1">'598941324'</span><span class="highlight-p">,</span><span class="highlight-n">database</span><span class="highlight-o">=</span><span class="highlight-s1">'cuijianzhe'</span><span class="highlight-p">,</span><span class="highlight-n">charset</span><span class="highlight-o">=</span><span class="highlight-s1">'utf8'</span><span class="highlight-p">)</span>
@@ -290,7 +290,7 @@ rowcount: 	这是一个只读属性，并返回执行 execute()方法后影响�
     <div class="post__toc">
 <ul class="article__toc">
         <li class="toc__h1">
-            <a href="#python数据库基本操作">python 数据库基本操作</a>
+            <a href="#python数据库基本操作">python数据库基本操作</a>
         </li>
         <li class="toc__h2">
             <a href="#一-用脚本连接数据库-">一、用脚本连接数据库：</a>
@@ -466,7 +466,7 @@ rowcount: 	这是一个只读属性，并返回执行 execute()方法后影响�
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -498,13 +498,13 @@ rowcount: 	这是一个只读属性，并返回执行 execute()方法后影响�
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1564125997971",
@@ -524,4 +524,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 69ms, 2020/03/26 16:18:19 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 79ms, 2020/03/28 15:03:59 -->

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>JDK11-juc包系列之atomic的AtomicBoolean类(一) - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="JDK11-juc包系列之atomic的AtomicBoolean类(一) - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/23/1553320766611.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="JDK11-juc包系列之atomic的AtomicBoolean类(一) - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/23/1553320766611.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="全面理解Java内存模型(偷转)" href="https://cuijianzhe.github.io/articles/2019/03/23/1553319340134.html">
             <link rel="next" title="搭建docker之路-初识（1）" href="https://cuijianzhe.github.io/articles/2019/03/26/1553571577540.html">
     </head>
@@ -87,7 +87,7 @@
         <div class="vditor-reset">
             <p><img src="https://img.hacpai.com/file/2019/03/11-cd6be773.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="11.jpg"></p>
 <p><del>第一次看源码，如果有理解不对的地方希望大家可以留下评论谢谢啦。</del></p>
-<p>理解这个类之前需要先理解 <a href="https://blog.csdn.net/suifeng3051/article/details/52611310" target="_blank">java 内存模型</a></p>
+<p>理解这个类之前需要先理解<a href="https://blog.csdn.net/suifeng3051/article/details/52611310" target="_blank">java内存模型</a></p>
 <hr>
 <h3 id="51-63-line">51-63 line</h3>
 <pre><code class="highlight-chroma">public class AtomicBoolean implements java.io.Serializable {
@@ -112,31 +112,31 @@
 3、static{}代码块和内部类
 4、volatile关键字
 </code></pre>
-<h3 id="1-Java9以后新增加并延续到JDK11LTS版本的变量句柄">1、Java9 以后新增加并延续到 JDK11LTS 版本的变量句柄 <code>VarHandle</code></h3>
-<p>VarHandle 是对变量或参数定义的变量系列的动态强类型引用，包括静态字段，非静态字段，数组元素或堆外数据结构的组件。在各种_访问模式_下都支持访问这些变量，包括普通读/写访问，易失性读/写访问以及比较和交换。<code>这样理解：VarHandle利用访问模式可以用来改变AtomicBoolean的值，访问模式控制原子性和一致性属性</code></p>
+<h3 id="1-Java9以后新增加并延续到JDK11LTS版本的变量句柄">1、Java9以后新增加并延续到JDK11LTS版本的变量句柄<code>VarHandle</code></h3>
+<p>VarHandle是对变量或参数定义的变量系列的动态强类型引用，包括静态字段，非静态字段，数组元素或堆外数据结构的组件。在各种_访问模式_下都支持访问这些变量，包括普通读/写访问，易失性读/写访问以及比较和交换。<code>这样理解：VarHandle利用访问模式可以用来改变AtomicBoolean的值，访问模式控制原子性和一致性属性</code></p>
 <p>访问模式分为以下几类：</p>
 <ul>
 <li>读取访问模式，获取指定内存排序效果下的变量值。该组对应属于该组的访问模式的方法的组成的方法中<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#get-java.lang.Object...-" target="_blank"><code>get</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getVolatile-java.lang.Object...-" target="_blank"><code>getVolatile</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAcquire-java.lang.Object...-" target="_blank"><code>getAcquire</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getOpaque-java.lang.Object...-" target="_blank"><code>getOpaque</code></a>。</li>
 <li>写入访问模式，在指定的内存排序效果下设置变量的值。该组对应属于该组的访问模式的方法的组成的方法中<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#set-java.lang.Object...-" target="_blank"><code>set</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#setVolatile-java.lang.Object...-" target="_blank"><code>setVolatile</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#setRelease-java.lang.Object...-" target="_blank"><code>setRelease</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#setOpaque-java.lang.Object...-" target="_blank"><code>setOpaque</code></a>。</li>
 <li>原子更新访问模式，例如，在指定的内存排序效果下，原子地比较和设置变量的值。该组对应属于该组的访问模式的方法的组成的方法中<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#compareAndSet-java.lang.Object...-" target="_blank"><code>compareAndSet</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#weakCompareAndSetPlain-java.lang.Object...-" target="_blank"><code>weakCompareAndSetPlain</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#weakCompareAndSet-java.lang.Object...-" target="_blank"><code>weakCompareAndSet</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#weakCompareAndSetAcquire-java.lang.Object...-" target="_blank"><code>weakCompareAndSetAcquire</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#weakCompareAndSetRelease-java.lang.Object...-" target="_blank"><code>weakCompareAndSetRelease</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#compareAndExchangeAcquire-java.lang.Object...-" target="_blank"><code>compareAndExchangeAcquire</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#compareAndExchange-java.lang.Object...-" target="_blank"><code>compareAndExchange</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#compareAndExchangeRelease-java.lang.Object...-" target="_blank"><code>compareAndExchangeRelease</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndSet-java.lang.Object...-" target="_blank"><code>getAndSet</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndSetAcquire-java.lang.Object...-" target="_blank"><code>getAndSetAcquire</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndSetRelease-java.lang.Object...-" target="_blank"><code>getAndSetRelease</code></a>。</li>
 <li>数字原子更新访问模式，例如，通过在指定的内存排序效果下添加变量的值，以原子方式获取和设置。该组的属于该组的相应的访问模式的方法包括的方法中<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndAdd-java.lang.Object...-" target="_blank"><code>getAndAdd</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndAddAcquire-java.lang.Object...-" target="_blank"><code>getAndAddAcquire</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndAddRelease-java.lang.Object...-" target="_blank"><code>getAndAddRelease</code></a>，</li>
-<li>按位原子更新访问模式，例如，在指定的内存排序效果下，以原子方式获取和按位 OR 变量的值。该组对应属于该组的访问模式的方法的组成的方法中<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndBitwiseOr-java.lang.Object...-" target="_blank"><code>getAndBitwiseOr</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndBitwiseOrAcquire-java.lang.Object...-" target="_blank"><code>getAndBitwiseOrAcquire</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndBitwiseOrRelease-java.lang.Object...-" target="_blank"><code>getAndBitwiseOrRelease</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndBitwiseAnd-java.lang.Object...-" target="_blank"><code>getAndBitwiseAnd</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndBitwiseAndAcquire-java.lang.Object...-" target="_blank"><code>getAndBitwiseAndAcquire</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndBitwiseAndRelease-java.lang.Object...-" target="_blank"><code>getAndBitwiseAndRelease</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndBitwiseXor-java.lang.Object...-" target="_blank"><code>getAndBitwiseXor</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndBitwiseXorAcquire-java.lang.Object...-" target="_blank"><code>getAndBitwiseXorAcquire</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndBitwiseXorRelease-java.lang.Object...-" target="_blank"><code>getAndBitwiseXorRelease</code></a>。</li>
+<li>按位原子更新访问模式，例如，在指定的内存排序效果下，以原子方式获取和按位OR变量的值。该组对应属于该组的访问模式的方法的组成的方法中<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndBitwiseOr-java.lang.Object...-" target="_blank"><code>getAndBitwiseOr</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndBitwiseOrAcquire-java.lang.Object...-" target="_blank"><code>getAndBitwiseOrAcquire</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndBitwiseOrRelease-java.lang.Object...-" target="_blank"><code>getAndBitwiseOrRelease</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndBitwiseAnd-java.lang.Object...-" target="_blank"><code>getAndBitwiseAnd</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndBitwiseAndAcquire-java.lang.Object...-" target="_blank"><code>getAndBitwiseAndAcquire</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndBitwiseAndRelease-java.lang.Object...-" target="_blank"><code>getAndBitwiseAndRelease</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndBitwiseXor-java.lang.Object...-" target="_blank"><code>getAndBitwiseXor</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndBitwiseXorAcquire-java.lang.Object...-" target="_blank"><code>getAndBitwiseXorAcquire</code></a>，<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html#getAndBitwiseXorRelease-java.lang.Object...-" target="_blank"><code>getAndBitwiseXorRelease</code></a>。</li>
 </ul>
 <h3 id="MethodHandles-Lookup">MethodHandles.Lookup</h3>
-<p>从上面代码可以看出，MethodHandles.Lookup 调用其内部的方法产出了 <code>VarHandle</code> 对象。</p>
+<p>从上面代码可以看出，MethodHandles.Lookup调用其内部的方法产出了<code>VarHandle</code>对象。</p>
 <p>MethodHandles.Lookup:一个查找对象是用于创建方法处理，当创建需要访问检查的工厂。方法句柄在调用它们时不执行访问检查，而是在创建它们时执行。因此，在创建方法句柄时必须强制执行方法句柄访问限制。强制执行这些限制的调用者类称为<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/MethodHandles.Lookup.html#lookupClass" target="_blank">查找类</a>。</p>
-<p>需要创建方法句柄的查找类将调用<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/MethodHandles.html#lookup--" target="_blank"><code>MethodHandles.lookup</code></a>为自己创建工厂。当 <code>Lookup</code> 被创建工厂对象，查找类的身份被确定，并安全地存储在 <code>Lookup</code> 对象。然后，查找类（或其委托）可以在 <code>Lookup</code> 对象上使用工厂方法来为访问检查的成员创建方法句柄。这包括允许查找类的所有方法，构造函数和字段，甚至是私有的。<code>简单理解：通过MethodHandles.Lookup反射出某方法/某对象/某成员</code></p>
-<p>查找可能会失败，因为查找类无法访问包含类，或者因为缺少所需的类成员，或者因为查找类无法访问所需的类成员，或者因为查找对象不够信任访问该成员。在任何这些情况下，<code>ReflectiveOperationException</code> 都将从尝试查找中抛出。确切的类将是以下之一：</p>
+<p>需要创建方法句柄的查找类将调用<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/MethodHandles.html#lookup--" target="_blank"><code>MethodHandles.lookup</code></a>为自己创建工厂。当<code>Lookup</code>被创建工厂对象，查找类的身份被确定，并安全地存储在<code>Lookup</code>对象。然后，查找类（或其委托）可以在<code>Lookup</code>对象上使用工厂方法来为访问检查的成员创建方法句柄。这包括允许查找类的所有方法，构造函数和字段，甚至是私有的。<code>简单理解：通过MethodHandles.Lookup反射出某方法/某对象/某成员</code></p>
+<p>查找可能会失败，因为查找类无法访问包含类，或者因为缺少所需的类成员，或者因为查找类无法访问所需的类成员，或者因为查找对象不够信任访问该成员。在任何这些情况下，<code>ReflectiveOperationException</code>都将从尝试查找中抛出。确切的类将是以下之一：</p>
 <ul>
 <li>NoSuchMethodException - 如果请求方法但不存在</li>
 <li>NoSuchFieldException - 如果请求了一个字段但不存在</li>
 <li>IllegalAccessException - 如果成员存在但访问检查失败</li>
 </ul>
 <h3 id="static--代码块和内部类">static{}代码块和内部类</h3>
-<p>当类被载入时，静态代码块被执行，且只被执行一次，静态块常用来执行类属性的初始化。<a href="http://www.cnblogs.com/panjun-Donet/archive/2010/08/10/1796209.html" target="_blank">java 中静态代码块的用法 static 用法详解</a></p>
-<p>内部类分为静态内部类，成员内部类，局部内部类，匿名内部类四种。<a href="https://www.jianshu.com/p/e385ce41ca5b" target="_blank">Java 内部类详解</a></p>
-<h3 id="volatile关键字">volatile 关键字</h3>
-<p>整个类的核心就是 <code>volatile</code> 关键字，它保证了变量在线程只见是可见的。<a href="http://blog.csdn.net/suifeng3051/article/details/52611233" target="_blank">volatile 和 synchronized 的区别</a></p>
+<p>当类被载入时，静态代码块被执行，且只被执行一次，静态块常用来执行类属性的初始化。<a href="http://www.cnblogs.com/panjun-Donet/archive/2010/08/10/1796209.html" target="_blank">java中静态代码块的用法 static用法详解</a></p>
+<p>内部类分为静态内部类，成员内部类，局部内部类，匿名内部类四种。<a href="https://www.jianshu.com/p/e385ce41ca5b" target="_blank">Java内部类详解</a></p>
+<h3 id="volatile关键字">volatile关键字</h3>
+<p>整个类的核心就是<code>volatile</code>关键字,它保证了变量在线程只见是可见的。<a href="http://blog.csdn.net/suifeng3051/article/details/52611233" target="_blank">volatile和synchronized的区别</a></p>
                 <div>
                     <style>
 .page-thunder-to-text {
@@ -434,7 +434,7 @@ function render() {
             <a href="#51-63-line">51-63 line</a>
         </li>
         <li class="toc__h3">
-            <a href="#1-Java9以后新增加并延续到JDK11LTS版本的变量句柄">1、Java9 以后新增加并延续到 JDK11LTS 版本的变量句柄 VarHandle</a>
+            <a href="#1-Java9以后新增加并延续到JDK11LTS版本的变量句柄">1、Java9以后新增加并延续到JDK11LTS版本的变量句柄VarHandle</a>
         </li>
         <li class="toc__h3">
             <a href="#MethodHandles-Lookup">MethodHandles.Lookup</a>
@@ -443,7 +443,7 @@ function render() {
             <a href="#static--代码块和内部类">static{}代码块和内部类</a>
         </li>
         <li class="toc__h3">
-            <a href="#volatile关键字">volatile 关键字</a>
+            <a href="#volatile关键字">volatile关键字</a>
         </li>
 </ul>    </div>
     <div class="body--gray post__gray">
@@ -604,7 +604,7 @@ function render() {
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -636,13 +636,13 @@ function render() {
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1553320766611",
@@ -662,4 +662,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 60ms, 2020/03/26 16:18:21 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 90ms, 2020/03/28 15:04:01 -->

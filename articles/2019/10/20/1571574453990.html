@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>修复nginx报错："upstream sent too big header while reading response header from upstream" - 邯城往事</title><meta name="description" content="要学会忍耐……"/><meta property="og:description" content="要学会忍耐……"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="修复nginx报错："upstream sent too big header while reading response header from upstream" - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/20/1571574453990.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="修复nginx报错："upstream sent too big header while reading response header from upstream" - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/20/1571574453990.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="openstack系列-dashboard部署" href="https://cuijianzhe.github.io/articles/2019/10/15/1571128802984.html">
             <link rel="next" title="kolla部署openstack（stein）部署---allinone" href="https://cuijianzhe.github.io/articles/2019/10/27/1572172031071.html">
     </head>
@@ -89,7 +89,7 @@
         </div>
         <div class="vditor-reset">
             <blockquote>
-<p>近来几天发现访问博客端文章间歇性报出 502，一开始以为是 solo 博客端的配置问题，纠正排查后发现不是博客后台设置的问题。后来查看 nginx 的日志。发现如下报错：</p>
+<p>近来几天发现访问博客端文章间歇性报出502，一开始以为是solo博客端的配置问题，纠正排查后发现不是博客后台设置的问题。后来查看nginx的日志。发现如下报错：</p>
 </blockquote>
 <pre><code class="highlight-chroma">2019/10/20 20:05:09 [error] 8539#0: *67 no live upstreams while connecting to upstream, client: 111.194.50.93, server: cjzshilong.cn, request: "GET /sw.js HTTP/1.1", upstream: "http://localhost/sw.js", host: "www.cjzshilong.cn", referrer: "https://www.cjzshilong.cn/sw.js"
 2019/10/20 20:08:53 [notice] 8638#0: signal process started
@@ -97,9 +97,9 @@
 </code></pre>
 <p><img src="https://img.hacpai.com/file/2019/10/image-7f8b6b0a.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <p>通过参考各种网上资料，综合解决方法：<br>
-HTTP 和 HTTPS 下的配置，增加</p>
+HTTP和HTTPS下的配置，增加</p>
 <ul>
-<li>解决 upstream sent too big header while reading response header from upstream</li>
+<li>解决upstream sent too big header while reading response header from upstream</li>
 </ul>
 <pre><code class="highlight-chroma">   proxy_buffer_size 128k;
    proxy_buffers  32 32k;
@@ -288,7 +288,7 @@ HTTP 和 HTTPS 下的配置，增加</p>
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -320,13 +320,13 @@ HTTP 和 HTTPS 下的配置，增加</p>
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1571574453990",
@@ -346,4 +346,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 64ms, 2020/03/26 16:18:18 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 60ms, 2020/03/28 15:03:58 -->

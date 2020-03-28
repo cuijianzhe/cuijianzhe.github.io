@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>openstack创建镜像，开启云主机 - 邯城往事</title><meta name="description" content="高筑墙，广积粮，缓称王"/><meta property="og:description" content="高筑墙，广积粮，缓称王"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="openstack创建镜像，开启云主机 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/11/07/1573111362693.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="openstack创建镜像，开启云主机 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/11/07/1573111362693.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="学习日语课程" href="https://cuijianzhe.github.io/articles/2019/11/03/1572744813413.html">
             <link rel="next" title="Scrapy学习" href="https://cuijianzhe.github.io/articles/2019/11/08/1573185139639.html">
     </head>
@@ -91,7 +91,7 @@
             <h1 id="创建虚拟机">创建虚拟机</h1>
 <h2 id="基本环境">基本环境</h2>
 <ul>
-<li>查看自己的 CPU 是否支持全虚拟化虚拟化技术且是 64 位的<br>
+<li>查看自己的CPU是否支持全虚拟化虚拟化技术且是64位的<br>
 Inter：</li>
 </ul>
 <pre><code class="highlight-chroma">cat /proc/cpuinfo | grep --color vmx
@@ -99,21 +99,21 @@ Inter：</li>
 <p>AMD：</p>
 <pre><code class="highlight-chroma">cat /proc/cpuinfo | grep --color svm
 </code></pre>
-<p>看看 flag 有没有上面的 vmx 或者是 svm，有的话就是支持全虚拟化技术</p>
-<h2 id="安装KVM">安装 KVM</h2>
+<p>看看flag有没有上面的vmx或者是svm，有的话就是支持全虚拟化技术</p>
+<h2 id="安装KVM">安装KVM</h2>
 <ul>
-<li>安装 KVM 模块、管理工具和 libvirt，命令行安装：</li>
+<li>安装KVM模块、管理工具和libvirt，命令行安装：</li>
 </ul>
 <pre><code class="highlight-chroma">yum install qemu-kvm libvirt libguestfs-tools virt-install virt-manager libvirt-python -y
 </code></pre>
 <p>注：</p>
 <blockquote>
-<p>qemu-kvm ： kvm 主程序， KVM 虚拟化模块<br>
-virt-manager： KVM 图形化管理工具<br>
+<p>qemu-kvm ： kvm主程序， KVM虚拟化模块<br>
+virt-manager： KVM图形化管理工具<br>
 libvirt： 虚拟化服务<br>
 libguestfs-tools : 虚拟机的系统管理工具<br>
-virt-install ： 安装虚拟机的实用工具 。比如 virt-clone 克隆工具就是这个包安装的<br>
-libvirt-python ： python 调用 libvirt 虚拟化服务的 API 接口库文件</p>
+virt-install ： 安装虚拟机的实用工具 。比如 virt-clone克隆工具就是这个包安装的<br>
+libvirt-python ： python调用libvirt虚拟化服务的api接口库文件</p>
 </blockquote>
 <ul>
 <li>查看安装完ＫＶＭ后的服务：</li>
@@ -123,7 +123,7 @@ systemctl enable libvirtd
 systemctl is-enabled libvirtd
 </code></pre>
 <ul>
-<li>确定正确加载 kvm 模块</li>
+<li>确定正确加载kvm 模块</li>
 </ul>
 <pre><code class="highlight-chroma">[root@cinder ~]# lsmod | grep kvm
 kvm_intel             188644  0 
@@ -131,7 +131,7 @@ kvm                   621480  1 kvm_intel
 irqbypass              13503  1 kvm
 </code></pre>
 <ul>
-<li>将 kvm 管理工具从英文界面，切换成中文界面</li>
+<li>将kvm管理工具从英文界面，切换成中文界面</li>
 </ul>
 <pre><code class="highlight-chroma">[root@localhost ~]# echo $LANG
 en_US.UTF-8
@@ -148,7 +148,7 @@ en_US.UTF-8
 <pre><code class="highlight-chroma">rpm -ivh /mnt/Packages/bridge-utils-1.5-9.el7.x86_64.rpm
 </code></pre>
 <ul>
-<li>把 enp61s0f0 绑到 br0 桥设备上：</li>
+<li>把enp61s0f0绑到br0桥设备上：</li>
 </ul>
 <pre><code class="highlight-chroma">[root@ceph3 ~]# cat  /etc/sysconfig/network-scripts/ifcfg-enp61s0f0
 TYPE=Ethernet
@@ -197,7 +197,7 @@ br0		8000.346b5b29809b	no		enp61s0f0
 virbr0		8000.525400fb5e54	yes		virbr0-nic
 </code></pre>
 <blockquote>
-<p>virbr0 是一种虚拟网络接口，是一种虚拟网络接口，这由于安装和启用了 libvirt libvirtlibvirt libvirtd 服务后 会自动 生成一个桥接设备，名字为 virbr0。libvirtd 在服务器上生成一个 virtual network switch,KVM 中的所有虚拟机都是通过 virbr0 连接的。</p>
+<p>virbr0是一种虚拟网络接口，是一种虚拟网络接口，这由于安装和启用了 libvirt libvirtlibvirt libvirtd 服务后 会自动 生成一个桥接设备，名字为virbr0。libvirtd在服务器上生成一个virtual network switch,KVM中的所有虚拟机都是通过virbr0连接的。</p>
 </blockquote>
 <h2 id="使用命令-virt-manager-建立虚拟机">使用命令：virt-manager 建立虚拟机</h2>
 <p>*创建一个分区：</p>
@@ -214,7 +214,7 @@ mount /dev/mapper/centos-data /var/lib/libvirt/images/
 </ul>
 <blockquote>
 <p>virsh list     #列出在运行的虚拟机<br>
-virsh start centos7.0    #启动 centos7.0 虚拟机<br>
+virsh start centos7.0    #启动centos7.0虚拟机<br>
 virsh shutdown centos7.0<br>
 virsh autostart centos7.0</p>
 </blockquote>
@@ -354,7 +354,7 @@ tmpfs                    184M     0  184M   0% /run/user/0
             <a href="#基本环境">基本环境</a>
         </li>
         <li class="toc__h2">
-            <a href="#安装KVM">安装 KVM</a>
+            <a href="#安装KVM">安装KVM</a>
         </li>
         <li class="toc__h2">
             <a href="#下载并且创建网桥接口">下载并且创建网桥接口</a>
@@ -530,7 +530,7 @@ tmpfs                    184M     0  184M   0% /run/user/0
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -562,13 +562,13 @@ tmpfs                    184M     0  184M   0% /run/user/0
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1573111362693",
@@ -588,4 +588,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 65ms, 2020/03/26 16:18:18 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 54ms, 2020/03/28 15:03:58 -->

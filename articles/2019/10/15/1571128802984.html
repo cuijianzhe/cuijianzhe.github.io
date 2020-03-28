@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>openstack系列-dashboard部署 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="openstack系列-dashboard部署 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/15/1571128802984.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="openstack系列-dashboard部署 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/15/1571128802984.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="openstack系列-neutron系列安装部署" href="https://cuijianzhe.github.io/articles/2019/10/15/1571104876779.html">
             <link rel="next" title="修复nginx报错："upstream sent too big header while reading response header from upstream"" href="https://cuijianzhe.github.io/articles/2019/10/20/1571574453990.html">
     </head>
@@ -88,12 +88,12 @@
                 </a>
         </div>
         <div class="vditor-reset">
-            <h1 id="horizon节点安装"><a href="https://docs.openstack.org/horizon/rocky/install/" target="_blank">horizon 节点安装</a></h1>
+            <h1 id="horizon节点安装"><a href="https://docs.openstack.org/horizon/rocky/install/" target="_blank">horizon节点安装</a></h1>
 <pre><code class="highlight-chroma"> yum install openstack-dashboard
 </code></pre>
-<h2 id="编辑-etc-openstack-dashboard-local-settings文件">编辑/etc/openstack-dashboard/local_settings 文件</h2>
+<h2 id="编辑-etc-openstack-dashboard-local-settings文件">编辑/etc/openstack-dashboard/local_settings文件</h2>
 <ul>
-<li>将仪表板配置为在控制器节点上使用 OpenStack 服务：</li>
+<li>将仪表板配置为在控制器节点上使用OpenStack服务：</li>
 </ul>
 <pre><code class="highlight-chroma">OPENSTACK_HOST = "10.200.51.100"
 </code></pre>
@@ -103,7 +103,7 @@
 <pre><code class="highlight-chroma">ALLOWED_HOSTS = ['*', 'localhost']
 </code></pre>
 <ul>
-<li>配置 Memcached 会话存储服务</li>
+<li>配置memcached会话存储服务</li>
 </ul>
 <pre><code class="highlight-chroma">SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
@@ -115,7 +115,7 @@ CACHES = {
 }
 </code></pre>
 <ul>
-<li>启用标识 API 版本 3：</li>
+<li>启用标识API版本3：</li>
 </ul>
 <pre><code class="highlight-chroma">OPENSTACK_KEYSTONE_URL = "http://%s:5000/v3" % OPENSTACK_HOST
 </code></pre>
@@ -125,7 +125,7 @@ CACHES = {
 <pre><code class="highlight-chroma">OPENSTACK_KEYSTONE_MULTIDOMAIN_SUPPORT = True
 </code></pre>
 <ul>
-<li>配置 API 版本：OpenStack_API_版本</li>
+<li>配置API版本：OpenStack_API_版本</li>
 </ul>
 <pre><code class="highlight-chroma">OPENSTACK_API_VERSIONS = {
     "identity": 3,
@@ -144,7 +144,7 @@ CACHES = {
 <pre><code class="highlight-chroma">OPENSTACK_KEYSTONE_DEFAULT_ROLE = "myrole"
 </code></pre>
 <ul>
-<li>如果选择网络选项 1，请禁用对第 3 层网络服务的支持：</li>
+<li>如果选择网络选项1，请禁用对第3层网络服务的支持：</li>
 </ul>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-nv">OPENSTACK_NEUTRON_NETWORK</span> <span class="highlight-o">=</span> <span class="highlight-o">{</span>
     <span class="highlight-s1">'enable_router'</span>: False,
@@ -168,7 +168,7 @@ CACHES = {
 <h3 id="重启服务">重启服务</h3>
 <pre><code class="highlight-chroma"> systemctl restart httpd.service memcached.service
 </code></pre>
-<h1 id="验证web">验证 Web</h1>
+<h1 id="验证web">验证web</h1>
 <p>浏览器输入：http://10.200.51.100/dashboard<br>
 <img src="https://img.hacpai.com/file/2019/10/image-f54adfd5.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <p><img src="https://img.hacpai.com/file/2019/10/image-3c9b6fee.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
@@ -185,16 +185,16 @@ CACHES = {
     <div class="post__toc">
 <ul class="article__toc">
         <li class="toc__h1">
-            <a href="#horizon节点安装">horizon 节点安装</a>
+            <a href="#horizon节点安装">horizon节点安装</a>
         </li>
         <li class="toc__h2">
-            <a href="#编辑-etc-openstack-dashboard-local-settings文件">编辑/etc/openstack-dashboard/local_settings 文件</a>
+            <a href="#编辑-etc-openstack-dashboard-local-settings文件">编辑/etc/openstack-dashboard/local_settings文件</a>
         </li>
         <li class="toc__h3">
             <a href="#重启服务">重启服务</a>
         </li>
         <li class="toc__h1">
-            <a href="#验证web">验证 Web</a>
+            <a href="#验证web">验证web</a>
         </li>
 </ul>    </div>
     <div class="body--gray post__gray">
@@ -355,7 +355,7 @@ CACHES = {
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -387,13 +387,13 @@ CACHES = {
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1571128802984",
@@ -413,4 +413,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 62ms, 2020/03/26 16:18:18 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 66ms, 2020/03/28 15:03:58 -->

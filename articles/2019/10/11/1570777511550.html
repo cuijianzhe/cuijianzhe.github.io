@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>openstack系列- keystone部署文档 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="openstack系列- keystone部署文档 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/11/1570777511550.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="openstack系列- keystone部署文档 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/11/1570777511550.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="通过python读取excel表格内容url批量下载" href="https://cuijianzhe.github.io/articles/2019/10/08/1570505431741.html">
             <link rel="next" title="openstack系列- glance 服务部署" href="https://cuijianzhe.github.io/articles/2019/10/13/1570938302267.html">
     </head>
@@ -93,7 +93,7 @@
 <h3 id="主机名修改-">主机名修改：</h3>
 <pre><code class="highlight-chroma">hostnamectl set-hostname linux-node1
 </code></pre>
-<p>修改 host 文件</p>
+<p>修改host文件</p>
 <pre><code class="highlight-chroma">10.200.51.100 linux-node1 linux-node1.limi.com
 10.200.51.31 linux-node2 linux-node2.limi.com
 </code></pre>
@@ -102,12 +102,12 @@
 linux-node2  10.200.51.31  计算节点</p>
 </blockquote>
 <ul>
-<li><a href="https://opsx.alibaba.com/mirror?lang=zh-CN" target="_blank">配置网络 yum 源：</a></li>
+<li><a href="https://opsx.alibaba.com/mirror?lang=zh-CN" target="_blank">配置网络yum源：</a></li>
 </ul>
 <pre><code class="highlight-chroma">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 sed -i  's/$releasever/7.7.1908/g' /etc/yum.repos.d/CentOS-Base.repo
 </code></pre>
-<h3 id="NTP服务安装">NTP 服务安装</h3>
+<h3 id="NTP服务安装">NTP服务安装</h3>
 <pre><code class="highlight-chroma">yum install chrony -y
 timedatectl set-timezone Asia/Shanghai  #配置时区
 </code></pre>
@@ -119,7 +119,7 @@ allow 10.200.0.0/16
 # systemctl start chronyd.service
 </code></pre>
 <ul>
-<li>node 节点配置</li>
+<li>node节点配置</li>
 </ul>
 <pre><code class="highlight-chroma">server 192.168.51.208 iburst
 </code></pre>
@@ -140,10 +140,10 @@ yum upgrade
 </code></pre>
 <pre><code class="highlight-chroma">yum install openstack-selinux
 </code></pre>
-<h3 id="SQL-database安装"><a href="https://docs.openstack.org/install-guide/environment-sql-database.html" target="_blank">SQL database 安装</a></h3>
+<h3 id="SQL-database安装"><a href="https://docs.openstack.org/install-guide/environment-sql-database.html" target="_blank">SQL database安装</a></h3>
 <pre><code class="highlight-chroma">yum install mariadb mariadb-server python2-PyMySQL -y
 </code></pre>
-<p>添加 openstack 配置文件</p>
+<p>添加openstack配置文件</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 my.cnf.d<span class="highlight-o">]</span><span class="highlight-c1"># cat /etc/my.cnf.d/openstack.cnf</span> 
 <span class="highlight-o">[</span>mysqld<span class="highlight-o">]</span>
 bind-address <span class="highlight-o">=</span> 0.0.0.0
@@ -158,28 +158,28 @@ character-set-server <span class="highlight-o">=</span> utf8
 # systemctl start mariadb.service
 </code></pre>
 <blockquote>
-<p>修改 maridb 初始密码</p>
+<p>修改maridb初始密码</p>
 </blockquote>
 <pre><code class="highlight-chroma">mysql_secure_installation
 </code></pre>
-<h3 id="Message-queue消息队列"><a href="https://docs.openstack.org/install-guide/environment-messaging.html" target="_blank">Message queue 消息队列</a></h3>
+<h3 id="Message-queue消息队列"><a href="https://docs.openstack.org/install-guide/environment-messaging.html" target="_blank">Message queue消息队列</a></h3>
 <pre><code class="highlight-chroma">yum install rabbitmq-server -y
 # systemctl enable rabbitmq-server.service
 # systemctl start rabbitmq-server.service
 </code></pre>
-<p>创建 openstack 用户</p>
+<p>创建openstack用户</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1">#  rabbitmqctl add_user openstack openstack</span> 
 Creating user <span class="highlight-s2">"openstack"</span>
 <span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># rabbitmqctl set_permissions openstack ".*" ".*" ".*"</span>
 Setting permissions <span class="highlight-k">for</span> user <span class="highlight-s2">"openstack"</span> in vhost <span class="highlight-s2">"/"</span>
 
 </code></pre>
-<p><a href="https://www.rabbitmq.com/rabbitmqctl.8.html#set_user_tags" target="_blank">rabbitmqctl 命令参考</a><br>
-<code>rabbitmq-plugins list</code> 查看 rabbitmq 插件列表<br>
-<code>rabbitmq-plugins enable rabbitmq_management</code> 开启 Web 管理功能<br>
+<p><a href="https://www.rabbitmq.com/rabbitmqctl.8.html#set_user_tags" target="_blank">rabbitmqctl命令参考</a><br>
+<code>rabbitmq-plugins list</code> 查看rabbitmq插件列表<br>
+<code>rabbitmq-plugins enable rabbitmq_management</code> 开启web管理功能<br>
 <code>rabbitmqctl  list_users</code> 查看用户列表<br>
 <code>rabbitmqctl  set_user_tags admin administrator</code>  修改用户角色</p>
-<h3 id="Memcached库安装"><a href="https://docs.openstack.org/install-guide/environment-memcached.html" target="_blank">Memcached 库安装</a></h3>
+<h3 id="Memcached库安装"><a href="https://docs.openstack.org/install-guide/environment-memcached.html" target="_blank">Memcached库安装</a></h3>
 <pre><code class="highlight-chroma"> yum install memcached python-memcached
 </code></pre>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># cat !$</span>
@@ -192,7 +192,7 @@ cat /etc/sysconfig/memcached
 <span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># systemctl start memcached.service</span> 
 <span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># systemctl enable memcached.service</span> 
 </code></pre>
-<h3 id="Etcd安装"><a href="https://docs.openstack.org/install-guide/environment-etcd.html" target="_blank">Etcd 安装</a></h3>
+<h3 id="Etcd安装"><a href="https://docs.openstack.org/install-guide/environment-etcd.html" target="_blank">Etcd安装</a></h3>
 <pre><code class="highlight-chroma"># yum install etcd
 </code></pre>
 <p><strong>配置</strong></p>
@@ -210,9 +210,9 @@ cat /etc/sysconfig/memcached
 <pre><code class="highlight-chroma">[root@linux-node1 ~]# systemctl start etcd
 [root@linux-node1 ~]# systemctl enable  etcd
 </code></pre>
-<h1 id="二-安装openstack服务">二、安装 openstack 服务</h1>
+<h1 id="二-安装openstack服务">二、安装openstack服务</h1>
 <h2 id="2-1-Keystone-安装">2.1 <a href="https://docs.openstack.org/keystone/rocky/install/index-rdo.html" target="_blank">Keystone 安装</a></h2>
-<h3 id="配置keystone库">配置 keystone 库</h3>
+<h3 id="配置keystone库">配置keystone库</h3>
 <pre><code class="highlight-chroma">CREATE DATABASE keystone;
 GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'localhost' \
   IDENTIFIED BY 'keystone';
@@ -233,7 +233,7 @@ connection = mysql+pymysql://keystone:keystone@10.200.51.100/keystone
 provider = fernet
 </code></pre>
 <blockquote>
-<p><a href="https://www.cnblogs.com/dhplxf/p/7966890.html" target="_blank">keystone 令牌三种生成方式</a></p>
+<p><a href="https://www.cnblogs.com/dhplxf/p/7966890.html" target="_blank">keystone令牌三种生成方式</a></p>
 </blockquote>
 <ul>
 <li>同步数据库：</li>
@@ -241,13 +241,13 @@ provider = fernet
 <pre><code class="highlight-chroma">su -s /bin/sh -c "keystone-manage db_sync" keystone
 </code></pre>
 <ul>
-<li>初始化 FERNET 密钥存储库：</li>
+<li>初始化FERNET密钥存储库：</li>
 </ul>
 <pre><code class="highlight-chroma"># keystone-manage fernet_setup --keystone-user keystone --keystone-group keystone
 # keystone-manage credential_setup --keystone-user keystone --keystone-group keystone
 </code></pre>
 <ul>
-<li>创建 bootstrap 服务</li>
+<li>创建bootstrap服务</li>
 </ul>
 <pre><code class="highlight-chroma">  keystone-manage bootstrap --bootstrap-password 598941324 \
 --bootstrap-admin-url http://10.200.51.100:5000/v3 \
@@ -256,7 +256,7 @@ provider = fernet
 --bootstrap-region-id RegionOne 
 </code></pre>
 <ul>
-<li>配置 http 服务</li>
+<li>配置http服务</li>
 </ul>
 <pre><code class="language-bash highlight-chroma">vim /etc/httpd/conf/httpd.conf 
 ...
@@ -267,10 +267,10 @@ ServerName 10.200.51.100:80
 </code></pre>
 <ul>
 <li>
-<p>配置 SSL</p>
+<p>配置SSL</p>
 </li>
 <li>
-<p>配置环境变量：(#此密码用 boostrap 中的密码)</p>
+<p>配置环境变量：(#此密码用boostrap中的密码)</p>
 </li>
 </ul>
 <pre><code class="highlight-chroma">export OS_USERNAME=admin
@@ -283,7 +283,7 @@ export OS_IDENTITY_API_VERSION=3
 </code></pre>
 <h3 id="创建域-角色-用户和项目">创建域、角色、用户和项目</h3>
 <ul>
-<li>创建 mystack 域，默认 DEFAULT 域已经存在</li>
+<li>创建mystack域,默认DEFAULT域已经存在</li>
 </ul>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># openstack domain create --description "mystack" mystack</span>
 +-------------+----------------------------------+
@@ -336,7 +336,7 @@ Repeat User Password:
 <p>password:598941324</p>
 </blockquote>
 <ul>
-<li>创建 myrole 角色</li>
+<li>创建myrole角色</li>
 </ul>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># openstack role create demo</span>
 +-------------+----------------------------------+
@@ -358,17 +358,17 @@ Repeat User Password:
 +-------------+----------------------------------+
 </code></pre>
 <ul>
-<li>将 myrole 角色添加到 myproject 项目和 myuser 用户：</li>
+<li>将myrole角色添加到myproject项目和myuser用户：</li>
 </ul>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># openstack role add --project myproject --user myuser myrole</span>
 </code></pre>
 <ul>
-<li>取消设置临时 os_auth_url 和 os_password 环境变量：</li>
+<li>取消设置临时os_auth_url和os_password环境变量：</li>
 </ul>
 <pre><code class="highlight-chroma">unset OS_AUTH_URL OS_PASSWORD
 </code></pre>
 <ul>
-<li>作为上一节中创建的 demo、myuser 用户，请求身份验证令牌：</li>
+<li>作为上一节中创建的demo、myuser用户，请求身份验证令牌：</li>
 </ul>
 <blockquote>
 <p>命令</p>
@@ -458,31 +458,31 @@ Password:
             <a href="#主机名修改-">主机名修改：</a>
         </li>
         <li class="toc__h3">
-            <a href="#NTP服务安装">NTP 服务安装</a>
+            <a href="#NTP服务安装">NTP服务安装</a>
         </li>
         <li class="toc__h3">
             <a href="#OpenStack-包安装">OpenStack 包安装</a>
         </li>
         <li class="toc__h3">
-            <a href="#SQL-database安装">SQL database 安装</a>
+            <a href="#SQL-database安装">SQL database安装</a>
         </li>
         <li class="toc__h3">
-            <a href="#Message-queue消息队列">Message queue 消息队列</a>
+            <a href="#Message-queue消息队列">Message queue消息队列</a>
         </li>
         <li class="toc__h3">
-            <a href="#Memcached库安装">Memcached 库安装</a>
+            <a href="#Memcached库安装">Memcached库安装</a>
         </li>
         <li class="toc__h3">
-            <a href="#Etcd安装">Etcd 安装</a>
+            <a href="#Etcd安装">Etcd安装</a>
         </li>
         <li class="toc__h1">
-            <a href="#二-安装openstack服务">二、安装 openstack 服务</a>
+            <a href="#二-安装openstack服务">二、安装openstack服务</a>
         </li>
         <li class="toc__h2">
             <a href="#2-1-Keystone-安装">2.1 Keystone 安装</a>
         </li>
         <li class="toc__h3">
-            <a href="#配置keystone库">配置 keystone 库</a>
+            <a href="#配置keystone库">配置keystone库</a>
         </li>
         <li class="toc__h3">
             <a href="#创建域-角色-用户和项目">创建域、角色、用户和项目</a>
@@ -646,7 +646,7 @@ Password:
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -678,13 +678,13 @@ Password:
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1570777511550",
@@ -704,4 +704,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 67ms, 2020/03/26 16:18:19 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 139ms, 2020/03/28 15:03:58 -->

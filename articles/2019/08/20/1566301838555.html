@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>【福利】python3爬取妹子图 - 邯城往事</title><meta name="description" content="BeautifulSoup"/><meta property="og:description" content="BeautifulSoup"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="【福利】python3爬取妹子图 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/08/20/1566301838555.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="【福利】python3爬取妹子图 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/08/20/1566301838555.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585076442719"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
             <link rel="prev" title="python读取本地文件，提取指定格式的内容" href="https://cuijianzhe.github.io/articles/2019/08/20/1566269499265.html">
             <link rel="next" title="python 实现 AI 换脸" href="https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html">
     </head>
@@ -87,8 +87,8 @@
         <div class="vditor-reset">
             <p><img src="https://img.hacpai.com/file/2019/09/image-7c3952c9.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <p>妹子图官方网址：<a href="https://www.mzitu.com/" target="_blank">https://www.mzitu.com/</a></p>
-<p>刚接触到 BeautifulSoup，所以拿来试下效果，起伏跌宕出来效果。<br>
-具体思路？官网首页链接--&gt; 获取分页面链接--&gt; 通过分页面获取图片链接<br>
+<p>刚接触到BeautifulSoup，所以拿来试下效果，起伏跌宕出来效果。<br>
+具体思路？官网首页链接--&gt;获取分页面链接--&gt;通过分页面获取图片链接<br>
 看下步骤：</p>
 <h1 id="一-分析下页面">一、分析下页面</h1>
 <h2 id="1-1-先确保访问正常-">1.1 先确保访问正常：</h2>
@@ -108,9 +108,9 @@
     <span class="highlight-k">except</span><span class="highlight-p">:</span>
         <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-s1">'网络访问错误'</span><span class="highlight-p">)</span>
 </code></pre>
-<h2 id="1-2-把当前页面所有page的url相关信息抓取出来">1.2 把当前页面所有 page 的 url 相关信息抓取出来</h2>
+<h2 id="1-2-把当前页面所有page的url相关信息抓取出来">1.2 把当前页面所有page的url相关信息抓取出来</h2>
 <p><img src="https://img.hacpai.com/file/2019/08/image-03f6cd33.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>把如上页面可以抓取到当前页面所有女神合集 page。</p>
+<p>把如上页面可以抓取到当前页面所有女神合集page。</p>
 <pre><code class="language-python highlight-chroma"><span class="highlight-k">def</span> <span class="highlight-nf">get_page</span><span class="highlight-p">(</span><span class="highlight-n">url</span><span class="highlight-p">):</span>
     <span class="highlight-n">html</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">url</span><span class="highlight-p">,</span><span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-n">headers</span><span class="highlight-p">)</span>
     <span class="highlight-n">soup</span> <span class="highlight-o">=</span> <span class="highlight-n">BeautifulSoup</span><span class="highlight-p">(</span><span class="highlight-n">html</span><span class="highlight-o">.</span><span class="highlight-n">text</span><span class="highlight-p">,</span><span class="highlight-s1">'lxml'</span><span class="highlight-p">)</span>
@@ -118,7 +118,7 @@
     <span class="highlight-n">all_url</span> <span class="highlight-o">=</span> <span class="highlight-n">soup</span><span class="highlight-o">.</span><span class="highlight-n">find</span><span class="highlight-p">(</span><span class="highlight-s2">"ul"</span><span class="highlight-p">,{</span><span class="highlight-s2">"id"</span><span class="highlight-p">:</span><span class="highlight-s2">"pins"</span><span class="highlight-p">})</span><span class="highlight-o">.</span><span class="highlight-n">find_all</span><span class="highlight-p">(</span><span class="highlight-s2">"a"</span><span class="highlight-p">)</span>
     <span class="highlight-c1"># print(all_url)</span>
 </code></pre>
-<h2 id="1-3-获取详细页面url">1.3 获取详细页面 url</h2>
+<h2 id="1-3-获取详细页面url">1.3 获取详细页面url</h2>
 <pre><code class="language-python highlight-chroma">    <span class="highlight-n">count</span> <span class="highlight-o">=</span> <span class="highlight-mi">1</span>
     <span class="highlight-k">for</span> <span class="highlight-n">href</span> <span class="highlight-ow">in</span> <span class="highlight-n">all_url</span><span class="highlight-p">:</span>
         <span class="highlight-n">count</span><span class="highlight-o">=</span><span class="highlight-n">count</span><span class="highlight-o">+</span><span class="highlight-mi">1</span>
@@ -126,11 +126,11 @@
         <span class="highlight-k">if</span> <span class="highlight-n">count</span> <span class="highlight-o">%</span><span class="highlight-mi">2</span> <span class="highlight-o">!=</span> <span class="highlight-mi">0</span><span class="highlight-p">:</span>
             <span class="highlight-n">href1</span> <span class="highlight-o">=</span> <span class="highlight-n">href</span><span class="highlight-p">[</span><span class="highlight-s1">'href'</span><span class="highlight-p">]</span>  <span class="highlight-c1">#查找匹配出分页面中的page链接</span>
 </code></pre>
-<p>因为通过 for 循环得到的 href 链接是一样的，所以只取一个：取奇偶<br>
+<p>因为通过for循环得到的href链接是一样的，所以只取一个：取奇偶<br>
 <img src="https://img.hacpai.com/file/2019/08/image-6bc86c60.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <p>结果如下：<br>
 <img src="https://img.hacpai.com/file/2019/08/image-b8e5c04b.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<h2 id="1-4-得到页面链接后-即可抓页面下图片的url-创建目录">1.4 得到页面链接后，即可抓页面下图片的 url。创建目录</h2>
+<h2 id="1-4-得到页面链接后-即可抓页面下图片的url-创建目录">1.4 得到页面链接后，即可抓页面下图片的url。创建目录</h2>
 <pre><code class="language-python highlight-chroma">            <span class="highlight-k">for</span> <span class="highlight-n">href2</span> <span class="highlight-ow">in</span> <span class="highlight-n">href</span><span class="highlight-p">:</span>
                 <span class="highlight-n">res2</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">href1</span><span class="highlight-p">,</span><span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-n">headers</span><span class="highlight-p">)</span>
                 <span class="highlight-n">soup2</span> <span class="highlight-o">=</span> <span class="highlight-n">BeautifulSoup</span><span class="highlight-p">(</span><span class="highlight-n">res2</span><span class="highlight-o">.</span><span class="highlight-n">text</span><span class="highlight-p">,</span><span class="highlight-s1">'lxml'</span><span class="highlight-p">)</span>
@@ -143,7 +143,7 @@
                 <span class="highlight-n">os</span><span class="highlight-o">.</span><span class="highlight-n">mkdir</span><span class="highlight-p">(</span><span class="highlight-n">name</span><span class="highlight-p">)</span>
                 <span class="highlight-n">os</span><span class="highlight-o">.</span><span class="highlight-n">chdir</span><span class="highlight-p">(</span><span class="highlight-n">name</span><span class="highlight-p">)</span>
 </code></pre>
-<p>通过如下图的当前 page 中图片最后一张对应的 span 标签为第 9 个。<br>
+<p>通过如下图的当前page中图片最后一张对应的span标签为第9个。<br>
 <img src="https://img.hacpai.com/file/2019/08/image-bec90c6e.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <h2 id="1-5-下载图片">1.5 下载图片</h2>
 <p>标题获取：<br>
@@ -231,8 +231,8 @@
     <span class="highlight-n">get_page</span><span class="highlight-p">(</span><span class="highlight-n">url</span><span class="highlight-p">)</span>
 </code></pre>
 <p>参考文档：<br>
-<a href="https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/" target="_blank">BeautifulSoup 中文文档</a><br>
-<a href="http://2.python-requests.org/zh_CN/latest/user/quickstart.html" target="_blank">Requests 文档</a></p>
+<a href="https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/" target="_blank">BeautifulSoup中文文档</a><br>
+<a href="http://2.python-requests.org/zh_CN/latest/user/quickstart.html" target="_blank">Requests文档</a></p>
                 <div>
                     <span class="name">搭讪 你就破功了，老弟！</span>
 <style>
@@ -268,13 +268,13 @@
             <a href="#1-1-先确保访问正常-">1.1 先确保访问正常：</a>
         </li>
         <li class="toc__h2">
-            <a href="#1-2-把当前页面所有page的url相关信息抓取出来">1.2 把当前页面所有 page 的 url 相关信息抓取出来</a>
+            <a href="#1-2-把当前页面所有page的url相关信息抓取出来">1.2 把当前页面所有page的url相关信息抓取出来</a>
         </li>
         <li class="toc__h2">
-            <a href="#1-3-获取详细页面url">1.3 获取详细页面 url</a>
+            <a href="#1-3-获取详细页面url">1.3 获取详细页面url</a>
         </li>
         <li class="toc__h2">
-            <a href="#1-4-得到页面链接后-即可抓页面下图片的url-创建目录">1.4 得到页面链接后，即可抓页面下图片的 url。创建目录</a>
+            <a href="#1-4-得到页面链接后-即可抓页面下图片的url-创建目录">1.4 得到页面链接后，即可抓页面下图片的url。创建目录</a>
         </li>
         <li class="toc__h2">
             <a href="#1-5-下载图片">1.5 下载图片</a>
@@ -441,7 +441,7 @@
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                107
+                108
                 文章
             </a>
            <br>
@@ -473,13 +473,13 @@
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585076442719"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585076442719', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1566301838555",
@@ -499,4 +499,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 76ms, 2020/03/26 16:18:19 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 70ms, 2020/03/28 15:03:59 -->
