@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>linux使用sendEmail发送邮件 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="linux使用sendEmail发送邮件 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/16/1552701584725.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="linux使用sendEmail发送邮件 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/16/1552701584725.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585508441415"/>
             <link rel="prev" title="nginx反向代理tomcat项目之solo" href="https://cuijianzhe.github.io/articles/2019/03/15/1552648638089.html">
             <link rel="next" title="LINUX脚本使用实战，持续更新" href="https://cuijianzhe.github.io/articles/2019/03/16/1552705047941.html">
     </head>
@@ -86,10 +86,10 @@
         </div>
         <div class="vditor-reset">
             <p><img src="https://img.hacpai.com/bing/20181220.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
-<h3 id="sendEmail官方下载地址">sendEmail官方下载地址</h3>
+<h3 id="sendEmail官方下载地址">sendEmail 官方下载地址</h3>
 <p><a href="https://" target="_blank">http://caspian.dotconf.net/menu/Software/SendEmail/</a></p>
-<p>官网最新版本1.5.6，可以直接下载上传到服务器，也可用wget方式</p>
-<p>我生产环境是采用定时任务触发sendEmail并且发送每天的日志信息到邮箱进行保存。<br>
+<p>官网最新版本 1.5.6，可以直接下载上传到服务器，也可用 wget 方式</p>
+<p>我生产环境是采用定时任务触发 sendEmail 并且发送每天的日志信息到邮箱进行保存。<br>
 <img src="https://img.hacpai.com/file/2019/03/crontab-40bd3069.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="crontab.png"></p>
 <p><img src="https://img.hacpai.com/file/2019/03/sendEmail-2f2f3866.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="sendEmail.png"></p>
 <pre><code class="highlight-chroma">[root@localhost ~]# wget http://caspian.dotconf.net/menu/Software/SendEmail/sendEmail-v1.56.tar.gz
@@ -131,10 +131,10 @@ lrwxrwxrwx. 1 root root     9 9月  30 2009 sendEmail.pl -&gt; sendEmail
 
 Apr <span class="highlight-m">15</span> 21:01:02 zabbix sendEmail<span class="highlight-o">[</span>31464<span class="highlight-o">]</span>: Email was sent successfully!
 </code></pre>
-<p>发送成功会有successfully……</p>
+<p>发送成功会有 successfully……</p>
 <p>查收邮件：<br>
 <img src="https://img.hacpai.com/file/2019/03/sendEmail2-4f283eb1.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="sendEmail2.png"></p>
-<h3 id="sendEmail使用命令帮助-">sendEmail使用命令帮助：</h3>
+<h3 id="sendEmail使用命令帮助-">sendEmail 使用命令帮助：</h3>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@localhost ~<span class="highlight-o">]</span><span class="highlight-c1"># /usr/local/bin/sendEmail --help</span>
 
 
@@ -196,7 +196,7 @@ Synopsis:  sendEmail -f ADDRESS <span class="highlight-o">[</span>options<span c
     <div class="post__toc">
 <ul class="article__toc">
         <li class="toc__h3">
-            <a href="#sendEmail官方下载地址">sendEmail官方下载地址</a>
+            <a href="#sendEmail官方下载地址">sendEmail 官方下载地址</a>
         </li>
         <li class="toc__h3">
             <a href="#发送邮件-">发送邮件：</a>
@@ -205,7 +205,7 @@ Synopsis:  sendEmail -f ADDRESS <span class="highlight-o">[</span>options<span c
             <a href="#测试发送邮件代码-">测试发送邮件代码：</a>
         </li>
         <li class="toc__h3">
-            <a href="#sendEmail使用命令帮助-">sendEmail使用命令帮助：</a>
+            <a href="#sendEmail使用命令帮助-">sendEmail 使用命令帮助：</a>
         </li>
 </ul>    </div>
     <div class="body--gray post__gray">
@@ -398,13 +398,13 @@ Synopsis:  sendEmail -f ADDRESS <span class="highlight-o">[</span>options<span c
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585508441415"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585508441415', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1552701584725",
@@ -424,4 +424,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 54ms, 2020/03/28 15:04:01 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 56ms, 2020/03/31 10:55:34 -->

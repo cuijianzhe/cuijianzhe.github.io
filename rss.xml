@@ -6,7 +6,7 @@
     <atom:link href="https://cuijianzhe.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>啥也不是，就是想躺着……</description>
     <generator>Solo, v4.0.0, https://solo.b3log.org</generator>
-    <lastBuildDate>Sat, 28 Mar 2020 15:03:54 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 31 Mar 2020 10:55:30 +0800</lastBuildDate>
     <language>zh-cn</language>
     <item>
       <title>利用Python实现网易云音乐自动签到</title>
@@ -15,7 +15,7 @@
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/03/27/1585293177882.html</guid>
       <category>Python</category>
-      <pubDate>Sat, 28 Mar 2020 13:43:20 +0800</pubDate>
+      <pubDate>Mon, 30 Mar 2020 12:09:50 +0800</pubDate>
     </item>
     <item>
       <title>利用爬虫爬取我的solo博客</title>
@@ -51,8 +51,8 @@
       <description/>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html</guid>
-      <category>Python</category>
       <category>mysql</category>
+      <category>Python</category>
       <pubDate>Sat, 21 Mar 2020 12:59:05 +0800</pubDate>
     </item>
     <item>
@@ -61,8 +61,8 @@
       <description><![CDATA[<p>docker-solo 自动升级脚本-最终</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2019/04/10/1554909820806.html</guid>
-      <category>Linux</category>
       <category>solo</category>
+      <category>Linux</category>
       <pubDate>Wed, 18 Mar 2020 16:08:57 +0800</pubDate>
     </item>
     <item>

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>kolla部署openstack（stein）部署---allinone - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="kolla部署openstack（stein）部署---allinone - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/27/1572172031071.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="kolla部署openstack（stein）部署---allinone - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/27/1572172031071.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585508441415"/>
             <link rel="prev" title="修复nginx报错："upstream sent too big header while reading response header from upstream"" href="https://cuijianzhe.github.io/articles/2019/10/20/1571574453990.html">
             <link rel="next" title="ceph集群搭建" href="https://cuijianzhe.github.io/articles/2019/10/30/1572426357896.html">
     </head>
@@ -104,7 +104,7 @@ kolla
 <h3 id="时间同步">时间同步</h3>
 <pre><code class="highlight-chroma">yum install ntp -y &amp;&amp; systemctl enable ntpd.service &amp;&amp; systemctl start ntpd.service
 </code></pre>
-<h3 id="配置pip源参考这里">配置pip源参考<a href="https://blog.csdn.net/sinat_21591675/article/details/82770360" target="_blank">这里</a></h3>
+<h3 id="配置pip源参考这里">配置 pip 源参考<a href="https://blog.csdn.net/sinat_21591675/article/details/82770360" target="_blank">这里</a></h3>
 <pre><code class="highlight-chroma">mkdir ~/.pip
 vim ~/.pip/pip.conf
 [global]
@@ -117,10 +117,10 @@ trusted-host=mirrors.aliyun.com
 <table>
 <thead>
 <tr>
-<th>IP地址</th>
+<th>IP 地址</th>
 <th>网卡类型</th>
 <th>网卡</th>
-<th>在openstack网络中的作用</th>
+<th>在 openstack 网络中的作用</th>
 </tr>
 </thead>
 <tbody>
@@ -128,17 +128,17 @@ trusted-host=mirrors.aliyun.com
 <td>192.168.51.208</td>
 <td>bridge</td>
 <td>enp61s0f0</td>
-<td>openstack内部管理网络 (managment nework) 以后Horizon web界面访问，就是通过这个IP地址</td>
+<td>openstack 内部管理网络 (managment nework) 以后 Horizon Web 界面访问，就是通过这个 IP 地址</td>
 </tr>
 <tr>
-<td>无IP（不配置ip）</td>
+<td>无 IP（不配置 ip）</td>
 <td>bridge</td>
 <td>enp61s0f3</td>
-<td>外部网络 (external network) ，让neutron的br-ex 绑定使用，openstack中的虚拟机是通过这块网卡和外网通信的</td>
+<td>外部网络 (external network) ，让 neutron 的 br-ex 绑定使用，openstack 中的虚拟机是通过这块网卡和外网通信的</td>
 </tr>
 </tbody>
 </table>
-<p>enp61s0f3中的配置</p>
+<p>enp61s0f3 中的配置</p>
 <pre><code class="highlight-chroma">TYPE=Ethernet
 PROXY_METHOD=none
 BROWSER_ONLY=no
@@ -155,21 +155,21 @@ UUID=1abc4bd5-0df3-483e-9110-55f905c4d428
 DEVICE=enp61s0f3
 ONBOOT=yes
 </code></pre>
-<h3 id="安装基础包和docker服务">安装基础包和docker服务</h3>
+<h3 id="安装基础包和docker服务">安装基础包和 docker 服务</h3>
 <h4 id="安装基础包">安装基础包</h4>
 <pre><code class="highlight-chroma">yum install python-devel libffi-devel gcc openssl-devel git python-pip -y
 pip install -U pip
 yum install -y yum-utils device-mapper-persistent-data lvm2
 </code></pre>
-<h4 id="添加docker-yum源并安装docker">添加docker yum源并安装docker</h4>
+<h4 id="添加docker-yum源并安装docker">添加 docker yum 源并安装 docker</h4>
 <pre><code class="highlight-chroma">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 rpm --import https://mirrors.aliyun.com/docker-ce/linux/centos/gpg #导入rpm包密钥，检查后期在线安装的rpm是否安全
 </code></pre>
-<p>安装docker社区版本</p>
+<p>安装 docker 社区版本</p>
 <pre><code class="highlight-chroma">yum -y install docker-ce
 systemctl start docker &amp;&amp; systemctl enable docker &amp;&amp; systemctl status docker
 </code></pre>
-<p>设置docker volume卷挂载方式</p>
+<p>设置 docker volume 卷挂载方式</p>
 <pre><code class="highlight-chroma">mkdir /etc/systemd/system/docker.service.d
 tee /etc/systemd/system/docker.service.d/kolla.conf &lt;&lt; 'EOF'
 [Service]
@@ -177,52 +177,52 @@ MountFlags=shared
 EOF
 </code></pre>
 <blockquote>
-<p>注：加上MountFlags=shared后，当docker宿主机新增分区时，docker服务不用重启。添加这个参考后，后期在openstack中使用cinder存储服务时，新加磁盘比较方便。</p>
+<p>注：加上 MountFlags=shared 后，当 docker 宿主机新增分区时，docker 服务不用重启。添加这个参考后，后期在 openstack 中使用 cinder 存储服务时，新加磁盘比较方便。</p>
 </blockquote>
 <h4 id="镜像加速器设置">镜像加速器设置</h4>
-<p>在此我建议部署stein版本镜像加速器选择<a href="https://www.daocloud.io/mirror" target="_blank">daocloud</a>，阿里、网易等加速器可能会出现pull docker出现问题。</p>
+<p>在此我建议部署 stein 版本镜像加速器选择 <a href="https://www.daocloud.io/mirror" target="_blank">daocloud</a>，阿里、网易等加速器可能会出现 pull docker 出现问题。</p>
 <pre><code class="highlight-chroma">curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io  
 </code></pre>
 <p>重启相关服务</p>
 <pre><code class="highlight-chroma">systemctl daemon-reload
 systemctl restart docker &amp;&amp; systemctl status docker
 </code></pre>
-<h1 id="安装kolla-ansible">安装kolla-ansible</h1>
-<h2 id="安装ansible">安装ansible</h2>
+<h1 id="安装kolla-ansible">安装 kolla-ansible</h1>
+<h2 id="安装ansible">安装 ansible</h2>
 <pre><code class="highlight-chroma">yum install ansible -y
 pip install kolla-ansible 
 </code></pre>
 <blockquote>
-<p>报错：已经安装PyYAML 3.10，但是我们需要PyYAML</p>
+<p>报错：已经安装 PyYAML 3.10，但是我们需要 PyYAML</p>
 </blockquote>
 <p>解决：</p>
 <pre><code class="highlight-chroma">pip install PyYAML --ignore-installed PyYAML
 </code></pre>
 <ul>
-<li>复制kolla-ansible的相关配置文件</li>
+<li>复制 kolla-ansible 的相关配置文件</li>
 </ul>
 <pre><code class="highlight-chroma">cp -r /usr/share/kolla-ansible/etc_examples/kolla /etc/
 cp /usr/share/kolla-ansible/ansible/inventory/* /etc/kolla/
 </code></pre>
 <ul>
-<li>另外安装stein后期会遇到pip包找不到的问题，在此先安装<br>
+<li>另外安装 stein 后期会遇到 pip 包找不到的问题，在此先安装<br>
 报错信息：ImportError: cannot import name decorate<br>
 解决：</li>
 </ul>
 <pre><code class="highlight-chroma">pip install -U decorator
 pip install --upgrade decorate
 </code></pre>
-<h1 id="自定义安装kolla-ansible安装openstack的相关配置文件">自定义安装kolla-ansible安装openstack的相关配置文件</h1>
-<h2 id="自动生成openstack各服务的密码文件">自动生成openstack各服务的密码文件</h2>
+<h1 id="自定义安装kolla-ansible安装openstack的相关配置文件">自定义安装 kolla-ansible 安装 openstack 的相关配置文件</h1>
+<h2 id="自动生成openstack各服务的密码文件">自动生成 openstack 各服务的密码文件</h2>
 <pre><code class="highlight-chroma">kolla-genpwd
 </code></pre>
 <p>修改/etc/kolla/passwords.yml</p>
 <pre><code class="highlight-chroma"> keystone_admin_password: 598941324
 </code></pre>
 <blockquote>
-<p>注：这是登录Dashboard，admin使用的密码，你可以根据自己需要自行修改。</p>
+<p>注：这是登录 Dashboard，admin 使用的密码，你可以根据自己需要自行修改。</p>
 </blockquote>
-<h2 id="编辑-etc-kolla-globals-yml文件">编辑/etc/kolla/globals.yml文件</h2>
+<h2 id="编辑-etc-kolla-globals-yml文件">编辑/etc/kolla/globals.yml 文件</h2>
 <pre><code class="highlight-chroma">kolla_base_distro: "centos"
 kolla_install_type: "binary" 
 openstack_release: "stein"
@@ -233,19 +233,19 @@ enable_haproxy: "no"
 </code></pre>
 <blockquote>
 <ul>
-<li>kolla_install_type: "binary" ：使用yum安装二进制包安装，源码安装，指的是使用git clone源码安装</li>
-<li>openstack_release: "stein"：指定安装stein版本的openstack，后期下载的openstack相关的docker镜像的tag标记也都为stein</li>
+<li>kolla_install_type: "binary" ：使用 yum 安装二进制包安装，源码安装，指的是使用 Git clone 源码安装</li>
+<li>openstack_release: "stein"：指定安装 stein 版本的 openstack，后期下载的 openstack 相关的 docker 镜像的 tag 标记也都为 stein</li>
 <li>node_custom_config: "/etc/kolla/config"：配置文件的位置</li>
-<li>kolla_internal_vip_address: "192.168.51.208"：没有启用高可用，所以这里的IP可以和enp61s0f0一样，也可以独立写一个和enp61s0f3同网段的IP。这一项的作用是：指定openstack内部管理地址，以后就通过这个IP地址访问openstack web界面，管理私云。<br>
-注：如果配置了高可用，这里要使用一个没被占用的IP。这个IP是搭建HA高可用的浮动IP。 此IP将由keepalived管理以提供高可用性，应设置为和network_interface enp61s0f3 同一个网段的地址。</li>
-<li>network_interface: "enp61s0f0"：Kolla-Ansible需要设置一些网络选项。 我们需要设置OpenStack使用的网络接口。设置的第一个接口是“network_interface”。 这是openstack内部多个管理类型网络的默认接口</li>
-<li>neutron_external_interface: "enp61s0f3"：所需的第二个接口与用亍Neutron外部（或公共）网络，可以是vlan戒flat，取决于网络的创建方式。 此接口应在没有IP地址的情况下处于活动，如果不是，openstack于平台中的于主机实例将无法访问外部网络。 只要网卡启劢着，就可以了，不要给IP，有IP时br-ex桥接就不成功了。</li>
-<li>enable_cinder: "no"：先不开启cinder</li>
+<li>kolla_internal_vip_address: "192.168.51.208"：没有启用高可用，所以这里的 IP 可以和 enp61s0f0 一样，也可以独立写一个和 enp61s0f3 同网段的 IP。这一项的作用是：指定 openstack 内部管理地址，以后就通过这个 IP 地址访问 openstack Web 界面，管理私云。<br>
+注：如果配置了高可用，这里要使用一个没被占用的 IP。这个 IP 是搭建 HA 高可用的浮动 IP。 此 IP 将由 keepalived 管理以提供高可用性，应设置为和 network_interface enp61s0f3 同一个网段的地址。</li>
+<li>network_interface: "enp61s0f0"：Kolla-Ansible 需要设置一些网络选项。 我们需要设置 OpenStack 使用的网络接口。设置的第一个接口是“network_interface”。 这是 openstack 内部多个管理类型网络的默认接口</li>
+<li>neutron_external_interface: "enp61s0f3"：所需的第二个接口与用亍 Neutron 外部（或公共）网络，可以是 vlan 戒 flat，取决于网络的创建方式。 此接口应在没有 IP 地址的情况下处于活动，如果不是，openstack 于平台中的于主机实例将无法访问外部网络。 只要网卡启劢着，就可以了，不要给 IP，有 IP 时 br-ex 桥接就不成功了。</li>
+<li>enable_cinder: "no"：先不开启 cinder</li>
 <li>enable_haproxy: "no":关闭高可用</li>
 </ul>
 </blockquote>
-<h1 id="开始基于kolla-ansible安装openstack私有云">开始基于kolla-ansible安装openstack私有云</h1>
-<h2 id="生成ssh-key-并授信本节点-">生成ssh-key，并授信本节点：</h2>
+<h1 id="开始基于kolla-ansible安装openstack私有云">开始基于 kolla-ansible 安装 openstack 私有云</h1>
+<h2 id="生成ssh-key-并授信本节点-">生成 ssh-key，并授信本节点：</h2>
 <pre><code class="highlight-chroma">ssh-keygen
 ssh-copy-id -i ~/.ssh/id_rsa.pub root@kolla
 </code></pre>
@@ -271,7 +271,7 @@ kolla
 [deployment]
 kolla
 </code></pre>
-<h2 id="开始部署openstack">开始部署openstack</h2>
+<h2 id="开始部署openstack">开始部署 openstack</h2>
 <h3 id="对主机进行预检查">对主机进行预检查</h3>
 <pre><code class="highlight-chroma">kolla-ansible -i /etc/kolla/all-in-one prechecks
 </code></pre>
@@ -280,8 +280,8 @@ kolla
 [root@kolla ~]# docker images | wc -l 
 32
 </code></pre>
-<p>大概会下载32个镜像文件</p>
-<h2 id="最后进入实际的OpenStack部署-">最后进入实际的OpenStack部署：</h2>
+<p>大概会下载 32 个镜像文件</p>
+<h2 id="最后进入实际的OpenStack部署-">最后进入实际的 OpenStack 部署：</h2>
 <pre><code class="highlight-chroma">kolla-ansible -i /etc/kolla/all-in-one deploy
 </code></pre>
 <p>部署完成后验证部署</p>
@@ -302,10 +302,10 @@ export OS_REGION_NAME=RegionOne
 export OS_AUTH_PLUGIN=password
 </code></pre>
 <h2 id="部署完成">部署完成</h2>
-<p>访问192.168.51.208即可进去openstack页面</p>
-<h1 id="openstack-allinone使用方法">openstack-allinone使用方法</h1>
-<h2 id="安装-openstack客户端并创建一个云主机">安装 openstack客户端并创建一个云主机</h2>
-<h3 id="安装OpenStack-client端-方便后期使用命令行操作openstack">安装OpenStack client端，方便后期使用命令行操作openstack</h3>
+<p>访问 192.168.51.208 即可进去 openstack 页面</p>
+<h1 id="openstack-allinone使用方法">openstack-allinone 使用方法</h1>
+<h2 id="安装-openstack客户端并创建一个云主机">安装 openstack 客户端并创建一个云主机</h2>
+<h3 id="安装OpenStack-client端-方便后期使用命令行操作openstack">安装 OpenStack client 端，方便后期使用命令行操作 openstack</h3>
 <pre><code class="highlight-chroma">pip install python-openstackclient
 </code></pre>
 <blockquote>
@@ -321,11 +321,11 @@ pip install python-openstackclient
 <pre><code class="highlight-chroma"> pip install python-neutronclient
 </code></pre>
 <blockquote>
-<p>安装openstack网络相关的命令</p>
+<p>安装 openstack 网络相关的命令</p>
 </blockquote>
 <h2 id="创建一个云项目">创建一个云项目</h2>
-<h3 id="修改init-runonce脚本-指定浮动IP地址范围">修改init-runonce脚本，指定浮动IP地址范围</h3>
-<p>init-runonce是在openstack中快速创建一个云项目例子的脚本。浮劢IP就是云主机的公网IP。</p>
+<h3 id="修改init-runonce脚本-指定浮动IP地址范围">修改 init-runonce 脚本，指定浮动 IP 地址范围</h3>
+<p>init-runonce 是在 openstack 中快速创建一个云项目例子的脚本。浮劢 IP 就是云主机的公网 IP。</p>
 <ul>
 <li>修改如下配置</li>
 </ul>
@@ -334,7 +334,7 @@ EXT_NET_CIDR='192.168.50.0/24'
 EXT_NET_RANGE='start=192.168.50.150,end=192.168.50.199'
 EXT_NET_GATEWAY='192.168.50.1'
 </code></pre>
-<h3 id="使用init-runonce脚本创建一个openstack云项目">使用init-runonce脚本创建一个openstack云项目</h3>
+<h3 id="使用init-runonce脚本创建一个openstack云项目">使用 init-runonce 脚本创建一个 openstack 云项目</h3>
 <pre><code class="highlight-chroma">source /etc/kolla/admin-openrc.sh
 cd /usr/share/kolla-ansible
 ./init-runonce
@@ -392,7 +392,7 @@ openstack server create \
 | volumes_attached                    |                                               |
 +-------------------------------------+-----------------------------------------------+
 </code></pre>
-<h3 id="此时即可在web上看到已创建的云主机">此时即可在web上看到已创建的云主机</h3>
+<h3 id="此时即可在web上看到已创建的云主机">此时即可在 Web 上看到已创建的云主机</h3>
 <p><img src="https://img.hacpai.com/file/2019/10/image-23e2ad99.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
                 <div>
                     <span class="name">搭讪 你就破功了，老弟！</span>
@@ -438,49 +438,49 @@ openstack server create \
             <a href="#时间同步">时间同步</a>
         </li>
         <li class="toc__h3">
-            <a href="#配置pip源参考这里">配置pip源参考这里</a>
+            <a href="#配置pip源参考这里">配置 pip 源参考这里</a>
         </li>
         <li class="toc__h3">
             <a href="#配置网卡信息">配置网卡信息</a>
         </li>
         <li class="toc__h3">
-            <a href="#安装基础包和docker服务">安装基础包和docker服务</a>
+            <a href="#安装基础包和docker服务">安装基础包和 docker 服务</a>
         </li>
         <li class="toc__h4">
             <a href="#安装基础包">安装基础包</a>
         </li>
         <li class="toc__h4">
-            <a href="#添加docker-yum源并安装docker">添加docker yum源并安装docker</a>
+            <a href="#添加docker-yum源并安装docker">添加 docker yum 源并安装 docker</a>
         </li>
         <li class="toc__h4">
             <a href="#镜像加速器设置">镜像加速器设置</a>
         </li>
         <li class="toc__h1">
-            <a href="#安装kolla-ansible">安装kolla-ansible</a>
+            <a href="#安装kolla-ansible">安装 kolla-ansible</a>
         </li>
         <li class="toc__h2">
-            <a href="#安装ansible">安装ansible</a>
+            <a href="#安装ansible">安装 ansible</a>
         </li>
         <li class="toc__h1">
-            <a href="#自定义安装kolla-ansible安装openstack的相关配置文件">自定义安装kolla-ansible安装openstack的相关配置文件</a>
+            <a href="#自定义安装kolla-ansible安装openstack的相关配置文件">自定义安装 kolla-ansible 安装 openstack 的相关配置文件</a>
         </li>
         <li class="toc__h2">
-            <a href="#自动生成openstack各服务的密码文件">自动生成openstack各服务的密码文件</a>
+            <a href="#自动生成openstack各服务的密码文件">自动生成 openstack 各服务的密码文件</a>
         </li>
         <li class="toc__h2">
-            <a href="#编辑-etc-kolla-globals-yml文件">编辑/etc/kolla/globals.yml文件</a>
+            <a href="#编辑-etc-kolla-globals-yml文件">编辑/etc/kolla/globals.yml 文件</a>
         </li>
         <li class="toc__h1">
-            <a href="#开始基于kolla-ansible安装openstack私有云">开始基于kolla-ansible安装openstack私有云</a>
+            <a href="#开始基于kolla-ansible安装openstack私有云">开始基于 kolla-ansible 安装 openstack 私有云</a>
         </li>
         <li class="toc__h2">
-            <a href="#生成ssh-key-并授信本节点-">生成ssh-key，并授信本节点：</a>
+            <a href="#生成ssh-key-并授信本节点-">生成 ssh-key，并授信本节点：</a>
         </li>
         <li class="toc__h2">
             <a href="#配置单节点清单文件">配置单节点清单文件</a>
         </li>
         <li class="toc__h2">
-            <a href="#开始部署openstack">开始部署openstack</a>
+            <a href="#开始部署openstack">开始部署 openstack</a>
         </li>
         <li class="toc__h3">
             <a href="#对主机进行预检查">对主机进行预检查</a>
@@ -489,31 +489,31 @@ openstack server create \
             <a href="#拉取镜像">拉取镜像</a>
         </li>
         <li class="toc__h2">
-            <a href="#最后进入实际的OpenStack部署-">最后进入实际的OpenStack部署：</a>
+            <a href="#最后进入实际的OpenStack部署-">最后进入实际的 OpenStack 部署：</a>
         </li>
         <li class="toc__h2">
             <a href="#部署完成">部署完成</a>
         </li>
         <li class="toc__h1">
-            <a href="#openstack-allinone使用方法">openstack-allinone使用方法</a>
+            <a href="#openstack-allinone使用方法">openstack-allinone 使用方法</a>
         </li>
         <li class="toc__h2">
-            <a href="#安装-openstack客户端并创建一个云主机">安装 openstack客户端并创建一个云主机</a>
+            <a href="#安装-openstack客户端并创建一个云主机">安装 openstack 客户端并创建一个云主机</a>
         </li>
         <li class="toc__h3">
-            <a href="#安装OpenStack-client端-方便后期使用命令行操作openstack">安装OpenStack client端，方便后期使用命令行操作openstack</a>
+            <a href="#安装OpenStack-client端-方便后期使用命令行操作openstack">安装 OpenStack client 端，方便后期使用命令行操作 openstack</a>
         </li>
         <li class="toc__h2">
             <a href="#创建一个云项目">创建一个云项目</a>
         </li>
         <li class="toc__h3">
-            <a href="#修改init-runonce脚本-指定浮动IP地址范围">修改init-runonce脚本，指定浮动IP地址范围</a>
+            <a href="#修改init-runonce脚本-指定浮动IP地址范围">修改 init-runonce 脚本，指定浮动 IP 地址范围</a>
         </li>
         <li class="toc__h3">
-            <a href="#使用init-runonce脚本创建一个openstack云项目">使用init-runonce脚本创建一个openstack云项目</a>
+            <a href="#使用init-runonce脚本创建一个openstack云项目">使用 init-runonce 脚本创建一个 openstack 云项目</a>
         </li>
         <li class="toc__h3">
-            <a href="#此时即可在web上看到已创建的云主机">此时即可在web上看到已创建的云主机</a>
+            <a href="#此时即可在web上看到已创建的云主机">此时即可在 Web 上看到已创建的云主机</a>
         </li>
 </ul>    </div>
     <div class="body--gray post__gray">
@@ -706,13 +706,13 @@ openstack server create \
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585508441415"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585508441415', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1572172031071",
@@ -732,4 +732,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 115ms, 2020/03/28 15:03:58 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 158ms, 2020/03/31 10:55:31 -->

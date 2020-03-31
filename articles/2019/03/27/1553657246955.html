@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>配置docker静态ip地址 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="配置docker静态ip地址 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="配置docker静态ip地址 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585508441415"/>
             <link rel="prev" title="docker容器命名和资源配额控制(2)" href="https://cuijianzhe.github.io/articles/2019/03/27/1553650586883.html">
             <link rel="next" title="docker安装mysql" href="https://cuijianzhe.github.io/articles/2019/03/27/1553678573009.html">
     </head>
@@ -85,7 +85,7 @@
                 </a>
         </div>
         <div class="vditor-reset">
-            <h1 id="一-docker的网络模式">一、docker的网络模式</h1>
+            <h1 id="一-docker的网络模式">一、docker 的网络模式</h1>
 <ol>
 <li>Docker 有以下 4 种网络模式：<br>
 host 模式，使用--net=host 指定。<br>
@@ -93,11 +93,11 @@ container 模式，使用--net=container:NAME_or_ID 挃定。<br>
 none 模式，使用--net=none 指定。<br>
 bridge 模式，使用--net=bridge 指定，默认就是 bridge 模式。<br>
 默认选择 bridge 的情况下，容器启动后会通过 DHCP 获取一个地址，这可能不是我们想要的，在<br>
-centos7 系统上， docker 环境下可以使用 pipework 脚本对容器分配固定 IP（这个 IP 可以是和物理机同网段 IP）。<br>
+CentOS7 系统上， docker 环境下可以使用 pipework 脚本对容器分配固定 IP（这个 IP 可以是和物理机同网段 IP）。<br>
 注： docker 默认是 bridge（--net=bridge）模式，相当于 VMware 中 NAT 模式。<br>
 docker 环境下可以使用 pipework 脚本对容器分配固定 IP，相当于 VMware 中桥接模式。注：Pipework 有个缺陷，容器重吭后 IP 设置会自动消失，需要重新设置。</li>
 <li>配置桥接网络<br>
-桥接本地物理网络的目的,是为了局域网内用户方便访问 docker 实例中服务,丌要需要各种端口映射即可访问服务。 但是这样做,又违背了 docker 容器的安全隔离的原则,工作中辩证的选择.</li>
+桥接本地物理网络的目的，是为了局域网内用户方便访问 docker 实例中服务，丌要需要各种端口映射即可访问服务。 但是这样做，又违背了 docker 容器的安全隔离的原则，工作中辩证的选择。</li>
 </ol>
 <p>创建桥设备 br0：<br>
 安装包：<br>
@@ -130,8 +130,8 @@ docker 环境下可以使用 pipework 脚本对容器分配固定 IP，相当于
 <p>#删除 IP 地址相关内容，删除下面 几行<br>
 IPADDR=172.17.148.238<br>
 NETMASK=255.255.240.0<br>
-文末插入BRIDGE="br0"</p>
-<p>创建生成ifcfg-br0文件</p>
+文末插入 BRIDGE="br0"</p>
+<p>创建生成 ifcfg-br0 文件</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon network-scripts<span class="highlight-o">]</span><span class="highlight-c1"># vim ifcfg-br0</span> 
 <span class="highlight-nv">DEVICE</span><span class="highlight-o">=</span><span class="highlight-s2">"br0"</span>
 <span class="highlight-nv">NM_CONTROLLED</span><span class="highlight-o">=</span><span class="highlight-s2">"yes"</span>
@@ -194,10 +194,10 @@ vethad3caa5: <span class="highlight-nv">flags</span><span class="highlight-o">=<
         TX errors <span class="highlight-m">0</span>  dropped <span class="highlight-m">0</span> overruns <span class="highlight-m">0</span>  carrier <span class="highlight-m">0</span>  collisions <span class="highlight-m">0</span>
 
 </code></pre>
-<p>可以看出br0网卡已变成桥接类型网卡。</p>
+<p>可以看出 br0 网卡已变成桥接类型网卡。</p>
 <p>还有另一种方法：<br>
 <code>[root@bogon ~]# git clone https://github.com/jpetazzo/pipework.git</code></p>
-<h2 id="2-使用pipework">2.使用pipework</h2>
+<h2 id="2-使用pipework">2.使用 pipework</h2>
 <p><code>[root@bogon ~]# git  clone  https://github.com/jpetazzo/pipework.git</code></p>
 <p><code>[root@bogon pipework]# cp pipework /usr/local/bin/ </code></p>
 <p><code>[root@bogon ~]# docker run -itd --net=none --privileged=true docker.io/centos:latest /bin/bash</code> #开启特权模式</p>
@@ -497,10 +497,10 @@ function render() {
     <div class="post__toc">
 <ul class="article__toc">
         <li class="toc__h1">
-            <a href="#一-docker的网络模式">一、docker的网络模式</a>
+            <a href="#一-docker的网络模式">一、docker 的网络模式</a>
         </li>
         <li class="toc__h2">
-            <a href="#2-使用pipework">2.使用pipework</a>
+            <a href="#2-使用pipework">2.使用 pipework</a>
         </li>
 </ul>    </div>
     <div class="body--gray post__gray">
@@ -693,13 +693,13 @@ function render() {
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585508441415"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585508441415', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1553657246955",
@@ -719,4 +719,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 70ms, 2020/03/28 15:04:01 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 59ms, 2020/03/31 10:55:34 -->

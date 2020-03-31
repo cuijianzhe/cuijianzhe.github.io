@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>阿里云机器和本地IDC建立ipsec VPN - 邯城往事</title><meta name="description" content="IPsec主要由以下协议组成：一、认证头（AH），为IP数据报提供无连接数据完整性、消息认证以及防重放攻击保护；二、封装安全载荷（ESP），提供机密性、数据源认证、无连接完整性、防重放和有限的传输流（traffic-flow）机密性；三、安全关联（SA），提供算法和数据包，提供AH、ESP操作所需的参数。"/><meta property="og:description" content="IPsec主要由以下协议组成：一、认证头（AH），为IP数据报提供无连接数据完整性、消息认证以及防重放攻击保护；二、封装安全载荷（ESP），提供机密性、数据源认证、无连接完整性、防重放和有限的传输流（traffic-flow）机密性；三、安全关联（SA），提供算法和数据包，提供AH、ESP操作所需的参数。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="阿里云机器和本地IDC建立ipsec VPN - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/16/1552720730829.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="阿里云机器和本地IDC建立ipsec VPN - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/16/1552720730829.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>阿里云机器和本地IDC建立ipsec VPN - 邯城往事</title><meta name="description" content="IPsec 主要由以下协议组成：一、认证头（AH），为 IP 数据报提供无连接数据完整性、消息认证以及防重放攻击保护；二、封装安全载荷（ESP），提供机密性、数据源认证、无连接完整性、防重放和有限的传输流（traffic-flow）机密性；三、安全关联（SA），提供算法和数据包，提供 AH、ESP 操作所需的参数。"/><meta property="og:description" content="IPsec 主要由以下协议组成：一、认证头（AH），为 IP 数据报提供无连接数据完整性、消息认证以及防重放攻击保护；二、封装安全载荷（ESP），提供机密性、数据源认证、无连接完整性、防重放和有限的传输流（traffic-flow）机密性；三、安全关联（SA），提供算法和数据包，提供 AH、ESP 操作所需的参数。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="阿里云机器和本地IDC建立ipsec VPN - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/16/1552720730829.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="阿里云机器和本地IDC建立ipsec VPN - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/16/1552720730829.html">        <link rel="stylesheet"
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585508441415"/>
             <link rel="prev" title="使用python发送邮件告知SSL证书到期时间" href="https://cuijianzhe.github.io/articles/2019/03/16/1552707556605.html">
             <link rel="next" title="通过查看nginx 日志进行分析" href="https://cuijianzhe.github.io/articles/2019/03/19/1552967425056.html">
     </head>
@@ -90,7 +90,7 @@
         <div class="vditor-reset">
             <p><img src="https://img.hacpai.com/bing/20180607.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
 <h2 id="阿里机器端-">阿里机器端：</h2>
-<h3 id="1--安装strongswan">1. 安装strongswan</h3>
+<h3 id="1--安装strongswan">1. 安装 strongswan</h3>
 <pre><code class="highlight-chroma">[root@blog_server ~]# yum install strongswan -y
 
 Loaded plugins: fastestmirror
@@ -141,7 +141,7 @@ Dependency Installed:
 
 Complete!
 </code></pre>
-<h3 id="2-配置VPN">2.配置VPN</h3>
+<h3 id="2-配置VPN">2.配置 VPN</h3>
 <pre><code class="highlight-chroma">[root@blog_server ~]# vim /etc/strongswan/ipsec.conf 
 # ipsec.conf - strongSwan IPsec configuration file
 
@@ -187,17 +187,17 @@ conn IDC
 </code></pre>
 <pre><code class="highlight-chroma">[root@blog ~]# systemctl start strongswan
 </code></pre>
-<h2 id="本地IDC端-">本地IDC端：</h2>
+<h2 id="本地IDC端-">本地 IDC 端：</h2>
 <h3 id="1--配置访问控制列表-定义需要保护的数据流-">1. 配置访问控制列表，定义需要保护的数据流。</h3>
 <pre><code class="highlight-chroma">acl number 3001
  rule 5 permit ip source 10.100.0.0 0.0.63.255 destination 172.17.144.0 0.0.15.255
 </code></pre>
-<h3 id="2-配置ipsec安全提议">2.配置ipsec安全提议</h3>
+<h3 id="2-配置ipsec安全提议">2.配置 ipsec 安全提议</h3>
 <pre><code class="highlight-chroma">ipsec proposal prop1631503669
  esp authentication-algorithm sha2-256
  esp encryption-algorithm aes-256 aes-128 des
 </code></pre>
-<h3 id="3-创建IKE安全提议">3.创建IKE安全提议</h3>
+<h3 id="3-创建IKE安全提议">3.创建 IKE 安全提议</h3>
 <pre><code class="highlight-chroma">ike proposal 2
 
  encryption-algorithm aes-256 aes-128 3des des
@@ -207,7 +207,7 @@ conn IDC
  integrity-algorithm hmac-sha2-256 hmac-sha1-96
  prf hmac-sha2-256 hmac-sha1
 </code></pre>
-<h3 id="4-配置IKE对等体">4.配置IKE对等体</h3>
+<h3 id="4-配置IKE对等体">4.配置 IKE 对等体</h3>
 <pre><code class="highlight-chroma">ike peer ike1631503669
 
  undo version 2
@@ -216,7 +216,7 @@ conn IDC
  remote-id-type ip
  remote-address 39.97.161.115
 </code></pre>
-<h3 id="5-配置isakmp方式的ipsec策略">5.配置isakmp方式的ipsec策略</h3>
+<h3 id="5-配置isakmp方式的ipsec策略">5.配置 isakmp 方式的 ipsec 策略</h3>
 <pre><code class="highlight-chroma">ipsec policy ipsec1191138051 2 isakmp
 
  security acl 3001
@@ -247,7 +247,7 @@ conn IDC
  ipsec policy ipsec1191138051
 </code></pre>
 <p>验证：<br>
-阿里侧ip：</p>
+阿里侧 ip：</p>
 <pre><code class="highlight-chroma">[root@blog_server ~]# ifconfig
 
 eth0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
@@ -268,7 +268,7 @@ lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
 </code></pre>
 <p>测试：<br>
 <img src="https://img.hacpai.com/file/2019/03/ping1-217514d6.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="ping1.png"></p>
-<p>并且已经可以通过内网ip访问阿里云上的tomcat服务<br>
+<p>并且已经可以通过内网 ip 访问阿里云上的 Tomcat 服务<br>
 <img src="https://img.hacpai.com/file/2019/03/tomcat-606db2be.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="tomcat.png"></p>
                 <div>
                     <pre><p style="font-size:15px"><font color="#008000">
@@ -286,31 +286,31 @@ lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
             <a href="#阿里机器端-">阿里机器端：</a>
         </li>
         <li class="toc__h3">
-            <a href="#1--安装strongswan">1. 安装strongswan</a>
+            <a href="#1--安装strongswan">1. 安装 strongswan</a>
         </li>
         <li class="toc__h3">
-            <a href="#2-配置VPN">2.配置VPN</a>
+            <a href="#2-配置VPN">2.配置 VPN</a>
         </li>
         <li class="toc__h3">
             <a href="#3-配置预共享秘钥">3.配置预共享秘钥</a>
         </li>
         <li class="toc__h2">
-            <a href="#本地IDC端-">本地IDC端：</a>
+            <a href="#本地IDC端-">本地 IDC 端：</a>
         </li>
         <li class="toc__h3">
             <a href="#1--配置访问控制列表-定义需要保护的数据流-">1. 配置访问控制列表，定义需要保护的数据流。</a>
         </li>
         <li class="toc__h3">
-            <a href="#2-配置ipsec安全提议">2.配置ipsec安全提议</a>
+            <a href="#2-配置ipsec安全提议">2.配置 ipsec 安全提议</a>
         </li>
         <li class="toc__h3">
-            <a href="#3-创建IKE安全提议">3.创建IKE安全提议</a>
+            <a href="#3-创建IKE安全提议">3.创建 IKE 安全提议</a>
         </li>
         <li class="toc__h3">
-            <a href="#4-配置IKE对等体">4.配置IKE对等体</a>
+            <a href="#4-配置IKE对等体">4.配置 IKE 对等体</a>
         </li>
         <li class="toc__h3">
-            <a href="#5-配置isakmp方式的ipsec策略">5.配置isakmp方式的ipsec策略</a>
+            <a href="#5-配置isakmp方式的ipsec策略">5.配置 isakmp 方式的 ipsec 策略</a>
         </li>
         <li class="toc__h3">
             <a href="#6-在接口调用上述策略">6.在接口调用上述策略</a>
@@ -506,13 +506,13 @@ lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585508441415"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585508441415', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1552720730829",
@@ -532,4 +532,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 70ms, 2020/03/28 15:04:01 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 61ms, 2020/03/31 10:55:34 -->

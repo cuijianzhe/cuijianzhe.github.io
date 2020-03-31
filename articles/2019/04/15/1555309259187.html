@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>多线程之倒计时计数器 CountDownLatch - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="多线程之倒计时计数器 CountDownLatch - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/04/15/1555309259187.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="多线程之倒计时计数器 CountDownLatch - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/04/15/1555309259187.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585508441415"/>
             <link rel="prev" title="java数值类型的拆装箱与升降级之间的关系" href="https://cuijianzhe.github.io/articles/2019/04/11/1554987815685.html">
             <link rel="next" title="并发工具类 ---Semaphore" href="https://cuijianzhe.github.io/articles/2019/04/15/1555318114318.html">
     </head>
@@ -86,7 +86,7 @@
         <div class="vditor-reset">
             <p>上篇回顾：<a href="https://hacpai.com/forward?goto=http%3A%2F%2Fwww.cjzshilong.cn%3A8080%2Farticles%2F2019%2F04%2F10%2F1554887221480.html" target="_blank">多线程回环栅栏 CyclicBarrier</a></p>
 <h3 id="使用场景">使用场景</h3>
-<p>假设有一个列表，多选之后，点击压缩。此时后台肯定是多线程跑压缩任务，那我们就可以使用<code>CountDownLatch</code>来在全部压缩完成之后处理一些事情。</p>
+<p>假设有一个列表，多选之后，点击压缩。此时后台肯定是多线程跑压缩任务，那我们就可以使用 <code>CountDownLatch</code> 来在全部压缩完成之后处理一些事情。</p>
 <h3 id="示例代码">示例代码</h3>
 <pre><code class="highlight-chroma">public class testMain {
 
@@ -120,9 +120,9 @@
 }
 </code></pre>
 <p>可以看到，CountDownLatch 与 CyclicBarrier 非常类似，由此引出几个问题：</p>
-<h4 id="解释一下-CountDownLatch-概念-">解释一下 CountDownLatch 概念?</h4>
+<h4 id="解释一下-CountDownLatch-概念-">解释一下 CountDownLatch 概念？</h4>
 <p>CountDownLatch 是通过一个计数器来实现的，计数器的初始值为线程的数量。每当一个线程完成了自己的任务后，计数器的值就会减 1。当计数器值到达 0 时，它表示所有的线程已经完成了任务，然后在闭锁上等待的线程就可以恢复执行任务。</p>
-<h4 id="CountDownLatch-和-CyclicBarrier-的不同之处-">CountDownLatch 和 CyclicBarrier 的不同之处?</h4>
+<h4 id="CountDownLatch-和-CyclicBarrier-的不同之处-">CountDownLatch 和 CyclicBarrier 的不同之处？</h4>
 <p>CyclicBarrier 可以重用，CountDownLatch 不可以重用。<br>
 CountDownLatch 的下一步的动作实施者是主线程<br>
 CyclicBarrier 的下一步动作实施者还是“其他线程”本身</p>
@@ -426,10 +426,10 @@ function render() {
             <a href="#示例代码">示例代码</a>
         </li>
         <li class="toc__h4">
-            <a href="#解释一下-CountDownLatch-概念-">解释一下 CountDownLatch 概念?</a>
+            <a href="#解释一下-CountDownLatch-概念-">解释一下 CountDownLatch 概念？</a>
         </li>
         <li class="toc__h4">
-            <a href="#CountDownLatch-和-CyclicBarrier-的不同之处-">CountDownLatch 和 CyclicBarrier 的不同之处?</a>
+            <a href="#CountDownLatch-和-CyclicBarrier-的不同之处-">CountDownLatch 和 CyclicBarrier 的不同之处？</a>
         </li>
 </ul>    </div>
     <div class="body--gray post__gray">
@@ -622,13 +622,13 @@ function render() {
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585508441415"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585508441415', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1555309259187",
@@ -648,4 +648,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 65ms, 2020/03/28 15:04:01 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 66ms, 2020/03/31 10:55:34 -->

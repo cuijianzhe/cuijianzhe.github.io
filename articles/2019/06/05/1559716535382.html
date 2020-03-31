@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>python练习题 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="python练习题 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/06/05/1559716535382.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="python练习题 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/06/05/1559716535382.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585508441415"/>
             <link rel="prev" title="心中有大船" href="https://cuijianzhe.github.io/articles/2019/06/02/1559424549464.html">
             <link rel="next" title="py项目中学到的知识梳理" href="https://cuijianzhe.github.io/articles/2019/06/14/1560505233857.html">
     </head>
@@ -86,18 +86,18 @@
         </div>
         <div class="vditor-reset">
             <h1 id="一-字符串-列表-元组-字典-集合练习">一、字符串、列表、元组、字典、集合练习</h1>
-<h2 id="1-1-BMI计算输出">1.1 BMI计算输出</h2>
+<h2 id="1-1-BMI计算输出">1.1 BMI 计算输出</h2>
 <blockquote>
-<p>BMI指数(Body Mass Index) 以称身体质量指数<br>
-BMI值计算公式: BMI = 体重(公斤) / 身高的平方(米)<br>
-例如:<br>
-一个人69公斤，身高是173公分<br>
+<p>BMI 指数(Body Mass Index) 以称身体质量指数<br>
+BMI 值计算公式： BMI = 体重(公斤) / 身高的平方(米)<br>
+例如：<br>
+一个人 69 公斤，身高是 173 公分<br>
 BMI = 69 / 1.73**2 = 23.05<br>
-标准表:<br>
+标准表：<br>
 BMI &lt; 18.5   体重过轻<br>
 18.5 &lt;= BMI &lt; 24 体重正常<br>
 BMI &gt; 24  体重过重<br>
-要求: 输入身高的体重，打印出BMI的值并打印体重状况</p>
+要求： 输入身高的体重，打印出 BMI 的值并打印体重状况</p>
 </blockquote>
 <pre><code class="language-python highlight-chroma"><span class="highlight-ch">#!/bin/python3</span>
 
@@ -114,14 +114,14 @@ BMI &gt; 24  体重过重<br>
 </code></pre>
 <h2 id="1-2-统计字符串类型">1.2：统计字符串类型</h2>
 <blockquote>
-<p>题目要求!任意输入一串字母加数字，统计出，整数出现的个数。（字母不限大小写！）<br>
+<p>题目要求！任意输入一串字母加数字，统计出，整数出现的个数。（字母不限大小写！）<br>
 例：<code>123abc456efg123asd88$#@</code></p>
 </blockquote>
 <p>输出规范：</p>
 <blockquote>
-<p>print(整数总共出现4次)</p>
+<p>print(整数总共出现 4 次)</p>
 </blockquote>
-<h3 id="1-2-1-解决方法1-">1.2.1 解决方法1：</h3>
+<h3 id="1-2-1-解决方法1-">1.2.1 解决方法 1：</h3>
 <pre><code class="language-python highlight-chroma"><span class="highlight-ch">#!/usr/bin/python3</span>
 <span class="highlight-c1"># @Time  : 2019/6/7 13:58</span>
 <span class="highlight-c1"># @Author : cuijianzhe</span>
@@ -139,7 +139,7 @@ BMI &gt; 24  体重过重<br>
 出现数字的次数为:11,分别为['1', '2', '3', '4', '5', '6', '1', '2', '3', '8', '8']
 去重后的数字整数个数为7,分别为{'8', '4', '1', '6', '3', '5', '2'}
 </code></pre>
-<h3 id="1-2-2-解决方法2-">1.2.2 解决方法2：</h3>
+<h3 id="1-2-2-解决方法2-">1.2.2 解决方法 2：</h3>
 <pre><code class="language-python highlight-chroma"><span class="highlight-ch">#!/usr/bin/python3</span>
 <span class="highlight-c1"># @Time  : 2019/6/7 13:58</span>
 <span class="highlight-c1"># @Author : cuijianzhe</span>
@@ -220,9 +220,9 @@ BMI &gt; 24  体重过重<br>
 </code></pre>
 <h2 id="2-2-韩信点兵">2.2 韩信点兵</h2>
 <blockquote>
-<p>汉代名将韩信带1500名士兵打仗，战死四五百人，战后清点人数，3 人一排多出2人，5人一排，多出4人；7人一排，多出6人。韩信很快说出剩余人数：1049人。请问对吗？<br>
-请用python验证：<br>
-思路：定义变量，输出变量与3的余数，与5的余数，与7的余数</p>
+<p>汉代名将韩信带 1500 名士兵打仗，战死四五百人，战后清点人数，3 人一排多出 2 人，5 人一排，多出 4 人；7 人一排，多出 6 人。韩信很快说出剩余人数：1049 人。请问对吗？<br>
+请用 python 验证：<br>
+思路：定义变量，输出变量与 3 的余数，与 5 的余数，与 7 的余数</p>
 </blockquote>
 <pre><code class="language-python highlight-chroma"><span class="highlight-ch">#!/bin/python3</span>
 <span class="highlight-c1">#验证韩信结果：</span>
@@ -239,7 +239,7 @@ BMI &gt; 24  体重过重<br>
 </code></pre>
 <h2 id="2-3-字符串统计判断">2.3 字符串统计判断</h2>
 <blockquote>
-<p>给你一个字符串例如：’abcsadfadsfgfegegegea’，经过计算返回一个字典，字典中包含每个元素当中的个数，结合if 判断，for 循环，完成本次代码！<br>
+<p>给你一个字符串例如：’abcsadfadsfgfegegegea’，经过计算返回一个字典，字典中包含每个元素当中的个数，结合 if 判断，for 循环，完成本次代码！<br>
 例如：‘abb’ --&gt; {‘a’:1,’b’:2}</p>
 </blockquote>
 <h3 id="2-3-1-最佳代码-">2.3.1 最佳代码：</h3>
@@ -264,14 +264,14 @@ BMI &gt; 24  体重过重<br>
 </code></pre>
 <h2 id="2-4-字符串统计">2.4 字符串统计</h2>
 <blockquote>
-<p>输入任意行文字，存于列表L中,当不输入任何容直接回车后结束输入</p>
+<p>输入任意行文字，存于列表 L 中，当不输入任何容直接回车后结束输入</p>
 </blockquote>
 <ol>
-<li>打印L列表中的内容</li>
+<li>打印 L 列表中的内容</li>
 <li>计算您共输入了几行内容</li>
 <li>计算您共输入了多少个字符</li>
 </ol>
-<h3 id="2-4-1-解决方法1-">2.4.1 解决方法1：</h3>
+<h3 id="2-4-1-解决方法1-">2.4.1 解决方法 1：</h3>
 <pre><code class="language-python highlight-chroma"><span class="highlight-n">a</span> <span class="highlight-o">=</span> <span class="highlight-mi">1</span>
 <span class="highlight-n">L</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
 <span class="highlight-k">while</span> <span class="highlight-n">a</span><span class="highlight-p">:</span>
@@ -283,7 +283,7 @@ BMI &gt; 24  体重过重<br>
 <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-s1">'列表中的内容：{}</span><span class="highlight-se">\n</span><span class="highlight-s1">一共输入{}行内容</span><span class="highlight-se">\n</span><span class="highlight-s1">一共输入{}个字符'</span><span class="highlight-o">.</span><span class="highlight-n">format</span><span class="highlight-p">(</span><span class="highlight-n">L</span><span class="highlight-p">,</span><span class="highlight-nb">len</span><span class="highlight-p">(</span><span class="highlight-n">L</span><span class="highlight-p">),</span><span class="highlight-nb">len</span><span class="highlight-p">(</span><span class="highlight-s1">''</span><span class="highlight-o">.</span><span class="highlight-n">join</span><span class="highlight-p">(</span><span class="highlight-n">L</span><span class="highlight-p">))))</span>
 
 </code></pre>
-<h3 id="2-4-2-解决方法2-">2.4.2 解决方法2：</h3>
+<h3 id="2-4-2-解决方法2-">2.4.2 解决方法 2：</h3>
 <pre><code class="language-python highlight-chroma"><span class="highlight-n">L</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
 <span class="highlight-k">while</span> <span class="highlight-mi">1</span> <span class="highlight-p">:</span>
     <span class="highlight-n">s</span> <span class="highlight-o">=</span>  <span class="highlight-nb">input</span><span class="highlight-p">(</span><span class="highlight-s1">'请输入任意字符：'</span><span class="highlight-p">)</span>
@@ -297,13 +297,13 @@ BMI &gt; 24  体重过重<br>
 <blockquote>
 <p>输入一个整数（代表树干的高度)<br>
 打印出如下一棵树<br>
-输入: 2<br>
-打印:<br>
+输入： 2<br>
+打印：<br>
 *<br>
 ***<br>
 *<br>
 *<br>
-输入:3<br>
+输入：3<br>
 *<br>
 ***<br>
 *****<br>
@@ -311,7 +311,7 @@ BMI &gt; 24  体重过重<br>
 *<br>
 *</p>
 </blockquote>
-<h3 id="2-5-1-解决方法1-">2.5.1 解决方法1：</h3>
+<h3 id="2-5-1-解决方法1-">2.5.1 解决方法 1：</h3>
 <pre><code class="language-python highlight-chroma"><span class="highlight-n">n</span> <span class="highlight-o">=</span> <span class="highlight-nb">int</span><span class="highlight-p">(</span><span class="highlight-nb">input</span><span class="highlight-p">(</span><span class="highlight-s1">'输入一个正整数：'</span><span class="highlight-p">))</span>
 
 <span class="highlight-n">count</span> <span class="highlight-o">=</span> <span class="highlight-mi">1</span>
@@ -324,7 +324,7 @@ BMI &gt; 24  体重过重<br>
     <span class="highlight-n">count2</span> <span class="highlight-o">=</span> <span class="highlight-n">count2</span> <span class="highlight-o">+</span> <span class="highlight-mi">1</span>
 
 </code></pre>
-<h3 id="2-5-2--解决方法2-">2.5.2  解决方法2：</h3>
+<h3 id="2-5-2--解决方法2-">2.5.2  解决方法 2：</h3>
 <pre><code class="language-python highlight-chroma"><span class="highlight-n">n</span> <span class="highlight-o">=</span> <span class="highlight-nb">input</span><span class="highlight-p">(</span><span class="highlight-s2">"请输入一个整数："</span><span class="highlight-p">)</span>
 
 <span class="highlight-n">n</span> <span class="highlight-o">=</span> <span class="highlight-nb">int</span><span class="highlight-p">(</span><span class="highlight-n">n</span><span class="highlight-p">)</span>
@@ -342,7 +342,7 @@ BMI &gt; 24  体重过重<br>
 <span class="highlight-k">for</span> <span class="highlight-n">i</span> <span class="highlight-ow">in</span> <span class="highlight-nb">range</span> <span class="highlight-p">(</span><span class="highlight-n">tall_num</span><span class="highlight-p">):</span>
     <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-s1">' '</span><span class="highlight-o">*</span><span class="highlight-p">(</span><span class="highlight-n">tall_num</span><span class="highlight-o">+</span><span class="highlight-mi">2</span><span class="highlight-p">)</span><span class="highlight-o">+</span><span class="highlight-s1">'*'</span><span class="highlight-p">)</span>
 </code></pre>
-<h3 id="2-5-4-利用while或for打印100以内奇数的和">2.5.4 利用while或for打印100以内奇数的和</h3>
+<h3 id="2-5-4-利用while或for打印100以内奇数的和">2.5.4 利用 while 或 for 打印 100 以内奇数的和</h3>
 <pre><code class="language-python highlight-chroma"><span class="highlight-n">i</span> <span class="highlight-o">=</span> <span class="highlight-mi">0</span>
 <span class="highlight-n">b</span> <span class="highlight-o">=</span> <span class="highlight-mi">0</span>
 <span class="highlight-k">for</span> <span class="highlight-n">i</span> <span class="highlight-ow">in</span> <span class="highlight-nb">range</span><span class="highlight-p">(</span><span class="highlight-mi">100</span><span class="highlight-p">):</span>
@@ -360,7 +360,7 @@ BMI &gt; 24  体重过重<br>
     <span class="highlight-n">i</span> <span class="highlight-o">+=</span> <span class="highlight-mi">1</span>
 <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-nb">sum</span><span class="highlight-p">)</span>
 </code></pre>
-<h3 id="2-5-5乘法表">2.5.5乘法表</h3>
+<h3 id="2-5-5乘法表">2.5.5 乘法表</h3>
 <pre><code class="language-python highlight-chroma"><span class="highlight-k">for</span> <span class="highlight-n">i</span> <span class="highlight-ow">in</span> <span class="highlight-nb">range</span><span class="highlight-p">(</span><span class="highlight-mi">1</span><span class="highlight-p">,</span><span class="highlight-mi">10</span><span class="highlight-p">):</span>
 
     <span class="highlight-k">for</span> <span class="highlight-n">j</span> <span class="highlight-ow">in</span> <span class="highlight-nb">range</span><span class="highlight-p">(</span><span class="highlight-mi">1</span><span class="highlight-p">,</span><span class="highlight-n">i</span><span class="highlight-o">+</span><span class="highlight-mi">1</span><span class="highlight-p">):</span>
@@ -369,7 +369,7 @@ BMI &gt; 24  体重过重<br>
 </code></pre>
 <h3 id="2-5-6-输入数字找规律">2.5.6 输入数字找规律</h3>
 <blockquote>
-<p>输入n = 3<br>
+<p>输入 n = 3<br>
 输出：<br>
 1<br>
 3 * 2<br>
@@ -394,11 +394,11 @@ BMI &gt; 24  体重过重<br>
 <h2 id="2-6-判断是否为质数-素数-">2.6 判断是否为质数（素数）</h2>
 <blockquote>
 <p>写一个程序，任意输入一个整数，判断这个数是否是素数(prime)<br>
-素数(也叫质数), 是只能被1和自身整除的正整数:<br>
-如: 2 3 5 7 11 等<br>
-提示:<br>
-用排除法: 当判断x是否是素数是，只要让x分别除以:<br>
-2, 3, 4, 5, .... x-1, 只要整除了，那x不是素数，否则x是素数</p>
+素数(也叫质数), 是只能被 1 和自身整除的正整数：<br>
+如： 2 3 5 7 11 等<br>
+提示：<br>
+用排除法： 当判断 x 是否是素数是，只要让 x 分别除以：<br>
+2, 3, 4, 5, .... x-1, 只要整除了，那 x 不是素数，否则 x 是素数</p>
 </blockquote>
 <pre><code class="language-python highlight-chroma"><span class="highlight-n">num</span> <span class="highlight-o">=</span> <span class="highlight-nb">int</span><span class="highlight-p">(</span><span class="highlight-nb">input</span><span class="highlight-p">(</span><span class="highlight-s1">'请输入一个正整数：'</span><span class="highlight-p">))</span>
 <span class="highlight-k">if</span> <span class="highlight-n">num</span><span class="highlight-o">&lt;</span><span class="highlight-mi">2</span><span class="highlight-p">:</span>
@@ -423,13 +423,13 @@ BMI &gt; 24  体重过重<br>
     <span class="highlight-k">else</span><span class="highlight-p">:</span>
         <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-n">n</span><span class="highlight-p">,</span><span class="highlight-s1">'是质数'</span><span class="highlight-p">)</span>
 </code></pre>
-<h1 id="2-7-python找出一个数的最大质因数-欧拉计划-">2.7 python找出一个数的最大质因数（欧拉计划）</h1>
+<h1 id="2-7-python找出一个数的最大质因数-欧拉计划-">2.7 python 找出一个数的最大质因数（欧拉计划）</h1>
 <p>思路：</p>
 <ol>
 <li>定义一个空列表：<br>
-2、将数字定义为变量，在while条件下执行，再将整除的数做一个for循环，范围2~(此数+1)。<br>
-3、如果这个数能整除，添加到列表中，然后将整除的数再循环，直到不能整除break。<br>
-4、使用max打印列表中最大质因数</li>
+2、将数字定义为变量，在 while 条件下执行，再将整除的数做一个 for 循环，范围 2~(此数 +1)。<br>
+3、如果这个数能整除，添加到列表中，然后将整除的数再循环，直到不能整除 break。<br>
+4、使用 max 打印列表中最大质因数</li>
 </ol>
 <pre><code class="language-python highlight-chroma"><span class="highlight-n">my_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
 
@@ -464,7 +464,7 @@ return [0, 1].</p>
 
 </code></pre>
 <h1 id="三-函数的使用-">三、函数的使用：</h1>
-<h2 id="3-2-函数结合while循环-">3.2 函数结合while循环：</h2>
+<h2 id="3-2-函数结合while循环-">3.2 函数结合 while 循环：</h2>
 <pre><code class="language-python highlight-chroma"><span class="highlight-k">def</span> <span class="highlight-nf">city_country</span><span class="highlight-p">(</span><span class="highlight-n">city_name</span><span class="highlight-p">,</span><span class="highlight-n">city_guojia</span><span class="highlight-p">):</span>
 
     <span class="highlight-n">city</span> <span class="highlight-o">=</span> <span class="highlight-n">city_name</span> <span class="highlight-o">+</span> <span class="highlight-s1">' '</span> <span class="highlight-o">+</span> <span class="highlight-n">city_guojia</span>
@@ -571,14 +571,14 @@ return [0, 1].</p>
     <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-s1">'{} is iterable? {}'</span><span class="highlight-o">.</span><span class="highlight-n">format</span><span class="highlight-p">(</span><span class="highlight-n">index</span><span class="highlight-p">,</span><span class="highlight-n">iterable</span><span class="highlight-p">(</span><span class="highlight-n">index</span><span class="highlight-p">)))</span>
 </code></pre>
 <h1 id="四--字符处理-数据类型">四、 字符处理、数据类型</h1>
-<h2 id="4-1-MD5加密处理">4.1 MD5加密处理</h2>
+<h2 id="4-1-MD5加密处理">4.1 MD5 加密处理</h2>
 <pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">hashlib</span>
 <span class="highlight-nb">str</span> <span class="highlight-o">=</span> <span class="highlight-s2">"123"</span>
 <span class="highlight-n">md5</span> <span class="highlight-o">=</span> <span class="highlight-n">hashlib</span><span class="highlight-o">.</span><span class="highlight-n">md5</span><span class="highlight-p">()</span>
 <span class="highlight-n">md5</span><span class="highlight-o">.</span><span class="highlight-n">update</span><span class="highlight-p">(</span><span class="highlight-nb">str</span><span class="highlight-o">.</span><span class="highlight-n">encode</span><span class="highlight-p">())</span>
 <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-n">md5</span><span class="highlight-o">.</span><span class="highlight-n">hexdigest</span><span class="highlight-p">())</span>
 </code></pre>
-<h2 id="现有字典-d----a--24--g--52--i--12--k--33-请按value值进行排序-">现有字典 d= {'a':24,'g':52,'i':12,'k':33}请按value值进行排序?</h2>
+<h2 id="现有字典-d----a--24--g--52--i--12--k--33-请按value值进行排序-">现有字典 d= {'a':24,'g':52,'i':12,'k':33}请按 value 值进行排序？</h2>
 <pre><code class="language-python highlight-chroma"><span class="highlight-n">d</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span><span class="highlight-s1">'a'</span><span class="highlight-p">:</span> <span class="highlight-mi">24</span><span class="highlight-p">,</span> <span class="highlight-s1">'g'</span><span class="highlight-p">:</span> <span class="highlight-mi">52</span><span class="highlight-p">,</span> <span class="highlight-s1">'i'</span><span class="highlight-p">:</span> <span class="highlight-mi">12</span><span class="highlight-p">,</span> <span class="highlight-s1">'k'</span><span class="highlight-p">:</span> <span class="highlight-mi">33</span><span class="highlight-p">}</span>
 <span class="highlight-n">a</span> <span class="highlight-o">=</span> <span class="highlight-nb">sorted</span><span class="highlight-p">(</span><span class="highlight-n">d</span><span class="highlight-o">.</span><span class="highlight-n">items</span><span class="highlight-p">(),</span><span class="highlight-n">key</span><span class="highlight-o">=</span><span class="highlight-k">lambda</span> <span class="highlight-n">x</span><span class="highlight-p">:</span><span class="highlight-n">x</span><span class="highlight-p">[</span><span class="highlight-mi">1</span><span class="highlight-p">])</span>
 <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-n">a</span><span class="highlight-p">)</span>
@@ -599,7 +599,7 @@ return [0, 1].</p>
     <span class="highlight-n">y_date</span> <span class="highlight-o">=</span> <span class="highlight-n">dayofyear</span><span class="highlight-p">()</span>
     <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-s2">"这一天为全年的第</span><span class="highlight-si">%s</span><span class="highlight-s2">天."</span><span class="highlight-o">%</span><span class="highlight-n">y_date</span><span class="highlight-p">)</span>
 </code></pre>
-<h2 id="打乱一个排好序的list">打乱一个排好序的list</h2>
+<h2 id="打乱一个排好序的list">打乱一个排好序的 list</h2>
 <pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">random</span>
 <span class="highlight-n">alist</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span><span class="highlight-mi">1</span><span class="highlight-p">,</span><span class="highlight-mi">2</span><span class="highlight-p">,</span><span class="highlight-mi">3</span><span class="highlight-p">,</span><span class="highlight-mi">4</span><span class="highlight-p">,</span><span class="highlight-mi">5</span><span class="highlight-p">]</span>
 <span class="highlight-n">random</span><span class="highlight-o">.</span><span class="highlight-n">shuffle</span><span class="highlight-p">(</span><span class="highlight-n">alist</span><span class="highlight-p">)</span>
@@ -607,7 +607,7 @@ return [0, 1].</p>
 </code></pre>
 <h1 id="匿名函数">匿名函数</h1>
 <ul>
-<li>现有两个元组(('a'),('b'))(('c'),('d')),请使用python中的匿名函数生成列表[{'a':'c'},{'b':'d'}]</li>
+<li>现有两个元组(('a'),('b'))(('c'),('d')),请使用 python 中的匿名函数生成列表[{'a':'c'},{'b':'d'}]</li>
 </ul>
 <pre><code class="language-python highlight-chroma"><span class="highlight-n">ret</span> <span class="highlight-o">=</span> <span class="highlight-nb">zip</span><span class="highlight-p">(((</span><span class="highlight-s1">'a'</span><span class="highlight-p">),(</span><span class="highlight-s1">'b'</span><span class="highlight-p">)),((</span><span class="highlight-s1">'c'</span><span class="highlight-p">),(</span><span class="highlight-s1">'d'</span><span class="highlight-p">)))</span>
 <span class="highlight-c1">#def func(tup):</span>
@@ -616,7 +616,7 @@ return [0, 1].</p>
 <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-nb">list</span><span class="highlight-p">(</span><span class="highlight-n">res</span><span class="highlight-p">))</span>
 </code></pre>
 <blockquote>
-<p>函数部分func被lamdba替换</p>
+<p>函数部分 func 被 lamdba 替换</p>
 </blockquote>
                 <div>
                     <span class="name">搭讪 你就破功了，老弟！</span>
@@ -650,16 +650,16 @@ return [0, 1].</p>
             <a href="#一-字符串-列表-元组-字典-集合练习">一、字符串、列表、元组、字典、集合练习</a>
         </li>
         <li class="toc__h2">
-            <a href="#1-1-BMI计算输出">1.1 BMI计算输出</a>
+            <a href="#1-1-BMI计算输出">1.1 BMI 计算输出</a>
         </li>
         <li class="toc__h2">
             <a href="#1-2-统计字符串类型">1.2：统计字符串类型</a>
         </li>
         <li class="toc__h3">
-            <a href="#1-2-1-解决方法1-">1.2.1 解决方法1：</a>
+            <a href="#1-2-1-解决方法1-">1.2.1 解决方法 1：</a>
         </li>
         <li class="toc__h3">
-            <a href="#1-2-2-解决方法2-">1.2.2 解决方法2：</a>
+            <a href="#1-2-2-解决方法2-">1.2.2 解决方法 2：</a>
         </li>
         <li class="toc__h3">
             <a href="#1-2-3-最佳字典统计法">1.2.3 最佳字典统计法</a>
@@ -689,28 +689,28 @@ return [0, 1].</p>
             <a href="#2-4-字符串统计">2.4 字符串统计</a>
         </li>
         <li class="toc__h3">
-            <a href="#2-4-1-解决方法1-">2.4.1 解决方法1：</a>
+            <a href="#2-4-1-解决方法1-">2.4.1 解决方法 1：</a>
         </li>
         <li class="toc__h3">
-            <a href="#2-4-2-解决方法2-">2.4.2 解决方法2：</a>
+            <a href="#2-4-2-解决方法2-">2.4.2 解决方法 2：</a>
         </li>
         <li class="toc__h2">
             <a href="#2-5-循环-while-for-">2.5 循环（while、for）</a>
         </li>
         <li class="toc__h3">
-            <a href="#2-5-1-解决方法1-">2.5.1 解决方法1：</a>
+            <a href="#2-5-1-解决方法1-">2.5.1 解决方法 1：</a>
         </li>
         <li class="toc__h3">
-            <a href="#2-5-2--解决方法2-">2.5.2 解决方法2：</a>
+            <a href="#2-5-2--解决方法2-">2.5.2 解决方法 2：</a>
         </li>
         <li class="toc__h3">
             <a href="#2-5-3-拓展-打印金字塔树干-">2.5.3 拓展：打印金字塔树干：</a>
         </li>
         <li class="toc__h3">
-            <a href="#2-5-4-利用while或for打印100以内奇数的和">2.5.4 利用while或for打印100以内奇数的和</a>
+            <a href="#2-5-4-利用while或for打印100以内奇数的和">2.5.4 利用 while 或 for 打印 100 以内奇数的和</a>
         </li>
         <li class="toc__h3">
-            <a href="#2-5-5乘法表">2.5.5乘法表</a>
+            <a href="#2-5-5乘法表">2.5.5 乘法表</a>
         </li>
         <li class="toc__h3">
             <a href="#2-5-6-输入数字找规律">2.5.6 输入数字找规律</a>
@@ -722,7 +722,7 @@ return [0, 1].</p>
             <a href="#2-6-1-统计范围内的质数-">2.6.1 统计范围内的质数：</a>
         </li>
         <li class="toc__h1">
-            <a href="#2-7-python找出一个数的最大质因数-欧拉计划-">2.7 python找出一个数的最大质因数（欧拉计划）</a>
+            <a href="#2-7-python找出一个数的最大质因数-欧拉计划-">2.7 python 找出一个数的最大质因数（欧拉计划）</a>
         </li>
         <li class="toc__h1">
             <a href="#2-8-查找列表索引">2.8 查找列表索引</a>
@@ -731,7 +731,7 @@ return [0, 1].</p>
             <a href="#三-函数的使用-">三、函数的使用：</a>
         </li>
         <li class="toc__h2">
-            <a href="#3-2-函数结合while循环-">3.2 函数结合while循环：</a>
+            <a href="#3-2-函数结合while循环-">3.2 函数结合 while 循环：</a>
         </li>
         <li class="toc__h2">
             <a href="#3-3-仿银行系统-加校验-提醒交互-">3.3 仿银行系统(加校验、提醒交互)</a>
@@ -749,16 +749,16 @@ return [0, 1].</p>
             <a href="#四--字符处理-数据类型">四、 字符处理、数据类型</a>
         </li>
         <li class="toc__h2">
-            <a href="#4-1-MD5加密处理">4.1 MD5加密处理</a>
+            <a href="#4-1-MD5加密处理">4.1 MD5 加密处理</a>
         </li>
         <li class="toc__h2">
-            <a href="#现有字典-d----a--24--g--52--i--12--k--33-请按value值进行排序-">现有字典 d= {'a':24,'g':52,'i':12,'k':33}请按value值进行排序?</a>
+            <a href="#现有字典-d----a--24--g--52--i--12--k--33-请按value值进行排序-">现有字典 d= {'a':24,'g':52,'i':12,'k':33}请按 value 值进行排序？</a>
         </li>
         <li class="toc__h1">
             <a href="#模块与包">模块与包</a>
         </li>
         <li class="toc__h2">
-            <a href="#打乱一个排好序的list">打乱一个排好序的list</a>
+            <a href="#打乱一个排好序的list">打乱一个排好序的 list</a>
         </li>
         <li class="toc__h1">
             <a href="#匿名函数">匿名函数</a>
@@ -954,13 +954,13 @@ return [0, 1].</p>
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585508441415"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585508441415', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1559716535382",
@@ -980,4 +980,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 76ms, 2020/03/28 15:04:00 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 103ms, 2020/03/31 10:55:33 -->

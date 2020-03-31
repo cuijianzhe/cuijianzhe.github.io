@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>zabbix自动发现华为AC6605管理AP状态以及连接数 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="zabbix自动发现华为AC6605管理AP状态以及连接数 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/08/05/1564987766272.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="zabbix自动发现华为AC6605管理AP状态以及连接数 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/08/05/1564987766272.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585508441415"/>
             <link rel="prev" title="学生管理系统" href="https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html">
             <link rel="next" title="Request 方法" href="https://cuijianzhe.github.io/articles/2019/08/14/1565771931308.html">
     </head>
@@ -88,12 +88,12 @@
                 </a>
         </div>
         <div class="vditor-reset">
-            <p><strong>先把需要用的snmp的oid值获取到手。😰 具体的MIB文件官网上查找即可：</strong><br>
+            <p><strong>先把需要用的 snmp 的 oid 值获取到手。😰 具体的 MIB 文件官网上查找即可：</strong><br>
 <img src="https://img.hacpai.com/file/2019/08/image-a6c13673.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>zabbix运行脚本目录：/usr/lib/zabbix/externalscripts<br>
-zabbix配置文件目录：/etc/zabbix/zabbix_agentd.d</p>
-<h2 id="一-编写ap自动发现脚本-">一、编写ap自动发现脚本：</h2>
-<h3 id="shell脚本实例-">shell脚本实例：</h3>
+<p>zabbix 运行脚本目录：/usr/lib/zabbix/externalscripts<br>
+zabbix 配置文件目录：/etc/zabbix/zabbix_agentd.d</p>
+<h2 id="一-编写ap自动发现脚本-">一、编写 ap 自动发现脚本：</h2>
+<h3 id="shell脚本实例-">shell 脚本实例：</h3>
 <pre><code class="language-bash highlight-chroma">
 <span class="highlight-c1">#!/bin/bash</span>
 <span class="highlight-nv">id</span><span class="highlight-o">=</span><span class="highlight-k">$(</span>snmpwalk -v 2c -c limi@2018  10.200.250.5 1.3.6.1.4.1.2011.6.139.13.3.10.1.5 <span class="highlight-p">|</span> cut -f1 -d <span class="highlight-s2">"="</span> <span class="highlight-p">|</span> cut -f10 -d <span class="highlight-s2">"."</span><span class="highlight-k">)</span>
@@ -113,7 +113,7 @@ zabbix配置文件目录：/etc/zabbix/zabbix_agentd.d</p>
 <span class="highlight-nb">printf</span> <span class="highlight-s2">" ]}"</span>
 
 </code></pre>
-<h3 id="python3脚本实例">python3脚本实例</h3>
+<h3 id="python3脚本实例">python3 脚本实例</h3>
 <pre><code class="language-python highlight-chroma"><span class="highlight-ch">#!/bin/env python3</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">json</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">os</span>
@@ -143,26 +143,26 @@ zabbix配置文件目录：/etc/zabbix/zabbix_agentd.d</p>
     <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">dumps</span><span class="highlight-p">({</span><span class="highlight-s1">'data'</span><span class="highlight-p">:</span><span class="highlight-n">ap_list</span><span class="highlight-p">},</span><span class="highlight-n">sort_keys</span><span class="highlight-o">=</span><span class="highlight-bp">True</span><span class="highlight-p">,</span><span class="highlight-n">indent</span><span class="highlight-o">=</span><span class="highlight-mi">4</span><span class="highlight-p">,</span><span class="highlight-n">separators</span><span class="highlight-o">=</span><span class="highlight-p">(</span><span class="highlight-s1">','</span><span class="highlight-p">,</span><span class="highlight-s1">':'</span><span class="highlight-p">)))</span>
 
 </code></pre>
-<p>在目录/etc/zabbix/zabbix_agentd.d里面创建monitor_wlan.conf 文件</p>
+<p>在目录/etc/zabbix/zabbix_agentd.d 里面创建 monitor_wlan.conf 文件</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-nv">UserParameter</span><span class="highlight-o">=</span>wlan.alive,/usr/local/zabbix/share/zabbix/externalscripts/monitor_wlan.sh
 </code></pre>
-<p>取出AP-id和ap-name<br>
+<p>取出 AP-id 和 ap-name<br>
 <img src="https://img.hacpai.com/file/2019/09/image-e994c25c.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <p><img src="https://img.hacpai.com/file/2019/08/image-eee3f2d7.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>AP状态脚本：（需要把自动发现脚本（apdiscovery）里面的参数ap-id传参进来）</p>
+<p>AP 状态脚本：（需要把自动发现脚本（apdiscovery）里面的参数 ap-id 传参进来）</p>
 <pre><code class="language-bash highlight-chroma">cat ap_status.sh 
 <span class="highlight-c1">#!/bin/bash</span>
 <span class="highlight-nv">apid</span><span class="highlight-o">=</span><span class="highlight-nv">$1</span>
 snmpwalk -v 2c -c limi@2018  10.200.250.5 1.3.6.1.4.1.2011.6.139.13.3.10.1.7.<span class="highlight-si">${</span><span class="highlight-nv">apid</span><span class="highlight-si">}</span> <span class="highlight-p">|</span> awk <span class="highlight-s1">'{print $4}'</span>
 </code></pre>
-<p>AP连接用户数脚本：</p>
+<p>AP 连接用户数脚本：</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-cp">#!/bin/bash
 </span><span class="highlight-cp"></span><span class="highlight-nv">apid</span><span class="highlight-o">=</span><span class="highlight-nv">$1</span>
 snmpwalk -v 2c -c limi@2018  10.200.250.5 1.3.6.1.4.1.2011.6.139.13.3.10.1.45.<span class="highlight-si">${</span><span class="highlight-nv">apid</span><span class="highlight-si">}</span> <span class="highlight-p">|</span> awk <span class="highlight-s1">'{print $4}'</span>
 </code></pre>
 <p>例如：</p>
 <p><img src="https://img.hacpai.com/file/2019/08/image-6d461848.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<h2 id="二-配置zabbix-agentd的配置目录里面的脚本关系-">二、配置zabbix_agentd的配置目录里面的脚本关系：</h2>
+<h2 id="二-配置zabbix-agentd的配置目录里面的脚本关系-">二、配置 zabbix_agentd 的配置目录里面的脚本关系：</h2>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-c1"># cat discoveryapid.conf</span> 
 <span class="highlight-nv">UserParameter</span><span class="highlight-o">=</span>discovery_apid,/usr/lib/zabbix/externalscripts/apdiscovery.sh
 <span class="highlight-nv">UserParameter</span><span class="highlight-o">=</span>discoveryapuser<span class="highlight-o">[</span>*<span class="highlight-o">]</span>,/usr/lib/zabbix/externalscripts/apuser.sh <span class="highlight-nv">$1</span>
@@ -170,7 +170,7 @@ snmpwalk -v 2c -c limi@2018  10.200.250.5 1.3.6.1.4.1.2011.6.139.13.3.10.1.45.<s
 <span class="highlight-nv">UserParameter</span><span class="highlight-o">=</span>ap.downrate<span class="highlight-o">[</span>*<span class="highlight-o">]</span>,/usr/lib/zabbix/externalscripts/ap_downrate.sh <span class="highlight-nv">$1</span>
 <span class="highlight-nv">UserParameter</span><span class="highlight-o">=</span>ap.uprate<span class="highlight-o">[</span>*<span class="highlight-o">]</span>,/usr/lib/zabbix/externalscripts/ap_uprate.sh <span class="highlight-nv">$1</span>
 </code></pre>
-<h2 id="三-zabbix里面的配置-">三、zabbix里面的配置：</h2>
+<h2 id="三-zabbix里面的配置-">三、zabbix 里面的配置：</h2>
 <ol>
 <li>创建一个模板：<br>
 <img src="https://img.hacpai.com/file/2019/08/image-7b68489b.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></li>
@@ -206,19 +206,19 @@ snmpwalk -v 2c -c limi@2018  10.200.250.5 1.3.6.1.4.1.2011.6.139.13.3.10.1.45.<s
     <div class="post__toc">
 <ul class="article__toc">
         <li class="toc__h2">
-            <a href="#一-编写ap自动发现脚本-">一、编写ap自动发现脚本：</a>
+            <a href="#一-编写ap自动发现脚本-">一、编写 ap 自动发现脚本：</a>
         </li>
         <li class="toc__h3">
-            <a href="#shell脚本实例-">shell脚本实例：</a>
+            <a href="#shell脚本实例-">shell 脚本实例：</a>
         </li>
         <li class="toc__h3">
-            <a href="#python3脚本实例">python3脚本实例</a>
+            <a href="#python3脚本实例">python3 脚本实例</a>
         </li>
         <li class="toc__h2">
-            <a href="#二-配置zabbix-agentd的配置目录里面的脚本关系-">二、配置zabbix_agentd的配置目录里面的脚本关系：</a>
+            <a href="#二-配置zabbix-agentd的配置目录里面的脚本关系-">二、配置 zabbix_agentd 的配置目录里面的脚本关系：</a>
         </li>
         <li class="toc__h2">
-            <a href="#三-zabbix里面的配置-">三、zabbix里面的配置：</a>
+            <a href="#三-zabbix里面的配置-">三、zabbix 里面的配置：</a>
         </li>
 </ul>    </div>
     <div class="body--gray post__gray">
@@ -411,13 +411,13 @@ snmpwalk -v 2c -c limi@2018  10.200.250.5 1.3.6.1.4.1.2011.6.139.13.3.10.1.45.<s
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585508441415"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585508441415', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1564987766272",
@@ -437,4 +437,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 91ms, 2020/03/28 15:03:59 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 72ms, 2020/03/31 10:55:33 -->

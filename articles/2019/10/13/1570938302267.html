@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>openstack系列- glance 服务部署 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="openstack系列- glance 服务部署 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/13/1570938302267.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="openstack系列- glance 服务部署 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/13/1570938302267.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585508441415"/>
             <link rel="prev" title="openstack系列- keystone部署文档" href="https://cuijianzhe.github.io/articles/2019/10/11/1570777511550.html">
             <link rel="next" title="openstack系列-nova节点部署" href="https://cuijianzhe.github.io/articles/2019/10/13/1570962040262.html">
     </head>
@@ -89,7 +89,7 @@
         </div>
         <div class="vditor-reset">
             <h1 id="glance-服务安装"><a href="https://docs.openstack.org/glance/rocky/install/" target="_blank">glance 服务安装</a></h1>
-<h2 id="glance库的创建">glance库的创建</h2>
+<h2 id="glance库的创建">glance 库的创建</h2>
 <pre><code class="highlight-chroma">CREATE DATABASE glance;
  GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'localhost' \
   IDENTIFIED BY 'glance';
@@ -97,16 +97,16 @@ GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'%' \
   IDENTIFIED BY 'glance';
 </code></pre>
 <blockquote>
-<p>注意注意:每一条配置要新建到文件中，尽量不要打开注释在原有的基础上修改</p>
+<p>注意注意：每一条配置要新建到文件中，尽量不要打开注释在原有的基础上修改</p>
 </blockquote>
 <blockquote>
 <p>创建本地存储</p>
 </blockquote>
-<p><strong>1.一定要在opesntack-glance-api.service服务启动之前部署好存储设备，因为该服务在启动时会加载存储驱动检索存储设备，如果事先不存在，就意味着该服务没有识别到任何可用的存储设备，即便是后来你又新增了存储，仍然是无效的，最终导致你上传镜像失败；</strong></p>
-<p><strong>2.一定要赋予opesntack-glance-api.service服务对存储设备的可写权限。</strong></p>
-<h2 id="source管理凭据以获得对仅限管理的CLI命令的访问权限">source管理凭据以获得对仅限管理的CLI命令的访问权限</h2>
+<p><strong>1.一定要在 opesntack-glance-api.service 服务启动之前部署好存储设备，因为该服务在启动时会加载存储驱动检索存储设备，如果事先不存在，就意味着该服务没有识别到任何可用的存储设备，即便是后来你又新增了存储，仍然是无效的，最终导致你上传镜像失败；</strong></p>
+<p><strong>2.一定要赋予 opesntack-glance-api.service 服务对存储设备的可写权限。</strong></p>
+<h2 id="source管理凭据以获得对仅限管理的CLI命令的访问权限">source 管理凭据以获得对仅限管理的 CLI 命令的访问权限</h2>
 <ul>
-<li>创建glance用户</li>
+<li>创建 glance 用户</li>
 </ul>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># . admin-openrc</span>
 <span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1">#  openstack user create --domain default --password-prompt glance</span>
@@ -124,12 +124,12 @@ Repeat User Password:
 +---------------------+----------------------------------+
 </code></pre>
 <ul>
-<li>将管理角色添加到Glance用户和服务项目</li>
+<li>将管理角色添加到 Glance 用户和服务项目</li>
 </ul>
 <pre><code class="highlight-chroma">openstack role add --project service --user glance admin
 </code></pre>
 <ul>
-<li>创建glance服务</li>
+<li>创建 glance 服务</li>
 </ul>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1">#  openstack service create --name glance \</span>
 &gt;   --description <span class="highlight-s2">"OpenStack Image"</span> image
@@ -144,7 +144,7 @@ Repeat User Password:
 +-------------+----------------------------------+
 </code></pre>
 <ul>
-<li>创建glance API endpoints</li>
+<li>创建 glance API endpoints</li>
 </ul>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1">#  openstack endpoint create --region RegionOne \</span>
 &gt;   image public http://10.200.51.100:9292
@@ -193,7 +193,7 @@ Repeat User Password:
 <span class="highlight-p">|</span> url          <span class="highlight-p">|</span> http://10.200.51.100:9292        <span class="highlight-p">|</span>
 +--------------+----------------------------------+
 </code></pre>
-<h2 id="安装glance">安装glance</h2>
+<h2 id="安装glance">安装 glance</h2>
 <pre><code class="highlight-chroma">yum install openstack-glance -y
 </code></pre>
 <ul>
@@ -251,7 +251,7 @@ flavor = keystone
 <pre><code class="highlight-chroma"> su -s /bin/sh -c "glance-manage db_sync" glance
 </code></pre>
 <ul>
-<li>images文件夹授权</li>
+<li>images 文件夹授权</li>
 </ul>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># mkdir /var/lib/glance/images/</span>
 <span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># chown -R glance:glance /var/lib/glance/images/</span>
@@ -312,7 +312,7 @@ Hint: Some lines were ellipsized, use -l to show in full.
 10月 <span class="highlight-m">13</span> 11:24:09 linux-node1 glance-api<span class="highlight-o">[</span>3008<span class="highlight-o">]</span>: <span class="highlight-nv">val</span> <span class="highlight-o">=</span> callable<span class="highlight-o">(</span>*args, **kw<span class="highlight-o">)</span>
 Hint: Some lines were ellipsized, use -l to show in full.
 </code></pre>
-<h2 id="验证glance服务">验证glance服务</h2>
+<h2 id="验证glance服务">验证 glance 服务</h2>
 <pre><code class="highlight-chroma">[root@linux-node1 ~]# . admin-openrc 
 [root@linux-node1 ~]#  wget http://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img
 </code></pre>
@@ -396,16 +396,16 @@ Hint: Some lines were ellipsized, use -l to show in full.
             <a href="#glance-服务安装">glance 服务安装</a>
         </li>
         <li class="toc__h2">
-            <a href="#glance库的创建">glance库的创建</a>
+            <a href="#glance库的创建">glance 库的创建</a>
         </li>
         <li class="toc__h2">
-            <a href="#source管理凭据以获得对仅限管理的CLI命令的访问权限">source管理凭据以获得对仅限管理的CLI命令的访问权限</a>
+            <a href="#source管理凭据以获得对仅限管理的CLI命令的访问权限">source 管理凭据以获得对仅限管理的 CLI 命令的访问权限</a>
         </li>
         <li class="toc__h2">
-            <a href="#安装glance">安装glance</a>
+            <a href="#安装glance">安装 glance</a>
         </li>
         <li class="toc__h2">
-            <a href="#验证glance服务">验证glance服务</a>
+            <a href="#验证glance服务">验证 glance 服务</a>
         </li>
 </ul>    </div>
     <div class="body--gray post__gray">
@@ -598,13 +598,13 @@ Hint: Some lines were ellipsized, use -l to show in full.
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585508441415"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585508441415', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1570938302267",
@@ -624,4 +624,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 56ms, 2020/03/28 15:03:59 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 90ms, 2020/03/31 10:55:32 -->

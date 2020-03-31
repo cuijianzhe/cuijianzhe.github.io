@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>设置APN让个人热点网速更快更稳定 - 邯城往事</title><meta name="description" content="记一次使用华为便携wifi设备，本来很卡不能打游戏，结果设置了APN之后变得不卡的事。"/><meta property="og:description" content="记一次使用华为便携wifi设备，本来很卡不能打游戏，结果设置了APN之后变得不卡的事。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="设置APN让个人热点网速更快更稳定 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/04/10/1554867918639.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="设置APN让个人热点网速更快更稳定 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/04/10/1554867918639.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>设置APN让个人热点网速更快更稳定 - 邯城往事</title><meta name="description" content="记一次使用华为便携 wifi 设备，本来很卡不能打游戏，结果设置了 APN 之后变得不卡的事。"/><meta property="og:description" content="记一次使用华为便携 wifi 设备，本来很卡不能打游戏，结果设置了 APN 之后变得不卡的事。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="设置APN让个人热点网速更快更稳定 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/04/10/1554867918639.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="设置APN让个人热点网速更快更稳定 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/04/10/1554867918639.html">        <link rel="stylesheet"
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585508441415"/>
             <link rel="prev" title="编写一个自动安装zabbix-agentd客户端的脚本" href="https://cuijianzhe.github.io/articles/2019/04/07/1554637687016.html">
             <link rel="next" title="多线程之同步屏障CyclicBarrier的使用" href="https://cuijianzhe.github.io/articles/2019/04/10/1554887221480.html">
     </head>
@@ -85,8 +85,8 @@
         </div>
         <div class="vditor-reset">
             <ol>
-<li>连接到设备的WIFI浏览器打开192.168.8.1，开启移动数据和漫游数据，开启后返回主页</li>
-<li>设置--拨号--Profile管理--APN设置，【新增】APN设置框，名称随便写，用户名和密码空着，ip类型选择IPV4,接入点APN联通为:   unim2m.njmmapn  设置后重启路由器就可以了<br>
+<li>连接到设备的 WIFI 浏览器打开 192.168.8.1，开启移动数据和漫游数据，开启后返回主页</li>
+<li>设置--拨号--Profile 管理--APN 设置，【新增】APN 设置框，名称随便写，用户名和密码空着，ip 类型选择 IPV4,接入点 APN 联通为：   unim2m.njmmapn  设置后重启路由器就可以了<br>
 <img src="http://pouu7al9q.bkt.clouddn.com/BB42C31A29E0B3D09905FDD0B3F12BE4.png" alt=""></li>
 </ol>
                 <div>
@@ -572,13 +572,13 @@ function render() {
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585508441415"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585508441415', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1554867918639",
@@ -598,4 +598,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 59ms, 2020/03/28 15:04:00 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 69ms, 2020/03/31 10:55:34 -->

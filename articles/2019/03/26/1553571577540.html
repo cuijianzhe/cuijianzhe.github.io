@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>搭建docker之路-初识（1） - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="搭建docker之路-初识（1） - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/26/1553571577540.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="搭建docker之路-初识（1） - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/26/1553571577540.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585508441415"/>
             <link rel="prev" title="JDK11-juc包系列之atomic的AtomicBoolean类(一)" href="https://cuijianzhe.github.io/articles/2019/03/23/1553320766611.html">
             <link rel="next" title="docker容器命名和资源配额控制(2)" href="https://cuijianzhe.github.io/articles/2019/03/27/1553650586883.html">
     </head>
@@ -85,7 +85,7 @@
                 </a>
         </div>
         <div class="vditor-reset">
-            <h1 id="一--安装docker环境">一、 安装docker环境</h1>
+            <h1 id="一--安装docker环境">一、 安装 docker 环境</h1>
 <h2 id="1-1-安装">1.1 安装</h2>
 <p><code>[root@host ~]# yum install -y docker</code><br>
 查看信息：</p>
@@ -113,7 +113,7 @@ Server:
  OS/Arch:         linux/amd64
  Experimental:    false
 </code></pre>
-<h2 id="1-2-下载docker镜像">1.2 下载docker镜像</h2>
+<h2 id="1-2-下载docker镜像">1.2 下载 docker 镜像</h2>
 <p><img src="https://img.hacpai.com/file/2019/03/dockerliucheng-1ea22883.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="dockerliucheng.jpg"></p>
 <pre><code class="highlight-chroma">[root@bogon ~]# docker search centos  //从dockerHub中查找符合条件的镜像
 INDEX       NAME                                         DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
@@ -143,7 +143,7 @@ docker.io   docker.io/openshift/wildfly-81-centos7       A Centos7 based WildFly
 docker.io   docker.io/pivotaldata/centos-gcc-toolchain   CentOS with a toolchain, but unaffiliated ...   1                    
 docker.io   docker.io/smartentry/centos                  centos with smartentry                          0 
 </code></pre>
-<p><strong>从公网dockerhub上拉取镜像image</strong></p>
+<p><strong>从公网 dockerhub 上拉取镜像 image</strong></p>
 <pre><code class="highlight-chroma">[root@host ~]# docker pull docker.io/centos
 
 Using default tag: latest
@@ -153,7 +153,7 @@ latest: Pulling from docker.io/library/centos
 Digest: sha256:8d487d68857f5bc9595793279b33d082b03713341ddec91054382641d14db861
 Status: Downloaded newer image for docker.io/centos:latest
 </code></pre>
-<p>开启NAT转发功能</p>
+<p>开启 NAT 转发功能</p>
 <pre><code class="highlight-chroma">[root@host ~]# vim /etc/sysctl.conf
 net.ipv4.ip_forward = 1
 //执行sysctl -p生效
@@ -164,8 +164,8 @@ net.ipv4.ip_forward = 1
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 docker.io/centos    latest              9f38484d220f        11 days ago         202 MB
 </code></pre>
-<h2 id="1-3实际应用-">1.3实际应用：</h2>
-<h3 id="例1-运行一个--container--并加载镜像-centos-运行起来这个实例后-在实例中执行--bin-bash-命令">例1：运行一个  container  并加载镜像 centos，运行起来这个实例后，在实例中执行 /bin/bash 命令</h3>
+<h2 id="1-3实际应用-">1.3 实际应用：</h2>
+<h3 id="例1-运行一个--container--并加载镜像-centos-运行起来这个实例后-在实例中执行--bin-bash-命令">例 1：运行一个  container  并加载镜像 CentOS，运行起来这个实例后，在实例中执行 /bin/bash 命令</h3>
 <pre><code class="highlight-chroma">[root@host ~]# docker run -it docker.io/centos:latest /bin/bash    ##启动一个实例
 [root@ff20a65c5b95 /]# ls
 anaconda-post.log  bin  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
@@ -179,13 +179,13 @@ exit
 run 运行<br>
 -i 以交互模式运行容器，通常不 -t  同时使用；<br>
 -t 为容器重新分配一个伪输入终端，通常和 -i 同时使用；</p>
-<h3 id="例2-在-container-中启动一个长久运行的进程-不断向-stdin-输出--hello-world---模拟一个后台运行的服务">例2：在 container 中启动一个长久运行的进程，不断向 stdin 输出  hello world  。模拟一个后台运行的服务</h3>
+<h3 id="例2-在-container-中启动一个长久运行的进程-不断向-stdin-输出--hello-world---模拟一个后台运行的服务">例 2：在 container 中启动一个长久运行的进程，不断向 stdin 输出  hello world  。模拟一个后台运行的服务</h3>
 <pre><code class="highlight-chroma">[root@bogon ~]# docker run -d docker.io/centos:latest /bin/sh -c  "while  true;do echo hello world; sleep 1; done"
 
 6246ea4f21efb67018894fa78940210236e05d2e2953f942e5666488015b0f31
   //容器的ID
 </code></pre>
-<h3 id="例3-从一个容器中取日志-查看输出的内容-可用于后期检查-docker-实例在标准输出中弹出的错误信息或正常的信息-">例3：从一个容器中取日志，查看输出的内容，可用于后期检查 docker 实例在标准输出中弹出的错误信息或正常的信息。</h3>
+<h3 id="例3-从一个容器中取日志-查看输出的内容-可用于后期检查-docker-实例在标准输出中弹出的错误信息或正常的信息-">例 3：从一个容器中取日志，查看输出的内容，可用于后期检查 docker 实例在标准输出中弹出的错误信息或正常的信息。</h3>
 <p>语法：  docker logs  容器实例的  Name/ID</p>
 <pre><code class="highlight-chroma">[root@bogon ~]# docker logs 6246ea4f21efb67018894fa78940210236e05d2e2953f942e5666488015b0f31
 hello world
@@ -212,7 +212,7 @@ ff20a65c5b95        docker.io/centos:latest   "/bin/bash"              3 hours a
 
 6246ea4f21ef
 </code></pre>
-<h3 id="例4-启动-停止-重启-container-容器实例">例4：启动、停止、重启 container 容器实例</h3>
+<h3 id="例4-启动-停止-重启-container-容器实例">例 4：启动、停止、重启 container 容器实例</h3>
 <p>启动： run # 创建并运行 docker 实例</p>
 <pre><code class="highlight-chroma">[root@bogon ~]# docker run -d docker.io/centos:latest /bin/sh -c  "while  true;do echo hello world; sleep 1; done"
 
@@ -227,18 +227,18 @@ f639c4a00e22
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 [root@bogon ~]# 
 </code></pre>
-<h3 id="例5-删除指定-container---rm">例5：删除指定 container ： rm</h3>
+<h3 id="例5-删除指定-container---rm">例 5：删除指定 container ： rm</h3>
 <pre><code class="highlight-chroma">[root@bogon ~]# docker rm f639c4a00e22
 f639c4a00e22
 [root@bogon ~]# docker ps
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS        
 
 </code></pre>
-<h1 id="二-docker镜像制作的方法-">二、docker镜像制作的方法：</h1>
+<h1 id="二-docker镜像制作的方法-">二、docker 镜像制作的方法：</h1>
 <p>Docker Image 的制作两种方法</p>
 <p>方法 1：docker commit	#保存 container 的当前状态到 image 后，然后生成对应的 image<br>
 方法 2：docker build #使用 Dockerfile 文件自动化制作 image</p>
-<h2 id="2-1-创建一个安装好-apache-web-服务器的容器镜像">2.1 创建一个安装好 apache web 服务器的容器镜像</h2>
+<h2 id="2-1-创建一个安装好-apache-web-服务器的容器镜像">2.1 创建一个安装好 apache Web 服务器的容器镜像</h2>
 <pre><code class="highlight-chroma">[root@bogon ~]# docker run -it docker.io/centos:latest /bin/bash
 [root@692713fffabb /]# yum install -y httpd 
  #根据容器弼前状态做一个 image 镜像：创建一个安装了 apache 工具的 centos 镜像语法： docker commit &lt;container 的 ID&gt;或&lt;image_name&gt;
@@ -261,14 +261,14 @@ httpd-2.4.6-88.el7.centos.x86_64
 #查找安装包可以说明基于docker的apacheweb服务器构建成功
 
 </code></pre>
-<h2 id="2-2通过docker-build-创建一个基于-centos-的-httpd-web-服务器镜像-使用-docker-build-创建镜像时-需要使用-Dockerfile-文件自动化制作-image--镜像注-Dockerfile-有点像源码编译时--configure-后产生的-Makefile">2.2通过docker build 创建一个基于 centos 的 httpd web 服务器镜像。使用 docker build 创建镜像时，需要使用 Dockerfile 文件自动化制作 image  镜像注：Dockerfile 有点像源码编译时./configure 后产生的 Makefile</h2>
+<h2 id="2-2通过docker-build-创建一个基于-centos-的-httpd-web-服务器镜像-使用-docker-build-创建镜像时-需要使用-Dockerfile-文件自动化制作-image--镜像注-Dockerfile-有点像源码编译时--configure-后产生的-Makefile">2.2 通过 docker build 创建一个基于 CentOS 的 httpd Web 服务器镜像。使用 docker build 创建镜像时，需要使用 Dockerfile 文件自动化制作 image  镜像注：Dockerfile 有点像源码编译时。/configure 后产生的 Makefile</h2>
 <p>以下操作要在 docker 物理机上操作：</p>
 <p>1、创建工作目录</p>
 <pre><code class="highlight-chroma">[root@bogon ~]# mkdir /docker-build 
 [root@bogon docker-build]# touch Dockerfile
 
 </code></pre>
-<p>2、编辑Dockerfile<br>
+<p>2、编辑 Dockerfile<br>
 Dockerfile 用来创建一个自定义的 image,包含了用户指定的软件依赖等。</p>
 <pre><code class="highlight-chroma">[root@bogon docker-build]# vim Dockerfile 
 FROM docker.io/centos:latest
@@ -279,8 +279,8 @@ ADD index.html /var/www/html/index.html
 CMD /usr/local/bin/start.sh
 </code></pre>
 <p>注释：<br>
-FROM docker.io/centos:latest # FROM 基于哪个镜像MAINTAINER &lt;www.cjzshilong.cn&gt;<br>
-MAINTAINER镜像创建者<br>
+FROM docker.io/centos:latest # FROM 基于哪个镜像 MAINTAINER &lt;www.cjzshilong.cn&gt;<br>
+MAINTAINER 镜像创建者<br>
 RUN yum -y install httpd	#RUN 安装软件用<br>
 ADD start.sh /usr/local/bin/start.sh<br>
 ADD index.html /var/www/html/index.html CMD /usr/local/bin/start.sh<br>
@@ -294,7 +294,7 @@ CMD echo hello world	#container 启劢时执行的命令或启劢服务，但是
 </code></pre>
 <p>注：/usr/sbin/httpd -DFOREGROUND 参数的含意：<br>
 Systemd is designed to run processes "in the foreground", that is, they don't have to specifically run themselves as daemons. The processes don't exactly run in the foreground, they run under systemd and it captures their input and output, but from the process's perspective, it is the same as running in the foreground.  That  is  systemd's  preferred method of operation, but it does have compatibility with traditional daemons.</p>
-<p>4、使用命令来创建新的image<br>
+<p>4、使用命令来创建新的 image<br>
 语法：docker build -t    父镜像名：镜像的 tag	Dockerfile 文件所在路径<br>
 -t :表示 tage，镜像名<br>
 例：使用命令 docker build 来创建新的 image,并命名为 docker.io/centos:httpd</p>
@@ -322,11 +322,11 @@ docker.io/centos    httpd               7703e62fc080        About a minute ago  
 docker.io/centos    apache              d61468f39896        27 minutes ago       318 MB
 docker.io/centos    latest              9f38484d220f        11 days ago          202 MB
 </code></pre>
-<p>./表示当前目录，当前目录要含有Dockerfile文件</p>
-<h1 id="三-Docker-images的发布">三、Docker images的发布</h1>
+<p>./表示当前目录，当前目录要含有 Dockerfile 文件</p>
+<h1 id="三-Docker-images的发布">三、Docker images 的发布</h1>
 <p>方法 1：Save Image To TarBall<br>
 方法 2：Push Image To Docker Hub</p>
-<h2 id="3-1-方法1-Save-Image-To-TarBall">3.1 方法1：Save Image To TarBall</h2>
+<h2 id="3-1-方法1-Save-Image-To-TarBall">3.1 方法 1：Save Image To TarBall</h2>
 <p>保 存 Image 到 tar 包<br>
 语法：docker save -o 导出的镜像名.tar  本地镜像名：镜像标签例：</p>
 <pre><code class="highlight-chroma">[root@bogon ~]# docker save -o docker.io-centos-httpd-image.tar docker.io/centos:httpd
@@ -363,25 +363,25 @@ docker.io/centos    apache              d61468f39896        35 minutes ago      
 docker.io/centos    latest              9f38484d220f        11 days ago         202 MB
 [root@bogon ~]# 
 </code></pre>
-<h2 id="3-2-方法2-Push-Image-To-Docker-Hub-发布到外网">3.2 方法2：Push Image To Docker Hub 发布到外网</h2>
-<p>1、Signup on docker hub &amp; create repo	注册一个帐号<a href="https://hub.docker.com/" target="_blank">https://hub.docker.com/</a><br>
+<h2 id="3-2-方法2-Push-Image-To-Docker-Hub-发布到外网">3.2 方法 2：Push Image To Docker Hub 发布到外网</h2>
+<p>1、Signup on docker hub &amp; create repo	注册一个帐号 <a href="https://hub.docker.com/" target="_blank">https://hub.docker.com/</a><br>
 2、Login to docker hub<br>
 // docker login -u userabc -p abc123 -e <a href="mailto:userab@gmail.com" target="_blank">userab@gmail.com</a><br>
 3、Push image to docker hub	#上传镜像<br>
 // docker push centos:httpd<br>
 4、Pull image from docker hub	#下载镜像<br>
 //  docker pull userabc/centos:httpd	# 用户名/镜像名</p>
-<h2 id="3-2-方法3-使用阿里云的私有仓库来发布-">3.2 方法3：使用阿里云的私有仓库来发布;</h2>
+<h2 id="3-2-方法3-使用阿里云的私有仓库来发布-">3.2 方法 3：使用阿里云的私有仓库来发布;</h2>
 <p>待实验……</p>
 <h1 id="四-Container-容器端口映射">四、Container 容器端口映射</h1>
-<h2 id="4-1-实战Container-端口映射">4.1 实战Container 端口映射</h2>
-<p>启动Container</p>
+<h2 id="4-1-实战Container-端口映射">4.1 实战 Container 端口映射</h2>
+<p>启动 Container</p>
 <pre><code class="highlight-chroma">[root@bogon ~]# docker run -d -p 80:80 docker.io/centos:httpd 
 
 6a1fc818a972307687b9130ad7460c098c2bd88d60eb9026d565c7c24b71fe33
 [root@bogon ~]# 
 </code></pre>
-<p>注： -p 物理机的 80 端口:容器实例的 80 端口 ，把容器中的 80 端口映射到物理机上的 80 端口</p>
+<p>注： -p 物理机的 80 端口：容器实例的 80 端口 ，把容器中的 80 端口映射到物理机上的 80 端口</p>
 <p>在物理机上查看容器状态</p>
 <pre><code class="highlight-chroma">[root@bogon ~]# docker ps
 
@@ -393,9 +393,9 @@ tcp        0      0 192.168.89.209:22       192.168.89.80:62819     ESTABLISHED 
 tcp6       0      0 :::80                   :::*                    LISTEN      6742/docker-proxy-c 
 [root@bogon ~]# 
 </code></pre>
-<p>测试http<br>
+<p>测试 http<br>
 <img src="https://img.hacpai.com/file/2019/03/dockerhtml-8795600a.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="dockerhtml.png"></p>
-<h2 id="4-2-访问正在运行的container容器实例">4.2 访问正在运行的container容器实例</h2>
+<h2 id="4-2-访问正在运行的container容器实例">4.2 访问正在运行的 container 容器实例</h2>
 <p>语 法 ： docker exec -it &lt;container id | name&gt; /bin/bash<br>
 查看正在运行的容器 ID：</p>
 <pre><code class="highlight-chroma">[root@bogon ~]# docker ps 
@@ -411,7 +411,7 @@ cuijianzhe
 [root@bogon ~]# 
 </code></pre>
 <p>查看物理机和容器的网络<br>
-查看容器的ip</p>
+查看容器的 ip</p>
 <pre><code class="highlight-chroma">[root@bogon ~]# docker exec -it 6a1fc818a972 /bin/bash 
 [root@6a1fc818a972 /]# yum install net-tools -y 
 Loaded plugins: fastestmirror, ovl
@@ -472,7 +472,7 @@ lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
 
 [root@6a1fc818a972 /]# 
 </code></pre>
-<p>物理机的ip：</p>
+<p>物理机的 ip：</p>
 <pre><code class="highlight-chroma">[root@bogon ~]# ifconfig
 
 docker0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
@@ -512,9 +512,9 @@ vethd559ccb: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
 
 [root@bogon ~]# 
 </code></pre>
-<p>目前相当于虚拟机的NAT模式<br>
+<p>目前相当于虚拟机的 NAT 模式<br>
 <img src="https://img.hacpai.com/file/2019/03/dockermoshi-8b180ed2.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="dockermoshi.png"></p>
-<p>配置容器的root密码：</p>
+<p>配置容器的 root 密码：</p>
 <pre><code class="highlight-chroma">[root@bogon ~]# docker exec -it 6a1fc818a972 /bin/bash 
 
 [root@6a1fc818a972 /]# echo 598941324 | passwd --stdin root
@@ -536,61 +536,61 @@ passwd: all authentication tokens updated successfully.
     <div class="post__toc">
 <ul class="article__toc">
         <li class="toc__h1">
-            <a href="#一--安装docker环境">一、 安装docker环境</a>
+            <a href="#一--安装docker环境">一、 安装 docker 环境</a>
         </li>
         <li class="toc__h2">
             <a href="#1-1-安装">1.1 安装</a>
         </li>
         <li class="toc__h2">
-            <a href="#1-2-下载docker镜像">1.2 下载docker镜像</a>
+            <a href="#1-2-下载docker镜像">1.2 下载 docker 镜像</a>
         </li>
         <li class="toc__h2">
-            <a href="#1-3实际应用-">1.3实际应用：</a>
+            <a href="#1-3实际应用-">1.3 实际应用：</a>
         </li>
         <li class="toc__h3">
-            <a href="#例1-运行一个--container--并加载镜像-centos-运行起来这个实例后-在实例中执行--bin-bash-命令">例1：运行一个 container 并加载镜像 centos，运行起来这个实例后，在实例中执行 /bin/bash 命令</a>
+            <a href="#例1-运行一个--container--并加载镜像-centos-运行起来这个实例后-在实例中执行--bin-bash-命令">例 1：运行一个 container 并加载镜像 CentOS，运行起来这个实例后，在实例中执行 /bin/bash 命令</a>
         </li>
         <li class="toc__h3">
-            <a href="#例2-在-container-中启动一个长久运行的进程-不断向-stdin-输出--hello-world---模拟一个后台运行的服务">例2：在 container 中启动一个长久运行的进程，不断向 stdin 输出 hello world 。模拟一个后台运行的服务</a>
+            <a href="#例2-在-container-中启动一个长久运行的进程-不断向-stdin-输出--hello-world---模拟一个后台运行的服务">例 2：在 container 中启动一个长久运行的进程，不断向 stdin 输出 hello world 。模拟一个后台运行的服务</a>
         </li>
         <li class="toc__h3">
-            <a href="#例3-从一个容器中取日志-查看输出的内容-可用于后期检查-docker-实例在标准输出中弹出的错误信息或正常的信息-">例3：从一个容器中取日志，查看输出的内容，可用于后期检查 docker 实例在标准输出中弹出的错误信息或正常的信息。</a>
+            <a href="#例3-从一个容器中取日志-查看输出的内容-可用于后期检查-docker-实例在标准输出中弹出的错误信息或正常的信息-">例 3：从一个容器中取日志，查看输出的内容，可用于后期检查 docker 实例在标准输出中弹出的错误信息或正常的信息。</a>
         </li>
         <li class="toc__h3">
-            <a href="#例4-启动-停止-重启-container-容器实例">例4：启动、停止、重启 container 容器实例</a>
+            <a href="#例4-启动-停止-重启-container-容器实例">例 4：启动、停止、重启 container 容器实例</a>
         </li>
         <li class="toc__h3">
-            <a href="#例5-删除指定-container---rm">例5：删除指定 container ： rm</a>
+            <a href="#例5-删除指定-container---rm">例 5：删除指定 container ： rm</a>
         </li>
         <li class="toc__h1">
-            <a href="#二-docker镜像制作的方法-">二、docker镜像制作的方法：</a>
+            <a href="#二-docker镜像制作的方法-">二、docker 镜像制作的方法：</a>
         </li>
         <li class="toc__h2">
-            <a href="#2-1-创建一个安装好-apache-web-服务器的容器镜像">2.1 创建一个安装好 apache web 服务器的容器镜像</a>
+            <a href="#2-1-创建一个安装好-apache-web-服务器的容器镜像">2.1 创建一个安装好 apache Web 服务器的容器镜像</a>
         </li>
         <li class="toc__h2">
-            <a href="#2-2通过docker-build-创建一个基于-centos-的-httpd-web-服务器镜像-使用-docker-build-创建镜像时-需要使用-Dockerfile-文件自动化制作-image--镜像注-Dockerfile-有点像源码编译时--configure-后产生的-Makefile">2.2通过docker build 创建一个基于 centos 的 httpd web 服务器镜像。使用 docker build 创建镜像时，需要使用 Dockerfile 文件自动化制作 image 镜像注：Dockerfile 有点像源码编译时./configure 后产生的 Makefile</a>
+            <a href="#2-2通过docker-build-创建一个基于-centos-的-httpd-web-服务器镜像-使用-docker-build-创建镜像时-需要使用-Dockerfile-文件自动化制作-image--镜像注-Dockerfile-有点像源码编译时--configure-后产生的-Makefile">2.2 通过 docker build 创建一个基于 CentOS 的 httpd Web 服务器镜像。使用 docker build 创建镜像时，需要使用 Dockerfile 文件自动化制作 image 镜像注：Dockerfile 有点像源码编译时。/configure 后产生的 Makefile</a>
         </li>
         <li class="toc__h1">
-            <a href="#三-Docker-images的发布">三、Docker images的发布</a>
+            <a href="#三-Docker-images的发布">三、Docker images 的发布</a>
         </li>
         <li class="toc__h2">
-            <a href="#3-1-方法1-Save-Image-To-TarBall">3.1 方法1：Save Image To TarBall</a>
+            <a href="#3-1-方法1-Save-Image-To-TarBall">3.1 方法 1：Save Image To TarBall</a>
         </li>
         <li class="toc__h2">
-            <a href="#3-2-方法2-Push-Image-To-Docker-Hub-发布到外网">3.2 方法2：Push Image To Docker Hub 发布到外网</a>
+            <a href="#3-2-方法2-Push-Image-To-Docker-Hub-发布到外网">3.2 方法 2：Push Image To Docker Hub 发布到外网</a>
         </li>
         <li class="toc__h2">
-            <a href="#3-2-方法3-使用阿里云的私有仓库来发布-">3.2 方法3：使用阿里云的私有仓库来发布;</a>
+            <a href="#3-2-方法3-使用阿里云的私有仓库来发布-">3.2 方法 3：使用阿里云的私有仓库来发布;</a>
         </li>
         <li class="toc__h1">
             <a href="#四-Container-容器端口映射">四、Container 容器端口映射</a>
         </li>
         <li class="toc__h2">
-            <a href="#4-1-实战Container-端口映射">4.1 实战Container 端口映射</a>
+            <a href="#4-1-实战Container-端口映射">4.1 实战 Container 端口映射</a>
         </li>
         <li class="toc__h2">
-            <a href="#4-2-访问正在运行的container容器实例">4.2 访问正在运行的container容器实例</a>
+            <a href="#4-2-访问正在运行的container容器实例">4.2 访问正在运行的 container 容器实例</a>
         </li>
 </ul>    </div>
     <div class="body--gray post__gray">
@@ -783,13 +783,13 @@ passwd: all authentication tokens updated successfully.
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585508441415"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585508441415', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1553571577540",
@@ -809,4 +809,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 78ms, 2020/03/28 15:04:01 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 78ms, 2020/03/31 10:55:34 -->

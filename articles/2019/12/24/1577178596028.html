@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>K8S二进制部署过程-v1.17.0 - 邯城往事</title><meta name="description" content="搭建 K8S 集群，一定要细心细心再细心。不然会为了自己的粗心排查好久……"/><meta property="og:description" content="搭建 K8S 集群，一定要细心细心再细心。不然会为了自己的粗心排查好久……"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="K8S二进制部署过程-v1.17.0 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/12/24/1577178596028.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="K8S二进制部署过程-v1.17.0 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/12/24/1577178596028.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585508441415"/>
             <link rel="prev" title="K8S基础搭建使用" href="https://cuijianzhe.github.io/articles/2019/12/12/1576117964389.html">
             <link rel="next" title="2019年终惹人总结" href="https://cuijianzhe.github.io/articles/2019/12/28/1577514362771.html">
     </head>
@@ -103,7 +103,7 @@ mount /dev/vdb /data
 </code></pre>
 <ul>
 <li>安装部署 Docker，并修改 Docker 的数据存放位置。</li>
-<li>准备 Kubernetes 的<a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.16.4" target="_blank">v1.16.4</a>的相关二进制文件，具体可参考<a href="https://github.com/kubernetes/kubernetes/archive/v1.16.4.tar.gz" target="_blank">CHANGELOG-1.16</a>。（略）</li>
+<li>准备 Kubernetes 的 <a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.16.4" target="_blank">v1.16.4</a> 的相关二进制文件，具体可参考 <a href="https://github.com/kubernetes/kubernetes/archive/v1.16.4.tar.gz" target="_blank">CHANGELOG-1.16</a>。（略）</li>
 <li>系统主机名初始化，主机 SSH 授信免密登录。</li>
 </ul>
 <pre><code class="highlight-chroma">ssh-keygen -t rsa
@@ -483,7 +483,7 @@ scp flanneld*.pem node1:/data/kubernetes/ssl/
 scp flanneld*.pem node2:/data/kubernetes/ssl/
 </code></pre>
 <ul>
-<li><a href="https://github.com/coreos/flannel/releases" target="_blank">准备flannel的二进制文件</a></li>
+<li><a href="https://github.com/coreos/flannel/releases" target="_blank">准备 flannel 的二进制文件</a></li>
 </ul>
 <pre><code class="highlight-chroma"> wget https://github.com/coreos/flannel/releases/download/v0.11.0/flannel-v0.11.0-linux-amd64.tar.gz
 </code></pre>
@@ -540,8 +540,8 @@ RequiredBy=docker.service
 <p>mk-docker-opts.sh 脚本将分配给 flanneld 的 Pod 子网网段信息写入 /run/flannel/docker 文件，后续 docker 启动时 使用这个文件中的环境变量配置 docker0 网桥；</p>
 </blockquote>
 <ul>
-<li>flannel 集成<a href="https://github.com/containernetworking/plugins/releases" target="_blank">CNI</a><br>
-<a href="https://github.com/containernetworking/plugins/releases/download/v0.8.3/cni-plugins-linux-amd64-v0.8.3.tgz" target="_blank">下载CNI</a>后解压，分发到各个节点。</li>
+<li>flannel 集成 <a href="https://github.com/containernetworking/plugins/releases" target="_blank">CNI</a><br>
+<a href="https://github.com/containernetworking/plugins/releases/download/v0.8.3/cni-plugins-linux-amd64-v0.8.3.tgz" target="_blank">下载 CNI</a> 后解压，分发到各个节点。</li>
 </ul>
 <pre><code class="highlight-chroma">wget https://github.com/containernetworking/plugins/releases/download/v0.8.3/cni-plugins-linux-amd64-v0.8.3.tgz
 tar zxf cni-plugins-linux-amd64-v0.8.3.tgz -C /data/kubernetes/bin/cni
@@ -565,8 +565,8 @@ mk /kubernetes/network/config '{ "Network": "10.2.0.0/16", "Backend": { "Type": 
    --cert-file=/data/kubernetes/ssl/etcd.pem \
    --key-file=/data/kubernetes/ssl/etcd-key.pem get /kubernetes/network/config
 </code></pre>
-<h1 id="五-二进制部署docker">五、<a href="https://download.docker.com/linux/static/edge/x86_64/" target="_blank">二进制部署docker</a></h1>
-<h2 id="5-1-下载docker">5.1 <a href="https://download.docker.com/linux/static/stable/x86_64/" target="_blank">下载docker</a></h2>
+<h1 id="五-二进制部署docker">五、<a href="https://download.docker.com/linux/static/edge/x86_64/" target="_blank">二进制部署 docker</a></h1>
+<h2 id="5-1-下载docker">5.1 <a href="https://download.docker.com/linux/static/stable/x86_64/" target="_blank">下载 docker</a></h2>
 <pre><code class="highlight-chroma">wget https://download.docker.com/linux/static/stable/x86_64/docker-19.03.5.tgz
 tar -xf docker-19.03.5.tgz
 mkdir -p /usr/local/docker/bin
@@ -1286,13 +1286,13 @@ Type             Status  LastHeartbeatTime                 LastTransitionTime   
 
 </code></pre>
 <p><strong>查出是因为 CNI 插件没有初始化，但是我不知道用什么办法可以让 CNI 可以正常运行起来。<br>
-但是，我找到一个见不得人的方法：把 kubelet 启动文件中的 CNI 插件配置<code>--network-plugin=cni </code> 删除，然后 node 节点注册成功。</strong>😰</p>
+但是，我找到一个见不得人的方法：把 kubelet 启动文件中的 CNI 插件配置 <code>--network-plugin=cni </code> 删除，然后 node 节点注册成功。</strong>😰</p>
 <pre><code class="highlight-chroma">[root@master ~]# kubectl get node 
 NAME         STATUS   ROLES    AGE    VERSION
 10.0.0.163   Ready    &lt;none&gt;   117m   v1.17.0
 10.0.0.197   Ready    &lt;none&gt;   117m   v1.17.0
 </code></pre>
-<p><strong>这里卡住了，我从<a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.16.4" target="_blank">v1.16.4</a>安装到现在的<a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.7.md" target="_blank">v1.17.0</a>又是这里……</strong></p>
+<p><strong>这里卡住了，我从 <a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.16.4" target="_blank">v1.16.4</a> 安装到现在的 <a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.7.md" target="_blank">v1.17.0</a> 又是这里……</strong></p>
 <h2 id="7-2-kube-proxy-部署">7.2 kube-proxy 部署</h2>
 <blockquote>
 <p>kube-proxy 同样还是只部署在 node 节点上，在之前的操作中，已经将 kube-proxy 的二进制文件分发到 node 节点。</p>
@@ -1760,7 +1760,7 @@ MySQL [(none)]&gt;
 
 </code></pre>
 <h1 id="其他操作">其他操作</h1>
-<p>详见这里：<a href="https://www.cjzshilong.cn/articles/2019/12/12/1576117964389.html">比如K8S创建资源的几种方式、K8S常见几种资源</a></p>
+<p>详见这里：<a href="https://www.cjzshilong.cn/articles/2019/12/12/1576117964389.html">比如 K8S 创建资源的几种方式、K8S 常见几种资源</a></p>
                 <div>
                     <pre><p style="font-size:15px"><font color="#008000">
 <b>到头来
@@ -1837,10 +1837,10 @@ MySQL [(none)]&gt;
             <a href="#4-1-生成证书并且分发证书">4.1 生成证书并且分发证书</a>
         </li>
         <li class="toc__h1">
-            <a href="#五-二进制部署docker">五、二进制部署docker</a>
+            <a href="#五-二进制部署docker">五、二进制部署 docker</a>
         </li>
         <li class="toc__h2">
-            <a href="#5-1-下载docker">5.1 下载docker</a>
+            <a href="#5-1-下载docker">5.1 下载 docker</a>
         </li>
         <li class="toc__h3">
             <a href="#5-1-2-编辑-docker-系统服务-配置-docker-使用-flannel-">5.1.2 编辑 docker 系统服务(配置 docker 使用 flannel)</a>
@@ -2153,13 +2153,13 @@ MySQL [(none)]&gt;
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585508441415"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585508441415', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1577178596028",
@@ -2179,4 +2179,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 99ms, 2020/03/28 15:03:55 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 66ms, 2020/03/31 10:55:30 -->

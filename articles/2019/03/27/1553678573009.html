@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>docker安装mysql - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="docker安装mysql - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/27/1553678573009.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="docker安装mysql - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/27/1553678573009.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585508441415"/>
             <link rel="prev" title="配置docker静态ip地址" href="https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html">
             <link rel="next" title="docker安装nginx" href="https://cuijianzhe.github.io/articles/2019/03/28/1553760603642.html">
     </head>
@@ -86,23 +86,23 @@
         </div>
         <div class="vditor-reset">
             <ol>
-<li>mysql容器搭建</li>
+<li>MySQL 容器搭建</li>
 </ol>
 <ul>
 <li>
-<p>更新yum镜像源，下载docker的阿里镜像源：<br>
+<p>更新 yum 镜像源，下载 docker 的阿里镜像源：<br>
 <code>[root@bogon ~]# wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo </code></p>
 </li>
 <li>
-<p>安装docker所需的依赖包:<br>
+<p>安装 docker 所需的依赖包：<br>
 <code>[root@bogon ~]# yum -y install yum-utils device-mapper-persistent-data lvm2 container-selinux </code></p>
 </li>
 <li>
-<p>添加docker的阿里源<br>
+<p>添加 docker 的阿里源<br>
 <code>[root@bogon ~]# yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo </code></p>
 </li>
 <li>
-<p>启动docker</p>
+<p>启动 docker</p>
 </li>
 </ul>
 <pre><code class="highlight-chroma">[root@bogon ~]# yum install docker -y
@@ -147,7 +147,7 @@ mkdir: 已创建目录 <span class="highlight-s2">"/docker/mysql"</span>
 <span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span># 
 </code></pre>
 <ul>
-<li>构建mysql容器</li>
+<li>构建 MySQL 容器</li>
 </ul>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=598941324 -v /docker/mysql:/var/lib/mysql --name mysql8 mysql:8</span>
 
@@ -185,7 +185,7 @@ Query OK, <span class="highlight-m">0</span> rows affected <span class="highligh
 mysql&gt; 
 </code></pre>
 <ul>
-<li>在宿主机上测试是否能连接mysql容器</li>
+<li>在宿主机上测试是否能连接 MySQL 容器</li>
 </ul>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span># 
 
@@ -210,7 +210,7 @@ Type <span class="highlight-s1">'help;'</span> or <span class="highlight-s1">'\h
 
 mysql&gt; 
 </code></pre>
-<p>mysql到此搭建完成</p>
+<p>MySQL 到此搭建完成</p>
                 <div>
                     <pre><p style="font-size:15px"><font color="#008000">
 <b>到头来
@@ -413,13 +413,13 @@ mysql&gt;
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585508441415"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585508441415', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1553678573009",
@@ -439,4 +439,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 87ms, 2020/03/28 15:04:00 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 58ms, 2020/03/31 10:55:34 -->

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>将SpringBoot项目发布到Docker - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="将SpringBoot项目发布到Docker - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/02/05/1580906900027.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="将SpringBoot项目发布到Docker - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/02/05/1580906900027.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585508441415"/>
             <link rel="prev" title="使用Session管理用户登录状态" href="https://cuijianzhe.github.io/articles/2020/01/22/1579676321968.html">
             <link rel="next" title="利用飞书BOT发送消息" href="https://cuijianzhe.github.io/articles/2020/02/20/1582192919773.html">
     </head>
@@ -86,17 +86,17 @@
         </div>
         <div class="vditor-reset">
             <p><img src="https://img.hacpai.com/bing/20190813.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
-<h3 id="1-将SpringBoot项目打jar包">1.将SpringBoot项目打jar包</h3>
-<p>pom.xml增加<code>spring-boot-maven-plugin</code>插件<br>
-使用右侧maven-Lifecycle-package打jar包<br>
-使用<code>java -jar *-1.0.0.jar</code>测试可用</p>
-<h3 id="2-新建Dockerfile">2.新建Dockerfile</h3>
+<h3 id="1-将SpringBoot项目打jar包">1.将 SpringBoot 项目打 jar 包</h3>
+<p>pom.xml 增加 <code>spring-boot-maven-plugin</code> 插件<br>
+使用右侧 maven-Lifecycle-package 打 jar 包<br>
+使用 <code>java -jar *-1.0.0.jar</code> 测试可用</p>
+<h3 id="2-新建Dockerfile">2.新建 Dockerfile</h3>
 <pre><code class="highlight-chroma">FROM java:8
 VOLUME /tmp
 ADD love-0.0.1-SNAPSHOT.jar /love.jar
 ENTRYPOINT["java","-Djava.security.egd=file:/dev/./urandom","-jar","/love.jar"]
 </code></pre>
-<h3 id="3-将jar包拷贝到和Dockerfile同文件夹">3.将jar包拷贝到和Dockerfile同文件夹</h3>
+<h3 id="3-将jar包拷贝到和Dockerfile同文件夹">3.将 jar 包拷贝到和 Dockerfile 同文件夹</h3>
 <h3 id="4-创建镜像">4.创建镜像</h3>
 <pre><code class="highlight-chroma">docker build -f /usr/local/lovecaining/Dockerfile -t lovecaining
 </code></pre>
@@ -108,13 +108,13 @@ ENTRYPOINT["java","-Djava.security.egd=file:/dev/./urandom","-jar","/love.jar"]
     <div class="post__toc">
 <ul class="article__toc">
         <li class="toc__h3">
-            <a href="#1-将SpringBoot项目打jar包">1.将SpringBoot项目打jar包</a>
+            <a href="#1-将SpringBoot项目打jar包">1.将 SpringBoot 项目打 jar 包</a>
         </li>
         <li class="toc__h3">
-            <a href="#2-新建Dockerfile">2.新建Dockerfile</a>
+            <a href="#2-新建Dockerfile">2.新建 Dockerfile</a>
         </li>
         <li class="toc__h3">
-            <a href="#3-将jar包拷贝到和Dockerfile同文件夹">3.将jar包拷贝到和Dockerfile同文件夹</a>
+            <a href="#3-将jar包拷贝到和Dockerfile同文件夹">3.将 jar 包拷贝到和 Dockerfile 同文件夹</a>
         </li>
         <li class="toc__h3">
             <a href="#4-创建镜像">4.创建镜像</a>
@@ -313,13 +313,13 @@ ENTRYPOINT["java","-Djava.security.egd=file:/dev/./urandom","-jar","/love.jar"]
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585508441415"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585508441415', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1580906900027",
@@ -339,4 +339,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 84ms, 2020/03/28 15:03:55 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 80ms, 2020/03/31 10:55:30 -->

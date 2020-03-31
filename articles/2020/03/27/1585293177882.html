@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>利用Python实现网易云音乐自动签到 - 邯城往事</title><meta name="description" content="一生至少该有一次，为了某个人而忘记自己，不求结果，不求同行，不求曾经拥有，甚至不求你爱我，只求在最美的年华里，遇到你。"/><meta property="og:description" content="一生至少该有一次，为了某个人而忘记自己，不求结果，不求同行，不求曾经拥有，甚至不求你爱我，只求在最美的年华里，遇到你。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="利用Python实现网易云音乐自动签到 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/03/27/1585293177882.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="利用Python实现网易云音乐自动签到 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/03/27/1585293177882.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585335643178"/>
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1585508441415"/>
             <link rel="prev" title="利用爬虫爬取我的solo博客" href="https://cuijianzhe.github.io/articles/2020/03/25/1585126708916.html">
     </head>
 <body>
@@ -72,7 +72,7 @@
         <div class="ft__fade item__meta">
                 Updated on
             <time>
-                Mar 28, 2020
+                Mar 30, 2020
             </time>
                 in <a href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
             with <span data-uvstaturl="https://cuijianzhe.github.io/articles/2020/03/27/1585293177882.html">0</span> views
@@ -85,10 +85,10 @@
         </div>
         <div class="vditor-reset">
             <ul>
-<li><a href="https://github.com/Binaryify/NeteaseCloudMusicApi" target="_blank"><strong>API平台搭建</strong></a><br>
+<li><a href="https://github.com/Binaryify/NeteaseCloudMusicApi" target="_blank"><strong>API 平台搭建</strong></a><br>
 <strong>参考</strong><a href="https://binaryify.github.io/NeteaseCloudMusicApi/#/?id=neteasecloudmusicapi" target="_blank">这里</a></li>
 </ul>
-<p><strong>我把api搭建在自己的服务器上了</strong></p>
+<p><strong>我把 API 搭建在自己的服务器上了</strong></p>
 <pre><code class="highlight-chroma">$ docker pull binaryify/netease_cloud_music_api
 $ docker run -d -p 8090:3000 --name netease_cloud_music_api -e http_proxy= -e https_proxy= -e no_proxy= -e HTTP_PROXY= -e HTTPS_PROXY= -e NO_PROXY= binaryify/netease_cloud_music_api
 $ docker ps -a 
@@ -97,10 +97,10 @@ e25f4fc06c81        binaryify/netease_cloud_music_api   "docker-entrypoint.s…"
 55a900b38684        b3log/solo                          "java -cp lib/*:. or…"   2 days ago          Up 2 days                                           solo
 066c823540cc        b3log/lute-http                     "/opt/lute-http/lute…"   2 days ago          Up 2 days                                           lute-http
 </code></pre>
-<p><strong>如下api平台运行：</strong><br>
+<p><strong>如下 API 平台运行：</strong><br>
 <img src="https://img.hacpai.com/file/2020/03/image-c0b68d17.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <ul>
-<li><strong>实现python自动签到</strong></li>
+<li><strong>实现 python 自动签到</strong></li>
 </ul>
 <pre><code class="language-python highlight-chroma"><span class="highlight-ch">#!/usr/bin/python</span>
 <span class="highlight-c1"># -*- coding: utf-8 -*-</span>
@@ -192,83 +192,95 @@ e25f4fc06c81        binaryify/netease_cloud_music_api   "docker-entrypoint.s…"
         <span class="highlight-n">session</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">Session</span><span class="highlight-p">()</span>
         <span class="highlight-n">api_url</span> <span class="highlight-o">=</span> <span class="highlight-s2">"http://cjzshilong.cn:8090/login?email=</span><span class="highlight-si">%s</span><span class="highlight-s2">&amp;password=</span><span class="highlight-si">%s</span><span class="highlight-s2">"</span> <span class="highlight-o">%</span> <span class="highlight-p">(</span><span class="highlight-n">username</span><span class="highlight-p">,</span><span class="highlight-n">password</span><span class="highlight-p">)</span>
         <span class="highlight-n">res</span> <span class="highlight-o">=</span> <span class="highlight-n">session</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">api_url</span><span class="highlight-p">,</span> <span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-n">headers</span><span class="highlight-p">)</span>
+        <span class="highlight-c1"># str_res = json.loads(res.text)</span>
         <span class="highlight-k">return</span> <span class="highlight-n">session</span>
+<span class="highlight-k">class</span> <span class="highlight-nc">feishu</span><span class="highlight-p">():</span>
+    <span class="highlight-k">def</span> <span class="highlight-fm">__init__</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">,</span><span class="highlight-n">mobile</span><span class="highlight-p">,</span><span class="highlight-n">text</span><span class="highlight-p">):</span>
+        <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">mobile</span> <span class="highlight-o">=</span> <span class="highlight-n">mobile</span>
+        <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">token</span> <span class="highlight-o">=</span> <span class="highlight-n">feishu</span><span class="highlight-o">.</span><span class="highlight-n">get_token</span><span class="highlight-p">()</span>
+        <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">text</span> <span class="highlight-o">=</span> <span class="highlight-n">text</span>
+    <span class="highlight-k">def</span> <span class="highlight-nf">getuserid</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-n">headers_group</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span>
+            <span class="highlight-s2">"Authorization"</span><span class="highlight-p">:</span> <span class="highlight-s2">"Bearer </span><span class="highlight-si">%s</span><span class="highlight-s2">"</span> <span class="highlight-o">%</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">token</span><span class="highlight-p">,</span>
+            <span class="highlight-s2">"Content-Type"</span><span class="highlight-p">:</span> <span class="highlight-s2">"application/json"</span>
+        <span class="highlight-p">}</span>
+        <span class="highlight-k">try</span><span class="highlight-p">:</span>
+            <span class="highlight-n">userurl</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://open.feishu.cn/open-apis/user/v1/batch_get_id?mobiles=</span><span class="highlight-si">%s</span><span class="highlight-s2">"</span> <span class="highlight-o">%</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">mobile</span>
+            <span class="highlight-n">res_data</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">url</span><span class="highlight-o">=</span><span class="highlight-n">userurl</span><span class="highlight-p">,</span> <span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-n">headers_group</span><span class="highlight-p">)</span>
+            <span class="highlight-n">code</span> <span class="highlight-o">=</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-n">res_data</span><span class="highlight-o">.</span><span class="highlight-n">text</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'code'</span><span class="highlight-p">)</span>
+            <span class="highlight-k">if</span> <span class="highlight-n">code</span> <span class="highlight-o">==</span> <span class="highlight-mi">0</span><span class="highlight-p">:</span>
+                <span class="highlight-n">userid</span> <span class="highlight-o">=</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-n">res_data</span><span class="highlight-o">.</span><span class="highlight-n">text</span><span class="highlight-p">)[</span><span class="highlight-s1">'data'</span><span class="highlight-p">][</span><span class="highlight-s1">'mobile_users'</span><span class="highlight-p">][</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">mobile</span><span class="highlight-p">][</span><span class="highlight-mi">0</span><span class="highlight-p">][</span><span class="highlight-s1">'user_id'</span><span class="highlight-p">]</span>
+                <span class="highlight-k">return</span> <span class="highlight-n">userid</span>
+            <span class="highlight-k">else</span><span class="highlight-p">:</span>
+                <span class="highlight-n">error</span> <span class="highlight-o">=</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-n">res_data</span><span class="highlight-o">.</span><span class="highlight-n">text</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'msg'</span><span class="highlight-p">)</span>
+                <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-s1">'请求出错：{}'</span><span class="highlight-o">.</span><span class="highlight-n">format</span><span class="highlight-p">(</span><span class="highlight-n">error</span><span class="highlight-p">))</span>
+        <span class="highlight-k">except</span><span class="highlight-p">:</span>
+            <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-s1">'请求失败'</span><span class="highlight-p">)</span>
+    <span class="highlight-k">def</span> <span class="highlight-nf">send_messages</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">,</span><span class="highlight-n">userid</span><span class="highlight-p">):</span>
+        <span class="highlight-n">headers_group</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span>
+            <span class="highlight-s2">"Authorization"</span><span class="highlight-p">:</span> <span class="highlight-s2">"Bearer </span><span class="highlight-si">%s</span><span class="highlight-s2">"</span> <span class="highlight-o">%</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">token</span><span class="highlight-p">,</span>
+            <span class="highlight-s2">"Content-Type"</span><span class="highlight-p">:</span> <span class="highlight-s2">"application/json"</span>
+        <span class="highlight-p">}</span>
+        <span class="highlight-n">message_url</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://open.feishu.cn/open-apis/message/v4/send/"</span>
+        <span class="highlight-c1"># 发送富文本消息</span>
+        <span class="highlight-n">data</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span>
+            <span class="highlight-s2">"user_id"</span><span class="highlight-p">:</span> <span class="highlight-n">userid</span><span class="highlight-p">,</span>
+            <span class="highlight-s2">"msg_type"</span><span class="highlight-p">:</span> <span class="highlight-s2">"post"</span><span class="highlight-p">,</span>
+            <span class="highlight-s2">"content"</span><span class="highlight-p">:</span> <span class="highlight-p">{</span>
+                <span class="highlight-s2">"post"</span><span class="highlight-p">:</span> <span class="highlight-p">{</span>
+                    <span class="highlight-s2">"zh_cn"</span><span class="highlight-p">:</span> <span class="highlight-p">{</span>
+                        <span class="highlight-s2">"title"</span><span class="highlight-p">:</span> <span class="highlight-s2">"今日网易云音乐签到内容如下："</span><span class="highlight-p">,</span>
+                        <span class="highlight-s2">"content"</span><span class="highlight-p">:</span> <span class="highlight-p">[</span>
+                            <span class="highlight-p">[</span>
+                                <span class="highlight-p">{</span>
+                                    <span class="highlight-s2">"tag"</span><span class="highlight-p">:</span> <span class="highlight-s2">"text"</span><span class="highlight-p">,</span>
+                                    <span class="highlight-s2">"un_escape"</span><span class="highlight-p">:</span> <span class="highlight-bp">True</span><span class="highlight-p">,</span>
+                                    <span class="highlight-s2">"text"</span><span class="highlight-p">:</span> <span class="highlight-s2">"</span><span class="highlight-si">%s</span><span class="highlight-s2">&amp;nbsp;"</span> <span class="highlight-o">%</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">text</span>
+                                <span class="highlight-p">},</span>
+                                <span class="highlight-p">{</span>
+                                    <span class="highlight-s2">"tag"</span><span class="highlight-p">:</span> <span class="highlight-s2">"at"</span><span class="highlight-p">,</span>
+                                    <span class="highlight-s2">"user_id"</span><span class="highlight-p">:</span> <span class="highlight-n">userid</span>
 
-<span class="highlight-k">def</span> <span class="highlight-nf">get_token</span><span class="highlight-p">():</span>
-    <span class="highlight-n">data</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span><span class="highlight-s2">"app_id"</span><span class="highlight-p">:</span><span class="highlight-s2">"cli_9xxxxd"</span><span class="highlight-p">,</span><span class="highlight-s2">"app_secret"</span><span class="highlight-p">:</span><span class="highlight-s2">"YJJxxxxxxxUi"</span><span class="highlight-p">}</span>
-    <span class="highlight-n">headers</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span><span class="highlight-s2">"Content-Type"</span><span class="highlight-p">:</span> <span class="highlight-s2">"application/json"</span><span class="highlight-p">}</span>
-    <span class="highlight-n">url_token</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal/"</span>
-    <span class="highlight-k">try</span><span class="highlight-p">:</span>
-        <span class="highlight-n">res</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">post</span><span class="highlight-p">(</span><span class="highlight-n">url_token</span><span class="highlight-p">,</span> <span class="highlight-n">json</span><span class="highlight-o">=</span><span class="highlight-n">data</span><span class="highlight-p">,</span> <span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-n">headers</span><span class="highlight-p">)</span>
-        <span class="highlight-k">if</span> <span class="highlight-n">res</span><span class="highlight-o">.</span><span class="highlight-n">status_code</span> <span class="highlight-o">==</span> <span class="highlight-mi">200</span><span class="highlight-p">:</span>
-            <span class="highlight-n">token</span> <span class="highlight-o">=</span> <span class="highlight-p">(</span><span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-n">res</span><span class="highlight-o">.</span><span class="highlight-n">text</span><span class="highlight-p">))</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'tenant_access_token'</span><span class="highlight-p">)</span>
-            <span class="highlight-k">return</span> <span class="highlight-n">token</span>
-    <span class="highlight-k">except</span><span class="highlight-p">:</span>
-        <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-s1">'请求失败'</span><span class="highlight-p">)</span>
-<span class="highlight-n">headers_group</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span>
-    <span class="highlight-s2">"Authorization"</span><span class="highlight-p">:</span> <span class="highlight-s2">"Bearer </span><span class="highlight-si">%s</span><span class="highlight-s2">"</span> <span class="highlight-o">%</span> <span class="highlight-p">(</span><span class="highlight-n">get_token</span><span class="highlight-p">()),</span>
-    <span class="highlight-s2">"Content-Type"</span><span class="highlight-p">:</span> <span class="highlight-s2">"application/json"</span>
-<span class="highlight-p">}</span>
-<span class="highlight-k">def</span> <span class="highlight-nf">getuserid</span><span class="highlight-p">(</span><span class="highlight-n">mobile</span><span class="highlight-p">):</span>   <span class="highlight-c1">#根据手机号get用户id</span>
-    <span class="highlight-k">try</span><span class="highlight-p">:</span>
-        <span class="highlight-n">userurl</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://open.feishu.cn/open-apis/user/v1/batch_get_id?mobiles=</span><span class="highlight-si">%s</span><span class="highlight-s2">"</span><span class="highlight-o">%</span><span class="highlight-n">mobile</span>
-        <span class="highlight-n">res_data</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">url</span><span class="highlight-o">=</span><span class="highlight-n">userurl</span><span class="highlight-p">,</span> <span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-n">headers_group</span><span class="highlight-p">)</span>
-        <span class="highlight-n">code</span> <span class="highlight-o">=</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-n">res_data</span><span class="highlight-o">.</span><span class="highlight-n">text</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'code'</span><span class="highlight-p">)</span>
-        <span class="highlight-k">if</span> <span class="highlight-n">code</span> <span class="highlight-o">==</span> <span class="highlight-mi">0</span><span class="highlight-p">:</span>
-            <span class="highlight-n">userid</span> <span class="highlight-o">=</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-n">res_data</span><span class="highlight-o">.</span><span class="highlight-n">text</span><span class="highlight-p">)[</span><span class="highlight-s1">'data'</span><span class="highlight-p">][</span><span class="highlight-s1">'mobile_users'</span><span class="highlight-p">][</span><span class="highlight-n">mobile</span><span class="highlight-p">][</span><span class="highlight-mi">0</span><span class="highlight-p">][</span><span class="highlight-s1">'user_id'</span><span class="highlight-p">]</span>
-            <span class="highlight-k">return</span> <span class="highlight-n">userid</span>
-        <span class="highlight-k">else</span><span class="highlight-p">:</span>
-            <span class="highlight-n">error</span> <span class="highlight-o">=</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-n">res_data</span><span class="highlight-o">.</span><span class="highlight-n">text</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'msg'</span><span class="highlight-p">)</span>
-            <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-s1">'请求出错：{}'</span><span class="highlight-o">.</span><span class="highlight-n">format</span><span class="highlight-p">(</span><span class="highlight-n">error</span><span class="highlight-p">))</span>
-    <span class="highlight-k">except</span><span class="highlight-p">:</span>
-        <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-s1">'请求失败'</span><span class="highlight-p">)</span>
-<span class="highlight-k">def</span> <span class="highlight-nf">send_messages</span><span class="highlight-p">(</span><span class="highlight-n">user_id</span><span class="highlight-p">,</span><span class="highlight-n">word</span><span class="highlight-p">):</span>
-    <span class="highlight-n">message_url</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://open.feishu.cn/open-apis/message/v4/send/"</span>
-    <span class="highlight-c1"># 发送富文本消息</span>
-    <span class="highlight-n">data</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span>
-        <span class="highlight-s2">"user_id"</span><span class="highlight-p">:</span> <span class="highlight-n">user_id</span><span class="highlight-p">,</span>
-        <span class="highlight-s2">"msg_type"</span><span class="highlight-p">:</span> <span class="highlight-s2">"post"</span><span class="highlight-p">,</span>
-        <span class="highlight-s2">"content"</span><span class="highlight-p">:</span> <span class="highlight-p">{</span>
-            <span class="highlight-s2">"post"</span><span class="highlight-p">:</span> <span class="highlight-p">{</span>
-                <span class="highlight-s2">"zh_cn"</span><span class="highlight-p">:</span> <span class="highlight-p">{</span>
-                    <span class="highlight-s2">"title"</span><span class="highlight-p">:</span> <span class="highlight-s2">"今日网易云音乐签到内容如下："</span><span class="highlight-p">,</span>
-                    <span class="highlight-s2">"content"</span><span class="highlight-p">:</span> <span class="highlight-p">[</span>
-                        <span class="highlight-p">[</span>
-                            <span class="highlight-p">{</span>
-                                <span class="highlight-s2">"tag"</span><span class="highlight-p">:</span> <span class="highlight-s2">"text"</span><span class="highlight-p">,</span>
-                                <span class="highlight-s2">"un_escape"</span><span class="highlight-p">:</span> <span class="highlight-bp">True</span><span class="highlight-p">,</span>
-                                <span class="highlight-s2">"text"</span><span class="highlight-p">:</span> <span class="highlight-s2">"</span><span class="highlight-si">%s</span><span class="highlight-s2">&nbsp;"</span><span class="highlight-o">%</span><span class="highlight-n">word</span>
-                            <span class="highlight-p">},</span>
-                            <span class="highlight-p">{</span>
-                                <span class="highlight-s2">"tag"</span><span class="highlight-p">:</span> <span class="highlight-s2">"at"</span><span class="highlight-p">,</span>
-                                <span class="highlight-s2">"user_id"</span><span class="highlight-p">:</span> <span class="highlight-n">user_id</span>
-
-                            <span class="highlight-p">}</span>
+                                <span class="highlight-p">}</span>
+                            <span class="highlight-p">]</span>
                         <span class="highlight-p">]</span>
-                    <span class="highlight-p">]</span>
+                    <span class="highlight-p">}</span>
                 <span class="highlight-p">}</span>
             <span class="highlight-p">}</span>
         <span class="highlight-p">}</span>
-    <span class="highlight-p">}</span>
-    <span class="highlight-n">request</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">post</span><span class="highlight-p">(</span><span class="highlight-n">url</span><span class="highlight-o">=</span><span class="highlight-n">message_url</span><span class="highlight-p">,</span> <span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-n">headers_group</span><span class="highlight-p">,</span> <span class="highlight-n">json</span><span class="highlight-o">=</span><span class="highlight-n">data</span><span class="highlight-p">)</span>
+        <span class="highlight-n">request</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">post</span><span class="highlight-p">(</span><span class="highlight-n">url</span><span class="highlight-o">=</span><span class="highlight-n">message_url</span><span class="highlight-p">,</span> <span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-n">headers_group</span><span class="highlight-p">,</span> <span class="highlight-n">json</span><span class="highlight-o">=</span><span class="highlight-n">data</span><span class="highlight-p">)</span>
+    <span class="highlight-nd">@staticmethod</span>
+    <span class="highlight-k">def</span> <span class="highlight-nf">get_token</span><span class="highlight-p">():</span>
+        <span class="highlight-n">data</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span><span class="highlight-s2">"app_id"</span><span class="highlight-p">:</span><span class="highlight-s2">"cli_9xxxxd"</span><span class="highlight-p">,</span><span class="highlight-s2">"app_secret"</span><span class="highlight-p">:</span><span class="highlight-s2">"YJJxxxxYUi"</span><span class="highlight-p">}</span>
+        <span class="highlight-n">headers</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span><span class="highlight-s2">"Content-Type"</span><span class="highlight-p">:</span> <span class="highlight-s2">"application/json"</span><span class="highlight-p">}</span>
+        <span class="highlight-n">url_token</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal/"</span>
+        <span class="highlight-k">try</span><span class="highlight-p">:</span>
+            <span class="highlight-n">res</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">post</span><span class="highlight-p">(</span><span class="highlight-n">url_token</span><span class="highlight-p">,</span> <span class="highlight-n">json</span><span class="highlight-o">=</span><span class="highlight-n">data</span><span class="highlight-p">,</span> <span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-n">headers</span><span class="highlight-p">)</span>
+            <span class="highlight-k">if</span> <span class="highlight-n">res</span><span class="highlight-o">.</span><span class="highlight-n">status_code</span> <span class="highlight-o">==</span> <span class="highlight-mi">200</span><span class="highlight-p">:</span>
+                <span class="highlight-n">token</span> <span class="highlight-o">=</span> <span class="highlight-p">(</span><span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-n">res</span><span class="highlight-o">.</span><span class="highlight-n">text</span><span class="highlight-p">))</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'tenant_access_token'</span><span class="highlight-p">)</span>
+                <span class="highlight-k">return</span> <span class="highlight-n">token</span>
+        <span class="highlight-k">except</span><span class="highlight-p">:</span>
+            <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-s1">'请求失败'</span><span class="highlight-p">)</span>
+
 <span class="highlight-k">if</span> <span class="highlight-vm">__name__</span> <span class="highlight-o">==</span> <span class="highlight-s1">'__main__'</span><span class="highlight-p">:</span>
-    <span class="highlight-k">if</span> <span class="highlight-n">os</span><span class="highlight-o">.</span><span class="highlight-n">path</span><span class="highlight-o">.</span><span class="highlight-n">exists</span><span class="highlight-p">(</span><span class="highlight-s1">'config.json'</span><span class="highlight-p">):</span>
-        <span class="highlight-n">f</span> <span class="highlight-o">=</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-s1">'config.json'</span><span class="highlight-p">,</span> <span class="highlight-s1">'r'</span><span class="highlight-p">,</span> <span class="highlight-n">encoding</span><span class="highlight-o">=</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span>
+    <span class="highlight-n">filepath</span> <span class="highlight-o">=</span> <span class="highlight-s1">'/scripts/music163/config.json'</span>
+    <span class="highlight-k">if</span> <span class="highlight-n">os</span><span class="highlight-o">.</span><span class="highlight-n">path</span><span class="highlight-o">.</span><span class="highlight-n">exists</span><span class="highlight-p">(</span><span class="highlight-n">filepath</span><span class="highlight-p">):</span>
+        <span class="highlight-n">f</span> <span class="highlight-o">=</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-n">filepath</span><span class="highlight-p">,</span> <span class="highlight-s1">'r'</span><span class="highlight-p">,</span> <span class="highlight-n">encoding</span><span class="highlight-o">=</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span>
         <span class="highlight-n">info</span> <span class="highlight-o">=</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">load</span><span class="highlight-p">(</span><span class="highlight-n">f</span><span class="highlight-p">)</span>
         <span class="highlight-n">f</span><span class="highlight-o">.</span><span class="highlight-n">close</span><span class="highlight-p">()</span>
     <span class="highlight-k">else</span><span class="highlight-p">:</span>
         <span class="highlight-n">username</span> <span class="highlight-o">=</span> <span class="highlight-nb">input</span><span class="highlight-p">(</span><span class="highlight-s1">'--username:'</span><span class="highlight-p">)</span>
         <span class="highlight-n">password</span> <span class="highlight-o">=</span> <span class="highlight-nb">input</span><span class="highlight-p">(</span><span class="highlight-s1">'--password:'</span><span class="highlight-p">)</span>
         <span class="highlight-n">info</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span><span class="highlight-s1">'username'</span><span class="highlight-p">:</span> <span class="highlight-n">username</span><span class="highlight-p">,</span> <span class="highlight-s1">'password'</span><span class="highlight-p">:</span> <span class="highlight-n">password</span><span class="highlight-p">}</span>
-        <span class="highlight-n">f</span> <span class="highlight-o">=</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-s1">'config.json'</span><span class="highlight-p">,</span> <span class="highlight-s1">'w'</span><span class="highlight-p">,</span> <span class="highlight-n">encoding</span><span class="highlight-o">=</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span>
+        <span class="highlight-n">f</span> <span class="highlight-o">=</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-n">filepath</span><span class="highlight-p">,</span> <span class="highlight-s1">'w'</span><span class="highlight-p">,</span> <span class="highlight-n">encoding</span><span class="highlight-o">=</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span>
         <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">dump</span><span class="highlight-p">(</span><span class="highlight-n">info</span><span class="highlight-p">,</span> <span class="highlight-n">f</span><span class="highlight-p">)</span>
         <span class="highlight-n">f</span><span class="highlight-o">.</span><span class="highlight-n">close</span><span class="highlight-p">()</span>
     <span class="highlight-n">sign_in</span> <span class="highlight-o">=</span> <span class="highlight-n">NeteaseSignin</span><span class="highlight-p">(</span><span class="highlight-n">username</span><span class="highlight-o">=</span><span class="highlight-n">info</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'username'</span><span class="highlight-p">),</span><span class="highlight-n">password</span><span class="highlight-o">=</span><span class="highlight-n">info</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'password'</span><span class="highlight-p">))</span>
     <span class="highlight-n">text</span> <span class="highlight-o">=</span> <span class="highlight-n">sign_in</span><span class="highlight-o">.</span><span class="highlight-n">run</span><span class="highlight-p">()</span>
-    <span class="highlight-n">mobiles</span> <span class="highlight-o">=</span> <span class="highlight-s1">'18xxxx2'</span>
-    <span class="highlight-n">token</span> <span class="highlight-o">=</span> <span class="highlight-n">get_token</span><span class="highlight-p">()</span>
-    <span class="highlight-n">user_ID</span> <span class="highlight-o">=</span> <span class="highlight-n">getuserid</span><span class="highlight-p">(</span><span class="highlight-n">mobiles</span><span class="highlight-p">)</span>
-    <span class="highlight-n">send_messages</span><span class="highlight-p">(</span><span class="highlight-n">user_ID</span><span class="highlight-p">,</span> <span class="highlight-n">text</span><span class="highlight-p">)</span>
+    <span class="highlight-n">mobiles</span> <span class="highlight-o">=</span> <span class="highlight-s1">'186xxxx6142'</span>
+    <span class="highlight-n">res</span> <span class="highlight-o">=</span> <span class="highlight-n">feishu</span><span class="highlight-p">(</span><span class="highlight-n">mobiles</span><span class="highlight-p">,</span><span class="highlight-n">text</span><span class="highlight-p">)</span>
+    <span class="highlight-n">userid</span> <span class="highlight-o">=</span> <span class="highlight-n">res</span><span class="highlight-o">.</span><span class="highlight-n">getuserid</span><span class="highlight-p">()</span>
+    <span class="highlight-n">res</span><span class="highlight-o">.</span><span class="highlight-n">send_messages</span><span class="highlight-p">(</span><span class="highlight-n">userid</span><span class="highlight-p">)</span>
 </code></pre>
 <p>效果如下：</p>
 <p><img src="https://img.hacpai.com/file/2020/03/image-b3a51281.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
@@ -486,13 +498,13 @@ e25f4fc06c81        binaryify/netease_cloud_music_api   "docker-entrypoint.s…"
 </script>
 <script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585335643178"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1585508441415"
         charset="utf-8"></script>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585335643178', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1585508441415', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1585293177882",
@@ -512,4 +524,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 153ms, 2020/03/28 15:03:55 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 87ms, 2020/03/31 10:55:30 -->
