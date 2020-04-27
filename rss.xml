@@ -6,7 +6,7 @@
     <atom:link href="https://cuijianzhe.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>展颜笑夙愿，一笑泯恩仇！</description>
     <generator>Solo, v4.0.0, https://solo.b3log.org</generator>
-    <lastBuildDate>Mon, 27 Apr 2020 18:34:11 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 27 Apr 2020 18:52:44 +0800</lastBuildDate>
     <language>zh-cn</language>
     <item>
       <title>Gitlab迁移</title>
@@ -14,8 +14,8 @@
       <description><![CDATA[<p>以后你是山我就靠山  你是我就靠水  无论如何我都必须是你的宝贝</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/04/25/1587784213122.html</guid>
-      <category>Gitlab</category>
       <category>Linux</category>
+      <category>Gitlab</category>
       <pubDate>Sun, 26 Apr 2020 12:57:06 +0800</pubDate>
     </item>
     <item>
@@ -24,8 +24,8 @@
       <description><![CDATA[<p>感情淡了我们再培养，无话可说了我们就再去找话题，觉得腻了我们就重新认识，要是累了就给彼此空间，人潮汹涌的遇到你也不容易，也不想再推开了。</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/04/23/1587624487440.html</guid>
-      <category>Kubernetes</category>
       <category>Linux</category>
+      <category>Kubernetes</category>
       <pubDate>Sat, 25 Apr 2020 13:11:19 +0800</pubDate>
     </item>
     <item>
@@ -83,8 +83,8 @@
       <description><![CDATA[<p>希望我跟你的名字能写在一起，不管是在婚礼的喜帖上，还是在葬礼的墓碑上.</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/04/16/1587026602880.html</guid>
-      <category>Linux</category>
       <category>Openldap</category>
+      <category>Linux</category>
       <pubDate>Sat, 18 Apr 2020 09:42:09 +0800</pubDate>
     </item>
     <item>
