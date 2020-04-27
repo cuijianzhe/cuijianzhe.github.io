@@ -4,104 +4,107 @@
     <title>邯城往事</title>
     <link>https://cuijianzhe.github.io</link>
     <atom:link href="https://cuijianzhe.github.io/rss.xml" rel="self" type="application/rss+xml"/>
-    <description>啥也不是，就是想躺着……</description>
+    <description>展颜笑夙愿，一笑泯恩仇！</description>
     <generator>Solo, v4.0.0, https://solo.b3log.org</generator>
-    <lastBuildDate>Tue, 31 Mar 2020 10:55:30 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 27 Apr 2020 18:34:11 +0800</lastBuildDate>
     <language>zh-cn</language>
     <item>
-      <title>利用Python实现网易云音乐自动签到</title>
-      <link>https://cuijianzhe.github.io/articles/2020/03/27/1585293177882.html</link>
-      <description><![CDATA[<p>一生至少该有一次，为了某个人而忘记自己，不求结果，不求同行，不求曾经拥有，甚至不求你爱我，只求在最美的年华里，遇到你。</p>]]></description>
+      <title>Gitlab迁移</title>
+      <link>https://cuijianzhe.github.io/articles/2020/04/25/1587784213122.html</link>
+      <description><![CDATA[<p>以后你是山我就靠山  你是我就靠水  无论如何我都必须是你的宝贝</p>]]></description>
       <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/03/27/1585293177882.html</guid>
-      <category>Python</category>
-      <pubDate>Mon, 30 Mar 2020 12:09:50 +0800</pubDate>
-    </item>
-    <item>
-      <title>利用爬虫爬取我的solo博客</title>
-      <link>https://cuijianzhe.github.io/articles/2020/03/25/1585126708916.html</link>
-      <description><![CDATA[<p><img src="https://img.hacpai.com/file/2019/09/IMG20190831074102-95e6d9f7.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt=""></p>
-<p>在看到你第一眼的时候  上帝在我耳边说了四个字  在劫难逃</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/03/25/1585126708916.html</guid>
-      <category>Python</category>
-      <pubDate>Thu, 26 Mar 2020 17:09:41 +0800</pubDate>
-    </item>
-    <item>
-      <title>ssh-key改变后出现的错误解决方法</title>
-      <link>https://cuijianzhe.github.io/articles/2019/11/02/1572658327824.html</link>
-      <description/>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2019/11/02/1572658327824.html</guid>
+      <guid>https://cuijianzhe.github.io/articles/2020/04/25/1587784213122.html</guid>
+      <category>Gitlab</category>
       <category>Linux</category>
-      <pubDate>Thu, 26 Mar 2020 14:19:55 +0800</pubDate>
+      <pubDate>Sun, 26 Apr 2020 12:57:06 +0800</pubDate>
     </item>
     <item>
-      <title>windows系统ping加上时间戳并且cmd隐藏运行实现方法</title>
-      <link>https://cuijianzhe.github.io/articles/2019/05/15/1557907158513.html</link>
-      <description><![CDATA[<p><img src="https://img.hacpai.com/bing/20180813.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>]]></description>
+      <title>Kubernetes服务访问</title>
+      <link>https://cuijianzhe.github.io/articles/2020/04/23/1587624487440.html</link>
+      <description><![CDATA[<p>感情淡了我们再培养，无话可说了我们就再去找话题，觉得腻了我们就重新认识，要是累了就给彼此空间，人潮汹涌的遇到你也不容易，也不想再推开了。</p>]]></description>
       <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2019/05/15/1557907158513.html</guid>
-      <category>网络</category>
-      <pubDate>Wed, 25 Mar 2020 13:05:02 +0800</pubDate>
-    </item>
-    <item>
-      <title>学生管理系统</title>
-      <link>https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html</link>
-      <description/>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html</guid>
-      <category>mysql</category>
-      <category>Python</category>
-      <pubDate>Sat, 21 Mar 2020 12:59:05 +0800</pubDate>
-    </item>
-    <item>
-      <title>部署 docker-solo 博客每日自动升级</title>
-      <link>https://cuijianzhe.github.io/articles/2019/04/10/1554909820806.html</link>
-      <description><![CDATA[<p>docker-solo 自动升级脚本-最终</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2019/04/10/1554909820806.html</guid>
-      <category>solo</category>
+      <guid>https://cuijianzhe.github.io/articles/2020/04/23/1587624487440.html</guid>
+      <category>Kubernetes</category>
       <category>Linux</category>
-      <pubDate>Wed, 18 Mar 2020 16:08:57 +0800</pubDate>
+      <pubDate>Sat, 25 Apr 2020 13:11:19 +0800</pubDate>
     </item>
     <item>
-      <title>利用飞书BOT发送消息</title>
-      <link>https://cuijianzhe.github.io/articles/2020/02/20/1582192919773.html</link>
-      <description><![CDATA[<p><img src="https://img.hacpai.com/file/2020/02/QQ%E5%9B%BE%E7%89%8720200229145551-52fe0658.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image"></p>
-<p>飞书还是挺不错的</p>]]></description>
+      <title>KUbernets实践之pod控制器</title>
+      <link>https://cuijianzhe.github.io/articles/2020/04/22/1587528230774.html</link>
+      <description><![CDATA[<p>拒绝了所有人的邀请，不愿与除你之外的人看风景</p>]]></description>
       <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/02/20/1582192919773.html</guid>
-      <category>Python</category>
-      <pubDate>Mon, 16 Mar 2020 16:20:06 +0800</pubDate>
-    </item>
-    <item>
-      <title>Excel中使用宏+按钮来简化操作</title>
-      <link>https://cuijianzhe.github.io/articles/2020/03/15/1584269974131.html</link>
-      <description/>
-      <author>MaidongAndYida</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/03/15/1584269974131.html</guid>
-      <category>Excel</category>
-      <pubDate>Sun, 15 Mar 2020 19:01:34 +0800</pubDate>
-    </item>
-    <item>
-      <title>python的TCP、UDP小程序</title>
-      <link>https://cuijianzhe.github.io/articles/2020/03/09/1583744881835.html</link>
-      <description/>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/03/09/1583744881835.html</guid>
-      <category>Python</category>
-      <pubDate>Fri, 13 Mar 2020 18:11:14 +0800</pubDate>
-    </item>
-    <item>
-      <title>zabbix自动发现华为AC6605管理AP状态以及连接数</title>
-      <link>https://cuijianzhe.github.io/articles/2019/08/05/1564987766272.html</link>
-      <description/>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2019/08/05/1564987766272.html</guid>
+      <guid>https://cuijianzhe.github.io/articles/2020/04/22/1587528230774.html</guid>
       <category>Linux</category>
-      <category>zabbix</category>
-      <pubDate>Thu, 12 Mar 2020 10:08:19 +0800</pubDate>
+      <category>kubernets</category>
+      <pubDate>Fri, 24 Apr 2020 16:12:11 +0800</pubDate>
+    </item>
+    <item>
+      <title>调取高德api获取ip定位信息</title>
+      <link>https://cuijianzhe.github.io/articles/2019/03/08/1552013816021.html</link>
+      <description><![CDATA[<p>在天愿作比翼鸟，在地愿为连理枝。<br>
+天长地久有时尽，此恨绵绵无绝期。</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2019/03/08/1552013816021.html</guid>
+      <category>API</category>
+      <pubDate>Thu, 23 Apr 2020 19:06:49 +0800</pubDate>
+    </item>
+    <item>
+      <title>kubeadm搭建kubernets-1.16.2</title>
+      <link>https://cuijianzhe.github.io/articles/2020/04/10/1586510174363.html</link>
+      <description><![CDATA[<p>愿有岁月可回首，且以深情共白头。</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/04/10/1586510174363.html</guid>
+      <category>Kubernets</category>
+      <category>Linux</category>
+      <pubDate>Thu, 23 Apr 2020 14:26:22 +0800</pubDate>
+    </item>
+    <item>
+      <title>KUbernets实践之pod</title>
+      <link>https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html</link>
+      <description><![CDATA[<p>如果陪我到最后的人是你，那么以前经历过的苦难</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html</guid>
+      <category>Kubernets</category>
+      <category>Linux</category>
+      <pubDate>Thu, 23 Apr 2020 14:26:12 +0800</pubDate>
+    </item>
+    <item>
+      <title>用Python实现widows下ping程序</title>
+      <link>https://cuijianzhe.github.io/articles/2020/04/18/1587188601330.html</link>
+      <description><![CDATA[<p>理想一生有温暖有阳光有沙发有鲜花有猪还有你</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/04/18/1587188601330.html</guid>
+      <category>Python</category>
+      <pubDate>Mon, 20 Apr 2020 10:14:19 +0800</pubDate>
+    </item>
+    <item>
+      <title>配置Openldap主从</title>
+      <link>https://cuijianzhe.github.io/articles/2020/04/16/1587026602880.html</link>
+      <description><![CDATA[<p>希望我跟你的名字能写在一起，不管是在婚礼的喜帖上，还是在葬礼的墓碑上.</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/04/16/1587026602880.html</guid>
+      <category>Linux</category>
+      <category>Openldap</category>
+      <pubDate>Sat, 18 Apr 2020 09:42:09 +0800</pubDate>
+    </item>
+    <item>
+      <title>Django应用容器化 </title>
+      <link>https://cuijianzhe.github.io/articles/2020/04/12/1586677258146.html</link>
+      <description><![CDATA[<p>遇到你的一生  便是奖赏</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/04/12/1586677258146.html</guid>
+      <category>Linux</category>
+      <category>Docker</category>
+      <pubDate>Thu, 16 Apr 2020 19:32:56 +0800</pubDate>
+    </item>
+    <item>
+      <title>docker网络</title>
+      <link>https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html</link>
+      <description/>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html</guid>
+      <category>Linux</category>
+      <pubDate>Sun, 12 Apr 2020 18:47:27 +0800</pubDate>
     </item>
   </channel>
 </rss>
