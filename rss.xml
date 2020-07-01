@@ -4,107 +4,102 @@
     <title>邯城往事</title>
     <link>https://cuijianzhe.github.io</link>
     <atom:link href="https://cuijianzhe.github.io/rss.xml" rel="self" type="application/rss+xml"/>
-    <description>展颜笑夙愿，一笑泯恩仇！</description>
-    <generator>Solo, v4.0.0, https://solo.b3log.org</generator>
-    <lastBuildDate>Mon, 27 Apr 2020 18:52:44 +0800</lastBuildDate>
+    <description>               &gt;&gt;&gt;  展颜笑夙愿，一笑泯恩仇 &lt;&lt;&lt;</description>
+    <generator>Solo, v4.2.0, https://solo.b3log.org</generator>
+    <lastBuildDate>Wed, 01 Jul 2020 16:26:09 +0800</lastBuildDate>
     <language>zh-cn</language>
+    <item>
+      <title>zabbix自动发现华为AC6605管理AP状态以及连接数</title>
+      <link>https://cuijianzhe.github.io/articles/2019/08/05/1564987766272.html</link>
+      <description><![CDATA[<p>金纵买相如赋，脉脉此情谁诉。</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2019/08/05/1564987766272.html</guid>
+      <category>zabbix</category>
+      <category>Linux</category>
+      <pubDate>Wed, 01 Jul 2020 14:58:01 +0800</pubDate>
+    </item>
+    <item>
+      <title>华为AC6605对接OpenLDAP实现无线Portal认证</title>
+      <link>https://cuijianzhe.github.io/articles/2020/06/30/1593502682903.html</link>
+      <description><![CDATA[<p>千金纵买相如赋，脉脉此情谁诉。</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/06/30/1593502682903.html</guid>
+      <category>待分类</category>
+      <pubDate>Tue, 30 Jun 2020 17:34:30 +0800</pubDate>
+    </item>
+    <item>
+      <title>非常简单的java树结构实现，即拿即用</title>
+      <link>https://cuijianzhe.github.io/articles/2020/06/24/1592979467491.html</link>
+      <description><![CDATA[<p>好久没写 blog 了，一直无网开发来着，现在好了，我胡汉三又回来了</p>]]></description>
+      <author>MaidongAndYida</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/06/24/1592979467491.html</guid>
+      <category>java</category>
+      <pubDate>Wed, 24 Jun 2020 14:18:23 +0800</pubDate>
+    </item>
+    <item>
+      <title>表格数据抽取以及生成表格</title>
+      <link>https://cuijianzhe.github.io/articles/2020/06/02/1591098366985.html</link>
+      <description><![CDATA[<p>她脸上的不是汗水而是玫瑰花的露水。</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/06/02/1591098366985.html</guid>
+      <category>Python</category>
+      <pubDate>Sun, 14 Jun 2020 08:06:56 +0800</pubDate>
+    </item>
+    <item>
+      <title>OpenVPN集成LDAP踩坑记</title>
+      <link>https://cuijianzhe.github.io/articles/2020/05/20/1589939911381.html</link>
+      <description><![CDATA[<p>月亮被嚼碎了变成星星，你就藏在那漫天星光？</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/05/20/1589939911381.html</guid>
+      <category>Linux</category>
+      <pubDate>Fri, 12 Jun 2020 15:58:25 +0800</pubDate>
+    </item>
+    <item>
+      <title>通过python读取excel表格内容url批量下载</title>
+      <link>https://cuijianzhe.github.io/articles/2019/10/08/1570505431741.html</link>
+      <description><![CDATA[<p>求心愿女友…… ]]>🤣<![CDATA[</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2019/10/08/1570505431741.html</guid>
+      <category>Python</category>
+      <pubDate>Thu, 04 Jun 2020 16:33:21 +0800</pubDate>
+    </item>
     <item>
       <title>Gitlab迁移</title>
       <link>https://cuijianzhe.github.io/articles/2020/04/25/1587784213122.html</link>
       <description><![CDATA[<p>以后你是山我就靠山  你是我就靠水  无论如何我都必须是你的宝贝</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/04/25/1587784213122.html</guid>
-      <category>Linux</category>
       <category>Gitlab</category>
-      <pubDate>Sun, 26 Apr 2020 12:57:06 +0800</pubDate>
-    </item>
-    <item>
-      <title>Kubernetes服务访问</title>
-      <link>https://cuijianzhe.github.io/articles/2020/04/23/1587624487440.html</link>
-      <description><![CDATA[<p>感情淡了我们再培养，无话可说了我们就再去找话题，觉得腻了我们就重新认识，要是累了就给彼此空间，人潮汹涌的遇到你也不容易，也不想再推开了。</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/04/23/1587624487440.html</guid>
       <category>Linux</category>
-      <category>Kubernetes</category>
-      <pubDate>Sat, 25 Apr 2020 13:11:19 +0800</pubDate>
+      <pubDate>Sat, 23 May 2020 12:56:44 +0800</pubDate>
     </item>
     <item>
-      <title>KUbernets实践之pod控制器</title>
-      <link>https://cuijianzhe.github.io/articles/2020/04/22/1587528230774.html</link>
-      <description><![CDATA[<p>拒绝了所有人的邀请，不愿与除你之外的人看风景</p>]]></description>
+      <title>python 实现 AI 换脸</title>
+      <link>https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html</link>
+      <description><![CDATA[<p>AI 换脸实现  科普：我们人眼看到连续画面的帧数为 24 帧，大约 0.04 秒，低于 0.04 就会卡成 ppt。电影胶片是 24 帧 也就是每秒钟可以看到 24 张图像 低于这个数值就会感觉画面不流畅 所以以 24 帧为界限  实现思路： 先把源视频文件转换成图片，在用 API 面部识别进行融合更换面部内容变成其他图形，并且利用软件完成对源文件音频的提取，再次把更换过的图片转换成为视频，并和音频进行融合。  原视频转图片 提取原视频音源 图片面部识别并更换 变化后的图片转视频 音频和视频融合  环境：python3.7 + pycharm-2019.1 + FFmpeg FFmpeg 官网 使用实例：  提取音频： FFmpeg -i 1.mp4 -f mp3 1.mp3 2.合成视频和音频 FFmpeg -i 没有声音.mp4 -i 提取生成的.mp3 -strict -2 -f mp4 合成的.mp4  需要的库文件： opencv-python pillow（PIL） subprocess Face++ 面部识别 在此使用旷视科技的人脸识别 API 进行完成。先对图片进行脸部识别并进行融合，看这里：  F....</p>]]></description>
       <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/04/22/1587528230774.html</guid>
-      <category>Linux</category>
-      <category>kubernets</category>
-      <pubDate>Fri, 24 Apr 2020 16:12:11 +0800</pubDate>
-    </item>
-    <item>
-      <title>调取高德api获取ip定位信息</title>
-      <link>https://cuijianzhe.github.io/articles/2019/03/08/1552013816021.html</link>
-      <description><![CDATA[<p>在天愿作比翼鸟，在地愿为连理枝。<br>
-天长地久有时尽，此恨绵绵无绝期。</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2019/03/08/1552013816021.html</guid>
-      <category>API</category>
-      <pubDate>Thu, 23 Apr 2020 19:06:49 +0800</pubDate>
-    </item>
-    <item>
-      <title>kubeadm搭建kubernets-1.16.2</title>
-      <link>https://cuijianzhe.github.io/articles/2020/04/10/1586510174363.html</link>
-      <description><![CDATA[<p>愿有岁月可回首，且以深情共白头。</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/04/10/1586510174363.html</guid>
-      <category>Kubernets</category>
-      <category>Linux</category>
-      <pubDate>Thu, 23 Apr 2020 14:26:22 +0800</pubDate>
-    </item>
-    <item>
-      <title>KUbernets实践之pod</title>
-      <link>https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html</link>
-      <description><![CDATA[<p>如果陪我到最后的人是你，那么以前经历过的苦难</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html</guid>
-      <category>Kubernets</category>
-      <category>Linux</category>
-      <pubDate>Thu, 23 Apr 2020 14:26:12 +0800</pubDate>
-    </item>
-    <item>
-      <title>用Python实现widows下ping程序</title>
-      <link>https://cuijianzhe.github.io/articles/2020/04/18/1587188601330.html</link>
-      <description><![CDATA[<p>理想一生有温暖有阳光有沙发有鲜花有猪还有你</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/04/18/1587188601330.html</guid>
+      <guid>https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html</guid>
       <category>Python</category>
-      <pubDate>Mon, 20 Apr 2020 10:14:19 +0800</pubDate>
+      <pubDate>Thu, 21 May 2020 22:36:53 +0800</pubDate>
     </item>
     <item>
-      <title>配置Openldap主从</title>
-      <link>https://cuijianzhe.github.io/articles/2020/04/16/1587026602880.html</link>
-      <description><![CDATA[<p>希望我跟你的名字能写在一起，不管是在婚礼的喜帖上，还是在葬礼的墓碑上.</p>]]></description>
+      <title>Nginx的Vhost配置</title>
+      <link>https://cuijianzhe.github.io/articles/2020/05/12/1589284354518.html</link>
+      <description><![CDATA[<p>我愿成为春季的花朵为你奉献美丽；我希望变成炎日下的树荫为你创造阴凉；我梦想成为秋天里的枫叶为你增添美景；我渴望成为寒冬里的棉袄为你带来温暖。</p>]]></description>
       <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/04/16/1587026602880.html</guid>
-      <category>Openldap</category>
+      <guid>https://cuijianzhe.github.io/articles/2020/05/12/1589284354518.html</guid>
       <category>Linux</category>
-      <pubDate>Sat, 18 Apr 2020 09:42:09 +0800</pubDate>
+      <category>nginx</category>
+      <pubDate>Sat, 16 May 2020 10:52:46 +0800</pubDate>
     </item>
     <item>
-      <title>Django应用容器化 </title>
-      <link>https://cuijianzhe.github.io/articles/2020/04/12/1586677258146.html</link>
-      <description><![CDATA[<p>遇到你的一生  便是奖赏</p>]]></description>
+      <title>Python生成指定长度随机数密码文件</title>
+      <link>https://cuijianzhe.github.io/articles/2020/05/14/1589459519906.html</link>
+      <description><![CDATA[<p>有情之人，天天是节。一句叮咛，一笺相传；一份相思，一心相盼；一份爱意，一生相恋！</p>]]></description>
       <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/04/12/1586677258146.html</guid>
-      <category>Linux</category>
-      <category>Docker</category>
-      <pubDate>Thu, 16 Apr 2020 19:32:56 +0800</pubDate>
-    </item>
-    <item>
-      <title>docker网络</title>
-      <link>https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html</link>
-      <description/>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html</guid>
-      <category>Linux</category>
-      <pubDate>Sun, 12 Apr 2020 18:47:27 +0800</pubDate>
+      <guid>https://cuijianzhe.github.io/articles/2020/05/14/1589459519906.html</guid>
+      <category>Python</category>
+      <pubDate>Fri, 15 May 2020 16:09:40 +0800</pubDate>
     </item>
   </channel>
 </rss>

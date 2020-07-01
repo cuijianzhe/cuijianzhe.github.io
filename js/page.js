@@ -10,11 +10,11 @@
  * See the Mulan PSL v2 for more details.
  */
 /**
- * @fileoverview Page util, load heighlight and process comment.
+ * @fileoverview Page util, load highlight and process comment.
  *
  * @author <a href="http://vanessa.b3log.org">Liyuan Li</a>
  * @author <a href="http://88250.b3log.org">Liang Ding</a>
- * @version 2.8.0.0, Apr 16, 2020
+ * @version 2.8.0.1, Apr 30, 2020
  */
 window.Page = function (tips) {
   this.currentCommentId = ''
@@ -95,7 +95,8 @@ $.extend(Page.prototype, {
             value: shareURL,
             size: 99,
           })
-          $qrCode.css('background-image', `url(${qr.toDataURL('image/jpeg')})`).show()
+          $qrCode.css('background-image', `url(${qr.toDataURL('image/jpeg')})`).
+            show()
         } else {
           $qrCode.slideToggle()
         }
@@ -132,6 +133,7 @@ $.extend(Page.prototype, {
 
     if (!$('#soloEditorComment').hasClass('vditor')) {
       var that = this
+      var resizeEnable = true
       var toolbar = [
         'emoji',
         'headings',
@@ -153,29 +155,42 @@ $.extend(Page.prototype, {
         'table',
         'insert-before',
         'insert-after',
-        '|',
         'undo',
         'redo',
         '|',
-        'edit-mode',
-        'both',
-        'preview',
-        'format',
-        '|',
         'fullscreen',
-        'devtools',
-        'info',
-        'help',
-      ], resizeEnable = true
+        'edit-mode',
+        {
+          name: 'more',
+          toolbar: [
+            'both',
+            'code-theme',
+            'content-theme',
+            'export',
+            'outline',
+            'preview',
+            'format',
+            'devtools',
+            'info',
+            'help',
+          ],
+        }]
       if ($(window).width() < 768) {
         toolbar = [
           'emoji',
           'link',
-          'upload',
-          'insert-after',
           'edit-mode',
-          'preview',
-          'fullscreen',
+          {
+            name: 'more',
+            toolbar: [
+              'insert-after',
+              'fullscreen',
+              'preview',
+              'format',
+              'info',
+              'help',
+            ],
+          },
         ]
         resizeEnable = false
       }
@@ -214,7 +229,7 @@ $.extend(Page.prototype, {
           position: 'top',
         },
         lang: Label.langLabel,
-        toolbar: toolbar,
+        toolbar,
         after: () => {
           vditor.focus()
         },
@@ -246,8 +261,8 @@ $.extend(Page.prototype, {
     var randomArticles1Label = this.tips.randomArticles1Label
     // getRandomArticles
     $.ajax({
-      url: Label.servePath + '/articles/random',
-      type: 'POST',
+      url: Label.servePath + '/articles/random.json',
+      type: 'GET',
       success: function (result, textStatus) {
         var randomArticles = result.randomArticles
         if (!randomArticles || 0 === randomArticles.length) {
@@ -280,7 +295,7 @@ $.extend(Page.prototype, {
    */
   loadRelevantArticles: function (id, headTitle) {
     $.ajax({
-      url: Label.servePath + '/article/id/' + id + '/relevant/articles',
+      url: Label.servePath + '/article/relevant/' + id + '.json',
       type: 'GET',
       success: function (data, textStatus) {
         var articles = data.relevantArticles
@@ -383,7 +398,7 @@ $.extend(Page.prototype, {
         data: JSON.stringify(requestJSONObject),
         success: function (result) {
           $('#soloEditorAdd').removeAttr('disabled')
-          if (!result.sc) {
+          if (0 !== result.code) {
             $('#soloEditorError').html(result.msg)
             return
           }

@@ -2,101 +2,118 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>KUbernets实践之pod - 邯城往事</title><meta name="description" content="如果陪我到最后的人是你，那么以前经历过的苦难"/><meta property="og:description" content="如果陪我到最后的人是你，那么以前经历过的苦难"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="KUbernets实践之pod - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="KUbernets实践之pod - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1587841249561"/>
+              href="https://cuijianzhe.github.io/skins/Casper/css/base.css?1593403896738"/>
             <link rel="prev" title="Django应用容器化 " href="https://cuijianzhe.github.io/articles/2020/04/12/1586677258146.html">
             <link rel="next" title="配置Openldap主从" href="https://cuijianzhe.github.io/articles/2020/04/16/1587026602880.html">
-    </head>
-<body>
-<header class="header">
-    <div class="wrapper">
-        <a href="https://cuijianzhe.github.io" rel="start" class="header__logo">
-            <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="邯城往事"/>
-            邯城往事
-        </a>
-
-        <nav class="header__nav mobile__none">
-            <a href="https://cuijianzhe.github.io/tags.html" rel="section">
-                Tags
-            </a>
-            <a href="https://cuijianzhe.github.io/archives.html">
-                Archives
-            </a>
-            <a rel="archive" href="https://cuijianzhe.github.io/links.html">
-                Links
-            </a>
-        </nav>
-
-        <div class="header__bar fn__none" onclick="$(this).next().slideToggle()">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-                <path fill="#444" d="M0 3h20v2h-20v-2zM0 9h20v2h-20v-2zM0 15h20v2h-20v-2z"></path>
-            </svg>
-        </div>
-        <main class="header__menu fn__none">
-            <ul>
-                    <li>
-                        <a href="/my-github-repos" target="_self" rel="section">
-                            我的开源
-                        </a>
-                    </li>
-                <li>
-                    <a href="https://cuijianzhe.github.io/tags.html" rel="section">
-                        Tags
-                    </a>
-                </li>
-                <li>
-                    <a href="https://cuijianzhe.github.io/archives.html">
-                        Archives
-                    </a>
-                </li>
-                <li>
-                    <a rel="archive" href="https://cuijianzhe.github.io/links.html">
-                        Links
-                    </a>
-                </li>
-                <li>
-                    <a rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">
-                        RSS
-                    </a>
-                </li>
-            </ul>
-        </main>
-    </div>
-</header>
-<main id="pjax" class="fn__flex-1">
+    <!--鼠标点击特效-->
+<script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
+<!--页面动态樱花-->
+<!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script></head>
+<body class="fn__flex-column">
+<div id="pjax" class="fn__flex-1">
     
-    <div class="post wrapper wrapper--miner">
-        <h2 class="item__title">
-            <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html">
-                KUbernets实践之pod
+    <header class="header header--article">
+        <div class="wrapper header__title">
+            <h1 class="header__h1 fn__flex-inline">
+                <img src="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png" alt="邯城往事">
+                <a href="https://cuijianzhe.github.io" rel="start" class="header__title">邯城往事</a>
+            </h1>
+            <h2 class="header__h2">               >>>  展颜笑夙愿，一笑泯恩仇 <<<</h2>
+        </div>
+        <nav class="wrapper header__nav fn__clear">
+            <a href="https://cuijianzhe.github.io" rel="start">
+                    邯城往事
             </a>
-        </h2>
-        <div class="ft__fade item__meta">
-                Updated on
-            <time>
-                Apr 23, 2020
-            </time>
-                in <a href="https://cuijianzhe.github.io/category/linux">Linux系列</a>
-            with <span data-uvstaturl="https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html">0</span> views
-                and <a href="#b3logsolocomments"><span data-uvstatcmt="1587015956420">0</span> comments</a>
-        </div>
-        <div class="item__tags">
-                <a rel="tag" class="tag tag--0" href="https://cuijianzhe.github.io/tags/Linux">
-                    <b># Linux</b>
+
+                <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
+                    <img src="/images/github-icon.png" alt="我的开源"> 我的开源
                 </a>
-                <a rel="tag" class="tag tag--1" href="https://cuijianzhe.github.io/tags/Kubernets">
-                    <b># Kubernets</b>
+
+
+            <div class="fn__right">
+    <a href="https://hacpai.com/member/MaidongAndYida"
+       title="https://hacpai.com/member/MaidongAndYida"
+       class="user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+
+                <a rel="alternate" href="https://cuijianzhe.github.io/rss.xml">
+                    RSS
                 </a>
+
+            </div>
+        </nav>
+    </header>
+    <div class="article__top">
+        <div class="fn__clear">
+            <div class="toc fn__none" onclick="$('.post__toc').slideToggle()">目录</div>
+            <div class="title fn__pointer" onclick="Util.goTop()">KUbernets实践之pod</div>
+<div class="article__share"
+     data-title="KUbernets实践之pod"
+     data-blogtitle="邯城往事"
+     data-url="https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html"
+     data-avatar="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100">
+    <span class="item" data-type="qqz">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M22.824 13.989l-8.348 6.287s3.351 0.522 8.404 0.461l-0.23-1.040 7.2-6.549c0.132-0.12 0.183-0.312 0.129-0.487s-0.203-0.299-0.377-0.314l-9.492-0.856-3.708-9.213c-0.068-0.169-0.226-0.279-0.401-0.279s-0.333 0.11-0.401 0.279l-3.708 9.213-9.492 0.856c-0.174 0.015-0.323 0.139-0.377 0.314s-0.004 0.366 0.129 0.487l7.2 6.549-2.158 9.742c-0.040 0.178 0.026 0.365 0.168 0.474 0.142 0.107 0.331 0.115 0.481 0.021l8.158-5.165 8.158 5.165c0.070 0.045 0.147 0.066 0.225 0.066 0.090 0 0.18-0.029 0.256-0.086 0.142-0.109 0.208-0.295 0.168-0.474l-1.707-7.704c0.732-0.386 1.538-1.040 1.538-1.040s-3.195 1.638-14.664 0.838l8.312-6.325s-0.327-0.534-10.744-0.914c-0.697-0.026 8.493-1.83 15.281-0.305z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="wechat">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="weibo">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+            <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+            <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+            <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="twitter">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M32.003 6.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
+        </svg>
+    </span>
+    <span class="item__qr"></span>
+</div>        </div>
+        <progress class="article__progress"></progress>
+    </div>
+    <div class="article">
+        <div class="ft__center">
+            <div class="item__meta">
+                <time>
+                    2020-04-23
+                </time>
+                /
+                    <a class="tag" rel="tag"
+                       href="https://cuijianzhe.github.io/tags/Linux">Linux</a> &nbsp;
+                    <a class="tag" rel="tag"
+                       href="https://cuijianzhe.github.io/tags/Kubernets">Kubernets</a> &nbsp;
+            </div>
+            <h2 class="item__title">
+                KUbernets实践之pod
+            </h2>
         </div>
-        <div class="vditor-reset">
-            <h1 id="一-组件和资源">一、组件和资源</h1>
+        <div class="item__cover" style="background-image: url(https://img.hacpai.com/file/2019/07/architecture-6a07dfea.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100)"></div>
+        <div class="wrapper">
+            <section class="item__content item__content--article vditor-reset">
+                <h1 id="一-组件和资源">一、组件和资源</h1>
 <p><img src="https://img.hacpai.com/file/2019/07/architecture-6a07dfea.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="architecture.png"></p>
 <h2 id="核心组件">核心组件</h2>
 <p><img src="https://img.hacpai.com/file/2020/04/7a3d98a9a2744883a8c3b306deaf4cac.webp?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="doge"></p>
 <ul>
-<li>ETCD：分布式高性能键值数据库,存储整个集群的所有元数据</li>
-<li>ApiServer:  API服务器,集群资源访问控制入口,提供restAPI及安全访问控制</li>
-<li>Scheduler：调度器,负责把业务容器调度到最合适的Node节点</li>
-<li>Controller Manager：控制器管理,确保集群资源按照期望的方式运行
+<li>ETCD：分布式高性能键值数据库，存储整个集群的所有元数据</li>
+<li>ApiServer:  API 服务器，集群资源访问控制入口，提供 restAPI 及安全访问控制</li>
+<li>Scheduler：调度器，负责把业务容器调度到最合适的 Node 节点</li>
+<li>Controller Manager：控制器管理，确保集群资源按照期望的方式运行
 <ul>
 <li>Replication Controller</li>
 <li>Node controller</li>
@@ -111,27 +128,27 @@
 <li>kubelet：运行在每运行在每个节点上的主要的“节点代理”个节点上的主要的“节点代理”
 <ul>
 <li>pod 管理：kubelet 定期从所监听的数据源获取节点上 pod/container 的期望状态（运行什么容器、运行的副本数量、网络或者存储如何配置等等），并调用对应的容器平台接口达到这个状态。</li>
-<li>容器健康检查：kubelet 创建了容器之后还要查看容器是否正常运行，如果容器运行出错，就要根据 pod 设置的重启策略进行处理.</li>
+<li>容器健康检查：kubelet 创建了容器之后还要查看容器是否正常运行，如果容器运行出错，就要根据 pod 设置的重启策略进行处理。</li>
 <li>容器监控：kubelet 会监控所在节点的资源使用情况，并定时向 master 报告，资源使用数据都是通过 cAdvisor 获取的。知道整个集群所有节点的资源情况，对于 pod 的调度和正常运行至关重要</li>
 </ul>
 </li>
 <li>kubectl: 命令行接口，用于对 Kubernetes 集群运行命令  <a href="https://kubernetes.io/zh/docs/reference/kubectl/" target="_blank">https://kubernetes.io/zh/docs/reference/kubectl/</a></li>
-<li>CNI实现: 通用网络接口, 我们使用flannel来作为k8s集群的网络插件, 实现跨节点通信</li>
+<li>CNI 实现： 通用网络接口， 我们使用 flannel 来作为 k8s 集群的网络插件， 实现跨节点通信</li>
 </ul>
 <h3 id="工作流程">工作流程</h3>
 <p><img src="https://img.hacpai.com/file/2020/04/process-3988c703.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="process.png"></p>
 <ol>
-<li>用户准备一个资源文件（记录了业务应用的名称、镜像地址等信息），通过调用APIServer执行创建Pod</li>
-<li>APIServer收到用户的Pod创建请求，将Pod信息写入到etcd中</li>
-<li>调度器通过list-watch的方式，发现有新的pod数据，但是这个pod还没有绑定到某一个节点中</li>
-<li>调度器通过调度算法，计算出最适合该pod运行的节点，并调用APIServer，把信息更新到etcd中</li>
-<li>kubelet同样通过list-watch方式，发现有新的pod调度到本机的节点了，因此调用容器运行时，去根据pod的描述信息，拉取镜像，启动容器，同时生成事件信息</li>
-<li>同时，把容器的信息、事件及状态也通过APIServer写入到etcd中</li>
+<li>用户准备一个资源文件（记录了业务应用的名称、镜像地址等信息），通过调用 APIServer 执行创建 Pod</li>
+<li>APIServer 收到用户的 Pod 创建请求，将 Pod 信息写入到 etcd 中</li>
+<li>调度器通过 list-watch 的方式，发现有新的 pod 数据，但是这个 pod 还没有绑定到某一个节点中</li>
+<li>调度器通过调度算法，计算出最适合该 pod 运行的节点，并调用 APIServer，把信息更新到 etcd 中</li>
+<li>kubelet 同样通过 list-watch 方式，发现有新的 pod 调度到本机的节点了，因此调用容器运行时，去根据 pod 的描述信息，拉取镜像，启动容器，同时生成事件信息</li>
+<li>同时，把容器的信息、事件及状态也通过 APIServer 写入到 etcd 中</li>
 </ol>
 <h3 id="简述">简述</h3>
 <p><strong>集群中的所有资源可以提供如下方式查看：</strong><br>
 <code>kubectl api-resources</code></p>
-<p><strong>命名空间，集群内一个虚拟的概念，类似于资源池的概念，一个池子里可以有各种资源类型，绝大多数的资源都必须属于某一个namespace。集群初始化安装好之后，会默认有如下几个namespace：</strong></p>
+<p><strong>命名空间，集群内一个虚拟的概念，类似于资源池的概念，一个池子里可以有各种资源类型，绝大多数的资源都必须属于某一个 namespace。集群初始化安装好之后，会默认有如下几个 namespace：</strong></p>
 <pre><code class="highlight-chroma">[root@k8s-master ~]# kubectl get namespaces
 NAME                   STATUS   AGE
 default                Active   22h
@@ -141,27 +158,27 @@ kube-system            Active   22h
 kubernetes-dashboard   Active   21h
 </code></pre>
 <ul>
-<li>所有NAMESPACED的资源，在创建的时候都需要指定namespace，若不指定，默认会在default命名空间下</li>
-<li>相同namespace下的同类资源不可以重名，不同类型的资源可以重名</li>
-<li>不同namespace下的同类资源可以重名</li>
-<li>通常在项目使用的时候，我们会创建带有业务含义的namespace来做逻辑上的整合</li>
+<li>所有 NAMESPACED 的资源，在创建的时候都需要指定 namespace，若不指定，默认会在 default 命名空间下</li>
+<li>相同 namespace 下的同类资源不可以重名，不同类型的资源可以重名</li>
+<li>不同 namespace 下的同类资源可以重名</li>
+<li>通常在项目使用的时候，我们会创建带有业务含义的 namespace 来做逻辑上的整合</li>
 </ul>
-<h3 id="kubectl的使用">kubectl的使用</h3>
+<h3 id="kubectl的使用">kubectl 的使用</h3>
 <pre><code class="highlight-chroma">$ kubectl -h
 $ kubectl get -h
 $ kubectl create -h
 $ kubectl create namespace -h
 </code></pre>
-<p><strong>kubectl如何管理集群资源</strong><br>
+<p><strong>kubectl 如何管理集群资源</strong><br>
 <code>kubectl get po -v=7</code></p>
-<h2 id="使用k8s管理业务应用">使用k8s管理业务应用</h2>
-<p><strong>为什么引入pod</strong></p>
+<h2 id="使用k8s管理业务应用">使用 k8s 管理业务应用</h2>
+<p><strong>为什么引入 pod</strong></p>
 <ul>
 <li>与容器引擎解耦<br>
 Docker、Rkt。平台设计与引擎的具体的实现解耦</li>
-<li>多容器共享网络|存储|进程 空间, 支持的业务场景更加灵活</li>
+<li>多容器共享网络 | 存储 | 进程 空间， 支持的业务场景更加灵活</li>
 </ul>
-<h4 id="使用yaml格式定义Pod"><strong>使用yaml格式定义Pod</strong></h4>
+<h4 id="使用yaml格式定义Pod"><strong>使用 YAML 格式定义 Pod</strong></h4>
 <pre><code class="highlight-chroma">apiVersion: v1
 kind: Pod
 metadata:
@@ -200,11 +217,11 @@ spec:
 <tbody>
 <tr>
 <td>alpha</td>
-<td>进入K8s功能的早期候选版本，可能包含Bug，最终不一定进入K8s</td>
+<td>进入 K8s 功能的早期候选版本，可能包含 Bug，最终不一定进入 K8s</td>
 </tr>
 <tr>
 <td>beta</td>
-<td>已经过测试的版本，最终会进入K8s，但功能、对象定义可能会发生变更。</td>
+<td>已经过测试的版本，最终会进入 K8s，但功能、对象定义可能会发生变更。</td>
 </tr>
 <tr>
 <td>stable</td>
@@ -216,11 +233,11 @@ spec:
 </tr>
 <tr>
 <td>apps/v1</td>
-<td>使用最广泛的版本，像Deployment、ReplicaSets都已进入该版本</td>
+<td>使用最广泛的版本，像 Deployment、ReplicaSets 都已进入该版本</td>
 </tr>
 </tbody>
 </table>
-<p><strong>资源类型与apiVersion对照表</strong></p>
+<p><strong>资源类型与 apiVersion 对照表</strong></p>
 <table>
 <thead>
 <tr>
@@ -303,18 +320,18 @@ spec:
 <pre><code class="highlight-chroma">$ kubectl explain pod
 $ kubectl explain Pod.apiVersion
 </code></pre>
-<h3 id="创建和访问pod">创建和访问pod</h3>
-<p><strong>创建namespace, namespace是逻辑上的资源池</strong><br>
+<h3 id="创建和访问pod">创建和访问 pod</h3>
+<p><strong>创建 namespace, namespace 是逻辑上的资源池</strong><br>
 <code>kubectl create namespace demo</code><br>
-<strong>使用指定文件创建Pod</strong><br>
+<strong>使用指定文件创建 Pod</strong><br>
 <code>kubectl create -f demo-pod.yaml</code></p>
-<p><strong>查看pod，可以简写po<br>
-所有的操作都需要指定namespace，如果是在default命名空间下，则可以省略</strong></p>
+<p><strong>查看 pod，可以简写 po<br>
+所有的操作都需要指定 namespace，如果是在 default 命名空间下，则可以省略</strong></p>
 <pre><code class="highlight-chroma">[root@k8s-master myblog]# kubectl -n demo get pods -o wide 
 NAME     READY   STATUS    RESTARTS   AGE     IP           NODE         NOMINATED NODE   READINESS GATES
 myblog   2/2     Running   0          2m12s   10.244.1.6   k8s-slave1   &lt;none&gt;           &lt;none&gt;
 </code></pre>
-<p><strong>进入容器,执行初始化, 不必到对应的主机执行docker exec</strong></p>
+<p><strong>进入容器，执行初始化， 不必到对应的主机执行 docker exec</strong></p>
 <pre><code class="highlight-chroma">[root@k8s-master myblog]#  kubectl -n demo exec -ti myblog -c myblog bash
 [root@myblog myblog]# env
 [root@myblog myblog]# python3 manage.py migrate
@@ -322,38 +339,38 @@ myblog   2/2     Running   0          2m12s   10.244.1.6   k8s-slave1   &lt;none
 <pre><code class="highlight-chroma">[root@k8s-master myblog]#  kubectl -n demo exec -ti myblog -c mysql bash
 root@myblog:/# mysql -p123456
 </code></pre>
-<h3 id="Infra容器">Infra容器</h3>
-<p>登录<code>k8s-slave1</code>节点<br>
-##其中包含mysql和myblog程序以及Infra容器<br>
-##为了实现Pod内部的容器可以通过localhost通信，每个Pod都会启动Infra容器，然后Pod内部的其他容器的网络空间会共享该Infra容器的网络空间(Docker网络的container模式)，Infra容器只需要hang住网络空间，不需要额外的功能，因此资源消耗极低。</p>
-<p><strong>登录master节点，查看pod内部的容器ip均相同，为pod ip</strong></p>
+<h3 id="Infra容器">Infra 容器</h3>
+<p>登录 <code>k8s-slave1</code> 节点<br>
+## 其中包含 MySQL 和 myblog 程序以及 Infra 容器<br>
+## 为了实现 Pod 内部的容器可以通过 localhost 通信，每个 Pod 都会启动 Infra 容器，然后 Pod 内部的其他容器的网络空间会共享该 Infra 容器的网络空间(Docker 网络的 container 模式)，Infra 容器只需要 hang 住网络空间，不需要额外的功能，因此资源消耗极低。</p>
+<p><strong>登录 master 节点，查看 pod 内部的容器 ip 均相同，为 pod ip</strong></p>
 <pre><code class="highlight-chroma">[root@k8s-master myblog]# kubectl -n demo exec -ti myblog -c myblog bash
 [root@myblog myblog]# ifconfig
 </code></pre>
-<p><strong>pod容器命名:</strong> <code>k8s_&lt;container_name&gt;_&lt;pod_name&gt;_&lt;namespace&gt;_&lt;random_string&gt;</code></p>
-<h4 id="查看pod详细信息"><strong>查看pod详细信息</strong></h4>
-<p><strong>查看pod调度节点及pod_ip</strong><br>
+<p><strong>pod 容器命名：</strong> <code>k8s_&lt;container_name&gt;_&lt;pod_name&gt;_&lt;namespace&gt;_&lt;random_string&gt;</code></p>
+<h4 id="查看pod详细信息"><strong>查看 pod 详细信息</strong></h4>
+<p><strong>查看 pod 调度节点及 pod_ip</strong><br>
 <code>$ kubectl -n demo get pods -o wide</code><br>
-<strong>查看完整的yaml</strong><br>
+<strong>查看完整的 YAML</strong><br>
 <code>$ kubectl -n demo get po myblog -o yaml</code><br>
-<strong>查看pod的明细信息及事件</strong><br>
+<strong>查看 pod 的明细信息及事件</strong><br>
 <code>$ kubectl -n demo describe pod myblog</code></p>
 <p><strong>Troubleshooting and Debugging</strong><br>
-<strong>进入Pod内的容器</strong><br>
+<strong>进入 Pod 内的容器</strong><br>
 <code>$ kubectl -n &lt;namespace&gt; exec &lt;pod_name&gt; -c &lt;container_name&gt; -ti /bin/sh</code></p>
-<p><strong>查看Pod内容器日志,显示标准或者错误输出日志</strong><br>
+<p><strong>查看 Pod 内容器日志，显示标准或者错误输出日志</strong><br>
 <code>$ kubectl -n &lt;namespace&gt; logs -f &lt;pod_name&gt; -c &lt;container_name&gt;</code></p>
 <h4 id="更新服务版本"><strong>更新服务版本</strong></h4>
 <p><code>kubectl apply -f demo-pod.yaml</code><br>
-<strong>删除Pod服务</strong><br>
-#<strong>根据文件删除</strong><br>
+<strong>删除 Pod 服务</strong><br>
+# <strong>根据文件删除</strong><br>
 <code>$ kubectl delete -f demo-pod.yaml</code></p>
-<p>#<strong>根据pod_name删除</strong><br>
+<p># <strong>根据 pod_name 删除</strong><br>
 <code>$ kubectl -n &lt;namespace&gt; delete pod &lt;pod_name&gt;</code></p>
-<h4 id="Pod数据持久化"><strong>Pod数据持久化</strong></h4>
-<p><strong>若删除了Pod，由于mysql的数据都在容器内部，会造成数据丢失，因此需要数据进行持久化。</strong></p>
+<h4 id="Pod数据持久化"><strong>Pod 数据持久化</strong></h4>
+<p><strong>若删除了 Pod，由于 MySQL 的数据都在容器内部，会造成数据丢失，因此需要数据进行持久化。</strong></p>
 <ul>
-<li>定点使用hostpath挂载，nodeSelector定点</li>
+<li>定点使用 hostpath 挂载，nodeSelector 定点</li>
 </ul>
 <pre><code class="language-bash highlight-chroma">apiVersion: v1
 kind: Pod
@@ -398,12 +415,12 @@ spec:
 <pre><code class="highlight-chroma">[root@k8s-master one-pod]# kubectl create -f pod-with-volume.yaml
 pod/myblog created
 </code></pre>
-<p>此时：此时pod状态Pending</p>
+<p>此时：此时 pod 状态 Pending</p>
 <pre><code class="highlight-chroma">[root@k8s-master one-pod]# kubectl -n demo get pods 
 NAME     READY   STATUS    RESTARTS   AGE
 myblog   0/2     Pending   0          43s
 </code></pre>
-<p><strong>查看原因，提示调度失败，因为节点不满足node selector</strong></p>
+<p><strong>查看原因，提示调度失败，因为节点不满足 node selector</strong></p>
 <pre><code class="highlight-chroma">[root@k8s-master myblog]# kubectl -n demo describe pod myblog
 ...
 Events:
@@ -421,7 +438,7 @@ node/k8s-slave1 labeled
 NAME     READY   STATUS    RESTARTS   AGE
 myblog   2/2     Running   0          4m51s
 </code></pre>
-<p><strong>到k8s-slave1节点，查看/opt/mysql/data</strong></p>
+<p><strong>到 k8s-slave1 节点，查看/opt/mysql/data</strong></p>
 <pre><code class="highlight-chroma">[root@k8s-slave1 ~]# ll /data/mysql/data/
 total 188484
 -rw-r-----. 1 polkitd input       56 Apr 18 06:15 auto.cnf
@@ -443,21 +460,21 @@ drwxr-x---. 2 polkitd input     8192 Apr 18 06:15 performance_schema
 -rw-------. 1 polkitd input     1680 Apr 18 06:15 server-key.pem
 drwxr-x---. 2 polkitd input     8192 Apr 18 06:15 sys
 </code></pre>
-<p><strong>执行migrate，创建数据库表，然后删掉pod，再次创建后验证数据是否存在</strong><br>
+<p><strong>执行 migrate，创建数据库表，然后删掉 pod，再次创建后验证数据是否存在</strong><br>
 <code>kubectl -n demo exec -ti myblog python3 manage.py migrate</code><br>
 <strong>测试一下服务是否正常</strong></p>
 <pre><code class="highlight-chroma">[root@k8s-master ~]# kubectl -n demo get po -o wide
 NAME     READY   STATUS    RESTARTS   AGE    IP           NODE         NOMINATED NODE   READINESS GATES
 myblog   2/2     Running   0          7m6s   10.244.1.7   k8s-slave1   &lt;none&gt;           &lt;none&gt;
 </code></pre>
-<p><strong>删除pod再创建</strong></p>
+<p><strong>删除 pod 再创建</strong></p>
 <pre><code class="highlight-chroma">[root@k8s-master myblog]# kubectl delete -f pod-with-volume.yaml
 pod "myblog" deleted
 [root@k8s-master myblog]# 
 [root@k8s-master myblog]# kubectl create -f pod-with-volume.yaml
 pod/myblog created
 </code></pre>
-<p><strong>查看pod ip并访问服务</strong>*</p>
+<p><strong>查看 pod ip 并访问服务</strong>*</p>
 <pre><code class="highlight-chroma">[root@k8s-master myblog]# kubectl -n demo get po -o wide
 NAME     READY   STATUS    RESTARTS   AGE   IP           NODE         NOMINATED NODE   READINESS GATES
 myblog   2/2     Running   0          34s   10.244.1.8   k8s-slave1   &lt;none&gt;           &lt;none&gt;
@@ -465,25 +482,25 @@ myblog   2/2     Running   0          34s   10.244.1.8   k8s-slave1   &lt;none&g
 <p><strong>测试一次啊：</strong><br>
 <code>[root@k8s-master myblog]# curl 10.244.1.8:8002/myblog/index</code></p>
 <ul>
-<li>使用PV+PVC连接分布式存储解决方案</li>
+<li>使用 PV+PVC 连接分布式存储解决方案</li>
 <li>ceph</li>
 <li>glusterfs</li>
 <li>nfs</li>
 </ul>
 <h2 id="服务健康检查">服务健康检查</h2>
-<p>检测容器服务是否健康的手段，若不健康，会根据设置的重启策略（restartPolicy）进行操作，两种检测机制可以分别单独设置，若不设置，默认认为Pod是健康的。</p>
+<p>检测容器服务是否健康的手段，若不健康，会根据设置的重启策略（restartPolicy）进行操作，两种检测机制可以分别单独设置，若不设置，默认认为 Pod 是健康的。</p>
 <p>两种机制：</p>
 <ul>
-<li>LivenessProbe探针<br>
-用于判断容器是否存活，即Pod是否为running状态，如果LivenessProbe探针探测到容器不健康，则kubelet将kill掉容器，并根据容器的重启策略是否重启，如果一个容器不包含LivenessProbe探针，则Kubelet认为容器的LivenessProbe探针的返回值永远成功。</li>
-<li>ReadinessProbe探针<br>
-用于判断容器是否正常提供服务，即容器的Ready是否为True，是否可以接收请求，如果ReadinessProbe探测失败，则容器的Ready将为False，控制器将此Pod的Endpoint从对应的service的Endpoint列表中移除，从此不再将任何请求调度此Pod上，直到下次探测成功。（剔除此pod不参与接收请求不会将流量转发给此Pod）。</li>
+<li>LivenessProbe 探针<br>
+用于判断容器是否存活，即 Pod 是否为 running 状态，如果 LivenessProbe 探针探测到容器不健康，则 kubelet 将 kill 掉容器，并根据容器的重启策略是否重启，如果一个容器不包含 LivenessProbe 探针，则 Kubelet 认为容器的 LivenessProbe 探针的返回值永远成功。</li>
+<li>ReadinessProbe 探针<br>
+用于判断容器是否正常提供服务，即容器的 Ready 是否为 True，是否可以接收请求，如果 ReadinessProbe 探测失败，则容器的 Ready 将为 False，控制器将此 Pod 的 Endpoint 从对应的 service 的 Endpoint 列表中移除，从此不再将任何请求调度此 Pod 上，直到下次探测成功。（剔除此 pod 不参与接收请求不会将流量转发给此 Pod）。</li>
 </ul>
 <p>三种类型：</p>
 <ul>
-<li>exec：通过执行命令来检查服务是否正常，回值为0则表示容器健康</li>
-<li>httpGet方式：通过发送http请求检查服务是否正常，返回200-399状态码则表明容器健康</li>
-<li>tcpSocket：通过容器的IP和Port执行TCP检查，如果能够建立TCP连接，则表明容器健康</li>
+<li>exec：通过执行命令来检查服务是否正常，回值为 0 则表示容器健康</li>
+<li>httpGet 方式：通过发送 http 请求检查服务是否正常，返回 200-399 状态码则表明容器健康</li>
+<li>tcpSocket：通过容器的 IP 和 Port 执行 TCP 检查，如果能够建立 TCP 连接，则表明容器健康</li>
 </ul>
 <p>示例：</p>
 <pre><code class="language-bash highlight-chroma">apiVersion: v1
@@ -551,19 +568,19 @@ spec:
 </code></pre>
 <ul>
 <li>initialDelaySeconds：容器启动后第一次执行探测是需要等待多少秒。</li>
-<li>periodSeconds：执行探测的频率。默认是10秒，最小1秒。</li>
-<li>timeoutSeconds：探测超时时间。默认1秒，最小1秒。</li>
-<li>successThreshold：探测失败后，最少连续探测成功多少次才被认定为成功。默认是1。对于liveness必须是1，最小值是1。</li>
+<li>periodSeconds：执行探测的频率。默认是 10 秒，最小 1 秒。</li>
+<li>timeoutSeconds：探测超时时间。默认 1 秒，最小 1 秒。</li>
+<li>successThreshold：探测失败后，最少连续探测成功多少次才被认定为成功。默认是 1。对于 liveness 必须是 1，最小值是 1。</li>
 <li>failureThreshold：探测成功后，最少连续探测失败多少次<br>
-才被认定为失败。默认是3，最小值是1。</li>
+才被认定为失败。默认是 3，最小值是 1。</li>
 </ul>
 <p><strong>重启策略：</strong></p>
-<p>Pod的重启策略（RestartPolicy）应用于Pod内的所有容器，并且仅在Pod所处的Node上由kubelet进行判断和重启操作。当某个容器异常退出或者健康检查失败时，kubelet将根据RestartPolicy的设置来进行相应的操作。<br>
-Pod的重启策略包括Always、OnFailure和Never，默认值为Always。</p>
+<p>Pod 的重启策略（RestartPolicy）应用于 Pod 内的所有容器，并且仅在 Pod 所处的 Node 上由 kubelet 进行判断和重启操作。当某个容器异常退出或者健康检查失败时，kubelet 将根据 RestartPolicy 的设置来进行相应的操作。<br>
+Pod 的重启策略包括 Always、OnFailure 和 Never，默认值为 Always。</p>
 <ul>
-<li>Always：当容器失败时，由kubelet自动重启该容器；</li>
-<li>OnFailure：当容器终止运行且退出码不为0时，有kubelet自动重启该容器；</li>
-<li>Never：不论容器运行状态如何，kubelet都不会重启该容器。</li>
+<li>Always：当容器失败时，由 kubelet 自动重启该容器；</li>
+<li>OnFailure：当容器终止运行且退出码不为 0 时，有 kubelet 自动重启该容器；</li>
+<li>Never：不论容器运行状态如何，kubelet 都不会重启该容器。</li>
 </ul>
 <h4 id="镜像拉取策略"><strong>镜像拉取策略</strong></h4>
 <pre><code class="highlight-chroma">spec:
@@ -572,16 +589,16 @@ Pod的重启策略包括Always、OnFailure和Never，默认值为Always。</p>
     image: 192.168.51.209:5000/demo/myblog
     imagePullPolicy: IfNotPresent
 </code></pre>
-<p>设置镜像的拉取策略，默认为IfNotPresent</p>
+<p>设置镜像的拉取策略，默认为 IfNotPresent</p>
 <ul>
 <li>Always，总是拉取镜像，即使本地有镜像也从仓库拉取</li>
 <li>IfNotPresent ，本地有则使用本地镜像，本地没有则去仓库拉取</li>
 <li>Never，只使用本地镜像，本地没有则报错</li>
 </ul>
-<h4 id="Pod资源限制">Pod资源限制</h4>
+<h4 id="Pod资源限制">Pod 资源限制</h4>
 <p>为了保证充分利用集群资源，且确保重要容器在运行周期内能够分配到足够的资源稳定运行，因此平台需要具备</p>
-<p>Pod的资源限制的能力。 对于一个pod来说，资源最基础的2个的指标就是：CPU和内存。</p>
-<p>Kubernetes提供了个采用requests和limits 两种类型参数对资源进行预分配和使用限制。</p>
+<p>Pod 的资源限制的能力。 对于一个 pod 来说，资源最基础的 2 个的指标就是：CPU 和内存。</p>
+<p>Kubernetes 提供了个采用 requests 和 limits 两种类型参数对资源进行预分配和使用限制。</p>
 <pre><code class="language-bash highlight-chroma">apiVersion: v1
 kind: Pod
 metadata:
@@ -661,31 +678,31 @@ spec:
 </code></pre>
 <p>requests：</p>
 <ul>
-<li>容器使用的最小资源需求,作用于schedule阶段，作为容器调度时资源分配的判断依赖</li>
+<li>容器使用的最小资源需求，作用于 schedule 阶段，作为容器调度时资源分配的判断依赖</li>
 <li>只有当前节点上可分配的资源量 &gt;= request 时才允许将容器调度到该节点</li>
-<li>request参数不限制容器的最大可使用资源</li>
-<li>requests.cpu被转成docker的--cpu-shares参数，与cgroup cpu.shares功能相同 (无论宿主机有多少个cpu或者内核，--cpu-shares选项都会按照比例分配cpu资源）</li>
-<li>requests.memory没有对应的docker参数，仅作为k8s调度依据</li>
+<li>request 参数不限制容器的最大可使用资源</li>
+<li>requests.cpu 被转成 docker 的--cpu-shares 参数，与 cgroup cpu.shares 功能相同 (无论宿主机有多少个 CPU 或者内核，--cpu-shares 选项都会按照比例分配 CPU 资源）</li>
+<li>requests.memory 没有对应的 docker 参数，仅作为 k8s 调度依据</li>
 </ul>
 <p>limits：</p>
 <ul>
 <li>容器能使用资源的最大值</li>
-<li>设置为0表示对使用的资源不做限制, 可无限的使用</li>
-<li>当pod 内存超过limit时，会被oom</li>
-<li>当cpu超过limit时，不会被kill，但是会限制不超过limit值</li>
-<li>limits.cpu会被转换成docker的–cpu-quota参数。与cgroup cpu.cfs_quota_us功能相同</li>
-<li>limits.memory会被转换成docker的–memory参数。用来限制容器使用的最大内存</li>
+<li>设置为 0 表示对使用的资源不做限制， 可无限的使用</li>
+<li>当 pod 内存超过 limit 时，会被 oom</li>
+<li>当 CPU 超过 limit 时，不会被 kill，但是会限制不超过 limit 值</li>
+<li>limits.cpu 会被转换成 docker 的–cpu-quota 参数。与 cgroup cpu.cfs_quota_us 功能相同</li>
+<li>limits.memory 会被转换成 docker 的–memory 参数。用来限制容器使用的最大内存</li>
 </ul>
-<p>对于 CPU，我们知道计算机里 CPU 的资源是按<code>“时间片”</code>的方式来进行分配的，系统里的每一个操作都需要 CPU 的处理，所以，哪个任务要是申请的 CPU 时间片越多，那么它得到的 CPU 资源就越多。</p>
+<p>对于 CPU，我们知道计算机里 CPU 的资源是按 <code>“时间片”</code> 的方式来进行分配的，系统里的每一个操作都需要 CPU 的处理，所以，哪个任务要是申请的 CPU 时间片越多，那么它得到的 CPU 资源就越多。</p>
 <p>然后还需要了解下 CGroup 里面对于 CPU 资源的单位换算：</p>
-<p>1 CPU =  1000 millicpu（1 Core = 1000m） 这里的 <code>m</code> 就是毫、毫核的意思，Kubernetes 集群中的每一个节点可以通过操作系统的命令来确认本节点的 CPU 内核数量，然后将这个数量乘以1000，得到的就是节点总 CPU 总毫数。比如一个节点有四核，那么该节点的 CPU 总毫量为 4000m。</p>
-<p><code>docker run</code>命令和 CPU 限制相关的所有选项如下：</p>
+<p>1 CPU =  1000 millicpu（1 Core = 1000m） 这里的 <code>m</code> 就是毫、毫核的意思，Kubernetes 集群中的每一个节点可以通过操作系统的命令来确认本节点的 CPU 内核数量，然后将这个数量乘以 1000，得到的就是节点总 CPU 总毫数。比如一个节点有四核，那么该节点的 CPU 总毫量为 4000m。</p>
+<p><code>docker run</code> 命令和 CPU 限制相关的所有选项如下：</p>
 <figure class="md-table-fig" cid="n931" mdtype="table"><table class="md-table"><thead><tr class="md-end-block" cid="n932" mdtype="table_row"><th><span class="td-span" cid="n933" mdtype="table_cell"><span md-inline="plain" class="md-plain">选项</span></span></th><th><span class="td-span" cid="n934" mdtype="table_cell"><span md-inline="plain" class="md-plain">描述</span></span></th></tr></thead><tbody><tr class="md-end-block" cid="n935" mdtype="table_row"><td><span class="td-span" cid="n936" mdtype="table_cell"><span md-inline="code" spellcheck="false"><code>--cpuset-cpus=""</code></span></span></td><td><span class="td-span" cid="n937" mdtype="table_cell"><span md-inline="plain" class="md-plain">允许使用的 CPU 集，值可以为 0-3,0,1</span></span></td></tr><tr class="md-end-block" cid="n938" mdtype="table_row"><td><span class="td-span" cid="n939" mdtype="table_cell"><span md-inline="code" spellcheck="false"><code>-c</code></span><span md-inline="plain" class="md-plain">,</span><span md-inline="code" spellcheck="false"><code>--cpu-shares=0</code></span></span></td><td><span class="td-span" cid="n940" mdtype="table_cell"><span md-inline="plain" class="md-plain">CPU 共享权值（相对权重）</span></span></td></tr><tr class="md-end-block" cid="n941" mdtype="table_row"><td><span class="td-span" cid="n942" mdtype="table_cell"><span md-inline="code" spellcheck="false"><code>cpu-period=0</code></span></span></td><td><span class="td-span" cid="n943" mdtype="table_cell"><span md-inline="plain" class="md-plain">限制 CPU CFS 的周期，范围从 100ms~1s，即[1000, 1000000]</span></span></td></tr><tr class="md-end-block" cid="n944" mdtype="table_row"><td><span class="td-span" cid="n945" mdtype="table_cell"><span md-inline="code" spellcheck="false"><code>--cpu-quota=0</code></span></span></td><td><span class="td-span" cid="n946" mdtype="table_cell"><span md-inline="plain" class="md-plain">限制 CPU CFS 配额，必须不小于1ms，即 &gt;= 1000，绝对限制</span></span></td></tr></tbody></table></figure>
-<p>docker run -it --cpu-period=50000 --cpu-quota=25000 ubuntu:16.04 /bin/bash将 CFS 调度的周期设为 50000，将容器在每个周期内的 CPU 配额设置为 25000，表示该容器每 50ms 可以得到 50% 的 CPU 运行时间。</p>
+<p>docker run -it --cpu-period=50000 --cpu-quota=25000 ubuntu:16.04 /bin/bash 将 CFS 调度的周期设为 50000，将容器在每个周期内的 CPU 配额设置为 25000，表示该容器每 50ms 可以得到 50% 的 CPU 运行时间。</p>
 <blockquote>
-<p>注意：若内存使用超出限制，会引发系统的OOM机制，因CPU是可压缩资源，不会引发Pod退出或重建</p>
+<p>注意：若内存使用超出限制，会引发系统的 OOM 机制，因 CPU 是可压缩资源，不会引发 Pod 退出或重建</p>
 </blockquote>
-<h1 id="yaml优化">yaml优化</h1>
+<h1 id="yaml优化">YAML 优化</h1>
 <pre><code class="language-bash highlight-chroma">apiVersion: v1
 kind: Pod
 metadata:
@@ -765,11 +782,11 @@ spec:
 </code></pre>
 <p><strong>为什么要优化</strong></p>
 <ul>
-<li>考虑真实的使用场景，像数据库这类中间件，是作为公共资源，为多个项目提供服务，不适合和业务容器绑定在同一个Pod中，因为业务容器是经常变更的，而数据库不需要频繁迭代</li>
-<li>yaml的环境变量中存在敏感信息（账号、密码），存在安全隐患</li>
+<li>考虑真实的使用场景，像数据库这类中间件，是作为公共资源，为多个项目提供服务，不适合和业务容器绑定在同一个 Pod 中，因为业务容器是经常变更的，而数据库不需要频繁迭代</li>
+<li>YAML 的环境变量中存在敏感信息（账号、密码），存在安全隐患</li>
 </ul>
-<p><strong>解决问题一，需要拆分yaml</strong><br>
-<strong>mysql.yaml文件内容</strong></p>
+<p><strong>解决问题一，需要拆分 YAML</strong><br>
+<strong>mysql.yaml 文件内容</strong></p>
 <pre><code class="language-bash highlight-chroma">apiVersion: v1
 kind: Pod
 metadata:
@@ -816,7 +833,7 @@ spec:
     - name: mysql-data
       mountPath: /var/lib/mysql
 </code></pre>
-<p><strong>myblog.yaml文件内容</strong></p>
+<p><strong>myblog.yaml 文件内容</strong></p>
 <pre><code class="highlight-chroma">apiVersion: v1
 kind: Pod
 metadata:
@@ -862,15 +879,15 @@ spec:
 </code></pre>
 <p><strong>创建测试</strong></p>
 <ul>
-<li>先删除旧pod<br>
+<li>先删除旧 pod<br>
 <code> kubectl -n demo delete po myblog</code></li>
-<li>分别创建mysql和myblog</li>
+<li>分别创建 MySQL 和 myblog</li>
 </ul>
 <pre><code class="highlight-chroma">kubectl create -f mysql.yaml
 kubectl create -f myblog.yaml
 </code></pre>
 <ul>
-<li>查看pod，注意mysqlIP为宿主机IP，因为网络模式为host</li>
+<li>查看 pod，注意 mysqlIP 为宿主机 IP，因为网络模式为 host</li>
 </ul>
 <pre><code class="highlight-chroma">[root@k8s-master two-pod]# kubectl -n demo get pods -o wide 
 NAME     READY   STATUS    RESTARTS   AGE   IP               NODE         NOMINATED NODE   READINESS GATES
@@ -878,7 +895,7 @@ myblog   1/1     Running   0          26s   10.244.1.9       k8s-slave1   &lt;no
 mysql    1/1     Running   0          33s   192.168.51.210   k8s-slave1   &lt;none&gt;           &lt;none&gt;
 </code></pre>
 <ul>
-<li>访问myblog服务正常</li>
+<li>访问 myblog 服务正常</li>
 </ul>
 <pre><code class="highlight-chroma">[root@k8s-master two-pod]# curl 10.244.1.9:8002/blog/index/
 &lt;!DOCTYPE html&gt;
@@ -904,11 +921,11 @@ mysql    1/1     Running   0          33s   192.168.51.210   k8s-slave1   &lt;no
 <p><strong>解决问题二，环境变量中敏感信息带来的安全隐患</strong></p>
 <p>为什么要统一管理环境变量</p>
 <ul>
-<li>环境变量中有很多敏感的信息，比如账号密码，直接暴漏在yaml文件中存在安全性问题</li>
+<li>环境变量中有很多敏感的信息，比如账号密码，直接暴漏在 YAML 文件中存在安全性问题</li>
 <li>团队内部一般存在多个项目，这些项目直接存在配置相同环境变量的情况，因此可以统一维护管理</li>
-<li>对于开发、测试、生产环境，由于配置均不同，每套环境部署的时候都要修改yaml，带来额外的开销</li>
+<li>对于开发、测试、生产环境，由于配置均不同，每套环境部署的时候都要修改 YAML，带来额外的开销</li>
 </ul>
-<p>k8s提供两类资源，configMap和Secret，可以用来实现业务配置的统一管理， 允许将配置文件与镜像文件分离，以使容器化的应用程序具有可移植性 。<br>
+<p>k8s 提供两类资源，configMap 和 Secret，可以用来实现业务配置的统一管理， 允许将配置文件与镜像文件分离，以使容器化的应用程序具有可移植性 。<br>
 <img src="https://img.hacpai.com/file/2020/04/configmap-169a37af.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="configmap.png"></p>
 <ul>
 <li>configMap，通常用来管理应用的配置文件或者环境变量，<code>myblog/two-pod/configmap.yaml</code></li>
@@ -922,11 +939,11 @@ data:
   MYSQL_HOST: "192.168.51.209"
   MYSQL_PORT: "3306"
 </code></pre>
-<p>Secret，管理敏感类的信息，默认会base64编码存储，有三种类型</p>
+<p>Secret，管理敏感类的信息，默认会 base64 编码存储，有三种类型</p>
 <ul>
-<li>Service Account ：用来访问Kubernetes API，由Kubernetes自动创建，并且会自动挂载到Pod的/run/secrets/kubernetes.io/serviceaccount目录中；创建ServiceAccount后，Pod中指定serviceAccount后，自动创建该ServiceAccount对应的secret；</li>
-<li>Opaque ： base64编码格式的Secret，用来存储密码、密钥等；</li>
-<li>kubernetes.io/dockerconfigjson ：用来存储私有docker registry的认证信息。</li>
+<li>Service Account ：用来访问 Kubernetes API，由 Kubernetes 自动创建，并且会自动挂载到 Pod 的/run/secrets/kubernetes.io/serviceaccount 目录中；创建 ServiceAccount 后，Pod 中指定 serviceAccount 后，自动创建该 ServiceAccount 对应的 secret；</li>
+<li>Opaque ： base64 编码格式的 Secret，用来存储密码、密钥等；</li>
+<li>kubernetes.io/dockerconfigjson ：用来存储私有 docker registry 的认证信息。</li>
 </ul>
 <pre><code class="highlight-chroma">apiVersion: v1
 kind: Secret
@@ -952,7 +969,7 @@ MYSQL_USER=root
 MYSQL_PASSWD=123456
 </code></pre>
 <p><code>kubectl -n demo create secret generic myblog --from-env-file=secret.txt</code></p>
-<p><strong>修改后的mysql的yaml文件：</strong></p>
+<p><strong>修改后的 MySQL 的 YAML 文件：</strong></p>
 <pre><code class="highlight-chroma">apiVersion: v1
 kind: Pod
 metadata:
@@ -1007,7 +1024,7 @@ spec:
     - name: mysql-data
       mountPath: /var/lib/mysql
 </code></pre>
-<p><strong>修改后的myblog的yaml</strong></p>
+<p><strong>修改后的 myblog 的 YAML</strong></p>
 <pre><code class="highlight-chroma">apiVersion: v1
 kind: Pod
 metadata:
@@ -1067,8 +1084,8 @@ spec:
       timeoutSeconds: 2
       periodSeconds: 15
 </code></pre>
-<p>在部署不同的环境时，pod的yaml无须再变化，只需要在每套环境中维护一套ConfigMap和Secret即可。但是注意configmap和secret不能跨namespace使用，且更新后，pod内的env不会自动更新，重建后方可更新。<br>
-<strong>configmap文件</strong></p>
+<p>在部署不同的环境时，pod 的 YAML 无须再变化，只需要在每套环境中维护一套 ConfigMap 和 Secret 即可。但是注意 configmap 和 secret 不能跨 namespace 使用，且更新后，pod 内的 env 不会自动更新，重建后方可更新。<br>
+<strong>configmap 文件</strong></p>
 <pre><code class="highlight-chroma">apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -1078,22 +1095,22 @@ data:
   MYSQL_HOST: "192.168.51.209"
   MYSQL_PORT: "3306"
 </code></pre>
-<h3 id="如何编写资源yaml">如何编写资源yaml</h3>
+<h3 id="如何编写资源yaml">如何编写资源 YAML</h3>
 <ol>
 <li>从机器中已有的资源中拿<br>
 <code>kubectl -n kube-system get po,deployment,ds</code><br>
 <code>kubectl -n demo get pod mysql -o yaml</code></li>
 <li>学会在官网查找， <a href="https://kubernetes.io/docs/home/" target="_blank">https://kubernetes.io/docs/home/</a></li>
-<li>从kubernetes-api文档中查找， <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.16/#pod-v1-core" target="_blank">https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.16/#pod-v1-core</a></li>
+<li>从 kubernetes-api 文档中查找， <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.16/#pod-v1-core" target="_blank">https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.16/#pod-v1-core</a></li>
 <li>kubectl explain 查看具体字段含义</li>
 </ol>
-<h3 id="pod状态与生命周期">pod状态与生命周期</h3>
+<h3 id="pod状态与生命周期">pod 状态与生命周期</h3>
 <p>|<br>
-Running | Pod内容器均已创建，且至少有一个容器处于运行状态、正在启动状态或正在重启状态 |<br>
-| Succeeded | Pod内所有容器均已成功执行退出，且不再重启 |<br>
-| Failed | Pod内所有容器均已退出，但至少有一个容器退出为失败状态 |<br>
-| CrashLoopBackOff | Pod内有容器启动失败，比如配置文件丢失导致主进程启动失败 |<br>
-| Unknown | 由于某种原因无法获取该Pod的状态，可能由于网络通信不畅导致 |</p>
+Running | Pod 内容器均已创建，且至少有一个容器处于运行状态、正在启动状态或正在重启状态 |<br>
+| Succeeded | Pod 内所有容器均已成功执行退出，且不再重启 |<br>
+| Failed | Pod 内所有容器均已退出，但至少有一个容器退出为失败状态 |<br>
+| CrashLoopBackOff | Pod 内有容器启动失败，比如配置文件丢失导致主进程启动失败 |<br>
+| Unknown | 由于某种原因无法获取该 Pod 的状态，可能由于网络通信不畅导致 |</p>
 <p><strong>生命周期示意图：</strong><br>
 <img src="https://img.hacpai.com/file/2020/04/fcachl-5d9a8910.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="fcachl.jpg"><br>
 <strong>启动和关闭示意：</strong><br>
@@ -1139,33 +1156,34 @@ sleep 10; echo $(date +%s): END &gt;&gt; /loap/timing;']
     hostPath:
       path: /tmp/loap
 </code></pre>
-<p><strong>创建pod测试：</strong></p>
+<p><strong>创建 pod 测试：</strong></p>
 <p><code>[root@k8s-master myblog]# kubectl create -f demo-pod-start.yaml</code></p>
-<p><strong>查看demo状态</strong><br>
+<p><strong>查看 demo 状态</strong><br>
 <code>  kubectl -n demo get po -o wide -w</code></p>
 <p><strong>查看调度节点的/tmp/loap/timing</strong><br>
 <code>cat /tmp/loap/timing</code></p>
 <h2 id="小节-">小节：</h2>
 <ol>
-<li>实现k8s平台与特定的容器运行时解耦，提供更加灵活的业务部署方式，引入了Pod概念</li>
-<li>k8s使用yaml格式定义资源文件，yaml中Map与List的语法，与json做类比</li>
-<li>通过kubectl create | get | exec | logs | delete 等操作k8s资源，必须指定namespace</li>
-<li>每启动一个Pod，为了实现网络空间共享，会先创建Infra容器，并把其他容器网络加入该容器</li>
-<li>通过livenessProbe和readinessProbe实现Pod的存活性和就绪健康检查</li>
-<li>通过requests和limit分别限定容器初始资源申请与最高上限资源申请</li>
-<li>通过Pod IP访问具体的Pod服务</li>
+<li>实现 k8s 平台与特定的容器运行时解耦，提供更加灵活的业务部署方式，引入了 Pod 概念</li>
+<li>k8s 使用 YAML 格式定义资源文件，YAML 中 Map 与 List 的语法，与 JSON 做类比</li>
+<li>通过 kubectl create | get | exec | logs | delete 等操作 k8s 资源，必须指定 namespace</li>
+<li>每启动一个 Pod，为了实现网络空间共享，会先创建 Infra 容器，并把其他容器网络加入该容器</li>
+<li>通过 livenessProbe 和 readinessProbe 实现 Pod 的存活性和就绪健康检查</li>
+<li>通过 requests 和 limit 分别限定容器初始资源申请与最高上限资源申请</li>
+<li>通过 Pod IP 访问具体的 Pod 服务</li>
 </ol>
-                <div>
-                    <pre><p style="font-size:15px"><font color="#008000">
+                    <div>
+                        <pre><p style="font-size:15px"><font color="#008000">
 <b>到头来
 我们记住的
 不是敌人的攻击
 而是朋友的沉默
        ---马丁·路德·金</b></p><pre>
-                </div>
+                    </div>
+            </section>
         </div>
     </div>
-    <div class="post__toc">
+        <div class="post__toc">
 <ul class="article__toc">
         <li class="toc__h1">
             <a href="#一-组件和资源">一、组件和资源</a>
@@ -1180,28 +1198,28 @@ sleep 10; echo $(date +%s): END &gt;&gt; /loap/timing;']
             <a href="#简述">简述</a>
         </li>
         <li class="toc__h3">
-            <a href="#kubectl的使用">kubectl的使用</a>
+            <a href="#kubectl的使用">kubectl 的使用</a>
         </li>
         <li class="toc__h2">
-            <a href="#使用k8s管理业务应用">使用k8s管理业务应用</a>
+            <a href="#使用k8s管理业务应用">使用 k8s 管理业务应用</a>
         </li>
         <li class="toc__h4">
-            <a href="#使用yaml格式定义Pod">使用yaml格式定义Pod</a>
+            <a href="#使用yaml格式定义Pod">使用 YAML 格式定义 Pod</a>
         </li>
         <li class="toc__h3">
-            <a href="#创建和访问pod">创建和访问pod</a>
+            <a href="#创建和访问pod">创建和访问 pod</a>
         </li>
         <li class="toc__h3">
-            <a href="#Infra容器">Infra容器</a>
+            <a href="#Infra容器">Infra 容器</a>
         </li>
         <li class="toc__h4">
-            <a href="#查看pod详细信息">查看pod详细信息</a>
+            <a href="#查看pod详细信息">查看 pod 详细信息</a>
         </li>
         <li class="toc__h4">
             <a href="#更新服务版本">更新服务版本</a>
         </li>
         <li class="toc__h4">
-            <a href="#Pod数据持久化">Pod数据持久化</a>
+            <a href="#Pod数据持久化">Pod 数据持久化</a>
         </li>
         <li class="toc__h3">
             <a href="#创建">创建</a>
@@ -1213,206 +1231,97 @@ sleep 10; echo $(date +%s): END &gt;&gt; /loap/timing;']
             <a href="#镜像拉取策略">镜像拉取策略</a>
         </li>
         <li class="toc__h4">
-            <a href="#Pod资源限制">Pod资源限制</a>
+            <a href="#Pod资源限制">Pod 资源限制</a>
         </li>
         <li class="toc__h1">
-            <a href="#yaml优化">yaml优化</a>
+            <a href="#yaml优化">YAML 优化</a>
         </li>
         <li class="toc__h3">
-            <a href="#如何编写资源yaml">如何编写资源yaml</a>
+            <a href="#如何编写资源yaml">如何编写资源 YAML</a>
         </li>
         <li class="toc__h3">
-            <a href="#pod状态与生命周期">pod状态与生命周期</a>
+            <a href="#pod状态与生命周期">pod 状态与生命周期</a>
         </li>
         <li class="toc__h2">
             <a href="#小节-">小节：</a>
         </li>
-</ul>    </div>
-    <div class="body--gray post__gray">
-        <div class="wrapper comment">
-                <div id="b3logsolocomments"></div>
-                <div id="vcomment" style="padding: 30px 0;" data-name="cuijianzhe" data-postId="1587015956420"></div>
-
-            <div class="post__list fn__flex">
-                <div class="fn__flex-1">
-                    <div id="externalRelevantArticles"></div>
-                </div>
-                <div class="post__list-mid fn__flex-1">
-                    <div id="randomArticles"></div>
-                </div>
-                <div class="fn__flex-1">
-                    <div id="relevantArticles"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="post__fix">
+</ul>        </div>
+        <div id="b3logsolocomments"></div>
+        <div id="vcomment" class="comment__wrapper wrapper" style="margin: 40px auto" data-name="cuijianzhe" data-postId="1587015956420"></div>
+    <div class="article__bottom">
         <div class="wrapper">
-            <span class="post__share mobile__none">
-                Share
-                <span class="tag tag--4" data-type="weibo">WeiBo</span>
-                <span class="tag tag--5" data-type="twitter">Twitter</span>
-                <span class="tag tag--6" data-type="qqz">QZone</span>
-                <span class="post__code tag tag--7"
-                      data-type="wechat"
-                      data-title="KUbernets实践之pod"
-                      data-blogtitle="邯城往事"
-                      data-url="https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html"
-                      data-avatar="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100">
-                    WeChat
-                    <span class="qrcode"></span>
-                </span>
-            </span>
-            <span class="post__arrow">
-                    <a href="https://cuijianzhe.github.io/articles/2020/04/12/1586677258146.html" rel="prev"
-                       class="vditor-tooltipped__n vditor-tooltipped"
-                       pjax-title="Django应用容器化 "
-                       aria-label="旧一篇: Django应用容器化 ">←</a>
-
-                    <a href="https://cuijianzhe.github.io/articles/2020/04/16/1587026602880.html" rel="next"
-                       class="vditor-tooltipped__n vditor-tooltipped"
-                       pjax-title="配置Openldap主从"
-                       aria-label="新一篇: 配置Openldap主从">→</a>
-                <a href="javascript:Util.goTop()" class="vditor-tooltipped__n vditor-tooltipped"
-                   aria-label="移动到顶部">↑</a>
-                <a href="javascript:Util.goBottom()" class="vditor-tooltipped__n vditor-tooltipped"
-                   aria-label="移动到底部">↓</a>
-            </span>
+            <div class="fn__flex">
+                    <div class="item" id="externalRelevantArticles"></div>
+                <div class="item" id="randomArticles"></div>
+                <div class="item" id="relevantArticles"></div>
+            </div>
         </div>
     </div>
     
-</main>
+</div>
 <footer class="footer">
-    <div class="ft__center">
-    <a href="https://hacpai.com/member/cuijianzhe"
-       aria-label="https://hacpai.com/member/cuijianzhe"
-       class="vditor-tooltipped__n vditor-tooltipped  user__site"
-       target="_blank" rel="noopener nofollow">
-        <svg viewBox="0 0 32 32" width="100%" height="100%">
-            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
-            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
-            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
-        </svg>
-    </a>
-
-
-        <a href="https://twitter.com/JianzheC"
-           aria-label="https://twitter.com/JianzheC"
-           target="_blank"
-           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
-            <svg viewBox="0 0 32 32" width="100%" height="100%">
-                <path d="M32.003 6.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
-            </svg>
-        </a>
-        <a href="https://weibo.com/3796930704"
-           aria-label="https://weibo.com/3796930704"
-           target="_blank"
-           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
-            <svg viewBox="0 0 32 32" width="100%" height="100%">
-                <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
-                <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
-                <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
-                <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
-            </svg>
-        </a>
-        <a href="https://www.zhihu.com/people/wen-yang-24-36"
-           aria-label="https://www.zhihu.com/people/wen-yang-24-36"
-           target="_blank"
-           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
-            <svg viewBox="0 0 32 32" width="100%" height="100%">
-                <path d="M32 26.67c0 2.931-2.382 5.33-5.33 5.33h-21.339c-2.948 0-5.33-2.382-5.33-5.33v-21.339c0-2.948 2.382-5.33 5.33-5.33h21.339c2.948 0 5.33 2.382 5.33 5.33v21.339zM12.358 17.191h4.713c0-1.114-0.531-1.748-0.531-1.748h-4.079c0.103-2.005 0.189-4.576 0.223-5.536h3.874s-0.017-1.645-0.463-1.645h-6.822s0.411-2.142 0.96-3.085c0 0-2.040-0.12-2.742 2.605-0.686 2.725-1.731 4.354-1.851 4.662s0.6 0.137 0.891 0c0.309-0.137 1.663-0.617 2.057-2.537h2.108c0.034 1.2 0.12 4.885 0.086 5.536h-4.336c-0.6 0.446-0.823 1.748-0.823 1.748h4.971c-0.206 1.371-0.566 3.137-1.080 4.062-0.806 1.491-1.234 2.828-4.131 5.176 0 0-0.48 0.36 0.994 0.223 1.474-0.12 2.845-0.514 3.839-2.434 0.514-0.994 1.011-2.28 1.423-3.565l4.079 4.713s0.548-1.268 0.137-2.657l-3.034-3.394-1.028 0.754c0.291-0.994 0.497-1.988 0.548-2.845 0.017 0.017 0.017 0 0.017-0.034zM18.048 7.936v16.3h1.714l0.703 1.954 2.965-1.954h3.754v-16.3h-9.136zM25.401 22.487h-1.937l-2.434 1.611-0.566-1.611h-0.6v-12.735h5.553v12.735h-0.017z"></path>
-            </svg>
-        </a>
-        <a href="tencent://message/?uin=598941324"
-           aria-label="598941324"
-           target="_blank"
-           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
-            <svg viewBox="0 0 32 32" width="100%" height="100%">
-                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
-            </svg>
-        </a>
-        <a href="javascript:void(0)"
-           class="vditor-tooltipped__n vditor-tooltipped  user__site" aria-label="cjz5989">
-            <svg viewBox="0 0 32 32" width="100%" height="100%">
-                <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
-            </svg>
-        </a>
-    </div>
-    <nav class="footer__nav mobile__none">
-            <a class="ft__link" href="/my-github-repos" target="_self" rel="section">
-                我的开源
-            </a>
-        <a class="ft__link" rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">RSS</a>
-    </nav>
-    <div class="footer__border mobile__none"></div>
-    <div class="wrapper fn__flex">
-        <div class="fn__flex-1 mobile__none">
-            <div class="ft__fade">cuijianzhe - 展颜笑夙愿，一笑泯恩仇！</div>
+    <div class="wrapper fn__clear">
+        <div class="fn__left">
             <br>
-                <!-- MetingJS音乐播放器 不能放到 head 导致系统功能加载异常-->
-<link rel="stylesheet" href="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css">
-<script src="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-<meting-js server="netease" type="playlist" id="728729850"  autoplay="false" fixed ="true" order = "random"</meting-js>
-
-<h1><p style="font-size:10px"><font color="#2F4F4F">红笺小字，说尽平生意。<br/>鸿雁在云鱼在水，惆怅此情难寄。<br/>             ——晏殊· 《清平乐》</font> </p></h1>
-        </div>
-
-            <div class="footer__mid fn__flex-1 mobile__none">
-                <div class="ft__fade">分类</div>
-                <br>
-                    <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="1 个标签"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        人生苦短,我用Python</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="1 个标签"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        Java是世界上最好的语言</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="1 个标签"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        Linux系列</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/network"
-                       aria-label="1 个标签"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        Network系列</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/young"
-                       aria-label="7 个标签"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        江湖就是人情世故</a> &nbsp; &nbsp;
-            </div>
-
-        <div class="fn__flex-1 footer__copyright">
-            <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                113
-                文章
-            </a>
-           <br>
-            <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> <span class="ft-gray">浏览</span>
- <br>
             &copy; 2020
-            <a class="ft__link" href="https://cuijianzhe.github.io">邯城往事</a>
+            <a href="https://cuijianzhe.github.io">邯城往事</a>
             <img style="width: 20px; height: 20px;" src="https://img.hacpai.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">冀ICP备19005901号</a> 
+
+<!--切换标签实现网页标题变化-->
+<script type="text/javascript">
+    /*自动刷新页面，避免无法访问*/
+    var OriginTitile = document.title;
+    var titleTime;
+    document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+            document.title = '一杯茶，一包烟，混过一天是一天';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '哈哈，我是大佬ヾ(ﾟ∀ﾟゞ)';
+            titleTime = setTimeout(function () {
+                document.title = OriginTitile;
+            }, 3000);
+        }
+    });
+</script>
+<!--切换标签实现网页标题变化 结束-->
+
+        </div>
+        <div class="fn__right">
+            <a href="https://cuijianzhe.github.io/tags.html" rel="section">
+            标签墙
+            </a>
+            &nbsp;•&nbsp;
+            <a href="https://cuijianzhe.github.io/archives.html">
+            存档
+            </a>
+            &nbsp;•&nbsp;
+            <a rel="archive" href="https://cuijianzhe.github.io/links.html">
+            友情链接
+            </a>
+            <br>
+            121 文章 &nbsp;
+            <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> 浏览 &nbsp;
+            
         </div>
     </div>
 </footer>
+
 <script>
   var Label = {
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
     staticServePath: "https://cuijianzhe.github.io",
     luteAvailable: true,
-    hljsStyle: 'monokai',
+    hljsStyle: 'rrt',
     langLabel: "zh_CN",
-    version: "4.0.0",
+    version: "4.2.0",
     staticSite: true,
     showCodeBlockLn: false,
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1587841249561"
+        src="https://cuijianzhe.github.io/skins/Casper/js/common.min.js?1593403896738"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
@@ -1445,9 +1354,8 @@ sleep 10; echo $(date +%s): END &gt;&gt; /loap/timing;']
 </div>
 
 
-
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1587841249561', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1593403896738', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论内容只能为 2 到 500 个字符！",
         "oId": "1587015956420",
@@ -1458,13 +1366,15 @@ sleep 10; echo $(date +%s): END &gt;&gt; /loap/timing;']
     $(document).ready(function () {
         page.load();
     page.tips.externalRelevantArticlesDisplayCount = "5";
-    page.loadExternalRelevantArticles("Linux,Kubernets",
-    '<h3>HACPAI POSTS</h3>');
-Skin.initArticle()
+        page.loadRandomArticles('<h3>随机阅读</h3>');
+        page.loadExternalRelevantArticles("Linux,Kubernets",
+        '<h3>站外相关阅读</h3>');
+        page.loadRelevantArticles('1587015956420', '<h3>相关阅读</h3>');
+    Skin.initArticle()
     });
 </script>
 
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 65ms, 2020/04/27 18:52:44 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 36ms, 2020/07/01 16:26:10 -->
