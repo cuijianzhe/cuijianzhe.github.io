@@ -1,36 +1,388 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>人生苦短,我用Python - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="人生苦短,我用Python - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/category/python?p=2"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="人生苦短,我用Python - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">            <link rel="canonical" href="https://cuijianzhe.github.io/category/python?p=2">    <link rel="stylesheet" href="https://cuijianzhe.github.io/skins/Casper/css/base.css?1593403896738"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>人生苦短,我用Python - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="人生苦短,我用Python - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/category/python?p=2"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="人生苦短,我用Python - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">            <link rel="canonical" href="https://cuijianzhe.github.io/category/python?p=2">    <link rel="stylesheet" href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
-<!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script></head>
-<body class="fn__flex-column">
-<div id="pjax" class="fn__flex-1">
-    
-    <header class="header header--other">
-        <div class="wrapper header__title">
-            <h1 class="header__h1 fn__flex-inline">
-                <img src="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png" alt="邯城往事">
-                <a href="https://cuijianzhe.github.io" rel="start" class="header__title">邯城往事</a>
-            </h1>
-            <h2 class="header__h2">               >>>  展颜笑夙愿，一笑泯恩仇 <<<</h2>
-        </div>
-        <nav class="wrapper header__nav fn__clear">
-            <a href="https://cuijianzhe.github.io" rel="start">
-                    首页
+<!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+</head>
+<body class="body--gray">
+<header class="header">
+    <div class="wrapper">
+        <a href="https://cuijianzhe.github.io" rel="start" class="header__logo">
+            <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="邯城往事"/>
+            邯城往事
+        </a>
+
+        <nav class="header__nav mobile__none">
+            <a href="https://cuijianzhe.github.io/tags.html" rel="section">
+                Tags
             </a>
+            <a href="https://cuijianzhe.github.io/archives.html">
+                Archives
+            </a>
+            <a rel="archive" href="https://cuijianzhe.github.io/links.html">
+                Links
+            </a>
+        </nav>
 
-                <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
-                    <img src="/images/github-icon.png" alt="我的开源"> 我的开源
-                </a>
-
-
-            <div class="fn__right">
-    <a href="https://hacpai.com/member/MaidongAndYida"
-       title="https://hacpai.com/member/MaidongAndYida"
-       class="user__site"
+        <div class="header__bar fn__none" onclick="$(this).next().slideToggle()">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                <path fill="#444" d="M0 3h20v2h-20v-2zM0 9h20v2h-20v-2zM0 15h20v2h-20v-2z"></path>
+            </svg>
+        </div>
+        <main class="header__menu fn__none">
+            <ul>
+                    <li>
+                        <a href="/my-github-repos" target="_self" rel="section">
+                            我的开源
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                            服务器倒计时
+                        </a>
+                    </li>
+                <li>
+                    <a href="https://cuijianzhe.github.io/tags.html" rel="section">
+                        Tags
+                    </a>
+                </li>
+                <li>
+                    <a href="https://cuijianzhe.github.io/archives.html">
+                        Archives
+                    </a>
+                </li>
+                <li>
+                    <a rel="archive" href="https://cuijianzhe.github.io/links.html">
+                        Links
+                    </a>
+                </li>
+                <li>
+                    <a rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">
+                        RSS
+                    </a>
+                </li>
+            </ul>
+        </main>
+    </div>
+</header>
+<main id="pjax" class="fn__flex-1">
+    
+    <div class="wrapper wrapper--min">
+        <div class="page__title">
+            <span class="ft__red">#</span>
+            人生苦短,我用Python
+            <div class="ft__fade"></div>
+        </div>
+<main class="article-list fn__clear">
+        <article class="item">
+            <div class="item__container">
+                <div class="item__cover" style="background-image: url(https://img.hacpai.com/bing/20180331.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100)"></div>
+                <div rel="bookmark" class="item__abstract">
+                    <a pjax-title="Python之生成器" href="https://cuijianzhe.github.io/articles/2019/11/23/1574490126718.html">
+                        学会善待陌生人
+                    </a>
+                </div>
+                <div class="item__slant"></div>
+                <div class="item__slant item__slant--white"></div>
+                <div class="item__main">
+                    <span class="item__sup">
+                    </span>
+                    <h2 class="item__title">
+                        <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/11/23/1574490126718.html">
+                            Python之生成器
+                        </a>
+                    </h2>
+                            <div class="ico ico--0"></div>
+                                <a class="item__tag"
+                                   href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
+                </div>
+            </div>
+        </article>
+        <article class="item">
+            <div class="item__container">
+                <div class="item__cover" style="background-image: url(https://img.hacpai.com/bing/20180507.jpg?imageView2/1/w/960/h/540/interlace/1/q/100)"></div>
+                <div rel="bookmark" class="item__abstract">
+                    <a pjax-title="Python之@函数装饰器" href="https://cuijianzhe.github.io/articles/2019/11/21/1574322166949.html">
+                        @函数装饰器 装饰器的作用 —— 不想修改函数的调用方式 但是还想在原来的函数前后添加功能 原则： 开放封闭原则 开放 ： 对扩展是开放的 封闭 ： 对修改是封闭的 示例 当程序使用“@函数”（比如函数 A ）装饰另一个函数（比如函数 B ）时， 实际上完成如下两 步。  将被修饰的函数（函数 B ）作为参数传给＠符号引用的函数（函数 A ）。 将函数 B 替换（装饰）成第 ① 步的返回值。 从上面介绍不难看出，被“＠函数”修饰的函数不再是原来的函数，而是被替换成一个新的东西。  看一下实例： def funA(fn): print('A') fn() return 'asdf' ''' 下面的装饰效果相当于funA(funB) funB 将会被替换（装饰）成该语句的返回值 由于funA 函数返回fkit ，因此funB 就是asdf ''' @funA def funB(): print('B') print(funB)  上面程序使用＠funA 修饰 funB ，这意味着程序要完成两步操作。 ① 将 funB 作为 funA()的参数，也就是上面的粗体字代码相当于执行 funA(f....
+                    </a>
+                </div>
+                <div class="item__slant"></div>
+                <div class="item__slant item__slant--white"></div>
+                <div class="item__main">
+                    <span class="item__sup">
+                    </span>
+                    <h2 class="item__title">
+                        <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/11/21/1574322166949.html">
+                            Python之@函数装饰器
+                        </a>
+                    </h2>
+                            <div class="ico ico--1"></div>
+                                <a class="item__tag"
+                                   href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
+                </div>
+            </div>
+        </article>
+        <article class="item">
+            <div class="item__container">
+                <div class="item__cover" style="background-image: url(https://img.hacpai.com/file/2019/11/image-c9550901.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100)"></div>
+                <div rel="bookmark" class="item__abstract">
+                    <a pjax-title="Scrapy学习" href="https://cuijianzhe.github.io/articles/2019/11/08/1573185139639.html">
+                        环境安装 scrapy安装  安装依赖： 1.pywin32  pip install pywin32   安装Twisted  pip install Twisted  查看版本： C:\Users\cjz&gt;python -m scrapy version Scrapy 1.8.0  创建工程项目 D:\python_cuijianzhe&gt;scrapy startproject scrapy_test New Scrapy project 'scrapy_test', using template directory 'd:\programs\python\python37\lib\site-packages\scrapy\templates\project', created in: D:\python_cuijianzhe\scrapy_test You can start your first spider with: cd scrapy_test scrapy genspider example example.com  查看 scrapy 创建的文件： D:\p....
+                    </a>
+                </div>
+                <div class="item__slant"></div>
+                <div class="item__slant item__slant--white"></div>
+                <div class="item__main">
+                    <span class="item__sup">
+                    </span>
+                    <h2 class="item__title">
+                        <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/11/08/1573185139639.html">
+                            Scrapy学习
+                        </a>
+                    </h2>
+                            <div class="ico ico--2"></div>
+                                <a class="item__tag"
+                                   href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
+                </div>
+            </div>
+        </article>
+        <article class="item">
+            <div class="item__container">
+                <div class="item__cover" style="background-image: url(https://img.hacpai.com/bing/20181107.jpg?imageView2/1/w/960/h/540/interlace/1/q/100)"></div>
+                <div rel="bookmark" class="item__abstract">
+                    <a pjax-title="通过python读取excel表格内容url批量下载" href="https://cuijianzhe.github.io/articles/2019/10/08/1570505431741.html">
+                        求心愿女友…… 🤣
+                    </a>
+                </div>
+                <div class="item__slant"></div>
+                <div class="item__slant item__slant--white"></div>
+                <div class="item__main">
+                    <span class="item__sup">
+                    </span>
+                    <h2 class="item__title">
+                        <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/10/08/1570505431741.html">
+                            通过python读取excel表格内容url批量下载
+                        </a>
+                    </h2>
+                            <div class="ico ico--3"></div>
+                                <a class="item__tag"
+                                   href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
+                </div>
+            </div>
+        </article>
+        <article class="item">
+            <div class="item__container">
+                <div class="item__cover" style="background-image: url(https://img.hacpai.com/bing/20180924.jpg?imageView2/1/w/960/h/540/interlace/1/q/100)"></div>
+                <div rel="bookmark" class="item__abstract">
+                    <a pjax-title="通过 python 获取钉钉后台人员" href="https://cuijianzhe.github.io/articles/2019/09/20/1568981823765.html">
+                        每天一句“我爱你……”
+                    </a>
+                </div>
+                <div class="item__slant"></div>
+                <div class="item__slant item__slant--white"></div>
+                <div class="item__main">
+                    <span class="item__sup">
+                    </span>
+                    <h2 class="item__title">
+                        <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/09/20/1568981823765.html">
+                            通过 python 获取钉钉后台人员
+                        </a>
+                    </h2>
+                            <div class="ico ico--4"></div>
+                                <a class="item__tag"
+                                   href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
+                </div>
+            </div>
+        </article>
+        <article class="item">
+            <div class="item__container">
+                <div class="item__cover" style="background-image: url(https://img.hacpai.com/file/2019/09/image-84f43c22.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100)"></div>
+                <div rel="bookmark" class="item__abstract">
+                    <a pjax-title="web状态码检测监控提醒" href="https://cuijianzhe.github.io/articles/2019/09/07/1567826678848.html">
+                        最近换了一款新皮肤solo-nexmoe，但是无奈一直间歇性报 500，但是访问有时有时好的，所以找了一个脚本检测 500 出现的时间，第一时间去看情况。 shell 脚本 #!/bin/bash  URL=https://www.cjzshilong.cn DING_URL=https://oapi.dingtalk.com/robot/send?access_token=XXXXXXXXXXXXXXXXXXXXXXX function SendMessageToDingding(){ curl "${DING_URL}" -H 'Content-Type: application/json' -d "  {  \"actionCard\": {  \"title\": \"o(╥﹏╥)o Solo故障啦\",  \"text\": \"Web地址: $URL\n\n状态码: $1\n\n响应时间：${REQUEST_TIME}秒\n\n当前时间：${DT}\n\n\",  \"hideAvatar\": \"0\",  \"btnOrientation\": \"0\",  \"b....
+                    </a>
+                </div>
+                <div class="item__slant"></div>
+                <div class="item__slant item__slant--white"></div>
+                <div class="item__main">
+                    <span class="item__sup">
+                    </span>
+                    <h2 class="item__title">
+                        <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/09/07/1567826678848.html">
+                            web状态码检测监控提醒
+                        </a>
+                    </h2>
+                            <div class="ico ico--5"></div>
+                                <a class="item__tag"
+                                   href="https://cuijianzhe.github.io/category/linux">Linux系列</a>
+                </div>
+            </div>
+        </article>
+        <article class="item">
+            <div class="item__container">
+                <div class="item__cover" style="background-image: url(https://img.hacpai.com/file/2019/09/image-07a468e0.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100)"></div>
+                <div rel="bookmark" class="item__abstract">
+                    <a pjax-title="python获取数据实现echarts出图" href="https://cuijianzhe.github.io/articles/2019/09/06/1567757692612.html">
+                        一、 python3 + echarts 1.1. python3 获取数据展示无线节点图例： 1.1.1 通过 snmp 获取源数据 #!/bin/env python3 import json import subprocess import os User_list = [] CMD_num = "snmpwalk -v 2c -c limi@2018 10.200.250.5 1.3.6.1.4.1.2011.6.139.13.3.10.1.5 | wc -l" #AP总数 Num = int(subprocess.getoutput(CMD_num)) CMD_name = '''snmpwalk -v 2c -c limi@2018 10.200.250.5 enterprises.2011.6.139.13.3.10.1.5 | awk '{print $4}' | sed 's/"//g' ''' ap_name = subprocess.getoutput(CMD_name) Name_list = ap_name.split("\n") for id in rang....
+                    </a>
+                </div>
+                <div class="item__slant"></div>
+                <div class="item__slant item__slant--white"></div>
+                <div class="item__main">
+                    <span class="item__sup">
+                    </span>
+                    <h2 class="item__title">
+                        <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/09/06/1567757692612.html">
+                            python获取数据实现echarts出图
+                        </a>
+                    </h2>
+                            <div class="ico ico--6"></div>
+                                <a class="item__tag"
+                                   href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
+                </div>
+            </div>
+        </article>
+        <article class="item">
+            <div class="item__container">
+                <div class="item__cover" style="background-image: url(https://img.hacpai.com/file/2019/09/AI-8c675fea.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100)"></div>
+                <div rel="bookmark" class="item__abstract">
+                    <a pjax-title="python 实现 AI 换脸" href="https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html">
+                        AI 换脸实现 科普：我们人眼看到连续画面的帧数为 24 帧，大约 0.04 秒，低于 0.04 就会卡成 ppt。电影胶片是 24 帧 也就是每秒钟可以看到 24 张图像 低于这个数值就会感觉画面不流畅 所以以 24 帧为界限 实现思路： 先把源视频文件转换成图片，在用 API 面部识别进行融合更换面部内容变成其他图形，并且利用软件完成对源文件音频的提取，再次把更换过的图片转换成为视频，并和音频进行融合。 原视频转图片 提取原视频音源 图片面部识别并更换 变化后的图片转视频 音频和视频融合 环境：python3.7 + pycharm-2019.1 + FFMPEG FFMPEG 官网 使用实例： 提取音频： FFMPEG -i 1.mp4 -f mp3 1.mp3 2.合成视频和音频 FFMPEG -i 没有声音.mp4 -i 提取生成的.mp3 -strict -2 -f mp4 合成的.mp4 需要的库文件： opencv-python pillow（PIL） subprocess Face++ 面部识别 在此使用旷视科技的人脸识别 API 进行完成。先对图片进行脸部识别并进行....
+                    </a>
+                </div>
+                <div class="item__slant"></div>
+                <div class="item__slant item__slant--white"></div>
+                <div class="item__main">
+                    <span class="item__sup">
+                    </span>
+                    <h2 class="item__title">
+                        <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html">
+                            python 实现 AI 换脸
+                        </a>
+                    </h2>
+                            <div class="ico ico--7"></div>
+                                <a class="item__tag"
+                                   href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
+                </div>
+            </div>
+        </article>
+        <article class="item">
+            <div class="item__container">
+                <div class="item__cover" style="background-image: url(https://img.hacpai.com/file/2019/09/image-7c3952c9.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100)"></div>
+                <div rel="bookmark" class="item__abstract">
+                    <a pjax-title="【福利】python3爬取妹子图" href="https://cuijianzhe.github.io/articles/2019/08/20/1566301838555.html">
+                        BeautifulSoup
+                    </a>
+                </div>
+                <div class="item__slant"></div>
+                <div class="item__slant item__slant--white"></div>
+                <div class="item__main">
+                    <span class="item__sup">
+                    </span>
+                    <h2 class="item__title">
+                        <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/08/20/1566301838555.html">
+                            【福利】python3爬取妹子图
+                        </a>
+                    </h2>
+                            <div class="ico ico--8"></div>
+                                <a class="item__tag"
+                                   href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
+                </div>
+            </div>
+        </article>
+        <article class="item">
+            <div class="item__container">
+                <div class="item__cover" style="background-image: url(https://img.hacpai.com/bing/20190530.jpg?imageView2/1/w/960/h/540/interlace/1/q/100)"></div>
+                <div rel="bookmark" class="item__abstract">
+                    <a pjax-title="python读取本地文件，提取指定格式的内容" href="https://cuijianzhe.github.io/articles/2019/08/20/1566269499265.html">
+                        #-*- coding:utf-8 -*- import sys import re def banner(): print(' '*60) print('#'*60) print('#author laoyan') print('#This script is applied to Filtering IP information.') print('#'*60) print(' '*60) def main(lyfile): try: f=open(lyfile,'r', encoding='UTF-8') ref=open('reloadips.txt','w', encoding='UTF-8') lyf=f.read() refind=re.findall(r'data-soundurl64=\".+?\"',lyf) print(refind) for i in range(len(refind)): a=refind[i].split('data-soundurl64="') b='https://static.missevan.com/'+a[1].split('"')....
+                    </a>
+                </div>
+                <div class="item__slant"></div>
+                <div class="item__slant item__slant--white"></div>
+                <div class="item__main">
+                    <span class="item__sup">
+                    </span>
+                    <h2 class="item__title">
+                        <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/08/20/1566269499265.html">
+                            python读取本地文件，提取指定格式的内容
+                        </a>
+                    </h2>
+                            <div class="ico ico--9"></div>
+                                <a class="item__tag"
+                                   href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
+                </div>
+            </div>
+        </article>
+        <article class="item">
+            <div class="item__container">
+                <div class="item__cover" style="background-image: url(https://img.hacpai.com/bing/20191015.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)"></div>
+                <div rel="bookmark" class="item__abstract">
+                    <a pjax-title="Request 方法" href="https://cuijianzhe.github.io/articles/2019/08/14/1565771931308.html">
+                        接口测试网站 官方中文文档 urlopen 方法： urllib.request.urlopen()函数用于实现对目标 url 的访问。 函数原型如下：urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None)　 url: 需要打开的网址 data：Post 提交的数据（bytes 类型，则需要通过 bytes()方法转化。另外，如果传递了这个参数，则它的请求方式就不再是 GET 方式，而是 POST 方式） timeout：设置网站的访问超时时间 实例如下： import urllib.request response = urllib.request.urlopen('https://www.baidu.com') #请求的响应体 print(response.read().decode()) #响应的状态码 print(response.status) #获取响应头部信息 print(response.getheaders....
+                    </a>
+                </div>
+                <div class="item__slant"></div>
+                <div class="item__slant item__slant--white"></div>
+                <div class="item__main">
+                    <span class="item__sup">
+                    </span>
+                    <h2 class="item__title">
+                        <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/08/14/1565771931308.html">
+                            Request 方法
+                        </a>
+                    </h2>
+                            <div class="ico ico--0"></div>
+                                <a class="item__tag"
+                                   href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
+                </div>
+            </div>
+        </article>
+        <article class="item">
+            <div class="item__container">
+                <div class="item__cover" style="background-image: url(https://img.hacpai.com/bing/20181027.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)"></div>
+                <div rel="bookmark" class="item__abstract">
+                    <a pjax-title="学生管理系统" href="https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html">
+                        python，以目前的能力编写一套实现学生信息增删改查的数据库系统。或许后续会不断提升不断完整的搞出这一套简单的系统（增删改查功能），还差得很多。加油……  创建数据库和数据表；  mysql&gt; create database student; Query OK, 1 row affected (0.01 sec) mysql&gt; use student; Database changed mysql&gt; create table students(id int primary key auto_increment,name varchar(30),sex varchar(30),num int) charset='utf8'; Query OK, 0 rows affected (0.00 sec)  学生管理系统 学生管理系统v1.1 ''' 基于数据库进行学生信息增删改查 学生管理系统V1 2019年8月2日14:32:03 编写者：QQ：598941324-读书 ''' import pymysql def add(): try: s_name = input('....
+                    </a>
+                </div>
+                <div class="item__slant"></div>
+                <div class="item__slant item__slant--white"></div>
+                <div class="item__main">
+                    <span class="item__sup">
+                    </span>
+                    <h2 class="item__title">
+                        <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html">
+                            学生管理系统
+                        </a>
+                    </h2>
+                            <div class="ico ico--1"></div>
+                                <a class="item__tag"
+                                   href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
+                </div>
+            </div>
+        </article>
+</main>
+    <nav class="pagination">
+                <a class="pagination__item"
+                   href="https://cuijianzhe.github.io/category/python/p/1">1</a>
+                <span class="pagination__item pagination__item--current">2</span>
+                <a class="pagination__item"
+                   href="https://cuijianzhe.github.io/category/python/p/3">3</a>
+    </nav>
+    </div>
+    
+</main>
+<footer class="footer">
+    <div class="ft__center">
+    <a href="https://hacpai.com/member/cuijianzhe"
+       aria-label="https://hacpai.com/member/cuijianzhe"
+       class="vditor-tooltipped__n vditor-tooltipped  user__site"
        target="_blank" rel="noopener nofollow">
         <svg viewBox="0 0 32 32" width="100%" height="100%">
             <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
@@ -39,420 +391,116 @@
         </svg>
     </a>
 
-
-                <a rel="alternate" href="https://cuijianzhe.github.io/rss.xml">
-                    RSS
-                </a>
-
-            </div>
-        </nav>
-    </header>
-    <div class="wrapper other">
-        <h2 class="other__title"><a href="https://cuijianzhe.github.io" class="ft__a">邯城往事</a> - 人生苦短,我用Python</h2>
-        <div class="other__meta other__meta--list">
-             &nbsp;
-        </div>
-<div class="articles">
-    <article class="item item--large">
-        <a href="https://cuijianzhe.github.io/articles/2019/11/08/1573185139639.html" class="item__cover"
-           style="background-image: url(https://img.hacpai.com/file/2019/11/image-c9550901.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100)"> Scrapy学习
+        <a href="https://github.com/cuijianzhe"
+           aria-label="https://github.com/cuijianzhe"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site"
+           target="_blank" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
         </a>
-        <div class="item__main">
-                    <a class="item__tag"
-                       href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
-            <h2 class="item__title">
-                <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/11/08/1573185139639.html">
-                    Scrapy学习
-                </a>
-            </h2>
-            <a class="item__abstract" pjax-title="Scrapy学习"
-               href="https://cuijianzhe.github.io/articles/2019/11/08/1573185139639.html">
-                    环境安装 scrapy安装  安装依赖： 1.pywin32  pip install pywin32   安装Twisted  pip install Twis
 
-            </a>
-            <div class="fn__clear">
-                <a href="https://cuijianzhe.github.io/authors/1551763983748"
-                   aria-label="cuijianzhe"
-                   class="vditor-tooltipped vditor-tooltipped__n item__avatar">
-                    <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="1551763983748"/>
-                </a>
-                <a class="item__meta fn__none" href="https://cuijianzhe.github.io/articles/2019/11/08/1573185139639.html#b3logsolocomments">
-                    <span data-uvstatcmt="1573185139639">0</span> 评论
-                </a>
-                <a class="item__meta" href="https://cuijianzhe.github.io/articles/2019/11/08/1573185139639.html">
-                    <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/11/08/1573185139639.html">48</span> 浏览
-                </a>
-            </div>
-        </div>
-    </article>
-    <article class="item">
-        <a href="https://cuijianzhe.github.io/articles/2019/10/08/1570505431741.html" class="item__cover"
-           style="background-image: url(https://img.hacpai.com/bing/20181107.jpg?imageView2/1/w/960/h/540/interlace/1/q/100)"> 通过python读取excel表格内容url批量下载
+        <a href="https://twitter.com/JianzheC"
+           aria-label="https://twitter.com/JianzheC"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32.003 6.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
+            </svg>
         </a>
-        <div class="item__main">
-                    <a class="item__tag"
-                       href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
-            <h2 class="item__title">
-                <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/10/08/1570505431741.html">
-                    通过python读取excel表格内容url批量下载
-                </a>
-            </h2>
-            <a class="item__abstract" pjax-title="通过python读取excel表格内容url批量下载"
-               href="https://cuijianzhe.github.io/articles/2019/10/08/1570505431741.html">
-                    求心愿女友…… 🤣
-
-            </a>
-            <div class="fn__clear">
-                <a href="https://cuijianzhe.github.io/authors/1551763983748"
-                   aria-label="cuijianzhe"
-                   class="vditor-tooltipped vditor-tooltipped__n item__avatar">
-                    <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="1551763983748"/>
-                </a>
-                <a class="item__meta fn__none" href="https://cuijianzhe.github.io/articles/2019/10/08/1570505431741.html#b3logsolocomments">
-                    <span data-uvstatcmt="1570505431741">0</span> 评论
-                </a>
-                <a class="item__meta" href="https://cuijianzhe.github.io/articles/2019/10/08/1570505431741.html">
-                    <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/10/08/1570505431741.html">246</span> 浏览
-                </a>
-            </div>
-        </div>
-    </article>
-    <article class="item">
-        <a href="https://cuijianzhe.github.io/articles/2019/09/20/1568981823765.html" class="item__cover"
-           style="background-image: url(https://img.hacpai.com/bing/20180924.jpg?imageView2/1/w/960/h/540/interlace/1/q/100)"> 通过 python 获取钉钉后台人员
+        <a href="https://weibo.com/3796930704"
+           aria-label="https://weibo.com/3796930704"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+                <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+                <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+                <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+            </svg>
         </a>
-        <div class="item__main">
-                    <a class="item__tag"
-                       href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
-            <h2 class="item__title">
-                <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/09/20/1568981823765.html">
-                    通过 python 获取钉钉后台人员
-                </a>
-            </h2>
-            <a class="item__abstract" pjax-title="通过 python 获取钉钉后台人员"
-               href="https://cuijianzhe.github.io/articles/2019/09/20/1568981823765.html">
-                    每天一句“我爱你……”
-
-            </a>
-            <div class="fn__clear">
-                <a href="https://cuijianzhe.github.io/authors/1551763983748"
-                   aria-label="cuijianzhe"
-                   class="vditor-tooltipped vditor-tooltipped__n item__avatar">
-                    <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="1551763983748"/>
-                </a>
-                <a class="item__meta fn__none" href="https://cuijianzhe.github.io/articles/2019/09/20/1568981823765.html#b3logsolocomments">
-                    <span data-uvstatcmt="1568981823765">8</span> 评论
-                </a>
-                <a class="item__meta" href="https://cuijianzhe.github.io/articles/2019/09/20/1568981823765.html">
-                    <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/09/20/1568981823765.html">1,889</span> 浏览
-                </a>
-            </div>
-        </div>
-    </article>
-    <article class="item">
-        <a href="https://cuijianzhe.github.io/articles/2019/09/07/1567826678848.html" class="item__cover"
-           style="background-image: url(https://img.hacpai.com/file/2019/09/image-84f43c22.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100)"> web状态码检测监控提醒
+        <a href="https://www.zhihu.com/people/wen-yang-24-36"
+           aria-label="https://www.zhihu.com/people/wen-yang-24-36"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32 26.67c0 2.931-2.382 5.33-5.33 5.33h-21.339c-2.948 0-5.33-2.382-5.33-5.33v-21.339c0-2.948 2.382-5.33 5.33-5.33h21.339c2.948 0 5.33 2.382 5.33 5.33v21.339zM12.358 17.191h4.713c0-1.114-0.531-1.748-0.531-1.748h-4.079c0.103-2.005 0.189-4.576 0.223-5.536h3.874s-0.017-1.645-0.463-1.645h-6.822s0.411-2.142 0.96-3.085c0 0-2.040-0.12-2.742 2.605-0.686 2.725-1.731 4.354-1.851 4.662s0.6 0.137 0.891 0c0.309-0.137 1.663-0.617 2.057-2.537h2.108c0.034 1.2 0.12 4.885 0.086 5.536h-4.336c-0.6 0.446-0.823 1.748-0.823 1.748h4.971c-0.206 1.371-0.566 3.137-1.080 4.062-0.806 1.491-1.234 2.828-4.131 5.176 0 0-0.48 0.36 0.994 0.223 1.474-0.12 2.845-0.514 3.839-2.434 0.514-0.994 1.011-2.28 1.423-3.565l4.079 4.713s0.548-1.268 0.137-2.657l-3.034-3.394-1.028 0.754c0.291-0.994 0.497-1.988 0.548-2.845 0.017 0.017 0.017 0 0.017-0.034zM18.048 7.936v16.3h1.714l0.703 1.954 2.965-1.954h3.754v-16.3h-9.136zM25.401 22.487h-1.937l-2.434 1.611-0.566-1.611h-0.6v-12.735h5.553v12.735h-0.017z"></path>
+            </svg>
         </a>
-        <div class="item__main">
-                    <a class="item__tag"
-                       href="https://cuijianzhe.github.io/category/linux">Linux系列</a>
-            <h2 class="item__title">
-                <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/09/07/1567826678848.html">
-                    web状态码检测监控提醒
-                </a>
-            </h2>
-            <a class="item__abstract" pjax-title="web状态码检测监控提醒"
-               href="https://cuijianzhe.github.io/articles/2019/09/07/1567826678848.html">
-                    最近换了一款新皮肤solo-nexmoe，但是无奈一直间歇性报 500，但是访问有时有时好的，所以找了一个脚本检测 500 出现的时间，第一时间去看情况。 she
-
-            </a>
-            <div class="fn__clear">
-                <a href="https://cuijianzhe.github.io/authors/1551763983748"
-                   aria-label="cuijianzhe"
-                   class="vditor-tooltipped vditor-tooltipped__n item__avatar">
-                    <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="1551763983748"/>
-                </a>
-                <a class="item__meta fn__none" href="https://cuijianzhe.github.io/articles/2019/09/07/1567826678848.html#b3logsolocomments">
-                    <span data-uvstatcmt="1567826678848">9</span> 评论
-                </a>
-                <a class="item__meta" href="https://cuijianzhe.github.io/articles/2019/09/07/1567826678848.html">
-                    <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/09/07/1567826678848.html">1,445</span> 浏览
-                </a>
-            </div>
-        </div>
-    </article>
-    <article class="item">
-        <a href="https://cuijianzhe.github.io/articles/2019/09/06/1567757692612.html" class="item__cover"
-           style="background-image: url(https://img.hacpai.com/file/2019/09/image-07a468e0.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100)"> python获取数据实现echarts出图
+        <a href="tencent://message/?uin=598941324"
+           aria-label="598941324"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
         </a>
-        <div class="item__main">
-                    <a class="item__tag"
-                       href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
-            <h2 class="item__title">
-                <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/09/06/1567757692612.html">
-                    python获取数据实现echarts出图
-                </a>
-            </h2>
-            <a class="item__abstract" pjax-title="python获取数据实现echarts出图"
-               href="https://cuijianzhe.github.io/articles/2019/09/06/1567757692612.html">
-                    一、 python3 + echarts 1.1. python3 获取数据展示无线节点图例： 1.1.1 通过 snmp 获取源数据 #!/bin/env py
-
-            </a>
-            <div class="fn__clear">
-                <a href="https://cuijianzhe.github.io/authors/1551763983748"
-                   aria-label="cuijianzhe"
-                   class="vditor-tooltipped vditor-tooltipped__n item__avatar">
-                    <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="1551763983748"/>
-                </a>
-                <a class="item__meta fn__none" href="https://cuijianzhe.github.io/articles/2019/09/06/1567757692612.html#b3logsolocomments">
-                    <span data-uvstatcmt="1567757692612">0</span> 评论
-                </a>
-                <a class="item__meta" href="https://cuijianzhe.github.io/articles/2019/09/06/1567757692612.html">
-                    <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/09/06/1567757692612.html">139</span> 浏览
-                </a>
-            </div>
-        </div>
-    </article>
-    <article class="item">
-        <a href="https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html" class="item__cover"
-           style="background-image: url(https://img.hacpai.com/file/2019/09/AI-8c675fea.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100)"> python 实现 AI 换脸
+        <a href="javascript:void(0)"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" aria-label="cjz5989">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+            </svg>
         </a>
-        <div class="item__main">
-                    <a class="item__tag"
-                       href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
-            <h2 class="item__title">
-                <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html">
-                    python 实现 AI 换脸
-                </a>
-            </h2>
-            <a class="item__abstract" pjax-title="python 实现 AI 换脸"
-               href="https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html">
-                    AI 换脸实现 科普：我们人眼看到连续画面的帧数为 24 帧，大约 0.04 秒，低于 0.04 就会卡成 ppt。电影胶片是 24 帧 也就是每秒钟可以看到 2
-
-            </a>
-            <div class="fn__clear">
-                <a href="https://cuijianzhe.github.io/authors/1551763983748"
-                   aria-label="cuijianzhe"
-                   class="vditor-tooltipped vditor-tooltipped__n item__avatar">
-                    <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="1551763983748"/>
-                </a>
-                <a class="item__meta fn__none" href="https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html#b3logsolocomments">
-                    <span data-uvstatcmt="1567234676723">11</span> 评论
-                </a>
-                <a class="item__meta" href="https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html">
-                    <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html">2,073</span> 浏览
-                </a>
-            </div>
-        </div>
-    </article>
-    <article class="item item--large">
-        <a href="https://cuijianzhe.github.io/articles/2019/08/20/1566301838555.html" class="item__cover"
-           style="background-image: url(https://img.hacpai.com/file/2019/09/image-7c3952c9.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100)"> 【福利】python3爬取妹子图
-        </a>
-        <div class="item__main">
-                    <a class="item__tag"
-                       href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
-            <h2 class="item__title">
-                <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/08/20/1566301838555.html">
-                    【福利】python3爬取妹子图
-                </a>
-            </h2>
-            <a class="item__abstract" pjax-title="【福利】python3爬取妹子图"
-               href="https://cuijianzhe.github.io/articles/2019/08/20/1566301838555.html">
-                    BeautifulSoup
-
-            </a>
-            <div class="fn__clear">
-                <a href="https://cuijianzhe.github.io/authors/1551763983748"
-                   aria-label="cuijianzhe"
-                   class="vditor-tooltipped vditor-tooltipped__n item__avatar">
-                    <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="1551763983748"/>
-                </a>
-                <a class="item__meta fn__none" href="https://cuijianzhe.github.io/articles/2019/08/20/1566301838555.html#b3logsolocomments">
-                    <span data-uvstatcmt="1566301838555">1</span> 评论
-                </a>
-                <a class="item__meta" href="https://cuijianzhe.github.io/articles/2019/08/20/1566301838555.html">
-                    <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/08/20/1566301838555.html">1,969</span> 浏览
-                </a>
-            </div>
-        </div>
-    </article>
-    <article class="item">
-        <a href="https://cuijianzhe.github.io/articles/2019/08/20/1566269499265.html" class="item__cover"
-           style="background-image: url(https://img.hacpai.com/bing/20190530.jpg?imageView2/1/w/960/h/540/interlace/1/q/100)"> python读取本地文件，提取指定格式的内容
-        </a>
-        <div class="item__main">
-                    <a class="item__tag"
-                       href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
-            <h2 class="item__title">
-                <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/08/20/1566269499265.html">
-                    python读取本地文件，提取指定格式的内容
-                </a>
-            </h2>
-            <a class="item__abstract" pjax-title="python读取本地文件，提取指定格式的内容"
-               href="https://cuijianzhe.github.io/articles/2019/08/20/1566269499265.html">
-                    #-*- coding:utf-8 -*- import sys import re def banner(): print(' '*60) print('#'*
-
-            </a>
-            <div class="fn__clear">
-                <a href="https://cuijianzhe.github.io/authors/1551783002859"
-                   aria-label="MaidongAndYida"
-                   class="vditor-tooltipped vditor-tooltipped__n item__avatar">
-                    <img src="https://img.hacpai.com/avatar/1551616223515_1574851307648.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="1551783002859"/>
-                </a>
-                <a class="item__meta fn__none" href="https://cuijianzhe.github.io/articles/2019/08/20/1566269499265.html#b3logsolocomments">
-                    <span data-uvstatcmt="1566269499265">0</span> 评论
-                </a>
-                <a class="item__meta" href="https://cuijianzhe.github.io/articles/2019/08/20/1566269499265.html">
-                    <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/08/20/1566269499265.html">94</span> 浏览
-                </a>
-            </div>
-        </div>
-    </article>
-    <article class="item">
-        <a href="https://cuijianzhe.github.io/articles/2019/08/14/1565771931308.html" class="item__cover"
-           style="background-image: url(https://img.hacpai.com/bing/20191015.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)"> Request 方法
-        </a>
-        <div class="item__main">
-                    <a class="item__tag"
-                       href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
-            <h2 class="item__title">
-                <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/08/14/1565771931308.html">
-                    Request 方法
-                </a>
-            </h2>
-            <a class="item__abstract" pjax-title="Request 方法"
-               href="https://cuijianzhe.github.io/articles/2019/08/14/1565771931308.html">
-                    接口测试网站 官方中文文档 urlopen 方法： urllib.request.urlopen()函数用于实现对目标 url 的访问。 函数原型如下：urlli
-
-            </a>
-            <div class="fn__clear">
-                <a href="https://cuijianzhe.github.io/authors/1551763983748"
-                   aria-label="cuijianzhe"
-                   class="vditor-tooltipped vditor-tooltipped__n item__avatar">
-                    <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="1551763983748"/>
-                </a>
-                <a class="item__meta fn__none" href="https://cuijianzhe.github.io/articles/2019/08/14/1565771931308.html#b3logsolocomments">
-                    <span data-uvstatcmt="1565771931308">0</span> 评论
-                </a>
-                <a class="item__meta" href="https://cuijianzhe.github.io/articles/2019/08/14/1565771931308.html">
-                    <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/08/14/1565771931308.html">71</span> 浏览
-                </a>
-            </div>
-        </div>
-    </article>
-    <article class="item">
-        <a href="https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html" class="item__cover"
-           style="background-image: url(https://img.hacpai.com/bing/20181027.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)"> 学生管理系统
-        </a>
-        <div class="item__main">
-                    <a class="item__tag"
-                       href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
-            <h2 class="item__title">
-                <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html">
-                    学生管理系统
-                </a>
-            </h2>
-            <a class="item__abstract" pjax-title="学生管理系统"
-               href="https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html">
-                    python，以目前的能力编写一套实现学生信息增删改查的数据库系统。或许后续会不断提升不断完整的搞出这一套简单的系统（增删改查功能），还差得很多。加油……  创建
-
-            </a>
-            <div class="fn__clear">
-                <a href="https://cuijianzhe.github.io/authors/1551763983748"
-                   aria-label="cuijianzhe"
-                   class="vditor-tooltipped vditor-tooltipped__n item__avatar">
-                    <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="1551763983748"/>
-                </a>
-                <a class="item__meta fn__none" href="https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html#b3logsolocomments">
-                    <span data-uvstatcmt="1564728341878">2</span> 评论
-                </a>
-                <a class="item__meta" href="https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html">
-                    <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html">120</span> 浏览
-                </a>
-            </div>
-        </div>
-    </article>
-    <article class="item">
-        <a href="https://cuijianzhe.github.io/articles/2019/07/26/1564125997971.html" class="item__cover"
-           style="background-image: url(https://img.hacpai.com/bing/20180127.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)"> python脚本操作数据库
-        </a>
-        <div class="item__main">
-                    <a class="item__tag"
-                       href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
-            <h2 class="item__title">
-                <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/07/26/1564125997971.html">
-                    python脚本操作数据库
-                </a>
-            </h2>
-            <a class="item__abstract" pjax-title="python脚本操作数据库"
-               href="https://cuijianzhe.github.io/articles/2019/07/26/1564125997971.html">
-                    python 数据库基本操作  操作关键字 创建连接 connect [k əˈ nekt] 连接 实例化游标 cursor [ˈ k ɜː s ə(r)] 游标
-
-            </a>
-            <div class="fn__clear">
-                <a href="https://cuijianzhe.github.io/authors/1551763983748"
-                   aria-label="cuijianzhe"
-                   class="vditor-tooltipped vditor-tooltipped__n item__avatar">
-                    <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="1551763983748"/>
-                </a>
-                <a class="item__meta fn__none" href="https://cuijianzhe.github.io/articles/2019/07/26/1564125997971.html#b3logsolocomments">
-                    <span data-uvstatcmt="1564125997971">0</span> 评论
-                </a>
-                <a class="item__meta" href="https://cuijianzhe.github.io/articles/2019/07/26/1564125997971.html">
-                    <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/07/26/1564125997971.html">72</span> 浏览
-                </a>
-            </div>
-        </div>
-    </article>
-    <article class="item">
-        <a href="https://cuijianzhe.github.io/articles/2019/07/19/1563527162900.html" class="item__cover"
-           style="background-image: url(https://img.hacpai.com/bing/20190130.jpg?imageView2/1/w/960/h/540/interlace/1/q/100)"> windows下实现黑客派自动签到
-        </a>
-        <div class="item__main">
-                    <a class="item__tag"
-                       href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
-            <h2 class="item__title">
-                <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2019/07/19/1563527162900.html">
-                    windows下实现黑客派自动签到
-                </a>
-            </h2>
-            <a class="item__abstract" pjax-title="windows下实现黑客派自动签到"
-               href="https://cuijianzhe.github.io/articles/2019/07/19/1563527162900.html">
-                    终于实现了，虽然是借助插件来实现的
-
-            </a>
-            <div class="fn__clear">
-                <a href="https://cuijianzhe.github.io/authors/1551783002859"
-                   aria-label="MaidongAndYida"
-                   class="vditor-tooltipped vditor-tooltipped__n item__avatar">
-                    <img src="https://img.hacpai.com/avatar/1551616223515_1574851307648.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="1551783002859"/>
-                </a>
-                <a class="item__meta fn__none" href="https://cuijianzhe.github.io/articles/2019/07/19/1563527162900.html#b3logsolocomments">
-                    <span data-uvstatcmt="1563527162900">0</span> 评论
-                </a>
-                <a class="item__meta" href="https://cuijianzhe.github.io/articles/2019/07/19/1563527162900.html">
-                    <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/07/19/1563527162900.html">111</span> 浏览
-                </a>
-            </div>
-        </div>
-    </article>
-</div>
-
-<nav class="pagination">
-            <a pjax-title="邯城往事" class="pagination__item" href="https://cuijianzhe.github.io/category/python/p/1">1</a>
-            <span class="pagination__item pagination__item--active">2</span>
-            <a pjax-title="邯城往事" class="pagination__item" href="https://cuijianzhe.github.io/category/python/p/3">3</a>
-</nav>
     </div>
-
-</div>
-<footer class="footer">
-    <div class="wrapper fn__clear">
-        <div class="fn__left">
+    <nav class="footer__nav mobile__none">
+            <a class="ft__link" href="/my-github-repos" target="_self" rel="section">
+                我的开源
+            </a>
+            <a class="ft__link" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                服务器倒计时
+            </a>
+        <a class="ft__link" rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">RSS</a>
+    </nav>
+    <div class="footer__border mobile__none"></div>
+    <div class="wrapper fn__flex">
+        <div class="fn__flex-1 mobile__none">
+            <div class="ft__fade">cuijianzhe -                >>>  展颜笑夙愿，一笑泯恩仇 <<<</div>
             <br>
+                <!-- MetingJS音乐播放器 不能放到 head 导致系统功能加载异常-->
+<link rel="stylesheet" href="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css">
+<script src="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<meting-js server="netease" type="playlist" id="728729850"  autoplay="false" fixed ="true" order = "random"</meting-js>
+
+<h1><p style="font-size:10px"><font color="#2F4F4F">红笺小字，说尽平生意。<br/>鸿雁在云鱼在水，惆怅此情难寄。<br/>             ——晏殊· 《清平乐》</font> </p></h1>
+
+        </div>
+
+            <div class="footer__mid fn__flex-1 mobile__none">
+                <div class="ft__fade">分类</div>
+                <br>
+                    <a href="https://cuijianzhe.github.io/category/python"
+                       aria-label="31 文章"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        人生苦短,我用Python</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/java"
+                       aria-label="11 文章"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        Java是世界上最好的语言</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/linux"
+                       aria-label="48 文章"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        Linux系列</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/network"
+                       aria-label="4 文章"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        Network系列</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/young"
+                       aria-label="6 文章"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        江湖就是人情世故</a> &nbsp; &nbsp;
+            </div>
+
+        <div class="fn__flex-1 footer__copyright">
+            <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
+                127
+                文章
+            </a>
+           <br>
+            <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> <span class="ft-gray">浏览</span>
+ <br>
             &copy; 2020
-            <a href="https://cuijianzhe.github.io">邯城往事</a>
+            <a class="ft__link" href="https://cuijianzhe.github.io">邯城往事</a>
             <img style="width: 20px; height: 20px;" src="https://img.hacpai.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">冀ICP备19005901号</a> 
 
 <!--切换标签实现网页标题变化-->
@@ -473,43 +521,43 @@
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
+<script>
+  document.addEventListener("DOMContentLoaded", function (event) {
+    if (Label.articleId) {
+      const gitalk = new Gitalk({
+        clientID: '6b8a5a99786d472c0877',
+        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
+        repo: 'solo-blog',
+        owner: 'cuijianzhe',
+        admin: ['cuijianzhe'],
+        id: Label.articleId,
+        distractionFreeMode: false
+      })
 
-        </div>
-        <div class="fn__right">
-            <a href="https://cuijianzhe.github.io/tags.html" rel="section">
-            标签墙
-            </a>
-            &nbsp;•&nbsp;
-            <a href="https://cuijianzhe.github.io/archives.html">
-            存档
-            </a>
-            &nbsp;•&nbsp;
-            <a rel="archive" href="https://cuijianzhe.github.io/links.html">
-            友情链接
-            </a>
-            <br>
-            121 文章 &nbsp;
-            <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> 浏览 &nbsp;
-            
+      gitalk.render('gitalk-container')
+    }
+  })
+</script>
+
         </div>
     </div>
 </footer>
-
 <script>
   var Label = {
-    speech: true,
+    speech: false,
     servePath: "https://cuijianzhe.github.io",
     staticServePath: "https://cuijianzhe.github.io",
     luteAvailable: true,
     hljsStyle: 'rrt',
     langLabel: "zh_CN",
-    version: "4.2.0",
+    version: "4.3.0",
     staticSite: true,
     showCodeBlockLn: false,
   }
 </script>
+<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Casper/js/common.min.js?1593403896738"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
@@ -544,4 +592,4 @@
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 59ms, 2020/07/01 16:26:17 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 97ms, 2020/07/23 14:21:28 -->
