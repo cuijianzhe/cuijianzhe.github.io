@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>openstack系列-nova节点部署 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="openstack系列-nova节点部署 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/13/1570962040262.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="openstack系列-nova节点部署 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/13/1570962040262.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>openstack系列-nova节点部署 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="openstack系列-nova节点部署 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/13/1570962040262.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="openstack系列-nova节点部署 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/13/1570962040262.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/css/base.css?1597576982775"/>
             <link rel="prev" title="openstack系列- glance 服务部署" href="https://cuijianzhe.github.io/articles/2019/10/13/1570938302267.html">
             <link rel="next" title="openstack系列-neutron系列安装部署" href="https://cuijianzhe.github.io/articles/2019/10/15/1571104876779.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -124,7 +122,7 @@ GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'%' \
   IDENTIFIED BY 'placement';  
 </code></pre>
 <h2 id="在keystone中注册nove服务用户以及凭证">在 keystone 中注册 nove 服务用户以及凭证</h2>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># . admin-openrc</span> 
+<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># . admin-openrc </span>
 <span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1">#  openstack user create --domain default --password-prompt nova</span>
 User Password:
 Repeat User Password:
@@ -435,7 +433,7 @@ password = 598941324
 （ 需要：qemu-kvm-rhev &gt;= 2.10.0）<br>
 添加 yum 源文件</li>
 </ul>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node2 ~<span class="highlight-o">]</span><span class="highlight-c1"># cat /etc/yum.repos.d/CentOS-QEMU-EV.repo</span> 
+<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node2 ~<span class="highlight-o">]</span><span class="highlight-c1"># cat /etc/yum.repos.d/CentOS-QEMU-EV.repo </span>
 <span class="highlight-o">[</span>centos-qemu-ev<span class="highlight-o">]</span>
 <span class="highlight-nv">name</span><span class="highlight-o">=</span>CentOS-<span class="highlight-nv">$releasever</span> - QEMU EV
 <span class="highlight-nv">baseurl</span><span class="highlight-o">=</span>https://mirrors.aliyun.com/centos/7.7.1908/virt/x86_64/kvm-common/
@@ -537,14 +535,14 @@ lock_path = /var/lib/nova/tmp
 </ul>
 <pre><code class="highlight-chroma"> egrep -c '(vmx|svm)' /proc/cpuinfo
 </code></pre>
-<p>如果此命令返回值大于 1，则计算节点支持硬件加速，通常不需要其他配置。</p>
-<p>如果此命令返回值 <code>zero</code>，则您的计算节点不支持硬件加速，您必须配置 <code>libvirt</code> 为使用 QEMU 而不是 KVM。</p>
-<p>编辑文件中的 <code>[libvirt]</code> 部分，<code>/etc/nova/nova.conf</code> 如下所示：</p>
+<p>  如果此命令返回值大于 1，则计算节点支持硬件加速，通常不需要其他配置。</p>
+<p>  如果此命令返回值 <code>zero</code>，则您的计算节点不支持硬件加速，您必须配置 <code>libvirt</code> 为使用 QEMU 而不是 KVM。</p>
+<p>  编辑文件中的 <code>[libvirt]</code> 部分，<code>/etc/nova/nova.conf</code> 如下所示：</p>
 <pre><code class="highlight-chroma">[libvirt]
 virt_type = qemu
 </code></pre>
 <h3 id="以下在控制节点配置">以下在控制节点配置</h3>
-<p>添加新计算节点时，必须在控制器节点上运行以注册这些新计算节点。或者，您可以在以下位置设置适当的间隔 ：<code>/etc/nova/nova.conf</code></p>
+<p>  添加新计算节点时，必须在控制器节点上运行以注册这些新计算节点。或者，您可以在以下位置设置适当的间隔 ：<code>/etc/nova/nova.conf</code></p>
 <pre><code class="highlight-chroma">[scheduler]
 discover_hosts_in_cells_interval = 300
 </code></pre>
@@ -555,8 +553,8 @@ discover_hosts_in_cells_interval = 300
 # systemctl start libvirtd.service openstack-nova-compute.service
 </code></pre>
 <h3 id="将计算节点添加到单元数据库-controller节点配置-">将计算节点添加到单元数据库（controller 节点配置）</h3>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># . admin-openrc</span> 
-<span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># openstack compute service list --service nova-compute</span>  
+<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># . admin-openrc </span>
+<span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># openstack compute service list --service nova-compute  </span>
 +----+--------------+-------------+------+---------+-------+----------------------------+  
 <span class="highlight-p">|</span> ID <span class="highlight-p">|</span> Binary       <span class="highlight-p">|</span> Host        <span class="highlight-p">|</span> Zone <span class="highlight-p">|</span> Status  <span class="highlight-p">|</span> State <span class="highlight-p">|</span> Updated At                 <span class="highlight-p">|</span>  
 +----+--------------+-------------+------+---------+-------+----------------------------+  
@@ -569,7 +567,7 @@ Checking host mapping <span class="highlight-k">for</span> compute host <span cl
 Creating host mapping <span class="highlight-k">for</span> compute host <span class="highlight-s1">'linux-node2'</span>: 15edaaaf-d17b-4763-b920-d31c763da7de
 Found <span class="highlight-m">1</span> unmapped computes in cell: 1f5b2d9e-b360-46e0-abfc-0491a7631098
 Skipping cell0 since it does not contain hosts.
-<span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span># 
+<span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># </span>
 </code></pre>
 <h3 id="验证">验证</h3>
 <ul>
@@ -667,7 +665,15 @@ nova-status upgrade check
 +-------------------------------+
 </code></pre>
                 <div>
-                    <span class="name">搭讪 你就破功了，老弟！</span>
+                    <hr>
+
+标题：openstack系列-nova节点部署<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2019/10/13/1570962040262.html" target="_blank">https://cuijianzhe.github.io/articles/2019/10/13/1570962040262.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<span class="name">搭讪 你就破功了，老弟！</span>
 <style>
 .name{   
     font-size:30px;
@@ -879,15 +885,15 @@ nova-status upgrade check
                 <div class="ft__fade">分类</div>
                 <br>
                     <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="31 文章"
+                       aria-label="32 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="11 文章"
+                       aria-label="15 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="48 文章"
+                       aria-label="49 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Linux系列</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/network"
@@ -902,7 +908,7 @@ nova-status upgrade check
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                127
+                140
                 文章
             </a>
            <br>
@@ -930,34 +936,17 @@ nova-status upgrade check
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '6b8a5a99786d472c0877',
-        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
 
         </div>
     </div>
 </footer>
 <script>
   var Label = {
-    speech: false,
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources",
     luteAvailable: true,
-    hljsStyle: 'rrt',
+    hljsStyle: 'monokai',
     langLabel: "zh_CN",
     version: "4.3.0",
     staticSite: true,
@@ -965,12 +954,12 @@ nova-status upgrade check
     articleId: "1570962040262",
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/common.min.js?1597576982775"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
 <div class="solo-kanbanniang">
     <div class="solo-kanbanniang__tip"></div>
     <canvas id="soloKanbanniang" width="280" height="250"></canvas>
@@ -1002,7 +991,7 @@ nova-status upgrade check
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1595358040124', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/js/page.min.js?1597576982775', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1570962040262",
@@ -1024,4 +1013,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 89ms, 2020/07/23 14:21:16 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 390ms, 2020/08/16 19:30:40 -->

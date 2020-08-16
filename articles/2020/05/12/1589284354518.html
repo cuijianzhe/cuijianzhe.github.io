@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Nginx的Vhost配置 - 邯城往事</title><meta name="description" content="我愿成为春季的花朵为你奉献美丽；我希望变成炎日下的树荫为你创造阴凉；我梦想成为秋天里的枫叶为你增添美景；我渴望成为寒冬里的棉袄为你带来温暖。"/><meta property="og:description" content="我愿成为春季的花朵为你奉献美丽；我希望变成炎日下的树荫为你创造阴凉；我梦想成为秋天里的枫叶为你增添美景；我渴望成为寒冬里的棉袄为你带来温暖。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Nginx的Vhost配置 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/05/12/1589284354518.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="Nginx的Vhost配置 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/05/12/1589284354518.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Nginx的Vhost配置 - 邯城往事</title><meta name="description" content="  我愿成为春季的花朵为你奉献美丽；我希望变成炎日下的树荫为你创造阴凉；我梦想成为秋天里的枫叶为你增添美景；我渴望成为寒冬里的棉袄为你带来温暖。"/><meta property="og:description" content="  我愿成为春季的花朵为你奉献美丽；我希望变成炎日下的树荫为你创造阴凉；我梦想成为秋天里的枫叶为你增添美景；我渴望成为寒冬里的棉袄为你带来温暖。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Nginx的Vhost配置 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/05/12/1589284354518.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="Nginx的Vhost配置 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/05/12/1589284354518.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/css/base.css?1597576982775"/>
             <link rel="prev" title="迁移wiki- Atlassian Confluence并升级" href="https://cuijianzhe.github.io/articles/2020/05/07/1588851186350.html">
             <link rel="next" title="Python生成指定长度随机数密码文件" href="https://cuijianzhe.github.io/articles/2020/05/14/1589459519906.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -84,7 +82,7 @@
         <div class="ft__fade item__meta">
                 Updated on
             <time>
-                May 16, 2020
+                Aug 12, 2020
             </time>
                 in <a href="https://cuijianzhe.github.io/category/linux">Linux系列</a>
             with <span data-uvstaturl="https://cuijianzhe.github.io/articles/2020/05/12/1589284354518.html">0</span> views
@@ -100,55 +98,44 @@
         </div>
         <div class="vditor-reset">
             <h1 id="vhost配置文件的作用">vhost 配置文件的作用</h1>
-<p>作用：vhost 配置文件的作用是为了将多个 server 配置文件的信息，单独存放，不过于集中在 nginx.conf 配置中，这样有用助于故障排除，如配置查看</p>
-<p><strong>通过访问服务端 nginx 代理的域名可将流量转发至配置的客户机，客户机将服务端转发过来的流量转发至本机的监听相应端口的服务。</strong></p>
+<p>  作用：vhost 配置文件的作用是为了将多个 server 配置文件的信息，单独存放，不过于集中在 nginx.conf 配置中，这样有用助于故障排除，如配置查看</p>
+<p>  <strong>通过访问服务端 nginx 代理的域名可将流量转发至配置的客户机，客户机将服务端转发过来的流量转发至本机的监听相应端口的服务。</strong></p>
 <h2 id="nginx代理服务端-"><strong>nginx 代理服务端：</strong></h2>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@vpc /usr/local/nginx/conf/vhosts<span class="highlight-o">]</span><span class="highlight-c1"># cat solo.cjzshilong.com.conf</span> 
-upstream wiki <span class="highlight-o">{</span>
-        server 172.16.16.51:80 <span class="highlight-nv">weight</span><span class="highlight-o">=</span>3<span class="highlight-p">;</span>  <span class="highlight-c1">#可转发到对应服务端口</span>
-
-<span class="highlight-o">}</span>
-server <span class="highlight-o">{</span>
-        listen 80<span class="highlight-p">;</span>
-        server_name    solo.cjzshilong.com<span class="highlight-p">;</span>
-        access_log    /alidata/logs/nginx/wiki_access.log moss<span class="highlight-p">;</span>
-        error_log     /alidata/logs/nginx/wiki_error.log error<span class="highlight-p">;</span>
-
-
+<pre><code class="language-bash highlight-chroma"><span class="highlight-c1">#网易云音乐API虚拟主机块配置</span>
+server<span class="highlight-o">{</span>
+    listen 80<span class="highlight-p">;</span>
+    server_name music163.cjzshilong.cn<span class="highlight-p">;</span>
     location / <span class="highlight-o">{</span>
-                proxy_pass http://wiki<span class="highlight-p">;</span>
-                proxy_http_version 1.1<span class="highlight-p">;</span>
-                proxy_set_header Upgrade <span class="highlight-nv">$http_upgrade</span><span class="highlight-p">;</span>
-                proxy_set_header Connection <span class="highlight-s1">'upgrade'</span><span class="highlight-p">;</span>
-                proxy_set_header Host <span class="highlight-nv">$host</span><span class="highlight-p">;</span>
-                proxy_cache_bypass <span class="highlight-nv">$http_upgrade</span><span class="highlight-p">;</span>
-  
-  
-        <span class="highlight-o">}</span>
-  
-    <span class="highlight-o">}</span>
-</code></pre>
-<h2 id="nginx代理客户端-"><del>nginx 代理客户端：</del></h2>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@iZ2ze3aacjtzo48qz12mrqZ vhosts<span class="highlight-o">]</span><span class="highlight-c1"># cat wiki.limikeji.com.conf</span> 
+            proxy_pass http://127.0.0.1:3001<span class="highlight-p">;</span>
+               <span class="highlight-o">}</span>
+<span class="highlight-o">}</span>
+
+<span class="highlight-c1"># HTTPS server</span>
+
 server <span class="highlight-o">{</span>
-            listen       80<span class="highlight-p">;</span>
-            server_name  solo.cjzshilong.com<span class="highlight-p">;</span>
-   
-   
-            access_log  /alidata/log/nginx/solo_access.log  moss<span class="highlight-p">;</span>
-            error_log   /alidata/log/nginx/solo_error.log   error<span class="highlight-p">;</span>
-   
-    location / <span class="highlight-o">{</span>  
-        try_files <span class="highlight-nv">$uri</span> @confluence<span class="highlight-p">;</span>  
-        proxy_set_header Upgrade <span class="highlight-nv">$http_upgrade</span><span class="highlight-p">;</span>
-        proxy_set_header Connection  <span class="highlight-s2">"upgrade"</span><span class="highlight-p">;</span>
-    <span class="highlight-o">}</span>  
-  
-            location @confluence <span class="highlight-o">{</span>  
-                internal<span class="highlight-p">;</span>
-                proxy_pass http://127.0.0.1:8090<span class="highlight-p">;</span>
-                    <span class="highlight-o">}</span>  
-   
+    listen       <span class="highlight-m">443</span> ssl<span class="highlight-p">;</span>
+    server_name  music163.cjzshilong.cn<span class="highlight-p">;</span>
+
+    ssl_certificate      /usr/local/nginx/conf/ssl/1_163.cjzshilong.cn_bundle.crt<span class="highlight-p">;</span>
+    ssl_certificate_key  /usr/local/nginx/conf/ssl/2_163.cjzshilong.cn.key<span class="highlight-p">;</span>
+
+    ssl_session_cache    shared:SSL:1m<span class="highlight-p">;</span>
+    ssl_session_timeout  5m<span class="highlight-p">;</span>
+
+    ssl_ciphers  ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE<span class="highlight-p">;</span>
+    ssl_prefer_server_ciphers  on<span class="highlight-p">;</span>
+
+    location /<span class="highlight-o">{</span>
+    proxy_set_header Host <span class="highlight-nv">$host</span><span class="highlight-p">;</span>
+    proxy_set_header Connection <span class="highlight-s2">"Keep-Alive"</span><span class="highlight-p">;</span>
+    proxy_set_header X-Real-IP <span class="highlight-nv">$remote_addr</span><span class="highlight-p">;</span>
+    proxy_set_header X-Forwarded-For <span class="highlight-nv">$proxy_add_x_forwarded_for</span><span class="highlight-p">;</span>
+    proxy_buffer_size 128k<span class="highlight-p">;</span>
+    proxy_buffers  <span class="highlight-m">32</span> 32k<span class="highlight-p">;</span>
+    proxy_busy_buffers_size 128k<span class="highlight-p">;</span>
+    proxy_pass    http://127.0.0.1:3001<span class="highlight-p">;</span>
+    <span class="highlight-o">}</span>
+
 <span class="highlight-o">}</span>
 </code></pre>
 <ul>
@@ -246,7 +233,15 @@ http <span class="highlight-o">{</span>
 <span class="highlight-o">}</span>
 </code></pre>
                 <div>
-                    <span class="name">搭讪 你就破功了，老弟！</span>
+                    <hr>
+
+标题：Nginx的Vhost配置<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2020/05/12/1589284354518.html" target="_blank">https://cuijianzhe.github.io/articles/2020/05/12/1589284354518.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<span class="name">搭讪 你就破功了，老弟！</span>
 <style>
 .name{   
     font-size:30px;
@@ -278,9 +273,6 @@ http <span class="highlight-o">{</span>
         </li>
         <li class="toc__h2">
             <a href="#nginx代理服务端-">nginx 代理服务端：</a>
-        </li>
-        <li class="toc__h2">
-            <a href="#nginx代理客户端-">nginx 代理客户端：</a>
         </li>
         <li class="toc__h2">
             <a href="#nginx配置-">nginx 配置：</a>
@@ -434,15 +426,15 @@ http <span class="highlight-o">{</span>
                 <div class="ft__fade">分类</div>
                 <br>
                     <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="31 文章"
+                       aria-label="32 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="11 文章"
+                       aria-label="15 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="48 文章"
+                       aria-label="49 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Linux系列</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/network"
@@ -457,7 +449,7 @@ http <span class="highlight-o">{</span>
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                127
+                140
                 文章
             </a>
            <br>
@@ -485,34 +477,17 @@ http <span class="highlight-o">{</span>
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '6b8a5a99786d472c0877',
-        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
 
         </div>
     </div>
 </footer>
 <script>
   var Label = {
-    speech: false,
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources",
     luteAvailable: true,
-    hljsStyle: 'rrt',
+    hljsStyle: 'monokai',
     langLabel: "zh_CN",
     version: "4.3.0",
     staticSite: true,
@@ -520,12 +495,12 @@ http <span class="highlight-o">{</span>
     articleId: "1589284354518",
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/common.min.js?1597576982775"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
 <div class="solo-kanbanniang">
     <div class="solo-kanbanniang__tip"></div>
     <canvas id="soloKanbanniang" width="280" height="250"></canvas>
@@ -557,7 +532,7 @@ http <span class="highlight-o">{</span>
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1595358040124', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/js/page.min.js?1597576982775', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1589284354518",
@@ -579,4 +554,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 68ms, 2020/07/23 14:21:13 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 379ms, 2020/08/16 19:30:24 -->

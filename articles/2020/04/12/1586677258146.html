@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Django应用容器化  - 邯城往事</title><meta name="description" content="遇到你的一生 便是奖赏"/><meta property="og:description" content="遇到你的一生 便是奖赏"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Django应用容器化  - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/04/12/1586677258146.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="Django应用容器化  - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/04/12/1586677258146.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Django应用容器化  - 邯城往事</title><meta name="description" content="  遇到你的一生 便是奖赏"/><meta property="og:description" content="  遇到你的一生 便是奖赏"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Django应用容器化  - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/04/12/1586677258146.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="Django应用容器化  - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/04/12/1586677258146.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/css/base.css?1597576982775"/>
             <link rel="prev" title="kubeadm搭建kubernets-1.16.2" href="https://cuijianzhe.github.io/articles/2020/04/10/1586510174363.html">
             <link rel="next" title="KUbernets实践之pod" href="https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -100,12 +98,12 @@
         </div>
         <div class="vditor-reset">
             <h1 id="Docker">Docker</h1>
-<p>三大核心要素：镜像(Image)、容器(Container)、仓库(Registry)</p>
-<p>（先整体看下流程，再逐个演示）</p>
+<p>  三大核心要素：镜像(Image)、容器(Container)、仓库(Registry)</p>
+<p>  （先整体看下流程，再逐个演示）</p>
 <h6 id="镜像-Image-">镜像（Image）</h6>
-<p>打包了业务代码及运行环境的包，是静态的文件，不能直接对外提供服务。</p>
+<p>  打包了业务代码及运行环境的包，是静态的文件，不能直接对外提供服务。</p>
 <h6 id="容器-Container-">容器（Container）</h6>
-<p>镜像的运行时，可以对外提供服务。本质上讲是利用 namespace 和 cgroup 等技术在宿主机中创建的独立的虚拟空间。</p>
+<p>  镜像的运行时，可以对外提供服务。本质上讲是利用 namespace 和 cgroup 等技术在宿主机中创建的独立的虚拟空间。</p>
 <h6 id="仓库-Registry-">仓库（Registry）</h6>
 <ul>
 <li>
@@ -172,7 +170,7 @@
 <code>$ docker run --cpuset-cpus="0-3" --cpu-shares=512 --memory=500m nginx:alpine</code></p>
 </li>
 </ul>
-<p><img src="https://img.hacpai.com/file/2020/04/run%E5%AE%B9%E5%99%A8%E6%B5%81%E7%A8%8B%E5%9B%BE-255f8732.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="run 容器流程图.jpg"></p>
+<p>  <img src="https://img.hacpai.com/file/2020/04/run%E5%AE%B9%E5%99%A8%E6%B5%81%E7%A8%8B%E5%9B%BE-255f8732.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="run 容器流程图.jpg"></p>
 <h3 id="容器数据持久化">容器数据持久化</h3>
 <ul>
 <li><strong>挂载主机目录</strong></li>
@@ -210,34 +208,34 @@ $ docker cp /tmp/test.txt nginx:/tmp
 $ docker exec -ti nginx cat /tmp/test.txt
 123
 </code></pre>
-<p>容器拷贝到主机<br>
+<p>  容器拷贝到主机<br>
 <code>$ docker cp nginx:/tmp/test.txt ./</code></p>
 <ul>
 <li><strong>查看容器日志</strong></li>
 </ul>
-<p>查看全部日志<br>
+<p>  查看全部日志<br>
 <code>$ docker logs nginx</code></p>
-<p>实时查看最新日志<br>
+<p>  实时查看最新日志<br>
 <code>$ docker logs -f nginx</code></p>
-<p>从最新的 100 条开始查看<br>
+<p>  从最新的 100 条开始查看<br>
 <code>$ docker logs --tail=100 -f nginx</code></p>
 <ul>
 <li><strong>停止或者删除容器</strong></li>
 </ul>
 <h2 id="停止运行中的容器">停止运行中的容器</h2>
-<p><code>$ docker stop nginx</code></p>
-<p>启动退出容器<br>
+<p>  <code>$ docker stop nginx</code></p>
+<p>  启动退出容器<br>
 <code>$ docker start nginx</code></p>
-<p>删除退出容器<br>
+<p>  删除退出容器<br>
 <code>$ docker rm nginx</code></p>
-<p>删除运行中的容器<br>
+<p>  删除运行中的容器<br>
 <code>$ docker rm -f nginx</code></p>
 <ul>
 <li><strong>查看容器或者镜像的明细</strong></li>
 </ul>
-<p>查看容器详细信息，包括容器 IP 地址等<br>
+<p>  查看容器详细信息，包括容器 IP 地址等<br>
 <code>$ docker inspect nginx</code></p>
-<p>查看镜像的明细信息<br>
+<p>  查看镜像的明细信息<br>
 <code>$ docker inspect nginx:alpine</code></p>
 <h1 id="Django应用容器化实践">Django 应用容器化实践</h1>
 <h6 id="django项目介绍">django 项目介绍</h6>
@@ -247,7 +245,7 @@ $ docker exec -ti nginx cat /tmp/test.txt
 <li>内部服务端口 8002</li>
 </ul>
 <h3 id="Dockerfile">Dockerfile</h3>
-<p>Dockerfile 是一堆指令，在 docker build 的时候，按照该指令进行操作，最终生成我们期望的镜像</p>
+<p>  Dockerfile 是一堆指令，在 docker build 的时候，按照该指令进行操作，最终生成我们期望的镜像</p>
 <ul>
 <li>FROM 指定基础镜像，必须为第一个命令</li>
 </ul>
@@ -348,7 +346,7 @@ $ docker exec -ti nginx cat /tmp/test.txt
 注意：
     EXPOSE并不会让容器的端口访问到主机。要使其可访问，需要在docker run运行容器时通过-p来发布这些端口，或通过-P参数来发布EXPOSE导出的所有端口
 </code></pre>
-<p><img src="https://img.hacpai.com/file/2020/04/Dockerfile%E8%A7%A3%E9%87%8A-948236a0.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="Dockerfile 解释.png"></p>
+<p>  <img src="https://img.hacpai.com/file/2020/04/Dockerfile%E8%A7%A3%E9%87%8A-948236a0.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="Dockerfile 解释.png"></p>
 <ul>
 <li>Dockerfile<br>
 <code>git clone https://gitee.com/agagin/python-demo.git</code><br>
@@ -419,7 +417,7 @@ COPY nginx-1.13.7.tar.gz  /opt
 RUN tar -zxf /opt/nginx-1.13.7.tar.gz -C /opt  &amp;&amp; cd /opt/nginx-1.13.7 &amp;&amp; ./configure --prefix=/usr/local/nginx &amp;&amp; make &amp;&amp; make install &amp;&amp; ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx
 
 </code></pre>
-<p><strong>构建基础镜像</strong></p>
+<p>  <strong>构建基础镜像</strong></p>
 <pre><code class="highlight-chroma">[root@k8s-master python-demo]# docker build . -t centos-python3-nginx:v1 -f Dockerfile-base
 [root@k8s-master python-demo]# docker tag centos-python3-nginx:v1 10.200.51.36:5000/base/centos-python3-nginx:v1
 [root@k8s-master python-demo]# docker push 10.200.51.36:5000/base/centos-python3-nginx:v1
@@ -455,19 +453,19 @@ EXPOSE 8002
 CMD ["./run.sh"]
 
 </code></pre>
-<p>构建镜像<br>
+<p>  构建镜像<br>
 <code>docker build . -t myblog -f Dockerfile-optimized</code></p>
 <h4 id="运行mysql">运行 MySQL</h4>
-<p><code>docker run -d -p 3306:3306 --name mysql  -v /opt/mysql/mysql-data/:/var/lib/mysql -e MYSQL_DATABASE=myblog -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7</code></p>
-<p>查看数据库</p>
+<p>  <code>docker run -d -p 3306:3306 --name mysql  -v /opt/mysql/mysql-data/:/var/lib/mysql -e MYSQL_DATABASE=myblog -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7</code></p>
+<p>  查看数据库</p>
 <pre><code class="highlight-chroma">$ docker exec -ti mysql bash
 #/ mysql -uroot -p123456
 #/ show databases;
 </code></pre>
 <h3 id="启动Django应用">启动 Django 应用</h3>
 <h4 id="启动容器">启动容器</h4>
-<p><code>docker run -d -p 8002:8002 --name myblog -e MYSQL_HOST=10.200.51.36 -e MYSQL_USER=root -e MYSQL_PASSWD=123456  myblog</code></p>
-<p><strong>查看应用运行状态</strong></p>
+<p>  <code>docker run -d -p 8002:8002 --name myblog -e MYSQL_HOST=10.200.51.36 -e MYSQL_USER=root -e MYSQL_PASSWD=123456  myblog</code></p>
+<p>  <strong>查看应用运行状态</strong></p>
 <pre><code class="highlight-chroma">[root@k8s-master python-demo]# docker exec -it myblog bash
 [root@3087587eb981 myblog]# ps -aux 
 USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
@@ -486,9 +484,9 @@ root         32  0.0  0.0  53312  1864 pts/0    R+   10:50   0:00 ps -aux
 #/ python3 manage.py migrate
 #/ python3 manage.py createsuperuser
 </code></pre>
-<p><strong>创建超级用户</strong><br>
+<p>  <strong>创建超级用户</strong><br>
 <code>docker exec -ti myblog python3 manage.py createsuperuser</code></p>
-<p><strong>收集静态文件</strong><br>
+<p>  <strong>收集静态文件</strong><br>
 <code>docker exec -ti myblog python3 manage.py collectstatic </code></p>
 <blockquote>
 <p>访问 10.200.51.36:8002/admin</p>
@@ -534,14 +532,14 @@ Successfully tagged mysql:5.7-utf8
 [root@k8s-master python-demo]# docker push 10.200.51.36:5000/mysql:5.7-utf8
 
 </code></pre>
-<p><strong>删除旧的 MySQL 容器，使用新镜像启动，不用再次初始化</strong></p>
+<p>  <strong>删除旧的 MySQL 容器，使用新镜像启动，不用再次初始化</strong></p>
 <pre><code class="highlight-chroma">[root@k8s-master python-demo]# docker rm -f mysql 
 mysql   
 [root@k8s-master python-demo]# rm -rf /opt/mysql/mysql-data/*
 [root@k8s-master python-demo]# docker run -d -p 3306:3306 --name mysql -v /opt/mysql/mysql-data/:/var/lib/mysql -e MYSQL_DATABASE=myblog -e MYSQL_ROOT_PASSWORD=123456 10.200.51.36:5000/mysql:5.7-utf8
 9b3af65a50c3a88858567bd190b6388c98016a79687ee92370a85b683b3c77ea
 </code></pre>
-<p>查看 MySQL 字符集</p>
+<p>  查看 MySQL 字符集</p>
 <pre><code class="highlight-chroma">[root@k8s-master mysql]# docker exec -it mysql bash
 root@d7440060e2a6:/# mysql -uroot -p123456
 mysql: [Warning] Using a password on the command line interface can be insecure.
@@ -573,20 +571,29 @@ mysql&gt; show variables like '%charac%';
 8 rows in set (0.01 sec)
 
 </code></pre>
-<p><strong>重新 migrate</strong></p>
+<p>  <strong>重新 migrate</strong></p>
 <pre><code class="highlight-chroma">$ docker exec -ti myblog bash
 #/ python3 manage.py makemigrations
 #/ python3 manage.py migrate
 #/ python3 manage.py createsuperuser
 </code></pre>
-<p>Docker 网络详见：<a href="https://www.cjzshilong.cn/articles/2019/03/27/1553657246955.html">https://www.cjzshilong.cn/articles/2019/03/27/1553657246955.html</a></p>
+<p>  Docker 网络详见：<a href="https://www.cjzshilong.cn/articles/2019/03/27/1553657246955.html">https://www.cjzshilong.cn/articles/2019/03/27/1553657246955.html</a></p>
                 <div>
-                    <pre><p style="font-size:15px"><font color="#008000">
+                    <hr>
+
+标题：Django应用容器化 <br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2020/04/12/1586677258146.html" target="_blank">https://cuijianzhe.github.io/articles/2020/04/12/1586677258146.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<pre><p style="font-size:15px"><font color="#008000">
 <b>到头来
 我们记住的
 不是敌人的攻击
 而是朋友的沉默
        ---马丁·路德·金</b></p><pre>
+
                 </div>
         </div>
     </div>
@@ -786,15 +793,15 @@ mysql&gt; show variables like '%charac%';
                 <div class="ft__fade">分类</div>
                 <br>
                     <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="31 文章"
+                       aria-label="32 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="11 文章"
+                       aria-label="15 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="48 文章"
+                       aria-label="49 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Linux系列</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/network"
@@ -809,7 +816,7 @@ mysql&gt; show variables like '%charac%';
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                127
+                140
                 文章
             </a>
            <br>
@@ -837,34 +844,17 @@ mysql&gt; show variables like '%charac%';
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '6b8a5a99786d472c0877',
-        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
 
         </div>
     </div>
 </footer>
 <script>
   var Label = {
-    speech: false,
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources",
     luteAvailable: true,
-    hljsStyle: 'rrt',
+    hljsStyle: 'monokai',
     langLabel: "zh_CN",
     version: "4.3.0",
     staticSite: true,
@@ -872,12 +862,12 @@ mysql&gt; show variables like '%charac%';
     articleId: "1586677258146",
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/common.min.js?1597576982775"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
 <div class="solo-kanbanniang">
     <div class="solo-kanbanniang__tip"></div>
     <canvas id="soloKanbanniang" width="280" height="250"></canvas>
@@ -909,7 +899,7 @@ mysql&gt; show variables like '%charac%';
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1595358040124', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/js/page.min.js?1597576982775', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1586677258146",
@@ -931,4 +921,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 77ms, 2020/07/23 14:21:13 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 425ms, 2020/08/16 19:30:25 -->

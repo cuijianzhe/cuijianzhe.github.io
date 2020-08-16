@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>修复nginx报错："upstream sent too big header while reading response header from upstream" - 邯城往事</title><meta name="description" content="要学会忍耐……"/><meta property="og:description" content="要学会忍耐……"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="修复nginx报错："upstream sent too big header while reading response header from upstream" - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/20/1571574453990.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="修复nginx报错："upstream sent too big header while reading response header from upstream" - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/20/1571574453990.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>修复nginx报错："upstream sent too big header while reading response header from upstream" - 邯城往事</title><meta name="description" content="   要学会忍耐……"/><meta property="og:description" content="   要学会忍耐……"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="修复nginx报错："upstream sent too big header while reading response header from upstream" - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/20/1571574453990.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="修复nginx报错："upstream sent too big header while reading response header from upstream" - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/20/1571574453990.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/css/base.css?1597576982775"/>
             <link rel="prev" title="openstack系列-dashboard部署" href="https://cuijianzhe.github.io/articles/2019/10/15/1571128802984.html">
             <link rel="next" title="kolla部署openstack（stein）部署---allinone" href="https://cuijianzhe.github.io/articles/2019/10/27/1572172031071.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -106,8 +104,8 @@
 2019/10/20 20:08:53 [notice] 8638#0: signal process started
 2019/10/20 20:09:11 [error] 8659#0: *2 upstream sent too big header while reading response header from upstream, client: 111.194.50.93, server: cjzshilong.cn, request: "GET /articles/2019/10/15/1571128802984.html?pjax=true HTTP/1.1", upstream: "http://127.0.0.1:8080/articles/2019/10/15/1571128802984.html?pjax=true", host: "www.cjzshilong.cn", referrer: "https://www.cjzshilong.cn/?utm_source=hacpai.com"
 </code></pre>
-<p><img src="https://img.hacpai.com/file/2019/10/image-7f8b6b0a.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>通过参考各种网上资料，综合解决方法：<br>
+<p>  <img src="https://img.hacpai.com/file/2019/10/image-7f8b6b0a.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p>  通过参考各种网上资料，综合解决方法：<br>
 HTTP 和 HTTPS 下的配置，增加</p>
 <ul>
 <li>解决 upstream sent too big header while reading response header from upstream</li>
@@ -116,7 +114,7 @@ HTTP 和 HTTPS 下的配置，增加</p>
    proxy_buffers  32 32k;
    proxy_busy_buffers_size 128k;
 </code></pre>
-<p>完整配置</p>
+<p>  完整配置</p>
 <pre><code class="highlight-chroma">location / {
    proxy_pass http://backend$request_uri;
    proxy_set_header  Host $host:$server_port;
@@ -128,14 +126,23 @@ HTTP 和 HTTPS 下的配置，增加</p>
    proxy_busy_buffers_size 128k;
    }
 </code></pre>
-<p><strong>参考</strong><a href="https://www.jianshu.com/p/389f45d0e7a2" target="_blank">链接</a></p>
+<p>  <strong>参考</strong><a href="https://www.jianshu.com/p/389f45d0e7a2" target="_blank">链接</a></p>
                 <div>
-                    <pre><p style="font-size:15px"><font color="#008000">
+                    <hr>
+
+标题：修复nginx报错："upstream sent too big header while reading response header from upstream"<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2019/10/20/1571574453990.html" target="_blank">https://cuijianzhe.github.io/articles/2019/10/20/1571574453990.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<pre><p style="font-size:15px"><font color="#008000">
 <b>到头来
 我们记住的
 不是敌人的攻击
 而是朋友的沉默
        ---马丁·路德·金</b></p><pre>
+
                 </div>
         </div>
     </div>
@@ -289,15 +296,15 @@ HTTP 和 HTTPS 下的配置，增加</p>
                 <div class="ft__fade">分类</div>
                 <br>
                     <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="31 文章"
+                       aria-label="32 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="11 文章"
+                       aria-label="15 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="48 文章"
+                       aria-label="49 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Linux系列</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/network"
@@ -312,7 +319,7 @@ HTTP 和 HTTPS 下的配置，增加</p>
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                127
+                140
                 文章
             </a>
            <br>
@@ -340,34 +347,17 @@ HTTP 和 HTTPS 下的配置，增加</p>
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '6b8a5a99786d472c0877',
-        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
 
         </div>
     </div>
 </footer>
 <script>
   var Label = {
-    speech: false,
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources",
     luteAvailable: true,
-    hljsStyle: 'rrt',
+    hljsStyle: 'monokai',
     langLabel: "zh_CN",
     version: "4.3.0",
     staticSite: true,
@@ -375,12 +365,12 @@ HTTP 和 HTTPS 下的配置，增加</p>
     articleId: "1571574453990",
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/common.min.js?1597576982775"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
 <div class="solo-kanbanniang">
     <div class="solo-kanbanniang__tip"></div>
     <canvas id="soloKanbanniang" width="280" height="250"></canvas>
@@ -412,7 +402,7 @@ HTTP 和 HTTPS 下的配置，增加</p>
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1595358040124', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/js/page.min.js?1597576982775', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1571574453990",
@@ -434,4 +424,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 86ms, 2020/07/23 14:21:16 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 449ms, 2020/08/16 19:30:36 -->

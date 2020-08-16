@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>使用Session管理用户登录状态 - 邯城往事</title><meta name="description" content="今天腊月二 十八了，明天就贴花纸了呢~ 。。。今天腊月二十九了，今天就贴花纸了呢"/><meta property="og:description" content="今天腊月二 十八了，明天就贴花纸了呢~ 。。。今天腊月二十九了，今天就贴花纸了呢"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="使用Session管理用户登录状态 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/01/22/1579676321968.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="使用Session管理用户登录状态 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/01/22/1579676321968.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>使用Session管理用户登录状态 - 邯城往事</title><meta name="description" content="  今天腊月二 十八了，明天就贴花纸了呢~   。。。今天腊月二十九了，今天就贴花纸了呢"/><meta property="og:description" content="  今天腊月二 十八了，明天就贴花纸了呢~   。。。今天腊月二十九了，今天就贴花纸了呢"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="使用Session管理用户登录状态 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/01/22/1579676321968.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="使用Session管理用户登录状态 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/01/22/1579676321968.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/css/base.css?1597576982775"/>
             <link rel="prev" title="搭建使用Socks Server 5 服务器" href="https://cuijianzhe.github.io/articles/2020/01/02/1577948274548.html">
             <link rel="next" title="将SpringBoot项目发布到Docker" href="https://cuijianzhe.github.io/articles/2020/02/05/1580906900027.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -96,14 +94,14 @@
                 </a>
         </div>
         <div class="vditor-reset">
-            <p><img src="https://img.hacpai.com/bing/20171231.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
+            <p>  <img src="https://img.hacpai.com/bing/20171231.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
 <h3 id="session-是什么-">session 是什么？</h3>
-<p>session 是服务器与浏览器一次会话的电子凭证。<br>
+<p>  session 是服务器与浏览器一次会话的电子凭证。<br>
 session 可以被服务器端设置时长，比如超过 1 分钟就删除本次会话中的 session，所以用 session 来做登录验证</p>
 <h3 id="设计思路">设计思路</h3>
-<p>比如想要访问网站里的会员资源时，那么需要登录账号以后才可以访问的，没有登录的情况下会跳转到登录页面提醒登录。</p>
+<p>  比如想要访问网站里的会员资源时，那么需要登录账号以后才可以访问的，没有登录的情况下会跳转到登录页面提醒登录。</p>
 <h3 id="设计要点">设计要点</h3>
-<p>在 session 中存储密钥/口令，比如存储一个 code 的字符串 key，它的 value 对应的是一串字符串，后台服务器接收到一个请求是，如果这个 session 中携带 code，并且携带的 code 的值是能用的值的话，就可以放开请求访问资源，否则不能。</p>
+<p>  在 session 中存储密钥/口令，比如存储一个 code 的字符串 key，它的 value 对应的是一串字符串，后台服务器接收到一个请求是，如果这个 session 中携带 code，并且携带的 code 的值是能用的值的话，就可以放开请求访问资源，否则不能。</p>
 <h3 id="向-session-设值">向 session 设值</h3>
 <pre><code class="language-java highlight-chroma">    <span class="highlight-nd">@GetMapping</span><span class="highlight-o">(</span><span class="highlight-n">value</span> <span class="highlight-o">=</span> <span class="highlight-s">"/setSession"</span><span class="highlight-o">)</span>
     <span class="highlight-kd">public</span> <span class="highlight-n">String</span> <span class="highlight-nf">setSession</span><span class="highlight-o">(</span><span class="highlight-n">ServletRequest</span> <span class="highlight-n">req</span><span class="highlight-o">){</span>
@@ -369,15 +367,15 @@ session 可以被服务器端设置时长，比如超过 1 分钟就删除本次
                 <div class="ft__fade">分类</div>
                 <br>
                     <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="31 文章"
+                       aria-label="32 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="11 文章"
+                       aria-label="15 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="48 文章"
+                       aria-label="49 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Linux系列</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/network"
@@ -392,7 +390,7 @@ session 可以被服务器端设置时长，比如超过 1 分钟就删除本次
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                127
+                140
                 文章
             </a>
            <br>
@@ -420,34 +418,17 @@ session 可以被服务器端设置时长，比如超过 1 分钟就删除本次
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '6b8a5a99786d472c0877',
-        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
 
         </div>
     </div>
 </footer>
 <script>
   var Label = {
-    speech: false,
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources",
     luteAvailable: true,
-    hljsStyle: 'rrt',
+    hljsStyle: 'monokai',
     langLabel: "zh_CN",
     version: "4.3.0",
     staticSite: true,
@@ -455,12 +436,12 @@ session 可以被服务器端设置时长，比如超过 1 分钟就删除本次
     articleId: "1579676321968",
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/common.min.js?1597576982775"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
 <div class="solo-kanbanniang">
     <div class="solo-kanbanniang__tip"></div>
     <canvas id="soloKanbanniang" width="280" height="250"></canvas>
@@ -492,7 +473,7 @@ session 可以被服务器端设置时长，比如超过 1 分钟就删除本次
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1595358040124', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/js/page.min.js?1597576982775', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1579676321968",
@@ -514,4 +495,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 66ms, 2020/07/23 14:21:15 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 432ms, 2020/08/16 19:30:27 -->

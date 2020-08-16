@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>python爬虫实例 - 邯城往事</title><meta name="description" content="相爱，不一定甜言蜜语，但一定知心知意;不一定如胶似漆，但一定不离不弃;不一定形影不离，但一定心心相惜。爱上你，是我今生的唯一。"/><meta property="og:description" content="相爱，不一定甜言蜜语，但一定知心知意;不一定如胶似漆，但一定不离不弃;不一定形影不离，但一定心心相惜。爱上你，是我今生的唯一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="python爬虫实例 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/07/18/1563449508471.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="python爬虫实例 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/07/18/1563449508471.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>python爬虫实例 - 邯城往事</title><meta name="description" content="  相爱，不一定甜言蜜语，但一定知心知意;不一定如胶似漆，但一定不离不弃;不一定形影不离，但一定心心相惜。爱上你，是我今生的唯一。"/><meta property="og:description" content="  相爱，不一定甜言蜜语，但一定知心知意;不一定如胶似漆，但一定不离不弃;不一定形影不离，但一定心心相惜。爱上你，是我今生的唯一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="python爬虫实例 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/07/18/1563449508471.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="python爬虫实例 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/07/18/1563449508471.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/css/base.css?1597576982775"/>
             <link rel="prev" title="思考如何才能创业成功" href="https://cuijianzhe.github.io/articles/2019/06/21/1561087069892.html">
             <link rel="next" title="windows下实现黑客派自动签到" href="https://cuijianzhe.github.io/articles/2019/07/19/1563527162900.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -96,7 +94,7 @@
                 </a>
         </div>
         <div class="vditor-reset">
-            <p>****# 虽然没什么用，学习阶段，练手。</p>
+            <p>  ****# 虽然没什么用，学习阶段，练手。</p>
 <h1 id="一--爬取表情包">一、 爬取表情包</h1>
 <h4 id="1-爬取斗图啦-">1、爬取斗图啦：</h4>
 <pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">requests</span>
@@ -137,7 +135,7 @@
     <span class="highlight-n">doutu</span><span class="highlight-o">.</span><span class="highlight-n">Download_img</span><span class="highlight-p">()</span>
 
 </code></pre>
-<p>参考：<br>
+<p>  参考：<br>
 <a href="https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/#find-all" target="_blank">https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/#find-all</a></p>
 <h4 id="2--爬取发表情网站">2 、爬取发表情网站</h4>
 <pre><code class="language-python highlight-chroma"><span class="highlight-ch">#!/usr/bin/python</span>
@@ -209,7 +207,7 @@
     <span class="highlight-k">with</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-s1">'paihangbang.txt'</span><span class="highlight-p">,</span><span class="highlight-s1">'a'</span><span class="highlight-p">,</span><span class="highlight-n">encoding</span><span class="highlight-o">=</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span> <span class="highlight-k">as</span> <span class="highlight-n">f</span><span class="highlight-p">:</span>
         <span class="highlight-n">f</span><span class="highlight-o">.</span><span class="highlight-n">write</span><span class="highlight-p">(</span><span class="highlight-n">tup2</span><span class="highlight-p">)</span>
 </code></pre>
-<p><del>**效果如下：**</del><br>
+<p>  <del>**效果如下：**</del><br>
 <img src="https://img.hacpai.com/file/2019/08/image-42349359.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <h3 id="爬取豆瓣电影排行榜">爬取豆瓣电影排行榜</h3>
 <pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">requests</span>
@@ -279,7 +277,7 @@
     <span class="highlight-n">res</span>
     <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-n">res</span><span class="highlight-o">.</span><span class="highlight-n">text</span><span class="highlight-p">)</span>
 </code></pre>
-<p>歌曲名信息：<br>
+<p>  歌曲名信息：<br>
 <img src="https://img.hacpai.com/file/2019/08/image-beece578.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <ul>
 <li>第二步：</li>
@@ -300,7 +298,7 @@
     <span class="highlight-n">name</span> <span class="highlight-o">=</span> <span class="highlight-n">getSongName</span><span class="highlight-p">(</span><span class="highlight-mi">1377519494</span><span class="highlight-p">)</span>
     <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-n">name</span><span class="highlight-p">)</span>
 </code></pre>
-<p>获取歌曲名称：<br>
+<p>  获取歌曲名称：<br>
 <img src="https://img.hacpai.com/file/2019/08/image-48223be9.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <ul>
 <li>第三步下载单曲：</li>
@@ -317,7 +315,7 @@
     <span class="highlight-n">urllib</span><span class="highlight-o">.</span><span class="highlight-n">request</span><span class="highlight-o">.</span><span class="highlight-n">urlretrieve</span><span class="highlight-p">(</span><span class="highlight-n">down_url</span><span class="highlight-p">,</span><span class="highlight-n">SongName</span><span class="highlight-o">+</span><span class="highlight-s1">'.mp3'</span><span class="highlight-p">)</span>
 <span class="highlight-err">……</span>
 </code></pre>
-<p>下载成功：<br>
+<p>  下载成功：<br>
 <img src="https://img.hacpai.com/file/2019/08/image-b04e6f68.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <ul>
 <li>完整代码：</li>
@@ -423,12 +421,21 @@
 
 </code></pre>
                 <div>
-                    <pre><p style="font-size:15px"><font color="#008000">
+                    <hr>
+
+标题：python爬虫实例<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2019/07/18/1563449508471.html" target="_blank">https://cuijianzhe.github.io/articles/2019/07/18/1563449508471.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<pre><p style="font-size:15px"><font color="#008000">
 <b>到头来
 我们记住的
 不是敌人的攻击
 而是朋友的沉默
        ---马丁·路德·金</b></p><pre>
+
                 </div>
         </div>
     </div>
@@ -610,15 +617,15 @@
                 <div class="ft__fade">分类</div>
                 <br>
                     <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="31 文章"
+                       aria-label="32 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="11 文章"
+                       aria-label="15 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="48 文章"
+                       aria-label="49 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Linux系列</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/network"
@@ -633,7 +640,7 @@
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                127
+                140
                 文章
             </a>
            <br>
@@ -661,34 +668,17 @@
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '6b8a5a99786d472c0877',
-        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
 
         </div>
     </div>
 </footer>
 <script>
   var Label = {
-    speech: false,
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources",
     luteAvailable: true,
-    hljsStyle: 'rrt',
+    hljsStyle: 'monokai',
     langLabel: "zh_CN",
     version: "4.3.0",
     staticSite: true,
@@ -696,12 +686,12 @@
     articleId: "1563449508471",
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/common.min.js?1597576982775"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
 <div class="solo-kanbanniang">
     <div class="solo-kanbanniang__tip"></div>
     <canvas id="soloKanbanniang" width="280" height="250"></canvas>
@@ -733,7 +723,7 @@
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1595358040124', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/js/page.min.js?1597576982775', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1563449508471",
@@ -755,4 +745,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 69ms, 2020/07/23 14:21:18 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 428ms, 2020/08/16 19:30:43 -->

@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>docker容器命名和资源配额控制(2) - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="docker容器命名和资源配额控制(2) - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/27/1553650586883.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="docker容器命名和资源配额控制(2) - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/27/1553650586883.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>docker容器命名和资源配额控制(2) - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="docker容器命名和资源配额控制(2) - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/27/1553650586883.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="docker容器命名和资源配额控制(2) - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/27/1553650586883.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/css/base.css?1597576982775"/>
             <link rel="prev" title="搭建docker之路-初识（1）" href="https://cuijianzhe.github.io/articles/2019/03/26/1553571577540.html">
             <link rel="next" title="docker网络" href="https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -97,22 +95,22 @@
         </div>
         <div class="vditor-reset">
             <h1 id="一--docker容器命名和重命名">一、 docker 容器命名和重命名</h1>
-<p>docker 容器命名和重命名<br>
+<p>  docker 容器命名和重命名<br>
 容器命名语法：docker run -d --name 容器实例名 容器镜像名<br>
 要执行的命令容器重命名语法： docker rename 旧容器名 新容器名</p>
 <h2 id="1-1-运行一个名字为-docker1-的容器">1.1 运行一个名字为 docker1 的容器</h2>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker run -itd --name docker1 docker.io/centos:latest /bin/bash</span> 
+<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker run -itd --name docker1 docker.io/centos:latest /bin/bash </span>
 
 0104b83de8bbb95ceceb6178c776623be8dd0a9b456e4a4bca5663152d6d2709
-<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span># 
+<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># </span>
 <span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker ps</span>
 CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                NAMES
 0104b83de8bb        docker.io/centos:latest   <span class="highlight-s2">"/bin/bash"</span>              <span class="highlight-m">7</span> seconds ago       Up <span class="highlight-m">6</span> seconds                             docker1
 6a1fc818a972        docker.io/centos:httpd    <span class="highlight-s2">"/bin/sh -c /usr/l..."</span>   <span class="highlight-m">14</span> hours ago        Up <span class="highlight-m">14</span> hours         0.0.0.0:80-&gt;80/tcp   unruffled_yonath
-<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span># 
+<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># </span>
 </code></pre>
 <h2 id="1-2-将-docker1-容器重命名">1.2 将 docker1 容器重命名</h2>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker rename docker1 docker2</span> 
+<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker rename docker1 docker2 </span>
 
 <span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker ps</span>
 CONTAINER ID        IMAGE                     COMMAND                  CREATED              STATUS              PORTS                NAMES
@@ -121,43 +119,43 @@ CONTAINER ID        IMAGE                     COMMAND                  CREATED  
 </code></pre>
 <h1 id="二-创建docker容器实例指定主机名">二、创建 docker 容器实例指定主机名</h1>
 <h2 id="2-1创建-docker-容器实例时指定主机名">2.1 创建 docker 容器实例时指定主机名</h2>
-<p>语法：docker run  -it  --name  容器名 -h 指定主机名 镜像   /bin/bash</p>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker run  -it --name docker3 -h cuijianzhe centos bash</span> 
+<p>  语法：docker run  -it  --name  容器名 -h 指定主机名 镜像   /bin/bash</p>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker run  -it --name docker3 -h cuijianzhe centos bash </span>
 
-<span class="highlight-o">[</span>root@cuijianzhe /<span class="highlight-o">]</span><span class="highlight-c1"># hostname</span> 
+<span class="highlight-o">[</span>root@cuijianzhe /<span class="highlight-o">]</span><span class="highlight-c1"># hostname </span>
 cuijianzhe
-<span class="highlight-o">[</span>root@cuijianzhe /<span class="highlight-o">]</span># 
+<span class="highlight-o">[</span>root@cuijianzhe /<span class="highlight-o">]</span><span class="highlight-c1"># </span>
 </code></pre>
 <h2 id="2-2-让docker容器开机自启动">2.2 让 docker 容器开机自启动</h2>
-<p>语 法 ： docker run --restart=always  -itd   --name   容 器 名 镜 像  /bin/bash<br>
+<p>  语 法 ： docker run --restart=always  -itd   --name   容 器 名 镜 像  /bin/bash<br>
 参数：--restart=always   # 在容器退出时总是重启容器。</p>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker run --restart=always -itd --name test centos bash</span> 
+<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker run --restart=always -itd --name test centos bash </span>
 f2afaa28abc8ce569e5ba172ff48014f892bff653e14af0ea4b2554562daca0b
-<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span># 
-<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># systemctl restart docker</span> 
-<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker ps</span> 
+<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># </span>
+<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># systemctl restart docker </span>
+<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker ps </span>
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 f2afaa28abc8        centos              <span class="highlight-s2">"bash"</span>              <span class="highlight-m">37</span> seconds ago      Up <span class="highlight-m">6</span> seconds                            <span class="highlight-nb">test</span>
 </code></pre>
-<p>扩展：</p>
-<p>Docker 容器的重启策略如下：<br>
+<p>  扩展：</p>
+<p>  Docker 容器的重启策略如下：<br>
 no，默认策略，在容器退出时不重启容器<br>
 on-failure，在容器非正常退出时（退出状态非 0），才会重启容器<br>
 on-failure:3，在容器非正常退出时重启容器，最多重启 3 次<br>
 always，在容器退出时总是重启容器<br>
 unless-stopped，在容器退出时总是重启容器，但是不考虑在 Docker  守护迚程启动时就已经停止了的容器</p>
-<p>如果创建时未指定 --restart=always ，可通过 update 命令设置</p>
-<p>语法：docker update --restart=always 容器 ID 或名字</p>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker run -itd --name test111 centos bash</span> 
+<p>  如果创建时未指定 --restart=always ，可通过 update 命令设置</p>
+<p>  语法：docker update --restart=always 容器 ID 或名字</p>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker run -itd --name test111 centos bash </span>
 
 ec295f4752e2e008020d0ef19569b72f6e715ed9e3fbb619cb068115ecdb2e4e
-<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker update --restart=always test111</span> 
+<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker update --restart=always test111 </span>
 test111
-<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># systemctl stop docker</span> 
-<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># systemctl start  docker</span> 
+<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># systemctl stop docker </span>
+<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># systemctl start  docker </span>
 <span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker ps | grep 111</span>
 ec295f4752e2        centos              <span class="highlight-s2">"bash"</span>              About a minute ago   Up <span class="highlight-m">7</span> seconds                            test111
-<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker pa</span> 
+<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker pa </span>
 docker: <span class="highlight-s1">'pa'</span> is not a docker command.
 See <span class="highlight-s1">'docker --help'</span>
 <span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker ps</span>
@@ -165,14 +163,14 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 ec295f4752e2        centos              <span class="highlight-s2">"bash"</span>              About a minute ago   Up <span class="highlight-m">24</span> seconds                           test111
 f2afaa28abc8        centos              <span class="highlight-s2">"bash"</span>              <span class="highlight-m">7</span> minutes ago        Up <span class="highlight-m">24</span> seconds                           <span class="highlight-nb">test</span>
 </code></pre>
-<p>只设置了开机启动的实例会启动</p>
+<p>  只设置了开机启动的实例会启动</p>
 <h1 id="三-docker容器配额控制值CPU">三、docker 容器配额控制值 CPU</h1>
-<p>Docker 容器资源配额控制<br>
+<p>  Docker 容器资源配额控制<br>
 启劢 docker 容器时，指定 CPU，内存，硬盘性能等的硬件资源使用份额<br>
 Docker 通过 cgroup 来控制容器使用的资源配额，包括 CPU、内存、磁盘三大方面，基本覆盖了常见的资源配额和使用量控制。<br>
 cgroup 概述：<br>
 cgroup 是 Control Groups 的缩写，是 Linux 内核提供的一种可以限制、记录、隔离迚程组所使用的物理资源(如 CPU、memory、磁盘 IO 等等) 的机制，被 LXC、docker 等很多项目用于实现进程资源控制。cgroup 将任意进程进行分组化管理的 Linux 内核功能。cgroup 本身是提供将过程迚行分组化管理的功能和接口的基础结构，I/O 或内存的分配控制等具体的资源管理功能是通过这个功能来实现的。</p>
-<p>为什么要进行硬件配额？<br>
+<p>  为什么要进行硬件配额？<br>
 当多个容器运行时，防止某容器把所有的硬件都占用了。（比如一台被黑的容器，有可能把所有的资 源都占用）</p>
 <h2 id="3-1-给容器分配512权重的cpu使用份额">3.1 给容器分配 512 权重的 CPU 使用份额</h2>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker run --help | grep cpu-shares</span>
@@ -180,23 +178,32 @@ cgroup 是 Control Groups 的缩写，是 Linux 内核提供的一种可以限�
   -c, --cpu-shares int                        CPU shares <span class="highlight-o">(</span>relative weight<span class="highlight-o">)</span>
 <span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker run -it --cpu-shares 512 centos /bin/bash</span>
 
-<span class="highlight-o">[</span>root@301f8326465a /<span class="highlight-o">]</span><span class="highlight-c1"># cat /sys/fs/cgroup/cpu/cpu.shares</span> 
+<span class="highlight-o">[</span>root@301f8326465a /<span class="highlight-o">]</span><span class="highlight-c1"># cat /sys/fs/cgroup/cpu/cpu.shares </span>
 <span class="highlight-m">512</span>
 </code></pre>
-<p>CPU 配额参数：-c, --cpu-shares int    CPU shares (relative weight) 在创建容器时指定容器所使用的 CPU 份额值。cpu-shares 的值丌能保证可以获得 1 个 vcpu 戒者多少 GHz 的 CPU 资源，仅仅只是一个弹性的加权值。<br>
+<p>  CPU 配额参数：-c, --cpu-shares int    CPU shares (relative weight) 在创建容器时指定容器所使用的 CPU 份额值。cpu-shares 的值丌能保证可以获得 1 个 vcpu 戒者多少 GHz 的 CPU 资源，仅仅只是一个弹性的加权值。<br>
 默认每个 docker 容器的 CPU 份额值都是 1024，也手动修改份额值，超过 1024。单独一个容器的同时运行多个容器时，容器的 CPU 加权的效果才能体现出来。</p>
 <h1 id="3-2-CPU-core核心控制">3.2 CPU core 核心控制</h1>
-<p>参数：--cpuset 可以绑定 CPU<br>
+<p>  参数：--cpuset 可以绑定 CPU<br>
 对多核  CPU  的服务器，docker  还可以控制容器运行限定使用哪些  CPU  内核和内存节点，即使用<br>
 --cpuset-cpus 和--cpuset-mems 参数。对具有 NUMA 拓扑（具有多 CPU、多内存节点）的服务器尤其有用， 可以对需要高性能计算的容器迚行性能最优的配置。如果服务器只有一个内存节点，则<br>
 --cpuset-mems 的配置基本上不会有明显效果。</p>
                 <div>
-                    <pre><p style="font-size:15px"><font color="#008000">
+                    <hr>
+
+标题：docker容器命名和资源配额控制(2)<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2019/03/27/1553650586883.html" target="_blank">https://cuijianzhe.github.io/articles/2019/03/27/1553650586883.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<pre><p style="font-size:15px"><font color="#008000">
 <b>到头来
 我们记住的
 不是敌人的攻击
 而是朋友的沉默
        ---马丁·路德·金</b></p><pre>
+
                 </div>
         </div>
     </div>
@@ -378,15 +385,15 @@ cgroup 是 Control Groups 的缩写，是 Linux 内核提供的一种可以限�
                 <div class="ft__fade">分类</div>
                 <br>
                     <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="31 文章"
+                       aria-label="32 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="11 文章"
+                       aria-label="15 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="48 文章"
+                       aria-label="49 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Linux系列</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/network"
@@ -401,7 +408,7 @@ cgroup 是 Control Groups 的缩写，是 Linux 内核提供的一种可以限�
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                127
+                140
                 文章
             </a>
            <br>
@@ -429,34 +436,17 @@ cgroup 是 Control Groups 的缩写，是 Linux 内核提供的一种可以限�
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '6b8a5a99786d472c0877',
-        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
 
         </div>
     </div>
 </footer>
 <script>
   var Label = {
-    speech: false,
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources",
     luteAvailable: true,
-    hljsStyle: 'rrt',
+    hljsStyle: 'monokai',
     langLabel: "zh_CN",
     version: "4.3.0",
     staticSite: true,
@@ -464,12 +454,12 @@ cgroup 是 Control Groups 的缩写，是 Linux 内核提供的一种可以限�
     articleId: "1553650586883",
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/common.min.js?1597576982775"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
 <div class="solo-kanbanniang">
     <div class="solo-kanbanniang__tip"></div>
     <canvas id="soloKanbanniang" width="280" height="250"></canvas>
@@ -501,7 +491,7 @@ cgroup 是 Control Groups 的缩写，是 Linux 内核提供的一种可以限�
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1595358040124', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/js/page.min.js?1597576982775', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1553650586883",
@@ -523,4 +513,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 92ms, 2020/07/23 14:21:19 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 679ms, 2020/08/16 19:30:51 -->

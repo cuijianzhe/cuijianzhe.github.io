@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>通过 python 获取钉钉后台人员 - 邯城往事</title><meta name="description" content="每天一句“我爱你……”"/><meta property="og:description" content="每天一句“我爱你……”"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="通过 python 获取钉钉后台人员 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/09/20/1568981823765.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="通过 python 获取钉钉后台人员 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/09/20/1568981823765.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>通过 python 获取钉钉后台人员 - 邯城往事</title><meta name="description" content="   每天一句“我爱你……”"/><meta property="og:description" content="   每天一句“我爱你……”"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="通过 python 获取钉钉后台人员 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/09/20/1568981823765.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="通过 python 获取钉钉后台人员 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/09/20/1568981823765.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/css/base.css?1597576982775"/>
             <link rel="prev" title="web状态码检测监控提醒" href="https://cuijianzhe.github.io/articles/2019/09/07/1567826678848.html">
             <link rel="next" title="通过python读取excel表格内容url批量下载" href="https://cuijianzhe.github.io/articles/2019/10/08/1570505431741.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -84,7 +82,7 @@
         <div class="ft__fade item__meta">
                 Updated on
             <time>
-                Jan 21, 2020
+                Aug 13, 2020
             </time>
                 in <a href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
             with <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/09/20/1568981823765.html">0</span> views
@@ -99,7 +97,7 @@
                 </a>
         </div>
         <div class="vditor-reset">
-            <p>通过钉钉官方接口可定时同步得知企业离职人员便于认证管理同步，大大简便了人员账号的管理。</p>
+            <p>  通过钉钉官方接口可定时同步得知企业离职人员便于认证管理同步，大大简便了人员账号的管理。</p>
 <h2 id="请求带有参数的-API-接口">请求带有参数的 API 接口</h2>
 <blockquote>
 <p>注意请求接口白名单情况<br>
@@ -107,8 +105,8 @@
 创建应用：<br>
 <img src="https://img.hacpai.com/file/2019/09/image-3eda7516.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 </blockquote>
-<p><img src="https://img.hacpai.com/file/2019/09/image-3f538efa.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>代码示例：</p>
+<p>  <img src="https://img.hacpai.com/file/2019/09/image-3f538efa.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p>  代码示例：</p>
 <pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">requests</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">json</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">sys</span>
@@ -117,7 +115,7 @@
 <span class="highlight-n">corpSecret</span><span class="highlight-o">=</span><span class="highlight-s2">"13dc3517caa3da9bee5e7b6b2ead8938"</span>
 
 <span class="highlight-n">headers</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span><span class="highlight-s1">'Content-Type'</span><span class="highlight-p">:</span> <span class="highlight-s1">'application/json;charset=utf-8'</span><span class="highlight-p">}</span>
-<span class="highlight-n">api_url</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://oapi.dingtalk.com/gettoken?appkey=</span><span class="highlight-si">%s</span><span class="highlight-s2">≈psecret=</span><span class="highlight-si">%s</span><span class="highlight-s2">"</span><span class="highlight-o">%</span><span class="highlight-p">(</span><span class="highlight-n">corpId</span><span class="highlight-p">,</span><span class="highlight-n">corpSecret</span><span class="highlight-p">)</span>
+<span class="highlight-n">api_url</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://oapi.dingtalk.com/gettoken?appkey=</span><span class="highlight-si">%s</span><span class="highlight-s2">&amp;appsecret=</span><span class="highlight-si">%s</span><span class="highlight-s2">"</span><span class="highlight-o">%</span><span class="highlight-p">(</span><span class="highlight-n">corpId</span><span class="highlight-p">,</span><span class="highlight-n">corpSecret</span><span class="highlight-p">)</span>
 
 <span class="highlight-k">def</span> <span class="highlight-nf">get_token</span><span class="highlight-p">():</span>
     <span class="highlight-k">try</span><span class="highlight-p">:</span>
@@ -132,59 +130,6 @@
 <span class="highlight-k">if</span> <span class="highlight-vm">__name__</span> <span class="highlight-o">==</span> <span class="highlight-s2">"__main__"</span><span class="highlight-p">:</span>
     <span class="highlight-n">get_token</span><span class="highlight-p">()</span>
 </code></pre>
-<h2 id="数据不清洗-get-所有人员-">数据不清洗，get 所有人员：</h2>
-<p>代码：</p>
-<pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">requests</span>
-<span class="highlight-kn">import</span> <span class="highlight-nn">json</span>
-<span class="highlight-kn">import</span> <span class="highlight-nn">sys</span>
-<span class="highlight-kn">import</span> <span class="highlight-nn">os</span>
-<span class="highlight-c1"># import time</span>
-<span class="highlight-c1"># print(time.strftime('%Y-%m-%d %H:%m:%S'))</span>
-<span class="highlight-n">corpId</span><span class="highlight-o">=</span><span class="highlight-s2">"35c2365db2f1378bfd74f96b7c7a529f"</span>
-<span class="highlight-n">corpSecret</span><span class="highlight-o">=</span><span class="highlight-s2">"13dc3517caa3da9bee5e7b6b2ead8938"</span>
-
-<span class="highlight-n">headers</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span><span class="highlight-s1">'Content-Type'</span><span class="highlight-p">:</span> <span class="highlight-s1">'application/json;charset=utf-8'</span><span class="highlight-p">}</span>
-<span class="highlight-n">api_url</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://oapi.dingtalk.com/gettoken?appkey=</span><span class="highlight-si">%s</span><span class="highlight-s2">≈psecret=</span><span class="highlight-si">%s</span><span class="highlight-s2">"</span><span class="highlight-o">%</span><span class="highlight-p">(</span><span class="highlight-n">corpId</span><span class="highlight-p">,</span><span class="highlight-n">corpSecret</span><span class="highlight-p">)</span>
-
-<span class="highlight-k">def</span> <span class="highlight-nf">get_token</span><span class="highlight-p">():</span>
-    <span class="highlight-k">try</span><span class="highlight-p">:</span>
-        <span class="highlight-n">res</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">api_url</span><span class="highlight-p">,</span><span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-n">headers</span><span class="highlight-p">)</span>
-        <span class="highlight-k">if</span> <span class="highlight-n">res</span><span class="highlight-o">.</span><span class="highlight-n">status_code</span> <span class="highlight-o">==</span> <span class="highlight-mi">200</span><span class="highlight-p">:</span>
-            <span class="highlight-n">str_res</span> <span class="highlight-o">=</span> <span class="highlight-n">res</span><span class="highlight-o">.</span><span class="highlight-n">text</span>
-            <span class="highlight-n">token</span> <span class="highlight-o">=</span> <span class="highlight-p">(</span><span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-n">str_res</span><span class="highlight-p">))</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'access_token'</span><span class="highlight-p">)</span>
-            <span class="highlight-k">return</span> <span class="highlight-n">token</span>
-    <span class="highlight-k">except</span><span class="highlight-p">:</span>
-        <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-s1">'请求失败'</span><span class="highlight-p">)</span>
-
-<span class="highlight-k">def</span> <span class="highlight-nf">get_bumen</span><span class="highlight-p">(</span><span class="highlight-n">token</span><span class="highlight-p">):</span>
-    <span class="highlight-n">bumen_url</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://oapi.dingtalk.com/department/list?access_token=</span><span class="highlight-si">%s</span><span class="highlight-s2">&amp;id=1"</span><span class="highlight-o">%</span><span class="highlight-p">(</span><span class="highlight-n">token</span><span class="highlight-p">)</span>
-    <span class="highlight-n">res_bumen</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">bumen_url</span><span class="highlight-p">,</span><span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-n">headers</span><span class="highlight-p">)</span>
-    <span class="highlight-n">str_bumen</span> <span class="highlight-o">=</span> <span class="highlight-n">res_bumen</span><span class="highlight-o">.</span><span class="highlight-n">text</span>
-    <span class="highlight-n">json_bumen</span> <span class="highlight-o">=</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-n">str_bumen</span><span class="highlight-p">)</span>
-    <span class="highlight-n">res</span> <span class="highlight-o">=</span> <span class="highlight-n">json_bumen</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'department'</span><span class="highlight-p">)</span>
-    <span class="highlight-n">bname_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
-    <span class="highlight-n">bid_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
-    <span class="highlight-k">for</span> <span class="highlight-n">i</span> <span class="highlight-ow">in</span> <span class="highlight-n">res</span><span class="highlight-p">:</span>
-        <span class="highlight-n">bumen_name</span> <span class="highlight-o">=</span> <span class="highlight-n">i</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'name'</span><span class="highlight-p">)</span>
-        <span class="highlight-n">bname_list</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">bumen_name</span><span class="highlight-p">)</span>
-        <span class="highlight-n">bumen_id</span> <span class="highlight-o">=</span> <span class="highlight-n">i</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'id'</span><span class="highlight-p">)</span>
-        <span class="highlight-n">bid_list</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">bumen_id</span><span class="highlight-p">)</span>
-    <span class="highlight-n">bumen_res</span> <span class="highlight-o">=</span> <span class="highlight-nb">list</span><span class="highlight-p">(</span><span class="highlight-nb">zip</span><span class="highlight-p">(</span><span class="highlight-n">bname_list</span><span class="highlight-p">,</span><span class="highlight-n">bid_list</span><span class="highlight-p">))</span>
-    <span class="highlight-n">bumen_data</span> <span class="highlight-o">=</span> <span class="highlight-nb">dict</span><span class="highlight-p">(</span><span class="highlight-n">bumen_res</span><span class="highlight-p">)</span>
-<span class="highlight-c1">## get_member</span>
-    <span class="highlight-n">mname</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
-    <span class="highlight-n">mid</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
-    <span class="highlight-k">for</span> <span class="highlight-n">m</span> <span class="highlight-ow">in</span> <span class="highlight-n">bid_list</span><span class="highlight-p">:</span> <span class="highlight-c1">#循环部门id</span>
-        <span class="highlight-n">member_url</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://oapi.dingtalk.com/user/simplelist?access_token=</span><span class="highlight-si">%s</span><span class="highlight-s2">&amp;department_id=</span><span class="highlight-si">%s</span><span class="highlight-s2">"</span><span class="highlight-o">%</span><span class="highlight-p">(</span><span class="highlight-n">token</span><span class="highlight-p">,</span><span class="highlight-n">m</span><span class="highlight-p">)</span>
-        <span class="highlight-n">res_member</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">member_url</span><span class="highlight-p">,</span><span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-n">headers</span><span class="highlight-p">)</span>
-        <span class="highlight-k">with</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-s1">'./member_id.txt'</span><span class="highlight-p">,</span> <span class="highlight-s1">'a'</span><span class="highlight-p">,</span> <span class="highlight-n">encoding</span><span class="highlight-o">=</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span> <span class="highlight-k">as</span> <span class="highlight-n">f</span><span class="highlight-p">:</span>
-            <span class="highlight-n">f</span><span class="highlight-o">.</span><span class="highlight-n">write</span><span class="highlight-p">(</span><span class="highlight-n">res_member</span><span class="highlight-o">.</span><span class="highlight-n">text</span><span class="highlight-p">)</span>
-
-<span class="highlight-k">if</span> <span class="highlight-vm">__name__</span> <span class="highlight-o">==</span> <span class="highlight-s2">"__main__"</span><span class="highlight-p">:</span>
-    <span class="highlight-n">key</span> <span class="highlight-o">=</span> <span class="highlight-n">get_token</span><span class="highlight-p">()</span>
-    <span class="highlight-n">get_bumen</span><span class="highlight-p">(</span><span class="highlight-n">key</span><span class="highlight-p">)</span>
-
-</code></pre>
 <h2 id="人名转拼音模块-暂不添加">人名转拼音模块，暂不添加</h2>
 <pre><code class="language-python highlight-chroma"><span class="highlight-kn">import</span> <span class="highlight-nn">pypinyin</span>
 <span class="highlight-nb">str</span> <span class="highlight-o">=</span> <span class="highlight-s1">'崔建哲，中国，狸米，大傻，杨和苏'</span>
@@ -192,29 +137,23 @@
 <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-n">pinyin_name</span><span class="highlight-p">)</span>
 </code></pre>
 <h2 id="分别请求部门详情-部门成员详情-角色详情-进行数据清洗-并且同步人员信息发送邮件">分别请求<a href="https://ding-doc.dingtalk.com/doc#/serverapi2/dubakq" target="_blank">部门详情</a>、<a href="https://ding-doc.dingtalk.com/doc#/serverapi2/ege851" target="_blank">部门成员详情</a>、<a href="https://ding-doc.dingtalk.com/doc#/serverapi2/dnu5l1" target="_blank">角色详情</a>，进行数据清洗，并且同步人员信息发送邮件</h2>
-<p>代码示例：</p>
-<pre><code class="language-python highlight-chroma"><span class="highlight-ch">#!/usr/bin/python3</span>
-<span class="highlight-c1"># -*- coding: utf-8 -*-</span>
-<span class="highlight-c1">#   power by  cuijianzhe  #</span>
+<p>  代码示例：</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-ch">#!/bin/python3  env</span>
+<span class="highlight-c1">###################################################################</span>
+<span class="highlight-c1">#  This Script is used to sync global user from Dingding to Email #</span>
+<span class="highlight-c1">#  Date: 2019-9                                                   #</span>
+<span class="highlight-c1">#  Author: cuijianzhe                                             #</span>
+<span class="highlight-c1">#  Email: 598941324@qq.com                                        #</span>
+<span class="highlight-c1">###################################################################</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">requests</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">json</span>
-<span class="highlight-kn">import</span> <span class="highlight-nn">sys</span>
+<span class="highlight-kn">import</span> <span class="highlight-nn">pypinyin</span>
+<span class="highlight-kn">import</span> <span class="highlight-nn">time</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">os</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">xlsxwriter</span>
-
-<span class="highlight-c1">#with open('pwd','r',encoding='utf-8') as f:</span>
-<span class="highlight-c1">#    for k in f.readlines():</span>
-<span class="highlight-c1">#        key = k.replace('\n', '')</span>
-<span class="highlight-c1">#        key_list = key.split(',')</span>
-
-<span class="highlight-c1">#corpId=key_list[0]</span>
-<span class="highlight-c1">#corpSecret=key_list[1]</span>
-<span class="highlight-n">corpId</span><span class="highlight-o">=</span><span class="highlight-s2">"dingding"</span>
-<span class="highlight-n">corpSecret</span><span class="highlight-o">=</span><span class="highlight-s2">"dingding"</span>
-<span class="highlight-n">headers</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span><span class="highlight-s1">'Content-Type'</span><span class="highlight-p">:</span> <span class="highlight-s1">'application/json;charset=utf-8'</span><span class="highlight-p">}</span>
-<span class="highlight-n">api_url</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://oapi.dingtalk.com/gettoken?appkey=</span><span class="highlight-si">%s</span><span class="highlight-s2">&amp;appsecret=</span><span class="highlight-si">%s</span><span class="highlight-s2">"</span><span class="highlight-o">%</span><span class="highlight-p">(</span><span class="highlight-n">corpId</span><span class="highlight-p">,</span><span class="highlight-n">corpSecret</span><span class="highlight-p">)</span>
-
-<span class="highlight-n">workbook</span> <span class="highlight-o">=</span> <span class="highlight-n">xlsxwriter</span><span class="highlight-o">.</span><span class="highlight-n">Workbook</span><span class="highlight-p">(</span><span class="highlight-s1">'./user_list.xlsx'</span><span class="highlight-p">)</span> <span class="highlight-c1">#创建一个ExceL 文档</span>
+<span class="highlight-kn">from</span> <span class="highlight-nn">functools</span> <span class="highlight-kn">import</span> <span class="highlight-n">wraps</span>
+<span class="highlight-n">filePath</span> <span class="highlight-o">=</span> <span class="highlight-s1">'/scripts/limi/'</span>
+<span class="highlight-n">workbook</span> <span class="highlight-o">=</span> <span class="highlight-n">xlsxwriter</span><span class="highlight-o">.</span><span class="highlight-n">Workbook</span><span class="highlight-p">(</span><span class="highlight-n">filePath</span> <span class="highlight-o">+</span> <span class="highlight-s1">'user_list.xlsx'</span><span class="highlight-p">)</span> <span class="highlight-c1">#创建一个ExceL 文档</span>
 <span class="highlight-n">worksheet</span> <span class="highlight-o">=</span> <span class="highlight-n">workbook</span><span class="highlight-o">.</span><span class="highlight-n">add_worksheet</span><span class="highlight-p">()</span>  <span class="highlight-c1">#创建一个工作对象</span>
 <span class="highlight-n">worksheet</span><span class="highlight-o">.</span><span class="highlight-n">set_column</span><span class="highlight-p">(</span><span class="highlight-s1">'A:E'</span><span class="highlight-p">,</span><span class="highlight-mi">20</span><span class="highlight-p">)</span> <span class="highlight-c1">#设定第一列Adap E40像素</span>
 <span class="highlight-c1">#bold = workbook.add_format({'bold':True}) #加粗</span>
@@ -227,177 +166,149 @@
         <span class="highlight-s1">'text_wrap'</span><span class="highlight-p">:</span> <span class="highlight-bp">True</span><span class="highlight-p">,</span>  <span class="highlight-c1"># 是否自动换行</span>
     <span class="highlight-p">})</span>
 <span class="highlight-n">bold1</span> <span class="highlight-o">=</span> <span class="highlight-n">workbook</span><span class="highlight-o">.</span><span class="highlight-n">add_format</span><span class="highlight-p">({</span><span class="highlight-s1">'align'</span><span class="highlight-p">:</span> <span class="highlight-s1">'center'</span><span class="highlight-p">})</span>
-<span class="highlight-n">heading</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span><span class="highlight-s1">'姓名'</span><span class="highlight-p">,</span><span class="highlight-s1">'手机号'</span><span class="highlight-p">,</span><span class="highlight-s1">'工号'</span><span class="highlight-p">,</span><span class="highlight-s1">'职位'</span><span class="highlight-p">]</span>  <span class="highlight-c1">#设置表头</span>
+<span class="highlight-n">heading</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span><span class="highlight-s1">'姓名'</span><span class="highlight-p">,</span><span class="highlight-s1">'Userid'</span><span class="highlight-p">,</span><span class="highlight-s1">'手机号'</span><span class="highlight-p">,</span><span class="highlight-s1">'职位'</span><span class="highlight-p">]</span>  <span class="highlight-c1">#设置表头</span>
 <span class="highlight-n">worksheet</span><span class="highlight-o">.</span><span class="highlight-n">write_row</span><span class="highlight-p">(</span><span class="highlight-s1">'A1'</span><span class="highlight-p">,</span><span class="highlight-n">heading</span><span class="highlight-p">,</span><span class="highlight-n">bold</span><span class="highlight-p">)</span>
-
-<span class="highlight-k">def</span> <span class="highlight-nf">get_token</span><span class="highlight-p">():</span>
-    <span class="highlight-k">try</span><span class="highlight-p">:</span>
-        <span class="highlight-n">res</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">api_url</span><span class="highlight-p">,</span><span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-n">headers</span><span class="highlight-p">)</span>
-        <span class="highlight-k">if</span> <span class="highlight-n">res</span><span class="highlight-o">.</span><span class="highlight-n">status_code</span> <span class="highlight-o">==</span> <span class="highlight-mi">200</span><span class="highlight-p">:</span>
-            <span class="highlight-n">str_res</span> <span class="highlight-o">=</span> <span class="highlight-n">res</span><span class="highlight-o">.</span><span class="highlight-n">text</span>
-            <span class="highlight-n">token</span> <span class="highlight-o">=</span> <span class="highlight-p">(</span><span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-n">str_res</span><span class="highlight-p">))</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'access_token'</span><span class="highlight-p">)</span>
-            <span class="highlight-k">return</span> <span class="highlight-n">token</span>
-    <span class="highlight-k">except</span><span class="highlight-p">:</span>
-        <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-s1">'请求失败'</span><span class="highlight-p">)</span>
-
-<span class="highlight-k">def</span> <span class="highlight-nf">get_bumen</span><span class="highlight-p">(</span><span class="highlight-n">token</span><span class="highlight-p">):</span>
-
-    <span class="highlight-n">bumen_url</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://oapi.dingtalk.com/department/list?access_token=</span><span class="highlight-si">%s</span><span class="highlight-s2">&amp;id=1"</span><span class="highlight-o">%</span><span class="highlight-p">(</span><span class="highlight-n">token</span><span class="highlight-p">)</span>
-    <span class="highlight-n">res_bumen</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">bumen_url</span><span class="highlight-p">,</span><span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-n">headers</span><span class="highlight-p">)</span>
-    <span class="highlight-n">str_bumen</span> <span class="highlight-o">=</span> <span class="highlight-n">res_bumen</span><span class="highlight-o">.</span><span class="highlight-n">text</span>
-    <span class="highlight-n">json_bumen</span> <span class="highlight-o">=</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-n">str_bumen</span><span class="highlight-p">)</span>
-    <span class="highlight-n">code</span> <span class="highlight-o">=</span> <span class="highlight-n">json_bumen</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'errcode'</span><span class="highlight-p">)</span>
-    <span class="highlight-k">if</span> <span class="highlight-n">code</span> <span class="highlight-o">!=</span> <span class="highlight-mi">0</span><span class="highlight-p">:</span>
-        <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-s1">'接口返回错误，{}'</span><span class="highlight-o">.</span><span class="highlight-n">format</span><span class="highlight-p">(</span><span class="highlight-n">json_bumen</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'errmsg'</span><span class="highlight-p">)))</span>
-    <span class="highlight-n">res</span> <span class="highlight-o">=</span> <span class="highlight-n">json_bumen</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'department'</span><span class="highlight-p">)</span>
-    <span class="highlight-n">bname_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
-    <span class="highlight-n">bid_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
-    <span class="highlight-k">for</span> <span class="highlight-n">i</span> <span class="highlight-ow">in</span> <span class="highlight-n">res</span><span class="highlight-p">:</span>
-        <span class="highlight-n">bumen_name</span> <span class="highlight-o">=</span> <span class="highlight-n">i</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'name'</span><span class="highlight-p">)</span>
-        <span class="highlight-n">bname_list</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">bumen_name</span><span class="highlight-p">)</span>
-        <span class="highlight-n">bumen_id</span> <span class="highlight-o">=</span> <span class="highlight-n">i</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'id'</span><span class="highlight-p">)</span>
-        <span class="highlight-n">bid_list</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">bumen_id</span><span class="highlight-p">)</span>
-
+<span class="highlight-n">DING_URL</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://oapi.dingtalk.com"</span>
+<span class="highlight-n">depart_info</span> <span class="highlight-o">=</span> <span class="highlight-p">{}</span>
+<span class="highlight-n">_username</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
+<span class="highlight-n">_usermobile</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
+<span class="highlight-n">_userid</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
+<span class="highlight-n">_userposition</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
+<span class="highlight-k">def</span> <span class="highlight-nf">func_timer</span><span class="highlight-p">(</span><span class="highlight-n">function</span><span class="highlight-p">):</span>
     <span class="highlight-s1">'''
-</span><span class="highlight-s1">    bumen_res = list(zip(bname_list,bid_list)) #将部门名称和id打包成list
-</span><span class="highlight-s1">    bumen_data = dict(bumen_res)
-</span><span class="highlight-s1">    get_member 获取成员组信息
+</span><span class="highlight-s1">    用装饰器实现函数计时
+</span><span class="highlight-s1">    :param function: 需要计时的函数
+</span><span class="highlight-s1">    :return: None
 </span><span class="highlight-s1">    '''</span>
-    <span class="highlight-n">mname</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
-    <span class="highlight-n">mid</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
-    <span class="highlight-k">for</span> <span class="highlight-n">m</span> <span class="highlight-ow">in</span> <span class="highlight-n">bid_list</span><span class="highlight-p">:</span> <span class="highlight-c1">#循环部门id</span>
-        <span class="highlight-n">member_url</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://oapi.dingtalk.com/user/simplelist?access_token=</span><span class="highlight-si">%s</span><span class="highlight-s2">&amp;department_id=</span><span class="highlight-si">%s</span><span class="highlight-s2">"</span><span class="highlight-o">%</span><span class="highlight-p">(</span><span class="highlight-n">token</span><span class="highlight-p">,</span><span class="highlight-n">m</span><span class="highlight-p">)</span>
-        <span class="highlight-n">res_member</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">member_url</span><span class="highlight-p">,</span><span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-n">headers</span><span class="highlight-p">)</span>
-        <span class="highlight-c1"># with open('./member_id.txt', 'a', encoding='utf-8') as f:</span>
-        <span class="highlight-c1">#     f.write(res_member.text)</span>
-        <span class="highlight-n">json_member</span> <span class="highlight-o">=</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-n">res_member</span><span class="highlight-o">.</span><span class="highlight-n">text</span><span class="highlight-p">)</span>
-        <span class="highlight-n">list_member</span> <span class="highlight-o">=</span> <span class="highlight-n">json_member</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'userlist'</span><span class="highlight-p">)</span>  <span class="highlight-c1">#取userlist列表出来</span>
-        <span class="highlight-k">for</span> <span class="highlight-n">l</span> <span class="highlight-ow">in</span> <span class="highlight-n">list_member</span><span class="highlight-p">:</span>  <span class="highlight-c1">#循环遍历userlist，拎出id和name</span>
-            <span class="highlight-n">member_id</span> <span class="highlight-o">=</span> <span class="highlight-n">l</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'userid'</span><span class="highlight-p">)</span>
-            <span class="highlight-n">mid</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">member_id</span><span class="highlight-p">)</span>
-            <span class="highlight-n">member_name</span> <span class="highlight-o">=</span> <span class="highlight-n">l</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'name'</span><span class="highlight-p">)</span>
-            <span class="highlight-n">mname</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">member_name</span><span class="highlight-p">)</span>
-    <span class="highlight-n">member_res</span> <span class="highlight-o">=</span> <span class="highlight-nb">list</span><span class="highlight-p">(</span><span class="highlight-nb">zip</span><span class="highlight-p">(</span><span class="highlight-n">mname</span><span class="highlight-p">,</span><span class="highlight-n">mid</span><span class="highlight-p">))</span>
-    <span class="highlight-n">member_data</span> <span class="highlight-o">=</span> <span class="highlight-nb">dict</span><span class="highlight-p">(</span><span class="highlight-n">member_res</span><span class="highlight-p">)</span> <span class="highlight-c1">#得到所有部门的人员name和id</span>
-    <span class="highlight-s1">'''
-</span><span class="highlight-s1">    get成员详细信息
-</span><span class="highlight-s1">    '''</span>
-    <span class="highlight-n">user_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
-    <span class="highlight-n">name_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
-    <span class="highlight-n">post_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
-    <span class="highlight-n">userid_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
-    <span class="highlight-k">for</span> <span class="highlight-n">n</span> <span class="highlight-ow">in</span> <span class="highlight-n">member_data</span><span class="highlight-p">:</span>
-        <span class="highlight-n">minfo_url</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://oapi.dingtalk.com/user/get?access_token=</span><span class="highlight-si">%s</span><span class="highlight-s2">&amp;userid=</span><span class="highlight-si">%s</span><span class="highlight-s2">"</span><span class="highlight-o">%</span><span class="highlight-p">(</span><span class="highlight-n">token</span><span class="highlight-p">,</span><span class="highlight-n">member_data</span><span class="highlight-p">[</span><span class="highlight-n">n</span><span class="highlight-p">])</span>
-        <span class="highlight-n">res_minfo</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">minfo_url</span><span class="highlight-p">,</span><span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-n">headers</span><span class="highlight-p">)</span>
-        <span class="highlight-n">minfo_json</span> <span class="highlight-o">=</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-n">res_minfo</span><span class="highlight-o">.</span><span class="highlight-n">text</span><span class="highlight-p">)</span>
+    <span class="highlight-nd">@wraps</span><span class="highlight-p">(</span><span class="highlight-n">function</span><span class="highlight-p">)</span>
+    <span class="highlight-k">def</span> <span class="highlight-nf">function_timer</span><span class="highlight-p">(</span><span class="highlight-o">*</span><span class="highlight-n">args</span><span class="highlight-p">,</span> <span class="highlight-o">**</span><span class="highlight-n">kwargs</span><span class="highlight-p">):</span>
+        <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-s1">'[Function: 开始生成钉钉用户和所属部门]'</span><span class="highlight-p">)</span>
+        <span class="highlight-n">t0</span> <span class="highlight-o">=</span> <span class="highlight-n">time</span><span class="highlight-o">.</span><span class="highlight-n">time</span><span class="highlight-p">()</span>
+        <span class="highlight-n">result</span> <span class="highlight-o">=</span> <span class="highlight-n">function</span><span class="highlight-p">(</span><span class="highlight-o">*</span><span class="highlight-n">args</span><span class="highlight-p">,</span> <span class="highlight-o">**</span><span class="highlight-n">kwargs</span><span class="highlight-p">)</span>
+        <span class="highlight-n">t1</span> <span class="highlight-o">=</span> <span class="highlight-n">time</span><span class="highlight-o">.</span><span class="highlight-n">time</span><span class="highlight-p">()</span>
+        <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-s1">'[Function: 同步完成, 耗时: {time:.2f}s]'</span><span class="highlight-o">.</span><span class="highlight-n">format</span><span class="highlight-p">(</span><span class="highlight-n">time</span><span class="highlight-o">=</span><span class="highlight-n">t1</span> <span class="highlight-o">-</span> <span class="highlight-n">t0</span><span class="highlight-p">))</span>
+        <span class="highlight-k">return</span> <span class="highlight-n">result</span>
+    <span class="highlight-k">return</span> <span class="highlight-n">function_timer</span>
 
-        <span class="highlight-k">for</span> <span class="highlight-n">info</span> <span class="highlight-ow">in</span> <span class="highlight-n">minfo_json</span><span class="highlight-p">:</span>
-            <span class="highlight-k">if</span> <span class="highlight-n">info</span> <span class="highlight-o">==</span> <span class="highlight-s1">'mobile'</span><span class="highlight-p">:</span>
-                <span class="highlight-n">user_list</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">minfo_json</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">info</span><span class="highlight-p">))</span>
-            <span class="highlight-k">if</span> <span class="highlight-n">info</span> <span class="highlight-o">==</span> <span class="highlight-s1">'name'</span><span class="highlight-p">:</span>
-                <span class="highlight-n">name_list</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">minfo_json</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">info</span><span class="highlight-p">))</span>
-            <span class="highlight-k">if</span> <span class="highlight-n">info</span> <span class="highlight-o">==</span> <span class="highlight-s1">'position'</span><span class="highlight-p">:</span>
-                <span class="highlight-n">post_list</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">minfo_json</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">info</span><span class="highlight-p">))</span>
-            <span class="highlight-k">if</span> <span class="highlight-n">info</span> <span class="highlight-o">==</span> <span class="highlight-s1">'userid'</span><span class="highlight-p">:</span>
-                <span class="highlight-n">userid_list</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">minfo_json</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">info</span><span class="highlight-p">))</span>
-    <span class="highlight-n">data</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span>
-        <span class="highlight-n">name_list</span><span class="highlight-p">,</span>
-        <span class="highlight-n">user_list</span><span class="highlight-p">,</span>
-        <span class="highlight-n">userid_list</span><span class="highlight-p">,</span>
-        <span class="highlight-n">post_list</span><span class="highlight-p">,</span>
-    <span class="highlight-p">]</span>
+<span class="highlight-k">class</span> <span class="highlight-nc">dingUserSync</span><span class="highlight-p">():</span>
+    <span class="highlight-k">def</span> <span class="highlight-fm">__init__</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-c1"># 设置appkey和appsecret为隐藏属性</span>
+        <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">__DING_USER</span> <span class="highlight-o">=</span> <span class="highlight-s1">'dingding'</span>
+        <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">__DING_SECRET</span> <span class="highlight-o">=</span> <span class="highlight-s1">'dingsecret'</span>
+        <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">headers</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span><span class="highlight-s1">'Content-Type'</span><span class="highlight-p">:</span> <span class="highlight-s1">'application/json;charset=utf-8'</span><span class="highlight-p">}</span>
+        <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">token</span> <span class="highlight-o">=</span> <span class="highlight-s1">''</span>
+    <span class="highlight-k">def</span> <span class="highlight-nf">get_token</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-n">url</span> <span class="highlight-o">=</span> <span class="highlight-n">DING_URL</span> <span class="highlight-o">+</span> <span class="highlight-s1">'/gettoken'</span>
+        <span class="highlight-n">param_dict</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span>
+            <span class="highlight-s1">'appkey'</span><span class="highlight-p">:</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">__DING_USER</span><span class="highlight-p">,</span>
+            <span class="highlight-s1">'appsecret'</span><span class="highlight-p">:</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">__DING_SECRET</span><span class="highlight-p">,</span>
+        <span class="highlight-p">}</span>
 
-    <span class="highlight-n">worksheet</span><span class="highlight-o">.</span><span class="highlight-n">write_column</span><span class="highlight-p">(</span><span class="highlight-s1">'A2'</span><span class="highlight-p">,</span> <span class="highlight-n">data</span><span class="highlight-p">[</span><span class="highlight-mi">0</span><span class="highlight-p">],</span> <span class="highlight-n">bold1</span><span class="highlight-p">)</span>
-    <span class="highlight-n">worksheet</span><span class="highlight-o">.</span><span class="highlight-n">write_column</span><span class="highlight-p">(</span><span class="highlight-s1">'B2'</span><span class="highlight-p">,</span> <span class="highlight-n">data</span><span class="highlight-p">[</span><span class="highlight-mi">1</span><span class="highlight-p">],</span> <span class="highlight-n">bold1</span><span class="highlight-p">)</span>
-    <span class="highlight-n">worksheet</span><span class="highlight-o">.</span><span class="highlight-n">write_column</span><span class="highlight-p">(</span><span class="highlight-s1">'C2'</span><span class="highlight-p">,</span> <span class="highlight-n">data</span><span class="highlight-p">[</span><span class="highlight-mi">2</span><span class="highlight-p">],</span> <span class="highlight-n">bold1</span><span class="highlight-p">)</span>
-    <span class="highlight-n">worksheet</span><span class="highlight-o">.</span><span class="highlight-n">write_column</span><span class="highlight-p">(</span><span class="highlight-s1">'D2'</span><span class="highlight-p">,</span> <span class="highlight-n">data</span><span class="highlight-p">[</span><span class="highlight-mi">3</span><span class="highlight-p">],</span> <span class="highlight-n">bold1</span><span class="highlight-p">)</span>
+        <span class="highlight-n">ding_res</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">url</span><span class="highlight-p">,</span><span class="highlight-n">param_dict</span><span class="highlight-p">,</span><span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">headers</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">json</span><span class="highlight-p">()</span>
+        <span class="highlight-k">if</span> <span class="highlight-n">ding_res</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'errcode'</span><span class="highlight-p">)</span> <span class="highlight-o">==</span> <span class="highlight-mi">0</span><span class="highlight-p">:</span>
+            <span class="highlight-k">return</span> <span class="highlight-n">ding_res</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'access_token'</span><span class="highlight-p">)</span>
+        <span class="highlight-k">else</span><span class="highlight-p">:</span>
+            <span class="highlight-k">raise</span> <span class="highlight-n">ding_res</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'errmsg'</span><span class="highlight-p">)</span>
+    <span class="highlight-k">def</span> <span class="highlight-nf">get_depart_info</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-s1">'''
+</span><span class="highlight-s1">        获取部门全部信息
+</span><span class="highlight-s1">        例：{'createDeptGroup': True, 'name': '何层组', 'id': 381056019, 'autoAddUser': True, 'parentid': 127811237}
+</span><span class="highlight-s1">        :return:
+</span><span class="highlight-s1">        '''</span>
+        <span class="highlight-k">if</span> <span class="highlight-ow">not</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">token</span><span class="highlight-p">:</span>
+            <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">token</span> <span class="highlight-o">=</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">get_token</span><span class="highlight-p">()</span>
+        <span class="highlight-n">url</span> <span class="highlight-o">=</span> <span class="highlight-n">DING_URL</span> <span class="highlight-o">+</span> <span class="highlight-s1">'/department/list'</span>
+        <span class="highlight-n">ding_ret</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">url</span><span class="highlight-p">,</span> <span class="highlight-p">{</span><span class="highlight-s1">'access_token'</span><span class="highlight-p">:</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">token</span><span class="highlight-p">})</span><span class="highlight-o">.</span><span class="highlight-n">json</span><span class="highlight-p">()</span>
+        <span class="highlight-k">if</span> <span class="highlight-n">ding_ret</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'errcode'</span><span class="highlight-p">)</span> <span class="highlight-o">==</span> <span class="highlight-mi">0</span><span class="highlight-p">:</span>
+            <span class="highlight-k">return</span> <span class="highlight-n">ding_ret</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'department'</span><span class="highlight-p">)</span>
+        <span class="highlight-k">else</span><span class="highlight-p">:</span>
+            <span class="highlight-k">raise</span> <span class="highlight-s1">'错误信息为：</span><span class="highlight-si">%s</span><span class="highlight-s1">，尝试刷新token信息'</span> <span class="highlight-o">%</span> <span class="highlight-n">ding_ret</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'errmsg'</span><span class="highlight-p">)</span>
+    <span class="highlight-nd">@staticmethod</span>
+    <span class="highlight-k">def</span> <span class="highlight-nf">pinyin_transfer</span><span class="highlight-p">(</span><span class="highlight-n">name</span><span class="highlight-o">=</span><span class="highlight-bp">None</span><span class="highlight-p">):</span>
+        <span class="highlight-n">pinyin_name</span> <span class="highlight-o">=</span> <span class="highlight-s1">''</span><span class="highlight-o">.</span><span class="highlight-n">join</span><span class="highlight-p">(</span><span class="highlight-n">pypinyin</span><span class="highlight-o">.</span><span class="highlight-n">lazy_pinyin</span><span class="highlight-p">(</span><span class="highlight-n">name</span><span class="highlight-p">))</span>
+        <span class="highlight-k">return</span> <span class="highlight-n">pinyin_name</span>
+    <span class="highlight-k">def</span> <span class="highlight-nf">get_depart_user</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">,</span> <span class="highlight-n">depart_id</span><span class="highlight-p">):</span>
+        <span class="highlight-k">if</span> <span class="highlight-ow">not</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">token</span><span class="highlight-p">:</span>
+            <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">token</span> <span class="highlight-o">=</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">get_token</span><span class="highlight-p">()</span>
+        <span class="highlight-n">param_dict</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span>
+            <span class="highlight-s1">'access_token'</span><span class="highlight-p">:</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">token</span><span class="highlight-p">,</span>
+            <span class="highlight-s1">'department_id'</span><span class="highlight-p">:</span> <span class="highlight-n">depart_id</span>
+        <span class="highlight-p">}</span>
+        <span class="highlight-n">url</span> <span class="highlight-o">=</span> <span class="highlight-n">DING_URL</span> <span class="highlight-o">+</span> <span class="highlight-s1">'/user/simplelist'</span>
+        <span class="highlight-n">depart_user_res</span> <span class="highlight-o">=</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">url</span><span class="highlight-p">,</span> <span class="highlight-n">param_dict</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">text</span><span class="highlight-p">)</span>
+        <span class="highlight-k">if</span> <span class="highlight-n">depart_user_res</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'errcode'</span><span class="highlight-p">)</span> <span class="highlight-o">==</span> <span class="highlight-mi">0</span><span class="highlight-p">:</span>
+            <span class="highlight-c1">#返回值实例：[{'name': '宫琳', 'userid': '054940691023503691'}, {'name': '张浩', 'userid': '084637391724299533'}]</span>
+            <span class="highlight-k">return</span> <span class="highlight-n">depart_user_res</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'userlist'</span><span class="highlight-p">)</span>
+
+    <span class="highlight-k">def</span> <span class="highlight-nf">get_user_info</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-k">if</span> <span class="highlight-ow">not</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">token</span><span class="highlight-p">:</span>
+            <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">token</span> <span class="highlight-o">=</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">get_token</span><span class="highlight-p">()</span>
+        <span class="highlight-n">url</span> <span class="highlight-o">=</span> <span class="highlight-n">DING_URL</span> <span class="highlight-o">+</span> <span class="highlight-s1">'/user/get?'</span>
+        <span class="highlight-k">for</span> <span class="highlight-n">depart</span> <span class="highlight-ow">in</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">get_depart_info</span><span class="highlight-p">():</span>
+            <span class="highlight-n">depart_id</span><span class="highlight-p">,</span><span class="highlight-n">depart_name</span> <span class="highlight-o">=</span> <span class="highlight-n">depart</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'id'</span><span class="highlight-p">),</span><span class="highlight-n">depart</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'name'</span><span class="highlight-p">)</span>
+            <span class="highlight-n">depart_info</span><span class="highlight-p">[</span><span class="highlight-n">depart_name</span><span class="highlight-p">]</span> <span class="highlight-o">=</span> <span class="highlight-n">depart_id</span>
+
+        <span class="highlight-k">for</span> <span class="highlight-n">info</span> <span class="highlight-ow">in</span> <span class="highlight-n">depart_info</span><span class="highlight-p">:</span>
+            <span class="highlight-n">user_info</span> <span class="highlight-o">=</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">get_depart_user</span><span class="highlight-p">(</span><span class="highlight-n">depart_info</span><span class="highlight-p">[</span><span class="highlight-n">info</span><span class="highlight-p">])</span>
+            <span class="highlight-k">for</span> <span class="highlight-n">user</span> <span class="highlight-ow">in</span> <span class="highlight-n">user_info</span><span class="highlight-p">:</span>
+                <span class="highlight-n">_username</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">user</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'name'</span><span class="highlight-p">))</span>
+                <span class="highlight-n">_userid</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">user</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'userid'</span><span class="highlight-p">))</span>
+
+        <span class="highlight-k">for</span> <span class="highlight-n">userid</span> <span class="highlight-ow">in</span> <span class="highlight-n">_userid</span><span class="highlight-p">:</span>
+            <span class="highlight-s1">'''
+</span><span class="highlight-s1">            将_name_list转换成str,保存到本地
+</span><span class="highlight-s1">            '''</span>
+            <span class="highlight-n">param_dict</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span>
+                <span class="highlight-s1">'access_token'</span><span class="highlight-p">:</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">token</span><span class="highlight-p">,</span>
+                <span class="highlight-s1">'userid'</span><span class="highlight-p">:</span> <span class="highlight-n">userid</span>
+            <span class="highlight-p">}</span>
+            <span class="highlight-n">userinfo_res</span> <span class="highlight-o">=</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">url</span><span class="highlight-p">,</span> <span class="highlight-n">param_dict</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">text</span><span class="highlight-p">)</span>
+            <span class="highlight-n">_userposition</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">userinfo_res</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'position'</span><span class="highlight-p">))</span>
+            <span class="highlight-n">_usermobile</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">userinfo_res</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'mobile'</span><span class="highlight-p">))</span>
+
+<span class="highlight-k">def</span> <span class="highlight-nf">getNameInfo</span><span class="highlight-p">():</span>
+    <span class="highlight-n">dingUserSync</span><span class="highlight-p">()</span><span class="highlight-o">.</span><span class="highlight-n">get_user_info</span><span class="highlight-p">()</span>
+    <span class="highlight-n">worksheet</span><span class="highlight-o">.</span><span class="highlight-n">write_column</span><span class="highlight-p">(</span><span class="highlight-s1">'A2'</span><span class="highlight-p">,</span> <span class="highlight-n">_username</span><span class="highlight-p">,</span> <span class="highlight-n">bold1</span><span class="highlight-p">)</span>
+    <span class="highlight-n">worksheet</span><span class="highlight-o">.</span><span class="highlight-n">write_column</span><span class="highlight-p">(</span><span class="highlight-s1">'B2'</span><span class="highlight-p">,</span> <span class="highlight-n">_userid</span><span class="highlight-p">,</span> <span class="highlight-n">bold1</span><span class="highlight-p">)</span>
+    <span class="highlight-n">worksheet</span><span class="highlight-o">.</span><span class="highlight-n">write_column</span><span class="highlight-p">(</span><span class="highlight-s1">'C2'</span><span class="highlight-p">,</span> <span class="highlight-n">_usermobile</span><span class="highlight-p">,</span> <span class="highlight-n">bold1</span><span class="highlight-p">)</span>
+    <span class="highlight-n">worksheet</span><span class="highlight-o">.</span><span class="highlight-n">write_column</span><span class="highlight-p">(</span><span class="highlight-s1">'D2'</span><span class="highlight-p">,</span> <span class="highlight-n">_userposition</span><span class="highlight-p">,</span> <span class="highlight-n">bold1</span><span class="highlight-p">)</span>
     <span class="highlight-n">workbook</span><span class="highlight-o">.</span><span class="highlight-n">close</span><span class="highlight-p">()</span>
-    <span class="highlight-c1"># user_data = str(list(zip(name_list,user_list,userid_list,post_list)))</span>
-    <span class="highlight-s1">'''
-</span><span class="highlight-s1">    user_data = json.dumps(user_zip)
-</span><span class="highlight-s1">     此文件方式本地保存不能中文编码
-</span><span class="highlight-s1">    '''</span>
-    <span class="highlight-c1"># with open('/scripts/limi/tongxunlu.txt','w',encoding='utf-8') as j:</span>
-    <span class="highlight-c1">#     j.write(user_data)</span>
-
-    <span class="highlight-c1">#以下进行人员信息同步</span>
-    <span class="highlight-n">online</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
-    <span class="highlight-n">offline</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
-    <span class="highlight-n">list_files</span> <span class="highlight-o">=</span> <span class="highlight-n">os</span><span class="highlight-o">.</span><span class="highlight-n">listdir</span><span class="highlight-p">(</span><span class="highlight-s1">'./'</span><span class="highlight-p">)</span>
-    <span class="highlight-k">if</span> <span class="highlight-s2">"name_old.txt"</span> <span class="highlight-ow">in</span> <span class="highlight-n">list_files</span><span class="highlight-p">:</span>
-        <span class="highlight-s1">'''
-</span><span class="highlight-s1">        将文本中的内容转换成列表
-</span><span class="highlight-s1">        '''</span>
-        <span class="highlight-k">with</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-s1">'./name_old.txt'</span><span class="highlight-p">,</span> <span class="highlight-s1">'r'</span><span class="highlight-p">,</span><span class="highlight-n">encoding</span><span class="highlight-o">=</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span> <span class="highlight-k">as</span> <span class="highlight-n">d</span><span class="highlight-p">:</span>
-            <span class="highlight-n">s</span> <span class="highlight-o">=</span> <span class="highlight-n">d</span><span class="highlight-o">.</span><span class="highlight-n">read</span><span class="highlight-p">()</span>
-            <span class="highlight-n">h</span> <span class="highlight-o">=</span> <span class="highlight-n">s</span><span class="highlight-o">.</span><span class="highlight-n">split</span><span class="highlight-p">(</span><span class="highlight-s1">','</span><span class="highlight-p">)</span>
-            <span class="highlight-k">for</span> <span class="highlight-n">b</span> <span class="highlight-ow">in</span> <span class="highlight-n">h</span><span class="highlight-p">:</span>
-                <span class="highlight-k">if</span> <span class="highlight-n">b</span> <span class="highlight-ow">in</span> <span class="highlight-n">name_list</span><span class="highlight-p">:</span>
-                    <span class="highlight-k">pass</span>
-                <span class="highlight-k">else</span><span class="highlight-p">:</span>
-                    <span class="highlight-n">offline</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">b</span><span class="highlight-p">)</span>
-            <span class="highlight-k">for</span> <span class="highlight-n">on</span> <span class="highlight-ow">in</span> <span class="highlight-n">name_list</span><span class="highlight-p">:</span>
-                <span class="highlight-k">if</span> <span class="highlight-n">on</span> <span class="highlight-ow">in</span> <span class="highlight-n">h</span><span class="highlight-p">:</span>
-                    <span class="highlight-k">pass</span>
-                <span class="highlight-k">else</span><span class="highlight-p">:</span>
-                    <span class="highlight-n">online</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">on</span><span class="highlight-p">)</span>
+    <span class="highlight-k">if</span> <span class="highlight-s2">"userOld"</span> <span class="highlight-ow">in</span> <span class="highlight-n">os</span><span class="highlight-o">.</span><span class="highlight-n">listdir</span><span class="highlight-p">(</span><span class="highlight-n">filePath</span><span class="highlight-p">):</span>
+        <span class="highlight-k">with</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-n">filePath</span> <span class="highlight-o">+</span> <span class="highlight-s1">'userOld'</span><span class="highlight-p">,</span><span class="highlight-s1">'r'</span><span class="highlight-p">,</span><span class="highlight-n">encoding</span><span class="highlight-o">=</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span> <span class="highlight-k">as</span> <span class="highlight-n">oldname</span><span class="highlight-p">:</span>
+            <span class="highlight-n">oldListName</span> <span class="highlight-o">=</span> <span class="highlight-n">oldname</span><span class="highlight-o">.</span><span class="highlight-n">read</span><span class="highlight-p">()</span><span class="highlight-o">.</span><span class="highlight-n">split</span><span class="highlight-p">(</span><span class="highlight-s1">','</span><span class="highlight-p">)[:</span><span class="highlight-o">-</span><span class="highlight-mi">1</span><span class="highlight-p">]</span>
+        <span class="highlight-n">addName</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span><span class="highlight-n">nameValue</span> <span class="highlight-k">for</span> <span class="highlight-n">nameValue</span> <span class="highlight-ow">in</span> <span class="highlight-n">_username</span> <span class="highlight-k">if</span> <span class="highlight-n">nameValue</span> <span class="highlight-ow">not</span> <span class="highlight-ow">in</span> <span class="highlight-n">oldListName</span><span class="highlight-p">]</span>  <span class="highlight-c1"># 入职人员</span>
+        <span class="highlight-n">leaveName</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span><span class="highlight-n">nameValue</span> <span class="highlight-k">for</span> <span class="highlight-n">nameValue</span> <span class="highlight-ow">in</span> <span class="highlight-n">oldListName</span> <span class="highlight-k">if</span> <span class="highlight-n">nameValue</span> <span class="highlight-ow">not</span> <span class="highlight-ow">in</span> <span class="highlight-n">_username</span><span class="highlight-p">]</span>  <span class="highlight-c1">#离职人员</span>
+        <span class="highlight-c1"># 更新本地人员信息</span>
+        <span class="highlight-k">with</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-n">filePath</span> <span class="highlight-o">+</span> <span class="highlight-s1">'userOld'</span><span class="highlight-p">,</span> <span class="highlight-s1">'w'</span><span class="highlight-p">,</span> <span class="highlight-n">encoding</span><span class="highlight-o">=</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span> <span class="highlight-k">as</span> <span class="highlight-n">new_name</span><span class="highlight-p">:</span>
+            <span class="highlight-k">for</span> <span class="highlight-n">newinfo</span> <span class="highlight-ow">in</span> <span class="highlight-n">_username</span><span class="highlight-p">:</span>
+                <span class="highlight-n">new_name</span><span class="highlight-o">.</span><span class="highlight-n">write</span><span class="highlight-p">(</span><span class="highlight-nb">str</span><span class="highlight-p">(</span><span class="highlight-n">newinfo</span> <span class="highlight-o">+</span> <span class="highlight-s1">','</span><span class="highlight-p">))</span>
+        <span class="highlight-k">return</span> <span class="highlight-n">addName</span><span class="highlight-p">,</span><span class="highlight-n">leaveName</span><span class="highlight-p">,</span><span class="highlight-n">oldListName</span>
     <span class="highlight-k">else</span><span class="highlight-p">:</span>
-        <span class="highlight-s1">'''
-</span><span class="highlight-s1">        将name_list转换成str,保存到本地
-</span><span class="highlight-s1">        '''</span>
-        <span class="highlight-k">with</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-s1">'./name_old.txt'</span><span class="highlight-p">,</span> <span class="highlight-s1">'w'</span><span class="highlight-p">,</span> <span class="highlight-n">encoding</span><span class="highlight-o">=</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span> <span class="highlight-k">as</span> <span class="highlight-n">m</span><span class="highlight-p">:</span>
-            <span class="highlight-k">for</span> <span class="highlight-n">name</span> <span class="highlight-ow">in</span> <span class="highlight-n">name_list</span><span class="highlight-p">:</span>
-                <span class="highlight-n">m</span><span class="highlight-o">.</span><span class="highlight-n">write</span><span class="highlight-p">(</span><span class="highlight-nb">str</span><span class="highlight-p">(</span><span class="highlight-n">name</span><span class="highlight-p">))</span>
-                <span class="highlight-n">m</span><span class="highlight-o">.</span><span class="highlight-n">write</span><span class="highlight-p">(</span><span class="highlight-s1">','</span><span class="highlight-p">)</span>
-       <span class="highlight-c1"># os.rename('name.txt','name_old.txt')</span>
-    <span class="highlight-k">with</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-s1">'./name_old.txt'</span><span class="highlight-p">,</span> <span class="highlight-s1">'r'</span><span class="highlight-p">,</span> <span class="highlight-n">encoding</span><span class="highlight-o">=</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span> <span class="highlight-k">as</span> <span class="highlight-n">o</span><span class="highlight-p">:</span>
-        <span class="highlight-n">s</span> <span class="highlight-o">=</span> <span class="highlight-n">o</span><span class="highlight-o">.</span><span class="highlight-n">read</span><span class="highlight-p">()</span>
-        <span class="highlight-n">old</span> <span class="highlight-o">=</span> <span class="highlight-n">s</span><span class="highlight-o">.</span><span class="highlight-n">split</span><span class="highlight-p">(</span><span class="highlight-s1">','</span><span class="highlight-p">)</span>
-    <span class="highlight-k">with</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-s1">'./offline.txt'</span><span class="highlight-p">,</span> <span class="highlight-s1">'w'</span><span class="highlight-p">,</span> <span class="highlight-n">encoding</span><span class="highlight-o">=</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span> <span class="highlight-k">as</span> <span class="highlight-n">z</span><span class="highlight-p">:</span>
-        <span class="highlight-k">for</span> <span class="highlight-n">name</span> <span class="highlight-ow">in</span> <span class="highlight-n">offline</span><span class="highlight-p">:</span>
-            <span class="highlight-n">z</span><span class="highlight-o">.</span><span class="highlight-n">write</span><span class="highlight-p">(</span><span class="highlight-nb">str</span><span class="highlight-p">(</span><span class="highlight-n">name</span><span class="highlight-p">))</span>
-            <span class="highlight-n">z</span><span class="highlight-o">.</span><span class="highlight-n">write</span><span class="highlight-p">(</span><span class="highlight-s1">','</span><span class="highlight-p">)</span>
-    <span class="highlight-k">with</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-s1">'./online.txt'</span><span class="highlight-p">,</span> <span class="highlight-s1">'w'</span><span class="highlight-p">,</span> <span class="highlight-n">encoding</span><span class="highlight-o">=</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span> <span class="highlight-k">as</span> <span class="highlight-n">q</span><span class="highlight-p">:</span>
-        <span class="highlight-k">for</span> <span class="highlight-n">name</span> <span class="highlight-ow">in</span> <span class="highlight-n">online</span><span class="highlight-p">:</span>
-            <span class="highlight-n">q</span><span class="highlight-o">.</span><span class="highlight-n">write</span><span class="highlight-p">(</span><span class="highlight-nb">str</span><span class="highlight-p">(</span><span class="highlight-n">name</span><span class="highlight-p">))</span>
-            <span class="highlight-n">q</span><span class="highlight-o">.</span><span class="highlight-n">write</span><span class="highlight-p">(</span><span class="highlight-s1">','</span><span class="highlight-p">)</span>
-    <span class="highlight-s1">'''
-</span><span class="highlight-s1">    更新old人员列表信息
-</span><span class="highlight-s1">    '''</span>
-    <span class="highlight-k">with</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-s1">'./name_old.txt'</span><span class="highlight-p">,</span> <span class="highlight-s1">'w'</span><span class="highlight-p">,</span> <span class="highlight-n">encoding</span><span class="highlight-o">=</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span> <span class="highlight-k">as</span> <span class="highlight-n">m</span><span class="highlight-p">:</span>
-        <span class="highlight-k">for</span> <span class="highlight-n">name</span> <span class="highlight-ow">in</span> <span class="highlight-n">name_list</span><span class="highlight-p">:</span>
-            <span class="highlight-n">m</span><span class="highlight-o">.</span><span class="highlight-n">write</span><span class="highlight-p">(</span><span class="highlight-nb">str</span><span class="highlight-p">(</span><span class="highlight-n">name</span><span class="highlight-p">))</span>
-            <span class="highlight-n">m</span><span class="highlight-o">.</span><span class="highlight-n">write</span><span class="highlight-p">(</span><span class="highlight-s1">','</span><span class="highlight-p">)</span>
+        <span class="highlight-k">with</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-n">filePath</span> <span class="highlight-o">+</span> <span class="highlight-s1">'userOld'</span><span class="highlight-p">,</span> <span class="highlight-s1">'w'</span><span class="highlight-p">,</span> <span class="highlight-n">encoding</span><span class="highlight-o">=</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span> <span class="highlight-k">as</span> <span class="highlight-n">new_name</span><span class="highlight-p">:</span>
+            <span class="highlight-k">for</span> <span class="highlight-n">newinfo</span> <span class="highlight-ow">in</span> <span class="highlight-n">_username</span><span class="highlight-p">:</span>
+                <span class="highlight-n">new_name</span><span class="highlight-o">.</span><span class="highlight-n">write</span><span class="highlight-p">(</span><span class="highlight-nb">str</span><span class="highlight-p">(</span><span class="highlight-n">newinfo</span> <span class="highlight-o">+</span> <span class="highlight-s1">','</span><span class="highlight-p">))</span>
 
-    <span class="highlight-s1">'''
-</span><span class="highlight-s1">    发送邮件模块
-</span><span class="highlight-s1">    '''</span>
+<span class="highlight-nd">@func_timer</span>
+<span class="highlight-k">def</span> <span class="highlight-nf">_email</span><span class="highlight-p">():</span>
     <span class="highlight-kn">import</span> <span class="highlight-nn">smtplib</span>
     <span class="highlight-kn">from</span> <span class="highlight-nn">email.mime.text</span> <span class="highlight-kn">import</span> <span class="highlight-n">MIMEText</span>
     <span class="highlight-kn">from</span> <span class="highlight-nn">email.utils</span> <span class="highlight-kn">import</span> <span class="highlight-n">formataddr</span>
     <span class="highlight-kn">from</span> <span class="highlight-nn">email.mime.multipart</span> <span class="highlight-kn">import</span> <span class="highlight-n">MIMEMultipart</span>
-    <span class="highlight-kn">import</span> <span class="highlight-nn">time</span>
     <span class="highlight-n">date</span> <span class="highlight-o">=</span> <span class="highlight-n">time</span><span class="highlight-o">.</span><span class="highlight-n">strftime</span><span class="highlight-p">(</span><span class="highlight-s1">'%Y-%m-</span><span class="highlight-si">%d</span><span class="highlight-s1">'</span><span class="highlight-p">,</span><span class="highlight-n">time</span><span class="highlight-o">.</span><span class="highlight-n">localtime</span><span class="highlight-p">())</span>
-    <span class="highlight-n">my_sender</span> <span class="highlight-o">=</span> <span class="highlight-s1">'jianzhecui@163.com'</span>
-    <span class="highlight-n">my_pass</span> <span class="highlight-o">=</span> <span class="highlight-s1">'cuijianzhe'</span>
-    <span class="highlight-n">my_user</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span><span class="highlight-s1">'598941324@qq.com'</span><span class="highlight-p">,</span><span class="highlight-s1">'111111111'</span><span class="highlight-p">]</span>
-    <span class="highlight-k">with</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-s1">'./offline.txt'</span><span class="highlight-p">,</span> <span class="highlight-s1">'r'</span><span class="highlight-p">,</span><span class="highlight-n">encoding</span><span class="highlight-o">=</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span> <span class="highlight-k">as</span> <span class="highlight-n">d</span><span class="highlight-p">:</span>
-        <span class="highlight-n">s</span> <span class="highlight-o">=</span> <span class="highlight-n">d</span><span class="highlight-o">.</span><span class="highlight-n">read</span><span class="highlight-p">()</span>
-        <span class="highlight-n">list_s</span> <span class="highlight-o">=</span> <span class="highlight-n">s</span><span class="highlight-o">.</span><span class="highlight-n">split</span><span class="highlight-p">(</span><span class="highlight-s1">','</span><span class="highlight-p">)</span>
-    <span class="highlight-k">with</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-s1">'./online.txt'</span><span class="highlight-p">,</span> <span class="highlight-s1">'r'</span><span class="highlight-p">,</span><span class="highlight-n">encoding</span><span class="highlight-o">=</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span> <span class="highlight-k">as</span> <span class="highlight-n">p</span><span class="highlight-p">:</span>
-        <span class="highlight-n">a</span> <span class="highlight-o">=</span> <span class="highlight-n">p</span><span class="highlight-o">.</span><span class="highlight-n">read</span><span class="highlight-p">()</span>
-        <span class="highlight-n">list_a</span> <span class="highlight-o">=</span> <span class="highlight-n">a</span><span class="highlight-o">.</span><span class="highlight-n">split</span><span class="highlight-p">(</span><span class="highlight-s1">','</span><span class="highlight-p">)</span>
-
+    <span class="highlight-n">my_sender</span> <span class="highlight-o">=</span> <span class="highlight-s1">'noreply@163.com'</span>
+    <span class="highlight-n">my_pass</span> <span class="highlight-o">=</span> <span class="highlight-s1">'mypassword'</span>
+    <span class="highlight-n">my_user</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span><span class="highlight-s1">'noreply@qq.com'</span><span class="highlight-p">,]</span>
+    <span class="highlight-n">UserList</span> <span class="highlight-o">=</span> <span class="highlight-n">getNameInfo</span><span class="highlight-p">()</span>
     <span class="highlight-n">body</span> <span class="highlight-o">=</span> <span class="highlight-s2">"""
-</span><span class="highlight-s2">    日期：</span><span class="highlight-si">%s</span><span class="highlight-s2">,昨日离职</span><span class="highlight-si">%s</span><span class="highlight-s2">人,名单:(</span><span class="highlight-si">%s</span><span class="highlight-s2">),入职</span><span class="highlight-si">%s</span><span class="highlight-s2">个,名单:(</span><span class="highlight-si">%s</span><span class="highlight-s2">),最近公司总人数</span><span class="highlight-si">%s</span><span class="highlight-s2">个,现在公司总人数</span><span class="highlight-si">%s</span><span class="highlight-s2">个.
-</span><span class="highlight-s2">    """</span><span class="highlight-o">%</span><span class="highlight-p">(</span><span class="highlight-n">date</span><span class="highlight-p">,</span><span class="highlight-nb">len</span><span class="highlight-p">(</span><span class="highlight-n">list_s</span><span class="highlight-p">[:</span><span class="highlight-o">-</span><span class="highlight-mi">2</span><span class="highlight-p">]),</span><span class="highlight-n">s</span><span class="highlight-o">.</span><span class="highlight-n">rstrip</span><span class="highlight-p">(</span><span class="highlight-s1">','</span><span class="highlight-p">),</span><span class="highlight-nb">len</span><span class="highlight-p">(</span><span class="highlight-n">list_a</span><span class="highlight-p">[:</span><span class="highlight-o">-</span><span class="highlight-mi">1</span><span class="highlight-p">]),</span><span class="highlight-n">a</span><span class="highlight-o">.</span><span class="highlight-n">rstrip</span><span class="highlight-p">(</span><span class="highlight-s1">','</span><span class="highlight-p">),</span><span class="highlight-nb">len</span><span class="highlight-p">(</span><span class="highlight-n">old</span><span class="highlight-p">[:</span><span class="highlight-o">-</span><span class="highlight-mi">1</span><span class="highlight-p">]),</span><span class="highlight-nb">len</span><span class="highlight-p">(</span><span class="highlight-n">name_list</span><span class="highlight-p">))</span>
+</span><span class="highlight-s2">    日期：</span><span class="highlight-si">%s</span><span class="highlight-s2">,昨日入职</span><span class="highlight-si">%s</span><span class="highlight-s2">人,名单:(</span><span class="highlight-si">%s</span><span class="highlight-s2">),离职</span><span class="highlight-si">%s</span><span class="highlight-s2">个,名单:(</span><span class="highlight-si">%s</span><span class="highlight-s2">),昨天公司总人数</span><span class="highlight-si">%s</span><span class="highlight-s2">个,现在公司总人数</span><span class="highlight-si">%s</span><span class="highlight-s2">个.
+</span><span class="highlight-s2">    """</span><span class="highlight-o">%</span><span class="highlight-p">(</span><span class="highlight-n">date</span><span class="highlight-p">,</span><span class="highlight-nb">len</span><span class="highlight-p">(</span><span class="highlight-n">UserList</span><span class="highlight-p">[</span><span class="highlight-mi">0</span><span class="highlight-p">]),</span><span class="highlight-s1">','</span><span class="highlight-o">.</span><span class="highlight-n">join</span><span class="highlight-p">(</span><span class="highlight-n">UserList</span><span class="highlight-p">[</span><span class="highlight-mi">0</span><span class="highlight-p">]),</span><span class="highlight-nb">len</span><span class="highlight-p">(</span><span class="highlight-n">UserList</span><span class="highlight-p">[</span><span class="highlight-mi">1</span><span class="highlight-p">]),</span><span class="highlight-s1">','</span><span class="highlight-o">.</span><span class="highlight-n">join</span><span class="highlight-p">(</span><span class="highlight-n">UserList</span><span class="highlight-p">[</span><span class="highlight-mi">1</span><span class="highlight-p">]),</span><span class="highlight-nb">len</span><span class="highlight-p">(</span><span class="highlight-n">UserList</span><span class="highlight-p">[</span><span class="highlight-mi">2</span><span class="highlight-p">]),</span><span class="highlight-nb">len</span><span class="highlight-p">(</span><span class="highlight-n">_username</span><span class="highlight-p">))</span>
     <span class="highlight-n">msg</span> <span class="highlight-o">=</span> <span class="highlight-n">MIMEMultipart</span><span class="highlight-p">()</span>   <span class="highlight-c1">#构造附件</span>
-    <span class="highlight-n">fujian</span> <span class="highlight-o">=</span> <span class="highlight-n">MIMEText</span><span class="highlight-p">(</span><span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-s1">'./user_list.xlsx'</span><span class="highlight-p">,</span><span class="highlight-s1">'rb'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">read</span><span class="highlight-p">(),</span><span class="highlight-s1">'base64'</span><span class="highlight-p">,</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span>
+    <span class="highlight-n">fujian</span> <span class="highlight-o">=</span> <span class="highlight-n">MIMEText</span><span class="highlight-p">(</span><span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-n">filePath</span> <span class="highlight-o">+</span> <span class="highlight-s1">'user_list.xlsx'</span><span class="highlight-p">,</span><span class="highlight-s1">'rb'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">read</span><span class="highlight-p">(),</span><span class="highlight-s1">'base64'</span><span class="highlight-p">,</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span>
     <span class="highlight-n">fujian</span><span class="highlight-p">[</span><span class="highlight-s1">'Content-Type'</span><span class="highlight-p">]</span> <span class="highlight-o">=</span> <span class="highlight-s1">'application/octet-stream'</span>
     <span class="highlight-n">fujian</span><span class="highlight-p">[</span><span class="highlight-s2">"Content-Disposition"</span><span class="highlight-p">]</span> <span class="highlight-o">=</span> <span class="highlight-s1">'attachment; filename="user_list.xlsx"'</span>
     <span class="highlight-n">msg</span><span class="highlight-o">.</span><span class="highlight-n">attach</span><span class="highlight-p">(</span><span class="highlight-n">MIMEText</span><span class="highlight-p">(</span><span class="highlight-n">body</span><span class="highlight-p">,</span> <span class="highlight-s1">'plain'</span><span class="highlight-p">,</span> <span class="highlight-s1">'utf-8'</span><span class="highlight-p">))</span>
     <span class="highlight-n">msg</span><span class="highlight-o">.</span><span class="highlight-n">attach</span><span class="highlight-p">(</span><span class="highlight-n">fujian</span><span class="highlight-p">)</span>
-    <span class="highlight-n">msg</span><span class="highlight-p">[</span><span class="highlight-s1">'From'</span><span class="highlight-p">]</span> <span class="highlight-o">=</span> <span class="highlight-n">formataddr</span><span class="highlight-p">([</span><span class="highlight-s2">"Cuijianzhe"</span><span class="highlight-p">,</span> <span class="highlight-n">my_sender</span><span class="highlight-p">])</span>
+    <span class="highlight-n">msg</span><span class="highlight-p">[</span><span class="highlight-s1">'From'</span><span class="highlight-p">]</span> <span class="highlight-o">=</span> <span class="highlight-n">formataddr</span><span class="highlight-p">([</span><span class="highlight-s2">"limiUserRsync"</span><span class="highlight-p">,</span> <span class="highlight-n">my_sender</span><span class="highlight-p">])</span>
     <span class="highlight-n">msg</span><span class="highlight-p">[</span><span class="highlight-s1">'To'</span><span class="highlight-p">]</span> <span class="highlight-o">=</span> <span class="highlight-s1">','</span><span class="highlight-o">.</span><span class="highlight-n">join</span><span class="highlight-p">(</span><span class="highlight-n">my_user</span><span class="highlight-p">)</span>
     <span class="highlight-n">msg</span><span class="highlight-p">[</span><span class="highlight-s1">'Subject'</span><span class="highlight-p">]</span> <span class="highlight-o">=</span> <span class="highlight-s1">'人员同步'</span>
     <span class="highlight-n">server</span> <span class="highlight-o">=</span> <span class="highlight-n">smtplib</span><span class="highlight-o">.</span><span class="highlight-n">SMTP_SSL</span><span class="highlight-p">(</span><span class="highlight-s2">"smtp.163.com"</span><span class="highlight-p">,</span> <span class="highlight-mi">465</span><span class="highlight-p">)</span>
@@ -406,20 +317,26 @@
     <span class="highlight-n">server</span><span class="highlight-o">.</span><span class="highlight-n">quit</span><span class="highlight-p">()</span>
 
 <span class="highlight-k">if</span> <span class="highlight-vm">__name__</span> <span class="highlight-o">==</span> <span class="highlight-s2">"__main__"</span><span class="highlight-p">:</span>
-    <span class="highlight-n">key</span> <span class="highlight-o">=</span> <span class="highlight-n">get_token</span><span class="highlight-p">()</span>
-    <span class="highlight-n">get_bumen</span><span class="highlight-p">(</span><span class="highlight-n">key</span><span class="highlight-p">)</span>
-
+    <span class="highlight-n">_email</span><span class="highlight-p">()</span>
 </code></pre>
-<p>同步一些工具可行可改可适配可认证……</p>
+<p>  同步一些工具可行可改可适配可认证……</p>
 <h3 id="查看邮件信息-附件构造为-Excel-或者-txt-文本文件--">查看邮件信息（附件构造为 Excel 或者 txt 文本文件）：</h3>
-<p><img src="https://img.hacpai.com/file/2019/09/image-5eef7ce6.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"><br>
+<p>  <img src="https://img.hacpai.com/file/2019/09/image-5eef7ce6.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"><br>
 <img src="https://img.hacpai.com/file/2019/09/image-cc4ebd8e.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"><br>
 <img src="https://img.hacpai.com/file/2019/10/image-233c8b11.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <ul>
 <li><strong>表格附件构造参考</strong> <a href="https://xlsxwriter.readthedocs.io/" target="_blank">xlsxwriter 模块</a></li>
 </ul>
                 <div>
-                    <span class="name">搭讪 你就破功了，老弟！</span>
+                    <hr>
+
+标题：通过 python 获取钉钉后台人员<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2019/09/20/1568981823765.html" target="_blank">https://cuijianzhe.github.io/articles/2019/09/20/1568981823765.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<span class="name">搭讪 你就破功了，老弟！</span>
 <style>
 .name{   
     font-size:30px;
@@ -448,9 +365,6 @@
 <ul class="article__toc">
         <li class="toc__h2">
             <a href="#请求带有参数的-API-接口">请求带有参数的 API 接口</a>
-        </li>
-        <li class="toc__h2">
-            <a href="#数据不清洗-get-所有人员-">数据不清洗，get 所有人员：</a>
         </li>
         <li class="toc__h2">
             <a href="#人名转拼音模块-暂不添加">人名转拼音模块，暂不添加</a>
@@ -610,15 +524,15 @@
                 <div class="ft__fade">分类</div>
                 <br>
                     <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="31 文章"
+                       aria-label="32 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="11 文章"
+                       aria-label="15 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="48 文章"
+                       aria-label="49 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Linux系列</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/network"
@@ -633,7 +547,7 @@
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                127
+                140
                 文章
             </a>
            <br>
@@ -661,34 +575,17 @@
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '6b8a5a99786d472c0877',
-        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
 
         </div>
     </div>
 </footer>
 <script>
   var Label = {
-    speech: false,
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources",
     luteAvailable: true,
-    hljsStyle: 'rrt',
+    hljsStyle: 'monokai',
     langLabel: "zh_CN",
     version: "4.3.0",
     staticSite: true,
@@ -696,12 +593,12 @@
     articleId: "1568981823765",
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/common.min.js?1597576982775"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
 <div class="solo-kanbanniang">
     <div class="solo-kanbanniang__tip"></div>
     <canvas id="soloKanbanniang" width="280" height="250"></canvas>
@@ -733,7 +630,7 @@
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1595358040124', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/js/page.min.js?1597576982775', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1568981823765",
@@ -755,4 +652,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 111ms, 2020/07/23 14:21:17 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 406ms, 2020/08/16 19:30:39 -->

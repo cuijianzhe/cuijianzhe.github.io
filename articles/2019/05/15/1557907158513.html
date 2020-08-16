@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>windows系统ping加上时间戳并且cmd隐藏运行实现方法 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="windows系统ping加上时间戳并且cmd隐藏运行实现方法 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/05/15/1557907158513.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="windows系统ping加上时间戳并且cmd隐藏运行实现方法 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/05/15/1557907158513.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>windows系统ping加上时间戳并且cmd隐藏运行实现方法 - 邯城往事</title><meta name="description" content="  "/><meta property="og:description" content="  "/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="windows系统ping加上时间戳并且cmd隐藏运行实现方法 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/05/15/1557907158513.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="windows系统ping加上时间戳并且cmd隐藏运行实现方法 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/05/15/1557907158513.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/css/base.css?1597576982775"/>
             <link rel="prev" title="我的主机./bashrc定制自己环境，and推荐zsh美化linux界面" href="https://cuijianzhe.github.io/articles/2019/05/08/1557298336838.html">
             <link rel="next" title="治疗snow的猫瘟之路" href="https://cuijianzhe.github.io/articles/2019/05/16/1557975252062.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -96,7 +94,7 @@
                 </a>
         </div>
         <div class="vditor-reset">
-            <p>今天遇到这个需求了，因为有部分电脑网络偶尔出现问题，又不好排查，所以搞了一个这个脚本，感谢各位前辈，善加改进已经可用。<br>
+            <p>  今天遇到这个需求了，因为有部分电脑网络偶尔出现问题，又不好排查，所以搞了一个这个脚本，感谢各位前辈，善加改进已经可用。<br>
 效果如下哦：<br>
 <img src="https://img.hacpai.com/file/2020/03/pingecho-8ad5297a.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="pingecho.png"></p>
 <h2 id="添加一个脚本vbs-">添加一个脚本 vbs。</h2>
@@ -139,9 +137,9 @@ Wend
 WScript.Echo unsuccOut
 end <span class="highlight-k">if</span>
 </code></pre>
-<p>可复制到文本改成 vbs 后缀即可。使用方法：把脚本放到指定盘符或者目录。使用如下命令：</p>
-<p><code>cscript D:\ping1.vbs www.baidu.com -t &gt;&gt; D:\baidu.txt</code></p>
-<p>然后找到对应文件即可，是一个排查网络稳定性的好方法。</p>
+<p>  可复制到文本改成 vbs 后缀即可。使用方法：把脚本放到指定盘符或者目录。使用如下命令：</p>
+<p>  <code>cscript D:\ping1.vbs www.baidu.com -t &gt;&gt; D:\baidu.txt</code></p>
+<p>  然后找到对应文件即可，是一个排查网络稳定性的好方法。</p>
 <h2 id="隐藏窗口实现-bat脚本文件--">隐藏窗口实现（bat 脚本文件）：</h2>
 <pre><code class="language-bash highlight-chroma">@echo off
 
@@ -161,19 +159,28 @@ REM
 <span class="highlight-nb">set</span> <span class="highlight-nv">strdatetime</span> <span class="highlight-o">=</span> %stryear%%strmonth%%strday%%strhh%%strmm%%strss%
 cscript D:<span class="highlight-se">\p</span>ing.vbs www.baidu.com -t &gt;&gt; D:<span class="highlight-se">\b</span>aidu--%stryear%%strmonth%%strday%%strhh%%strmm%%strss%.txt
 </code></pre>
-<p>运行这个脚本即可实现没有 cmd 窗口后台运行，亲测。如有需求可添加启动项或者计划任务里面搞一下，这样不用手动去触发，试试监控输出日志信息<br>
+<p>  运行这个脚本即可实现没有 cmd 窗口后台运行，亲测。如有需求可添加启动项或者计划任务里面搞一下，这样不用手动去触发，试试监控输出日志信息<br>
 <strong>(自启动项里我这里添加的是脚本的快捷方式，不然重启后脚本任务报错，快捷方式则不会)。</strong></p>
 <h2 id="设置启动项-开机自启动-">设置启动项，开机自启动：</h2>
-<p><img src="https://img.hacpai.com/file/2020/03/start-3bc69bb5.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="start.png"></p>
-<p><img src="https://img.hacpai.com/file/2020/03/qidongxiang-8052add7.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="qidongxiang.png"></p>
-<p><img src="https://img.hacpai.com/file/2020/03/renwuguanliqi-0254b1a3.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="renwuguanliqi.png"></p>
+<p>  <img src="https://img.hacpai.com/file/2020/03/start-3bc69bb5.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="start.png"></p>
+<p>  <img src="https://img.hacpai.com/file/2020/03/qidongxiang-8052add7.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="qidongxiang.png"></p>
+<p>  <img src="https://img.hacpai.com/file/2020/03/renwuguanliqi-0254b1a3.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="renwuguanliqi.png"></p>
                 <div>
-                    <pre><p style="font-size:15px"><font color="#008000">
+                    <hr>
+
+标题：windows系统ping加上时间戳并且cmd隐藏运行实现方法<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2019/05/15/1557907158513.html" target="_blank">https://cuijianzhe.github.io/articles/2019/05/15/1557907158513.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<pre><p style="font-size:15px"><font color="#008000">
 <b>到头来
 我们记住的
 不是敌人的攻击
 而是朋友的沉默
        ---马丁·路德·金</b></p><pre>
+
                 </div>
         </div>
     </div>
@@ -337,15 +344,15 @@ cscript D:<span class="highlight-se">\p</span>ing.vbs www.baidu.com -t &gt;&gt; 
                 <div class="ft__fade">分类</div>
                 <br>
                     <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="31 文章"
+                       aria-label="32 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="11 文章"
+                       aria-label="15 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="48 文章"
+                       aria-label="49 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Linux系列</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/network"
@@ -360,7 +367,7 @@ cscript D:<span class="highlight-se">\p</span>ing.vbs www.baidu.com -t &gt;&gt; 
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                127
+                140
                 文章
             </a>
            <br>
@@ -388,34 +395,17 @@ cscript D:<span class="highlight-se">\p</span>ing.vbs www.baidu.com -t &gt;&gt; 
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '6b8a5a99786d472c0877',
-        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
 
         </div>
     </div>
 </footer>
 <script>
   var Label = {
-    speech: false,
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources",
     luteAvailable: true,
-    hljsStyle: 'rrt',
+    hljsStyle: 'monokai',
     langLabel: "zh_CN",
     version: "4.3.0",
     staticSite: true,
@@ -423,12 +413,12 @@ cscript D:<span class="highlight-se">\p</span>ing.vbs www.baidu.com -t &gt;&gt; 
     articleId: "1557907158513",
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/common.min.js?1597576982775"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
 <div class="solo-kanbanniang">
     <div class="solo-kanbanniang__tip"></div>
     <canvas id="soloKanbanniang" width="280" height="250"></canvas>
@@ -460,7 +450,7 @@ cscript D:<span class="highlight-se">\p</span>ing.vbs www.baidu.com -t &gt;&gt; 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1595358040124', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/js/page.min.js?1597576982775', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1557907158513",
@@ -482,4 +472,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 107ms, 2020/07/23 14:21:19 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 375ms, 2020/08/16 19:30:48 -->

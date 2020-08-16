@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>openstack系列- glance 服务部署 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="openstack系列- glance 服务部署 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/13/1570938302267.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="openstack系列- glance 服务部署 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/13/1570938302267.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>openstack系列- glance 服务部署 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="openstack系列- glance 服务部署 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/13/1570938302267.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="openstack系列- glance 服务部署 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/13/1570938302267.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/css/base.css?1597576982775"/>
             <link rel="prev" title="openstack系列- keystone部署文档" href="https://cuijianzhe.github.io/articles/2019/10/11/1570777511550.html">
             <link rel="next" title="openstack系列-nova节点部署" href="https://cuijianzhe.github.io/articles/2019/10/13/1570962040262.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -113,8 +111,8 @@ GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'%' \
 <blockquote>
 <p>创建本地存储</p>
 </blockquote>
-<p><strong>1.一定要在 opesntack-glance-api.service 服务启动之前部署好存储设备，因为该服务在启动时会加载存储驱动检索存储设备，如果事先不存在，就意味着该服务没有识别到任何可用的存储设备，即便是后来你又新增了存储，仍然是无效的，最终导致你上传镜像失败；</strong></p>
-<p><strong>2.一定要赋予 opesntack-glance-api.service 服务对存储设备的可写权限。</strong></p>
+<p>  <strong>1.一定要在 opesntack-glance-api.service 服务启动之前部署好存储设备，因为该服务在启动时会加载存储驱动检索存储设备，如果事先不存在，就意味着该服务没有识别到任何可用的存储设备，即便是后来你又新增了存储，仍然是无效的，最终导致你上传镜像失败；</strong></p>
+<p>  <strong>2.一定要赋予 opesntack-glance-api.service 服务对存储设备的可写权限。</strong></p>
 <h2 id="source管理凭据以获得对仅限管理的CLI命令的访问权限">source 管理凭据以获得对仅限管理的 CLI 命令的访问权限</h2>
 <ul>
 <li>创建 glance 用户</li>
@@ -275,7 +273,7 @@ flavor = keystone
 # systemctl start openstack-glance-api.service \
   openstack-glance-registry.service
 </code></pre>
-<p>状态：</p>
+<p>  状态：</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># systemctl status openstack-glance-registry.service</span>
 ● openstack-glance-registry.service - OpenStack Image Service <span class="highlight-o">(</span>code-named Glance<span class="highlight-o">)</span> Registry server
    Loaded: loaded <span class="highlight-o">(</span>/usr/lib/systemd/system/openstack-glance-registry.service<span class="highlight-p">;</span> disabled<span class="highlight-p">;</span> vendor preset: disabled<span class="highlight-o">)</span>
@@ -299,7 +297,7 @@ flavor = keystone
 10月 <span class="highlight-m">13</span> 11:24:34 linux-node1 glance-registry<span class="highlight-o">[</span>3063<span class="highlight-o">]</span>: /usr/lib/python2.7/site-packages/paste/deploy/util.py:55: Deprecat...ilter
 10月 <span class="highlight-m">13</span> 11:24:34 linux-node1 glance-registry<span class="highlight-o">[</span>3063<span class="highlight-o">]</span>: <span class="highlight-nv">val</span> <span class="highlight-o">=</span> callable<span class="highlight-o">(</span>*args, **kw<span class="highlight-o">)</span>
 Hint: Some lines were ellipsized, use -l to show in full.
-<span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># systemctl status openstack-glance-api.service</span> 
+<span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># systemctl status openstack-glance-api.service </span>
 ● openstack-glance-api.service - OpenStack Image Service <span class="highlight-o">(</span>code-named Glance<span class="highlight-o">)</span> API server
    Loaded: loaded <span class="highlight-o">(</span>/usr/lib/systemd/system/openstack-glance-api.service<span class="highlight-p">;</span> disabled<span class="highlight-p">;</span> vendor preset: disabled<span class="highlight-o">)</span>
    Active: active <span class="highlight-o">(</span>running<span class="highlight-o">)</span> since 日 2019-10-13 11:24:08 CST<span class="highlight-p">;</span> 1min 35s ago
@@ -332,7 +330,7 @@ Hint: Some lines were ellipsized, use -l to show in full.
   --disk-format qcow2 --container-format bare \
   --public
 </code></pre>
-<p>结果：</p>
+<p>  结果：</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># openstack image create "cirros" \</span>
 &gt;   --file cirros-0.4.0-x86_64-disk.img <span class="highlight-se">\
 </span><span class="highlight-se"></span>&gt;   --disk-format qcow2 --container-format bare <span class="highlight-se">\
@@ -376,7 +374,15 @@ Hint: Some lines were ellipsized, use -l to show in full.
 -rw-r-----. 1 glance glance 12716032 10月 13 11:46 b700d8c9-518f-4e30-853b-a245339f41d3
 </code></pre>
                 <div>
-                    <span class="name">搭讪 你就破功了，老弟！</span>
+                    <hr>
+
+标题：openstack系列- glance 服务部署<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2019/10/13/1570938302267.html" target="_blank">https://cuijianzhe.github.io/articles/2019/10/13/1570938302267.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<span class="name">搭讪 你就破功了，老弟！</span>
 <style>
 .name{   
     font-size:30px;
@@ -567,15 +573,15 @@ Hint: Some lines were ellipsized, use -l to show in full.
                 <div class="ft__fade">分类</div>
                 <br>
                     <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="31 文章"
+                       aria-label="32 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="11 文章"
+                       aria-label="15 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="48 文章"
+                       aria-label="49 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Linux系列</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/network"
@@ -590,7 +596,7 @@ Hint: Some lines were ellipsized, use -l to show in full.
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                127
+                140
                 文章
             </a>
            <br>
@@ -618,34 +624,17 @@ Hint: Some lines were ellipsized, use -l to show in full.
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '6b8a5a99786d472c0877',
-        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
 
         </div>
     </div>
 </footer>
 <script>
   var Label = {
-    speech: false,
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources",
     luteAvailable: true,
-    hljsStyle: 'rrt',
+    hljsStyle: 'monokai',
     langLabel: "zh_CN",
     version: "4.3.0",
     staticSite: true,
@@ -653,12 +642,12 @@ Hint: Some lines were ellipsized, use -l to show in full.
     articleId: "1570938302267",
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/common.min.js?1597576982775"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
 <div class="solo-kanbanniang">
     <div class="solo-kanbanniang__tip"></div>
     <canvas id="soloKanbanniang" width="280" height="250"></canvas>
@@ -690,7 +679,7 @@ Hint: Some lines were ellipsized, use -l to show in full.
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1595358040124', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/js/page.min.js?1597576982775', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1570938302267",
@@ -712,4 +701,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 97ms, 2020/07/23 14:21:17 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 380ms, 2020/08/16 19:30:41 -->

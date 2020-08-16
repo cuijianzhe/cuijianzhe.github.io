@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>并发工具类 ---Semaphore - 邯城往事</title><meta name="description" content="模拟场景： 北京开往邯郸的火车 K7761 开始售票，在 9 号站台验票进站，进站口只有三个，许许多多的乘客排成长队验票进站。 那么此时三个进站口就是有限的公共资源，乘客们就是线程。 Semaphore 信号量是用来控制同时访问特定资源的线程数量，它通过协调各个线程，以保证合理的使用公共资源。 public class testMain { public static void main(String[] args) { int ticketGate = 3;//检票口 int numberOfPassengers = 9527;//乘客数量 d Semaphore semaphore = new Semaphore(ticketGate); //允许进入 3 人，剩下的人想进入时，需等待前面的人已经进入站。 for (int i = 0; i &lt; numberOfPassengers; i++) { new Through(i,semaphore).start(); } } static class Through extends Thread{ private int n; private ...."/><meta property="og:description" content="模拟场景： 北京开往邯郸的火车 K7761 开始售票，在 9 号站台验票进站，进站口只有三个，许许多多的乘客排成长队验票进站。 那么此时三个进站口就是有限的公共资源，乘客们就是线程。 Semaphore 信号量是用来控制同时访问特定资源的线程数量，它通过协调各个线程，以保证合理的使用公共资源。 public class testMain { public static void main(String[] args) { int ticketGate = 3;//检票口 int numberOfPassengers = 9527;//乘客数量 d Semaphore semaphore = new Semaphore(ticketGate); //允许进入 3 人，剩下的人想进入时，需等待前面的人已经进入站。 for (int i = 0; i &lt; numberOfPassengers; i++) { new Through(i,semaphore).start(); } } static class Through extends Thread{ private int n; private ...."/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="并发工具类 ---Semaphore - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/04/15/1555318114318.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="并发工具类 ---Semaphore - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/04/15/1555318114318.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>并发工具类 ---Semaphore - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="并发工具类 ---Semaphore - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/04/15/1555318114318.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="并发工具类 ---Semaphore - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/04/15/1555318114318.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/css/base.css?1597576982775"/>
             <link rel="prev" title="多线程之倒计时计数器 CountDownLatch" href="https://cuijianzhe.github.io/articles/2019/04/15/1555309259187.html">
             <link rel="next" title="记一次grafana变量取值的过程" href="https://cuijianzhe.github.io/articles/2019/04/16/1555410740995.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -84,7 +82,7 @@
         <div class="ft__fade item__meta">
                 Updated on
             <time>
-                Apr 16, 2019
+                Jul 31, 2020
             </time>
             with <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/04/15/1555318114318.html">0</span> views
                 and <a href="#b3logsolocomments"><span data-uvstatcmt="1555318114318">0</span> comments</a>
@@ -95,352 +93,99 @@
                 </a>
         </div>
         <div class="vditor-reset">
-            <p><img src="https://img.hacpai.com/bing/20180701.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
-<p><img src="https://img.hacpai.com/file/2019/04/%E7%A5%A8-90304765.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="票.jpg"></p>
-<h3 id="模拟场景-">模拟场景：</h3>
-<p><code>北京开往邯郸的火车K7761开始售票，在9号站台验票进站，进站口只有三个，许许多多的乘客排成长队验票进站。 </code><br>
+            <p>  <img src="https://img.hacpai.com/bing/20180701.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
+<p>  <img src="https://img.hacpai.com/file/2019/04/%E7%A5%A8-90304765.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="票.jpg"></p>
+<h3 id="举例示意">举例示意</h3>
+<p>  <code>北京开往邯郸的火车K7761开始售票，在9号站台验票进站，进站口只有三个，许许多多的乘客排成长队验票进站。 </code><br>
 <code>那么此时三个进站口就是有限的公共资源，乘客们就是线程。 </code><br>
 <code>Semaphore信号量是用来控制同时访问特定资源的线程数量，它通过协调各个线程，以保证合理的使用公共资源。</code></p>
-<pre><code class="highlight-chroma">public class testMain {
+<pre><code class="language-java highlight-chroma">
+<span class="highlight-kn">package</span> <span class="highlight-nn">com.jianwei</span><span class="highlight-o">;</span>
 
-    public static void main(String[] args) {
+<span class="highlight-kn">import</span> <span class="highlight-nn">java.util.concurrent.Semaphore</span><span class="highlight-o">;</span>
 
-        int ticketGate = 3;//检票口
-        int numberOfPassengers = 9527;//乘客数量d
+<span class="highlight-kd">public</span> <span class="highlight-kd">class</span> <span class="highlight-nc">上传思路</span> <span class="highlight-o">{</span>
+	<span class="highlight-kd">public</span> <span class="highlight-kd">static</span> <span class="highlight-kt">void</span> <span class="highlight-nf">main</span><span class="highlight-o">(</span><span class="highlight-n">String</span><span class="highlight-o">[]</span> <span class="highlight-n">args</span><span class="highlight-o">)</span> <span class="highlight-kd">throws</span> <span class="highlight-n">Exception</span><span class="highlight-o">{</span>
 
-        Semaphore semaphore = new Semaphore(ticketGate);
-        //允许进入3人,剩下的人想进入时，需等待前面的人已经进入站。
+		<span class="highlight-n">SemaphoreService</span> <span class="highlight-n">service</span> <span class="highlight-o">=</span> <span class="highlight-k">new</span> <span class="highlight-n">SemaphoreService</span><span class="highlight-o">();</span>
+		<span class="highlight-k">for</span> <span class="highlight-o">(</span><span class="highlight-kt">int</span> <span class="highlight-n">i</span> <span class="highlight-o">=</span> <span class="highlight-n">0</span><span class="highlight-o">;</span> <span class="highlight-n">i</span> <span class="highlight-o">&lt;</span> <span class="highlight-n">60</span><span class="highlight-o">;</span> <span class="highlight-n">i</span><span class="highlight-o">++)</span> <span class="highlight-o">{</span>
+			<span class="highlight-n">MyThread</span> <span class="highlight-n">t</span> <span class="highlight-o">=</span> <span class="highlight-k">new</span> <span class="highlight-n">MyThread</span><span class="highlight-o">(</span><span class="highlight-s">"thread"</span> <span class="highlight-o">+</span> <span class="highlight-o">(</span><span class="highlight-n">i</span> <span class="highlight-o">+</span> <span class="highlight-n">1</span><span class="highlight-o">),</span> <span class="highlight-n">service</span><span class="highlight-o">);</span>
+		<span class="highlight-n">t</span><span class="highlight-o">.</span><span class="highlight-na">start</span><span class="highlight-o">();</span><span class="highlight-c1">// 这里使用 t.run() 也可以运行，但是不是并发执行了
+</span><span class="highlight-c1"></span>		<span class="highlight-o">}</span>
+	<span class="highlight-o">}</span>
+<span class="highlight-o">}</span>
 
-        for (int i = 0; i &lt; numberOfPassengers; i++) {
-            new Through(i,semaphore).start();
-        }
-    }
-
-    static class Through extends Thread{
-        private int n;
-        private Semaphore semaphore;
-
-        public Through(int n,Semaphore semaphore){
-            this.n = n;
-            this.semaphore = semaphore;
-        }
-
-        @Override
-        public void run(){
-            try {
-                semaphore.acquire();//占用进站口
-                System.out.println(n+"号乘客doing");
-                Thread.sleep(2000);//2秒的进站时间
-                semaphore.release();//进入站
-                System.out.println(n+"号乘客ok");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-}
 </code></pre>
-<h3 id="运行结果">运行结果</h3>
-<p><img src="https://img.hacpai.com/file/2019/04/%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C-96331b8c.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="实验结果.png"></p>
-                <div>
-                    <style>
-.page-thunder-to-text {
-  position: relative;
-  overflow: hidden;
-}
-.page-thunder-to-text canvas {
-  display: block;
-}
-.page-thunder-to-text input {
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  display: none;
-  outline: none;
-  background-color: rgba(38, 50, 56, 0.2);
-  color: #ffffff;
-  border: none;
-  width: 200px;
-  max-width: 200px;
-  margin: auto;
-  height: 60px;
-  line-height: 60px;
-  font-size: 40px;
-  padding: 0 20px;
-}
-.page-thunder-to-text input:hover, .page-thunder-to-text input:focus {
-  border: 1px solid rgba(38, 50, 56, 0.6);
-}
-.page-thunder-to-text input::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.1);
-}
-</style>
+<pre><code class="language-java highlight-chroma"><span class="highlight-kn">package</span> <span class="highlight-nn">com.jianwei</span><span class="highlight-o">;</span>
 
-</head>
-<body>
-<br/>
-<br/>
-<div class="page page-thunder-to-text">
-	<input id="input" type="text" maxlength="24" placeholder="">
-	<canvas id="canvas" width="80" height="160"></canvas>
-</div>
+<span class="highlight-kn">import</span> <span class="highlight-nn">java.text.SimpleDateFormat</span><span class="highlight-o">;</span>
+<span class="highlight-kn">import</span> <span class="highlight-nn">java.util.Date</span><span class="highlight-o">;</span>
+<span class="highlight-kn">import</span> <span class="highlight-nn">java.util.concurrent.Semaphore</span><span class="highlight-o">;</span>
 
-<script>
-let canvas, ctx, w, h, thunder, text, particles, input;
+<span class="highlight-kd">public</span> <span class="highlight-kd">class</span> <span class="highlight-nc">SemaphoreService</span> <span class="highlight-o">{</span>
 
-function Thunder(options) {
-    options = options || {};
-    this.lifespan = options.lifespan || Math.round(Math.random() * 10 + 10);
-    this.maxlife = this.lifespan;
-    this.color = options.color || '#fefefe';
-    this.glow = options.glow || '#2323fe';
-    this.x = options.x || Math.random() * w;
-    this.y = options.y || Math.random() * h;
-    this.width = options.width || 2;
-    this.direct = options.direct || Math.random() * Math.PI * 2;
-    this.max = options.max || Math.round(Math.random() * 10 + 20);
-    this.segments = [...new Array(this.max)].map(() => {//雷电特效速度
-        return {
-            direct: this.direct + (Math.PI * Math.random() * 0.2 - 0.1),
-            length: Math.random() * 20 + 80,
-            change: Math.random() * 0.04 - 0.02
-        };
-    });
+    <span class="highlight-kd">private</span> <span class="highlight-kd">static</span> <span class="highlight-n">SimpleDateFormat</span> <span class="highlight-n">sf</span> <span class="highlight-o">=</span> <span class="highlight-k">new</span> <span class="highlight-n">SimpleDateFormat</span><span class="highlight-o">(</span><span class="highlight-s">"yyyy-MM-dd HH🇲🇲ss.SSS"</span><span class="highlight-o">);</span>
 
-    this.update = function(index, array) {
-        this.segments.forEach(s => { (s.direct += s.change) && Math.random() > 0.96 && (s.change *= -1) });
-        (this.lifespan > 0 && this.lifespan--) || this.remove(index, array);
-    }
+    <span class="highlight-kd">private</span> <span class="highlight-n">Semaphore</span> <span class="highlight-n">semaphore</span> <span class="highlight-o">=</span> <span class="highlight-k">new</span> <span class="highlight-n">Semaphore</span><span class="highlight-o">(</span><span class="highlight-n">5</span><span class="highlight-o">);</span><span class="highlight-c1">// 同步关键类，构造方法传入的数字是多少，则同一个时刻，只运行多少个进程同时运行制定代码
+</span><span class="highlight-c1"></span>
+    <span class="highlight-kd">public</span> <span class="highlight-kt">void</span> <span class="highlight-nf">doSomething</span><span class="highlight-o">()</span> <span class="highlight-o">{</span>
+        <span class="highlight-k">try</span> <span class="highlight-o">{</span>
+            <span class="highlight-cm">/**
+</span><span class="highlight-cm">             * 在 semaphore.acquire() 和 semaphore.release()之间的代码，同一时刻只允许制定个数的线程进入，
+</span><span class="highlight-cm">             * 因为semaphore的构造方法是1，则同一时刻只允许一个线程进入，其他线程只能等待。
+</span><span class="highlight-cm">             * */</span>
+            <span class="highlight-n">semaphore</span><span class="highlight-o">.</span><span class="highlight-na">acquire</span><span class="highlight-o">();</span>
+            <span class="highlight-n">System</span><span class="highlight-o">.</span><span class="highlight-na">out</span><span class="highlight-o">.</span><span class="highlight-na">println</span><span class="highlight-o">(</span><span class="highlight-n">Thread</span><span class="highlight-o">.</span><span class="highlight-na">currentThread</span><span class="highlight-o">().</span><span class="highlight-na">getName</span><span class="highlight-o">()</span> <span class="highlight-o">+</span> <span class="highlight-s">":doSomething start-"</span> <span class="highlight-o">+</span> <span class="highlight-n">getFormatTimeStr</span><span class="highlight-o">());</span>
+            <span class="highlight-n">Thread</span><span class="highlight-o">.</span><span class="highlight-na">sleep</span><span class="highlight-o">(</span><span class="highlight-n">10000</span><span class="highlight-o">);</span>
+            <span class="highlight-n">System</span><span class="highlight-o">.</span><span class="highlight-na">out</span><span class="highlight-o">.</span><span class="highlight-na">println</span><span class="highlight-o">(</span><span class="highlight-n">Thread</span><span class="highlight-o">.</span><span class="highlight-na">currentThread</span><span class="highlight-o">().</span><span class="highlight-na">getName</span><span class="highlight-o">()</span> <span class="highlight-o">+</span> <span class="highlight-s">":doSomething end-"</span> <span class="highlight-o">+</span> <span class="highlight-n">getFormatTimeStr</span><span class="highlight-o">());</span>
+            <span class="highlight-n">semaphore</span><span class="highlight-o">.</span><span class="highlight-na">release</span><span class="highlight-o">();</span>
+        <span class="highlight-o">}</span> <span class="highlight-k">catch</span> <span class="highlight-o">(</span><span class="highlight-n">InterruptedException</span> <span class="highlight-n">e</span><span class="highlight-o">)</span> <span class="highlight-o">{</span>
+            <span class="highlight-n">e</span><span class="highlight-o">.</span><span class="highlight-na">printStackTrace</span><span class="highlight-o">();</span>
+        <span class="highlight-o">}</span>
+    <span class="highlight-o">}</span>
 
-    this.render = function(ctx) {
-        if (this.lifespan <= 0) return;
-        ctx.beginPath();
-        ctx.globalAlpha = this.lifespan / this.maxlife;
-        ctx.strokeStyle = this.color;
-        ctx.lineWidth = this.width;
-        ctx.shadowBlur = 32;
-        ctx.shadowColor = this.glow;
-        ctx.moveTo(this.x, this.y);
-        let prev = { x: this.x, y: this.y };
-        this.segments.forEach(s => {
-            const x = prev.x + Math.cos(s.direct) * s.length;
-            const y = prev.y + Math.sin(s.direct) * s.length;
-            prev = { x: x, y: y };
-            ctx.lineTo(x, y);
-        });
-        ctx.stroke();
-        ctx.closePath();
-        ctx.shadowBlur = 0;
-        const strength = Math.random() * 80 + 40;
-        const light = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, strength);
-        light.addColorStop(0, 'rgba(250, 200, 50, 0.6)');
-        light.addColorStop(0.1, 'rgba(250, 200, 50, 0.2)');
-        light.addColorStop(0.4, 'rgba(250, 200, 50, 0.06)');
-        light.addColorStop(0.65, 'rgba(250, 200, 50, 0.01)');
-        light.addColorStop(0.8, 'rgba(250, 200, 50, 0)');
-        ctx.beginPath();
-        ctx.fillStyle = light;
-        ctx.arc(this.x, this.y, strength, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.closePath();
-    }
+    <span class="highlight-kd">public</span> <span class="highlight-kd">static</span> <span class="highlight-n">String</span> <span class="highlight-nf">getFormatTimeStr</span><span class="highlight-o">()</span> <span class="highlight-o">{</span>
+        <span class="highlight-k">return</span> <span class="highlight-n">sf</span><span class="highlight-o">.</span><span class="highlight-na">format</span><span class="highlight-o">(</span><span class="highlight-k">new</span> <span class="highlight-n">Date</span><span class="highlight-o">());</span>
+    <span class="highlight-o">}</span>
+<span class="highlight-o">}</span>
+</code></pre>
+<pre><code class="language-java highlight-chroma"><span class="highlight-kn">package</span> <span class="highlight-nn">com.jianwei</span><span class="highlight-o">;</span>
 
-    this.remove = function(index, array) {
-        array.splice(index, 1);
-    }
-}
+<span class="highlight-kd">public</span> <span class="highlight-kd">class</span> <span class="highlight-nc">MyThread</span> <span class="highlight-kd">extends</span> <span class="highlight-n">Thread</span> <span class="highlight-o">{</span>
+    <span class="highlight-kd">private</span> <span class="highlight-n">SemaphoreService</span> <span class="highlight-n">service</span><span class="highlight-o">;</span>
 
-function Spark(options) {
-    options = options || {};
-    this.x = options.x || w * 0.5;
-    this.y = options.y || h * 0.5;
-    this.v = options.v || { direct: Math.random() * Math.PI * 2, weight: Math.random() * 14 + 2, friction: 0.88 };
-    this.a = options.a || { change: Math.random() * 0.4 - 0.2, min: this.v.direct - Math.PI * 0.4, max: this.v.direct + Math.PI * 0.4 };
-    this.g = options.g || { direct: Math.PI * 0.5 + (Math.random() * 0.4 - 0.2), weight: Math.random() * 0.25 + 0.25 };
-    this.width = options.width || Math.random() * 10;//火花效果
-    this.lifespan = options.lifespan || Math.round(Math.random() * 20 + 40);
-    this.maxlife = this.lifespan;
-    this.color = options.color || '#feca32';
-    this.prev = { x: this.x, y: this.y };
+    <span class="highlight-kd">public</span> <span class="highlight-nf">MyThread</span><span class="highlight-o">(</span><span class="highlight-n">String</span> <span class="highlight-n">name</span><span class="highlight-o">,</span> <span class="highlight-n">SemaphoreService</span> <span class="highlight-n">service</span><span class="highlight-o">)</span> <span class="highlight-o">{</span>
+        <span class="highlight-kd">super</span><span class="highlight-o">();</span>
+        <span class="highlight-k">this</span><span class="highlight-o">.</span><span class="highlight-na">setName</span><span class="highlight-o">(</span><span class="highlight-n">name</span><span class="highlight-o">);</span>
+        <span class="highlight-k">this</span><span class="highlight-o">.</span><span class="highlight-na">service</span> <span class="highlight-o">=</span> <span class="highlight-n">service</span><span class="highlight-o">;</span>
+    <span class="highlight-o">}</span>
 
-    this.update = function(index, array) {
-        this.prev = { x: this.x, y: this.y };
-        this.x += Math.cos(this.v.direct) * this.v.weight;
-        this.x += Math.cos(this.g.direct) * this.g.weight;
-        this.y += Math.sin(this.v.direct) * this.v.weight;
-        this.y += Math.sin(this.g.direct) * this.g.weight;
-        this.v.weight > 0.2 && (this.v.weight *= this.v.friction);
-        this.v.direct += this.a.change;
-        (this.v.direct > this.a.max || this.v.direct < this.a.min) && (this.a.change *= -1);
-        this.lifespan > 0 && this.lifespan--;
-        this.lifespan <= 0 && this.remove(index, array);
-    }
+    <span class="highlight-nd">@Override</span>
+    <span class="highlight-kd">public</span> <span class="highlight-kt">void</span> <span class="highlight-nf">run</span><span class="highlight-o">()</span> <span class="highlight-o">{</span>
+        <span class="highlight-k">this</span><span class="highlight-o">.</span><span class="highlight-na">service</span><span class="highlight-o">.</span><span class="highlight-na">doSomething</span><span class="highlight-o">();</span>
+    <span class="highlight-o">}</span>
+<span class="highlight-o">}</span>
+</code></pre>
+<h4 id="在项目中的使用方法-每有一个请求-启动一个线程-然后去访问有信号量设置的这个service类或者serviceimpl类">在项目中的使用方法，每有一个请求，启动一个线程。然后去访问有信号量设置的这个 service 类或者 serviceimpl 类</h4>
+<pre><code class="language-java highlight-chroma">	<span class="highlight-n">ExecutorService</span> <span class="highlight-n">cachedThreadPool</span> <span class="highlight-o">=</span> <span class="highlight-n">Executors</span><span class="highlight-o">.</span><span class="highlight-na">newCachedThreadPool</span><span class="highlight-o">();</span>
 
-    this.render = function(ctx) {
-        if (this.lifespan <= 0) return;
-        ctx.beginPath();
-        ctx.globalAlpha = this.lifespan / this.maxlife;
-        ctx.strokeStyle = this.color;
-        ctx.lineWidth = this.width;
-        ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.prev.x, this.prev.y);
-        ctx.stroke();
-        ctx.closePath();
-    }
-
-    this.remove = function(index, array) {
-        array.splice(index, 1);
-    }
-}
-
-function Particles(options) {//黄色火花速度
-    options = options || {};
-    this.max = options.max || Math.round(Math.random() * 10 + 10);
-    this.sparks = [...new Array(this.max)].map(() => new Spark(options));
-
-    this.update = function() {
-        this.sparks.forEach((s, i) => s.update(i, this.sparks));
-    }
-
-    this.render = function(ctx) {
-        this.sparks.forEach(s => s.render(ctx));
-    }
-}
-
-function Text(options) {
-    options = options || {};
-    const pool = document.createElement('canvas');
-    const buffer = pool.getContext('2d');
-    pool.width = w;
-    buffer.fillStyle = '#000000';
-    buffer.fillRect(0, 0, pool.width, pool.height);
-
-    this.size = 50;
-    this.copy = (options.copy || `Hello!`) + ' ';
-    this.color = options.color || '#cd96fe';
-    //this.delay = options.delay || 5;
-    this.delay = 0.1;//字体显示速度
-    this.basedelay = this.delay;
-    buffer.font = `${this.size}px Comic Sans MS`;
-    this.bound = buffer.measureText(this.copy);
-    this.bound.height = this.size * 1.8;
-    this.x = 60;
-    this.y = 0;
-
-    buffer.strokeStyle = this.color;
-    buffer.strokeText(this.copy, 0, this.bound.height * 0.8);
-    this.data = buffer.getImageData(0, 0, this.bound.width, this.bound.height);
-    this.index = 0;
-
-    this.update = function() {
-        if (this.index >= this.bound.width) {
-            this.index = 0;
-            return;
-        }
-        const data = this.data.data;
-        for (let i = this.index * 4; i < data.length; i += (4 * this.data.width)) {
-            const bitmap = data[i] + data[i + 1] + data[i + 2] + data[i + 3];
-            if (bitmap > 255 && Math.random() > 0.96) {
-                const x = this.x + this.index;
-                const y = this.y + (i / this.bound.width / 4);
-                thunder.push(new Thunder({
-                    x: x,
-                    y: y
-                }));
-                Math.random() > 0.5 && particles.push(new Particles({
-                    x: x,
-                    y: y
-                }));
-            }
-        }
-        if (this.delay-- < 0) {
-            this.index++;
-            this.delay += this.basedelay;
-        }
-    }
-
-    this.render = function(ctx) {
-        ctx.putImageData(this.data, this.x, this.y, 0, 0, this.index, this.bound.height);
-    }
-}
-
-function loop() {
-    update();
-    render();
-    requestAnimationFrame(loop);
-}
-
-function update() {
-    text.update();
-    thunder.forEach((l, i) => l.update(i, thunder));
-    particles.forEach(p => p.update());
-}
-
-function render() {
-    ctx.globalCompositeOperation = 'source-over';
-    ctx.globalAlpha = 1;
-    ctx.fillStyle = '#000000';
-    ctx.fillRect(0, 0, w, h);
-    //
-    ctx.globalCompositeOperation = 'screen';
-    text.render(ctx);
-    thunder.forEach(l => l.render(ctx));
-    particles.forEach(p => p.render(ctx));
-}
-
-(function () {
-    //
-    canvas = document.getElementById('canvas');
-    input = document.getElementById('input');
-    ctx = canvas.getContext('2d');
-    w = window.innerWidth;
-    h = window.innerHeight;
-    canvas.width = 740;
-    canvas.height = 140;
-    thunder = [];
-    particles = [];
-    //
-    text = new Text({
-        copy: '喜欢唱跳，rap和篮球'
-    });
-    canvas.addEventListener('click', (e) => {
-        const x = e.clientX;
-        const y = e.clientY;
-        thunder.push(new Thunder({
-            x: x,
-            y: y
-        }));
-        particles.push(new Particles({
-            x: x,
-            y: y
-        }));
-    });
-    let cb = 0;
-    input.addEventListener('keyup', (e) => {
-        clearTimeout(cb);
-        cb = setTimeout(() => {
-            text = new Text({
-                copy: input.value
-            });
-        }, 300);
-    });
-    //
-    loop();
-})()
-</script>
-</body>
-
-                </div>
+        <span class="highlight-n">cachedThreadPool</span><span class="highlight-o">.</span><span class="highlight-na">execute</span><span class="highlight-o">(()</span> <span class="highlight-o">-&gt;</span> <span class="highlight-o">{</span><span class="highlight-c1">//启动线程异步处理csv文件,最多同时处理五个
+</span><span class="highlight-c1"></span>            <span class="highlight-k">try</span> <span class="highlight-o">{</span>
+                <span class="highlight-n">templateService</span><span class="highlight-o">.</span><span class="highlight-na">source</span><span class="highlight-o">(</span><span class="highlight-n">zhudanSourceQO</span><span class="highlight-o">);</span>
+            <span class="highlight-o">}</span> <span class="highlight-k">catch</span> <span class="highlight-o">(</span><span class="highlight-n">Exception</span> <span class="highlight-n">e</span><span class="highlight-o">)</span> <span class="highlight-o">{</span>
+                <span class="highlight-n">e</span><span class="highlight-o">.</span><span class="highlight-na">printStackTrace</span><span class="highlight-o">();</span>
+            <span class="highlight-o">}</span>
+        <span class="highlight-o">});</span>
+</code></pre>
         </div>
     </div>
     <div class="post__toc">
 <ul class="article__toc">
         <li class="toc__h3">
-            <a href="#模拟场景-">模拟场景：</a>
+            <a href="#举例示意">举例示意</a>
         </li>
-        <li class="toc__h3">
-            <a href="#运行结果">运行结果</a>
+        <li class="toc__h4">
+            <a href="#在项目中的使用方法-每有一个请求-启动一个线程-然后去访问有信号量设置的这个service类或者serviceimpl类">在项目中的使用方法，每有一个请求，启动一个线程。然后去访问有信号量设置的这个 service 类或者 serviceimpl 类</a>
         </li>
 </ul>    </div>
     <div class="body--gray post__gray">
@@ -591,15 +336,15 @@ function render() {
                 <div class="ft__fade">分类</div>
                 <br>
                     <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="31 文章"
+                       aria-label="32 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="11 文章"
+                       aria-label="15 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="48 文章"
+                       aria-label="49 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Linux系列</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/network"
@@ -614,7 +359,7 @@ function render() {
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                127
+                140
                 文章
             </a>
            <br>
@@ -642,34 +387,17 @@ function render() {
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '6b8a5a99786d472c0877',
-        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
 
         </div>
     </div>
 </footer>
 <script>
   var Label = {
-    speech: false,
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources",
     luteAvailable: true,
-    hljsStyle: 'rrt',
+    hljsStyle: 'monokai',
     langLabel: "zh_CN",
     version: "4.3.0",
     staticSite: true,
@@ -677,12 +405,12 @@ function render() {
     articleId: "1555318114318",
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/common.min.js?1597576982775"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
 <div class="solo-kanbanniang">
     <div class="solo-kanbanniang__tip"></div>
     <canvas id="soloKanbanniang" width="280" height="250"></canvas>
@@ -714,7 +442,7 @@ function render() {
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1595358040124', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/js/page.min.js?1597576982775', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1555318114318",
@@ -736,4 +464,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 96ms, 2020/07/23 14:21:19 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 422ms, 2020/08/16 19:30:49 -->

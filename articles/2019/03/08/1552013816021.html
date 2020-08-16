@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>调取高德api获取ip定位信息 - 邯城往事</title><meta name="description" content="在天愿作比翼鸟，在地愿为连理枝。 天长地久有时尽，此恨绵绵无绝期。"/><meta property="og:description" content="在天愿作比翼鸟，在地愿为连理枝。 天长地久有时尽，此恨绵绵无绝期。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="调取高德api获取ip定位信息 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/08/1552013816021.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="调取高德api获取ip定位信息 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/08/1552013816021.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>调取高德api获取ip定位信息 - 邯城往事</title><meta name="description" content="  在天愿作比翼鸟，在地愿为连理枝。 天长地久有时尽，此恨绵绵无绝期。"/><meta property="og:description" content="  在天愿作比翼鸟，在地愿为连理枝。 天长地久有时尽，此恨绵绵无绝期。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="调取高德api获取ip定位信息 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/08/1552013816021.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="调取高德api获取ip定位信息 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/08/1552013816021.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/css/base.css?1597576982775"/>
             <link rel="prev" title="今天展示一个实用小脚本代码" href="https://cuijianzhe.github.io/articles/2019/03/08/1552010192689.html">
             <link rel="next" title="谁希望宅呢，不过是同龄人都比自己优秀罢了。" href="https://cuijianzhe.github.io/articles/2019/03/09/1552066775891.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -95,14 +93,14 @@
                 </a>
         </div>
         <div class="vditor-reset">
-            <p><img src="https://img.hacpai.com/bing/20180530.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
-<p>我为什么记录这个呢，为了以后用到相关监控工具或者访问日志时可以调用这个 API 去查询访问者的地域信息<br>
+            <p>  <img src="https://img.hacpai.com/bing/20180530.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
+<p>  我为什么记录这个呢，为了以后用到相关监控工具或者访问日志时可以调用这个 API 去查询访问者的地域信息<br>
 IP 定位是一个简单的 HTTP 接口，根据用户输入的 IP 地址，能够快速的帮用户定位 IP 的所在位置。<br>
 使用 API 前您需先<a href="https://lbs.amap.com/dev/key" target="_blank">申请 Key</a>。若无高德地图 API 账号需要先申请账号。</p>
-<p>第一步，申请”Web 服务 API”密钥（Key）；</p>
-<p>第二步，拼接 HTTP 请求 URL，第一步申请的 Key 需作为必填参数一同发送；</p>
-<p>第三步，接收 HTTP 请求返回的数据（JSON 或 XML 格式），解析数据。</p>
-<p>如无特殊声明，接口的输入参数和输出数据编码全部统一为 UTF-8。</p>
+<p>  第一步，申请”Web 服务 API”密钥（Key）；</p>
+<p>  第二步，拼接 HTTP 请求 URL，第一步申请的 Key 需作为必填参数一同发送；</p>
+<p>  第三步，接收 HTTP 请求返回的数据（JSON 或 XML 格式），解析数据。</p>
+<p>  如无特殊声明，接口的输入参数和输出数据编码全部统一为 UTF-8。</p>
 <h3 id="IP-定位">IP 定位</h3>
 <hr>
 <ul>
@@ -122,11 +120,11 @@ IP 定位是一个简单的 HTTP 接口，根据用户输入的 IP 地址，能�
 </tr>
 </tbody>
 </table>
-<p>parameters 代表的参数包括必填参数和可选参数。所有参数均使用和号字符(&amp;)进行分隔。下面的列表枚举了这些参数及其使用规则。</p>
+<p>  parameters 代表的参数包括必填参数和可选参数。所有参数均使用和号字符(&amp;)进行分隔。下面的列表枚举了这些参数及其使用规则。</p>
 <ul>
 <li><strong>请求参数</strong></li>
 </ul>
-<p>| 参数名 | 含义 | 规则说明 | 是否必须 | 缺省值 |<br>
+<p>  | 参数名 | 含义 | 规则说明 | 是否必须 | 缺省值 |<br>
 | --- | --- | --- |<br>
 | key| 请求服务权限标识  | 用户在高德地图官网<a href="https://lbs.amap.com/dev/" target="_blank">申请 Web 服务 API 类型 KEY</a>  | 必填 |<br>
 | ip| ip 地址 |  需要搜索的 IP 地址（仅支持国内）若用户不填写 IP，则取客户 http 之中的请求来进行定位 | 可选 |<br>
@@ -181,7 +179,7 @@ IP 定位是一个简单的 HTTP 接口，根据用户输入的 IP 地址，能�
 </tr>
 </tbody>
 </table>
-<p>接下来，<br>
+<p>  接下来，<br>
 这是我的高德官网 API key<br>
 <img src="https://img.hacpai.com/file/2019/04/key-426f2c14.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="key.png"></p>
 <ul>
@@ -191,11 +189,19 @@ IP 定位是一个简单的 HTTP 接口，根据用户输入的 IP 地址，能�
 
 {"status":"1","info":"OK","infocode":"10000","province":"北京市","city":"北京市","adcode":"110000","rectangle":"116.0119343,39.66127144;116.7829835,40.2164962"}
 </code></pre>
-<p>如图</p>
-<p><img src="https://img.hacpai.com/file/2019/04/API-50d4f7f2.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="API.png"></p>
-<p>** 哦也**😅   ……</p>
+<p>  如图</p>
+<p>  <img src="https://img.hacpai.com/file/2019/04/API-50d4f7f2.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="API.png"></p>
+<p>  ** 哦也**?   ……</p>
                 <div>
-                    <style>
+                    <hr>
+
+标题：调取高德api获取ip定位信息<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2019/03/08/1552013816021.html" target="_blank">https://cuijianzhe.github.io/articles/2019/03/08/1552013816021.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<style>
 .page-thunder-to-text {
   position: relative;
   overflow: hidden;
@@ -640,15 +646,15 @@ function render() {
                 <div class="ft__fade">分类</div>
                 <br>
                     <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="31 文章"
+                       aria-label="32 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="11 文章"
+                       aria-label="15 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="48 文章"
+                       aria-label="49 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Linux系列</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/network"
@@ -663,7 +669,7 @@ function render() {
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                127
+                140
                 文章
             </a>
            <br>
@@ -691,34 +697,17 @@ function render() {
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '6b8a5a99786d472c0877',
-        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
 
         </div>
     </div>
 </footer>
 <script>
   var Label = {
-    speech: false,
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources",
     luteAvailable: true,
-    hljsStyle: 'rrt',
+    hljsStyle: 'monokai',
     langLabel: "zh_CN",
     version: "4.3.0",
     staticSite: true,
@@ -726,12 +715,12 @@ function render() {
     articleId: "1552013816021",
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/common.min.js?1597576982775"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
 <div class="solo-kanbanniang">
     <div class="solo-kanbanniang__tip"></div>
     <canvas id="soloKanbanniang" width="280" height="250"></canvas>
@@ -763,7 +752,7 @@ function render() {
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1595358040124', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/js/page.min.js?1597576982775', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1552013816021",
@@ -785,4 +774,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 78ms, 2020/07/23 14:21:20 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 427ms, 2020/08/16 19:30:57 -->

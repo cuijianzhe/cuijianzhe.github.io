@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>部署 docker-solo 博客每日自动升级 - 邯城往事</title><meta name="description" content="docker-solo 自动升级脚本-最终"/><meta property="og:description" content="docker-solo 自动升级脚本-最终"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="部署 docker-solo 博客每日自动升级 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/04/10/1554909820806.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="部署 docker-solo 博客每日自动升级 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/04/10/1554909820806.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>部署 docker-solo 博客每日自动升级 - 邯城往事</title><meta name="description" content="  docker-solo 自动升级脚本-最终"/><meta property="og:description" content="  docker-solo 自动升级脚本-最终"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="部署 docker-solo 博客每日自动升级 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/04/10/1554909820806.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="部署 docker-solo 博客每日自动升级 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/04/10/1554909820806.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/css/base.css?1597576982775"/>
             <link rel="prev" title="多线程之同步屏障CyclicBarrier的使用" href="https://cuijianzhe.github.io/articles/2019/04/10/1554887221480.html">
             <link rel="next" title="多线程之倒计时计数器 CountDownLatch" href="https://cuijianzhe.github.io/articles/2019/04/15/1555309259187.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -100,7 +98,7 @@
         </div>
         <div class="vditor-reset">
             <h1 id="docker-solo-自动升级脚本-最终">docker-solo 自动升级脚本-最终</h1>
-<p><strong>记得给脚本添加可执行权限：</strong> <code>chmod +x solo.sh</code></p>
+<p>  <strong>记得给脚本添加可执行权限：</strong> <code>chmod +x solo.sh</code></p>
 <ul>
 <li>特性：</li>
 </ul>
@@ -218,13 +216,13 @@ main
 <pre><code class="highlight-chroma">00 03 * * * /shell/solo.sh &gt;&gt;/var/log/solo.log
 </code></pre>
 <h2 id="1-1-版本"><del>1.1 版本</del></h2>
-<p><strong>特性：自动升级 solo 博客版本，打印升级所用时间，是否报错等信息</strong><br>
+<p>  <strong>特性：自动升级 solo 博客版本，打印升级所用时间，是否报错等信息</strong><br>
 定于每周三的早上 5 点准时升级 solo，有那么一段时间发现 pull 一个 solo 镜像用了好长时间，打算打印一下时间计算下 pull 一个镜像到底又做猛？</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-cp">#!/bin/bash
-</span><span class="highlight-cp"></span>#
+</span><span class="highlight-cp"></span><span class="highlight-c1">#</span>
 <span class="highlight-c1"># Solo docker 升级并且重启脚本</span>
 <span class="highlight-c1"># 参考solo指南 https://hacpai.com/article/1492881378588</span>
-#
+<span class="highlight-c1">#</span>
 <span class="highlight-nb">echo</span> <span class="highlight-s2">"-----------------升级前------------------------------------"</span>
 <span class="highlight-nv">start_time</span><span class="highlight-o">=</span><span class="highlight-sb">`</span>date +<span class="highlight-s1">'%Y-%m-%d %H:%M:%S'</span><span class="highlight-sb">`</span>
 docker pull b3log/solo
@@ -253,14 +251,14 @@ docker run --detach --name solo --network<span class="highlight-o">=</span>host 
 
 <span class="highlight-nb">echo</span> <span class="highlight-s2">"----------------升级完毕！！！！-----------------------------"</span>
 </code></pre>
-<p>下次升级看下打印的日志，安排一下啊，大哥，不想本地测试了！下周三的</p>
+<p>  下次升级看下打印的日志，安排一下啊，大哥，不想本地测试了！下周三的</p>
 <h2 id="1-2-版本"><del>1.2 版本</del></h2>
-<p>新增特性：自动删除下载的 docker images，因为每次升级，原有的 images 不会删除，升级后自动删除特性增加</p>
+<p>  新增特性：自动删除下载的 docker images，因为每次升级，原有的 images 不会删除，升级后自动删除特性增加</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-cp">#!/bin/bash  
 </span><span class="highlight-cp"></span>  
-#  
-<span class="highlight-c1"># Solo docker 升级脚本&amp;删除旧的镜像脚本</span>  
-#  
+<span class="highlight-c1">#  </span>
+<span class="highlight-c1"># Solo docker 升级脚本&amp;删除旧的镜像脚本  </span>
+<span class="highlight-c1">#  </span>
 <span class="highlight-nb">echo</span> <span class="highlight-s2">"-----------------------------------------------------------"</span>  
 <span class="highlight-nb">echo</span> <span class="highlight-s2">"-----------------升级前------------------------------------"</span>  
 <span class="highlight-nv">start_time</span><span class="highlight-o">=</span><span class="highlight-sb">`</span>date +<span class="highlight-s1">'%Y-%m-%d %H:%M:%S'</span><span class="highlight-sb">`</span>  
@@ -292,16 +290,16 @@ docker run --detach --name solo --network<span class="highlight-o">=</span>host 
 <span class="highlight-nb">echo</span> <span class="highlight-s2">"----------------升级完毕！！！！-----------------------------"</span>  
 <span class="highlight-nb">echo</span> <span class="highlight-s2">"                                                             "</span>  
   
-<span class="highlight-c1">#安装lute_http</span>  
-<span class="highlight-c1">#docker pull b3log/lute-http</span>  
-<span class="highlight-c1"># docker run --detach --name lute-http  --rm --network=host b3log/lute-http</span>  
+<span class="highlight-c1">#安装lute_http  </span>
+<span class="highlight-c1">#docker pull b3log/lute-http  </span>
+<span class="highlight-c1"># docker run --detach --name lute-http  --rm --network=host b3log/lute-http  </span>
   
 sleep <span class="highlight-m">5</span>  
-<span class="highlight-c1">#删除docker镜像脚本：</span>  
+<span class="highlight-c1">#删除docker镜像脚本：  </span>
 <span class="highlight-nb">echo</span> -e <span class="highlight-s2">"##############################尝试删除旧镜像，如下############################################"</span>  
 docker images  
 <span class="highlight-nv">num</span><span class="highlight-o">=</span><span class="highlight-sb">`</span>docker images <span class="highlight-p">|</span>grep b3log/solo<span class="highlight-p">|</span>wc -l<span class="highlight-sb">`</span>  
-<span class="highlight-c1">#echo $num</span>  
+<span class="highlight-c1">#echo $num  </span>
   
 <span class="highlight-k">if</span> <span class="highlight-o">[</span> <span class="highlight-s2">"</span><span class="highlight-nv">$num</span><span class="highlight-s2">"</span> -gt <span class="highlight-m">1</span> <span class="highlight-o">]</span><span class="highlight-p">;</span> <span class="highlight-k">then</span>  
  <span class="highlight-nv">images</span><span class="highlight-o">=</span><span class="highlight-sb">`</span>docker images <span class="highlight-p">|</span>grep b3log/solo <span class="highlight-p">|</span> awk <span class="highlight-s1">'NR==2{print $3}'</span><span class="highlight-sb">`</span>  
@@ -316,7 +314,15 @@ docker images
 <span class="highlight-nb">echo</span> -e <span class="highlight-s2">"
 </span></code></pre>
                 <div>
-                    <span class="name">搭讪 你就破功了，老弟！</span>
+                    <hr>
+
+标题：部署 docker-solo 博客每日自动升级<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2019/04/10/1554909820806.html" target="_blank">https://cuijianzhe.github.io/articles/2019/04/10/1554909820806.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<span class="name">搭讪 你就破功了，老弟！</span>
 <style>
 .name{   
     font-size:30px;
@@ -501,15 +507,15 @@ docker images
                 <div class="ft__fade">分类</div>
                 <br>
                     <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="31 文章"
+                       aria-label="32 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="11 文章"
+                       aria-label="15 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="48 文章"
+                       aria-label="49 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Linux系列</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/network"
@@ -524,7 +530,7 @@ docker images
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                127
+                140
                 文章
             </a>
            <br>
@@ -552,34 +558,17 @@ docker images
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '6b8a5a99786d472c0877',
-        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
 
         </div>
     </div>
 </footer>
 <script>
   var Label = {
-    speech: false,
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources",
     luteAvailable: true,
-    hljsStyle: 'rrt',
+    hljsStyle: 'monokai',
     langLabel: "zh_CN",
     version: "4.3.0",
     staticSite: true,
@@ -587,12 +576,12 @@ docker images
     articleId: "1554909820806",
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/common.min.js?1597576982775"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
 <div class="solo-kanbanniang">
     <div class="solo-kanbanniang__tip"></div>
     <canvas id="soloKanbanniang" width="280" height="250"></canvas>
@@ -624,7 +613,7 @@ docker images
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1595358040124', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/js/page.min.js?1597576982775', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1554909820806",
@@ -646,4 +635,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 77ms, 2020/07/23 14:21:19 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 390ms, 2020/08/16 19:30:52 -->

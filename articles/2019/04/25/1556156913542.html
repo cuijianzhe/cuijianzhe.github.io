@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>zabbix监控端口自动发现功能 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="zabbix监控端口自动发现功能 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/04/25/1556156913542.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="zabbix监控端口自动发现功能 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/04/25/1556156913542.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>zabbix监控端口自动发现功能 - 邯城往事</title><meta name="description" content="  "/><meta property="og:description" content="  "/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="zabbix监控端口自动发现功能 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/04/25/1556156913542.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="zabbix监控端口自动发现功能 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/04/25/1556156913542.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/css/base.css?1597576982775"/>
             <link rel="prev" title="通过命令查看服务器硬件信息" href="https://cuijianzhe.github.io/articles/2019/04/23/1556013126298.html">
             <link rel="next" title="Mysql临时表示例" href="https://cuijianzhe.github.io/articles/2019/04/27/1556346607629.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -99,7 +97,7 @@
                 </a>
         </div>
         <div class="vditor-reset">
-            <p>现如今，无监控，不运维。能想到的尽量监控，拿到数据说话。这里的话，一套脚本拿下，直接输出 JSON 格式的数据，让系统自动发现。</p>
+            <p>  现如今，无监控，不运维。能想到的尽量监控，拿到数据说话。这里的话，一套脚本拿下，直接输出 JSON 格式的数据，让系统自动发现。</p>
 <h2 id="1--首先脚本功能要实现-怎么写出自动发现端口呢-">1. 首先脚本功能要实现，怎么写出自动发现端口呢？</h2>
 <pre><code class="language-python highlight-chroma"><span class="highlight-ch">#!/bin/python</span>
 
@@ -114,7 +112,7 @@
 
 <span class="highlight-k">print</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">dumps</span><span class="highlight-p">({</span><span class="highlight-s1">'data'</span><span class="highlight-p">:</span><span class="highlight-n">ports</span><span class="highlight-p">},</span><span class="highlight-n">sort_keys</span><span class="highlight-o">=</span><span class="highlight-bp">True</span><span class="highlight-p">,</span><span class="highlight-n">indent</span><span class="highlight-o">=</span><span class="highlight-mi">4</span><span class="highlight-p">,</span><span class="highlight-n">separators</span><span class="highlight-o">=</span><span class="highlight-p">(</span><span class="highlight-s1">','</span><span class="highlight-p">,</span><span class="highlight-s1">':'</span><span class="highlight-p">))</span>
 </code></pre>
-<p>此脚本可以简单的实现端口发现，其实就是用的命令，然后切割拿到自己想要的。可在 Linux 中使用<br>
+<p>  此脚本可以简单的实现端口发现，其实就是用的命令，然后切割拿到自己想要的。可在 Linux 中使用<br>
 <code>netstat -nltp| grep -v -w -|grep -v rpc|awk -F "[ :]+" '{if($4 ~ /0.0.0.0/ || $4 ~ /127.0.0.1/)print $5}</code></p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@zabbix ~<span class="highlight-o">]</span><span class="highlight-c1"># netstat -nltp| grep -v -w -|grep -v rpc|awk -F "[ :]+" '{if($4 ~ /0.0.0.0/ || $4 ~ /127.0.0.1/)print $5}'</span>
 
@@ -129,7 +127,7 @@
 <span class="highlight-m">10051</span>
 <span class="highlight-m">9600</span>
 </code></pre>
-<p>但是呢，这只是可以看到起端口功能，如有需求可把端口对应名称采集出来。<br>
+<p>  但是呢，这只是可以看到起端口功能，如有需求可把端口对应名称采集出来。<br>
 可以如下：</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@zabbix ~<span class="highlight-o">]</span><span class="highlight-c1"># netstat -pntl | awk '{print $4,$7}'|grep  [0-9] |egrep -vw '%s'</span>
 
@@ -159,7 +157,7 @@
 :::514 188444/rsyslogd
 :::10051 156956/zabbix_serve
 </code></pre>
-<p>实现命名采集后，用正则采集对应名称：<br>
+<p>  实现命名采集后，用正则采集对应名称：<br>
 用 shell 正则去取值是这样的：</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@zabbix ~<span class="highlight-o">]</span><span class="highlight-c1"># netstat -pntl | awk '{print $4,$7}'|grep  [0-9] | sed -e 's/127.0.0.1://g' -e's/0.0.0.0://g' -e's/::://g' -e's/::1://g' -e's/192.168.51.202://g'| sed 's/[0-9]*.\///g'</span>
 
@@ -255,10 +253,10 @@
     <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">dumps</span><span class="highlight-p">({</span><span class="highlight-s1">'data'</span><span class="highlight-p">:</span><span class="highlight-n">ports</span><span class="highlight-p">},</span><span class="highlight-n">sort_keys</span><span class="highlight-o">=</span><span class="highlight-bp">True</span><span class="highlight-p">,</span><span class="highlight-n">indent</span><span class="highlight-o">=</span><span class="highlight-mi">4</span><span class="highlight-p">,</span><span class="highlight-n">separators</span><span class="highlight-o">=</span><span class="highlight-p">(</span><span class="highlight-s1">','</span><span class="highlight-p">,</span><span class="highlight-s1">':'</span><span class="highlight-p">)))</span>
 
 </code></pre>
-<p>以上脚本功能实现。然后在 zabbix_agentd.d 中添加 key，以及调用脚本功能目录。</p>
+<p>  以上脚本功能实现。然后在 zabbix_agentd.d 中添加 key，以及调用脚本功能目录。</p>
 <pre><code class="highlight-chroma">UserParameter=discovery.ports,/usr/bin/python /usr/lib/zabbix/externalscripts/zabbix_ports_discovery.py
 </code></pre>
-<p>最后在 zabbix 前端添加自动发现：</p>
+<p>  最后在 zabbix 前端添加自动发现：</p>
 <ul>
 <li>
 <p>添加模板：<br>
@@ -286,12 +284,21 @@
 </li>
 </ul>
                 <div>
-                    <pre><p style="font-size:15px"><font color="#008000">
+                    <hr>
+
+标题：zabbix监控端口自动发现功能<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2019/04/25/1556156913542.html" target="_blank">https://cuijianzhe.github.io/articles/2019/04/25/1556156913542.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<pre><p style="font-size:15px"><font color="#008000">
 <b>到头来
 我们记住的
 不是敌人的攻击
 而是朋友的沉默
        ---马丁·路德·金</b></p><pre>
+
                 </div>
         </div>
     </div>
@@ -455,15 +462,15 @@
                 <div class="ft__fade">分类</div>
                 <br>
                     <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="31 文章"
+                       aria-label="32 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="11 文章"
+                       aria-label="15 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="48 文章"
+                       aria-label="49 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Linux系列</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/network"
@@ -478,7 +485,7 @@
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                127
+                140
                 文章
             </a>
            <br>
@@ -506,34 +513,17 @@
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '6b8a5a99786d472c0877',
-        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
 
         </div>
     </div>
 </footer>
 <script>
   var Label = {
-    speech: false,
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources",
     luteAvailable: true,
-    hljsStyle: 'rrt',
+    hljsStyle: 'monokai',
     langLabel: "zh_CN",
     version: "4.3.0",
     staticSite: true,
@@ -541,12 +531,12 @@
     articleId: "1556156913542",
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/common.min.js?1597576982775"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
 <div class="solo-kanbanniang">
     <div class="solo-kanbanniang__tip"></div>
     <canvas id="soloKanbanniang" width="280" height="250"></canvas>
@@ -578,7 +568,7 @@
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1595358040124', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/js/page.min.js?1597576982775', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1556156913542",
@@ -600,4 +590,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 82ms, 2020/07/23 14:21:18 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 426ms, 2020/08/16 19:30:47 -->

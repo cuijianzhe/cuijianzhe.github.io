@@ -6,101 +6,106 @@
     <atom:link href="https://cuijianzhe.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>               &gt;&gt;&gt;  展颜笑夙愿，一笑泯恩仇 &lt;&lt;&lt;</description>
     <generator>Solo, v4.3.0, https://solo.b3log.org</generator>
-    <lastBuildDate>Thu, 23 Jul 2020 14:21:12 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 16 Aug 2020 19:30:14 +0800</lastBuildDate>
     <language>zh-cn</language>
     <item>
-      <title>阿里云同步资产信息到Jumpserver</title>
-      <link>https://cuijianzhe.github.io/articles/2020/07/16/1594900059981.html</link>
-      <description><![CDATA[<p>欲寄彩笺兼尺素。山长水阔知何处。</p>]]></description>
+      <title>站点推荐【转】</title>
+      <link>https://cuijianzhe.github.io/articles/2019/11/13/1573637956893.html</link>
+      <description><![CDATA[<p>  <img src="https://img.hacpai.com/bing/20191030.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""><br>
+人生不如意，十有八九</p>]]></description>
       <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/07/16/1594900059981.html</guid>
-      <category>Python</category>
-      <category>Jumpserver</category>
-      <pubDate>Mon, 20 Jul 2020 09:34:08 +0800</pubDate>
+      <guid>https://cuijianzhe.github.io/articles/2019/11/13/1573637956893.html</guid>
+      <category>solo</category>
+      <pubDate>Sun, 16 Aug 2020 10:24:38 +0800</pubDate>
     </item>
     <item>
-      <title>Springboot项目启动时读取不到配置文件怎么办？</title>
-      <link>https://cuijianzhe.github.io/articles/2020/07/14/1594726114402.html</link>
-      <description/>
-      <author>MaidongAndYida</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/07/14/1594726114402.html</guid>
-      <category>java</category>
-      <pubDate>Tue, 14 Jul 2020 19:28:34 +0800</pubDate>
-    </item>
-    <item>
-      <title>学车之路</title>
-      <link>https://cuijianzhe.github.io/articles/2019/05/25/1558767210633.html</link>
-      <description><![CDATA[<p>东方时尚啊，中国最顶尖驾校，不多 bb 好吧</p>]]></description>
-      <author>MaidongAndYida</author>
-      <guid>https://cuijianzhe.github.io/articles/2019/05/25/1558767210633.html</guid>
-      <category>学车</category>
-      <pubDate>Tue, 14 Jul 2020 08:55:09 +0800</pubDate>
-    </item>
-    <item>
-      <title>zabbix发送报警信息带图片</title>
-      <link>https://cuijianzhe.github.io/articles/2020/07/09/1594290006252.html</link>
-      <description><![CDATA[<p>若有知音见采，不辞遍唱阳春。</p>]]></description>
+      <title>K8S二进制部署过程-v1.17.0</title>
+      <link>https://cuijianzhe.github.io/articles/2019/12/24/1577178596028.html</link>
+      <description><![CDATA[<p>  搭建 K8S 集群，一定要细心细心再细心。不然会为了自己的粗心排查好久……</p>]]></description>
       <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/07/09/1594290006252.html</guid>
+      <guid>https://cuijianzhe.github.io/articles/2019/12/24/1577178596028.html</guid>
       <category>Linux</category>
-      <category>zabbix</category>
-      <category>Python</category>
-      <pubDate>Thu, 09 Jul 2020 18:24:49 +0800</pubDate>
+      <category>kubernetes</category>
+      <pubDate>Sat, 15 Aug 2020 15:25:16 +0800</pubDate>
     </item>
     <item>
-      <title>哦</title>
-      <link>https://cuijianzhe.github.io/articles/2020/07/09/1594274450978.html</link>
-      <description/>
-      <author>MaidongAndYida</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/07/09/1594274450978.html</guid>
-      <category>爱情</category>
-      <pubDate>Thu, 09 Jul 2020 14:00:51 +0800</pubDate>
-    </item>
-    <item>
-      <title>Neo4j（一）介绍与下载与安装</title>
-      <link>https://cuijianzhe.github.io/articles/2020/07/04/1593821933784.html</link>
-      <description/>
-      <author>MaidongAndYida</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/07/04/1593821933784.html</guid>
-      <category>neo4j</category>
-      <pubDate>Sat, 04 Jul 2020 09:12:07 +0800</pubDate>
-    </item>
-    <item>
-      <title>七牛云上传的mp4不能播放怎么办</title>
-      <link>https://cuijianzhe.github.io/articles/2020/07/04/1593823669011.html</link>
-      <description/>
-      <author>MaidongAndYida</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/07/04/1593823669011.html</guid>
-      <category>七牛云</category>
-      <pubDate>Sat, 04 Jul 2020 08:47:49 +0800</pubDate>
-    </item>
-    <item>
-      <title>zabbix自动发现华为AC6605管理AP状态以及连接数</title>
-      <link>https://cuijianzhe.github.io/articles/2019/08/05/1564987766272.html</link>
-      <description><![CDATA[<p>金纵买相如赋，脉脉此情谁诉。</p>]]></description>
+      <title>kubeadm搭建kubernets-1.16.2</title>
+      <link>https://cuijianzhe.github.io/articles/2020/04/10/1586510174363.html</link>
+      <description><![CDATA[<p>  愿有岁月可回首，且以深情共白头。</p>]]></description>
       <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2019/08/05/1564987766272.html</guid>
-      <category>zabbix</category>
+      <guid>https://cuijianzhe.github.io/articles/2020/04/10/1586510174363.html</guid>
       <category>Linux</category>
-      <pubDate>Wed, 01 Jul 2020 14:58:01 +0800</pubDate>
+      <category>kubernets</category>
+      <pubDate>Sat, 15 Aug 2020 15:25:09 +0800</pubDate>
     </item>
     <item>
-      <title>华为AC6605对接OpenLDAP实现无线Portal认证</title>
-      <link>https://cuijianzhe.github.io/articles/2020/06/30/1593502682903.html</link>
-      <description><![CDATA[<p>千金纵买相如赋，脉脉此情谁诉。</p>]]></description>
+      <title>KUbernets实践之pod</title>
+      <link>https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html</link>
+      <description><![CDATA[<p>  如果陪我到最后的人是你，那么以前经历过的苦难</p>]]></description>
       <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/06/30/1593502682903.html</guid>
-      <category>待分类</category>
-      <pubDate>Tue, 30 Jun 2020 17:34:30 +0800</pubDate>
+      <guid>https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html</guid>
+      <category>Linux</category>
+      <category>kubernets</category>
+      <pubDate>Sat, 15 Aug 2020 15:25:01 +0800</pubDate>
     </item>
     <item>
-      <title>非常简单的java树结构实现，即拿即用</title>
-      <link>https://cuijianzhe.github.io/articles/2020/06/24/1592979467491.html</link>
-      <description><![CDATA[<p>好久没写 blog 了，一直无网开发来着，现在好了，我胡汉三又回来了</p>]]></description>
-      <author>MaidongAndYida</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/06/24/1592979467491.html</guid>
-      <category>java</category>
-      <pubDate>Wed, 24 Jun 2020 14:18:23 +0800</pubDate>
+      <title>Kubernetes服务访问</title>
+      <link>https://cuijianzhe.github.io/articles/2020/04/23/1587624487440.html</link>
+      <description><![CDATA[<p>  感情淡了我们再培养，无话可说了我们就再去找话题，觉得腻了我们就重新认识，要是累了就给彼此空间，人潮汹涌的遇到你也不容易，也不想再推开了。</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/04/23/1587624487440.html</guid>
+      <category>kubernetes</category>
+      <category>Linux</category>
+      <pubDate>Sat, 15 Aug 2020 15:24:52 +0800</pubDate>
+    </item>
+    <item>
+      <title>K8S基础搭建使用</title>
+      <link>https://cuijianzhe.github.io/articles/2019/12/12/1576117964389.html</link>
+      <description/>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2019/12/12/1576117964389.html</guid>
+      <category>Linux</category>
+      <category>kubernetes</category>
+      <pubDate>Sat, 15 Aug 2020 15:24:41 +0800</pubDate>
+    </item>
+    <item>
+      <title>关于 Kubernetes 的这些原理，你一定要了解</title>
+      <link>https://cuijianzhe.github.io/articles/2020/08/15/1597459617030.html</link>
+      <description/>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/08/15/1597459617030.html</guid>
+      <category>kubernetes</category>
+      <pubDate>Sat, 15 Aug 2020 15:24:24 +0800</pubDate>
+    </item>
+    <item>
+      <title>通过 python 获取钉钉后台人员</title>
+      <link>https://cuijianzhe.github.io/articles/2019/09/20/1568981823765.html</link>
+      <description><![CDATA[<p>  <img src="https://img.hacpai.com/bing/20180924.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""><br>
+每天一句“我爱你……”</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2019/09/20/1568981823765.html</guid>
+      <category>Python</category>
+      <category>钉钉</category>
+      <pubDate>Thu, 13 Aug 2020 16:18:17 +0800</pubDate>
+    </item>
+    <item>
+      <title>腾讯云数据库？</title>
+      <link>https://cuijianzhe.github.io/articles/2020/08/12/1597200121515.html</link>
+      <description><![CDATA[<p>  你的名字只有两个字，虽构不成一句话，但已经装满了我的心。</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/08/12/1597200121515.html</guid>
+      <category>solo</category>
+      <pubDate>Wed, 12 Aug 2020 19:14:59 +0800</pubDate>
+    </item>
+    <item>
+      <title>Nginx的Vhost配置</title>
+      <link>https://cuijianzhe.github.io/articles/2020/05/12/1589284354518.html</link>
+      <description><![CDATA[<p>  我愿成为春季的花朵为你奉献美丽；我希望变成炎日下的树荫为你创造阴凉；我梦想成为秋天里的枫叶为你增添美景；我渴望成为寒冬里的棉袄为你带来温暖。</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/05/12/1589284354518.html</guid>
+      <category>Linux</category>
+      <category>nginx</category>
+      <pubDate>Wed, 12 Aug 2020 17:50:07 +0800</pubDate>
     </item>
   </channel>
 </rss>

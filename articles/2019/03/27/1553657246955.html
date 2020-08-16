@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>docker网络 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="docker网络 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="docker网络 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>docker网络 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="docker网络 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="docker网络 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/css/base.css?1597576982775"/>
             <link rel="prev" title="docker容器命名和资源配额控制(2)" href="https://cuijianzhe.github.io/articles/2019/03/27/1553650586883.html">
             <link rel="next" title="docker安装mysql" href="https://cuijianzhe.github.io/articles/2019/03/27/1553678573009.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -98,7 +96,7 @@
         <div class="vditor-reset">
             <h1 id="一-docker的网络模式">一、docker 的网络模式</h1>
 <h2 id="网络模式">网络模式</h2>
-<p>我们在使用 docker run 创建 Docker 容器时，可以用--net 选项指定容器的网络模式，Docker 有以下 4 种网络模式：</p>
+<p>  我们在使用 docker run 创建 Docker 容器时，可以用--net 选项指定容器的网络模式，Docker 有以下 4 种网络模式：</p>
 <ul>
 <li>bridge 模式，使用--net=bridge 指定，默认设置</li>
 <li>host 模式，使用--net=host 指定，容器内部网络空间共享宿主机的空间，效果类似直接在宿主机上启动一个进程，端口信息和宿主机共用。</li>
@@ -114,16 +112,16 @@ CentOS7 系统上， docker 环境下可以使用 pipework 脚本对容器分配
 docker 环境下可以使用 pipework 脚本对容器分配固定 IP，相当于 VMware 中桥接模式。注：Pipework 有个缺陷，容器重启后 IP 设置会自动消失，需要重新设置。</p>
 </blockquote>
 <h3 id="配置桥接网络">配置桥接网络</h3>
-<p>桥接本地物理网络的目的，是为了局域网内用户方便访问 docker 实例中服务，丌要需要各种端口映射即可访问服务。 但是这样做，又违背了 docker 容器的安全隔离的原则，工作中辩证的选择。</p>
-<p><img src="https://img.hacpai.com/file/2020/04/dockerbridge-74399047.jpeg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="dockerbridge.jpeg"></p>
-<p>网桥在哪，查看网桥</p>
+<p>  桥接本地物理网络的目的，是为了局域网内用户方便访问 docker 实例中服务，丌要需要各种端口映射即可访问服务。 但是这样做，又违背了 docker 容器的安全隔离的原则，工作中辩证的选择。</p>
+<p>  <img src="https://img.hacpai.com/file/2020/04/dockerbridge-74399047.jpeg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="dockerbridge.jpeg"></p>
+<p>  网桥在哪，查看网桥</p>
 <pre><code class="highlight-chroma">$ yum install -y bridge-utils
 $ brctl show
 bridge name     bridge id               STP enabled     interfaces
 docker0         8000.0242b5fbe57b       no              veth3a496ed
 </code></pre>
-<p>有了网桥之后，那我们看下 docker 在启动一个容器的时候做了哪些事情才能实现容器间的互联互通</p>
-<p>Docker 创建一个容器的时候，会执行如下操作：</p>
+<p>  有了网桥之后，那我们看下 docker 在启动一个容器的时候做了哪些事情才能实现容器间的互联互通</p>
+<p>  Docker 创建一个容器的时候，会执行如下操作：</p>
 <ul>
 <li>创建一对虚拟接口/网卡，也就是 veth pair；</li>
 <li>本地主机一端桥接 到默认的 docker0 或指定网桥上，并具有一个唯一的名字，如 veth9953b75；</li>
@@ -131,7 +129,7 @@ docker0         8000.0242b5fbe57b       no              veth3a496ed
 <li>从网桥可用地址段中（也就是与该 bridge 对应的 network）获取一个空闲地址分配给容器的 eth0</li>
 <li>配置默认路由到网桥</li>
 </ul>
-<p>那整个过程其实是 docker 自动帮我们完成的，清理掉所有容器，来验证。</p>
+<p>  那整个过程其实是 docker 自动帮我们完成的，清理掉所有容器，来验证。</p>
 <pre><code class="highlight-chroma">## 清掉所有容器
 $ docker rm -f `docker ps -aq`
 $ docker ps
@@ -162,15 +160,15 @@ $ brctl showmacs docker0
 $ ip a 
 
 </code></pre>
-<p>我们如何知道网桥上的这些虚拟网卡与容器端是如何对应？</p>
-<p>通过 ifindex，网卡索引号</p>
+<p>  我们如何知道网桥上的这些虚拟网卡与容器端是如何对应？</p>
+<p>  通过 ifindex，网卡索引号</p>
 <pre><code class="highlight-chroma">## 查看test1容器的网卡索引
 $ docker exec -ti test1 cat /sys/class/net/eth0/ifindex
 
 ## 主机中找到虚拟网卡后面这个@ifxx的值，如果是同一个值，说明这个虚拟网卡和这个容器的eth0网卡是配对的。
 $ ip a |grep @if
 </code></pre>
-<p>整理脚本，快速查看对应：</p>
+<p>  整理脚本，快速查看对应：</p>
 <pre><code class="highlight-chroma">for container in $(docker ps -q); do
     iflink=`docker exec -it $container sh -c 'cat /sys/class/net/eth0/iflink'`
     iflink=`echo $iflink|tr -d '\r'`
@@ -179,14 +177,14 @@ $ ip a |grep @if
     echo $container:$veth
 done
 </code></pre>
-<p>上面我们讲解了容器之间的通信，那么容器与宿主机的通信是如何做的？<br>
+<p>  上面我们讲解了容器之间的通信，那么容器与宿主机的通信是如何做的？<br>
 <img src="https://img.hacpai.com/file/2020/04/20171130dockernetworktopology-931fdd8a.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="20171130dockernetworktopology.png"><br>
 添加端口映射：</p>
 <pre><code class="highlight-chroma">## 启动容器的时候通过-p参数添加宿主机端口与容器内部服务端口的映射
 $ docker run --name test -d -p 8088:80 nginx:alpine
 $ curl localhost:8088
 </code></pre>
-<p>端口映射如何实现的？先来回顾 iptables 链表图<br>
+<p>  端口映射如何实现的？先来回顾 iptables 链表图<br>
 <img src="https://img.hacpai.com/file/2020/04/iptables-b41f77d5.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="iptables.png"><br>
 访问本机的 8088 端口，数据包会从流入方向进入本机，因此涉及到 PREROUTING 和 INPUT 链，我们是通过做宿主机与容器之间加的端口映射，所以肯定会涉及到端口转换，那哪个表是负责存储端口转换信息的呢，就是 nat 表，负责维护网络地址转换信息的。因此我们来查看一下 PREROUTING 链的 nat 表：</p>
 <pre><code class="highlight-chroma">$ iptables -t nat -nvL PREROUTING
@@ -195,32 +193,32 @@ Chain PREROUTING (policy ACCEPT 159 packets, 20790 bytes)
     3   156 DOCKER     all  --  *      *       0.0.0.0/0            0.0.0.0/0            
 ADDRTYPE match dst-type LOCAL
 </code></pre>
-<p>规则利用了 iptables 的 addrtype 拓展，匹配网络类型为本地的包，如何确定哪些是匹配本地，</p>
+<p>  规则利用了 iptables 的 addrtype 拓展，匹配网络类型为本地的包，如何确定哪些是匹配本地，</p>
 <pre><code class="highlight-chroma">$ ip route show table local type local
 local 127.0.0.0/8 dev lo proto kernel scope host src 127.0.0.1
 local 127.0.0.1 dev lo proto kernel scope host src 127.0.0.1
 local 172.17.0.1 dev docker0 proto kernel scope host src 172.17.0.1
 local 192.168.136.133 dev ens33 proto kernel scope host src 192.168.136.133
 </code></pre>
-<p>此条规则就是对主机收到的目的端口为 8088 的 tcp 流量进行 DNAT 转换，将流量发往 172.17.0.2:80，172.17.0.2 地址是不是就是我们上面创建的 Docker 容器的 ip 地址，流量走到网桥上了，后面就走网桥的转发就 ok 了。<br>
+<p>  此条规则就是对主机收到的目的端口为 8088 的 tcp 流量进行 DNAT 转换，将流量发往 172.17.0.2:80，172.17.0.2 地址是不是就是我们上面创建的 Docker 容器的 ip 地址，流量走到网桥上了，后面就走网桥的转发就 ok 了。<br>
 所以，外界只需访问 192.168.136.133:8088 就可以访问到容器中的服务了。</p>
-<p>数据包在出口方向走 POSTROUTING 链，我们查看一下规则：</p>
+<p>  数据包在出口方向走 POSTROUTING 链，我们查看一下规则：</p>
 <pre><code class="highlight-chroma">$ iptables -t nat -nvL POSTROUTING
 Chain POSTROUTING (policy ACCEPT 1099 packets, 67268 bytes)
  pkts bytes target     prot opt in     out     source               destination
    86  5438 MASQUERADE  all  --  *      !docker0  172.17.0.0/16        0.0.0.0/0
     0     0 MASQUERADE  tcp  --  *      *       172.17.0.4           172.17.0.4           tcp dpt:80
 </code></pre>
-<p>大家注意 MASQUERADE 这个动作是什么意思，其实是一种更灵活的 SNAT，把源地址转换成主机的出口 ip 地址，那解释一下这条规则的意思：</p>
-<p>这条规则会将源地址为 172.17.0.0/16 的包（也就是从 Docker 容器产生的包），并且不是从 docker0 网卡发出的，进行源地址转换，转换成主机网卡的地址。大概的过程就是 ACK 的包在容器里面发出来，会路由到网桥 docker0，网桥根据宿主机的路由规则会转给宿主机网卡 eth0，这时候包就从 docker0 网卡转到 eth0 网卡了，并从 eth0 网卡发出去，这时候这条规则就会生效了，把源地址换成了 eth0 的 ip 地址。</p>
+<p>  大家注意 MASQUERADE 这个动作是什么意思，其实是一种更灵活的 SNAT，把源地址转换成主机的出口 ip 地址，那解释一下这条规则的意思：</p>
+<p>  这条规则会将源地址为 172.17.0.0/16 的包（也就是从 Docker 容器产生的包），并且不是从 docker0 网卡发出的，进行源地址转换，转换成主机网卡的地址。大概的过程就是 ACK 的包在容器里面发出来，会路由到网桥 docker0，网桥根据宿主机的路由规则会转给宿主机网卡 eth0，这时候包就从 docker0 网卡转到 eth0 网卡了，并从 eth0 网卡发出去，这时候这条规则就会生效了，把源地址换成了 eth0 的 ip 地址。</p>
 <blockquote>
 <p>注意一下，刚才这个过程涉及到了网卡间包的传递，那一定要打开主机的 ip_forward 转发服务，要不然包转不了，服务肯定访问不到。</p>
 </blockquote>
 <h3 id="Host模式">Host 模式</h3>
-<p>容器内部不会创建网络空间，共享宿主机的网络空间</p>
-<p><code>$ docker run --net host -d --name mysql mysql:5.7</code></p>
+<p>  容器内部不会创建网络空间，共享宿主机的网络空间</p>
+<p>  <code>$ docker run --net host -d --name mysql mysql:5.7</code></p>
 <h3 id="Conatiner模式">Conatiner 模式</h3>
-<p>这个模式指定新创建的容器和已经存在的一个容器共享一个 Network Namespace，而不是和宿主机共享。新创建的容器不会创建自己的网卡，配置自己的 IP，而是和一个指定的容器共享 IP、端口范围等。同样，两个容器除了网络方面，其他的如文件系统、进程列表等还是隔离的。两个容器的进程可以通过 lo 网卡设备通信。<br>
+<p>  这个模式指定新创建的容器和已经存在的一个容器共享一个 Network Namespace，而不是和宿主机共享。新创建的容器不会创建自己的网卡，配置自己的 IP，而是和一个指定的容器共享 IP、端口范围等。同样，两个容器除了网络方面，其他的如文件系统、进程列表等还是隔离的。两个容器的进程可以通过 lo 网卡设备通信。<br>
 <img src="https://img.hacpai.com/file/2020/04/dockernetworkcontainer-1d6b0e07.jpeg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="dockernetworkcontainer.jpeg"></p>
 <pre><code class="highlight-chroma"># 启动测试容器，共享mysql的网络空间
 $ docker run -ti --rm --net=container:mysql busybox sh
@@ -237,9 +235,17 @@ $ docker run -ti --rm --net=container:mysql busybox sh
 <pre><code class="highlight-chroma">## 若有时遇到容器启动失败的情况，可以先使用相同的镜像启动一个临时容器，先进入容器
 $ docker exec -ti --rm &lt;image_id&gt; bash
 </code></pre>
-<p># 进入容器后，手动执行该容器对应的 ENTRYPOINT 或者 CMD 命令，这样即使出错，容器也不会退出，因为 bash 作为 1 号进程，我们只要不退出容器，该容器就不会自动退出</p>
+<p>  # 进入容器后，手动执行该容器对应的 ENTRYPOINT 或者 CMD 命令，这样即使出错，容器也不会退出，因为 bash 作为 1 号进程，我们只要不退出容器，该容器就不会自动退出</p>
                 <div>
-                    <style>
+                    <hr>
+
+标题：docker网络<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html" target="_blank">https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<style>
 .page-thunder-to-text {
   position: relative;
   overflow: hidden;
@@ -699,15 +705,15 @@ function render() {
                 <div class="ft__fade">分类</div>
                 <br>
                     <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="31 文章"
+                       aria-label="32 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="11 文章"
+                       aria-label="15 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="48 文章"
+                       aria-label="49 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Linux系列</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/network"
@@ -722,7 +728,7 @@ function render() {
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                127
+                140
                 文章
             </a>
            <br>
@@ -750,34 +756,17 @@ function render() {
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '6b8a5a99786d472c0877',
-        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
 
         </div>
     </div>
 </footer>
 <script>
   var Label = {
-    speech: false,
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources",
     luteAvailable: true,
-    hljsStyle: 'rrt',
+    hljsStyle: 'monokai',
     langLabel: "zh_CN",
     version: "4.3.0",
     staticSite: true,
@@ -785,12 +774,12 @@ function render() {
     articleId: "1553657246955",
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/common.min.js?1597576982775"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
 <div class="solo-kanbanniang">
     <div class="solo-kanbanniang__tip"></div>
     <canvas id="soloKanbanniang" width="280" height="250"></canvas>
@@ -822,7 +811,7 @@ function render() {
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1595358040124', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/js/page.min.js?1597576982775', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1553657246955",
@@ -844,4 +833,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 81ms, 2020/07/23 14:21:19 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 426ms, 2020/08/16 19:30:50 -->

@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>docker安装nginx - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="docker安装nginx - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/28/1553760603642.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="docker安装nginx - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/28/1553760603642.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>docker安装nginx - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="docker安装nginx - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/28/1553760603642.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="docker安装nginx - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/28/1553760603642.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/css/base.css?1597576982775"/>
             <link rel="prev" title="docker安装mysql" href="https://cuijianzhe.github.io/articles/2019/03/27/1553678573009.html">
             <link rel="next" title="查看linux配置文件的实用方法" href="https://cuijianzhe.github.io/articles/2019/04/06/1554546633835.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -96,7 +94,7 @@
                 </a>
         </div>
         <div class="vditor-reset">
-            <p><img src="https://img.hacpai.com/bing/20190224.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
+            <p>  <img src="https://img.hacpai.com/bing/20190224.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker images</span>
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 docker.io/centos    latest              9f38484d220f        <span class="highlight-m">13</span> days ago         <span class="highlight-m">202</span> MB
@@ -108,9 +106,9 @@ docker.io/centos    latest              9f38484d220f        <span class="highlig
 <span class="highlight-o">[</span>root@0c27bcf9bd58 /<span class="highlight-o">]</span><span class="highlight-c1"># wget http://nginx.org/download/nginx-1.15.10.tar.gz</span>
 <span class="highlight-o">[</span>root@0c27bcf9bd58 /<span class="highlight-o">]</span><span class="highlight-c1"># tar xf pcre-8.39.tar.gz -C /usr/local/src/</span>
 <span class="highlight-o">[</span>root@0c27bcf9bd58 /<span class="highlight-o">]</span><span class="highlight-c1"># tar xf nginx-1.15.10.tar.gz -C /usr/local/src/</span>
-<span class="highlight-o">[</span>root@0c27bcf9bd58 nginx-1.15.10<span class="highlight-o">]</span><span class="highlight-c1"># useradd -M -s /sbin/nologin nginx</span> 
+<span class="highlight-o">[</span>root@0c27bcf9bd58 nginx-1.15.10<span class="highlight-o">]</span><span class="highlight-c1"># useradd -M -s /sbin/nologin nginx </span>
 <span class="highlight-o">[</span>root@0c27bcf9bd58 nginx-1.15.10<span class="highlight-o">]</span><span class="highlight-c1">#   ./configure --prefix=/usr/local/nginx --with-http_dav_module --with-http_stub_status_module --with-http_addition_module --with-http_sub_module --with-http_flv_module --with-http_mp4_module --with-pcre=/usr/local/src/pcre-8.39  --user=nginx --group=nginx  --with-http_stub_status_module --with-http_ssl_module</span>
-<span class="highlight-o">[</span>root@0c27bcf9bd58 nginx-1.15.10<span class="highlight-o">]</span><span class="highlight-c1"># make &amp;&amp; make install</span> 
+<span class="highlight-o">[</span>root@0c27bcf9bd58 nginx-1.15.10<span class="highlight-o">]</span><span class="highlight-c1"># make &amp;&amp; make install </span>
 <span class="highlight-o">[</span>root@0c27bcf9bd58 ~<span class="highlight-o">]</span><span class="highlight-c1"># vim /usr/local/nginx/conf/nginx.conf</span>
 <span class="highlight-o">[</span>root@0c27bcf9bd58 ~<span class="highlight-o">]</span><span class="highlight-c1"># /usr/local/nginx/sbin/nginx</span>
 </code></pre>
@@ -120,9 +118,9 @@ docker.io/centos    latest              9f38484d220f        <span class="highlig
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@0c27bcf9bd58 ~<span class="highlight-o">]</span><span class="highlight-c1"># echo "woaini" &gt; /usr/local/nginx/html/test.html</span>
 <span class="highlight-o">[</span>root@0c27bcf9bd58 ~<span class="highlight-o">]</span><span class="highlight-c1"># curl localhost/test.html</span>
 woaini
-<span class="highlight-o">[</span>root@0c27bcf9bd58 ~<span class="highlight-o">]</span># 
+<span class="highlight-o">[</span>root@0c27bcf9bd58 ~<span class="highlight-o">]</span><span class="highlight-c1"># </span>
 </code></pre>
-<p><img src="https://img.hacpai.com/file/2019/03/nginxdocker-860d85a2.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="nginxdocker.png"></p>
+<p>  <img src="https://img.hacpai.com/file/2019/03/nginxdocker-860d85a2.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="nginxdocker.png"></p>
 <ul>
 <li>通估镜像生成容器实例</li>
 </ul>
@@ -137,16 +135,16 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 docker.io/centos    nginx               a48ad0a5e910        <span class="highlight-m">7</span> seconds ago       <span class="highlight-m">654</span> MB
 docker.io/centos    latest              9f38484d220f        <span class="highlight-m">13</span> days ago         <span class="highlight-m">202</span> MB
 </code></pre>
-<p><img src="https://img.hacpai.com/file/2019/03/dockernginxtag-a2da8970.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="dockernginxtag.png"></p>
+<p>  <img src="https://img.hacpai.com/file/2019/03/dockernginxtag-a2da8970.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="dockernginxtag.png"></p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker run -it centos:nginx /bin/bash</span>
-<span class="highlight-o">[</span>root@f8f6ba65fdea ~<span class="highlight-o">]</span><span class="highlight-c1"># /usr/local/nginx/sbin/nginx</span> 
+<span class="highlight-o">[</span>root@f8f6ba65fdea ~<span class="highlight-o">]</span><span class="highlight-c1"># /usr/local/nginx/sbin/nginx </span>
 <span class="highlight-o">[</span>root@f8f6ba65fdea ~<span class="highlight-o">]</span><span class="highlight-c1"># ps -aux | grep nginx</span>
 root         <span class="highlight-m">22</span>  0.0  0.1  <span class="highlight-m">46084</span>  <span class="highlight-m">1144</span> ?        Ss   08:28   0:00 nginx: master process /usr/local/nginx/sbin/nginx
 nginx        <span class="highlight-m">23</span>  0.0  0.1  <span class="highlight-m">46548</span>  <span class="highlight-m">1928</span> ?        S    08:28   0:00 nginx: worker process
 root         <span class="highlight-m">25</span>  0.0  0.0   <span class="highlight-m">9088</span>   <span class="highlight-m">668</span> ?        S+   08:28   0:00 grep --color<span class="highlight-o">=</span>auto nginx
 </code></pre>
-<p><img src="https://img.hacpai.com/file/2019/03/nginxqidong-115a0b77.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="nginxqidong.png"></p>
-<p>说明基于 docker 的 nginx 服务器搭建成功</p>
+<p>  <img src="https://img.hacpai.com/file/2019/03/nginxqidong-115a0b77.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="nginxqidong.png"></p>
+<p>  说明基于 docker 的 nginx 服务器搭建成功</p>
 <ul>
 <li>查看容器的 ip</li>
 </ul>
@@ -174,34 +172,43 @@ lo: <span class="highlight-nv">flags</span><span class="highlight-o">=</span>73&
 <ul>
 <li>保存镜像到本地</li>
 </ul>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker save -o docker.io-centos-nginx-image.tar  docker.io/centos:nginx</span> 
+<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker save -o docker.io-centos-nginx-image.tar  docker.io/centos:nginx </span>
 <span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># ll -h</span>
 总用量 651M
 -rw-------. <span class="highlight-m">1</span> root root 1.3K 11月 <span class="highlight-m">17</span> 15:34 anaconda-ks.cfg
 -rw-------. <span class="highlight-m">1</span> root root 651M 3月  <span class="highlight-m">28</span> 16:33 docker.io-centos-nginx-image.tar
-<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span># 
+<span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># </span>
 </code></pre>
 <ul>
 <li>端口映射：</li>
 </ul>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker run -d -p 80:80 docker.io/centos:nginx</span> 
+<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker run -d -p 80:80 docker.io/centos:nginx </span>
 
 230fa0ae2a49ef248c5dce6f336e084142587e887bb2c117cbbdd8de878c914f
 </code></pre>
 <ul>
 <li>容器自启动</li>
 </ul>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker run  --restart=always -itd --name mynginx centos:nginx /bin/bash</span> 
+<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@bogon ~<span class="highlight-o">]</span><span class="highlight-c1"># docker run  --restart=always -itd --name mynginx centos:nginx /bin/bash </span>
 
 f6caa1100ce758494cd55e3dc6aaad3f68ef0e80d9fae12c58e9ae0960d85b5a
 </code></pre>
                 <div>
-                    <pre><p style="font-size:15px"><font color="#008000">
+                    <hr>
+
+标题：docker安装nginx<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2019/03/28/1553760603642.html" target="_blank">https://cuijianzhe.github.io/articles/2019/03/28/1553760603642.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<pre><p style="font-size:15px"><font color="#008000">
 <b>到头来
 我们记住的
 不是敌人的攻击
 而是朋友的沉默
        ---马丁·路德·金</b></p><pre>
+
                 </div>
         </div>
     </div>
@@ -355,15 +362,15 @@ f6caa1100ce758494cd55e3dc6aaad3f68ef0e80d9fae12c58e9ae0960d85b5a
                 <div class="ft__fade">分类</div>
                 <br>
                     <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="31 文章"
+                       aria-label="32 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="11 文章"
+                       aria-label="15 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="48 文章"
+                       aria-label="49 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Linux系列</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/network"
@@ -378,7 +385,7 @@ f6caa1100ce758494cd55e3dc6aaad3f68ef0e80d9fae12c58e9ae0960d85b5a
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                127
+                140
                 文章
             </a>
            <br>
@@ -406,34 +413,17 @@ f6caa1100ce758494cd55e3dc6aaad3f68ef0e80d9fae12c58e9ae0960d85b5a
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '6b8a5a99786d472c0877',
-        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
 
         </div>
     </div>
 </footer>
 <script>
   var Label = {
-    speech: false,
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources",
     luteAvailable: true,
-    hljsStyle: 'rrt',
+    hljsStyle: 'monokai',
     langLabel: "zh_CN",
     version: "4.3.0",
     staticSite: true,
@@ -441,12 +431,12 @@ f6caa1100ce758494cd55e3dc6aaad3f68ef0e80d9fae12c58e9ae0960d85b5a
     articleId: "1553760603642",
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/common.min.js?1597576982775"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
 <div class="solo-kanbanniang">
     <div class="solo-kanbanniang__tip"></div>
     <canvas id="soloKanbanniang" width="280" height="250"></canvas>
@@ -478,7 +468,7 @@ f6caa1100ce758494cd55e3dc6aaad3f68ef0e80d9fae12c58e9ae0960d85b5a
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1595358040124', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/js/page.min.js?1597576982775', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1553760603642",
@@ -500,4 +490,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 99ms, 2020/07/23 14:21:19 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 430ms, 2020/08/16 19:30:51 -->

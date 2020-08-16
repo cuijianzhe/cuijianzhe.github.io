@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>迁移wiki- Atlassian Confluence并升级 - 邯城往事</title><meta name="description" content="喜欢与你默默对视，喜欢在心的旷野里，与你缠绵相依。时光荏苒，无关风月，只是，愿意在你的注视下，轻执墨痕，为你写一段文字。"/><meta property="og:description" content="喜欢与你默默对视，喜欢在心的旷野里，与你缠绵相依。时光荏苒，无关风月，只是，愿意在你的注视下，轻执墨痕，为你写一段文字。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="迁移wiki- Atlassian Confluence并升级 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/05/07/1588851186350.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="迁移wiki- Atlassian Confluence并升级 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/05/07/1588851186350.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>迁移wiki- Atlassian Confluence并升级 - 邯城往事</title><meta name="description" content="  喜欢与你默默对视，喜欢在心的旷野里，与你缠绵相依。时光荏苒，无关风月，只是，愿意在你的注视下，轻执墨痕，为你写一段文字。"/><meta property="og:description" content="  喜欢与你默默对视，喜欢在心的旷野里，与你缠绵相依。时光荏苒，无关风月，只是，愿意在你的注视下，轻执墨痕，为你写一段文字。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="迁移wiki- Atlassian Confluence并升级 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/05/07/1588851186350.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="迁移wiki- Atlassian Confluence并升级 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/05/07/1588851186350.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/css/base.css?1597576982775"/>
             <link rel="prev" title="Pyhton爬虫爬取天气情况以及情话" href="https://cuijianzhe.github.io/articles/2020/04/30/1588249393623.html">
             <link rel="next" title="Nginx的Vhost配置" href="https://cuijianzhe.github.io/articles/2020/05/12/1589284354518.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -112,7 +110,7 @@ rpm -ivh mysql-community-libs-5.7.30-1.el7.x86_64.rpm --force --nodeps
 rpm -ivh mysql-community-common-5.7.30-1.el7.x86_64.rpm --force --nodeps
 </code></pre>
 <h4 id="yum安装">yum 安装</h4>
-<p><code>https://repo.mysql.com//mysql57-community-release-el7-10.noarch.rpm</code></p>
+<p>  <code>https://repo.mysql.com//mysql57-community-release-el7-10.noarch.rpm</code></p>
 <h4 id="密码修改">密码修改</h4>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@localhost ~<span class="highlight-o">]</span><span class="highlight-c1">#  grep password /var/log/mysqld.log</span>
 2020-05-08T01:40:02.868978Z <span class="highlight-m">1</span> <span class="highlight-o">[</span>Note<span class="highlight-o">]</span> A temporary password is generated <span class="highlight-k">for</span> root@localhost: hhhrjS?Xq61+
@@ -219,9 +217,9 @@ Java<span class="highlight-o">(</span>TM<span class="highlight-o">)</span> SE Ru
 Java HotSpot<span class="highlight-o">(</span>TM<span class="highlight-o">)</span> 64-Bit Server VM <span class="highlight-o">(</span>build 25.251-b08, mixed mode<span class="highlight-o">)</span>
 </code></pre>
 <h2 id="Atlassian-下载地址"><a href="https://www.atlassian.com/zh/software/confluence/download" target="_blank">Atlassian </a>下载地址</h2>
-<p>下载地址：<a href="https://product-downloads.atlassian.com/software/confluence/downloads/atlassian-confluence-6.15.10-x64.bin" target="_blank">https://product-downloads.atlassian.com/software/confluence/downloads/atlassian-confluence-6.15.10-x64.bin</a></p>
+<p>  下载地址：<a href="https://product-downloads.atlassian.com/software/confluence/downloads/atlassian-confluence-6.15.10-x64.bin" target="_blank">https://product-downloads.atlassian.com/software/confluence/downloads/atlassian-confluence-6.15.10-x64.bin</a></p>
 <h4 id="安装-">安装：</h4>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@localhost ~<span class="highlight-o">]</span><span class="highlight-c1"># ./atlassian-confluence-6.15.10-x64.bin</span> 
+<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@localhost ~<span class="highlight-o">]</span><span class="highlight-c1"># ./atlassian-confluence-6.15.10-x64.bin </span>
 ......
 Select the folder where you would like Confluence 6.15.10 to be installed,
 <span class="highlight-k">then</span> click Next.
@@ -234,36 +232,45 @@ Default location <span class="highlight-k">for</span> Confluence data
 /data/atlassian/application-data/confluence  
 ......
 </code></pre>
-<p>破解：</p>
+<p>  破解：</p>
 <pre><code class="highlight-chroma">cp /usr/local/atlassian/confluence/confluence/WEB-INF/lib/atlassian-extras-decoder-v2-3.4.1.jar /root/
 </code></pre>
-<p>将其改名为 atlassian-extras-2.4.jar（因为破解工具只认这个版本的名称）<br>
+<p>  将其改名为 atlassian-extras-2.4.jar（因为破解工具只认这个版本的名称）<br>
 将改名后的 atlassian-extras-2.4.jar 传到本地，然后本地电脑操作：</p>
-<p>数据库驱动上传：<br>
+<p>  数据库驱动上传：<br>
 <code>cp mysql-connector-java-5.1.49.jar /usr/local/atlassian/confluence/confluence/WEB-INF/lib</code></p>
-<p>迁移过程：</p>
+<p>  迁移过程：</p>
 <ul>
 <li>迁移 confluence 主目录文件（最好全部备份迁移）</li>
 <li>数据库备份并且迁移；</li>
 <li>Edit the <code>&lt;confluence-home&gt;\confluence.cfg.xml</code> file.</li>
 <li>更改 <code>&lt;confluence-home&gt;/confluence.cfg.xml</code>，数据库驱动程序</li>
 </ul>
-<p><strong>主目录文件</strong>：<code>/usr/local/atlassian/confluence/confluence/WEB-INF/classes/confluence-init.properties</code></p>
-<p><strong>迁移必备软件：</strong></p>
-<p><img src="https://img.hacpai.com/file/2020/05/image-51f65166.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>参考：<br>
+<p>  <strong>主目录文件</strong>：<code>/usr/local/atlassian/confluence/confluence/WEB-INF/classes/confluence-init.properties</code></p>
+<p>  <strong>迁移必备软件：</strong></p>
+<p>  <img src="https://img.hacpai.com/file/2020/05/image-51f65166.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p>  参考：<br>
 <a href="https://blog.csdn.net/leonliu06/article/details/104057660" target="_blank">https://blog.csdn.net/leonliu06/article/details/104057660</a></p>
-<p><a href="https://www.jianshu.com/p/2f2142ce01b7" target="_blank">https://www.jianshu.com/p/2f2142ce01b7</a></p>
-<p><a href="https://confluence.atlassian.com/conf63/manually-backing-up-the-site-929729737.html" target="_blank">https://confluence.atlassian.com/conf63/manually-backing-up-the-site-929729737.html</a></p>
-<p>数据库配置参考：</p>
-<p><a href="https://confluence.atlassian.com/doc/database-setup-for-mysql-128747.html" target="_blank">https://confluence.atlassian.com/doc/database-setup-for-mysql-128747.html</a></p>
+<p>  <a href="https://www.jianshu.com/p/2f2142ce01b7" target="_blank">https://www.jianshu.com/p/2f2142ce01b7</a></p>
+<p>  <a href="https://confluence.atlassian.com/conf63/manually-backing-up-the-site-929729737.html" target="_blank">https://confluence.atlassian.com/conf63/manually-backing-up-the-site-929729737.html</a></p>
+<p>  数据库配置参考：</p>
+<p>  <a href="https://confluence.atlassian.com/doc/database-setup-for-mysql-128747.html" target="_blank">https://confluence.atlassian.com/doc/database-setup-for-mysql-128747.html</a></p>
                 <div>
-                    <pre><p style="font-size:15px"><font color="#008000">
+                    <hr>
+
+标题：迁移wiki- Atlassian Confluence并升级<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2020/05/07/1588851186350.html" target="_blank">https://cuijianzhe.github.io/articles/2020/05/07/1588851186350.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<pre><p style="font-size:15px"><font color="#008000">
 <b>到头来
 我们记住的
 不是敌人的攻击
 而是朋友的沉默
        ---马丁·路德·金</b></p><pre>
+
                 </div>
         </div>
     </div>
@@ -445,15 +452,15 @@ Default location <span class="highlight-k">for</span> Confluence data
                 <div class="ft__fade">分类</div>
                 <br>
                     <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="31 文章"
+                       aria-label="32 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="11 文章"
+                       aria-label="15 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="48 文章"
+                       aria-label="49 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Linux系列</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/network"
@@ -468,7 +475,7 @@ Default location <span class="highlight-k">for</span> Confluence data
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                127
+                140
                 文章
             </a>
            <br>
@@ -496,34 +503,17 @@ Default location <span class="highlight-k">for</span> Confluence data
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '6b8a5a99786d472c0877',
-        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
 
         </div>
     </div>
 </footer>
 <script>
   var Label = {
-    speech: false,
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources",
     luteAvailable: true,
-    hljsStyle: 'rrt',
+    hljsStyle: 'monokai',
     langLabel: "zh_CN",
     version: "4.3.0",
     staticSite: true,
@@ -531,12 +521,12 @@ Default location <span class="highlight-k">for</span> Confluence data
     articleId: "1588851186350",
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/common.min.js?1597576982775"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
 <div class="solo-kanbanniang">
     <div class="solo-kanbanniang__tip"></div>
     <canvas id="soloKanbanniang" width="280" height="250"></canvas>
@@ -568,7 +558,7 @@ Default location <span class="highlight-k">for</span> Confluence data
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1595358040124', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/js/page.min.js?1597576982775', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1588851186350",
@@ -590,4 +580,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 163ms, 2020/07/23 14:21:13 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 388ms, 2020/08/16 19:30:25 -->

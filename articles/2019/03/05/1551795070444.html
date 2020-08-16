@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>基于centos7搭建wordpress博客系统 - 邯城往事</title><meta name="description" content="wordpress 自由构建，自由写作 全新的编辑体验能更一致地对待您的设计和内容。如果您在构建客户网站，您可以创建可重用区块。它可以让您的客户随时添加新内容，同时维持一致的观感。"/><meta property="og:description" content="wordpress 自由构建，自由写作 全新的编辑体验能更一致地对待您的设计和内容。如果您在构建客户网站，您可以创建可重用区块。它可以让您的客户随时添加新内容，同时维持一致的观感。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="基于centos7搭建wordpress博客系统 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/05/1551795070444.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="基于centos7搭建wordpress博客系统 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/05/1551795070444.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>基于centos7搭建wordpress博客系统 - 邯城往事</title><meta name="description" content="  wordpress 自由构建，自由写作 全新的编辑体验能更一致地对待您的设计和内容。如果您在构建客户网站，您可以创建可重用区块。它可以让您的客户随时添加新内容，同时维持一致的观感。"/><meta property="og:description" content="  wordpress 自由构建，自由写作 全新的编辑体验能更一致地对待您的设计和内容。如果您在构建客户网站，您可以创建可重用区块。它可以让您的客户随时添加新内容，同时维持一致的观感。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="基于centos7搭建wordpress博客系统 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/05/1551795070444.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="基于centos7搭建wordpress博客系统 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/05/1551795070444.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/css/base.css?1597576982775"/>
             <link rel="prev" title="solo博客V3.2在Tomcat部署+更改H2数据库为MariaDB" href="https://cuijianzhe.github.io/articles/2019/03/05/1551783677422.html">
             <link rel="next" title="Pgone、孙八一、小青龙、Jony J 剪辑作品展" href="https://cuijianzhe.github.io/articles/2019/03/05/1551798496474.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -98,7 +96,7 @@
                 </a>
         </div>
         <div class="vditor-reset">
-            <p><img src="https://img.hacpai.com/bing/20171116.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
+            <p>  <img src="https://img.hacpai.com/bing/20171116.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
 <hr>
 <h3 id="搭建环境-linux-nginx-mysql-php">搭建环境：linux+nginx+mysql+php</h3>
 <hr>
@@ -107,7 +105,7 @@
 <img src="https://img.hacpai.com/file/2019/03/centos-637a0426.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="centos.png"></li>
 <li>软件版本：（目前中文版最新 5.0.3）</li>
 </ol>
-<p>参考网站：</p>
+<p>  参考网站：</p>
 <ol>
 <li>wordpress 官网： <a href="https://wordpress.org/" target="_blank">https://wordpress.org/</a></li>
 <li>下载地址： <a href="https://wordpress.org/download/" target="_blank">https://wordpress.org/download/</a></li>
@@ -116,7 +114,7 @@
 <ol>
 <li>下载完，对 wordpress.tar.gz 进行解压</li>
 </ol>
-<p><code>[root@localhost ~]# tar xf wordpress-5.0.3-zh_CN.tar.gz -C /usr/local/nginx/html/</code>  将 wordpress 软件整体解压到 nginx 根目录</p>
+<p>  <code>[root@localhost ~]# tar xf wordpress-5.0.3-zh_CN.tar.gz -C /usr/local/nginx/html/</code>  将 wordpress 软件整体解压到 nginx 根目录</p>
 <ol start="2">
 <li>针对 wordpress 在系统内新建 MySQL 用户，并且授权</li>
 </ol>
@@ -147,27 +145,36 @@ mysql&gt; <span class="highlight-nb">exit</span>
 Bye
  
 </code></pre>
-<p>之后可直接打开 Web 服务进行安装：<br>
+<p>  之后可直接打开 Web 服务进行安装：<br>
 <code>http://192.168.1.5/wordpress/wp-admin/setup-config.php</code></p>
-<p><img src="https://img.hacpai.com/file/2019/03/wordpress-ca8d1cf0.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="wordpress.png"></p>
-<p>下一步<br>
+<p>  <img src="https://img.hacpai.com/file/2019/03/wordpress-ca8d1cf0.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="wordpress.png"></p>
+<p>  下一步<br>
 <img src="https://img.hacpai.com/file/2019/03/shujuku-277fdac6.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="shujuku.png"></p>
-<p>下一步 提示报错，手动创建，将框内的配置信息粘贴到 PHP 文件中<br>
+<p>  下一步 提示报错，手动创建，将框内的配置信息粘贴到 PHP 文件中<br>
 <img src="https://img.hacpai.com/file/2019/03/chuangjian-f53c1e8a.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="chuangjian.png"></p>
-<p><code>[root@localhost ~]# vim /usr/local/nginx/html/wordpress/wp-config.php</code></p>
-<p>下一步<br>
+<p>  <code>[root@localhost ~]# vim /usr/local/nginx/html/wordpress/wp-config.php</code></p>
+<p>  下一步<br>
 <img src="https://img.hacpai.com/file/2019/03/zhandian-4123443e.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="zhandian.png"></p>
-<p>如下便是安装成功<br>
+<p>  如下便是安装成功<br>
 <img src="https://img.hacpai.com/file/2019/03/chenggong-82edb519.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="chenggong.png"></p>
-<p>最后直接访问即可，自定义设置个性化内容<br>
+<p>  最后直接访问即可，自定义设置个性化内容<br>
 <img src="https://img.hacpai.com/file/2019/03/wordpress1-b31034db.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="wordpress1.png"></p>
                 <div>
-                    <pre><p style="font-size:15px"><font color="#008000">
+                    <hr>
+
+标题：基于centos7搭建wordpress博客系统<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2019/03/05/1551795070444.html" target="_blank">https://cuijianzhe.github.io/articles/2019/03/05/1551795070444.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<pre><p style="font-size:15px"><font color="#008000">
 <b>到头来
 我们记住的
 不是敌人的攻击
 而是朋友的沉默
        ---马丁·路德·金</b></p><pre>
+
                 </div>
         </div>
     </div>
@@ -328,15 +335,15 @@ Bye
                 <div class="ft__fade">分类</div>
                 <br>
                     <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="31 文章"
+                       aria-label="32 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="11 文章"
+                       aria-label="15 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="48 文章"
+                       aria-label="49 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Linux系列</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/network"
@@ -351,7 +358,7 @@ Bye
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                127
+                140
                 文章
             </a>
            <br>
@@ -379,34 +386,17 @@ Bye
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '6b8a5a99786d472c0877',
-        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
 
         </div>
     </div>
 </footer>
 <script>
   var Label = {
-    speech: false,
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources",
     luteAvailable: true,
-    hljsStyle: 'rrt',
+    hljsStyle: 'monokai',
     langLabel: "zh_CN",
     version: "4.3.0",
     staticSite: true,
@@ -414,12 +404,12 @@ Bye
     articleId: "1551795070444",
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/common.min.js?1597576982775"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
 <div class="solo-kanbanniang">
     <div class="solo-kanbanniang__tip"></div>
     <canvas id="soloKanbanniang" width="280" height="250"></canvas>
@@ -451,7 +441,7 @@ Bye
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1595358040124', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/js/page.min.js?1597576982775', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1551795070444",
@@ -473,4 +463,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 75ms, 2020/07/23 14:21:20 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 382ms, 2020/08/16 19:30:58 -->

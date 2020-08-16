@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>openstack创建镜像，开启云主机 - 邯城往事</title><meta name="description" content="高筑墙，广积粮，缓称王"/><meta property="og:description" content="高筑墙，广积粮，缓称王"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="openstack创建镜像，开启云主机 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/11/07/1573111362693.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="openstack创建镜像，开启云主机 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/11/07/1573111362693.html">        <link rel="stylesheet"
-              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1595358040124"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>openstack创建镜像，开启云主机 - 邯城往事</title><meta name="description" content="   高筑墙，广积粮，缓称王"/><meta property="og:description" content="   高筑墙，广积粮，缓称王"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="openstack创建镜像，开启云主机 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/11/07/1573111362693.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="openstack创建镜像，开启云主机 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/11/07/1573111362693.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/css/base.css?1597576982775"/>
             <link rel="prev" title="学习日语课程" href="https://cuijianzhe.github.io/articles/2019/11/03/1572744813413.html">
             <link rel="next" title="Scrapy学习" href="https://cuijianzhe.github.io/articles/2019/11/08/1573185139639.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -107,17 +105,17 @@ Inter：</li>
 </ul>
 <pre><code class="highlight-chroma">cat /proc/cpuinfo | grep --color vmx
 </code></pre>
-<p>AMD：</p>
+<p>  AMD：</p>
 <pre><code class="highlight-chroma">cat /proc/cpuinfo | grep --color svm
 </code></pre>
-<p>看看 flag 有没有上面的 vmx 或者是 svm，有的话就是支持全虚拟化技术</p>
+<p>  看看 flag 有没有上面的 vmx 或者是 svm，有的话就是支持全虚拟化技术</p>
 <h2 id="安装KVM">安装 KVM</h2>
 <ul>
 <li>安装 KVM 模块、管理工具和 libvirt，命令行安装：</li>
 </ul>
 <pre><code class="highlight-chroma">yum install qemu-kvm libvirt libguestfs-tools virt-install virt-manager libvirt-python -y
 </code></pre>
-<p>注：</p>
+<p>  注：</p>
 <blockquote>
 <p>qemu-kvm ： kvm 主程序， KVM 虚拟化模块<br>
 virt-manager： KVM 图形化管理工具<br>
@@ -211,15 +209,15 @@ virbr0		8000.525400fb5e54	yes		virbr0-nic
 <p>virbr0 是一种虚拟网络接口，是一种虚拟网络接口，这由于安装和启用了 libvirt libvirtlibvirt libvirtd 服务后 会自动 生成一个桥接设备，名字为 virbr0。libvirtd 在服务器上生成一个 virtual network switch,KVM 中的所有虚拟机都是通过 virbr0 连接的。</p>
 </blockquote>
 <h2 id="使用命令-virt-manager-建立虚拟机">使用命令：virt-manager 建立虚拟机</h2>
-<p>*创建一个分区：</p>
+<p>  *创建一个分区：</p>
 <pre><code class="highlight-chroma">fdisk /dev/mapper/centos-data
 mkfs.xfs /dev/mapper/centos-data
 mount /dev/mapper/centos-data /var/lib/libvirt/images/
 </code></pre>
-<p>执行 virt-manager 进行创建虚拟机</p>
+<p>  执行 virt-manager 进行创建虚拟机</p>
 <pre><code class="highlight-chroma">[root@cinder ~]# virt-manager
 </code></pre>
-<p><del>之后的步骤省略</del></p>
+<p>  <del>之后的步骤省略</del></p>
 <ul>
 <li>常用命令：</li>
 </ul>
@@ -318,12 +316,12 @@ total 12769116
 | 1c4c6ba2-7a76-4207-a534-c7dbacf6a883 | demo1      | ACTIVE | demo-net=10.0.0.199, 192.168.50.172 | cirros    | m1.tiny  |
 +--------------------------------------+------------+--------+-------------------------------------+-----------+----------+
 </code></pre>
-<p><strong>创建云主机实例</strong>：</p>
+<p>  <strong>创建云主机实例</strong>：</p>
 <pre><code class="highlight-chroma">创建实例：
 openstack server create     --image 1907     --flavor m1.small     --key-name mykey     --network demo-net     demo2
 </code></pre>
 <h2 id="挂载卷">挂载卷</h2>
-<p><img src="https://img.hacpai.com/file/2019/11/image-a0e4fe9b.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p>  <img src="https://img.hacpai.com/file/2019/11/image-a0e4fe9b.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <pre><code class="highlight-chroma">[root@host-10-0-0-113 ~]# mkfs.xfs /dev/vdb 
 meta-data=/dev/vdb               isize=512    agcount=4, agsize=655360 blks
          =                       sectsz=512   attr=2, projid32bit=1
@@ -347,12 +345,21 @@ tmpfs                    184M     0  184M   0% /run/user/0
 /dev/vdb                  10G   33M   10G   1% /data
 </code></pre>
                 <div>
-                    <pre><p style="font-size:15px"><font color="#008000">
+                    <hr>
+
+标题：openstack创建镜像，开启云主机<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2019/11/07/1573111362693.html" target="_blank">https://cuijianzhe.github.io/articles/2019/11/07/1573111362693.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<pre><p style="font-size:15px"><font color="#008000">
 <b>到头来
 我们记住的
 不是敌人的攻击
 而是朋友的沉默
        ---马丁·路德·金</b></p><pre>
+
                 </div>
         </div>
     </div>
@@ -531,15 +538,15 @@ tmpfs                    184M     0  184M   0% /run/user/0
                 <div class="ft__fade">分类</div>
                 <br>
                     <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="31 文章"
+                       aria-label="32 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="11 文章"
+                       aria-label="15 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="48 文章"
+                       aria-label="49 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Linux系列</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/network"
@@ -554,7 +561,7 @@ tmpfs                    184M     0  184M   0% /run/user/0
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                127
+                140
                 文章
             </a>
            <br>
@@ -582,34 +589,17 @@ tmpfs                    184M     0  184M   0% /run/user/0
     });
 </script>
 <!--切换标签实现网页标题变化 结束-->
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '6b8a5a99786d472c0877',
-        clientSecret: '478338c619928fb21bbcee988a215d873930af7b',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
 
         </div>
     </div>
 </footer>
 <script>
   var Label = {
-    speech: false,
+    speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources",
     luteAvailable: true,
-    hljsStyle: 'rrt',
+    hljsStyle: 'monokai',
     langLabel: "zh_CN",
     version: "4.3.0",
     staticSite: true,
@@ -617,12 +607,12 @@ tmpfs                    184M     0  184M   0% /run/user/0
     articleId: "1573111362693",
   }
 </script>
-<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1595358040124"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/skins/Pinghsu/js/common.min.js?1597576982775"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.8/index.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
 <div class="solo-kanbanniang">
     <div class="solo-kanbanniang__tip"></div>
     <canvas id="soloKanbanniang" width="280" height="250"></canvas>
@@ -654,7 +644,7 @@ tmpfs                    184M     0  184M   0% /run/user/0
 
 
 <script type="text/javascript">
-    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1595358040124', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@7703ed1/src/main/resources/js/page.min.js?1597576982775', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1573111362693",
@@ -676,4 +666,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 90ms, 2020/07/23 14:21:16 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 387ms, 2020/08/16 19:30:36 -->
