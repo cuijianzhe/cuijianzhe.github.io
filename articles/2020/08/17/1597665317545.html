@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Django 3.1 官网学习路线 - 邯城往事</title><meta name="description" content="  水说：我知道你流泪，因为你在我心里！鱼说：你看不见我流泪，因为我在水里。"/><meta property="og:description" content="  水说：我知道你流泪，因为你在我心里！鱼说：你看不见我流泪，因为我在水里。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Django 3.1 官网学习路线 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/08/17/1597665317545.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="Django 3.1 官网学习路线 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/08/17/1597665317545.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources/skins/Pinghsu/css/base.css?1597690831817"/>
+            <link rel="prev" title="关于 Kubernetes 的这些原理，你一定要了解" href="https://cuijianzhe.github.io/articles/2020/08/15/1597459617030.html">
+    <!--鼠标点击特效-->
+<script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
+<!--页面动态樱花-->
+<!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
+</head>
+<body>
+<header class="header">
+    <div class="wrapper">
+        <a href="https://cuijianzhe.github.io" rel="start" class="header__logo">
+            <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="邯城往事"/>
+            邯城往事
+        </a>
+
+        <nav class="header__nav mobile__none">
+            <a href="https://cuijianzhe.github.io/tags.html" rel="section">
+                Tags
+            </a>
+            <a href="https://cuijianzhe.github.io/archives.html">
+                Archives
+            </a>
+            <a rel="archive" href="https://cuijianzhe.github.io/links.html">
+                Links
+            </a>
+        </nav>
+
+        <div class="header__bar fn__none" onclick="$(this).next().slideToggle()">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                <path fill="#444" d="M0 3h20v2h-20v-2zM0 9h20v2h-20v-2zM0 15h20v2h-20v-2z"></path>
+            </svg>
+        </div>
+        <main class="header__menu fn__none">
+            <ul>
+                    <li>
+                        <a href="/my-github-repos" target="_self" rel="section">
+                            我的开源
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                            服务器倒计时
+                        </a>
+                    </li>
+                <li>
+                    <a href="https://cuijianzhe.github.io/tags.html" rel="section">
+                        Tags
+                    </a>
+                </li>
+                <li>
+                    <a href="https://cuijianzhe.github.io/archives.html">
+                        Archives
+                    </a>
+                </li>
+                <li>
+                    <a rel="archive" href="https://cuijianzhe.github.io/links.html">
+                        Links
+                    </a>
+                </li>
+                <li>
+                    <a rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">
+                        RSS
+                    </a>
+                </li>
+            </ul>
+        </main>
+    </div>
+</header>
+<main id="pjax" class="fn__flex-1">
+    
+    <div class="post wrapper wrapper--miner">
+        <h2 class="item__title">
+            <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2020/08/17/1597665317545.html">
+                Django 3.1 官网学习路线
+            </a>
+        </h2>
+        <div class="ft__fade item__meta">
+                Updated on
+            <time>
+                Aug 18, 2020
+            </time>
+                in <a href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
+            with <span data-uvstaturl="https://cuijianzhe.github.io/articles/2020/08/17/1597665317545.html">0</span> views
+                and <a href="#b3logsolocomments"><span data-uvstatcmt="1597665317545">0</span> comments</a>
+        </div>
+        <div class="item__tags">
+                <a rel="tag" class="tag tag--0" href="https://cuijianzhe.github.io/tags/Python">
+                    <b># Python</b>
+                </a>
+        </div>
+        <div class="vditor-reset">
+            <h1 id="Django-3-1-官网学习路线">Django 3.1 官网学习路线</h1>
+<p>  开始按照官网进行学习 <a href="https://docs.djangoproject.com/en/3.1/intro/tutorial01/#writing-your-first-django-app-part-1" target="_blank">Django 框架</a></p>
+<h2 id="第一部分">第一部分</h2>
+<h3 id="安装-Django">安装 Django</h3>
+<pre><code class="highlight-chroma">D:\Django_study&gt;python -m django --version
+3.1
+</code></pre>
+<h3 id="创建项目">创建项目</h3>
+<p>  如果这是您第一次使用 Django，那么您必须进行一些初始设置。也就是说，您需要自动生成一些建立 Django 项目的代码——Django 实例的设置集合，包括数据库配置、特定于 Django 的选项和特定于应用程序的设置。<br>
+从命令行，cd 到您想存储代码的目录，然后运行以下命令：</p>
+<pre><code class="highlight-chroma">django-admin startproject Django_study
+</code></pre>
+<h3 id="开发服务">开发服务</h3>
+<pre><code class="highlight-chroma">python manage.py runserver
+</code></pre>
+<p>  默认情况下，runserver 命令在端口 8000 的内部 IP 上启动开发服务器。<br>
+如果您想更改服务器的端口，请将其作为命令行参数传递。例如，这个命令在端口 8080 上启动服务器：</p>
+<pre><code class="highlight-chroma">python manage.py runserver 8080
+</code></pre>
+<p>  如果您想更改服务器的 IP，请将其与端口一起传递。例如，要监听所有可用的公共 ip(如果你正在运行 Vagrant 或想在网络上的其他计算机上监听你的工作，这很有用)，使用：</p>
+<pre><code class="highlight-chroma">python manage.py runserver 0:8000
+</code></pre>
+<h3 id="创建-polls-应用">创建 polls 应用</h3>
+<p>  现在您的环境——一个“项目”——已经设置好了，您可以开始工作了。<br>
+用 Django 编写的每个应用程序都由一个遵循特定约定的 Python 包组成。Django 附带一个工具，它可以自动生成应用程序的基本目录结构，因此您可以专注于编写代码，而不是创建目录。</p>
+<pre><code class="highlight-chroma">python manage.py startapp polls
+</code></pre>
+<h4 id="编写-views-py-文件">编写 views.py 文件</h4>
+<p>  我们来写第一个视图。打开文件 polls/views.py，并在其中放入以下 Python 代码：</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">from</span> <span class="highlight-nn">django.http</span> <span class="highlight-kn">import</span> <span class="highlight-n">HttpResponse</span>
+<span class="highlight-k">def</span> <span class="highlight-nf">index</span><span class="highlight-p">(</span><span class="highlight-n">request</span><span class="highlight-p">):</span>
+    <span class="highlight-k">return</span> <span class="highlight-n">HttpResponse</span><span class="highlight-p">(</span><span class="highlight-s2">"Hello, world. You're at the polls index."</span><span class="highlight-p">)</span>
+</code></pre>
+<p>  这是 Django 中最简单的视图。要调用视图，我们需要将其映射到一个 URL—为此我们需要一个 URLconf。<br>
+要在轮询目录中创建 URLconf，请创建一个名为 urls.py 的文件。你的 app 目录现在应该是这样的：</p>
+<pre><code class="highlight-chroma">polls/
+    __init__.py
+    admin.py
+    apps.py
+    migrations/
+        __init__.py
+    models.py
+    tests.py
+    urls.py
+    views.py
+</code></pre>
+<p>  在 poll /urls.py 文件中包含以下代码：</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">from</span> <span class="highlight-nn">django.urls</span> <span class="highlight-kn">import</span> <span class="highlight-n">path</span>
+<span class="highlight-kn">from</span> <span class="highlight-nn">.</span> <span class="highlight-kn">import</span> <span class="highlight-n">views</span>
+<span class="highlight-n">urlpatterns</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span>
+    <span class="highlight-n">path</span><span class="highlight-p">(</span><span class="highlight-s1">''</span><span class="highlight-p">,</span> <span class="highlight-n">views</span><span class="highlight-o">.</span><span class="highlight-n">index</span><span class="highlight-p">,</span> <span class="highlight-n">name</span><span class="highlight-o">=</span><span class="highlight-s1">'index'</span><span class="highlight-p">),</span>
+<span class="highlight-p">]</span>
+</code></pre>
+<p>  下一步是将根 URLconf 指向 polls.urls 模块。在 mysite / urls.py 中，为 django.urls.include 添加一个导入，并在 urlpatterns 列表中插入一个 include()，这样您就可以：</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">from</span> <span class="highlight-nn">django.contrib</span> <span class="highlight-kn">import</span> <span class="highlight-n">admin</span>
+<span class="highlight-kn">from</span> <span class="highlight-nn">django.urls</span> <span class="highlight-kn">import</span> <span class="highlight-n">include</span><span class="highlight-p">,</span> <span class="highlight-n">path</span>
+<span class="highlight-n">urlpatterns</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span>
+    <span class="highlight-n">path</span><span class="highlight-p">(</span><span class="highlight-s1">'polls/'</span><span class="highlight-p">,</span> <span class="highlight-n">include</span><span class="highlight-p">(</span><span class="highlight-s1">'polls.urls'</span><span class="highlight-p">)),</span>
+    <span class="highlight-n">path</span><span class="highlight-p">(</span><span class="highlight-s1">'admin/'</span><span class="highlight-p">,</span> <span class="highlight-n">admin</span><span class="highlight-o">.</span><span class="highlight-n">site</span><span class="highlight-o">.</span><span class="highlight-n">urls</span><span class="highlight-p">),</span>
+<span class="highlight-p">]</span>
+</code></pre>
+<ul>
+<li>include()函数允许引用其他 URLconf。每当 Django 遇到 include（）时，它都会截断匹配到该点的 URL 的任何部分，并将剩余的字符串发送到包含的 URLconf 中以进行进一步处理。</li>
+<li>include()背后的想法是使即插即用 url 变得容易。因为轮询是在它们自己的 URLconf (polls/urls.py)中，它们可以被放在“/polls/”下，或“/fun_polls/”下，或“/content/polls/”下，或任何其他路径根目录下，应用程序仍然可以工作。</li>
+</ul>
+<blockquote>
+<p>什么时候用 include() ？<br>
+在包含其他 URL 模式时，应该始终使用 include()。admin. site .url 是唯一的例外。</p>
+</blockquote>
+<p>  现在已经将索引视图连接到 URLconf。验证它的工作与以下命令：</p>
+<pre><code class="highlight-chroma">python manage.py runserver
+</code></pre>
+<p>  浏览器访问： http://127.0.0.1:8000/polls/</p>
+<h5 id="path--函数传递了四个参数-两个是必需的-路由和视图-两个是可选的-kwargs-和-name-在这一点上-有必要回顾一下这些论点的意义-">path()函数传递了四个参数，两个是必需的：路由和视图，两个是可选的：kwargs 和 name。在这一点上，有必要回顾一下这些论点的意义。</h5>
+<h6 id="path---argument--route">path() argument: route</h6>
+<p>  route 是一个包含 URL 模式的字符串。在处理请求时，Django 从 urlpatterns 中的第一个模式开始，沿着列表向下移动，将所请求的 URL 与每个模式进行比较，直到找到一个匹配的。<br>
+模式不搜索 GET 和 POST 参数或域名。例如，在对 <a href="https://www.example.com/myapp/" target="_blank">https://www.example.com/myapp/</a>的请求中，URLconf 将查找 myapp/。在请求 <a href="https://www.example.com/myapp/" target="_blank">https://www.example.com/myapp/</a>?页面 =3 时，URLconf 也会查找 myapp/。</p>
+<h6 id="path---argument--view">path() argument: view</h6>
+<p>  当 Django 找到匹配的模式时，它调用指定的视图函数，第一个参数是 HttpRequest 对象，从路由中“捕获”的任何值都是关键字参数。我们会给出一个例子。</p>
+<h6 id="path---argument--kwargs">path() argument: kwargs</h6>
+<p>  可以在字典中将任意关键字参数传递给目标视图。在本教程中，我们不会使用 Django 的此功能。</p>
+<h6 id="path---argument--name">path() argument: name</h6>
+<p>  通过命名 URL，您可以从 Django 的其他地方明确地引用它，特别是在模板中。这个强大的特性允许您在只修改单个文件的同时对项目的 URL 模式进行全局更改。<br>
+当您熟悉了基本的请求和响应流后，请阅读本教程的第 2 部分，开始使用数据库。</p>
+<h2 id="第二部分">第二部分</h2>
+<p>  设置数据库，创建您的第一个模型，并快速介绍 Django 自动生成的管理网站。</p>
+<h3 id="数据库设置">数据库设置</h3>
+<p>  打开 Django_study / settings.py。这是一个普通的 Python 模块，带有表示 Django 设置的模块级变量。<br>
+如果您不使用 SQLite 作为数据库，则必须添加其他设置，例如 USER，PASSWORD 和 HOST。有关更多详细信息看下<a href="https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES" target="_blank">请参见 DATABASES 的参考文档</a></p>
+<h6 id="ENGINE">ENGINE</h6>
+<p>  'django.db.backends.postgresql'<br>
+'django.db.backends.mysql'<br>
+'django.db.backends.sqlite3'<br>
+'django.db.backends.oracle'</p>
+<p>  当你编辑 mysite/setting.py。将 TIME_ZONE 设置为您的时区。<br>
+另外，请注意文件顶部的 INSTALLED_APPS 设置。它包含这个 Django 实例中激活的所有 Django 应用程序的名称。应用程序可以在多个项目中使用，您可以将它们打包并分发给他们项目中的其他人使用。<br>
+默认情况下，INSTALLED_APPS 包含以下应用程序，所有这些跟 Django:</p>
+<ul>
+<li>django.contrib.admin – 后台管理页面</li>
+<li>django.contrib.auth – 认证系统。</li>
+<li>django.contrib.contenttypes – 内容类型框架。</li>
+<li>django.contrib.sessions – 会话框架。</li>
+<li>django.contrib.messages – 消息传递框架。</li>
+<li>django.contrib.staticfiles – 静态文件管理框架。</li>
+</ul>
+<p>  但是，其中一些应用程序至少使用了一个数据库表，因此在使用表之前，我们需要在数据库中创建表。为此，运行以下命令：</p>
+<pre><code class="highlight-chroma">python manage.py migrate
+</code></pre>
+<p>  他的 migrate 命令会查看 INSTALLED_APPS 设置，并根据 mysite/settings.py 文件中的数据库设置和应用附带的数据库迁移(我们稍后将讨论这些)创建任何必要的数据库表。对于它应用的每个迁移，您将看到一条消息。如果你感兴趣，运行数据库的命令行客户端，输入\dt (PostgreSQL)，SHOW TABLES;(MariaDB, MySQL)， .schema (SQLite)，或从 USER_TABLES 中选择 TABLE_NAME;(Oracle)来显示 Django 创建的表。</p>
+<blockquote>
+<p>如前所述，默认应用程序是为常见情况而包含的，但不是每个人都需要它们。如果您不需要它们中的任何一个或全部，那么可以在运行 migrate 之前随意地注释或删除 INSTALLED_APPS 中的适当行。migrate 命令只会在 INSTALLED_APPS 中运行应用程序的迁移。</p>
+</blockquote>
+<h4 id="创建模型">创建模型</h4>
+<p>  在我们的投票应用程序中，我们将创建两个模型：<br>
+<strong>问题和选择</strong>。问题有问题和发布日期。 “选择”具有两个字段：选择的文本和投票提示。每个选择都与一个问题相关联<br>
+编辑 polls/models.py file 如下：</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">from</span> <span class="highlight-nn">django.db</span> <span class="highlight-kn">import</span> <span class="highlight-n">models</span>
+<span class="highlight-k">class</span> <span class="highlight-nc">Question</span><span class="highlight-p">(</span><span class="highlight-n">models</span><span class="highlight-o">.</span><span class="highlight-n">Model</span><span class="highlight-p">):</span>
+    <span class="highlight-n">question_text</span> <span class="highlight-o">=</span> <span class="highlight-n">models</span><span class="highlight-o">.</span><span class="highlight-n">CharField</span><span class="highlight-p">(</span><span class="highlight-n">max_length</span><span class="highlight-o">=</span><span class="highlight-mi">200</span><span class="highlight-p">)</span>
+    <span class="highlight-n">pub_date</span> <span class="highlight-o">=</span> <span class="highlight-n">models</span><span class="highlight-o">.</span><span class="highlight-n">DateTimeField</span><span class="highlight-p">(</span><span class="highlight-s1">'date published'</span><span class="highlight-p">)</span>
+
+<span class="highlight-k">class</span> <span class="highlight-nc">Choice</span><span class="highlight-p">(</span><span class="highlight-n">models</span><span class="highlight-o">.</span><span class="highlight-n">Model</span><span class="highlight-p">):</span>
+    <span class="highlight-n">question</span> <span class="highlight-o">=</span> <span class="highlight-n">models</span><span class="highlight-o">.</span><span class="highlight-n">ForeignKey</span><span class="highlight-p">(</span><span class="highlight-n">Question</span><span class="highlight-p">,</span> <span class="highlight-n">on_delete</span><span class="highlight-o">=</span><span class="highlight-n">models</span><span class="highlight-o">.</span><span class="highlight-n">CASCADE</span><span class="highlight-p">)</span>
+    <span class="highlight-n">choice_text</span> <span class="highlight-o">=</span> <span class="highlight-n">models</span><span class="highlight-o">.</span><span class="highlight-n">CharField</span><span class="highlight-p">(</span><span class="highlight-n">max_length</span><span class="highlight-o">=</span><span class="highlight-mi">200</span><span class="highlight-p">)</span>
+    <span class="highlight-n">votes</span> <span class="highlight-o">=</span> <span class="highlight-n">models</span><span class="highlight-o">.</span><span class="highlight-n">IntegerField</span><span class="highlight-p">(</span><span class="highlight-n">default</span><span class="highlight-o">=</span><span class="highlight-mi">0</span><span class="highlight-p">)</span>
+</code></pre>
+<p>  在这里，每个模型都由一个子类 <strong>django.db.models.Model</strong> 表示。每个模型都有许多类变量，每个类变量表示模型中的一个数据库字段<br>
+每个字段都由 <strong>Field</strong> 类的实例表示-例如，<strong>CharField</strong> 用于字符字段，<strong>DateTimeField</strong> 用于日期时间。这告诉 Django 每个字段保存什么类型的数据。<br>
+每个 Field 实例的名称（例如 <strong>question_text</strong> 或 <strong>pub_date</strong>）是该字段的名称，采用机器友好的格式。您将在 Python 代码中使用此值，数据库将使用它作为列名。<br>
+可以对字段使用可选的第一个位置参数来指定我们可读的名称。它在 Django 的几个内省部分中使用，同时也用作文档。如果没有提供这个字段，Django 将使用机器可读的名称。在本例中，我们仅为 <strong>Question.pub_date</strong> 定义了一个人类可读的名称。对于此模型中的所有其他字段，该字段的机器可读名称将足以作为其人类可读的名称。<br>
+一些 Field 类具有必需的参数。例如，CharField 要求您给它一个 max_length。我们将很快看到，它不仅用于数据库架构，而且用于验证。<br>
+字段还可以有各种可选参数;在本例中，我们将投票的默认值设置为 0。<br>
+最后，请注意使用外键定义了关系。这告诉 Django 每个选择都与一个问题相关。Django 支持所有常见的数据库关系：多对一、多对多和一对一。</p>
+<h4 id="激活模型">激活模型</h4>
+<p>  这一小段模型代码为 Django 提供了大量信息。有了它，Django 可以：</p>
+<ul>
+<li>为这个应用程序创建一个数据库模式(创建表语句)。</li>
+<li>创建用于访问问题和选择对象的 Python 数据库访问 API。</li>
+</ul>
+<blockquote>
+<p><strong>但是首先我们需要告诉我们的项目已经安装了投票应用程序。</strong></p>
+</blockquote>
+<p>  要在我们的项目中包含应用程序，我们需要在 INSTALLED_APPS 设置中添加对其配置类的引用。PollsConfig 类在 polls/apps.py 文件中，因此它的点状路径是'poll .apps.PollsConfig'。编辑 mysite/settings.py 文件，并将这个虚线路径添加到 INSTALLED_APPS 设置中。它是这样的：</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-n">INSTALLED_APPS</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span>
+    <span class="highlight-s1">'polls.apps.PollsConfig'</span><span class="highlight-p">,</span>
+    <span class="highlight-s1">'django.contrib.admin'</span><span class="highlight-p">,</span>
+    <span class="highlight-s1">'django.contrib.auth'</span><span class="highlight-p">,</span>
+    <span class="highlight-s1">'django.contrib.contenttypes'</span><span class="highlight-p">,</span>
+    <span class="highlight-s1">'django.contrib.sessions'</span><span class="highlight-p">,</span>
+    <span class="highlight-s1">'django.contrib.messages'</span><span class="highlight-p">,</span>
+    <span class="highlight-s1">'django.contrib.staticfiles'</span><span class="highlight-p">,</span>
+<span class="highlight-p">]</span>
+</code></pre>
+<p>  现在 Django 知道如何包含这个 polls 应用程序了。然后执行：</p>
+<pre><code class="highlight-chroma">python manage.py makemigrations polls
+</code></pre>
+<p>  将会看到如下：</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-n">D</span><span class="highlight-p">:</span>\<span class="highlight-n">Django_study</span><span class="highlight-o">&gt;</span><span class="highlight-n">python</span> <span class="highlight-n">manage</span><span class="highlight-o">.</span><span class="highlight-n">py</span> <span class="highlight-n">makemigrations</span> <span class="highlight-n">polls</span>
+<span class="highlight-n">Migrations</span> <span class="highlight-k">for</span> <span class="highlight-s1">'polls'</span><span class="highlight-p">:</span>
+  <span class="highlight-n">polls</span>\<span class="highlight-n">migrations</span>\<span class="highlight-mo">0001</span><span class="highlight-n">_initial</span><span class="highlight-o">.</span><span class="highlight-n">py</span>
+    <span class="highlight-o">-</span> <span class="highlight-n">Create</span> <span class="highlight-n">model</span> <span class="highlight-n">Question</span>
+    <span class="highlight-o">-</span> <span class="highlight-n">Create</span> <span class="highlight-n">model</span> <span class="highlight-n">Choice</span>
+</code></pre>
+<p>  通过运行 makemigrations，您将告诉 Django 您对模型进行了一些更改（在这种情况下，您进行了新的更改），并且希望将更改存储为迁移。<br>
+迁移是 Django 将更改存储到您的模型(以及您的数据库模式)的方式——它们是磁盘上的文件。如果你愿意，你可以阅读你的新模型的迁移;它是 poll /migrations/0001_initial.py 文件。不用担心，不必每次 Django 生成一个时都读取它们，但是如果您想手动调整 Django 的更改方式，它们是可人工编辑的。<br>
+有一个命令可以为您运行迁移并自动管理您的数据库模式——这叫做 migrate，我们马上就会讲到——但首先，让我们看看迁移会运行什么 SQL。sqlmigrate 命令接受迁移名称并返回它们的 SQL.</p>
+<pre><code class="highlight-chroma">python manage.py sqlmigrate polls 0001
+</code></pre>
+<p>  看到如下信息：</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-n">D</span><span class="highlight-p">:</span>\<span class="highlight-n">Django_study</span><span class="highlight-o">&gt;</span> <span class="highlight-n">python</span> <span class="highlight-n">manage</span><span class="highlight-o">.</span><span class="highlight-n">py</span> <span class="highlight-n">sqlmigrate</span> <span class="highlight-n">polls</span> <span class="highlight-mo">0001</span>
+<span class="highlight-o">--</span>
+<span class="highlight-o">--</span> <span class="highlight-n">Create</span> <span class="highlight-n">model</span> <span class="highlight-n">Question</span>
+<span class="highlight-o">--</span>
+<span class="highlight-n">CREATE</span> <span class="highlight-n">TABLE</span> <span class="highlight-sb">`polls_question`</span> <span class="highlight-p">(</span><span class="highlight-sb">`id`</span> <span class="highlight-n">integer</span> <span class="highlight-n">AUTO_INCREMENT</span> <span class="highlight-n">NOT</span> <span class="highlight-n">NULL</span> <span class="highlight-n">PRIMARY</span> <span class="highlight-n">KEY</span><span class="highlight-p">,</span> <span class="highlight-sb">`question_text`</span> <span class="highlight-n">varchar</span><span class="highlight-p">(</span><span class="highlight-mi">200</span><span class="highlight-p">)</span> <span class="highlight-n">NOT</span> <span class="highlight-n">NULL</span><span class="highlight-p">,</span> <span class="highlight-sb">`pub_date`</span> <span class="highlight-n">datetime</span><span class="highlight-p">(</span><span class="highlight-mi">6</span><span class="highlight-p">)</span> <span class="highlight-n">NOT</span> <span class="highlight-n">NULL</span><span class="highlight-p">);</span>
+<span class="highlight-o">--</span>
+<span class="highlight-o">--</span> <span class="highlight-n">Create</span> <span class="highlight-n">model</span> <span class="highlight-n">Choice</span>
+<span class="highlight-o">--</span>
+<span class="highlight-n">CREATE</span> <span class="highlight-n">TABLE</span> <span class="highlight-sb">`polls_choice`</span> <span class="highlight-p">(</span><span class="highlight-sb">`id`</span> <span class="highlight-n">integer</span> <span class="highlight-n">AUTO_INCREMENT</span> <span class="highlight-n">NOT</span> <span class="highlight-n">NULL</span> <span class="highlight-n">PRIMARY</span> <span class="highlight-n">KEY</span><span class="highlight-p">,</span> <span class="highlight-sb">`choice_text`</span> <span class="highlight-n">varchar</span><span class="highlight-p">(</span><span class="highlight-mi">200</span><span class="highlight-p">)</span> <span class="highlight-n">NOT</span> <span class="highlight-n">NULL</span><span class="highlight-p">,</span> <span class="highlight-sb">`votes`</span> <span class="highlight-n">integer</span> <span class="highlight-n">NOT</span> <span class="highlight-n">NULL</span><span class="highlight-p">,</span> <span class="highlight-sb">`question_id`</span> <span class="highlight-n">integer</span> <span class="highlight-n">NOT</span> <span class="highlight-n">NULL</span><span class="highlight-p">);</span>
+<span class="highlight-n">ALTER</span> <span class="highlight-n">TABLE</span> <span class="highlight-sb">`polls_choice`</span> <span class="highlight-n">ADD</span> <span class="highlight-n">CONSTRAINT</span> <span class="highlight-sb">`polls_choice_question_id_c5b4b260_fk_polls_question_id`</span> <span class="highlight-n">FOREIGN</span> <span class="highlight-n">KEY</span> <span class="highlight-p">(</span><span class="highlight-sb">`question_id`</span><span class="highlight-p">)</span> <span class="highlight-n">REFERENCES</span> <span class="highlight-sb">`polls_question`</span> <span class="highlight-p">(</span><span class="highlight-sb">`id`</span><span class="highlight-p">);</span>
+</code></pre>
+<p>  请注意以下几点：<br>
+确切的输出将根据所使用的数据库而有所不同。上面的例子是为 PostgreSQL 生成的。<br>
+表名是通过结合应用程序的名称(投票)和模型的小写名称——问题和选择——自动生成的。(您可以重写此行为。)<br>
+主键(id)会自动添加。(你也可以忽略这个。)<br>
+按照惯例，Django 会将"_id"附加到外键字段名。(是的，你也可以重写这个。)<br>
+外键关系是通过外键约束来显式的。不要担心可延期的部分;它告诉 PostgreSQL 在事务结束之前不要强制执行外键。<br>
+它是为你使用的数据库量身定制的，所以数据库特定的字段类型，如 auto_increment (MySQL)，串行(PostgreSQL)，或整数主键 autoincrement (SQLite)会自动为你处理。字段名的引号也是一样——例如，使用双引号或单引号。<br>
+sqlmigrate 命令实际上并没有在数据库上运行迁移—相反，它将迁移结果打印到屏幕上，以便您可以看到 SQL Django 认为需要什么迁移。它对于检查 Django 要做什么，或者您的数据库管理员是否需要 SQL 脚本进行更改非常有用。</p>
+<p>  如果您感兴趣，还可以运行 <strong>python manager .py check</strong>;这将检查项目中的任何问题，而不进行迁移或接触数据库。<br>
+现在，再次运行 migrate 在数据库中创建这些模型表：</p>
+<pre><code class="highlight-chroma">D:\Django_study&gt; python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, polls, sessions
+Running migrations:
+  Applying polls.0001_initial... OK
+</code></pre>
+<p>  migrate 命令获取所有还没有应用的迁移(Django 跟踪哪些迁移是使用数据库中名为 django_migrations 的特殊表应用的)，并在数据库上运行它们——本质上，就是将您对模型所做的更改与数据库中的模式同步。<br>
+迁移功能非常强大，它允许您在开发项目时随着时间的推移更改模型，而不需要删除数据库或表并创建新表——它专门用于实时升级数据库，而不会丢失数据。我们将在本教程的后面部分更深入地介绍它们，但是现在，请记住进行模型更改的三步指南</p>
+<ul>
+<li>更改您的模型(在 <strong>models.py</strong> 中)。</li>
+<li>运行 <strong>python manager .py makmigration</strong>****来为这些更改创建迁移</li>
+<li>运行 <strong>python manager .py migrate</strong> 将这些更改应用到数据库。<br>
+之所以要用单独的命令来进行迁移是因为你要将迁移提交到版本控制系统，并与应用一起发布;它们不仅使您的开发更容易，还可用于其他开发人员和生产环境中。</li>
+</ul>
+<p>  请阅读 <a href="https://docs.djangoproject.com/en/3.1/ref/django-admin/" target="_blank">django-admin 文档</a>以获得关于 manager .py 实用程序可以做什么的完整信息。</p>
+<h4 id="玩转-API">玩转 API</h4>
+<p>  现在，让我们跳入交互式 Python shell 并尝试使用 Django 提供的免费 API。要调用 Python Shell，请使用以下命令：</p>
+<pre><code class="highlight-chroma">python manage.py shell
+</code></pre>
+<p>  我们使用它，而不是简单地输入“python”，因为 manager .py 设置了 DJANGO_SETTINGS_MODULE 环境变量，它为 Django 提供了 mysite/settings.py 文件的 python 导入路径。</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-n">D</span><span class="highlight-p">:</span>\<span class="highlight-n">Django_study</span><span class="highlight-o">&gt;</span><span class="highlight-n">python</span> <span class="highlight-n">manage</span><span class="highlight-o">.</span><span class="highlight-n">py</span> <span class="highlight-n">shell</span>
+<span class="highlight-n">Python</span> <span class="highlight-mf">3.7</span><span class="highlight-o">.</span><span class="highlight-mi">4</span> <span class="highlight-p">(</span><span class="highlight-n">tags</span><span class="highlight-o">/</span><span class="highlight-n">v3</span><span class="highlight-o">.</span><span class="highlight-mf">7.4</span><span class="highlight-p">:</span><span class="highlight-n">e09359112e</span><span class="highlight-p">,</span> <span class="highlight-n">Jul</span>  <span class="highlight-mi">8</span> <span class="highlight-mi">2019</span><span class="highlight-p">,</span> <span class="highlight-mi">20</span><span class="highlight-p">:</span><span class="highlight-mi">34</span><span class="highlight-p">:</span><span class="highlight-mi">20</span><span class="highlight-p">)</span> <span class="highlight-p">[</span><span class="highlight-n">MSC</span> <span class="highlight-n">v</span><span class="highlight-o">.</span><span class="highlight-mi">1916</span> <span class="highlight-mi">64</span> <span class="highlight-n">bit</span> <span class="highlight-p">(</span><span class="highlight-n">AMD64</span><span class="highlight-p">)]</span>
+<span class="highlight-n">Type</span> <span class="highlight-s1">'copyright'</span><span class="highlight-p">,</span> <span class="highlight-s1">'credits'</span> <span class="highlight-ow">or</span> <span class="highlight-s1">'license'</span> <span class="highlight-k">for</span> <span class="highlight-n">more</span> <span class="highlight-n">information</span>
+<span class="highlight-n">IPython</span> <span class="highlight-mf">7.9</span><span class="highlight-o">.</span><span class="highlight-mi">0</span> <span class="highlight-o">--</span> <span class="highlight-n">An</span> <span class="highlight-n">enhanced</span> <span class="highlight-n">Interactive</span> <span class="highlight-n">Python</span><span class="highlight-o">.</span> <span class="highlight-n">Type</span> <span class="highlight-s1">'?'</span> <span class="highlight-k">for</span> <span class="highlight-n">help</span><span class="highlight-o">.</span>
+
+<span class="highlight-n">In</span> <span class="highlight-p">[</span><span class="highlight-mi">1</span><span class="highlight-p">]:</span> <span class="highlight-kn">from</span> <span class="highlight-nn">polls.models</span> <span class="highlight-kn">import</span> <span class="highlight-n">Choice</span><span class="highlight-p">,</span> <span class="highlight-n">Question</span>
+<span class="highlight-c1">#现在系统里还没有问题</span>
+<span class="highlight-n">In</span> <span class="highlight-p">[</span><span class="highlight-mi">2</span><span class="highlight-p">]:</span> <span class="highlight-n">Question</span><span class="highlight-o">.</span><span class="highlight-n">objects</span><span class="highlight-o">.</span><span class="highlight-n">all</span><span class="highlight-p">()</span>
+<span class="highlight-n">Out</span><span class="highlight-p">[</span><span class="highlight-mi">2</span><span class="highlight-p">]:</span> <span class="highlight-o">&lt;</span><span class="highlight-n">QuerySet</span> <span class="highlight-p">[]</span><span class="highlight-o">&gt;</span>
+<span class="highlight-c1">#创建一个新问题。</span>
+<span class="highlight-c1">#在默认设置文件中启用了对时区的支持，因此</span>
+<span class="highlight-c1"># Django期望为pub_date使用tzinfo的日期时间。使用timezone.now ()</span>
+<span class="highlight-c1">#而不是date .date .now()，它将做正确的事情</span>
+<span class="highlight-n">In</span> <span class="highlight-p">[</span><span class="highlight-mi">3</span><span class="highlight-p">]:</span> <span class="highlight-kn">from</span> <span class="highlight-nn">django.utils</span> <span class="highlight-kn">import</span> <span class="highlight-n">timezone</span>
+
+<span class="highlight-n">In</span> <span class="highlight-p">[</span><span class="highlight-mi">4</span><span class="highlight-p">]:</span> <span class="highlight-n">q</span> <span class="highlight-o">=</span> <span class="highlight-n">Question</span><span class="highlight-p">(</span><span class="highlight-n">question_text</span><span class="highlight-o">=</span><span class="highlight-s2">"What's new?"</span><span class="highlight-p">,</span> <span class="highlight-n">pub_date</span><span class="highlight-o">=</span><span class="highlight-n">timezone</span><span class="highlight-o">.</span><span class="highlight-n">now</span><span class="highlight-p">())</span>
+<span class="highlight-c1">#将对象保存到数据库中。您必须显式调用save()。</span>
+<span class="highlight-n">In</span> <span class="highlight-p">[</span><span class="highlight-mi">5</span><span class="highlight-p">]:</span>  <span class="highlight-n">q</span><span class="highlight-o">.</span><span class="highlight-n">save</span><span class="highlight-p">()</span>
+<span class="highlight-c1">#现在它有一个ID。</span>
+<span class="highlight-n">In</span> <span class="highlight-p">[</span><span class="highlight-mi">6</span><span class="highlight-p">]:</span> <span class="highlight-n">q</span><span class="highlight-o">.</span><span class="highlight-n">id</span>
+<span class="highlight-n">Out</span><span class="highlight-p">[</span><span class="highlight-mi">6</span><span class="highlight-p">]:</span> <span class="highlight-mi">1</span>
+<span class="highlight-c1">#通过Python属性访问模型字段值。</span>
+<span class="highlight-n">In</span> <span class="highlight-p">[</span><span class="highlight-mi">7</span><span class="highlight-p">]:</span> <span class="highlight-n">q</span><span class="highlight-o">.</span><span class="highlight-n">question_text</span>
+<span class="highlight-n">Out</span><span class="highlight-p">[</span><span class="highlight-mi">7</span><span class="highlight-p">]:</span> <span class="highlight-s2">"What's new?"</span>
+
+<span class="highlight-n">In</span> <span class="highlight-p">[</span><span class="highlight-mi">8</span><span class="highlight-p">]:</span> <span class="highlight-n">q</span><span class="highlight-o">.</span><span class="highlight-n">question_text</span>
+<span class="highlight-n">Out</span><span class="highlight-p">[</span><span class="highlight-mi">8</span><span class="highlight-p">]:</span> <span class="highlight-s2">"What's new?"</span>
+
+<span class="highlight-n">In</span> <span class="highlight-p">[</span><span class="highlight-mi">9</span><span class="highlight-p">]:</span> <span class="highlight-n">q</span><span class="highlight-o">.</span><span class="highlight-n">pub_date</span>
+<span class="highlight-n">Out</span><span class="highlight-p">[</span><span class="highlight-mi">9</span><span class="highlight-p">]:</span> <span class="highlight-n">datetime</span><span class="highlight-o">.</span><span class="highlight-n">datetime</span><span class="highlight-p">(</span><span class="highlight-mi">2020</span><span class="highlight-p">,</span> <span class="highlight-mi">8</span><span class="highlight-p">,</span> <span class="highlight-mi">17</span><span class="highlight-p">,</span> <span class="highlight-mi">7</span><span class="highlight-p">,</span> <span class="highlight-mi">13</span><span class="highlight-p">,</span> <span class="highlight-mi">52</span><span class="highlight-p">,</span> <span class="highlight-mi">104000</span><span class="highlight-p">,</span> <span class="highlight-n">tzinfo</span><span class="highlight-o">=&lt;</span><span class="highlight-n">UTC</span><span class="highlight-o">&gt;</span><span class="highlight-p">)</span>
+<span class="highlight-c1">#通过更改属性来更改值，然后调用save()。</span>
+<span class="highlight-n">In</span> <span class="highlight-p">[</span><span class="highlight-mi">10</span><span class="highlight-p">]:</span> <span class="highlight-n">q</span><span class="highlight-o">.</span><span class="highlight-n">question_text</span> <span class="highlight-o">=</span> <span class="highlight-s2">"What's up?"</span>
+
+<span class="highlight-n">In</span> <span class="highlight-p">[</span><span class="highlight-mi">11</span><span class="highlight-p">]:</span> <span class="highlight-n">q</span><span class="highlight-o">.</span><span class="highlight-n">save</span><span class="highlight-p">()</span>
+<span class="highlight-c1">#objects.all（）显示数据库中的所有问题。</span>
+<span class="highlight-n">In</span> <span class="highlight-p">[</span><span class="highlight-mi">12</span><span class="highlight-p">]:</span> <span class="highlight-n">Question</span><span class="highlight-o">.</span><span class="highlight-n">objects</span><span class="highlight-o">.</span><span class="highlight-n">all</span><span class="highlight-p">()</span>
+<span class="highlight-n">Out</span><span class="highlight-p">[</span><span class="highlight-mi">12</span><span class="highlight-p">]:</span> <span class="highlight-o">&lt;</span><span class="highlight-n">QuerySet</span> <span class="highlight-p">[</span><span class="highlight-o">&lt;</span><span class="highlight-n">Question</span><span class="highlight-p">:</span> <span class="highlight-n">Question</span> <span class="highlight-nb">object</span> <span class="highlight-p">(</span><span class="highlight-mi">1</span><span class="highlight-p">)</span><span class="highlight-o">&gt;</span><span class="highlight-p">]</span><span class="highlight-o">&gt;</span>
+</code></pre>
+<p>  等一下。&lt;Question: Question object(1)&gt; 不是这个对象的有用表示。让我们通过编辑问题模型(在 polls/models.py 文件中)并在问题和选择中添加其他的__str__()方法来解决这个 <strong>Question</strong> 和 <strong>Choice</strong></p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">from</span> <span class="highlight-nn">django.db</span> <span class="highlight-kn">import</span> <span class="highlight-n">models</span>
+<span class="highlight-c1"># Create your models here.</span>
+<span class="highlight-k">class</span> <span class="highlight-nc">Question</span><span class="highlight-p">(</span><span class="highlight-n">models</span><span class="highlight-o">.</span><span class="highlight-n">Model</span><span class="highlight-p">):</span>
+    <span class="highlight-n">question_text</span> <span class="highlight-o">=</span> <span class="highlight-n">models</span><span class="highlight-o">.</span><span class="highlight-n">CharField</span><span class="highlight-p">(</span><span class="highlight-n">max_length</span><span class="highlight-o">=</span><span class="highlight-mi">200</span><span class="highlight-p">)</span>
+    <span class="highlight-n">pub_date</span> <span class="highlight-o">=</span> <span class="highlight-n">models</span><span class="highlight-o">.</span><span class="highlight-n">DateTimeField</span><span class="highlight-p">(</span><span class="highlight-s1">'date published'</span><span class="highlight-p">)</span>
+    <span class="highlight-k">def</span> <span class="highlight-fm">__str__</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-k">return</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">question_text</span>
+<span class="highlight-k">class</span> <span class="highlight-nc">Choice</span><span class="highlight-p">(</span><span class="highlight-n">models</span><span class="highlight-o">.</span><span class="highlight-n">Model</span><span class="highlight-p">):</span>
+    <span class="highlight-n">question</span> <span class="highlight-o">=</span> <span class="highlight-n">models</span><span class="highlight-o">.</span><span class="highlight-n">ForeignKey</span><span class="highlight-p">(</span><span class="highlight-n">Question</span><span class="highlight-p">,</span> <span class="highlight-n">on_delete</span><span class="highlight-o">=</span><span class="highlight-n">models</span><span class="highlight-o">.</span><span class="highlight-n">CASCADE</span><span class="highlight-p">)</span>
+    <span class="highlight-n">choice_text</span> <span class="highlight-o">=</span> <span class="highlight-n">models</span><span class="highlight-o">.</span><span class="highlight-n">CharField</span><span class="highlight-p">(</span><span class="highlight-n">max_length</span><span class="highlight-o">=</span><span class="highlight-mi">200</span><span class="highlight-p">)</span>
+    <span class="highlight-n">votes</span> <span class="highlight-o">=</span> <span class="highlight-n">models</span><span class="highlight-o">.</span><span class="highlight-n">IntegerField</span><span class="highlight-p">(</span><span class="highlight-n">default</span><span class="highlight-o">=</span><span class="highlight-mi">0</span><span class="highlight-p">)</span>
+    <span class="highlight-k">def</span> <span class="highlight-fm">__str__</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-k">return</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">choice_text</span>
+</code></pre>
+<p>  向模型中添加__str__()方法非常重要，这不仅是为了方便您在处理交互式提示时使用，而且因为在 Django 的自动生成的管理员中都使用了对象的表示形式。</p>
+<p>  让我们也为这个模型添加一个自定义方法：<br>
+注意，添加了 <strong>import datetime</strong> 和 <strong>from django.utils import timezone</strong>。utils 导入 timezone，以引用 Python 的标准 datetime 模块和 Django 的与时间区域相关的实用程序。分别时区。如果您不熟悉 Python 中的时区处理，可以在<a href="https://docs.djangoproject.com/en/3.1/topics/i18n/timezones/" target="_blank">时区支持文档</a>中了解更多内容</p>
+<p>  保存这些更改，并通过运行 <strong>Python manager .py shell</strong> 再次启动一个新的 Python 交互式 shell:<br>
+(略)</p>
+<h4 id="创建管理员账号">创建管理员账号</h4>
+<pre><code class="highlight-chroma">python manage.py createsuperuser
+python manage.py runserver
+</code></pre>
+<h4 id="让投票应用程序在管理可修改">让投票应用程序在管理可修改</h4>
+<p>  但我们的投票应用在哪？它没有显示在管理索引页上。<br>
+还有一件事要做：我们需要告诉管理员 <strong>Question</strong> 对象有一个管理接口。为此，打开 poll/admin.py 文件，并编辑它，使其看起来像这样：</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">from</span> <span class="highlight-nn">django.contrib</span> <span class="highlight-kn">import</span> <span class="highlight-n">admin</span>
+<span class="highlight-kn">from</span> <span class="highlight-nn">.models</span> <span class="highlight-kn">import</span> <span class="highlight-n">Question</span>
+
+<span class="highlight-c1"># Register your models here.</span>
+<span class="highlight-n">admin</span><span class="highlight-o">.</span><span class="highlight-n">site</span><span class="highlight-o">.</span><span class="highlight-n">register</span><span class="highlight-p">(</span><span class="highlight-n">Question</span><span class="highlight-p">)</span>
+</code></pre>
+<h4 id="探索免费的管理功能">探索免费的管理功能</h4>
+<p>  现在我们已经注册了 Question，Django 知道应该在 admin 索引 pag 上显示它<img src="https://b3logfile.com/file/2020/08/image-fa87f5d3.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p>  点击“Questions”。现在您在“更改列表”页面查看问题。此页面显示数据库中的所有问题，并允许您选择一个进行更改。有“What's up?”“我们之前提出的问题是：<img src="https://b3logfile.com/file/2020/08/image-915bc9ad.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p>  <strong>这里需要注意的是：</strong></p>
+<ul>
+<li>表单是根据问题模型自动生成的。</li>
+<li>不同的模型字段类型(DateTimeField、CharField)对应于适当的 HTML 输入小部件。每种类型的字段都知道如何在 Django 管理中显示自己。</li>
+<li>每个 DateTimeField 都有免费的 JavaScript 快捷键。日期有一个“今天”快捷方式和日历弹出，时间有一个“现在”快捷方式和一个方便的弹出，列出了通常输入的时间。</li>
+<li>页面的底部提供了几个选项：</li>
+<li>保存-保存更改并返回此类型对象的更改列表页。</li>
+<li>保存并继续编辑——保存更改并重新加载此对象的管理页面。</li>
+<li>保存并添加另一个——保存更改并为这种类型的对象加载一个新的空白表单。</li>
+<li>删除-显示删除确认页面。</li>
+<li>如果“Date published”的值与教程 1 中创建问题时的时间不匹配，这可能意味着您忘记为 TIME_ZONE 设置正确的值。更改它，重新加载页面并检查正确的值出现。</li>
+<li>通过点击“今天”和“现在”快捷键更改“发布日期”。然后点击“保存并继续编辑”。然后点击右上角的“历史”。您将看到一个页面，其中列出了通过 Django 管理员对这个对象所做的所有更改，以及更改者的时间戳和用户名：</li>
+</ul>
+<h2 id="第三部分">第三部分</h2>
+<h3 id="概览">概览</h3>
+<p>  视图是 Django 应用程序中的 Web 页面的“类型”，通常提供特定的功能和特定的模板。例如，在一个博客应用程序中，您可能有以下视图：</p>
+<ul>
+<li>博客首页-显示最近的几个条目。</li>
+<li>条目“详细信息”页面——一个条目的永久链接页面。</li>
+<li>基于年份的归档页面——显示给定年份中的所有月份和条目。</li>
+<li>基于月份的归档页面——显示给定月份中的所有天数和条目。</li>
+<li>基于天的归档页面——显示给定天中的所有条目。</li>
+<li>评论操作——处理向给定条目发布评论。<br>
+在我们的投票应用程序中，我们将有以下四个视图：</li>
+<li>问题“索引”页面-显示最近的几个问题。</li>
+<li>问题“细节”页面-显示一个问题文本，没有结果，但有一个表格来投票。</li>
+<li>问题“结果”页面-显示特定问题的结果。</li>
+<li>投票行动-处理对特定问题中的特定选择进行投票。</li>
+<li>在 Django 中，Web 页面和其他内容是通过视图传递的。每个视图都由一个 Python 函数(或方法，对于基于类的视图)表示。Django 将通过检查被请求的 URL(确切地说，是域名后面的 URL 部分)来选择一个视图。</li>
+</ul>
+<p>  现在，在你上网的时候，你可能会遇到这样 <strong>ME2/Sites/dirmod.htm?sid=&amp;type=gen&amp;mod=Core+Pages&amp;gid=A6CD4967199A42D9B65B1B</strong> 您会很高兴地知道，Django 允许我们使用比这更优雅的 URL 模式。<br>
+URL 模式是 URL 的一般形式，例如：<strong>/newsarchive/<year>/<month>/</month></year></strong>。<br>
+为了从 URL 到视图，Django 使用了所谓的“<strong>URLconfs</strong>”。URLconf 将 URL 模式映射到视图。<br>
+本教程提供了使用 URLconfs 的基本指导，您可以参考 <a href="https://docs.djangoproject.com/en/3.1/topics/http/urls/" target="_blank">URL 分派器</a>了解更多信息。</p>
+<h3 id="添加更多的视图">添加更多的视图</h3>
+<p>  现在让我们向 poll /views.py 添加更多的视图。这些观点略有不同，因为他们有一个论点：</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-k">def</span> <span class="highlight-nf">detail</span><span class="highlight-p">(</span><span class="highlight-n">request</span><span class="highlight-p">,</span> <span class="highlight-n">question_id</span><span class="highlight-p">):</span>
+    <span class="highlight-k">return</span> <span class="highlight-n">HttpResponse</span><span class="highlight-p">(</span><span class="highlight-s2">"You're looking at question </span><span class="highlight-si">%s</span><span class="highlight-s2">."</span> <span class="highlight-o">%</span> <span class="highlight-n">question_id</span><span class="highlight-p">)</span>
+
+<span class="highlight-k">def</span> <span class="highlight-nf">results</span><span class="highlight-p">(</span><span class="highlight-n">request</span><span class="highlight-p">,</span> <span class="highlight-n">question_id</span><span class="highlight-p">):</span>
+    <span class="highlight-n">response</span> <span class="highlight-o">=</span> <span class="highlight-s2">"You're looking at the results of question </span><span class="highlight-si">%s</span><span class="highlight-s2">."</span>
+    <span class="highlight-k">return</span> <span class="highlight-n">HttpResponse</span><span class="highlight-p">(</span><span class="highlight-n">response</span> <span class="highlight-o">%</span> <span class="highlight-n">question_id</span><span class="highlight-p">)</span>
+
+<span class="highlight-k">def</span> <span class="highlight-nf">vote</span><span class="highlight-p">(</span><span class="highlight-n">request</span><span class="highlight-p">,</span> <span class="highlight-n">question_id</span><span class="highlight-p">):</span>
+    <span class="highlight-k">return</span> <span class="highlight-n">HttpResponse</span><span class="highlight-p">(</span><span class="highlight-s2">"You're voting on question </span><span class="highlight-si">%s</span><span class="highlight-s2">."</span> <span class="highlight-o">%</span> <span class="highlight-n">question_id</span><span class="highlight-p">)</span>
+</code></pre>
+<p>  <strong>将这些新视图 polls.urls 中。通过添加以下 path()调用的 polls.urls 模块(polls/urls.py):</strong><br>
+polls/urls.py¶</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">from</span> <span class="highlight-nn">django.urls</span> <span class="highlight-kn">import</span> <span class="highlight-n">path</span>
+<span class="highlight-kn">from</span> <span class="highlight-nn">.</span> <span class="highlight-kn">import</span> <span class="highlight-n">views</span>
+
+<span class="highlight-n">urlpatterns</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span>
+    <span class="highlight-c1"># ex: /polls/</span>
+    <span class="highlight-n">path</span><span class="highlight-p">(</span><span class="highlight-s1">''</span><span class="highlight-p">,</span> <span class="highlight-n">views</span><span class="highlight-o">.</span><span class="highlight-n">index</span><span class="highlight-p">,</span> <span class="highlight-n">name</span><span class="highlight-o">=</span><span class="highlight-s1">'index'</span><span class="highlight-p">),</span>
+    <span class="highlight-c1"># ex: /polls/5/</span>
+    <span class="highlight-n">path</span><span class="highlight-p">(</span><span class="highlight-s1">'&lt;int:question_id&gt;/'</span><span class="highlight-p">,</span> <span class="highlight-n">views</span><span class="highlight-o">.</span><span class="highlight-n">detail</span><span class="highlight-p">,</span> <span class="highlight-n">name</span><span class="highlight-o">=</span><span class="highlight-s1">'detail'</span><span class="highlight-p">),</span>
+    <span class="highlight-c1"># ex: /polls/5/results/</span>
+    <span class="highlight-n">path</span><span class="highlight-p">(</span><span class="highlight-s1">'&lt;int:question_id&gt;/results/'</span><span class="highlight-p">,</span> <span class="highlight-n">views</span><span class="highlight-o">.</span><span class="highlight-n">results</span><span class="highlight-p">,</span> <span class="highlight-n">name</span><span class="highlight-o">=</span><span class="highlight-s1">'results'</span><span class="highlight-p">),</span>
+    <span class="highlight-c1"># ex: /polls/5/vote/</span>
+    <span class="highlight-n">path</span><span class="highlight-p">(</span><span class="highlight-s1">'&lt;int:question_id&gt;/vote/'</span><span class="highlight-p">,</span> <span class="highlight-n">views</span><span class="highlight-o">.</span><span class="highlight-n">vote</span><span class="highlight-p">,</span> <span class="highlight-n">name</span><span class="highlight-o">=</span><span class="highlight-s1">'vote'</span><span class="highlight-p">),</span>
+<span class="highlight-p">]</span>
+</code></pre>
+<p>  看看你的浏览器，" /polls/34/ "。它将运行 detail()方法并显示 URL 中提供的任何 ID。尝试“/polls/34/results/”和 <code>/polls/34/vote/</code>——这些将显示占位符结果和投票页面。</p>
+<p>  当有人从您的网站请求页面时（例如“ /polls/34 /"），Django 将加载 mysite.urls Python 模块，因为它由 ROOT_URLCONF 设置指向。它找到名为 urlpatterns 的变量，并按顺序遍历模式。在“ polls/”找到匹配项后，它将剥离匹配的文本（“ polls /”），并将剩余的文本“ 34/”发送到“ polls.urls” URLconf，以进行进一步处理。在那里，它与“ &lt;int：question_id&gt; /”匹配，从而导致对 detail()视图的调用，如下所示：</p>
+<pre><code class="highlight-chroma">detail(request=&lt;HttpRequest object&gt;, question_id=34)
+</code></pre>
+<p>  question_id=34 部分来自 <a href="int:question_id" target="_blank">int:question_id</a>。使用尖括号“捕获”URL 的一部分，并将其作为关键字参数发送给视图函数。字符串的：question_id&gt; 部分定义了将用于标识匹配模式的名称，而 &lt;int:部分是一个转换器，用于确定哪些模式应该匹配 URL 路径的这一部分。</p>
+<h3 id="编写实际应用的视图">编写实际应用的视图</h3>
+<p>  每个视图负责做两件事中的一件：返回一个包含被请求页面内容的 HttpResponse 对象，或者引发一个异常，比如 Http404。剩下的就看你了。</p>
+<p>  为方便起见，让我们使用 Django 自己的数据库 API，我们在教程 2 中进行介绍。这是新 index()视图的一个尝试，它显示系统中最新的 5 个投票问题，根据发布日期用逗号分隔：：<br>
+polls/views.py¶</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">from</span> <span class="highlight-nn">django.http</span> <span class="highlight-kn">import</span> <span class="highlight-n">HttpResponse</span>
+
+<span class="highlight-kn">from</span> <span class="highlight-nn">.models</span> <span class="highlight-kn">import</span> <span class="highlight-n">Question</span>
+
+
+<span class="highlight-k">def</span> <span class="highlight-nf">index</span><span class="highlight-p">(</span><span class="highlight-n">request</span><span class="highlight-p">):</span>
+    <span class="highlight-n">latest_question_list</span> <span class="highlight-o">=</span> <span class="highlight-n">Question</span><span class="highlight-o">.</span><span class="highlight-n">objects</span><span class="highlight-o">.</span><span class="highlight-n">order_by</span><span class="highlight-p">(</span><span class="highlight-s1">'-pub_date'</span><span class="highlight-p">)[:</span><span class="highlight-mi">5</span><span class="highlight-p">]</span>
+    <span class="highlight-n">output</span> <span class="highlight-o">=</span> <span class="highlight-s1">', '</span><span class="highlight-o">.</span><span class="highlight-n">join</span><span class="highlight-p">([</span><span class="highlight-n">q</span><span class="highlight-o">.</span><span class="highlight-n">question_text</span> <span class="highlight-k">for</span> <span class="highlight-n">q</span> <span class="highlight-ow">in</span> <span class="highlight-n">latest_question_list</span><span class="highlight-p">])</span>
+    <span class="highlight-k">return</span> <span class="highlight-n">HttpResponse</span><span class="highlight-p">(</span><span class="highlight-n">output</span><span class="highlight-p">)</span>
+
+<span class="highlight-c1"># Leave the rest of the views (detail, results, vote) unchanged 其余视图函数（detail, results, vote）保持不变</span>
+</code></pre>
+<p>  但这里有一个问题：页面的设计是在视图中硬编码的。如果您想改变页面的外观，您必须编辑此 Python 代码。因此，让我们使用 Django 的模板系统来创建视图可以使用的模板，从而将设计与 Python 分离开来。</p>
+<p>  首先，在您的轮询目录中创建一个名为 templates 的目录。Django 会在其中寻找模板。<br>
+项目的模板设置描述了 Django 如何加载和呈现模板。默认设置文件配置一个 DjangoTemplates 后端，其 APP_DIRS 选项设置为 True。按照惯例，DjangoTemplates 在每个 INSTALLED_APPS 中寻找一个“templates”子目录。</p>
+<p>  在刚刚创建的模板目录中，创建另一个名为 polls 的目录，并在该目录中创建一个名为 index.html 的文件。换句话说，您的模板应该在 polls/templates/polls/index.html 中。由于 app_directory 模板加载器的工作方式如上所述，您可以在 Django 中将这个模板引用为 poll /index.html。<br>
+polls/templates/polls/index.html¶</p>
+<pre><code class="language-html highlight-chroma">{% if latest_question_list %}
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">ul</span><span class="highlight-p">&gt;</span>
+    {% for question in latest_question_list %}
+        <span class="highlight-p">&lt;</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">a</span> <span class="highlight-na">href</span><span class="highlight-o">=</span><span class="highlight-s">"/polls/{{ question.id }}/"</span><span class="highlight-p">&gt;</span>{{ question.question_text }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">a</span><span class="highlight-p">&gt;&lt;/</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;</span>
+    {% endfor %}
+    <span class="highlight-p">&lt;/</span><span class="highlight-nt">ul</span><span class="highlight-p">&gt;</span>
+{% else %}
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>No polls are available.<span class="highlight-p">&lt;/</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+{% endif %}
+</code></pre>
+<p>  现在让我们用模板更新 poll/views.py 中的索引视图：</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">from</span> <span class="highlight-nn">django.http</span> <span class="highlight-kn">import</span> <span class="highlight-n">HttpResponse</span>
+<span class="highlight-kn">from</span> <span class="highlight-nn">django.template</span> <span class="highlight-kn">import</span> <span class="highlight-n">loader</span>
+
+<span class="highlight-kn">from</span> <span class="highlight-nn">.models</span> <span class="highlight-kn">import</span> <span class="highlight-n">Question</span>
+
+
+<span class="highlight-k">def</span> <span class="highlight-nf">index</span><span class="highlight-p">(</span><span class="highlight-n">request</span><span class="highlight-p">):</span>
+    <span class="highlight-n">latest_question_list</span> <span class="highlight-o">=</span> <span class="highlight-n">Question</span><span class="highlight-o">.</span><span class="highlight-n">objects</span><span class="highlight-o">.</span><span class="highlight-n">order_by</span><span class="highlight-p">(</span><span class="highlight-s1">'-pub_date'</span><span class="highlight-p">)[:</span><span class="highlight-mi">5</span><span class="highlight-p">]</span>
+    <span class="highlight-n">template</span> <span class="highlight-o">=</span> <span class="highlight-n">loader</span><span class="highlight-o">.</span><span class="highlight-n">get_template</span><span class="highlight-p">(</span><span class="highlight-s1">'polls/index.html'</span><span class="highlight-p">)</span>
+    <span class="highlight-n">context</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span>
+        <span class="highlight-s1">'latest_question_list'</span><span class="highlight-p">:</span> <span class="highlight-n">latest_question_list</span><span class="highlight-p">,</span>
+    <span class="highlight-p">}</span>
+    <span class="highlight-k">return</span> <span class="highlight-n">HttpResponse</span><span class="highlight-p">(</span><span class="highlight-n">template</span><span class="highlight-o">.</span><span class="highlight-n">render</span><span class="highlight-p">(</span><span class="highlight-n">context</span><span class="highlight-p">,</span> <span class="highlight-n">request</span><span class="highlight-p">))</span>
+</code></pre>
+<p>  该代码加载名为 polls/index.html 的模板，并传递一个上下文。上下文是模板变量名到 Python 对象的映射字典。<br>
+通过将浏览器指向" /polls/ "来加载页面，您应该会看到一个项目符号列表，其中包含教程第二部分中的" What 's up "问题。</p>
+<h3 id="A-shortcut--render">A shortcut: <a href="https://docs.djangoproject.com/en/3.1/topics/http/shortcuts/#django.shortcuts.render" target="_blank">render</a></h3>
+<p>  加载模板、填充上下文并将呈现模板的结果返回 HttpResponse 对象是一种非常常见的习惯用法。Django 提供了一个快捷方式。这是完整的 index()视图，重写：</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">from</span> <span class="highlight-nn">django.shortcuts</span> <span class="highlight-kn">import</span> <span class="highlight-n">render</span>
+<span class="highlight-kn">from</span> <span class="highlight-nn">.models</span> <span class="highlight-kn">import</span> <span class="highlight-n">Question</span>
+
+<span class="highlight-k">def</span> <span class="highlight-nf">index</span><span class="highlight-p">(</span><span class="highlight-n">request</span><span class="highlight-p">):</span>
+    <span class="highlight-n">latest_question_list</span> <span class="highlight-o">=</span> <span class="highlight-n">Question</span><span class="highlight-o">.</span><span class="highlight-n">objects</span><span class="highlight-o">.</span><span class="highlight-n">order_by</span><span class="highlight-p">(</span><span class="highlight-s1">'-pub_date'</span><span class="highlight-p">)[:</span><span class="highlight-mi">5</span><span class="highlight-p">]</span>
+    <span class="highlight-n">context</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span><span class="highlight-s1">'latest_question_list'</span><span class="highlight-p">:</span> <span class="highlight-n">latest_question_list</span><span class="highlight-p">}</span>
+    <span class="highlight-k">return</span> <span class="highlight-n">render</span><span class="highlight-p">(</span><span class="highlight-n">request</span><span class="highlight-p">,</span> <span class="highlight-s1">'polls/index.html'</span><span class="highlight-p">,</span> <span class="highlight-n">context</span><span class="highlight-p">)</span>
+</code></pre>
+<p>  注意，一旦我们在所有这些视图中完成了这些操作，我们就不再需要 import loader 和 HttpResponse(如果您仍然拥有用于 detail, results, and vote 的函数方法，那么您将希望保留 HttpResponse)。</p>
+<p>  render()函数将请求对象作为第一个参数，将模板名称作为第二个参数，将字典作为可选的第三个参数。它返回使用给定上下文呈现的给定模板的 HttpResponse 对象。</p>
+<h3 id="Raising-a-404-error">Raising a 404 error</h3>
+<p>  现在，让我们处理问题细节视图——显示给定投票的问题文本的页面。视图：</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">from</span> <span class="highlight-nn">django.http</span> <span class="highlight-kn">import</span> <span class="highlight-n">Http404</span>
+<span class="highlight-kn">from</span> <span class="highlight-nn">django.shortcuts</span> <span class="highlight-kn">import</span> <span class="highlight-n">render</span>
+
+<span class="highlight-kn">from</span> <span class="highlight-nn">.models</span> <span class="highlight-kn">import</span> <span class="highlight-n">Question</span>
+<span class="highlight-c1"># ...</span>
+<span class="highlight-k">def</span> <span class="highlight-nf">detail</span><span class="highlight-p">(</span><span class="highlight-n">request</span><span class="highlight-p">,</span> <span class="highlight-n">question_id</span><span class="highlight-p">):</span>
+    <span class="highlight-k">try</span><span class="highlight-p">:</span>
+        <span class="highlight-n">question</span> <span class="highlight-o">=</span> <span class="highlight-n">Question</span><span class="highlight-o">.</span><span class="highlight-n">objects</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">pk</span><span class="highlight-o">=</span><span class="highlight-n">question_id</span><span class="highlight-p">)</span>
+    <span class="highlight-k">except</span> <span class="highlight-n">Question</span><span class="highlight-o">.</span><span class="highlight-n">DoesNotExist</span><span class="highlight-p">:</span>
+        <span class="highlight-k">raise</span> <span class="highlight-n">Http404</span><span class="highlight-p">(</span><span class="highlight-s2">"Question does not exist"</span><span class="highlight-p">)</span>
+    <span class="highlight-k">return</span> <span class="highlight-n">render</span><span class="highlight-p">(</span><span class="highlight-n">request</span><span class="highlight-p">,</span> <span class="highlight-s1">'polls/detail.html'</span><span class="highlight-p">,</span> <span class="highlight-p">{</span><span class="highlight-s1">'question'</span><span class="highlight-p">:</span> <span class="highlight-n">question</span><span class="highlight-p">})</span>
+</code></pre>
+<p>  这里的新概念是：如果请求的 ID 不存在问题，视图就会抛出 Http404 异常。<br>
+稍后我们将讨论你可以把什么放到那个 poll/detail.html 模板中，但如果你想快速得到上面的例子，一个文件包含：</p>
+<p>  polls/templates/polls/detail.html¶</p>
+<pre><code class="highlight-chroma">{{ question }}
+</code></pre>
+<h3 id="Namespacing-URL-names">Namespacing URL names</h3>
+<p>  polls/urls.py</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">from</span> <span class="highlight-nn">django.urls</span> <span class="highlight-kn">import</span> <span class="highlight-n">path</span>
+
+<span class="highlight-kn">from</span> <span class="highlight-nn">.</span> <span class="highlight-kn">import</span> <span class="highlight-n">views</span>
+
+<span class="highlight-n">app_name</span> <span class="highlight-o">=</span> <span class="highlight-s1">'polls'</span>
+<span class="highlight-n">urlpatterns</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span>
+    <span class="highlight-n">path</span><span class="highlight-p">(</span><span class="highlight-s1">''</span><span class="highlight-p">,</span> <span class="highlight-n">views</span><span class="highlight-o">.</span><span class="highlight-n">index</span><span class="highlight-p">,</span> <span class="highlight-n">name</span><span class="highlight-o">=</span><span class="highlight-s1">'index'</span><span class="highlight-p">),</span>
+    <span class="highlight-n">path</span><span class="highlight-p">(</span><span class="highlight-s1">'&lt;int:question_id&gt;/'</span><span class="highlight-p">,</span> <span class="highlight-n">views</span><span class="highlight-o">.</span><span class="highlight-n">detail</span><span class="highlight-p">,</span> <span class="highlight-n">name</span><span class="highlight-o">=</span><span class="highlight-s1">'detail'</span><span class="highlight-p">),</span>
+    <span class="highlight-n">path</span><span class="highlight-p">(</span><span class="highlight-s1">'&lt;int:question_id&gt;/results/'</span><span class="highlight-p">,</span> <span class="highlight-n">views</span><span class="highlight-o">.</span><span class="highlight-n">results</span><span class="highlight-p">,</span> <span class="highlight-n">name</span><span class="highlight-o">=</span><span class="highlight-s1">'results'</span><span class="highlight-p">),</span>
+    <span class="highlight-n">path</span><span class="highlight-p">(</span><span class="highlight-s1">'&lt;int:question_id&gt;/vote/'</span><span class="highlight-p">,</span> <span class="highlight-n">views</span><span class="highlight-o">.</span><span class="highlight-n">vote</span><span class="highlight-p">,</span> <span class="highlight-n">name</span><span class="highlight-o">=</span><span class="highlight-s1">'vote'</span><span class="highlight-p">),</span>
+<span class="highlight-p">]</span>
+</code></pre>
+<p>  然后修改模板语言</p>
+<pre><code class="language-html highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">a</span> <span class="highlight-na">href</span><span class="highlight-o">=</span><span class="highlight-s">"{% url 'detail' question.id %}"</span><span class="highlight-p">&gt;</span>{{ question.question_text }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">a</span><span class="highlight-p">&gt;&lt;/</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<p>  指向命名空间详细信息视图</p>
+<pre><code class="language-html highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">a</span> <span class="highlight-na">href</span><span class="highlight-o">=</span><span class="highlight-s">"{% url 'polls:detail' question.id %}"</span><span class="highlight-p">&gt;</span>{{ question.question_text }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">a</span><span class="highlight-p">&gt;&lt;/</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<h2 id="第四部分">第四部分</h2>
+<h3 id="优化代码">优化代码</h3>
+<p>  polls/templates/polls/detail.html¶</p>
+<pre><code class="language-html highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">h1</span><span class="highlight-p">&gt;</span>{{ question.question_text }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">h1</span><span class="highlight-p">&gt;</span>
+
+{% if error_message %}<span class="highlight-p">&lt;</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">strong</span><span class="highlight-p">&gt;</span>{{ error_message }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">strong</span><span class="highlight-p">&gt;&lt;/</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>{% endif %}
+
+<span class="highlight-p">&lt;</span><span class="highlight-nt">form</span> <span class="highlight-na">action</span><span class="highlight-o">=</span><span class="highlight-s">"{% url 'polls:vote' question.id %}"</span> <span class="highlight-na">method</span><span class="highlight-o">=</span><span class="highlight-s">"post"</span><span class="highlight-p">&gt;</span>
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">input</span> <span class="highlight-na">type</span><span class="highlight-o">=</span><span class="highlight-s">"radio"</span> <span class="highlight-na">name</span><span class="highlight-o">=</span><span class="highlight-s">"choice"</span> <span class="highlight-na">id</span><span class="highlight-o">=</span><span class="highlight-s">"choice{{ forloop.counter }}"</span> <span class="highlight-na">value</span><span class="highlight-o">=</span><span class="highlight-s">"{{ choice.id }}"</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">label</span> <span class="highlight-na">for</span><span class="highlight-o">=</span><span class="highlight-s">"choice{{ forloop.counter }}"</span><span class="highlight-p">&gt;</span>{{ choice.choice_text }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">br</span><span class="highlight-p">&gt;</span>
+{% endfor %}
+<span class="highlight-p">&lt;</span><span class="highlight-nt">input</span> <span class="highlight-na">type</span><span class="highlight-o">=</span><span class="highlight-s">"submit"</span> <span class="highlight-na">value</span><span class="highlight-o">=</span><span class="highlight-s">"Vote"</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;/</span><span class="highlight-nt">form</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<p>  polls/urls.py¶</p>
+<pre><code class="highlight-chroma">path('&lt;int:question_id&gt;/vote/', views.vote, name='vote'),
+</code></pre>
+<p>  polls/views.py¶</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">from</span> <span class="highlight-nn">django.http</span> <span class="highlight-kn">import</span> <span class="highlight-n">HttpResponse</span><span class="highlight-p">,</span> <span class="highlight-n">HttpResponseRedirect</span>
+<span class="highlight-kn">from</span> <span class="highlight-nn">django.shortcuts</span> <span class="highlight-kn">import</span> <span class="highlight-n">get_object_or_404</span><span class="highlight-p">,</span> <span class="highlight-n">render</span>
+<span class="highlight-kn">from</span> <span class="highlight-nn">django.urls</span> <span class="highlight-kn">import</span> <span class="highlight-n">reverse</span>
+
+<span class="highlight-kn">from</span> <span class="highlight-nn">.models</span> <span class="highlight-kn">import</span> <span class="highlight-n">Choice</span><span class="highlight-p">,</span> <span class="highlight-n">Question</span>
+<span class="highlight-c1"># ...</span>
+<span class="highlight-k">def</span> <span class="highlight-nf">vote</span><span class="highlight-p">(</span><span class="highlight-n">request</span><span class="highlight-p">,</span> <span class="highlight-n">question_id</span><span class="highlight-p">):</span>
+    <span class="highlight-n">question</span> <span class="highlight-o">=</span> <span class="highlight-n">get_object_or_404</span><span class="highlight-p">(</span><span class="highlight-n">Question</span><span class="highlight-p">,</span> <span class="highlight-n">pk</span><span class="highlight-o">=</span><span class="highlight-n">question_id</span><span class="highlight-p">)</span>
+    <span class="highlight-k">try</span><span class="highlight-p">:</span>
+        <span class="highlight-n">selected_choice</span> <span class="highlight-o">=</span> <span class="highlight-n">question</span><span class="highlight-o">.</span><span class="highlight-n">choice_set</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">pk</span><span class="highlight-o">=</span><span class="highlight-n">request</span><span class="highlight-o">.</span><span class="highlight-n">POST</span><span class="highlight-p">[</span><span class="highlight-s1">'choice'</span><span class="highlight-p">])</span>
+    <span class="highlight-k">except</span> <span class="highlight-p">(</span><span class="highlight-ne">KeyError</span><span class="highlight-p">,</span> <span class="highlight-n">Choice</span><span class="highlight-o">.</span><span class="highlight-n">DoesNotExist</span><span class="highlight-p">):</span>
+        <span class="highlight-c1"># Redisplay the question voting form.</span>
+        <span class="highlight-k">return</span> <span class="highlight-n">render</span><span class="highlight-p">(</span><span class="highlight-n">request</span><span class="highlight-p">,</span> <span class="highlight-s1">'polls/detail.html'</span><span class="highlight-p">,</span> <span class="highlight-p">{</span>
+            <span class="highlight-s1">'question'</span><span class="highlight-p">:</span> <span class="highlight-n">question</span><span class="highlight-p">,</span>
+            <span class="highlight-s1">'error_message'</span><span class="highlight-p">:</span> <span class="highlight-s2">"You didn't select a choice."</span><span class="highlight-p">,</span>
+        <span class="highlight-p">})</span>
+    <span class="highlight-k">else</span><span class="highlight-p">:</span>
+        <span class="highlight-n">selected_choice</span><span class="highlight-o">.</span><span class="highlight-n">votes</span> <span class="highlight-o">+=</span> <span class="highlight-mi">1</span>
+        <span class="highlight-n">selected_choice</span><span class="highlight-o">.</span><span class="highlight-n">save</span><span class="highlight-p">()</span>
+        <span class="highlight-c1"># Always return an HttpResponseRedirect after successfully dealing</span>
+        <span class="highlight-c1"># with POST data. This prevents data from being posted twice if a</span>
+        <span class="highlight-c1"># user hits the Back button.</span>
+        <span class="highlight-k">return</span> <span class="highlight-n">HttpResponseRedirect</span><span class="highlight-p">(</span><span class="highlight-n">reverse</span><span class="highlight-p">(</span><span class="highlight-s1">'polls:results'</span><span class="highlight-p">,</span> <span class="highlight-n">args</span><span class="highlight-o">=</span><span class="highlight-p">(</span><span class="highlight-n">question</span><span class="highlight-o">.</span><span class="highlight-n">id</span><span class="highlight-p">,)))</span>
+</code></pre>
+<p>  现在，创建一个 polls/results.html 模板：</p>
+<pre><code class="language-html highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">h1</span><span class="highlight-p">&gt;</span>{{ question.question_text }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">h1</span><span class="highlight-p">&gt;</span>
+
+<span class="highlight-p">&lt;</span><span class="highlight-nt">ul</span><span class="highlight-p">&gt;</span>
+{% for choice in question.choice_set.all %}
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;</span>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;</span>
+{% endfor %}
+<span class="highlight-p">&lt;/</span><span class="highlight-nt">ul</span><span class="highlight-p">&gt;</span>
+
+<span class="highlight-p">&lt;</span><span class="highlight-nt">a</span> <span class="highlight-na">href</span><span class="highlight-o">=</span><span class="highlight-s">"{% url 'polls:detail' question.id %}"</span><span class="highlight-p">&gt;</span>Vote again?<span class="highlight-p">&lt;/</span><span class="highlight-nt">a</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<h2 id="第五部分-自定义管理表单">第五部分：自定义管理表单</h2>
+<p>  通过将问题模型注册为 admin.site.register(Question)，Django 能够构造一个默认的表单表示。通常，您需要定制管理表单的外观和工作方式。可以通过在注册对象时告诉 Django 所需的选项来实现。<br>
+通过重新排列编辑表单中的字段来了解其工作原理。将 admin.site.register（Question）行替换为：<br>
+polls/admin.py¶</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">from</span> <span class="highlight-nn">django.contrib</span> <span class="highlight-kn">import</span> <span class="highlight-n">admin</span>
+<span class="highlight-kn">from</span> <span class="highlight-nn">.models</span> <span class="highlight-kn">import</span> <span class="highlight-n">Question</span>
+
+<span class="highlight-k">class</span> <span class="highlight-nc">QuestionAdmin</span><span class="highlight-p">(</span><span class="highlight-n">admin</span><span class="highlight-o">.</span><span class="highlight-n">ModelAdmin</span><span class="highlight-p">):</span>
+    <span class="highlight-n">fields</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span><span class="highlight-s1">'pub_date'</span><span class="highlight-p">,</span> <span class="highlight-s1">'question_text'</span><span class="highlight-p">]</span>
+
+<span class="highlight-n">admin</span><span class="highlight-o">.</span><span class="highlight-n">site</span><span class="highlight-o">.</span><span class="highlight-n">register</span><span class="highlight-p">(</span><span class="highlight-n">Question</span><span class="highlight-p">,</span> <span class="highlight-n">QuestionAdmin</span><span class="highlight-p">)</span>
+</code></pre>
+<p>  将遵循这个模式——创建一个模型管理类，然后将它作为第二个参数传递给 admin.site.register()——任何时候您需要更改模型的管理选项。<br>
+上面这个特殊的变化使得“发布日期”出现在“问题”字段之前：<img src="https://b3logfile.com/file/2020/08/image-4fa34c8b.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p>  对于只有两个字段的管理表单来说，这并不令人印象深刻，但是对于有几十个字段的管理表单来说，选择直观的顺序是一个重要的可用性细节。<br>
+说到几十个字段的表单，你可能想把表单分成字段集：</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">from</span> <span class="highlight-nn">django.contrib</span> <span class="highlight-kn">import</span> <span class="highlight-n">admin</span>
+<span class="highlight-kn">from</span> <span class="highlight-nn">.models</span> <span class="highlight-kn">import</span> <span class="highlight-n">Question</span>
+
+<span class="highlight-k">class</span> <span class="highlight-nc">QuestionAdmin</span><span class="highlight-p">(</span><span class="highlight-n">admin</span><span class="highlight-o">.</span><span class="highlight-n">ModelAdmin</span><span class="highlight-p">):</span>
+    <span class="highlight-n">fieldsets</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span>
+        <span class="highlight-p">(</span><span class="highlight-bp">None</span><span class="highlight-p">,</span>               <span class="highlight-p">{</span><span class="highlight-s1">'fields'</span><span class="highlight-p">:</span> <span class="highlight-p">[</span><span class="highlight-s1">'question_text'</span><span class="highlight-p">]}),</span>
+        <span class="highlight-p">(</span><span class="highlight-s1">'Date information'</span><span class="highlight-p">,</span> <span class="highlight-p">{</span><span class="highlight-s1">'fields'</span><span class="highlight-p">:</span> <span class="highlight-p">[</span><span class="highlight-s1">'pub_date'</span><span class="highlight-p">]}),</span>
+    <span class="highlight-p">]</span>
+
+<span class="highlight-n">admin</span><span class="highlight-o">.</span><span class="highlight-n">site</span><span class="highlight-o">.</span><span class="highlight-n">register</span><span class="highlight-p">(</span><span class="highlight-n">Question</span><span class="highlight-p">,</span> <span class="highlight-n">QuestionAdmin</span><span class="highlight-p">)</span>
+</code></pre>
+<p>  字段集中每个元组的第一个元素是字段集的标题。这是我们现在的表格：<img src="https://b3logfile.com/file/2020/08/image-d59ecc22.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<h3 id="添加相关对象">添加相关对象</h3>
+<p>  我们有问题管理页面，但是问题有多个选择，并且管理页面不显示选择。 然而。<br>
+有两种方法可以解决此问题。首先是像在 Question 上一样向管理员注册 Choice：</p>
+<p>  polls/admin.py¶</p>
+<pre><code class="highlight-chroma">from django.contrib import admin
+from .models import Choice, Question
+# ...
+admin.site.register(Choice)
+</code></pre>
+<p>  现在，“选择”是 Django 管理员中的可用选项。 “添加选择”表单如下所示：<br>
+<img src="https://b3logfile.com/file/2020/08/image-44de2eb3.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p>  在该表单中，“Question”字段是一个选择框，包含数据库中的每个问题。Django 知道一个外键应该在管理中表示为一个框。在我们的例子中，目前只存在一个问题。<br>
+还要注意在“问题”旁边的“添加另一个”链接。每一个与其他对象具有 ForeignKey 关系的对象都可以免费得到这个。当你点击“添加另一个”，你会得到一个弹出窗口的“添加问题”形式。如果在该窗口中添加一个问题并单击“Save”，Django 会将该问题保存到数据库中，并在您正在查看的“add choice”表单中动态地将其添加为选中的选项。<br>
+但是，实际上，这是向系统添加 Choice 对象的一种低效方式。最好在创建 Question 对象时直接添加一堆 Choices。让我们做到这一点。<br>
+删除对 Choice 模型的 register()调用。然后，编辑问题注册码以读取：<br>
+polls/admin.py¶</p>
+<pre><code class="language-python highlight-chroma"><span class="highlight-kn">from</span> <span class="highlight-nn">django.contrib</span> <span class="highlight-kn">import</span> <span class="highlight-n">admin</span>
+<span class="highlight-kn">from</span> <span class="highlight-nn">.models</span> <span class="highlight-kn">import</span> <span class="highlight-n">Choice</span><span class="highlight-p">,</span> <span class="highlight-n">Question</span>
+
+<span class="highlight-k">class</span> <span class="highlight-nc">ChoiceInline</span><span class="highlight-p">(</span><span class="highlight-n">admin</span><span class="highlight-o">.</span><span class="highlight-n">StackedInline</span><span class="highlight-p">):</span>
+    <span class="highlight-n">model</span> <span class="highlight-o">=</span> <span class="highlight-n">Choice</span>
+    <span class="highlight-n">extra</span> <span class="highlight-o">=</span> <span class="highlight-mi">3</span>
+
+<span class="highlight-k">class</span> <span class="highlight-nc">QuestionAdmin</span><span class="highlight-p">(</span><span class="highlight-n">admin</span><span class="highlight-o">.</span><span class="highlight-n">ModelAdmin</span><span class="highlight-p">):</span>
+    <span class="highlight-n">fieldsets</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span>
+        <span class="highlight-p">(</span><span class="highlight-bp">None</span><span class="highlight-p">,</span>               <span class="highlight-p">{</span><span class="highlight-s1">'fields'</span><span class="highlight-p">:</span> <span class="highlight-p">[</span><span class="highlight-s1">'question_text'</span><span class="highlight-p">]}),</span>
+        <span class="highlight-p">(</span><span class="highlight-s1">'Date information'</span><span class="highlight-p">,</span> <span class="highlight-p">{</span><span class="highlight-s1">'fields'</span><span class="highlight-p">:</span> <span class="highlight-p">[</span><span class="highlight-s1">'pub_date'</span><span class="highlight-p">],</span> <span class="highlight-s1">'classes'</span><span class="highlight-p">:</span> <span class="highlight-p">[</span><span class="highlight-s1">'collapse'</span><span class="highlight-p">]}),</span>
+    <span class="highlight-p">]</span>
+    <span class="highlight-n">inlines</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span><span class="highlight-n">ChoiceInline</span><span class="highlight-p">]</span>
+
+<span class="highlight-n">admin</span><span class="highlight-o">.</span><span class="highlight-n">site</span><span class="highlight-o">.</span><span class="highlight-n">register</span><span class="highlight-p">(</span><span class="highlight-n">Question</span><span class="highlight-p">,</span> <span class="highlight-n">QuestionAdmin</span><span class="highlight-p">)</span>
+</code></pre>
+<p>  这告诉 Django:“选择对象在问题管理页面上编辑。默认情况下，为 3 个选项提供足够的字段。”<br>
+加载“添加问题”页面，看看是什么样子：<br>
+<img src="https://b3logfile.com/file/2020/08/image-7b0f7dcc.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p>  不过有一个小问题。它需要大量的屏幕空间来显示用于输入相关选择对象的所有字段。因此，Django 提供了一种表格方式来显示内联相关的对象。要使用它，将 ChoiceInline 声明更改为：<br>
+polls/admin.py¶</p>
+<pre><code class="highlight-chroma">class ChoiceInline(admin.TabularInline):
+    #...
+</code></pre>
+<p>  使用表格内联(而不是 StackedInline)，相关对象将以更紧凑的、基于表格的格式显示：<br>
+<img src="https://b3logfile.com/file/2020/08/image-8264f5cd.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<h3 id="自定义管理员更改列表">自定义管理员更改列表</h3>
+<p>  现在问题管理页面看起来不错了，让我们对“更改列表”页面做一些调整——这个页面显示系统中的所有问题。<br>
+这是它现在的样子：<br>
+<img src="https://b3logfile.com/file/2020/08/image-d5913581.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p>  默认情况下，Django 显示每个对象的 str()。但有时如果我们能显示单独的字段会更有帮助。要做到这一点，使用 list_display 管理选项，它是一个字段名的元组，以列的形式显示在对象的更改列表页面上：<br>
+polls/admin.py¶</p>
+<pre><code class="highlight-chroma">class QuestionAdmin(admin.ModelAdmin):
+    # ...
+    list_display = ('question_text', 'pub_date')
+</code></pre>
+<p>  现在，问题更改列表页面如下所示：<br>
+<img src="https://b3logfile.com/file/2020/08/image-729b8680.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p>  您可以单击列标题按这些值进行排序——was_published_recent 标题除外，因为不支持按任意方法的输出进行排序。还要注意，was_published_recent 的列标题在默认情况下是方法的名称(下划线替换为空格)，并且每行包含输出的字符串表示。</p>
+<p>  您可以通过为该方法（在 polls / models.py 中）提供一些属性来改进该属性，如下所示：<br>
+polls/models.py¶</p>
+<pre><code class="highlight-chroma">class Question(models.Model):
+    # ...
+    def was_published_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) &lt;= self.pub_date &lt;= now
+    was_published_recently.admin_order_field = 'pub_date'
+    was_published_recently.boolean = True
+    was_published_recently.short_description = 'Published recently?'
+</code></pre>
+<p>  更多关于 <a href="https://docs.djangoproject.com/en/3.1/ref/contrib/admin/#django.contrib.admin.ModelAdmin.list_display" target="_blank">list_display 的信息看这里</a><br>
+再次编辑您的 poll /admin.py 文件，并向问题更改列表页面添加一个改进：使用 list_filter 的过滤器。在 QuestionAdmin 类里面添加以下代码：</p>
+<p>  <code>list_filter = ['pub_date']</code></p>
+<p>  这会添加一个“过滤器”侧边栏，可以通过 pub_date 字段过滤更改列表：</p>
+<p>  <img src="https://b3logfile.com/file/2020/08/image-9ae037f2.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p>  显示的过滤器类型取决于您要过滤的字段类型。由于 pub_date 是 DateTimeField，因此 Django 知道提供适当的过滤器选项：“任何日期”，“今天”，“过去 7 天”，“本月”，“今年”。<br>
+这很好。让我们添加一些搜索功能：<br>
+<code>search_fields = ['question_text']</code><br>
+<img src="https://b3logfile.com/file/2020/08/image-dd40f01c.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p>  现在还需要注意的是，更改列表提供了免费的分页。默认值是每个页面显示 100 个条目。更改列表分页、搜索框、过滤器、日期层次结构和列标题排序都像您认为的那样协同工作。</p>
+<p>  成果：</p>
+<p>  <img src="https://b3logfile.com/file/2020/08/image-465d08e5.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+                <div>
+                    <hr>
+
+标题：Django 3.1 官网学习路线<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2020/08/17/1597665317545.html" target="_blank">https://cuijianzhe.github.io/articles/2020/08/17/1597665317545.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<pre><p style="font-size:15px"><font color="#008000">
+<b>到头来
+我们记住的
+不是敌人的攻击
+而是朋友的沉默
+       ---马丁·路德·金</b></p><pre>
+
+                </div>
+        </div>
+    </div>
+    <div class="post__toc">
+<ul class="article__toc">
+        <li class="toc__h1">
+            <a href="#Django-3-1-官网学习路线">Django 3.1 官网学习路线</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#第一部分">第一部分</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#安装-Django">安装 Django</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#创建项目">创建项目</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#开发服务">开发服务</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#创建-polls-应用">创建 polls 应用</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#编写-views-py-文件">编写 views.py 文件</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#path--函数传递了四个参数-两个是必需的-路由和视图-两个是可选的-kwargs-和-name-在这一点上-有必要回顾一下这些论点的意义-">path()函数传递了四个参数，两个是必需的：路由和视图，两个是可选的：kwargs 和 name。在这一点上，有必要回顾一下这些论点的意义。</a>
+        </li>
+        <li class="toc__h6">
+            <a href="#path---argument--route">path() argument: route</a>
+        </li>
+        <li class="toc__h6">
+            <a href="#path---argument--view">path() argument: view</a>
+        </li>
+        <li class="toc__h6">
+            <a href="#path---argument--kwargs">path() argument: kwargs</a>
+        </li>
+        <li class="toc__h6">
+            <a href="#path---argument--name">path() argument: name</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#第二部分">第二部分</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#数据库设置">数据库设置</a>
+        </li>
+        <li class="toc__h6">
+            <a href="#ENGINE">ENGINE</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#创建模型">创建模型</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#激活模型">激活模型</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#玩转-API">玩转 API</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#创建管理员账号">创建管理员账号</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#让投票应用程序在管理可修改">让投票应用程序在管理可修改</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#探索免费的管理功能">探索免费的管理功能</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#第三部分">第三部分</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#概览">概览</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#添加更多的视图">添加更多的视图</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#编写实际应用的视图">编写实际应用的视图</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#A-shortcut--render">A shortcut: render</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#Raising-a-404-error">Raising a 404 error</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#Namespacing-URL-names">Namespacing URL names</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#第四部分">第四部分</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#优化代码">优化代码</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#第五部分-自定义管理表单">第五部分：自定义管理表单</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#添加相关对象">添加相关对象</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#自定义管理员更改列表">自定义管理员更改列表</a>
+        </li>
+</ul>    </div>
+    <div class="body--gray post__gray">
+        <div class="wrapper comment">
+                <div id="gitalk-container" style="padding: 30px 0;"></div>
+                <div id="b3logsolocomments"></div>
+                <div id="vcomment" style="padding: 30px 0;" data-name="cuijianzhe" data-postId="1597665317545"></div>
+
+            <div class="post__list fn__flex">
+                <div class="fn__flex-1">
+                    <div id="externalRelevantArticles"></div>
+                </div>
+                <div class="post__list-mid fn__flex-1">
+                    <div id="randomArticles"></div>
+                </div>
+                <div class="fn__flex-1">
+                    <div id="relevantArticles"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="post__fix">
+        <div class="wrapper">
+            <span class="post__share mobile__none">
+                Share
+                <span class="tag tag--4" data-type="weibo">WeiBo</span>
+                <span class="tag tag--5" data-type="twitter">Twitter</span>
+                <span class="tag tag--6" data-type="qqz">QZone</span>
+                <span class="post__code tag tag--7"
+                      data-type="wechat"
+                      data-title="Django 3.1 官网学习路线"
+                      data-blogtitle="邯城往事"
+                      data-url="https://cuijianzhe.github.io/articles/2020/08/17/1597665317545.html"
+                      data-avatar="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100">
+                    WeChat
+                    <span class="qrcode"></span>
+                </span>
+            </span>
+            <span class="post__arrow">
+                    <a href="https://cuijianzhe.github.io/articles/2020/08/15/1597459617030.html" rel="prev"
+                       class="vditor-tooltipped__n vditor-tooltipped"
+                       pjax-title="关于 Kubernetes 的这些原理，你一定要了解"
+                       aria-label="旧一篇: 关于 Kubernetes 的这些原理，你一定要了解">←</a>
+
+                <a href="javascript:Util.goTop()" class="vditor-tooltipped__n vditor-tooltipped"
+                   aria-label="移动到顶部">↑</a>
+                <a href="javascript:Util.goBottom()" class="vditor-tooltipped__n vditor-tooltipped"
+                   aria-label="移动到底部">↓</a>
+            </span>
+        </div>
+    </div>
+    
+</main>
+<footer class="footer">
+    <div class="ft__center">
+    <a href="https://hacpai.com/member/cuijianzhe"
+       aria-label="https://hacpai.com/member/cuijianzhe"
+       class="vditor-tooltipped__n vditor-tooltipped  user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+        <a href="https://github.com/cuijianzhe"
+           aria-label="https://github.com/cuijianzhe"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site"
+           target="_blank" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
+        </a>
+
+        <a href="https://twitter.com/JianzheC"
+           aria-label="https://twitter.com/JianzheC"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32.003 6.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
+            </svg>
+        </a>
+        <a href="https://weibo.com/3796930704"
+           aria-label="https://weibo.com/3796930704"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+                <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+                <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+                <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+            </svg>
+        </a>
+        <a href="https://www.zhihu.com/people/wen-yang-24-36"
+           aria-label="https://www.zhihu.com/people/wen-yang-24-36"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32 26.67c0 2.931-2.382 5.33-5.33 5.33h-21.339c-2.948 0-5.33-2.382-5.33-5.33v-21.339c0-2.948 2.382-5.33 5.33-5.33h21.339c2.948 0 5.33 2.382 5.33 5.33v21.339zM12.358 17.191h4.713c0-1.114-0.531-1.748-0.531-1.748h-4.079c0.103-2.005 0.189-4.576 0.223-5.536h3.874s-0.017-1.645-0.463-1.645h-6.822s0.411-2.142 0.96-3.085c0 0-2.040-0.12-2.742 2.605-0.686 2.725-1.731 4.354-1.851 4.662s0.6 0.137 0.891 0c0.309-0.137 1.663-0.617 2.057-2.537h2.108c0.034 1.2 0.12 4.885 0.086 5.536h-4.336c-0.6 0.446-0.823 1.748-0.823 1.748h4.971c-0.206 1.371-0.566 3.137-1.080 4.062-0.806 1.491-1.234 2.828-4.131 5.176 0 0-0.48 0.36 0.994 0.223 1.474-0.12 2.845-0.514 3.839-2.434 0.514-0.994 1.011-2.28 1.423-3.565l4.079 4.713s0.548-1.268 0.137-2.657l-3.034-3.394-1.028 0.754c0.291-0.994 0.497-1.988 0.548-2.845 0.017 0.017 0.017 0 0.017-0.034zM18.048 7.936v16.3h1.714l0.703 1.954 2.965-1.954h3.754v-16.3h-9.136zM25.401 22.487h-1.937l-2.434 1.611-0.566-1.611h-0.6v-12.735h5.553v12.735h-0.017z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=598941324"
+           aria-label="598941324"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+        <a href="javascript:void(0)"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" aria-label="cjz5989">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+            </svg>
+        </a>
+    </div>
+    <nav class="footer__nav mobile__none">
+            <a class="ft__link" href="/my-github-repos" target="_self" rel="section">
+                我的开源
+            </a>
+            <a class="ft__link" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                服务器倒计时
+            </a>
+        <a class="ft__link" rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">RSS</a>
+    </nav>
+    <div class="footer__border mobile__none"></div>
+    <div class="wrapper fn__flex">
+        <div class="fn__flex-1 mobile__none">
+            <div class="ft__fade">cuijianzhe -                >>>  展颜笑夙愿，一笑泯恩仇 <<<</div>
+            <br>
+                <!-- MetingJS音乐播放器 不能放到 head 导致系统功能加载异常-->
+<link rel="stylesheet" href="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css">
+<script src="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<meting-js server="netease" type="playlist" id="728729850"  autoplay="false" fixed ="true" order = "random"</meting-js>
+
+<h1><p style="font-size:10px"><font color="#2F4F4F">红笺小字，说尽平生意。<br/>鸿雁在云鱼在水，惆怅此情难寄。<br/>             ——晏殊· 《清平乐》</font> </p></h1>
+
+        </div>
+
+            <div class="footer__mid fn__flex-1 mobile__none">
+                <div class="ft__fade">分类</div>
+                <br>
+                    <a href="https://cuijianzhe.github.io/category/python"
+                       aria-label="33 文章"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        人生苦短,我用Python</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/java"
+                       aria-label="15 文章"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        Java是世界上最好的语言</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/linux"
+                       aria-label="49 文章"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        Linux系列</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/network"
+                       aria-label="4 文章"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        Network系列</a> &nbsp; &nbsp;
+                    <a href="https://cuijianzhe.github.io/category/young"
+                       aria-label="6 文章"
+                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
+                        江湖就是人情世故</a> &nbsp; &nbsp;
+            </div>
+
+        <div class="fn__flex-1 footer__copyright">
+            <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
+                141
+                文章
+            </a>
+           <br>
+            <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> <span class="ft-gray">浏览</span>
+ <br>
+            &copy; 2020
+            <a class="ft__link" href="https://cuijianzhe.github.io">邯城往事</a>
+            <img style="width: 20px; height: 20px;" src="https://img.hacpai.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">冀ICP备19005901号</a> 
+
+<!--切换标签实现网页标题变化-->
+<script type="text/javascript">
+    /*自动刷新页面，避免无法访问*/
+    var OriginTitile = document.title;
+    var titleTime;
+    document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+            document.title = '一杯茶，一包烟，混过一天是一天';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '哈哈，我是大佬ヾ(ﾟ∀ﾟゞ)';
+            titleTime = setTimeout(function () {
+                document.title = OriginTitile;
+            }, 3000);
+        }
+    });
+</script>
+<!--切换标签实现网页标题变化 结束-->
+
+        </div>
+    </div>
+</footer>
+<script>
+  var Label = {
+    speech: true,
+    servePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources",
+    luteAvailable: true,
+    hljsStyle: 'monokai',
+    langLabel: "zh_CN",
+    version: "4.3.0",
+    staticSite: true,
+    showCodeBlockLn: false,
+    articleId: "1597665317545",
+  }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources/skins/Pinghsu/js/common.min.js?1597690831817"
+        charset="utf-8"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
+<div class="solo-kanbanniang">
+    <div class="solo-kanbanniang__tip"></div>
+    <canvas id="soloKanbanniang" width="280" height="250"></canvas>
+    <div class="solo-kanbanniang__tool">
+        <svg id="soloKanbanniangHome" viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M32 18.967l-16-12.42-16 12.42v-5.064l16-12.42 16 12.42zM28 18.516v12h-8v-8h-8v8h-8v-12l12-9z"></path>
+        </svg>
+        <svg id="soloKanbanniangRSS" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M320.364 768q0 45.728-32 77.728t-77.728 32-77.728-32-32-77.728 32-77.728 77.728-32 77.728 32 32 77.728zM612.94 838.272q1.152 16-9.728 27.424-10.272 12-26.848 12h-77.152q-14.272 0-24.576-9.44t-11.424-23.712q-12.576-130.848-105.44-223.712t-223.712-105.44q-14.272-1.152-23.712-11.424t-9.44-24.576V402.24q0-16.576 12-26.848 9.728-9.728 24.576-9.728h2.848q91.424 7.424 174.848 46.016t148 103.712q65.152 64.576 103.712 148t46.016 174.848z m292.576 1.152q1.152 15.424-10.272 26.848-10.272 11.424-26.272 11.424h-81.728q-14.848 0-25.44-10.016t-11.136-24.288q-6.848-122.848-57.728-233.44t-132.288-192-192-132.288-233.44-58.272q-14.272-0.576-24.288-11.136t-10.016-24.864V109.664q0-16 11.424-26.272 10.272-10.272 25.152-10.272h1.728q149.728 7.424 286.56 68.576t243.136 168q106.848 106.272 168 243.136t68.576 286.56z"></path>
+        </svg>
+        <svg id="soloKanbanniangChat" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M802.42709 96.163153H219.476155c-84.48109 0-154.896836 71.746044-154.896836 157.840888v393.119449c0 86.072331 70.415746 157.819398 154.896836 157.819399h214.038818V925.470963s22.526039 40.168862 64.767096 5.734608c30.965246-25.819039 126.721123-91.828428 171.775248-123.385145h132.369773c84.502579 0 154.896836-83.21526 154.896836-157.839865V251.125481c0-86.094844-70.394257-154.962328-154.896836-154.962328zM301.144176 518.002714c-39.427988 0-70.416769-31.576159-70.416769-71.746044 0-40.168862 30.988782-71.746044 70.416769-71.746044 39.426965 0 70.393233 31.577183 70.393234 71.746044 0 40.169885-30.966269 71.746044-70.393234 71.746044z m208.411657 0c-39.450501 0-70.415746-31.576159-70.415746-71.746044 0-40.168862 30.965246-71.746044 70.415746-71.746044 39.405475 0 70.394257 31.577183 70.394257 71.746044 0 40.169885-30.988782 71.746044-70.394257 71.746044z m211.203236 0c-39.426965 0-70.416769-31.576159-70.416769-71.746044 0-40.168862 30.988782-71.746044 70.416769-71.746044s70.415746 31.577183 70.415746 71.746044c-0.001023 40.169885-30.988782 71.746044-70.415746 71.746044z"></path>
+        </svg>
+        <svg id="soloKanbanniangChange" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M936.672 193.216l-226.88-64c-8.704-2.528-18.112-1.12-25.824 3.776-7.68 4.864-12.896 12.736-14.432 21.728C655.712 236.928 595.328 288 512 288c-71.424 0-142.464-103.296-163.776-143.104-7.136-13.28-22.528-19.84-37.024-15.68l-224 64C73.472 197.152 64 209.728 64 224v256a31.93 31.93 0 0 0 11.712 24.736c7.392 6.08 17.152 8.512 26.56 6.624L224 487.04V832c0 52.928 43.072 96 96 96h384c52.928 0 96-43.072 96-96V519.04l121.728 24.352c9.44 1.92 19.2-0.544 26.56-6.624C955.68 530.656 960 521.6 960 512V224c0-14.336-9.536-26.912-23.328-30.784zM672 800H352c-17.664 0-32-14.304-32-32s14.336-32 32-32h320c17.696 0 32 14.304 32 32s-14.304 32-32 32z"></path>
+        </svg>
+        <svg id="soloKanbanniangPhoto" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M898.048 258.048q23.552-1.024 46.592 9.216t40.96 27.136 28.672 39.424 10.752 46.08l0 390.144q0 24.576-10.752 47.104t-28.672 40.448-40.96 28.16-47.616 10.24l-697.344 0q-24.576 0-48.64-10.24t-42.496-27.648-29.696-40.448-11.264-48.64l0-381.952q0-22.528 10.752-45.568t28.672-41.472 39.936-30.208 44.544-11.776l63.488 0 13.312-83.968q3.072-20.48 18.432-32.768t34.816-12.288l456.704 0q19.456 0 34.304 10.752t16.896 34.304l14.336 83.968 54.272 0zM548.864 712.704q40.96 0 77.824-15.872t63.488-42.496 42.496-62.976 15.872-77.312-15.872-77.312-42.496-62.976-63.488-42.496-77.824-15.872-77.312 15.872-63.488 42.496-43.008 62.976-15.872 77.312 15.872 77.312 43.008 62.976 63.488 42.496 77.312 15.872z"></path>
+        </svg>
+        <svg id="soloKanbanniangGithub" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M1024 524.8c0 114.346667-32.554667 217.216-97.706667 308.565333-65.066667 91.306667-149.162667 154.538667-252.288 189.610667-11.989333 2.304-20.778667 0.682667-26.325333-4.778667a27.605333 27.605333 0 0 1-8.362667-20.48v-144.213333c0-44.16-11.52-76.501333-34.645333-97.024 25.344-2.730667 48.085333-6.826667 68.309333-12.288a268.629333 268.629333 0 0 0 62.72-26.666667 187.434667 187.434667 0 0 0 53.973334-45.44c14.421333-18.005333 26.197333-41.898667 35.328-71.765333 9.088-29.824 13.653333-64.128 13.653333-102.826667 0-55.125333-17.536-102.058667-52.650667-140.8 16.426667-41.429333 14.677333-87.893333-5.333333-139.392-12.458667-4.096-30.464-1.578667-54.016 7.509334a355.328 355.328 0 0 0-61.312 30.08L640 271.274667a462.336 462.336 0 0 0-128-17.749334c-43.989333 0-86.656 5.930667-128 17.749334a589.824 589.824 0 0 0-28.330667-18.432c-11.776-7.253333-30.336-16.042667-55.68-26.325334-25.344-10.24-44.416-13.312-57.301333-9.216-19.584 51.498667-21.12 97.962667-4.693333 139.434667-35.114667 38.698667-52.650667 85.632-52.650667 140.757333 0 38.698667 4.565333 72.874667 13.653333 102.485334 9.130667 29.610667 20.778667 53.546667 34.986667 71.765333 14.250667 18.218667 32.128 33.493333 53.674667 45.781333 21.546667 12.288 42.453333 21.205333 62.677333 26.666667 20.224 5.461333 43.008 9.557333 68.309333 12.288-17.749333 16.384-28.629333 39.850667-32.64 70.4a130.005333 130.005333 0 0 1-29.994666 10.24c-10.666667 2.261333-23.338667 3.413333-37.973334 3.413333-14.72 0-29.269333-4.906667-43.690666-14.677333-14.464-9.813333-26.794667-24.064-36.992-42.709333a109.226667 109.226667 0 0 0-32.341334-35.541334c-13.141333-9.130667-24.106667-14.592-33.024-16.426666l-13.312-2.048c-9.344 0-15.786667 1.024-19.328 3.072-3.584 2.090667-4.693333 4.693333-3.328 7.893333 1.28 3.157333 3.328 6.4 5.973334 9.557333 2.688 3.2 5.546667 5.930667 8.661333 8.192l4.693333 3.413334c9.770667 4.565333 19.413333 13.226667 29.013334 25.984 9.514667 12.757333 16.512 24.362667 20.992 34.858666l6.656 15.701334c5.76 17.322667 15.530667 31.317333 29.312 42.026666 13.781333 10.666667 28.672 17.536 44.672 20.48 16 2.986667 31.445333 4.565333 46.336 4.821334 14.890667 0.213333 27.221333-0.597333 36.992-2.389334l15.36-2.730666c0 17.28 0.085333 37.546667 0.298666 60.8l0.341334 36.906666a27.050667 27.050667 0 0 1-8.661334 20.48c-5.76 5.461333-14.677333 7.082667-26.666666 4.778667-103.125333-35.072-187.221333-98.261333-252.330667-189.610667C32.554667 742.058667 0 639.146667 0 524.8c0-95.232 22.869333-183.04 68.693333-263.466667A516.266667 516.266667 0 0 1 254.976 70.4C333.44 23.466667 419.114667 0 512 0c92.885333 0 178.56 23.466667 256.981333 70.4a516.266667 516.266667 0 0 1 186.368 190.976C1001.130667 341.802667 1024 429.653333 1024 524.842667z"></path>
+        </svg>
+        <svg id="soloKanbanniangClose" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M517.572566143763 1018.6748601482986C238.26554897656422 1018.6748601482986 11.897910175114305 792.2714997690043 11.897910175114305 513.0002041796496c0-279.3070171671984 226.36763880144977-505.71037754649296 505.6746559686481-505.71037754649296 279.2712955893538 0 505.6746559686481 226.40336037929444 505.6746559686481 505.71037754649296C1023.2472221124112 792.2714997690043 796.8795833109612 1018.6748601482986 517.572566143763 1018.6748601482986zM754.7281214542927 339.25044954334646c13.752807470184345-13.752807470184345 9.680547595895998-40.186775075214015-9.073280772537204-58.94060344364717l-2.143294670678079-2.1075730928334457c-18.7538283684332-18.7538283684332-45.15207439561819-22.861809820566194-58.90488186580257-9.073280772537204l-168.21291007038468 168.24863164822932-180.42968969324974-180.46541127109438c-13.967136937252159-13.967136937252159-40.72259874288353-9.823433907274534-59.72647815622916 9.216167083915742l-2.143294670678079 2.143294670678079c-19.039600991190277 19.003879413345654-23.111860865478626 45.75934121897699-9.180445506071107 59.655035000539876l180.42968969324974 180.46541127109438-176.07165719620428 176.03593561835962c-13.788529048028984 13.824250625873615-9.716269173740633 40.151053497369375 9.073280772537204 58.94060344364717l2.1075730928334457 2.1075730928334457c18.7538283684332 18.7538283684332 45.15207439561819 22.897531398410823 58.90488186580257 9.073280772537204l176.10737877404887-176.10737877404887 170.39192631890742 170.42764789675192c13.967136937252159 13.931415359407513 40.686877165038865 9.85915548511917 59.690756578384516-9.180445506071107l2.1790162485227142-2.1790162485227142c19.039600991190277-18.968157835501014 23.147582443323273-45.72361964113239 9.180445506071107-59.690756578384516l-170.39192631890742-170.42764789675192L754.7281214542927 339.25044954334646z"></path>
+        </svg>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources/js/page.min.js?1597690831817', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论不能为空",
+        "oId": "1597665317545",
+        "blogHost": "https://cuijianzhe.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "5";
+    page.loadRandomArticles('<h3>RECOMMEND POSTS</h3>');
+    page.loadExternalRelevantArticles("Python",
+    '<h3>HACPAI POSTS</h3>');
+    page.loadRelevantArticles('1597665317545', '<h3>RELEVANT POSTS</h3>');
+Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 442ms, 2020/08/18 17:54:34 -->

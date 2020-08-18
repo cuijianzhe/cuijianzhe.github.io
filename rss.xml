@@ -6,8 +6,17 @@
     <atom:link href="https://cuijianzhe.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>               &gt;&gt;&gt;  展颜笑夙愿，一笑泯恩仇 &lt;&lt;&lt;</description>
     <generator>Solo, v4.3.0, https://solo.b3log.org</generator>
-    <lastBuildDate>Sun, 16 Aug 2020 19:30:14 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 18 Aug 2020 17:54:31 +0800</lastBuildDate>
     <language>zh-cn</language>
+    <item>
+      <title>Django 3.1 官网学习路线</title>
+      <link>https://cuijianzhe.github.io/articles/2020/08/17/1597665317545.html</link>
+      <description><![CDATA[<p>  水说：我知道你流泪，因为你在我心里！鱼说：你看不见我流泪，因为我在水里。</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/08/17/1597665317545.html</guid>
+      <category>Python</category>
+      <pubDate>Tue, 18 Aug 2020 14:58:52 +0800</pubDate>
+    </item>
     <item>
       <title>站点推荐【转】</title>
       <link>https://cuijianzhe.github.io/articles/2019/11/13/1573637956893.html</link>
@@ -84,8 +93,8 @@
 每天一句“我爱你……”</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2019/09/20/1568981823765.html</guid>
-      <category>Python</category>
       <category>钉钉</category>
+      <category>Python</category>
       <pubDate>Thu, 13 Aug 2020 16:18:17 +0800</pubDate>
     </item>
     <item>
@@ -96,16 +105,6 @@
       <guid>https://cuijianzhe.github.io/articles/2020/08/12/1597200121515.html</guid>
       <category>solo</category>
       <pubDate>Wed, 12 Aug 2020 19:14:59 +0800</pubDate>
-    </item>
-    <item>
-      <title>Nginx的Vhost配置</title>
-      <link>https://cuijianzhe.github.io/articles/2020/05/12/1589284354518.html</link>
-      <description><![CDATA[<p>  我愿成为春季的花朵为你奉献美丽；我希望变成炎日下的树荫为你创造阴凉；我梦想成为秋天里的枫叶为你增添美景；我渴望成为寒冬里的棉袄为你带来温暖。</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/05/12/1589284354518.html</guid>
-      <category>Linux</category>
-      <category>nginx</category>
-      <pubDate>Wed, 12 Aug 2020 17:50:07 +0800</pubDate>
     </item>
   </channel>
 </rss>
