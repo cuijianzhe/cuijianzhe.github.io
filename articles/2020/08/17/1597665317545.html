@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Django 3.1 官网学习路线 - 邯城往事</title><meta name="description" content="  水说：我知道你流泪，因为你在我心里！鱼说：你看不见我流泪，因为我在水里。"/><meta property="og:description" content="  水说：我知道你流泪，因为你在我心里！鱼说：你看不见我流泪，因为我在水里。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Django 3.1 官网学习路线 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/08/17/1597665317545.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="Django 3.1 官网学习路线 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/08/17/1597665317545.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources/skins/Pinghsu/css/base.css?1597690831817"/>
+              href="https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources/skins/Pinghsu/css/base.css?1598169680721"/>
             <link rel="prev" title="关于 Kubernetes 的这些原理，你一定要了解" href="https://cuijianzhe.github.io/articles/2020/08/15/1597459617030.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
@@ -666,20 +666,20 @@ polls/admin.py¶</p>
 <pre><code class="highlight-chroma">class ChoiceInline(admin.TabularInline):
     #...
 </code></pre>
-<p>  使用表格内联(而不是 StackedInline)，相关对象将以更紧凑的、基于表格的格式显示：<br>
-<img src="https://b3logfile.com/file/2020/08/image-8264f5cd.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p>  使用表格内联(而不是 StackedInline)，相关对象将以更紧凑的、基于表格的格式显示：</p>
+<p>  <img src="https://b3logfile.com/file/2020/08/image-8264f5cd.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <h3 id="自定义管理员更改列表">自定义管理员更改列表</h3>
 <p>  现在问题管理页面看起来不错了，让我们对“更改列表”页面做一些调整——这个页面显示系统中的所有问题。<br>
-这是它现在的样子：<br>
-<img src="https://b3logfile.com/file/2020/08/image-d5913581.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+这是它现在的样子：</p>
+<p>  <img src="https://b3logfile.com/file/2020/08/image-d5913581.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <p>  默认情况下，Django 显示每个对象的 str()。但有时如果我们能显示单独的字段会更有帮助。要做到这一点，使用 list_display 管理选项，它是一个字段名的元组，以列的形式显示在对象的更改列表页面上：<br>
 polls/admin.py¶</p>
 <pre><code class="highlight-chroma">class QuestionAdmin(admin.ModelAdmin):
     # ...
     list_display = ('question_text', 'pub_date')
 </code></pre>
-<p>  现在，问题更改列表页面如下所示：<br>
-<img src="https://b3logfile.com/file/2020/08/image-729b8680.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p>  现在，问题更改列表页面如下所示：</p>
+<p>  <img src="https://b3logfile.com/file/2020/08/image-729b8680.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <p>  您可以单击列标题按这些值进行排序——was_published_recent 标题除外，因为不支持按任意方法的输出进行排序。还要注意，was_published_recent 的列标题在默认情况下是方法的名称(下划线替换为空格)，并且每行包含输出的字符串表示。</p>
 <p>  您可以通过为该方法（在 polls / models.py 中）提供一些属性来改进该属性，如下所示：<br>
 polls/models.py¶</p>
@@ -973,7 +973,7 @@ polls/models.py¶</p>
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="15 文章"
+                       aria-label="0 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
@@ -992,7 +992,7 @@ polls/models.py¶</p>
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                141
+                102
                 文章
             </a>
            <br>
@@ -1040,7 +1040,7 @@ polls/models.py¶</p>
 </script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources/skins/Pinghsu/js/common.min.js?1597690831817"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources/skins/Pinghsu/js/common.min.js?1598169680721"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
@@ -1075,7 +1075,7 @@ polls/models.py¶</p>
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources/js/page.min.js?1597690831817', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources/js/page.min.js?1598169680721', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1597665317545",
@@ -1097,4 +1097,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 442ms, 2020/08/18 17:54:34 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 395ms, 2020/08/23 18:15:13 -->

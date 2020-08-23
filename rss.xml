@@ -6,8 +6,18 @@
     <atom:link href="https://cuijianzhe.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>               &gt;&gt;&gt;  展颜笑夙愿，一笑泯恩仇 &lt;&lt;&lt;</description>
     <generator>Solo, v4.3.0, https://solo.b3log.org</generator>
-    <lastBuildDate>Tue, 18 Aug 2020 17:54:31 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 23 Aug 2020 18:15:10 +0800</lastBuildDate>
     <language>zh-cn</language>
+    <item>
+      <title>阿里云同步资产信息到Jumpserver</title>
+      <link>https://cuijianzhe.github.io/articles/2020/07/16/1594900059981.html</link>
+      <description><![CDATA[<p>  欲寄彩笺兼尺素。山长水阔知何处。</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/07/16/1594900059981.html</guid>
+      <category>Python</category>
+      <category>Jumpserver</category>
+      <pubDate>Sat, 22 Aug 2020 16:25:39 +0800</pubDate>
+    </item>
     <item>
       <title>Django 3.1 官网学习路线</title>
       <link>https://cuijianzhe.github.io/articles/2020/08/17/1597665317545.html</link>
@@ -15,7 +25,7 @@
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/08/17/1597665317545.html</guid>
       <category>Python</category>
-      <pubDate>Tue, 18 Aug 2020 14:58:52 +0800</pubDate>
+      <pubDate>Tue, 18 Aug 2020 20:14:34 +0800</pubDate>
     </item>
     <item>
       <title>站点推荐【转】</title>
@@ -43,8 +53,8 @@
       <description><![CDATA[<p>  愿有岁月可回首，且以深情共白头。</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/04/10/1586510174363.html</guid>
-      <category>Linux</category>
       <category>kubernets</category>
+      <category>Linux</category>
       <pubDate>Sat, 15 Aug 2020 15:25:09 +0800</pubDate>
     </item>
     <item>
@@ -53,8 +63,8 @@
       <description><![CDATA[<p>  如果陪我到最后的人是你，那么以前经历过的苦难</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html</guid>
-      <category>Linux</category>
       <category>kubernets</category>
+      <category>Linux</category>
       <pubDate>Sat, 15 Aug 2020 15:25:01 +0800</pubDate>
     </item>
     <item>
@@ -63,8 +73,8 @@
       <description><![CDATA[<p>  感情淡了我们再培养，无话可说了我们就再去找话题，觉得腻了我们就重新认识，要是累了就给彼此空间，人潮汹涌的遇到你也不容易，也不想再推开了。</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/04/23/1587624487440.html</guid>
-      <category>kubernetes</category>
       <category>Linux</category>
+      <category>kubernetes</category>
       <pubDate>Sat, 15 Aug 2020 15:24:52 +0800</pubDate>
     </item>
     <item>
@@ -73,8 +83,8 @@
       <description/>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2019/12/12/1576117964389.html</guid>
-      <category>Linux</category>
       <category>kubernetes</category>
+      <category>Linux</category>
       <pubDate>Sat, 15 Aug 2020 15:24:41 +0800</pubDate>
     </item>
     <item>
@@ -93,18 +103,9 @@
 每天一句“我爱你……”</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2019/09/20/1568981823765.html</guid>
-      <category>钉钉</category>
       <category>Python</category>
+      <category>钉钉</category>
       <pubDate>Thu, 13 Aug 2020 16:18:17 +0800</pubDate>
-    </item>
-    <item>
-      <title>腾讯云数据库？</title>
-      <link>https://cuijianzhe.github.io/articles/2020/08/12/1597200121515.html</link>
-      <description><![CDATA[<p>  你的名字只有两个字，虽构不成一句话，但已经装满了我的心。</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/08/12/1597200121515.html</guid>
-      <category>solo</category>
-      <pubDate>Wed, 12 Aug 2020 19:14:59 +0800</pubDate>
     </item>
   </channel>
 </rss>

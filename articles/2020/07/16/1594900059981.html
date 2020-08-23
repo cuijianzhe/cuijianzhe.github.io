@@ -2,9 +2,9 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>阿里云同步资产信息到Jumpserver - 邯城往事</title><meta name="description" content="  欲寄彩笺兼尺素。山长水阔知何处。"/><meta property="og:description" content="  欲寄彩笺兼尺素。山长水阔知何处。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="阿里云同步资产信息到Jumpserver - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/07/16/1594900059981.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="阿里云同步资产信息到Jumpserver - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/07/16/1594900059981.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources/skins/Pinghsu/css/base.css?1597690831817"/>
-            <link rel="prev" title="Springboot项目启动时读取不到配置文件怎么办？" href="https://cuijianzhe.github.io/articles/2020/07/14/1594726114402.html">
-            <link rel="next" title="slf4j-log4j12 与 logback-classic 冲突及解决方式" href="https://cuijianzhe.github.io/articles/2020/07/24/1595569833387.html">
+              href="https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources/skins/Pinghsu/css/base.css?1598169680721"/>
+            <link rel="prev" title="zabbix发送报警信息带图片" href="https://cuijianzhe.github.io/articles/2020/07/09/1594290006252.html">
+            <link rel="next" title="永远" href="https://cuijianzhe.github.io/articles/2020/07/27/1595829232315.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
@@ -82,7 +82,7 @@
         <div class="ft__fade item__meta">
                 Updated on
             <time>
-                Jul 25, 2020
+                Aug 22, 2020
             </time>
                 in <a href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
             with <span data-uvstaturl="https://cuijianzhe.github.io/articles/2020/07/16/1594900059981.html">0</span> views
@@ -112,6 +112,8 @@
 </ul>
 <pre><code class="language-python highlight-chroma"><span class="highlight-ch">#!/usr/bin/env python3</span>
 <span class="highlight-c1">#coding=utf-8</span>
+<span class="highlight-c1">#Author:cuijianzhe</span>
+
 <span class="highlight-kn">import</span> <span class="highlight-nn">json</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">requests</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">time</span>
@@ -131,24 +133,35 @@
 <span class="highlight-n">aliyun_name_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
 <span class="highlight-n">JumpIP_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
 <span class="highlight-n">JumpID_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
+
 <span class="highlight-k">class</span> <span class="highlight-nc">aliyun_ecs</span><span class="highlight-p">():</span>
-    <span class="highlight-k">def</span> <span class="highlight-fm">__init__</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">,</span><span class="highlight-n">num</span><span class="highlight-p">):</span>
-        <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">_client</span> <span class="highlight-o">=</span>  <span class="highlight-n">AcsClient</span><span class="highlight-p">(</span><span class="highlight-s1">'&lt;accessKeyId&gt;'</span><span class="highlight-p">,</span> <span class="highlight-s1">'&lt;accessSecret&gt;'</span><span class="highlight-p">,</span> <span class="highlight-s1">'cn-beijing'</span><span class="highlight-p">)</span>
-        <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">num</span> <span class="highlight-o">=</span> <span class="highlight-n">num</span>
-    <span class="highlight-k">def</span> <span class="highlight-nf">assets_list</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+    <span class="highlight-k">def</span> <span class="highlight-fm">__init__</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">_client</span> <span class="highlight-o">=</span> <span class="highlight-n">AcsClient</span><span class="highlight-p">(</span><span class="highlight-s1">'&lt;accessKeyId&gt;'</span><span class="highlight-p">,</span> <span class="highlight-s1">'&lt;accessSecret&gt;'</span><span class="highlight-p">,</span> <span class="highlight-s1">'cn-beijing'</span><span class="highlight-p">)</span>
+
+    <span class="highlight-k">def</span> <span class="highlight-nf">res</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
         <span class="highlight-n">request</span> <span class="highlight-o">=</span> <span class="highlight-n">DescribeInstancesRequest</span><span class="highlight-p">()</span>
         <span class="highlight-n">request</span><span class="highlight-o">.</span><span class="highlight-n">set_accept_format</span><span class="highlight-p">(</span><span class="highlight-s1">'json'</span><span class="highlight-p">)</span>
-        <span class="highlight-n">request</span><span class="highlight-o">.</span><span class="highlight-n">set_PageNumber</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">num</span><span class="highlight-p">)</span>
-        <span class="highlight-n">request</span><span class="highlight-o">.</span><span class="highlight-n">set_PageSize</span><span class="highlight-p">(</span><span class="highlight-mi">100</span><span class="highlight-p">)</span>
         <span class="highlight-n">response</span> <span class="highlight-o">=</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">_client</span><span class="highlight-o">.</span><span class="highlight-n">do_action_with_exception</span><span class="highlight-p">(</span><span class="highlight-n">request</span><span class="highlight-p">))</span>
-        <span class="highlight-n">instances_list</span> <span class="highlight-o">=</span> <span class="highlight-n">response</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'Instances'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'Instance'</span><span class="highlight-p">)</span>
+        <span class="highlight-k">return</span> <span class="highlight-n">response</span>
 
-        <span class="highlight-k">for</span> <span class="highlight-n">info</span> <span class="highlight-ow">in</span> <span class="highlight-n">instances_list</span><span class="highlight-p">:</span>
-            <span class="highlight-n">assetsName</span> <span class="highlight-o">=</span> <span class="highlight-n">info</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'InstanceName'</span><span class="highlight-p">)</span>
-            <span class="highlight-n">aliyun_name_list</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">assetsName</span><span class="highlight-p">)</span>
-            <span class="highlight-n">assetsIp</span> <span class="highlight-o">=</span> <span class="highlight-s1">''</span><span class="highlight-o">.</span><span class="highlight-n">join</span><span class="highlight-p">(</span><span class="highlight-n">info</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'VpcAttributes'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'PrivateIpAddress'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'IpAddress'</span><span class="highlight-p">))</span>
-            <span class="highlight-n">aliyun_ip_list</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">assetsIp</span><span class="highlight-p">)</span>
-        <span class="highlight-k">return</span> <span class="highlight-n">aliyun_ip_list</span><span class="highlight-p">,</span><span class="highlight-n">aliyun_name_list</span>
+    <span class="highlight-k">def</span> <span class="highlight-nf">page_num</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-n">_ecs_num</span> <span class="highlight-o">=</span> <span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">res</span><span class="highlight-p">())</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'TotalCount'</span><span class="highlight-p">)</span><span class="highlight-o">//</span><span class="highlight-mi">100</span> <span class="highlight-o">+</span> <span class="highlight-mi">2</span>
+        <span class="highlight-k">return</span> <span class="highlight-n">_ecs_num</span>
+
+    <span class="highlight-k">def</span> <span class="highlight-nf">assets_list</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-n">request</span> <span class="highlight-o">=</span> <span class="highlight-n">DescribeInstancesRequest</span><span class="highlight-p">()</span>
+        <span class="highlight-k">for</span> <span class="highlight-n">num</span> <span class="highlight-ow">in</span> <span class="highlight-nb">range</span><span class="highlight-p">(</span><span class="highlight-mi">1</span><span class="highlight-p">,</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">page_num</span><span class="highlight-p">()):</span>
+            <span class="highlight-n">request</span><span class="highlight-o">.</span><span class="highlight-n">set_accept_format</span><span class="highlight-p">(</span><span class="highlight-s1">'json'</span><span class="highlight-p">)</span>
+            <span class="highlight-n">request</span><span class="highlight-o">.</span><span class="highlight-n">set_PageNumber</span><span class="highlight-p">(</span><span class="highlight-n">num</span><span class="highlight-p">)</span>
+            <span class="highlight-n">request</span><span class="highlight-o">.</span><span class="highlight-n">set_PageSize</span><span class="highlight-p">(</span><span class="highlight-mi">100</span><span class="highlight-p">)</span>
+            <span class="highlight-n">response</span> <span class="highlight-o">=</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">_client</span><span class="highlight-o">.</span><span class="highlight-n">do_action_with_exception</span><span class="highlight-p">(</span><span class="highlight-n">request</span><span class="highlight-p">))</span>
+            <span class="highlight-n">instances_list</span> <span class="highlight-o">=</span> <span class="highlight-n">response</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'Instances'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'Instance'</span><span class="highlight-p">)</span>
+
+            <span class="highlight-k">for</span> <span class="highlight-n">info</span> <span class="highlight-ow">in</span> <span class="highlight-n">instances_list</span><span class="highlight-p">:</span>
+                <span class="highlight-n">assetsName</span> <span class="highlight-o">=</span> <span class="highlight-n">info</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'InstanceName'</span><span class="highlight-p">)</span>
+                <span class="highlight-n">aliyun_name_list</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">assetsName</span><span class="highlight-p">)</span>
+                <span class="highlight-n">assetsIp</span> <span class="highlight-o">=</span> <span class="highlight-s1">''</span><span class="highlight-o">.</span><span class="highlight-n">join</span><span class="highlight-p">(</span><span class="highlight-n">info</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'VpcAttributes'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'PrivateIpAddress'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'IpAddress'</span><span class="highlight-p">))</span>
+                <span class="highlight-n">aliyun_ip_list</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">assetsIp</span><span class="highlight-p">)</span>
 
 <span class="highlight-k">class</span> <span class="highlight-nc">new_Jumpserver</span><span class="highlight-p">():</span>
     <span class="highlight-k">def</span> <span class="highlight-fm">__init__</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">,</span><span class="highlight-n">ip</span><span class="highlight-p">,</span><span class="highlight-n">hostname</span><span class="highlight-p">,</span><span class="highlight-nb">id</span><span class="highlight-p">,</span><span class="highlight-n">host</span><span class="highlight-o">=</span><span class="highlight-n">Jumpserver_url</span><span class="highlight-p">,</span><span class="highlight-n">keyid</span><span class="highlight-o">=</span><span class="highlight-n">KEY_ID</span><span class="highlight-p">,</span><span class="highlight-n">secret</span><span class="highlight-o">=</span><span class="highlight-n">SECRET</span><span class="highlight-p">):</span>
@@ -203,7 +216,7 @@
 
 <span class="highlight-k">def</span> <span class="highlight-nf">send_msg</span><span class="highlight-p">(</span><span class="highlight-n">text</span><span class="highlight-p">):</span>
     <span class="highlight-n">headers</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span><span class="highlight-s1">'Content-Type'</span><span class="highlight-p">:</span> <span class="highlight-s1">'application/json;charset=utf-8'</span><span class="highlight-p">}</span>
-    <span class="highlight-n">api_url</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://oapi.dingtalk.com/robot/send?access_token=token"</span>
+    <span class="highlight-n">api_url</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://oapi.dingtalk.com/robot/send?access_token=access_token</span>
     <span class="highlight-n">json_text</span><span class="highlight-o">=</span> <span class="highlight-p">{</span>
         <span class="highlight-s2">"actionCard"</span><span class="highlight-p">:</span> <span class="highlight-p">{</span>
             <span class="highlight-s2">"title"</span><span class="highlight-p">:</span> <span class="highlight-s2">"Jumpserver同步资产通知"</span><span class="highlight-p">,</span>
@@ -224,16 +237,16 @@
     <span class="highlight-k">return</span> <span class="highlight-n">Text</span>
 
 <span class="highlight-k">if</span> <span class="highlight-vm">__name__</span> <span class="highlight-o">==</span> <span class="highlight-s1">'__main__'</span><span class="highlight-p">:</span>
-    <span class="highlight-c1">#本地机房服务器白名单</span>
+    <span class="highlight-c1">#服务器白名单</span>
     <span class="highlight-n">white_list_ip</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span><span class="highlight-s1">'192.168.51.200'</span><span class="highlight-p">,</span><span class="highlight-s1">'192.168.51.201'</span><span class="highlight-p">,</span><span class="highlight-s1">'192.168.51.202'</span><span class="highlight-p">,</span><span class="highlight-s1">'192.168.51.203'</span><span class="highlight-p">,</span><span class="highlight-s1">'192.168.51.204'</span><span class="highlight-p">,</span><span class="highlight-s1">'192.168.51.205'</span><span class="highlight-p">,</span><span class="highlight-s1">'192.168.51.206'</span><span class="highlight-p">,</span>
                      <span class="highlight-s1">'192.168.51.207'</span><span class="highlight-p">,</span><span class="highlight-s1">'192.168.51.208'</span><span class="highlight-p">,</span><span class="highlight-s1">'192.168.51.209'</span><span class="highlight-p">,</span><span class="highlight-s1">'192.168.51.210'</span><span class="highlight-p">,</span><span class="highlight-s1">'192.168.51.211'</span><span class="highlight-p">,</span><span class="highlight-s1">'192.168.51.212'</span><span class="highlight-p">,</span><span class="highlight-s1">'192.168.51.213'</span><span class="highlight-p">,</span>
-                     <span class="highlight-s1">'192.168.51.214'</span><span class="highlight-p">,]</span>
+                     <span class="highlight-s1">'192.168.51.214'</span><span class="highlight-p">,</span><span class="highlight-s1">'172.20.9.234'</span><span class="highlight-p">]</span>
     <span class="highlight-c1">#ali全部资产写入列表</span>
-    <span class="highlight-k">for</span> <span class="highlight-n">num</span> <span class="highlight-ow">in</span> <span class="highlight-nb">range</span><span class="highlight-p">(</span><span class="highlight-mi">1</span><span class="highlight-p">,</span><span class="highlight-mi">7</span><span class="highlight-p">):</span>
-        <span class="highlight-n">all_assets</span> <span class="highlight-o">=</span> <span class="highlight-n">aliyun_ecs</span><span class="highlight-p">(</span><span class="highlight-nb">int</span><span class="highlight-p">(</span><span class="highlight-n">num</span><span class="highlight-p">))</span>
-        <span class="highlight-n">aliyun_list</span> <span class="highlight-o">=</span> <span class="highlight-n">all_assets</span><span class="highlight-o">.</span><span class="highlight-n">assets_list</span><span class="highlight-p">()</span>
+<span class="highlight-c1">#    for num in range(1,10):</span>
+<span class="highlight-c1">#        all_assets = aliyun_ecs(int(num))</span>
+<span class="highlight-c1">#        aliyun_list = all_assets.assets_list()</span>
+    <span class="highlight-n">aliyun_ecs</span><span class="highlight-p">()</span><span class="highlight-o">.</span><span class="highlight-n">assets_list</span><span class="highlight-p">()</span>
     <span class="highlight-n">aliassets_dict</span> <span class="highlight-o">=</span> <span class="highlight-nb">dict</span><span class="highlight-p">(</span><span class="highlight-nb">list</span><span class="highlight-p">(</span><span class="highlight-nb">zip</span><span class="highlight-p">(</span><span class="highlight-n">aliyun_ip_list</span><span class="highlight-p">,</span><span class="highlight-n">aliyun_name_list</span><span class="highlight-p">)))</span> <span class="highlight-c1">#将aliyun资产ip和命名合并成字典</span>
-
     <span class="highlight-c1">#jumpserver全部资产</span>
     <span class="highlight-n">Jump_assetsInfo</span> <span class="highlight-o">=</span> <span class="highlight-n">new_Jumpserver</span><span class="highlight-p">(</span><span class="highlight-n">ip</span><span class="highlight-o">=</span><span class="highlight-bp">None</span><span class="highlight-p">,</span><span class="highlight-n">hostname</span><span class="highlight-o">=</span><span class="highlight-bp">None</span><span class="highlight-p">,</span><span class="highlight-nb">id</span><span class="highlight-o">=</span><span class="highlight-bp">None</span><span class="highlight-p">)</span>
     <span class="highlight-k">for</span> <span class="highlight-n">var</span> <span class="highlight-ow">in</span> <span class="highlight-n">Jump_assetsInfo</span><span class="highlight-o">.</span><span class="highlight-n">get_assets</span><span class="highlight-p">():</span>
@@ -272,6 +285,156 @@
                 <span class="highlight-n">add_assets</span> <span class="highlight-o">=</span> <span class="highlight-n">new_Jumpserver</span><span class="highlight-p">(</span><span class="highlight-n">ip</span><span class="highlight-o">=</span><span class="highlight-n">ip</span><span class="highlight-p">,</span> <span class="highlight-n">hostname</span><span class="highlight-o">=</span><span class="highlight-n">aliassets_dict</span><span class="highlight-p">[</span><span class="highlight-n">ip</span><span class="highlight-p">]</span> <span class="highlight-o">+</span> <span class="highlight-s1">'-'</span> <span class="highlight-o">+</span> <span class="highlight-n">ip</span><span class="highlight-p">,</span><span class="highlight-nb">id</span><span class="highlight-o">=</span><span class="highlight-bp">None</span><span class="highlight-p">)</span>
                 <span class="highlight-n">add_assets</span><span class="highlight-o">.</span><span class="highlight-n">create_assets</span><span class="highlight-p">()</span>
             <span class="highlight-k">with</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-s1">'/alidata/jumpserver/rsync_assets/log'</span><span class="highlight-p">,</span><span class="highlight-s1">'a'</span><span class="highlight-p">,</span><span class="highlight-n">encoding</span><span class="highlight-o">=</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span> <span class="highlight-k">as</span> <span class="highlight-n">f</span><span class="highlight-p">:</span>
+                <span class="highlight-n">f</span><span class="highlight-o">.</span><span class="highlight-n">write</span><span class="highlight-p">(</span><span class="highlight-n">add_msg</span> <span class="highlight-o">+</span> <span class="highlight-s1">'</span><span class="highlight-se">\n</span><span class="highlight-s1">'</span><span class="highlight-p">)</span>
+            <span class="highlight-n">send_msg</span><span class="highlight-p">(</span><span class="highlight-n">add_msg</span><span class="highlight-p">)</span>
+</code></pre>
+<h2 id="人机交互同步添加的资产">人机交互同步添加的资产</h2>
+<pre><code class="language-python highlight-chroma"><span class="highlight-ch">#!/usr/bin/env python3</span>
+<span class="highlight-c1">#coding=utf-8</span>
+<span class="highlight-kn">import</span> <span class="highlight-nn">json</span>
+<span class="highlight-kn">import</span> <span class="highlight-nn">requests</span>
+<span class="highlight-kn">import</span> <span class="highlight-nn">time</span>
+<span class="highlight-kn">from</span> <span class="highlight-nn">httpsig.requests_auth</span> <span class="highlight-kn">import</span> <span class="highlight-n">HTTPSignatureAuth</span>
+
+<span class="highlight-kn">from</span> <span class="highlight-nn">aliyunsdkcore.client</span> <span class="highlight-kn">import</span> <span class="highlight-n">AcsClient</span>
+<span class="highlight-kn">from</span> <span class="highlight-nn">aliyunsdkecs.request.v20140526.DescribeInstancesRequest</span> <span class="highlight-kn">import</span> <span class="highlight-n">DescribeInstancesRequest</span>
+
+<span class="highlight-c1">#新建jumpserver</span>
+<span class="highlight-n">KEY_ID</span> <span class="highlight-o">=</span> <span class="highlight-s1">'keyid'</span>
+<span class="highlight-n">SECRET</span> <span class="highlight-o">=</span> <span class="highlight-s1">'secret'</span>
+<span class="highlight-n">Jumpserver_url</span> <span class="highlight-o">=</span> <span class="highlight-s1">'http://172.16.16.250'</span>
+<span class="highlight-c1">#aliyun参数</span>
+<span class="highlight-n">aliyun_ip_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
+<span class="highlight-n">aliyun_name_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
+<span class="highlight-n">JumpIP_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
+<span class="highlight-n">JumpID_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
+<span class="highlight-k">class</span> <span class="highlight-nc">aliyun_ecs</span><span class="highlight-p">():</span>
+    <span class="highlight-k">def</span> <span class="highlight-fm">__init__</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">_client</span> <span class="highlight-o">=</span> <span class="highlight-n">AcsClient</span><span class="highlight-p">(</span><span class="highlight-s1">'&lt;accessKeyId&gt;'</span><span class="highlight-p">,</span> <span class="highlight-s1">'&lt;accessSecret&gt;'</span><span class="highlight-p">,</span> <span class="highlight-s1">'cn-beijing'</span><span class="highlight-p">)</span>
+
+    <span class="highlight-k">def</span> <span class="highlight-nf">page_num</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-n">request</span> <span class="highlight-o">=</span> <span class="highlight-n">DescribeInstancesRequest</span><span class="highlight-p">()</span>
+        <span class="highlight-n">request</span><span class="highlight-o">.</span><span class="highlight-n">set_accept_format</span><span class="highlight-p">(</span><span class="highlight-s1">'json'</span><span class="highlight-p">)</span>
+        <span class="highlight-n">response</span> <span class="highlight-o">=</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">_client</span><span class="highlight-o">.</span><span class="highlight-n">do_action_with_exception</span><span class="highlight-p">(</span><span class="highlight-n">request</span><span class="highlight-p">))</span>
+        <span class="highlight-n">_ecs_num</span> <span class="highlight-o">=</span> <span class="highlight-n">response</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'TotalCount'</span><span class="highlight-p">)</span><span class="highlight-o">//</span><span class="highlight-mi">100</span> <span class="highlight-o">+</span> <span class="highlight-mi">2</span>
+        <span class="highlight-k">return</span> <span class="highlight-n">_ecs_num</span>
+
+    <span class="highlight-k">def</span> <span class="highlight-nf">assets_list</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-n">request</span> <span class="highlight-o">=</span> <span class="highlight-n">DescribeInstancesRequest</span><span class="highlight-p">()</span>
+        <span class="highlight-n">request</span><span class="highlight-o">.</span><span class="highlight-n">set_accept_format</span><span class="highlight-p">(</span><span class="highlight-s1">'json'</span><span class="highlight-p">)</span>
+        <span class="highlight-n">request</span><span class="highlight-o">.</span><span class="highlight-n">set_PageSize</span><span class="highlight-p">(</span><span class="highlight-mi">100</span><span class="highlight-p">)</span>
+        <span class="highlight-k">for</span> <span class="highlight-n">num</span> <span class="highlight-ow">in</span> <span class="highlight-nb">range</span><span class="highlight-p">(</span><span class="highlight-mi">1</span><span class="highlight-p">,</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">page_num</span><span class="highlight-p">()):</span>
+            <span class="highlight-n">request</span><span class="highlight-o">.</span><span class="highlight-n">set_PageNumber</span><span class="highlight-p">(</span><span class="highlight-n">num</span><span class="highlight-p">)</span>
+            <span class="highlight-n">response</span> <span class="highlight-o">=</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">_client</span><span class="highlight-o">.</span><span class="highlight-n">do_action_with_exception</span><span class="highlight-p">(</span><span class="highlight-n">request</span><span class="highlight-p">))</span>
+            <span class="highlight-n">instances_list</span> <span class="highlight-o">=</span> <span class="highlight-n">response</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'Instances'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'Instance'</span><span class="highlight-p">)</span>
+            <span class="highlight-k">for</span> <span class="highlight-n">info</span> <span class="highlight-ow">in</span> <span class="highlight-n">instances_list</span><span class="highlight-p">:</span>
+                <span class="highlight-n">assetsName</span> <span class="highlight-o">=</span> <span class="highlight-n">info</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'InstanceName'</span><span class="highlight-p">)</span>
+                <span class="highlight-n">aliyun_name_list</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">assetsName</span><span class="highlight-p">)</span>
+                <span class="highlight-n">assetsIp</span> <span class="highlight-o">=</span> <span class="highlight-s1">''</span><span class="highlight-o">.</span><span class="highlight-n">join</span><span class="highlight-p">(</span><span class="highlight-n">info</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'VpcAttributes'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'PrivateIpAddress'</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'IpAddress'</span><span class="highlight-p">))</span>
+                <span class="highlight-n">aliyun_ip_list</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">assetsIp</span><span class="highlight-p">)</span>
+        <span class="highlight-k">return</span> <span class="highlight-n">aliyun_ip_list</span><span class="highlight-p">,</span> <span class="highlight-n">aliyun_name_list</span>
+
+<span class="highlight-k">class</span> <span class="highlight-nc">new_Jumpserver</span><span class="highlight-p">():</span>
+    <span class="highlight-k">def</span> <span class="highlight-fm">__init__</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">,</span><span class="highlight-n">ip</span><span class="highlight-p">,</span><span class="highlight-n">hostname</span><span class="highlight-p">,</span><span class="highlight-nb">id</span><span class="highlight-p">,</span><span class="highlight-n">node</span><span class="highlight-p">,</span><span class="highlight-n">host</span><span class="highlight-o">=</span><span class="highlight-n">Jumpserver_url</span><span class="highlight-p">,</span><span class="highlight-n">keyid</span><span class="highlight-o">=</span><span class="highlight-n">KEY_ID</span><span class="highlight-p">,</span><span class="highlight-n">secret</span><span class="highlight-o">=</span><span class="highlight-n">SECRET</span><span class="highlight-p">):</span>
+        <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">host</span> <span class="highlight-o">=</span> <span class="highlight-n">host</span>
+        <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">keyid</span> <span class="highlight-o">=</span> <span class="highlight-n">keyid</span>
+        <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">secret</span> <span class="highlight-o">=</span> <span class="highlight-n">secret</span>
+        <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">ip</span> <span class="highlight-o">=</span> <span class="highlight-n">ip</span>
+        <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">hostname</span> <span class="highlight-o">=</span> <span class="highlight-n">hostname</span>
+        <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">id</span> <span class="highlight-o">=</span> <span class="highlight-nb">id</span>
+        <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">node</span> <span class="highlight-o">=</span> <span class="highlight-n">node</span>
+    <span class="highlight-k">def</span> <span class="highlight-nf">_auth</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-n">signature_headers</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span><span class="highlight-s1">'(request-target)'</span><span class="highlight-p">,</span> <span class="highlight-s1">'accept'</span><span class="highlight-p">,</span> <span class="highlight-s1">'date'</span><span class="highlight-p">,</span> <span class="highlight-s1">'host'</span><span class="highlight-p">]</span>
+        <span class="highlight-n">auth</span> <span class="highlight-o">=</span> <span class="highlight-n">HTTPSignatureAuth</span><span class="highlight-p">(</span><span class="highlight-n">key_id</span><span class="highlight-o">=</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">keyid</span><span class="highlight-p">,</span> <span class="highlight-n">secret</span><span class="highlight-o">=</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">secret</span><span class="highlight-p">,</span>
+                                 <span class="highlight-n">algorithm</span><span class="highlight-o">=</span><span class="highlight-s1">'hmac-sha256'</span><span class="highlight-p">,</span>
+                                 <span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-n">signature_headers</span><span class="highlight-p">)</span>
+        <span class="highlight-k">return</span> <span class="highlight-n">auth</span>
+    <span class="highlight-k">def</span> <span class="highlight-nf">_headers</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-n">headers</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span>
+            <span class="highlight-s1">'Accept'</span><span class="highlight-p">:</span> <span class="highlight-s1">'application/json'</span><span class="highlight-p">,</span>
+            <span class="highlight-s1">'Date'</span><span class="highlight-p">:</span> <span class="highlight-nb">str</span><span class="highlight-p">(</span><span class="highlight-n">time</span><span class="highlight-o">.</span><span class="highlight-n">strftime</span><span class="highlight-p">(</span><span class="highlight-s2">"%a %b </span><span class="highlight-si">%d</span><span class="highlight-s2"> %H:%M:%S %Y"</span><span class="highlight-p">,</span> <span class="highlight-n">time</span><span class="highlight-o">.</span><span class="highlight-n">localtime</span><span class="highlight-p">()))</span>
+        <span class="highlight-p">}</span>
+        <span class="highlight-k">return</span> <span class="highlight-n">headers</span>
+
+    <span class="highlight-k">def</span> <span class="highlight-nf">get_assets</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-n">url</span> <span class="highlight-o">=</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">host</span> <span class="highlight-o">+</span> <span class="highlight-s1">'/api/v1/assets/assets/'</span>
+        <span class="highlight-n">req</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">url</span><span class="highlight-p">,</span> <span class="highlight-n">auth</span><span class="highlight-o">=</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">_auth</span><span class="highlight-p">(),</span> <span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">_headers</span><span class="highlight-p">())</span>
+        <span class="highlight-k">return</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-n">req</span><span class="highlight-o">.</span><span class="highlight-n">content</span><span class="highlight-p">)</span>
+    <span class="highlight-k">def</span> <span class="highlight-nf">get_nodes</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-n">url</span> <span class="highlight-o">=</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">host</span> <span class="highlight-o">+</span> <span class="highlight-s1">'/api/v1/assets/nodes/'</span>
+        <span class="highlight-n">req</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-n">url</span><span class="highlight-p">,</span><span class="highlight-n">auth</span><span class="highlight-o">=</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">_auth</span><span class="highlight-p">(),</span><span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">_headers</span><span class="highlight-p">())</span>
+        <span class="highlight-k">return</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-n">req</span><span class="highlight-o">.</span><span class="highlight-n">content</span><span class="highlight-p">)</span>
+    <span class="highlight-k">def</span> <span class="highlight-nf">create_assets</span><span class="highlight-p">(</span><span class="highlight-bp">self</span><span class="highlight-p">):</span>
+        <span class="highlight-n">url</span> <span class="highlight-o">=</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">host</span> <span class="highlight-o">+</span> <span class="highlight-s1">'/api/v1/assets/assets/'</span>
+        <span class="highlight-n">data</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span>
+            <span class="highlight-s1">'hostname'</span><span class="highlight-p">:</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">hostname</span><span class="highlight-p">,</span>
+            <span class="highlight-s1">'ip'</span><span class="highlight-p">:</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">ip</span><span class="highlight-p">,</span>
+            <span class="highlight-s1">'platform'</span><span class="highlight-p">:</span><span class="highlight-s1">'Linux'</span><span class="highlight-p">,</span>
+            <span class="highlight-s1">'nodes'</span><span class="highlight-p">:</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">node</span><span class="highlight-p">,</span>
+            <span class="highlight-s2">"admin_user_display"</span><span class="highlight-p">:</span> <span class="highlight-s2">"limi_admin"</span><span class="highlight-p">,</span>
+            <span class="highlight-s2">"protocols"</span><span class="highlight-p">:</span> <span class="highlight-p">[</span><span class="highlight-s2">"ssh/5203"</span><span class="highlight-p">],</span>
+            <span class="highlight-s2">"created_by"</span><span class="highlight-p">:</span> <span class="highlight-s2">"Administrator"</span><span class="highlight-p">,</span>
+            <span class="highlight-s2">"admin_user"</span><span class="highlight-p">:</span> <span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">get_assets</span><span class="highlight-p">()[</span><span class="highlight-mi">0</span><span class="highlight-p">]</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'admin_user'</span><span class="highlight-p">),</span>
+            <span class="highlight-s2">"is_active"</span><span class="highlight-p">:</span> <span class="highlight-s1">'true'</span><span class="highlight-p">,</span>
+        <span class="highlight-p">}</span>
+        <span class="highlight-n">req</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">post</span><span class="highlight-p">(</span><span class="highlight-n">url</span><span class="highlight-p">,</span><span class="highlight-n">auth</span><span class="highlight-o">=</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">_auth</span><span class="highlight-p">(),</span><span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-bp">self</span><span class="highlight-o">.</span><span class="highlight-n">_headers</span><span class="highlight-p">(),</span><span class="highlight-n">data</span><span class="highlight-o">=</span><span class="highlight-n">data</span><span class="highlight-p">)</span>
+        <span class="highlight-k">return</span> <span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">loads</span><span class="highlight-p">(</span><span class="highlight-n">req</span><span class="highlight-o">.</span><span class="highlight-n">content</span><span class="highlight-p">)</span>
+
+
+
+<span class="highlight-k">def</span> <span class="highlight-nf">send_msg</span><span class="highlight-p">(</span><span class="highlight-n">text</span><span class="highlight-p">):</span>
+    <span class="highlight-n">headers</span> <span class="highlight-o">=</span> <span class="highlight-p">{</span><span class="highlight-s1">'Content-Type'</span><span class="highlight-p">:</span> <span class="highlight-s1">'application/json;charset=utf-8'</span><span class="highlight-p">}</span>
+    <span class="highlight-n">api_url</span> <span class="highlight-o">=</span> <span class="highlight-s2">"https://oapi.dingtalk.com/robot/send?access_token=access_token"</span>
+    <span class="highlight-n">json_text</span><span class="highlight-o">=</span> <span class="highlight-p">{</span>
+        <span class="highlight-s2">"actionCard"</span><span class="highlight-p">:</span> <span class="highlight-p">{</span>
+            <span class="highlight-s2">"title"</span><span class="highlight-p">:</span> <span class="highlight-s2">"Jumpserver同步资产通知"</span><span class="highlight-p">,</span>
+            <span class="highlight-s2">"text"</span><span class="highlight-p">:</span>
+             <span class="highlight-n">text</span><span class="highlight-p">,</span>
+            <span class="highlight-s2">"hideAvatar"</span><span class="highlight-p">:</span> <span class="highlight-s2">"0"</span><span class="highlight-p">,</span>
+            <span class="highlight-s2">"btnOrientation"</span><span class="highlight-p">:</span> <span class="highlight-s2">"0"</span><span class="highlight-p">,</span>
+            <span class="highlight-s2">"btns"</span><span class="highlight-p">:</span> <span class="highlight-p">[</span>
+                <span class="highlight-p">{</span>
+                    <span class="highlight-s2">"title"</span><span class="highlight-p">:</span> <span class="highlight-s2">"Jumpserver链接"</span><span class="highlight-p">,</span>
+                    <span class="highlight-s2">"actionURL"</span><span class="highlight-p">:</span> <span class="highlight-s2">"http://opt-jumpserver.jumpserver.com"</span>
+                <span class="highlight-p">},</span>
+            <span class="highlight-p">]</span>
+        <span class="highlight-p">},</span>
+        <span class="highlight-s2">"msgtype"</span><span class="highlight-p">:</span> <span class="highlight-s2">"actionCard"</span>
+    <span class="highlight-p">}</span>
+    <span class="highlight-n">Text</span> <span class="highlight-o">=</span> <span class="highlight-n">requests</span><span class="highlight-o">.</span><span class="highlight-n">post</span><span class="highlight-p">(</span><span class="highlight-n">api_url</span><span class="highlight-p">,</span><span class="highlight-n">data</span><span class="highlight-o">=</span><span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">dumps</span><span class="highlight-p">(</span><span class="highlight-n">json_text</span><span class="highlight-p">),</span><span class="highlight-n">headers</span><span class="highlight-o">=</span><span class="highlight-n">headers</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">json</span><span class="highlight-p">()</span>
+    <span class="highlight-k">return</span> <span class="highlight-n">Text</span>
+
+<span class="highlight-k">if</span> <span class="highlight-vm">__name__</span> <span class="highlight-o">==</span> <span class="highlight-s1">'__main__'</span><span class="highlight-p">:</span>
+
+    <span class="highlight-c1">#ali全部资产写入列表</span>
+    <span class="highlight-n">aliyun_ecs</span><span class="highlight-p">()</span><span class="highlight-o">.</span><span class="highlight-n">assets_list</span><span class="highlight-p">()</span>
+    <span class="highlight-n">aliassets_dict</span> <span class="highlight-o">=</span> <span class="highlight-nb">dict</span><span class="highlight-p">(</span><span class="highlight-nb">list</span><span class="highlight-p">(</span><span class="highlight-nb">zip</span><span class="highlight-p">(</span><span class="highlight-n">aliyun_ip_list</span><span class="highlight-p">,</span><span class="highlight-n">aliyun_name_list</span><span class="highlight-p">)))</span> <span class="highlight-c1">#将aliyun资产ip和命名合并成字典</span>
+    <span class="highlight-c1">#jumpserver全部资产</span>
+    <span class="highlight-n">Jump_assetsInfo</span> <span class="highlight-o">=</span> <span class="highlight-n">new_Jumpserver</span><span class="highlight-p">(</span><span class="highlight-n">ip</span><span class="highlight-o">=</span><span class="highlight-bp">None</span><span class="highlight-p">,</span><span class="highlight-n">hostname</span><span class="highlight-o">=</span><span class="highlight-bp">None</span><span class="highlight-p">,</span><span class="highlight-nb">id</span><span class="highlight-o">=</span><span class="highlight-bp">None</span><span class="highlight-p">,</span><span class="highlight-n">node</span><span class="highlight-o">=</span><span class="highlight-bp">None</span><span class="highlight-p">)</span>
+    <span class="highlight-n">node_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
+    <span class="highlight-n">node_dict</span> <span class="highlight-o">=</span> <span class="highlight-p">{}</span>
+    <span class="highlight-k">for</span> <span class="highlight-n">node_info</span> <span class="highlight-ow">in</span> <span class="highlight-n">Jump_assetsInfo</span><span class="highlight-o">.</span><span class="highlight-n">get_nodes</span><span class="highlight-p">():</span>
+        <span class="highlight-n">node_list</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">node_info</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'value'</span><span class="highlight-p">))</span>
+        <span class="highlight-n">node_dict</span><span class="highlight-p">[</span><span class="highlight-n">node_info</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'value'</span><span class="highlight-p">)]</span> <span class="highlight-o">=</span> <span class="highlight-n">node_info</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'id'</span><span class="highlight-p">)</span>
+    <span class="highlight-k">for</span> <span class="highlight-n">num</span><span class="highlight-p">,</span><span class="highlight-n">char</span> <span class="highlight-ow">in</span> <span class="highlight-nb">enumerate</span><span class="highlight-p">(</span><span class="highlight-n">node_list</span><span class="highlight-p">):</span>
+        <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-n">num</span><span class="highlight-p">,</span><span class="highlight-n">char</span><span class="highlight-p">)</span>
+    <span class="highlight-n">node_num</span> <span class="highlight-o">=</span> <span class="highlight-nb">int</span><span class="highlight-p">(</span><span class="highlight-nb">input</span><span class="highlight-p">(</span><span class="highlight-s1">'请按照以上node节点名称输入相应的序号:'</span><span class="highlight-p">))</span>
+    <span class="highlight-n">node_id</span> <span class="highlight-o">=</span> <span class="highlight-n">node_dict</span><span class="highlight-p">[</span><span class="highlight-s1">'</span><span class="highlight-si">%s</span><span class="highlight-s1">'</span> <span class="highlight-o">%</span> <span class="highlight-n">node_list</span><span class="highlight-p">[</span><span class="highlight-n">node_num</span><span class="highlight-p">]]</span>
+    <span class="highlight-k">for</span> <span class="highlight-n">var</span> <span class="highlight-ow">in</span> <span class="highlight-n">Jump_assetsInfo</span><span class="highlight-o">.</span><span class="highlight-n">get_assets</span><span class="highlight-p">():</span>
+        <span class="highlight-n">JumpIP_list</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">var</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'ip'</span><span class="highlight-p">))</span>
+        <span class="highlight-n">JumpID_list</span><span class="highlight-o">.</span><span class="highlight-n">append</span><span class="highlight-p">(</span><span class="highlight-n">var</span><span class="highlight-o">.</span><span class="highlight-n">get</span><span class="highlight-p">(</span><span class="highlight-s1">'id'</span><span class="highlight-p">))</span>
+    <span class="highlight-n">jumpserver_dict</span> <span class="highlight-o">=</span> <span class="highlight-nb">dict</span><span class="highlight-p">(</span><span class="highlight-nb">list</span><span class="highlight-p">(</span><span class="highlight-nb">zip</span><span class="highlight-p">(</span><span class="highlight-n">JumpIP_list</span><span class="highlight-p">,</span><span class="highlight-n">JumpID_list</span><span class="highlight-p">)))</span> <span class="highlight-c1">#将Jumpserver资产合并成子字典</span>
+    <span class="highlight-k">if</span> <span class="highlight-nb">len</span><span class="highlight-p">(</span><span class="highlight-n">aliyun_ip_list</span><span class="highlight-p">)</span> <span class="highlight-o">&gt;</span> <span class="highlight-mi">400</span><span class="highlight-p">:</span>  <span class="highlight-c1">#检查是否有阿里云获取到的值，有则执行下一步</span>
+        <span class="highlight-c1"># 列表推导式--&gt; 同步阿里云资产到Jumpserver</span>
+        <span class="highlight-n">add_ip_list</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span><span class="highlight-n">ip</span> <span class="highlight-k">for</span> <span class="highlight-n">ip</span> <span class="highlight-ow">in</span> <span class="highlight-n">aliyun_ip_list</span> <span class="highlight-k">if</span> <span class="highlight-n">ip</span> <span class="highlight-ow">not</span> <span class="highlight-ow">in</span> <span class="highlight-n">JumpIP_list</span><span class="highlight-p">]</span>
+        <span class="highlight-k">if</span> <span class="highlight-nb">len</span><span class="highlight-p">(</span><span class="highlight-n">add_ip_list</span><span class="highlight-p">)</span> <span class="highlight-o">&gt;</span> <span class="highlight-mi">0</span><span class="highlight-p">:</span>
+            <span class="highlight-n">add_msg</span> <span class="highlight-o">=</span> <span class="highlight-s1">'**Jumpserver添加资产通知**:'</span> <span class="highlight-o">+</span> <span class="highlight-s1">'</span><span class="highlight-se">\n\n</span><span class="highlight-s1">'</span> <span class="highlight-o">+</span> \
+                      <span class="highlight-s1">'**当前时间**:'</span> <span class="highlight-o">+</span> <span class="highlight-n">time</span><span class="highlight-o">.</span><span class="highlight-n">strftime</span><span class="highlight-p">(</span><span class="highlight-s2">"%Y-%m-</span><span class="highlight-si">%d</span><span class="highlight-s2"> %H:%M:%S"</span><span class="highlight-p">,</span> <span class="highlight-n">time</span><span class="highlight-o">.</span><span class="highlight-n">localtime</span><span class="highlight-p">())</span> <span class="highlight-o">+</span> <span class="highlight-s1">'</span><span class="highlight-se">\n\n</span><span class="highlight-s1">'</span> <span class="highlight-o">+</span> \
+                      <span class="highlight-s1">'**添加ip列表**:'</span> <span class="highlight-o">+</span> <span class="highlight-nb">str</span><span class="highlight-p">(</span><span class="highlight-n">add_ip_list</span><span class="highlight-p">)</span>
+            <span class="highlight-k">for</span> <span class="highlight-n">ip</span> <span class="highlight-ow">in</span> <span class="highlight-n">add_ip_list</span><span class="highlight-p">:</span>
+                <span class="highlight-n">add_assets</span> <span class="highlight-o">=</span> <span class="highlight-n">new_Jumpserver</span><span class="highlight-p">(</span><span class="highlight-n">ip</span><span class="highlight-o">=</span><span class="highlight-n">ip</span><span class="highlight-p">,</span> <span class="highlight-n">hostname</span><span class="highlight-o">=</span><span class="highlight-n">aliassets_dict</span><span class="highlight-p">[</span><span class="highlight-n">ip</span><span class="highlight-p">]</span> <span class="highlight-o">+</span> <span class="highlight-s1">'-'</span> <span class="highlight-o">+</span> <span class="highlight-n">ip</span><span class="highlight-p">,</span><span class="highlight-nb">id</span><span class="highlight-o">=</span><span class="highlight-bp">None</span><span class="highlight-p">,</span><span class="highlight-n">node</span><span class="highlight-o">=</span><span class="highlight-n">node_id</span><span class="highlight-p">)</span>
+                <span class="highlight-n">add_assets</span><span class="highlight-o">.</span><span class="highlight-n">create_assets</span><span class="highlight-p">()</span>
+            <span class="highlight-k">with</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-s1">'./Jumpserver同步阿里云资产_log'</span><span class="highlight-p">,</span><span class="highlight-s1">'a'</span><span class="highlight-p">,</span><span class="highlight-n">encoding</span><span class="highlight-o">=</span><span class="highlight-s1">'utf-8'</span><span class="highlight-p">)</span> <span class="highlight-k">as</span> <span class="highlight-n">f</span><span class="highlight-p">:</span>
                 <span class="highlight-n">f</span><span class="highlight-o">.</span><span class="highlight-n">write</span><span class="highlight-p">(</span><span class="highlight-n">add_msg</span> <span class="highlight-o">+</span> <span class="highlight-s1">'</span><span class="highlight-se">\n</span><span class="highlight-s1">'</span><span class="highlight-p">)</span>
             <span class="highlight-n">send_msg</span><span class="highlight-p">(</span><span class="highlight-n">add_msg</span><span class="highlight-p">)</span>
 </code></pre>
@@ -319,6 +482,9 @@
         <li class="toc__h4">
             <a href="#具体代码-">具体代码：</a>
         </li>
+        <li class="toc__h2">
+            <a href="#人机交互同步添加的资产">人机交互同步添加的资产</a>
+        </li>
 </ul>    </div>
     <div class="body--gray post__gray">
         <div class="wrapper comment">
@@ -358,15 +524,15 @@
                 </span>
             </span>
             <span class="post__arrow">
-                    <a href="https://cuijianzhe.github.io/articles/2020/07/14/1594726114402.html" rel="prev"
+                    <a href="https://cuijianzhe.github.io/articles/2020/07/09/1594290006252.html" rel="prev"
                        class="vditor-tooltipped__n vditor-tooltipped"
-                       pjax-title="Springboot项目启动时读取不到配置文件怎么办？"
-                       aria-label="旧一篇: Springboot项目启动时读取不到配置文件怎么办？">←</a>
+                       pjax-title="zabbix发送报警信息带图片"
+                       aria-label="旧一篇: zabbix发送报警信息带图片">←</a>
 
-                    <a href="https://cuijianzhe.github.io/articles/2020/07/24/1595569833387.html" rel="next"
+                    <a href="https://cuijianzhe.github.io/articles/2020/07/27/1595829232315.html" rel="next"
                        class="vditor-tooltipped__n vditor-tooltipped"
-                       pjax-title="slf4j-log4j12 与 logback-classic 冲突及解决方式"
-                       aria-label="新一篇: slf4j-log4j12 与 logback-classic 冲突及解决方式">→</a>
+                       pjax-title="永远"
+                       aria-label="新一篇: 永远">→</a>
                 <a href="javascript:Util.goTop()" class="vditor-tooltipped__n vditor-tooltipped"
                    aria-label="移动到顶部">↑</a>
                 <a href="javascript:Util.goBottom()" class="vditor-tooltipped__n vditor-tooltipped"
@@ -472,7 +638,7 @@
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         人生苦短,我用Python</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="15 文章"
+                       aria-label="0 文章"
                        class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
                         Java是世界上最好的语言</a> &nbsp; &nbsp;
                     <a href="https://cuijianzhe.github.io/category/linux"
@@ -491,7 +657,7 @@
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                141
+                102
                 文章
             </a>
            <br>
@@ -539,7 +705,7 @@
 </script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources/skins/Pinghsu/js/common.min.js?1597690831817"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources/skins/Pinghsu/js/common.min.js?1598169680721"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.9/index.js"></script>
@@ -574,7 +740,7 @@
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources/js/page.min.js?1597690831817', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@dee9f7f/src/main/resources/js/page.min.js?1598169680721', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1594900059981",
@@ -596,4 +762,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 435ms, 2020/08/18 17:54:39 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 487ms, 2020/08/23 18:15:12 -->
