@@ -1,3 +1,21 @@
+## v4.3.1 / 2020-09-09
+
+### 引入特性
+
+* [集成 Gitalk 评论系统](https://github.com/88250/solo/issues/167)
+
+### 改进功能
+
+* [分类下文章计数统计展现改进](https://github.com/88250/solo/issues/169)
+* [社区端域名变更](https://github.com/88250/solo/issues/180)
+
+### 修复缺陷
+
+* [H2Database 升级 v4.3.0 问题](https://github.com/88250/solo/issues/170)
+* [SV 模式粘贴时自动拉取图片问题](https://github.com/88250/solo/issues/171)
+* [metro-hot 文章中字的颜色看不清](https://github.com/88250/solo/issues/174)
+* [编辑器在预览状态下发布文章会丢失代码块](https://github.com/88250/solo/issues/182)
+
 ## v4.3.0 / 2020-07-17
 
 ### 引入特性
@@ -15,7 +33,7 @@
 
 * [清理后台无用的配置项](https://github.com/88250/solo/issues/160)
 * [删除 v2.9.9~v3.6.2 升级脚本](https://github.com/88250/solo/issues/164)
-* [移除默认的黑客派导航](https://github.com/88250/solo/issues/165)
+* [移除默认的社区导航](https://github.com/88250/solo/issues/165)
 
 ## v4.2.0 / 2020-06-28
 
