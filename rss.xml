@@ -6,16 +6,55 @@
     <atom:link href="https://cuijianzhe.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>               &gt;&gt;&gt;  展颜笑夙愿，一笑泯恩仇 &lt;&lt;&lt;</description>
     <generator>Solo, v4.3.1, https://b3log.org/solo</generator>
-    <lastBuildDate>Sat, 31 Oct 2020 13:45:35 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 15 Dec 2020 13:57:20 +0800</lastBuildDate>
     <language>zh-cn</language>
     <item>
-      <title>崩溃</title>
-      <link>https://cuijianzhe.github.io/articles/2020/10/31/1604123053525.html</link>
-      <description><![CDATA[<p>  生活可以是平淡，犹如蓝天下碧蓝的湖水，生活也可以是诗，在一路的奔腾中高歌。只要我们牵着手，每一个日子都是幸福。</p>]]></description>
+      <title>表格数据提取</title>
+      <link>https://cuijianzhe.github.io/articles/2020/12/14/1607958685328.html</link>
+      <description><![CDATA[<p>  你可知南山水北，我遇见你多不容易。</p>]]></description>
       <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/10/31/1604123053525.html</guid>
-      <category>视频</category>
-      <pubDate>Sat, 31 Oct 2020 13:44:13 +0800</pubDate>
+      <guid>https://cuijianzhe.github.io/articles/2020/12/14/1607958685328.html</guid>
+      <category>Python</category>
+      <pubDate>Tue, 15 Dec 2020 13:56:58 +0800</pubDate>
+    </item>
+    <item>
+      <title>l2tp over ipsec添加用户登陆日志</title>
+      <link>https://cuijianzhe.github.io/articles/2020/12/08/1607423165456.html</link>
+      <description><![CDATA[<p>  越长大越觉得，比起诉说自己的委屈与不甘，沉默最好。反正，你信你的，我活我的。</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/12/08/1607423165456.html</guid>
+      <category>Linux</category>
+      <pubDate>Tue, 08 Dec 2020 18:35:12 +0800</pubDate>
+    </item>
+    <item>
+      <title>学生管理系统</title>
+      <link>https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html</link>
+      <description/>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html</guid>
+      <category>Python</category>
+      <category>mysql</category>
+      <pubDate>Tue, 08 Dec 2020 16:16:33 +0800</pubDate>
+    </item>
+    <item>
+      <title>zabbix LLD 自动发现</title>
+      <link>https://cuijianzhe.github.io/articles/2019/11/26/1555140148890.html</link>
+      <description><![CDATA[<ol>
+<li>不同业务对应不同模板，现在创建一个模板，用于当前这个特殊业务  创建完成后，点击右上角的创建自动发现规则。  2.键值脚本内容  [root@zabbix zabbix_agentd.d]# /usr/lib/zabbix/externalscripts/apdiscovery.sh {"data":[ {"{#APID}":"0"},{"{#APID}":"1"},{"{#APID}":"2"},{"{#APID}":"3"},{"{#APID}":"4"},{"{#APID}":"5"},{"{#APID}":"6"},{"{#APID}":"7"},{"{#APID}":"8"},{"{#APID}":"9"},{"{#APID}":"10"},{"{#APID}":"11"},{"{#APID}":"12"},{"{#APID}":"13"},{"{#APID}":"14"},{"{#APID}":"15"},{"{#APID}":"16"},{"{#APID}":"17"},{"{#APID}":"18"},{"{#APID}":"19"},{"{#APID}":"20....</li>
+</ol>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2019/11/26/1555140148890.html</guid>
+      <category>Linux</category>
+      <pubDate>Sat, 05 Dec 2020 15:17:28 +0800</pubDate>
+    </item>
+    <item>
+      <title>永远</title>
+      <link>https://cuijianzhe.github.io/articles/2020/07/27/1595829232315.html</link>
+      <description><![CDATA[<p>  我并不痴情，可我回守侯你一生；我不是弱智，但我会傻傻的爱你——到永远！</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/07/27/1595829232315.html</guid>
+      <category>随笔</category>
+      <pubDate>Wed, 11 Nov 2020 11:28:43 +0800</pubDate>
     </item>
     <item>
       <title>利用Python对windows桌面自动更换壁纸</title>
@@ -24,7 +63,7 @@
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/10/29/1603943265897.html</guid>
       <category>Python</category>
-      <pubDate>Sat, 31 Oct 2020 09:37:58 +0800</pubDate>
+      <pubDate>Sat, 31 Oct 2020 14:18:51 +0800</pubDate>
     </item>
     <item>
       <title>LINUX脚本使用实战，持续更新</title>
@@ -60,46 +99,9 @@
       <description><![CDATA[<p>  Pgone 的《H.M.E》谁还记得？小青龙的《Time》何人不知，孙八一诙谐《take it easy》！  这个 diss 了嘻哈大半个娱乐圈的人……我服 ? <a href="https://file.cjzshilong.cn/video_file/pgone.mp4" target="_blank">https://file.cjzshilong.cn/video_file/pgone.mp4</a>  小青龙和辉子的精彩 battle ? <a href="https://file.cjzshilong.cn/video_file/Time.mp4" target="_blank">https://file.cjzshilong.cn/video_file/Time.mp4</a> 小青龙 60s-《Game》 <a href="https://file.cjzshilong.cn/video_file/%E5%B0%8F%E9%9D%92%E9%BE%99-Game-60%E7%A7%92.mp4" target="_blank">https://file.cjzshilong.cn/video_file/%E5%B0%8F%E9%9D%92%E9%BE%99-Game-60%E7%A7%92.mp4</a>  这是我剪辑过的最喜欢的孙八一的作品 ? <a href="https://file.cjzshilong.cn/video_file/sunbayi.mp4" target="_blank">https://file.cjzshilong.cn/video_file/sunbayi.mp4</a> 孙八一《还钱》 <a href="https://file.cjzshilong.cn/video_file/%E8%BF%98%E9%92%B1.mp4" target="_blank">https://file.cjzshilong.cn/video_file/%E8%BF%98%E9%92%B1.mp4</a> Jony J 的《不用去猜》 <a href="https://file.cjzshilong.cn/video_file/%E4%25B..." target="_blank">https://file.cjzshilong.cn/video_file/%E4%B...</a>.</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2019/03/05/1551798496474.html</guid>
-      <category>HIHPOP</category>
       <category>嘻哈</category>
+      <category>HIHPOP</category>
       <pubDate>Sat, 05 Sep 2020 11:19:43 +0800</pubDate>
-    </item>
-    <item>
-      <title>吐槽</title>
-      <link>https://cuijianzhe.github.io/articles/2020/08/24/1598236925080.html</link>
-      <description><![CDATA[<p>  莫道不消魂。帘卷西风，人比黄花瘦。</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/08/24/1598236925080.html</guid>
-      <category>爱情</category>
-      <pubDate>Mon, 24 Aug 2020 10:42:05 +0800</pubDate>
-    </item>
-    <item>
-      <title>阿里云同步资产信息到Jumpserver</title>
-      <link>https://cuijianzhe.github.io/articles/2020/07/16/1594900059981.html</link>
-      <description><![CDATA[<p>  欲寄彩笺兼尺素。山长水阔知何处。</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/07/16/1594900059981.html</guid>
-      <category>Jumpserver</category>
-      <category>Python</category>
-      <pubDate>Mon, 24 Aug 2020 10:26:15 +0800</pubDate>
-    </item>
-    <item>
-      <title>修改数据库名的一种方法</title>
-      <link>https://cuijianzhe.github.io/articles/2020/08/23/1598183218602.html</link>
-      <description><![CDATA[<p>  海可以枯，石可以烂，我对你的爱，永不会变。</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/08/23/1598183218602.html</guid>
-      <category>Linux</category>
-      <pubDate>Sun, 23 Aug 2020 19:50:35 +0800</pubDate>
-    </item>
-    <item>
-      <title>Django 3.1 官网学习路线</title>
-      <link>https://cuijianzhe.github.io/articles/2020/08/17/1597665317545.html</link>
-      <description><![CDATA[<p>  水说：我知道你流泪，因为你在我心里！鱼说：你看不见我流泪，因为我在水里。</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/08/17/1597665317545.html</guid>
-      <category>Python</category>
-      <pubDate>Tue, 18 Aug 2020 20:14:34 +0800</pubDate>
     </item>
   </channel>
 </rss>

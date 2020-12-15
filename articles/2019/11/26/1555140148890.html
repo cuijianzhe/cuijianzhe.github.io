@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>zabbix LLD 自动发现 - 邯城往事</title><meta name="description" content="不同业务对应不同模板，现在创建一个模板，用于当前这个特殊业务 创建完成后，点击右上角的创建自动发现规则。 2.键值脚本内容 [root@zabbix zabbix_agentd.d]# /usr/lib/zabbix/externalscripts/apdiscovery.sh {&quot;data&quot;:[ {&quot;{#APID}&quot;:&quot;0&quot;},{&quot;{#APID}&quot;:&quot;1&quot;},{&quot;{#APID}&quot;:&quot;2&quot;},{&quot;{#APID}&quot;:&quot;3&quot;},{&quot;{#APID}&quot;:&quot;4&quot;},{&quot;{#APID}&quot;:&quot;5&quot;},{&quot;{#APID}&quot;:&quot;6&quot;},{&quot;{#APID}&quot;:&quot;7&quot;},{&quot;{#APID}&quot;:&quot;8&quot;},{&quot;{#APID}&quot;:&quot;9&quot;},{&quot;{#APID}&quot;:&quot;10&quot;},{&quot;{#APID}&quot;:&quot;11&quot;},{&quot;{#APID}&quot;:&quot;12&quot;},{&quot;{#APID}&quot;:&quot;13&quot;},{&quot;{#APID}&quot;:&quot;14&quot;},{&quot;{#APID}&quot;:&quot;15&quot;},{&quot;{#APID}&quot;:&quot;16&quot;},{&quot;{#APID}&quot;:&quot;17&quot;},{&quot;{#APID}&quot;:&quot;18&quot;},{&quot;{#APID}&quot;:&quot;19&quot;},{&quot;{#APID}&quot;:&quot;20...."/><meta property="og:description" content="不同业务对应不同模板，现在创建一个模板，用于当前这个特殊业务 创建完成后，点击右上角的创建自动发现规则。 2.键值脚本内容 [root@zabbix zabbix_agentd.d]# /usr/lib/zabbix/externalscripts/apdiscovery.sh {&quot;data&quot;:[ {&quot;{#APID}&quot;:&quot;0&quot;},{&quot;{#APID}&quot;:&quot;1&quot;},{&quot;{#APID}&quot;:&quot;2&quot;},{&quot;{#APID}&quot;:&quot;3&quot;},{&quot;{#APID}&quot;:&quot;4&quot;},{&quot;{#APID}&quot;:&quot;5&quot;},{&quot;{#APID}&quot;:&quot;6&quot;},{&quot;{#APID}&quot;:&quot;7&quot;},{&quot;{#APID}&quot;:&quot;8&quot;},{&quot;{#APID}&quot;:&quot;9&quot;},{&quot;{#APID}&quot;:&quot;10&quot;},{&quot;{#APID}&quot;:&quot;11&quot;},{&quot;{#APID}&quot;:&quot;12&quot;},{&quot;{#APID}&quot;:&quot;13&quot;},{&quot;{#APID}&quot;:&quot;14&quot;},{&quot;{#APID}&quot;:&quot;15&quot;},{&quot;{#APID}&quot;:&quot;16&quot;},{&quot;{#APID}&quot;:&quot;17&quot;},{&quot;{#APID}&quot;:&quot;18&quot;},{&quot;{#APID}&quot;:&quot;19&quot;},{&quot;{#APID}&quot;:&quot;20...."/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@a113f05/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@a113f05/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="zabbix LLD 自动发现 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/11/26/1555140148890.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="zabbix LLD 自动发现 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/11/26/1555140148890.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@a113f05/src/main/resources/skins/Casper/css/base.css?1603306835781"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>zabbix LLD 自动发现 - 邯城往事</title><meta name="description" content="不同业务对应不同模板，现在创建一个模板，用于当前这个特殊业务 创建完成后，点击右上角的创建自动发现规则。 2.键值脚本内容 [root@zabbix zabbix_agentd.d]# /usr/lib/zabbix/externalscripts/apdiscovery.sh {&quot;data&quot;:[ {&quot;{#APID}&quot;:&quot;0&quot;},{&quot;{#APID}&quot;:&quot;1&quot;},{&quot;{#APID}&quot;:&quot;2&quot;},{&quot;{#APID}&quot;:&quot;3&quot;},{&quot;{#APID}&quot;:&quot;4&quot;},{&quot;{#APID}&quot;:&quot;5&quot;},{&quot;{#APID}&quot;:&quot;6&quot;},{&quot;{#APID}&quot;:&quot;7&quot;},{&quot;{#APID}&quot;:&quot;8&quot;},{&quot;{#APID}&quot;:&quot;9&quot;},{&quot;{#APID}&quot;:&quot;10&quot;},{&quot;{#APID}&quot;:&quot;11&quot;},{&quot;{#APID}&quot;:&quot;12&quot;},{&quot;{#APID}&quot;:&quot;13&quot;},{&quot;{#APID}&quot;:&quot;14&quot;},{&quot;{#APID}&quot;:&quot;15&quot;},{&quot;{#APID}&quot;:&quot;16&quot;},{&quot;{#APID}&quot;:&quot;17&quot;},{&quot;{#APID}&quot;:&quot;18&quot;},{&quot;{#APID}&quot;:&quot;19&quot;},{&quot;{#APID}&quot;:&quot;20...."/><meta property="og:description" content="不同业务对应不同模板，现在创建一个模板，用于当前这个特殊业务 创建完成后，点击右上角的创建自动发现规则。 2.键值脚本内容 [root@zabbix zabbix_agentd.d]# /usr/lib/zabbix/externalscripts/apdiscovery.sh {&quot;data&quot;:[ {&quot;{#APID}&quot;:&quot;0&quot;},{&quot;{#APID}&quot;:&quot;1&quot;},{&quot;{#APID}&quot;:&quot;2&quot;},{&quot;{#APID}&quot;:&quot;3&quot;},{&quot;{#APID}&quot;:&quot;4&quot;},{&quot;{#APID}&quot;:&quot;5&quot;},{&quot;{#APID}&quot;:&quot;6&quot;},{&quot;{#APID}&quot;:&quot;7&quot;},{&quot;{#APID}&quot;:&quot;8&quot;},{&quot;{#APID}&quot;:&quot;9&quot;},{&quot;{#APID}&quot;:&quot;10&quot;},{&quot;{#APID}&quot;:&quot;11&quot;},{&quot;{#APID}&quot;:&quot;12&quot;},{&quot;{#APID}&quot;:&quot;13&quot;},{&quot;{#APID}&quot;:&quot;14&quot;},{&quot;{#APID}&quot;:&quot;15&quot;},{&quot;{#APID}&quot;:&quot;16&quot;},{&quot;{#APID}&quot;:&quot;17&quot;},{&quot;{#APID}&quot;:&quot;18&quot;},{&quot;{#APID}&quot;:&quot;19&quot;},{&quot;{#APID}&quot;:&quot;20...."/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="zabbix LLD 自动发现 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/11/26/1555140148890.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="zabbix LLD 自动发现 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/11/26/1555140148890.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1606244437047"/>
             <link rel="prev" title="Python之生成器" href="https://cuijianzhe.github.io/articles/2019/11/23/1574490126718.html">
             <link rel="next" title="分享一个免费无限量存储" href="https://cuijianzhe.github.io/articles/2019/11/28/1573885158540.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-<script src="https://cdn.jsdelivr.net/npm/vditor@3.5.5/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
+<script src="https://cdn.jsdelivr.net/npm/vditor@3.6.6/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
 <body class="fn__flex-column">
 <div id="pjax" class="fn__flex-1">
     
@@ -143,7 +143,7 @@
         <div class="ft__center">
             <div class="item__meta">
                 <time>
-                    2020-01-09
+                    2020-12-05
                 </time>
                 /
                     <a class="tag" rel="tag"
@@ -170,6 +170,10 @@
 <h2 id="3--创建监控项原型">3. 创建监控项原型</h2>
 <p>  对应的宏变量值和脚本中对应的变量要一致，并且大写。<br>
 <img src="https://img.hacpai.com/file/2019/04/%E5%AE%8F-62593bb5.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="宏.png"></p>
+<h3 id="自动发现无线ap值-APNAME-APID--">自动发现无线 ap 值（APNAME、APID）：</h3>
+<ul>
+<li>SHELL 脚本</li>
+</ul>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-cp">#!/bin/bash
 </span><span class="highlight-cp"></span><span class="highlight-nv">id</span><span class="highlight-o">=</span><span class="highlight-k">$(</span>snmpwalk -v 2c -c limi@2018  10.200.252.8 1.3.6.1.4.1.2011.6.139.13.3.10.1.5 <span class="highlight-p">|</span> cut -f1 -d <span class="highlight-s2">"="</span> <span class="highlight-p">|</span> cut -f10 -d <span class="highlight-s2">"."</span><span class="highlight-k">)</span>
 <span class="highlight-nv">id_array</span><span class="highlight-o">=(</span><span class="highlight-si">${</span><span class="highlight-nv">id</span><span class="highlight-si">}</span><span class="highlight-o">)</span>
@@ -188,7 +192,33 @@
 <span class="highlight-k">done</span>
 <span class="highlight-nb">printf</span> <span class="highlight-s2">" ]}"</span>
 </code></pre>
-<p>  自动发现值：</p>
+<p>  自动发现无线 ap 值（APNAME、APID）：</p>
+<ul>
+<li>PYTHON 脚本</li>
+</ul>
+<pre><code class="language-python highlight-chroma"><span class="highlight-ch">#!/bin/env python3</span>
+<span class="highlight-c1">#Author:cuijianzhe</span>
+<span class="highlight-kn">import</span> <span class="highlight-nn">subprocess</span>
+<span class="highlight-kn">import</span> <span class="highlight-nn">json</span>
+
+<span class="highlight-k">def</span> <span class="highlight-nf">PortList</span><span class="highlight-p">():</span>
+    <span class="highlight-n">CMD</span> <span class="highlight-o">=</span> <span class="highlight-s2">"snmpwalk -v 2c -c limi@2018  10.200.250.5 1.3.6.1.4.1.2011.6.139.13.3.10.1.5"</span>
+    <span class="highlight-n">Result_str</span> <span class="highlight-o">=</span> <span class="highlight-n">subprocess</span><span class="highlight-o">.</span><span class="highlight-n">getoutput</span><span class="highlight-p">(</span><span class="highlight-n">CMD</span><span class="highlight-p">)</span>
+    <span class="highlight-n">tmp_list</span> <span class="highlight-o">=</span> <span class="highlight-n">Result_str</span><span class="highlight-o">.</span><span class="highlight-n">split</span><span class="highlight-p">(</span><span class="highlight-s2">"</span><span class="highlight-se">\n</span><span class="highlight-s2">"</span><span class="highlight-p">)</span>
+    <span class="highlight-n">ap_dict</span> <span class="highlight-o">=</span> <span class="highlight-p">{}</span>
+    <span class="highlight-k">for</span> <span class="highlight-n">line</span> <span class="highlight-ow">in</span> <span class="highlight-n">tmp_list</span><span class="highlight-p">:</span>
+        <span class="highlight-n">apName</span> <span class="highlight-o">=</span> <span class="highlight-nb">eval</span><span class="highlight-p">(</span><span class="highlight-n">line</span><span class="highlight-o">.</span><span class="highlight-n">split</span><span class="highlight-p">(</span><span class="highlight-s1">':'</span><span class="highlight-p">)[</span><span class="highlight-mi">3</span><span class="highlight-p">])</span>
+        <span class="highlight-n">apId</span> <span class="highlight-o">=</span> <span class="highlight-n">line</span><span class="highlight-o">.</span><span class="highlight-n">split</span><span class="highlight-p">(</span><span class="highlight-s1">'='</span><span class="highlight-p">)[</span><span class="highlight-mi">0</span><span class="highlight-p">]</span><span class="highlight-o">.</span><span class="highlight-n">split</span><span class="highlight-p">(</span><span class="highlight-s1">'.'</span><span class="highlight-p">)[</span><span class="highlight-mi">9</span><span class="highlight-p">]</span>
+        <span class="highlight-n">ap_dict</span><span class="highlight-p">[</span><span class="highlight-n">apId</span><span class="highlight-p">]</span> <span class="highlight-o">=</span> <span class="highlight-n">apName</span>
+    <span class="highlight-k">return</span> <span class="highlight-n">ap_dict</span>
+
+<span class="highlight-k">if</span> <span class="highlight-vm">__name__</span> <span class="highlight-o">==</span> <span class="highlight-s2">"__main__"</span><span class="highlight-p">:</span>
+    <span class="highlight-n">Results</span> <span class="highlight-o">=</span> <span class="highlight-n">PortList</span><span class="highlight-p">()</span>
+    <span class="highlight-n">aps</span> <span class="highlight-o">=</span> <span class="highlight-p">[]</span>
+    <span class="highlight-k">for</span> <span class="highlight-n">apinfo</span> <span class="highlight-ow">in</span> <span class="highlight-n">Results</span><span class="highlight-p">:</span>
+        <span class="highlight-n">aps</span> <span class="highlight-o">+=</span> <span class="highlight-p">[{</span><span class="highlight-s1">'{#APID}'</span><span class="highlight-p">:</span> <span class="highlight-n">apinfo</span><span class="highlight-p">,</span><span class="highlight-s1">'{#APNAME}'</span><span class="highlight-p">:</span> <span class="highlight-n">Results</span><span class="highlight-p">[</span><span class="highlight-n">apinfo</span><span class="highlight-p">]}]</span>
+    <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">dumps</span><span class="highlight-p">({</span><span class="highlight-s1">'data'</span><span class="highlight-p">:</span><span class="highlight-n">aps</span><span class="highlight-p">},</span><span class="highlight-n">sort_keys</span><span class="highlight-o">=</span><span class="highlight-bp">True</span><span class="highlight-p">,</span><span class="highlight-n">indent</span><span class="highlight-o">=</span><span class="highlight-mi">4</span><span class="highlight-p">,</span><span class="highlight-n">separators</span><span class="highlight-o">=</span><span class="highlight-p">(</span><span class="highlight-s1">','</span><span class="highlight-p">,</span><span class="highlight-s1">':'</span><span class="highlight-p">)))</span>
+</code></pre>
 <pre><code class="highlight-chroma">[root@zabbix ~]# zabbix_get  -s 127.0.0.1 -k discovery_apid
 
 {"data":[ {"{#APID}":"0","{#APNAME}":"446a-2e13-01e0" },{"{#APID}":"1","{#APNAME}":"446a-2e13-0900" },{"{#APID}":"2","{#APNAME}":"446a-2e13-01c0" },{"{#APID}":"3","{#APNAME}":"446a-2e13-01a0" },{"{#APID}":"4","{#APNAME}":"446a-2e13-0260" },{"{#APID}":"5","{#APNAME}":"446a-2e13-1220" },{"{#APID}":"6","{#APNAME}":"446a-2e17-db80" },{"{#APID}":"7","{#APNAME}":"446a-2e17-dac0" },{"{#APID}":"8","{#APNAME}":"446a-2e17-db00" },{"{#APID}":"9","{#APNAME}":"3F_DONG" },{"{#APID}":"10","{#APNAME}":"446a-2e17-db40" },{"{#APID}":"11","{#APNAME}":"446a-2e17-da60" },{"{#APID}":"12","{#APNAME}":"446a-2e13-2660" },{"{#APID}":"13","{#APNAME}":"446a-2e13-2680" },{"{#APID}":"14","{#APNAME}":"446a-2e13-0e20" },{"{#APID}":"15","{#APNAME}":"446a-2e13-25e0" },{"{#APID}":"16","{#APNAME}":"446a-2e13-2620" },{"{#APID}":"17","{#APNAME}":"446a-2e13-0160" },{"{#APID}":"18","{#APNAME}":"446a-2e13-0980" },{"{#APID}":"19","{#APNAME}":"446a-2e13-2580" },{"{#APID}":"20","{#APNAME}":"446a-2e13-18e0" },{"{#APID}":"21","{#APNAME}":"446a-2e13-2600" },{"{#APID}":"22","{#APNAME}":"446a-2e20-6780" },{"{#APID}":"23","{#APNAME}":"446a-2e20-6760" } ]}
@@ -202,6 +232,7 @@
 查看自动发现的值：</li>
 </ol>
 <p>  <img src="https://img.hacpai.com/file/2019/04/AP-164145e2.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="AP.png"></p>
+<p>  <img src="https://b3logfile.com/file/2020/12/image-18ebfe76.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
                     <div>
                         <hr>
 
@@ -232,6 +263,9 @@
         </li>
         <li class="toc__h2">
             <a href="#3--创建监控项原型">3. 创建监控项原型</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#自动发现无线ap值-APNAME-APID--">自动发现无线 ap 值（APNAME、APID）：</a>
         </li>
         <li class="toc__h2">
             <a href="#4--编写脚本值-zabbix-发现的-value-值传参进去而得出自己想要的值-">4. 编写脚本值 zabbix 发现的 value 值传参进去而得出自己想要的值；</a>
@@ -292,7 +326,7 @@
             友链
             </a>
             <br>
-            107 文章 &nbsp;
+            108 文章 &nbsp;
             <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> 浏览 &nbsp;
             
         </div>
@@ -303,7 +337,7 @@
   var Label = {
     speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@a113f05/src/main/resources",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources",
     luteAvailable: true,
     hljsStyle: 'monokai',
     langLabel: "zh_CN",
@@ -314,7 +348,7 @@
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@a113f05/src/main/resources/skins/Casper/js/common.min.js?1603306835781"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1606244437047"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -348,7 +382,7 @@
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@a113f05/src/main/resources/js/page.min.js?1603306835781', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1606244437047', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1555140148890",
@@ -370,4 +404,4 @@
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 469ms, 2020/10/31 13:45:50 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 390ms, 2020/12/15 13:57:35 -->
