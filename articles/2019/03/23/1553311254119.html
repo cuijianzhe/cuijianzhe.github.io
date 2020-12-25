@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>uniq、sort命令理解 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="uniq、sort命令理解 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/23/1553311254119.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="uniq、sort命令理解 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/23/1553311254119.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1606244437047"/>
+              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
             <link rel="prev" title="网络设备配置输出一口气" href="https://cuijianzhe.github.io/articles/2019/03/20/1553084486763.html">
             <link rel="next" title="搭建docker之路-初识（1）" href="https://cuijianzhe.github.io/articles/2019/03/26/1553571577540.html">
     <!--鼠标点击特效-->
@@ -29,7 +29,7 @@
                 <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
                     <img src="/images/github-icon.png" alt="我的开源"> 我的开源
                 </a>
-                <a class="fn__flex-inline" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
                      服务器倒计时
                 </a>
 
@@ -210,7 +210,7 @@
 10.0.0.3
 10.0.0.5
 </code></pre>
-<p>  ps：发现和原文件相比，只是把相邻的内容去重；<br>
+<p class="indent--2">ps：发现和原文件相比，只是把相邻的内容去重；<br>
 <strong>如果要把所有的去除，就要用到 sort，sort 是排序的命令，让重复的行相邻</strong></p>
 <pre><code class="highlight-chroma">[root@bogon ~]# sort test.txt
 10.0.0.1
@@ -222,7 +222,7 @@
 10.0.0.5
 10.0.0.5
 </code></pre>
-<p>  两者都用的话，效果如下：</p>
+<p class="indent--2">两者都用的话，效果如下：</p>
 <pre><code class="highlight-chroma">[root@bogon ~]# sort test.txt | uniq 
 10.0.0.1
 10.0.0.3
@@ -237,7 +237,7 @@
       2 10.0.0.4
       2 10.0.0.5
 </code></pre>
-<p>  倒序效果</p>
+<p class="indent--2">倒序效果</p>
 <pre><code class="highlight-chroma">[root@bogon ~]# cat test.txt | sort | uniq -c | sort -r
 
       3 10.0.0.5
@@ -290,7 +290,7 @@
        --version
               输出版本信息并退出.
 </code></pre>
-<p>  看下需求：实现倒序或者升序用 sort</p>
+<p class="indent--2">看下需求：实现倒序或者升序用 sort</p>
 <pre><code class="highlight-chroma">[root@bogon conf]# cat arp.txt 
 192.168.89.234	d481-d7b1-fb75	
 192.168.89.154	0080-4df0-4ba1	
@@ -746,7 +746,7 @@ function render() {
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1606244437047"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -780,7 +780,7 @@ function render() {
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1606244437047', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1553311254119",
@@ -802,4 +802,4 @@ function render() {
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 418ms, 2020/12/15 13:57:48 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 499ms, 2020/12/25 09:38:11 -->

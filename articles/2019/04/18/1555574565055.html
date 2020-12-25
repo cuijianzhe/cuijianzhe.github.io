@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>centos7 安装NVIDIA P4000 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="centos7 安装NVIDIA P4000 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/04/18/1555574565055.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="centos7 安装NVIDIA P4000 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/04/18/1555574565055.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1606244437047"/>
+              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
             <link rel="prev" title="记一次grafana变量取值的过程" href="https://cuijianzhe.github.io/articles/2019/04/16/1555410740995.html">
             <link rel="next" title="通过命令查看服务器硬件信息" href="https://cuijianzhe.github.io/articles/2019/04/23/1556013126298.html">
     <!--鼠标点击特效-->
@@ -29,7 +29,7 @@
                 <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
                     <img src="/images/github-icon.png" alt="我的开源"> 我的开源
                 </a>
-                <a class="fn__flex-inline" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
                      服务器倒计时
                 </a>
 
@@ -156,15 +156,15 @@
         <div class="item__cover" style="background-image: url(https://img.hacpai.com/bing/20180424.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)"></div>
         <div class="wrapper">
             <section class="item__content item__content--article vditor-reset">
-                <p>  Quadro P4000 显卡在 CentOS7 安装</p>
-<p>  官网下载对应 RedHat 驱动： <a href="https://www.dell.com/support/home/cn/zh/cnbsd1/product-support/servicetag/2xhzrt2/drivers" target="_blank">https://www.dell.com/support/home/cn/zh/cnbsd1/product-support/servicetag/2xhzrt2/drivers</a><br>
+                <p class="indent--2">Quadro P4000 显卡在 CentOS7 安装</p>
+<p class="indent--2">官网下载对应 RedHat 驱动： <a href="https://www.dell.com/support/home/cn/zh/cnbsd1/product-support/servicetag/2xhzrt2/drivers" target="_blank">https://www.dell.com/support/home/cn/zh/cnbsd1/product-support/servicetag/2xhzrt2/drivers</a><br>
 执行：<br>
 <code>[root@localhost ~]# sh NVIDIA-Linux-x86_64-396.37.run</code><br>
 出现如下报错：</p>
 <pre><code class="highlight-chroma">  ERROR: The Nouveau kernel driver is currently in use by your system.  This driver is incompatible with the NVIDIA driver, and must be disabled before proceeding.  Please consult the NVIDIA driver README and your Linux distribution's documentation for details on how  
          to correctly disable the Nouveau kernel driver.             
 </code></pre>
-<p>  解决方法：</p>
+<p class="indent--2">解决方法：</p>
 <pre><code class="highlight-chroma">[root@localhost ~]# cd /etc/modprobe.d/
 [root@localhost modprobe.d]# ls
 dccp-blacklist.conf  firewalld-sysctls.conf  tuned.conf
@@ -187,23 +187,23 @@ blacklist nouveau
 <span class="highlight-o">[</span>root@localhost modprobe.d<span class="highlight-o">]</span><span class="highlight-c1"># dracut -v /boot/initramfs-$(uname -r).img $(uname -r)</span>
    <span class="highlight-c1">#使用dracut重新建立 initramfs image file  #重新建立the initramfs file</span>
 </code></pre>
-<p>  reboot<br>
+<p class="indent--2">reboot<br>
 重启</p>
-<p>  查看进程是否还有：<br>
+<p class="indent--2">查看进程是否还有：<br>
 <code>[root@localhost ~]#  lsmod | grep nouveau</code></p>
-<p>  执行下一步：</p>
+<p class="indent--2">执行下一步：</p>
 <pre><code class="language-go highlight-chroma"> <span class="highlight-nx">ERROR</span><span class="highlight-p">:</span> <span class="highlight-nx">Unable</span> <span class="highlight-nx">to</span> <span class="highlight-nx">find</span> <span class="highlight-nx">the</span> <span class="highlight-nx">development</span> <span class="highlight-nx">tool</span> <span class="highlight-s">`cc`</span> <span class="highlight-nx">in</span> <span class="highlight-nx">your</span> <span class="highlight-nx">path</span><span class="highlight-p">;</span> <span class="highlight-nx">please</span> <span class="highlight-nx">make</span> <span class="highlight-nx">sure</span> <span class="highlight-nx">that</span> <span class="highlight-nx">you</span> <span class="highlight-nx">have</span> <span class="highlight-nx">the</span> <span class="highlight-kn">package</span> <span class="highlight-err">'</span><span class="highlight-nx">gcc</span><span class="highlight-err">'</span> <span class="highlight-nx">installed</span><span class="highlight-p">.</span>  <span class="highlight-nx">If</span> <span class="highlight-nx">gcc</span> <span class="highlight-nx">is</span> <span class="highlight-nx">installed</span> <span class="highlight-nx">on</span> <span class="highlight-nx">your</span> <span class="highlight-nx">system</span><span class="highlight-p">,</span> <span class="highlight-nx">then</span> <span class="highlight-nx">please</span> <span class="highlight-nx">check</span> <span class="highlight-nx">that</span> <span class="highlight-s">`cc`</span> <span class="highlight-nx">is</span> <span class="highlight-nx">in</span> <span class="highlight-nx">your</span> <span class="highlight-nx">PATH</span><span class="highlight-p">.</span>   
 
 </code></pre>
-<p>  出现如上报错，解决方法：</p>
-<p>  <code>[root@localhost ~]# yum install -y gcc </code></p>
-<p>  执行驱动文件，再次出现报错如下：</p>
+<p class="indent--2">出现如上报错，解决方法：</p>
+<p class="indent--2"><code>[root@localhost ~]# yum install -y gcc </code></p>
+<p class="indent--2">执行驱动文件，再次出现报错如下：</p>
 <pre><code class="highlight-chroma"> ERROR: Unable to find the kernel source tree for the currently running kernel.  Please make sure you have installed the kernel source files for your kernel and that they are properly configured; on Red Hat Linux systems, for example, be sure you have the             
 
          'kernel-source' or 'kernel-devel' RPM installed.  If you know the correct kernel source files are installed, you may specify the kernel source path with the '--kernel-source-path' command line option. 
 
 </code></pre>
-<p>  解决方法：<br>
+<p class="indent--2">解决方法：<br>
 <code>[root@localhost ~]# yum install  kernel-* -y</code><br>
 然后再次执行 reboot，&amp;&amp;执行驱动文件：对于 nvidia 显卡的话可以用 nvidia-smi 命令来查，查看 GPU 也是用这个命令</p>
 <pre><code class="highlight-chroma">
@@ -229,7 +229,7 @@ Thu Apr 18 16:08:11 2019
 [root@localhost ~]# 
 
 </code></pre>
-<p>  如上可以看到显卡 GPU 型号 P4000，安装执行成功。</p>
+<p class="indent--2">如上可以看到显卡 GPU 型号 P4000，安装执行成功。</p>
                     <div>
                         <hr>
 
@@ -342,7 +342,7 @@ Thu Apr 18 16:08:11 2019
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1606244437047"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -376,7 +376,7 @@ Thu Apr 18 16:08:11 2019
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1606244437047', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1555574565055",
@@ -398,4 +398,4 @@ Thu Apr 18 16:08:11 2019
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 415ms, 2020/12/15 13:57:46 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 503ms, 2020/12/25 09:38:08 -->

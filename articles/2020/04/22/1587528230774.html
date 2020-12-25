@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>KUbernets实践之pod控制器 - 邯城往事</title><meta name="description" content="  拒绝了所有人的邀请，不愿与除你之外的人看风景"/><meta property="og:description" content="  拒绝了所有人的邀请，不愿与除你之外的人看风景"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="KUbernets实践之pod控制器 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/04/22/1587528230774.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="KUbernets实践之pod控制器 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/04/22/1587528230774.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1606244437047"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>KUbernets实践之pod控制器 - 邯城往事</title><meta name="description" content="拒绝了所有人的邀请，不愿与除你之外的人看风景"/><meta property="og:description" content="拒绝了所有人的邀请，不愿与除你之外的人看风景"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="KUbernets实践之pod控制器 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/04/22/1587528230774.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="KUbernets实践之pod控制器 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/04/22/1587528230774.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
             <link rel="prev" title="用Python实现widows下ping程序" href="https://cuijianzhe.github.io/articles/2020/04/18/1587188601330.html">
             <link rel="next" title="Kubernetes服务访问" href="https://cuijianzhe.github.io/articles/2020/04/23/1587624487440.html">
     <!--鼠标点击特效-->
@@ -29,7 +29,7 @@
                 <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
                     <img src="/images/github-icon.png" alt="我的开源"> 我的开源
                 </a>
-                <a class="fn__flex-inline" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
                      服务器倒计时
                 </a>
 
@@ -159,7 +159,7 @@
         <div class="wrapper">
             <section class="item__content item__content--article vditor-reset">
                 <h1 id="为什么用pod控制器-">为什么用 pod 控制器？</h1>
-<p>  只使用 Pod, 将会面临如下需求：</p>
+<p class="indent--2">只使用 Pod, 将会面临如下需求：</p>
 <ol>
 <li>业务应用启动多个副本</li>
 <li>Pod 重建后 IP 会变化，外部如何访问 Pod 服务</li>
@@ -167,8 +167,8 @@
 <li>我的业务应用功能是收集节点监控数据，需要把 Pod 运行在 k8 集群的各个节点上</li>
 </ol>
 <h1 id="Workload--工作负载-">Workload (工作负载)</h1>
-<p>  控制器又称工作负载是用于实现管理 pod 的中间层，确保 pod 资源符合预期的状态，pod 的资源出现故障时，会尝试 进行重启，当根据重启策略无效，则会重新新建 pod 的资源。</p>
-<p>  <img src="https://img.hacpai.com/file/2020/04/workload-6ee9309c.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="workload.png"></p>
+<p class="indent--2">控制器又称工作负载是用于实现管理 pod 的中间层，确保 pod 资源符合预期的状态，pod 的资源出现故障时，会尝试 进行重启，当根据重启策略无效，则会重新新建 pod 的资源。</p>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2020/04/workload-6ee9309c.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="workload.png"></p>
 <ul>
 <li>ReplicaSet: 代用户创建指定数量的 pod 副本数量，确保 pod 副本数量符合预期状态，并且支持滚动式自动扩容和缩容功能</li>
 <li>Deployment：工作在 ReplicaSet 之上，用于管理无状态应用，目前来说最好的控制器。支持滚动更新和回滚功能，还提供声明式配置</li>
@@ -331,7 +331,7 @@ data:
   MYSQL_USER: <span class="highlight-nv">cm9vdA</span><span class="highlight-o">==</span>
   MYSQL_PASSWD: MTIzNDU2
 </code></pre>
-<p>  <strong>创建 Deployment</strong></p>
+<p class="indent--2"><strong>创建 Deployment</strong></p>
 <pre><code class="highlight-chroma">[root@k8s-master deployment]# kubectl create -f deploy-mysql.yaml 
 deployment.apps/mysql created
 [root@k8s-master deployment]# kubectl create -f configmap.yaml 
@@ -359,13 +359,13 @@ NAME                     READY   STATUS    RESTARTS   AGE
 myblog-b66554b87-rms8b   1/1     Running   0          8m53s
 mysql-8fcc5595f-dj4gb    1/1     Running   0          9m45s
 </code></pre>
-<p>  <strong>命令指示：</strong></p>
+<p class="indent--2"><strong>命令指示：</strong></p>
 <ul>
 <li>删除 deploy：  <code>kubectl delete -n demo deploy myblog</code> 或者 <code>kubectl delete -f deploy-mysql.yaml</code></li>
 <li>查看详情：<code>kubectl describe -n demo pod mysql-55745b9899-dpzrj</code></li>
 </ul>
 <h3 id="副本保障机制">副本保障机制</h3>
-<p>  controller 实时检测 pod 状态，并保障副本数一直处于期望的值。</p>
+<p class="indent--2">controller 实时检测 pod 状态，并保障副本数一直处于期望的值。</p>
 <h4 id="删除pod-观察pod状态变化">删除 pod，观察 pod 状态变化</h4>
 <pre><code class="highlight-chroma">[root@k8s-master deployment]# kubectl -n demo get pods -o wide
 NAME                     READY   STATUS    RESTARTS   AGE     IP               NODE         NOMINATED NODE   READINESS GATES
@@ -392,7 +392,7 @@ mysql-8fcc5595f-trnx9    1/1     Running   0          28h   192.168.51.210   k8s
 <pre><code class="highlight-chroma">[root@k8s-master deployment]# kubectl -n demo scale deploy myblog --replicas=2
 deployment.apps/myblog scaled
 </code></pre>
-<p>  <strong>观察 pods</strong></p>
+<p class="indent--2"><strong>观察 pods</strong></p>
 <pre><code class="highlight-chroma">[root@k8s-master deployment]# kubectl -n demo get pods -o wide
 NAME                     READY   STATUS    RESTARTS   AGE     IP               NODE         NOMINATED NODE   READINESS GATES
 myblog-b66554b87-jg9k8   1/1     Running   0          49s     10.244.1.25      k8s-slave1   &lt;none&gt;           &lt;none&gt;
@@ -400,7 +400,7 @@ myblog-b66554b87-phv4x   1/1     Running   0          4m17s   10.244.2.13      k
 mysql-8fcc5595f-trnx9    1/1     Running   0          28h     192.168.51.210   k8s-slave1   &lt;none&gt;           &lt;none&gt;
 </code></pre>
 <h3 id="Pod驱逐策略">Pod 驱逐策略</h3>
-<p>  K8S 有个特色功能叫 pod eviction，它在某些场景下如节点 NotReady，或者资源不足时，把 pod 驱逐至其它节点，这也是出于业务保护的角度去考虑的。</p>
+<p class="indent--2">K8S 有个特色功能叫 pod eviction，它在某些场景下如节点 NotReady，或者资源不足时，把 pod 驱逐至其它节点，这也是出于业务保护的角度去考虑的。</p>
 <ol>
 <li>Kube-controller-manager: 周期性检查所有节点状态，当节点处于 NotReady 状态超过一段时间后，驱逐该节点上所有 pod。停掉 kubelet</li>
 </ol>
@@ -418,7 +418,7 @@ mysql-8fcc5595f-trnx9    1/1     Running   0          28h     192.168.51.210   k
 <li><code>imagefs.inodesFree</code>：镜像存储盘的 inodes 可用数量</li>
 </ul>
 <h4 id="服务更新">服务更新</h4>
-<p>  修改 dockerfile，重新打 tag 模拟服务更新。<br>
+<p class="indent--2">修改 dockerfile，重新打 tag 模拟服务更新。<br>
 更新方式：</p>
 <ul>
 <li>修改 YAML 文件，使用 <code>kubectl -n demo apply -f deploy-myblog.yaml</code> 来应用更新</li>
@@ -426,8 +426,8 @@ mysql-8fcc5595f-trnx9    1/1     Running   0          28h     192.168.51.210   k
 <li><code>kubectl set image deploy myblog myblog=192.168.51.209:5000/myblog:v2 --record</code></li>
 </ul>
 <h4 id="修改测试文件">修改测试文件</h4>
-<p>  $ vi mybolg/blog/template/index.html</p>
-<p>  <span class="language-math"> docker build . -t 192.168.51.209:5000/myblog:v2 -f Dockerfile_optimized
+<p class="indent--2">$ vi mybolg/blog/template/index.html</p>
+<p class="indent--2"><span class="language-math"> docker build . -t 192.168.51.209:5000/myblog:v2 -f Dockerfile_optimized
 </span> docker push 192.168.51.209:5000/myblog:v2</p>
 <h3 id="更新策略">更新策略</h3>
 <pre><code class="highlight-chroma">...
@@ -443,33 +443,33 @@ spec:
     type: RollingUpdate		#指定更新方式为滚动更新，默认策略，通过get deploy yaml查看
     ...
 </code></pre>
-<p>  <img src="https://img.hacpai.com/file/2020/04/update-eef5c14a.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="update.png"><br>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2020/04/update-eef5c14a.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="update.png"><br>
 策略控制：</p>
 <ul>
 <li>maxSurge：最大激增数， 指更新过程中， 最多可以比 replicas 预先设定值多出的 pod 数量， 可以为固定值或百分比，默认为 desired Pods 数的 25%。计算时向上取整(比如 3.4，取 4)，更新过程中最多会有 replicas + maxSurge 个 pod</li>
 <li>maxUnavailable： 指更新过程中， 最多有几个 pod 处于无法服务状态 , 可以为固定值或百分比，默认为 desired Pods 数的 25%。计算时向下取整(比如 3.6，取 3)</li>
 </ul>
-<p>  <em>在 Deployment rollout 时，需要保证 Available(Ready) Pods 数不低于 desired pods number - maxUnavailable; 保证所有的非异常状态 Pods 数不多于 desired pods number + maxSurge</em>。</p>
-<p>  以 myblog 为例，使用默认的策略，更新过程：</p>
+<p class="indent--2"><em>在 Deployment rollout 时，需要保证 Available(Ready) Pods 数不低于 desired pods number - maxUnavailable; 保证所有的非异常状态 Pods 数不多于 desired pods number + maxSurge</em>。</p>
+<p class="indent--2">以 myblog 为例，使用默认的策略，更新过程：</p>
 <ol>
 <li>maxSurge 25%，2 个实例，向上取整，则 maxSurge 为 1，意味着最多可以有 2+1=3 个 Pod，那么此时会新创建 1 个 ReplicaSet，RS-new，把副本数置为 1，此时呢，副本控制器就去创建这个新的 Pod</li>
 <li>同时，maxUnavailable 是 25%，副本数 2*25%，向下取整，则为 0，意味着，滚动更新的过程中，不能有少于 2 个可用的 Pod，因此，旧的 Replica（RS-old）会先保持不动，等 RS-new 管理的 Pod 状态 Ready 后，此时已经有 3 个 Ready 状态的 Pod 了，那么由于只要保证有 2 个可用的 Pod 即可，因此，RS-old 的副本数会有 2 个变成 1 个，此时，会删掉一个旧的 Pod</li>
 <li>删掉旧的 Pod 的时候，由于总的 Pod 数量又变成 2 个了，因此，距离最大的 3 个还有 1 个 Pod 可以创建，所以，RS-new 把管理的副本数由 1 改成 2，此时又会创建 1 个新的 Pod，等 RS-new 管理了 2 个 Pod 都 ready 后，那么就可以把 RS-old 的副本数由 1 置为 0 了，这样就完成了滚动更新</li>
 </ol>
 <h4 id="查看滚动更新事件">查看滚动更新事件</h4>
-<p>  <code>kubectl -n demo describe deploy myblog</code></p>
+<p class="indent--2"><code>kubectl -n demo describe deploy myblog</code></p>
 <h3 id="服务回滚">服务回滚</h3>
-<p>  通过滚动升级的策略可以平滑的升级 Deployment，若升级出现问题，需要最快且最好的方式回退到上一次能够提供正常工作的版本。为此 K8S 提供了回滚机制。</p>
-<p>  <strong>revision</strong>：更新应用时，K8S 都会记录当前的版本号，即为 revision，当升级出现问题时，可通过回滚到某个特定的 revision，默认配置下，K8S 只会保留最近的几个 revision，可以通过 Deployment 配置文件中的 spec.revisionHistoryLimit 属性增加 revision 数量，默认是 10。</p>
-<p>  <strong>查看当前</strong>：</p>
+<p class="indent--2">通过滚动升级的策略可以平滑的升级 Deployment，若升级出现问题，需要最快且最好的方式回退到上一次能够提供正常工作的版本。为此 K8S 提供了回滚机制。</p>
+<p class="indent--2"><strong>revision</strong>：更新应用时，K8S 都会记录当前的版本号，即为 revision，当升级出现问题时，可通过回滚到某个特定的 revision，默认配置下，K8S 只会保留最近的几个 revision，可以通过 Deployment 配置文件中的 spec.revisionHistoryLimit 属性增加 revision 数量，默认是 10。</p>
+<p class="indent--2"><strong>查看当前</strong>：</p>
 <pre><code class="highlight-chroma">$ kubectl -n demo rollout history deploy myblog ##CHANGE-CAUSE为空
 $ kubectl delete -f deploy-myblog.yaml    ## 方便演示到具体效果，删掉已有deployment
 </code></pre>
-<p>  <strong>记录回滚：</strong></p>
+<p class="indent--2"><strong>记录回滚：</strong></p>
 <pre><code class="highlight-chroma">$ kubectl create -f deploy-myblog.yaml --record
 $ kubectl -n demo set image deploy myblog myblog=192.168.51.209:5000/myblog:v2 --record=true
 </code></pre>
-<p>  <strong>查看 deployment 更新历史：</strong><br>
+<p class="indent--2"><strong>查看 deployment 更新历史：</strong><br>
 <code>kubectl -n demo rollout history deploy myblog</code><br>
 <strong>回滚到具体的 REVISION:</strong><br>
 <code> kubectl -n demo rollout undo deploy myblog --to-revision=1</code></p>
@@ -479,10 +479,10 @@ $ kubectl -n demo set image deploy myblog myblog=192.168.51.209:5000/myblog:v2 -
 <li>某两个服务的网络传输很频繁，我们希望它们最好在同一台机器上</li>
 </ul>
 <h3 id="NodeSelector">NodeSelector</h3>
-<p>  <code>label</code> 是 <code>kubernetes</code> 中一个非常重要的概念，用户可以非常灵活的利用 label 来管理集群中的资源，POD 的调度可以根据节点的 label 进行特定的部署。</p>
-<p>  查看节点的 label：</p>
-<p>  <code>kubectl get nodes --show-labels</code></p>
-<p>  为节点打 label：<br>
+<p class="indent--2"><code>label</code> 是 <code>kubernetes</code> 中一个非常重要的概念，用户可以非常灵活的利用 label 来管理集群中的资源，POD 的调度可以根据节点的 label 进行特定的部署。</p>
+<p class="indent--2">查看节点的 label：</p>
+<p class="indent--2"><code>kubectl get nodes --show-labels</code></p>
+<p class="indent--2">为节点打 label：<br>
 <code> kubectl label node k8s-master disktype=ssd</code><br>
 当 node 被打上了相关标签后，在调度的时候就可以使用这些标签了，只需要在 spec 字段中添加 <code>nodeSelector</code> 字段，里面是我们需要被调度的节点的 label。</p>
 <pre><code class="highlight-chroma">...
@@ -500,10 +500,10 @@ spec:
 ...
 </code></pre>
 <h3 id="nodeAffinity">nodeAffinity</h3>
-<p>  节点亲和性 ， 比上面的 <code>nodeSelector</code> 更加灵活，它可以进行一些简单的逻辑组合，不只是简单的相等匹配 。分为两种，软策略和硬策略。</p>
-<p>  preferredDuringSchedulingIgnoredDuringExecution：软策略，如果你没有满足调度要求的节点的话，Pod 就会忽略这条规则，继续完成调度过程，说白了就是满足条件最好了，没有满足就忽略掉的策略。</p>
-<p>  requiredDuringSchedulingIgnoredDuringExecution ： 硬策略，如果没有满足条件的节点的话，就不断重试直到满足条件为止，简单说就是你必须满足我的要求，不然我就不会调度 Pod。</p>
-<p>  要求 Pod 不能运行在 128 和 132 两个节点上，如果有个节点满足 disktype=ssd 的话就优先调度到这个节点上</p>
+<p class="indent--2">节点亲和性 ， 比上面的 <code>nodeSelector</code> 更加灵活，它可以进行一些简单的逻辑组合，不只是简单的相等匹配 。分为两种，软策略和硬策略。</p>
+<p class="indent--2">preferredDuringSchedulingIgnoredDuringExecution：软策略，如果你没有满足调度要求的节点的话，Pod 就会忽略这条规则，继续完成调度过程，说白了就是满足条件最好了，没有满足就忽略掉的策略。</p>
+<p class="indent--2">requiredDuringSchedulingIgnoredDuringExecution ： 硬策略，如果没有满足条件的节点的话，就不断重试直到满足条件为止，简单说就是你必须满足我的要求，不然我就不会调度 Pod。</p>
+<p class="indent--2">要求 Pod 不能运行在 128 和 132 两个节点上，如果有个节点满足 disktype=ssd 的话就优先调度到这个节点上</p>
 <pre><code class="highlight-chroma">...
 spec:
       containers:
@@ -532,7 +532,7 @@ spec:
                         - sas
 ...
 </code></pre>
-<p>  这里的匹配逻辑是 label 的值在某个列表中，现在 <code>Kubernetes</code> 提供的操作符有下面的几种：</p>
+<p class="indent--2">这里的匹配逻辑是 label 的值在某个列表中，现在 <code>Kubernetes</code> 提供的操作符有下面的几种：</p>
 <ul>
 <li>In：label 的值在某个列表中</li>
 <li>NotIn：label 的值不在某个列表中</li>
@@ -541,35 +541,35 @@ spec:
 <li>Exists：某个 label 存在</li>
 <li>DoesNotExist：某个 label 不存在</li>
 </ul>
-<p>  <em>如果 nodeSelectorTerms 下面有多个选项的话，满足任何一个条件就可以了；如果 matchExpressions 有多个选项的话，则必须同时满足这些条件才能正常调度 Pod</em></p>
+<p class="indent--2"><em>如果 nodeSelectorTerms 下面有多个选项的话，满足任何一个条件就可以了；如果 matchExpressions 有多个选项的话，则必须同时满足这些条件才能正常调度 Pod</em></p>
 <h3 id="污点-Taints-与容忍-tolerations-">污点（Taints）与容忍（tolerations）</h3>
-<p>  对于 <code>nodeAffinity</code> 无论是硬策略还是软策略方式，都是调度 Pod 到预期节点上，而 <code>Taints</code> 恰好与之相反，如果一个节点标记为 Taints ，除非 Pod 也被标识为可以容忍污点节点，否则该 Taints 节点不会被调度 Pod。</p>
-<p>  Taints(污点)是 Node 的一个属性，设置了 Taints(污点)后，因为有了污点，所以 Kubernetes 是不会将 Pod 调度到这个 Node 上的。于是 Kubernetes 就给 Pod 设置了个属性 Tolerations(容忍)，只要 Pod 能够容忍 Node 上的污点，那么 Kubernetes 就会忽略 Node 上的污点，就能够(不是必须)把 Pod 调度过去。</p>
-<p>  比如用户希望把 Master 节点保留给 Kubernetes 系统组件使用，或者把一组具有特殊资源预留给某些 Pod，则污点就很有用了，Pod 不会再被调度到 taint 标记过的节点。taint 标记节点举例如下：</p>
-<p>  设置污点：</p>
-<p>  $ kubectl taint node [node_name] key=value:[effect]<br>
+<p class="indent--2">对于 <code>nodeAffinity</code> 无论是硬策略还是软策略方式，都是调度 Pod 到预期节点上，而 <code>Taints</code> 恰好与之相反，如果一个节点标记为 Taints ，除非 Pod 也被标识为可以容忍污点节点，否则该 Taints 节点不会被调度 Pod。</p>
+<p class="indent--2">Taints(污点)是 Node 的一个属性，设置了 Taints(污点)后，因为有了污点，所以 Kubernetes 是不会将 Pod 调度到这个 Node 上的。于是 Kubernetes 就给 Pod 设置了个属性 Tolerations(容忍)，只要 Pod 能够容忍 Node 上的污点，那么 Kubernetes 就会忽略 Node 上的污点，就能够(不是必须)把 Pod 调度过去。</p>
+<p class="indent--2">比如用户希望把 Master 节点保留给 Kubernetes 系统组件使用，或者把一组具有特殊资源预留给某些 Pod，则污点就很有用了，Pod 不会再被调度到 taint 标记过的节点。taint 标记节点举例如下：</p>
+<p class="indent--2">设置污点：</p>
+<p class="indent--2">$ kubectl taint node [node_name] key=value:[effect]<br>
 其中[effect] 可取值： [ NoSchedule | PreferNoSchedule | NoExecute ]<br>
 NoSchedule：一定不能被调度。<br>
 PreferNoSchedule：尽量不要调度。<br>
 NoExecute：不仅不会调度，还会驱逐 Node 上已有的 Pod。<br>
 示例：kubectl taint node k8s-master smoke=true:NoSchedule 去除污点：</p>
-<p>  去除指定 key 及其 effect：<br>
+<p class="indent--2">去除指定 key 及其 effect：<br>
 kubectl taint nodes [node_name] key:[effect]-    #这里的 key 不用指定 value</p>
-<p>  去除指定 key 所有的 effect:<br>
+<p class="indent--2">去除指定 key 所有的 effect:<br>
 kubectl taint nodes node_name key-</p>
-<p>  示例：<br>
+<p class="indent--2">示例：<br>
 kubectl taint node k8s-master smoke=true:NoSchedule<br>
 kubectl taint node k8s-master smoke:NoExecute-<br>
 kubectl taint node k8s-master smoke-污点演示：</p>
-<p>  <strong>给 k8s-slave1 打上污点，smoke=true:NoSchedule</strong></p>
+<p class="indent--2"><strong>给 k8s-slave1 打上污点，smoke=true:NoSchedule</strong></p>
 <pre><code class="highlight-chroma">$ kubectl taint node k8s-slave1 smoke=true:NoSchedule
 $ kubectl taint node k8s-slave2 drunk=true:NoSchedule
 </code></pre>
-<p>  <strong>扩容 myblog 的 Pod，观察新 Pod 的调度情况</strong></p>
+<p class="indent--2"><strong>扩容 myblog 的 Pod，观察新 Pod 的调度情况</strong></p>
 <pre><code class="highlight-chroma">$ kuebctl -n demo scale deploy myblog --replicas=3
 $ kubectl -n demo get po -w    ## pending
 </code></pre>
-<p>  Pod 容忍污点示例：<code>myblog/deployment/deploy-myblog-taint.yaml</code></p>
+<p class="indent--2">Pod 容忍污点示例：<code>myblog/deployment/deploy-myblog-taint.yaml</code></p>
 <pre><code class="highlight-chroma">[root@k8s-master deployment]# cat deploy-myblog-taint.yaml 
 apiVersion: apps/v1
 kind: Deployment
@@ -646,7 +646,7 @@ spec:
           timeoutSeconds: 2
           periodSeconds: 15
 </code></pre>
-<p>  <code>$ kubectl apply -f deploy-myblog-taint.yaml</code></p>
+<p class="indent--2"><code>$ kubectl apply -f deploy-myblog-taint.yaml</code></p>
 <pre><code class="highlight-chroma">spec:
       containers:
       - name: demo
@@ -802,7 +802,7 @@ spec:
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1606244437047"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -836,7 +836,7 @@ spec:
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1606244437047', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1587528230774",
@@ -858,4 +858,4 @@ spec:
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 413ms, 2020/12/15 13:57:27 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 488ms, 2020/12/25 09:37:46 -->

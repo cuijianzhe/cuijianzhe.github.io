@@ -6,12 +6,22 @@
     <atom:link href="https://cuijianzhe.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>               &gt;&gt;&gt;  展颜笑夙愿，一笑泯恩仇 &lt;&lt;&lt;</description>
     <generator>Solo, v4.3.1, https://b3log.org/solo</generator>
-    <lastBuildDate>Tue, 15 Dec 2020 13:57:20 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 25 Dec 2020 09:37:37 +0800</lastBuildDate>
     <language>zh-cn</language>
+    <item>
+      <title>阿里云同步资产信息到Jumpserver</title>
+      <link>https://cuijianzhe.github.io/articles/2020/07/16/1594900059981.html</link>
+      <description><![CDATA[<p class="indent--2">欲寄彩笺兼尺素。山长水阔知何处。</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/07/16/1594900059981.html</guid>
+      <category>Python</category>
+      <category>Jumpserver</category>
+      <pubDate>Wed, 23 Dec 2020 18:27:04 +0800</pubDate>
+    </item>
     <item>
       <title>表格数据提取</title>
       <link>https://cuijianzhe.github.io/articles/2020/12/14/1607958685328.html</link>
-      <description><![CDATA[<p>  你可知南山水北，我遇见你多不容易。</p>]]></description>
+      <description><![CDATA[<p class="indent--2">你可知南山水北，我遇见你多不容易。</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/12/14/1607958685328.html</guid>
       <category>Python</category>
@@ -20,7 +30,7 @@
     <item>
       <title>l2tp over ipsec添加用户登陆日志</title>
       <link>https://cuijianzhe.github.io/articles/2020/12/08/1607423165456.html</link>
-      <description><![CDATA[<p>  越长大越觉得，比起诉说自己的委屈与不甘，沉默最好。反正，你信你的，我活我的。</p>]]></description>
+      <description><![CDATA[<p class="indent--2">越长大越觉得，比起诉说自己的委屈与不甘，沉默最好。反正，你信你的，我活我的。</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/12/08/1607423165456.html</guid>
       <category>Linux</category>
@@ -32,8 +42,8 @@
       <description/>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html</guid>
-      <category>Python</category>
       <category>mysql</category>
+      <category>Python</category>
       <pubDate>Tue, 08 Dec 2020 16:16:33 +0800</pubDate>
     </item>
     <item>
@@ -50,7 +60,7 @@
     <item>
       <title>永远</title>
       <link>https://cuijianzhe.github.io/articles/2020/07/27/1595829232315.html</link>
-      <description><![CDATA[<p>  我并不痴情，可我回守侯你一生；我不是弱智，但我会傻傻的爱你——到永远！</p>]]></description>
+      <description><![CDATA[<p class="indent--2">我并不痴情，可我回守侯你一生；我不是弱智，但我会傻傻的爱你——到永远！</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/07/27/1595829232315.html</guid>
       <category>随笔</category>
@@ -59,7 +69,7 @@
     <item>
       <title>利用Python对windows桌面自动更换壁纸</title>
       <link>https://cuijianzhe.github.io/articles/2020/10/29/1603943265897.html</link>
-      <description><![CDATA[<p>  每个人的抽屉里，都曾有一封写好，却没有勇气寄出的信。每个人的心中，都有一个渴望，却不曾牵手的爱人。</p>]]></description>
+      <description><![CDATA[<p class="indent--2">每个人的抽屉里，都曾有一封写好，却没有勇气寄出的信。每个人的心中，都有一个渴望，却不曾牵手的爱人。</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/10/29/1603943265897.html</guid>
       <category>Python</category>
@@ -77,7 +87,7 @@
     <item>
       <title>站点推荐【转】</title>
       <link>https://cuijianzhe.github.io/articles/2019/11/13/1573637956893.html</link>
-      <description><![CDATA[<p>  <img src="https://img.hacpai.com/bing/20191030.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""><br>
+      <description><![CDATA[<p class="indent--2"><img src="https://img.hacpai.com/bing/20191030.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""><br>
 人生不如意，十有八九</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2019/11/13/1573637956893.html</guid>
@@ -87,21 +97,11 @@
     <item>
       <title>咪咪【合集】</title>
       <link>https://cuijianzhe.github.io/articles/2020/09/08/1599570901121.html</link>
-      <description><![CDATA[<p>  当你年轻时，以为什么都有答案，可是老了的时候，你可能又觉得其实人生并没有所谓的答案。</p>]]></description>
+      <description><![CDATA[<p class="indent--2">当你年轻时，以为什么都有答案，可是老了的时候，你可能又觉得其实人生并没有所谓的答案。</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/09/08/1599570901121.html</guid>
       <category>咪咪</category>
       <pubDate>Thu, 17 Sep 2020 10:20:12 +0800</pubDate>
-    </item>
-    <item>
-      <title>Pgone、孙八一、小青龙、Jony J 剪辑作品展</title>
-      <link>https://cuijianzhe.github.io/articles/2019/03/05/1551798496474.html</link>
-      <description><![CDATA[<p>  Pgone 的《H.M.E》谁还记得？小青龙的《Time》何人不知，孙八一诙谐《take it easy》！  这个 diss 了嘻哈大半个娱乐圈的人……我服 ? <a href="https://file.cjzshilong.cn/video_file/pgone.mp4" target="_blank">https://file.cjzshilong.cn/video_file/pgone.mp4</a>  小青龙和辉子的精彩 battle ? <a href="https://file.cjzshilong.cn/video_file/Time.mp4" target="_blank">https://file.cjzshilong.cn/video_file/Time.mp4</a> 小青龙 60s-《Game》 <a href="https://file.cjzshilong.cn/video_file/%E5%B0%8F%E9%9D%92%E9%BE%99-Game-60%E7%A7%92.mp4" target="_blank">https://file.cjzshilong.cn/video_file/%E5%B0%8F%E9%9D%92%E9%BE%99-Game-60%E7%A7%92.mp4</a>  这是我剪辑过的最喜欢的孙八一的作品 ? <a href="https://file.cjzshilong.cn/video_file/sunbayi.mp4" target="_blank">https://file.cjzshilong.cn/video_file/sunbayi.mp4</a> 孙八一《还钱》 <a href="https://file.cjzshilong.cn/video_file/%E8%BF%98%E9%92%B1.mp4" target="_blank">https://file.cjzshilong.cn/video_file/%E8%BF%98%E9%92%B1.mp4</a> Jony J 的《不用去猜》 <a href="https://file.cjzshilong.cn/video_file/%E4%25B..." target="_blank">https://file.cjzshilong.cn/video_file/%E4%B...</a>.</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2019/03/05/1551798496474.html</guid>
-      <category>嘻哈</category>
-      <category>HIHPOP</category>
-      <pubDate>Sat, 05 Sep 2020 11:19:43 +0800</pubDate>
     </item>
   </channel>
 </rss>

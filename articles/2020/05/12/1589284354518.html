@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Nginx的Vhost配置 - 邯城往事</title><meta name="description" content="  我愿成为春季的花朵为你奉献美丽；我希望变成炎日下的树荫为你创造阴凉；我梦想成为秋天里的枫叶为你增添美景；我渴望成为寒冬里的棉袄为你带来温暖。"/><meta property="og:description" content="  我愿成为春季的花朵为你奉献美丽；我希望变成炎日下的树荫为你创造阴凉；我梦想成为秋天里的枫叶为你增添美景；我渴望成为寒冬里的棉袄为你带来温暖。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Nginx的Vhost配置 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/05/12/1589284354518.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="Nginx的Vhost配置 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/05/12/1589284354518.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1606244437047"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Nginx的Vhost配置 - 邯城往事</title><meta name="description" content="我愿成为春季的花朵为你奉献美丽；我希望变成炎日下的树荫为你创造阴凉；我梦想成为秋天里的枫叶为你增添美景；我渴望成为寒冬里的棉袄为你带来温暖。"/><meta property="og:description" content="我愿成为春季的花朵为你奉献美丽；我希望变成炎日下的树荫为你创造阴凉；我梦想成为秋天里的枫叶为你增添美景；我渴望成为寒冬里的棉袄为你带来温暖。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Nginx的Vhost配置 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/05/12/1589284354518.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="Nginx的Vhost配置 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/05/12/1589284354518.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
             <link rel="prev" title="迁移wiki- Atlassian Confluence并升级" href="https://cuijianzhe.github.io/articles/2020/05/07/1588851186350.html">
             <link rel="next" title="Python生成指定长度随机数密码文件" href="https://cuijianzhe.github.io/articles/2020/05/14/1589459519906.html">
     <!--鼠标点击特效-->
@@ -29,7 +29,7 @@
                 <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
                     <img src="/images/github-icon.png" alt="我的开源"> 我的开源
                 </a>
-                <a class="fn__flex-inline" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
                      服务器倒计时
                 </a>
 
@@ -159,8 +159,8 @@
         <div class="wrapper">
             <section class="item__content item__content--article vditor-reset">
                 <h1 id="vhost配置文件的作用">vhost 配置文件的作用</h1>
-<p>  作用：vhost 配置文件的作用是为了将多个 server 配置文件的信息，单独存放，不过于集中在 nginx.conf 配置中，这样有用助于故障排除，如配置查看</p>
-<p>  <strong>通过访问服务端 nginx 代理的域名可将流量转发至配置的客户机，客户机将服务端转发过来的流量转发至本机的监听相应端口的服务。</strong></p>
+<p class="indent--2">作用：vhost 配置文件的作用是为了将多个 server 配置文件的信息，单独存放，不过于集中在 nginx.conf 配置中，这样有用助于故障排除，如配置查看</p>
+<p class="indent--2"><strong>通过访问服务端 nginx 代理的域名可将流量转发至配置的客户机，客户机将服务端转发过来的流量转发至本机的监听相应端口的服务。</strong></p>
 <h2 id="nginx代理服务端-"><strong>nginx 代理服务端：</strong></h2>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-c1">#网易云音乐API虚拟主机块配置</span>
 server<span class="highlight-o">{</span>
@@ -417,7 +417,7 @@ http <span class="highlight-o">{</span>
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1606244437047"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -451,7 +451,7 @@ http <span class="highlight-o">{</span>
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1606244437047', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1589284354518",
@@ -473,4 +473,4 @@ http <span class="highlight-o">{</span>
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 419ms, 2020/12/15 13:57:25 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 486ms, 2020/12/25 09:37:43 -->

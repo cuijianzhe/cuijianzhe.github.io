@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>python脚本操作数据库 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="python脚本操作数据库 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/07/26/1564125997971.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="python脚本操作数据库 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/07/26/1564125997971.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1606244437047"/>
+              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
             <link rel="prev" title="语录" href="https://cuijianzhe.github.io/articles/2019/07/23/1563852507972.html">
             <link rel="next" title="学生管理系统" href="https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html">
     <!--鼠标点击特效-->
@@ -29,7 +29,7 @@
                 <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
                     <img src="/images/github-icon.png" alt="我的开源"> 我的开源
                 </a>
-                <a class="fn__flex-inline" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
                      服务器倒计时
                 </a>
 
@@ -158,7 +158,7 @@
             <section class="item__content item__content--article vditor-reset">
                 <h1 id="python数据库基本操作">python 数据库基本操作</h1>
 <hr>
-<p>  操作关键字<br>
+<p class="indent--2">操作关键字<br>
 创建连接     connect [kəˈnekt] 连接<br>
 实例化游标   cursor [ˈkɜːsə(r)] 游标<br>
 执行 SQL 语句 execute [ˈeksɪkjuːt] 实行;执行;<br>
@@ -183,7 +183,7 @@
 <span class="highlight-n">cursor</span><span class="highlight-o">.</span><span class="highlight-n">close</span><span class="highlight-p">()</span>
 <span class="highlight-c1">#关闭数据库</span>
 </code></pre>
-<p>  查看数据库：</p>
+<p class="indent--2">查看数据库：</p>
 <pre><code class="language-mysql highlight-chroma"><span class="highlight-n">mysql</span><span class="highlight-o">&gt;</span> <span class="highlight-k">show</span> <span class="highlight-kp">tables</span><span class="highlight-p">;</span>
 <span class="highlight-o">+----------------------+</span>
 <span class="highlight-o">|</span> <span class="highlight-n">Tables_in_cuijianzhe</span> <span class="highlight-o">|</span>
@@ -204,7 +204,7 @@
 <span class="highlight-mi">4</span> <span class="highlight-n">rows</span> <span class="highlight-k">in</span> <span class="highlight-kt">set</span> <span class="highlight-p">(</span><span class="highlight-mi">0</span><span class="highlight-p">.</span><span class="highlight-mi">00</span> <span class="highlight-n">sec</span><span class="highlight-p">)</span>
 
 </code></pre>
-<p>  connect 参数详解：<br>
+<p class="indent--2">connect 参数详解：<br>
 •      host=None,          	# 要连接的主机地址<br>
 •      user=None,          	# 用于登录的数据库用户<br>
 •      password='',        	# 密码<br>
@@ -239,7 +239,7 @@
 <span class="highlight-c1">#关闭数据库
 </span><span class="highlight-c1"></span><span class="highlight-n">db</span><span class="highlight-p">.</span><span class="highlight-nf">close</span><span class="highlight-p">()</span>
 </code></pre>
-<p>  查看表结构：</p>
+<p class="indent--2">查看表结构：</p>
 <pre><code class="language-mysql highlight-chroma"><span class="highlight-n">mysql</span><span class="highlight-o">&gt;</span> <span class="highlight-k">select</span> <span class="highlight-o">*</span> <span class="highlight-k">from</span> <span class="highlight-n">teacher</span><span class="highlight-err">\</span><span class="highlight-n">G</span>
 <span class="highlight-o">***************************</span> <span class="highlight-mi">1</span><span class="highlight-p">.</span> <span class="highlight-n">row</span> <span class="highlight-o">***************************</span>
        <span class="highlight-n">id</span><span class="highlight-p">:</span> <span class="highlight-mi">1</span>
@@ -272,7 +272,7 @@
 <span class="highlight-c1">#关闭数据库连接</span>
 <span class="highlight-n">db</span><span class="highlight-o">.</span><span class="highlight-n">close</span><span class="highlight-p">()</span>
 </code></pre>
-<p>  查看相关操作结果：</p>
+<p class="indent--2">查看相关操作结果：</p>
 <pre><code class="highlight-chroma">mysql&gt; show tables;
 +----------------------+
 | Tables_in_cuijianzhe |
@@ -324,7 +324,7 @@ mysql&gt; show tables;
 
 </code></pre>
 <h2 id="五-数据库查询操作">五、数据库查询操作</h2>
-<p>  Python 查询 MySQL 使用 fetchone() 方法获取单条数据， 使用 fetchall() 方法获取多条数据。<br>
+<p class="indent--2">Python 查询 MySQL 使用 fetchone() 方法获取单条数据， 使用 fetchall() 方法获取多条数据。<br>
 fetchone(): 	该方法获取下一个查询结果集。结果集是一个对象<br>
 fetchall(): 	接收全部的返回结果行。<br>
 rowcount: 	这是一个只读属性，并返回执行 execute()方法后影响的行数。</p>
@@ -466,7 +466,7 @@ rowcount: 	这是一个只读属性，并返回执行 execute()方法后影响�
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1606244437047"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -500,7 +500,7 @@ rowcount: 	这是一个只读属性，并返回执行 execute()方法后影响�
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1606244437047', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1564125997971",
@@ -522,4 +522,4 @@ rowcount: 	这是一个只读属性，并返回执行 execute()方法后影响�
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 416ms, 2020/12/15 13:57:41 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 494ms, 2020/12/25 09:38:02 -->

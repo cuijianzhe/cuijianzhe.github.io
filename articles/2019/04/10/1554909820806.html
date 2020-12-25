@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>部署 docker-solo 博客每日自动升级 - 邯城往事</title><meta name="description" content="  docker-solo 自动升级脚本-最终"/><meta property="og:description" content="  docker-solo 自动升级脚本-最终"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="部署 docker-solo 博客每日自动升级 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/04/10/1554909820806.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="部署 docker-solo 博客每日自动升级 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/04/10/1554909820806.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1606244437047"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>部署 docker-solo 博客每日自动升级 - 邯城往事</title><meta name="description" content="docker-solo 自动升级脚本-最终"/><meta property="og:description" content="docker-solo 自动升级脚本-最终"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="部署 docker-solo 博客每日自动升级 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/04/10/1554909820806.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="部署 docker-solo 博客每日自动升级 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/04/10/1554909820806.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
             <link rel="prev" title="编写一个自动安装zabbix-agentd客户端的脚本" href="https://cuijianzhe.github.io/articles/2019/04/07/1554637687016.html">
             <link rel="next" title="记一次grafana变量取值的过程" href="https://cuijianzhe.github.io/articles/2019/04/16/1555410740995.html">
     <!--鼠标点击特效-->
@@ -29,7 +29,7 @@
                 <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
                     <img src="/images/github-icon.png" alt="我的开源"> 我的开源
                 </a>
-                <a class="fn__flex-inline" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
                      服务器倒计时
                 </a>
 
@@ -159,7 +159,7 @@
         <div class="wrapper">
             <section class="item__content item__content--article vditor-reset">
                 <h1 id="docker-solo-自动升级脚本-最终">docker-solo 自动升级脚本-最终</h1>
-<p>  <strong>记得给脚本添加可执行权限：</strong> <code>chmod +x solo.sh</code></p>
+<p class="indent--2"><strong>记得给脚本添加可执行权限：</strong> <code>chmod +x solo.sh</code></p>
 <ul>
 <li>特性：</li>
 </ul>
@@ -277,7 +277,7 @@ main
 <pre><code class="highlight-chroma">00 03 * * * /shell/solo.sh &gt;&gt;/var/log/solo.log
 </code></pre>
 <h2 id="1-1-版本"><del>1.1 版本</del></h2>
-<p>  <strong>特性：自动升级 solo 博客版本，打印升级所用时间，是否报错等信息</strong><br>
+<p class="indent--2"><strong>特性：自动升级 solo 博客版本，打印升级所用时间，是否报错等信息</strong><br>
 定于每周三的早上 5 点准时升级 solo，有那么一段时间发现 pull 一个 solo 镜像用了好长时间，打算打印一下时间计算下 pull 一个镜像到底又做猛？</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-cp">#!/bin/bash
 </span><span class="highlight-cp"></span><span class="highlight-c1">#</span>
@@ -312,9 +312,9 @@ docker run --detach --name solo --network<span class="highlight-o">=</span>host 
 
 <span class="highlight-nb">echo</span> <span class="highlight-s2">"----------------升级完毕！！！！-----------------------------"</span>
 </code></pre>
-<p>  下次升级看下打印的日志，安排一下啊，大哥，不想本地测试了！下周三的</p>
+<p class="indent--2">下次升级看下打印的日志，安排一下啊，大哥，不想本地测试了！下周三的</p>
 <h2 id="1-2-版本"><del>1.2 版本</del></h2>
-<p>  新增特性：自动删除下载的 docker images，因为每次升级，原有的 images 不会删除，升级后自动删除特性增加</p>
+<p class="indent--2">新增特性：自动删除下载的 docker images，因为每次升级，原有的 images 不会删除，升级后自动删除特性增加</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-cp">#!/bin/bash  
 </span><span class="highlight-cp"></span>  
 <span class="highlight-c1">#  </span>
@@ -498,7 +498,7 @@ docker images
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1606244437047"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -532,7 +532,7 @@ docker images
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1606244437047', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1554909820806",
@@ -554,4 +554,4 @@ docker images
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 395ms, 2020/12/15 13:57:49 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 450ms, 2020/12/25 09:38:11 -->

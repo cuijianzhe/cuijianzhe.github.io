@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>kubeadm搭建kubernets-1.16.2 - 邯城往事</title><meta name="description" content="  愿有岁月可回首，且以深情共白头。"/><meta property="og:description" content="  愿有岁月可回首，且以深情共白头。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="kubeadm搭建kubernets-1.16.2 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/04/10/1586510174363.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="kubeadm搭建kubernets-1.16.2 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/04/10/1586510174363.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1606244437047"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>kubeadm搭建kubernets-1.16.2 - 邯城往事</title><meta name="description" content="愿有岁月可回首，且以深情共白头。"/><meta property="og:description" content="愿有岁月可回首，且以深情共白头。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="kubeadm搭建kubernets-1.16.2 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/04/10/1586510174363.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="kubeadm搭建kubernets-1.16.2 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/04/10/1586510174363.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
             <link rel="prev" title="利用Python实现网易云音乐自动签到" href="https://cuijianzhe.github.io/articles/2020/03/27/1585293177882.html">
             <link rel="next" title="Django应用容器化 " href="https://cuijianzhe.github.io/articles/2020/04/12/1586677258146.html">
     <!--鼠标点击特效-->
@@ -29,7 +29,7 @@
                 <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
                     <img src="/images/github-icon.png" alt="我的开源"> 我的开源
                 </a>
-                <a class="fn__flex-inline" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
                      服务器倒计时
                 </a>
 
@@ -248,9 +248,9 @@
 </tbody>
 </table>
 <h3 id="设置hosts解析">设置 hosts 解析</h3>
-<p>  操作节点：所有节点（<code>k8s-master，k8s-slave</code>）均需执行</p>
-<p>  <code>hostnamectl set-hostname k8s-master</code></p>
-<p>  <strong>添加 hosts 解析</strong></p>
+<p class="indent--2">操作节点：所有节点（<code>k8s-master，k8s-slave</code>）均需执行</p>
+<p class="indent--2"><code>hostnamectl set-hostname k8s-master</code></p>
+<p class="indent--2"><strong>添加 hosts 解析</strong></p>
 <pre><code class="highlight-chroma">cat &gt;&gt; /etc/hosts &lt;&lt;EOF
 10.200.51.36 k8s-master
 10.200.51.49 k8s-slave1
@@ -261,7 +261,7 @@ EOF
 <ul>
 <li><strong>设置安全组开放端口</strong></li>
 </ul>
-<p>  如果节点间无安全组限制（内网机器间可以任意访问），可以忽略，否则，至少保证如下端口可通：<br>
+<p class="indent--2">如果节点间无安全组限制（内网机器间可以任意访问），可以忽略，否则，至少保证如下端口可通：<br>
 k8s-master 节点：TCP：6443，2379，2380，60080，60081UDP 协议端口全部打开<br>
 k8s-slave 节点：UDP 协议端口全部打开</p>
 <ul>
@@ -305,7 +305,7 @@ EOF
 $ yum clean all &amp;&amp; yum makecache
 </code></pre>
 <h3 id="安装docker">安装 docker</h3>
-<p>  操作节点：matser、slave</p>
+<p class="indent--2">操作节点：matser、slave</p>
 <ul>
 <li>查看所有的可用版本</li>
 </ul>
@@ -334,11 +334,11 @@ $ yum install docker-ce-18.09.9
 </ul>
 <h2 id="kubernets组建理解">kubernets 组建理解</h2>
 <h6 id="理解集群资源">理解集群资源</h6>
-<p>  组件是为了支撑 k8s 平台的运行，安装好的软件。</p>
-<p>  资源是如何去使用 k8s 的能力的定义。比如，k8s 可以使用 Pod 来管理业务应用，那么 Pod 就是 k8s 集群中的一类资源，集群中的所有资源可以提供如下方式查看：</p>
-<p>  <code>$ kubectl api-resources</code></p>
-<p>  <strong>如何理解 namespace：</strong></p>
-<p>  命名空间，集群内一个虚拟的概念，类似于资源池的概念，一个池子里可以有各种资源类型，绝大多数的资源都必须属于某一个 namespace。集群初始化安装好之后，会默认有如下几个 namespace：</p>
+<p class="indent--2">组件是为了支撑 k8s 平台的运行，安装好的软件。</p>
+<p class="indent--2">资源是如何去使用 k8s 的能力的定义。比如，k8s 可以使用 Pod 来管理业务应用，那么 Pod 就是 k8s 集群中的一类资源，集群中的所有资源可以提供如下方式查看：</p>
+<p class="indent--2"><code>$ kubectl api-resources</code></p>
+<p class="indent--2"><strong>如何理解 namespace：</strong></p>
+<p class="indent--2">命名空间，集群内一个虚拟的概念，类似于资源池的概念，一个池子里可以有各种资源类型，绝大多数的资源都必须属于某一个 namespace。集群初始化安装好之后，会默认有如下几个 namespace：</p>
 <pre><code class="highlight-chroma">[root@k8s-master ~]# kubectl get namespace
 NAME                   STATUS   AGE
 default                Active   47h
@@ -354,16 +354,16 @@ kubernetes-dashboard   Active   46h
 <li>通常在项目使用的时候，我们会创建带有业务含义的 namespace 来做逻辑上的整合</li>
 </ul>
 <h3 id="kubectl的使用">kubectl 的使用</h3>
-<p>  类似于 docker，kubectl 是命令行工具，用于与 APIServer 交互，内置了丰富的子命令，功能极其强大。 <a href="https://kubernetes.io/docs/reference/kubectl/overview/" target="_blank">https://kubernetes.io/docs/reference/kubectl/overview/</a></p>
+<p class="indent--2">类似于 docker，kubectl 是命令行工具，用于与 APIServer 交互，内置了丰富的子命令，功能极其强大。 <a href="https://kubernetes.io/docs/reference/kubectl/overview/" target="_blank">https://kubernetes.io/docs/reference/kubectl/overview/</a></p>
 <pre><code class="language-bash highlight-chroma">$ kubectl -h
 $ kubectl get -h
 $ kubectl create -h
 $ kubectl create namespace -h
 </code></pre>
-<p>  kubectl 如何管理集群资源<br>
+<p class="indent--2">kubectl 如何管理集群资源<br>
 <code> kubectl get po -v=7</code></p>
 <h2 id="安装k8s">安装 k8s</h2>
-<p>  <strong>所有节点安装：</strong></p>
+<p class="indent--2"><strong>所有节点安装：</strong></p>
 <pre><code class="highlight-chroma">$ yum install -y kubelet-1.16.2 kubeadm-1.16.2 kubectl-1.16.2 --disableexcludes=kubernetes
 ## 查看kubeadm 版本
 $ kubeadm version
@@ -371,7 +371,7 @@ $ kubeadm version
 $ systemctl enable kubelet
 </code></pre>
 <h4 id="初始化配置文件">初始化配置文件</h4>
-<p>  操作节点： 只在 master 节点（<code>k8s-master</code>）执行</p>
+<p class="indent--2">操作节点： 只在 master 节点（<code>k8s-master</code>）执行</p>
 <pre><code class="language-bash highlight-chroma">$ kubeadm config print init-defaults &gt; kubeadm.yaml
 $ cat kubeadm.yaml
 apiVersion: kubeadm.k8s.io/v1beta2
@@ -418,7 +418,7 @@ scheduler: <span class="highlight-o">{}</span>
 <p>对于上面的资源清单的文档比较杂，要想完整了解上面的资源对象对应的属性，可以查看对应的 godoc 文档，地址： <a href="https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2" target="_blank">https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2</a>。</p>
 </blockquote>
 <h4 id="下载镜像">下载镜像</h4>
-<p>  操作节点：只在 master 节点（<code>k8s-master</code>）执行<br>
+<p class="indent--2">操作节点：只在 master 节点（<code>k8s-master</code>）执行<br>
 #查看需要使用的镜像列表，若无问题，将得到如下列表：</p>
 <pre><code class="highlight-chroma">[root@k8s-master ~]# kubeadm config images list --config kubeadm.yaml
 registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.16.2
@@ -429,9 +429,9 @@ registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.1
 registry.cn-hangzhou.aliyuncs.com/google_containers/etcd:3.3.15-0
 registry.cn-hangzhou.aliyuncs.com/google_containers/coredns:1.6.2
 </code></pre>
-<p>  #提前下载镜像到本地<br>
+<p class="indent--2">#提前下载镜像到本地<br>
 <code>kubeadm config images pull --config kubeadm.yaml</code></p>
-<p>  #查看使用的镜像源</p>
+<p class="indent--2">#查看使用的镜像源</p>
 <pre><code class="highlight-chroma">[root@k8s-master ~]# kubeadm config images list --config kubeadm.yaml
 registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.16.2
 registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.16.2
@@ -442,8 +442,8 @@ registry.cn-hangzhou.aliyuncs.com/google_containers/etcd:3.3.15-0
 registry.cn-hangzhou.aliyuncs.com/google_containers/coredns:1.6.2
 </code></pre>
 <h3 id="初始化master节点">初始化 master 节点</h3>
-<p>  <code>kubeadm init --config kubeadm.yaml</code></p>
-<p>  若初始化成功后，接下来按照提示信息操作，配置 kubectl 客户端的认证</p>
+<p class="indent--2"><code>kubeadm init --config kubeadm.yaml</code></p>
+<p class="indent--2">若初始化成功后，接下来按照提示信息操作，配置 kubectl 客户端的认证</p>
 <pre><code class="highlight-chroma">Your Kubernetes control-plane has initialized successfully!
 
 To start using your cluster, you need to run the following as a regular user:
@@ -466,19 +466,19 @@ kubeadm join 192.168.51.209:6443 --token abcdef.0123456789abcdef \
 若执行初始化过程中出错，根据错误信息调整后，执行 kubeadm reset 后再次执行 init 操作即可。</p>
 </blockquote>
 <h3 id="添加slave节点到集群中">添加 slave 节点到集群中</h3>
-<p>  操作节点：所有的 slave 节点（<code>k8s-slave</code>）需要执行<br>
+<p class="indent--2">操作节点：所有的 slave 节点（<code>k8s-slave</code>）需要执行<br>
 在每台 slave 节点，执行如下命令，该命令是在 kubeadm init 成功后提示信息中打印出来的，需要替换成实际 init 后打印出的命令。</p>
 <pre><code class="highlight-chroma">kubeadm join 10.200.51.36:6443 --token abcdef.0123456789abcdef \
     --discovery-token-ca-cert-hash sha256:1c4305f032f4bf534f628c32f5039084f4b103c922ff71b12a5f0f98d1ca9a4f
 </code></pre>
 <h3 id="安装flannel网络插件">安装 flannel 网络插件</h3>
-<p>  操作节点：只在 master 节点（<code>k8s-master</code>）执行</p>
+<p class="indent--2">操作节点：只在 master 节点（<code>k8s-master</code>）执行</p>
 <ul>
 <li>下载 flannel 的 YAML 网络插件</li>
 </ul>
 <pre><code class="highlight-chroma">wget https://raw.githubusercontent.com/coreos/flannel/2140ac876ef134e0ed5af15c65e414cf26827915/Documentation/kube-flannel.yml
 </code></pre>
-<p>  修改配置，指定网卡名称，添加一行配置：</p>
+<p class="indent--2">修改配置，指定网卡名称，添加一行配置：</p>
 <pre><code class="highlight-chroma">[root@k8s-master ~]# vim kube-flannel.yml
 
 ...
@@ -505,9 +505,9 @@ kubeadm join 192.168.51.209:6443 --token abcdef.0123456789abcdef \
 ...
 </code></pre>
 <h3 id="先拉取镜像-此过程国内速度比较慢">先拉取镜像，此过程国内速度比较慢</h3>
-<p>  <code>$ docker pull quay.io/coreos/flannel:v0.11.0-amd64</code></p>
+<p class="indent--2"><code>$ docker pull quay.io/coreos/flannel:v0.11.0-amd64</code></p>
 <h4 id="执行flannel安装">执行 flannel 安装</h4>
-<p>  <code>$ kubectl create -f kube-flannel.yml</code></p>
+<p class="indent--2"><code>$ kubectl create -f kube-flannel.yml</code></p>
 <h3 id="验证集群">验证集群</h3>
 <pre><code class="highlight-chroma">[root@k8s-master ~]# kubectl get nodes
 NAME         STATUS   ROLES    AGE   VERSION
@@ -546,7 +546,7 @@ NAME                        TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    
 dashboard-metrics-scraper   ClusterIP   10.98.136.3    &lt;none&gt;        8000/TCP        46h
 kubernetes-dashboard        NodePort    10.105.51.87   &lt;none&gt;        443:31600/TCP   46h
 </code></pre>
-<p>  推荐用火狐浏览器打开：https://10.200.51.36:31600</p>
+<p class="indent--2">推荐用火狐浏览器打开：https://10.200.51.36:31600</p>
 <ul>
 <li>创建 ServiceAccount 进行访问</li>
 </ul>
@@ -580,10 +580,10 @@ admin-token-rxxdr                  kubernetes.io/service-account-token   3      
 [root@k8s-master ~]#  kubectl -n kubernetes-dashboard get secret admin-token-rxxdr -o jsonpath={.data.token}|base64 -d
 eyJhbGciOiJSUzI1NiIsImtpZCI6IlFGT1ltSGp0S1RfckhVaW1XNV9qQVVxZ0t1TEk1WFUzbDN6U193N2tkbjAifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi10b2tlbi1yeHhkciIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJhZG1pbiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjU0NmIxMGY3LWJlNTItNGYzMC1iMDcwLTUyOTAxNmI2ZGRiYiIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDphZG1pbiJ9.Y0rX5hxebuJShcTMNPaMgCXicVSZtxcx31HoZhiB-_cFt8PAdU5GU8nGiGbvt2LW-iNqn_0E1RuuMwEsD26rfnClt23IPZpBriPEZ84fb4QQZurFsloCthM8R2YmPVy3owYN-Y-dEilsSnofhHpB2Z6oLKXHt0W7yNqUse7MSRlQNedosgpTP0E6AhL9z7GoE6l-M_SUuhR2gNc8jqo8EkG-06jOJB5DIi_SLzME4sAduqkRm4zDlJECortKvpfr02FEQ5UBwxquteqqQjyOAWo1K3tM8_fd_RMwWXCZAaaJLXgOXhDzAzkkDACx2XR0Ugzin3W_IAyVGqcCvleP2Q
 </code></pre>
-<p>  然后浏览器访问：<br>
+<p class="indent--2">然后浏览器访问：<br>
 <img src="https://img.hacpai.com/file/2020/04/image-3c7c139d.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <h2 id="清理环境">清理环境</h2>
-<p>  如果你的集群安装过程中遇到了其他问题，我们可以使用下面的命令来进行重置：</p>
+<p class="indent--2">如果你的集群安装过程中遇到了其他问题，我们可以使用下面的命令来进行重置：</p>
 <pre><code class="highlight-chroma">$ kubeadm reset
 $ ifconfig cni0 down &amp;&amp; ip link delete cni0
 $ ifconfig flannel.1 down &amp;&amp; ip link delete flannel.1
@@ -752,7 +752,7 @@ $ rm -rf /var/lib/cni/
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1606244437047"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -786,7 +786,7 @@ $ rm -rf /var/lib/cni/
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1606244437047', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1586510174363",
@@ -808,4 +808,4 @@ $ rm -rf /var/lib/cni/
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 392ms, 2020/12/15 13:57:29 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 451ms, 2020/12/25 09:37:48 -->

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>zabbix自动发现华为AC6605管理AP状态以及连接数 - 邯城往事</title><meta name="description" content="  金纵买相如赋，脉脉此情谁诉。"/><meta property="og:description" content="  金纵买相如赋，脉脉此情谁诉。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="zabbix自动发现华为AC6605管理AP状态以及连接数 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/08/05/1564987766272.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="zabbix自动发现华为AC6605管理AP状态以及连接数 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/08/05/1564987766272.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1606244437047"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>zabbix自动发现华为AC6605管理AP状态以及连接数 - 邯城往事</title><meta name="description" content="金纵买相如赋，脉脉此情谁诉。"/><meta property="og:description" content="金纵买相如赋，脉脉此情谁诉。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="zabbix自动发现华为AC6605管理AP状态以及连接数 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/08/05/1564987766272.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="zabbix自动发现华为AC6605管理AP状态以及连接数 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/08/05/1564987766272.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
             <link rel="prev" title="学生管理系统" href="https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html">
             <link rel="next" title="Request 方法" href="https://cuijianzhe.github.io/articles/2019/08/14/1565771931308.html">
     <!--鼠标点击特效-->
@@ -29,7 +29,7 @@
                 <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
                     <img src="/images/github-icon.png" alt="我的开源"> 我的开源
                 </a>
-                <a class="fn__flex-inline" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
                      服务器倒计时
                 </a>
 
@@ -158,7 +158,7 @@
         <div class="item__cover" style="background-image: url(https://img.hacpai.com/file/2019/08/image-a6c13673.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100)"></div>
         <div class="wrapper">
             <section class="item__content item__content--article vditor-reset">
-                <p>  <strong>先把需要用的 snmp 的 oid 值获取到手。? 具体的 MIB 文件官网上查找即可：</strong><img src="https://img.hacpai.com/file/2019/08/image-a6c13673.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"><br>
+                <p class="indent--2"><strong>先把需要用的 snmp 的 oid 值获取到手。? 具体的 MIB 文件官网上查找即可：</strong><img src="https://img.hacpai.com/file/2019/08/image-a6c13673.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"><br>
 <strong>yum 安装：</strong><br>
 zabbix 运行脚本目录：<code>/usr/lib/zabbix/externalscripts</code><br>
 zabbix 配置文件目录：<code>/etc/zabbix/zabbix_agentd.d</code><br>
@@ -217,26 +217,26 @@ zabbix 配置文件目录：<code>/usr/local/zabbix/etc/zabbix_agentd.conf.d</co
     <span class="highlight-k">print</span><span class="highlight-p">(</span><span class="highlight-n">json</span><span class="highlight-o">.</span><span class="highlight-n">dumps</span><span class="highlight-p">({</span><span class="highlight-s1">'data'</span><span class="highlight-p">:</span><span class="highlight-n">ap_list</span><span class="highlight-p">},</span><span class="highlight-n">sort_keys</span><span class="highlight-o">=</span><span class="highlight-bp">True</span><span class="highlight-p">,</span><span class="highlight-n">indent</span><span class="highlight-o">=</span><span class="highlight-mi">4</span><span class="highlight-p">,</span><span class="highlight-n">separators</span><span class="highlight-o">=</span><span class="highlight-p">(</span><span class="highlight-s1">','</span><span class="highlight-p">,</span><span class="highlight-s1">':'</span><span class="highlight-p">)))</span>
 
 </code></pre>
-<p>  在目录/etc/zabbix/zabbix_agentd.d 里面创建 monitor_wlan.conf 文件</p>
+<p class="indent--2">在目录/etc/zabbix/zabbix_agentd.d 里面创建 monitor_wlan.conf 文件</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-nv">UserParameter</span><span class="highlight-o">=</span>wlan.alive,/usr/local/zabbix/share/zabbix/externalscripts/monitor_wlan.sh
 </code></pre>
-<p>  取出 AP-id 和 ap-name<br>
+<p class="indent--2">取出 AP-id 和 ap-name<br>
 <img src="https://img.hacpai.com/file/2019/09/image-e994c25c.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>  <img src="https://img.hacpai.com/file/2019/08/image-eee3f2d7.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>  AP 状态脚本：（需要把自动发现脚本（apdiscovery）里面的参数 ap-id 传参进来）</p>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/08/image-eee3f2d7.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2">AP 状态脚本：（需要把自动发现脚本（apdiscovery）里面的参数 ap-id 传参进来）</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@zabbix /usr/local/zabbix/share/zabbix/externalscripts<span class="highlight-o">]</span><span class="highlight-c1"># cat ap_status.sh </span>
 <span class="highlight-c1">#!/bin/bash</span>
 <span class="highlight-nv">apid</span><span class="highlight-o">=</span><span class="highlight-nv">$1</span>
 snmpwalk -v 2c -c limi@2018  10.200.250.5 1.3.6.1.4.1.2011.6.139.13.3.10.1.7.<span class="highlight-si">${</span><span class="highlight-nv">apid</span><span class="highlight-si">}</span> <span class="highlight-p">|</span> awk <span class="highlight-s1">'{print $4}'</span>
 </code></pre>
-<p>  AP 连接用户数脚本：</p>
+<p class="indent--2">AP 连接用户数脚本：</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@zabbix /usr/local/zabbix/share/zabbix/externalscripts<span class="highlight-o">]</span><span class="highlight-c1"># cat apuser.sh </span>
 <span class="highlight-c1">#!/bin/bash</span>
 <span class="highlight-nv">apid</span><span class="highlight-o">=</span><span class="highlight-nv">$1</span>
 snmpwalk -v 2c -c limi@2018  10.200.250.5 1.3.6.1.4.1.2011.6.139.13.3.10.1.45.<span class="highlight-si">${</span><span class="highlight-nv">apid</span><span class="highlight-si">}</span> <span class="highlight-p">|</span> awk <span class="highlight-s1">'{print $4}'</span>
 </code></pre>
-<p>  例如：</p>
-<p>  <img src="https://img.hacpai.com/file/2019/08/image-6d461848.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2">例如：</p>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/08/image-6d461848.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <h2 id="二-配置zabbix-agentd的配置目录里面的脚本关系-">二、配置 zabbix_agentd 的配置目录里面的脚本关系：</h2>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@zabbix /usr/local/zabbix/etc/zabbix_agentd.conf.d<span class="highlight-o">]</span><span class="highlight-c1"># cat discoveryapid.conf </span>
 <span class="highlight-nv">UserParameter</span><span class="highlight-o">=</span>discovery_apid,/usr/local/zabbix/share/zabbix/externalscripts/apdiscovery.sh
@@ -248,26 +248,26 @@ snmpwalk -v 2c -c limi@2018  10.200.250.5 1.3.6.1.4.1.2011.6.139.13.3.10.1.45.<s
 <li>创建一个模板：<br>
 <img src="https://img.hacpai.com/file/2019/08/image-7b68489b.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></li>
 </ol>
-<p>  2.创建自动发现规则：<br>
+<p class="indent--2">2.创建自动发现规则：<br>
 <img src="https://img.hacpai.com/file/2019/08/image-cb1af057.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"><br>
 里面配置如下：<br>
 <img src="https://img.hacpai.com/file/2019/08/image-0b3b0798.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>  3.配置监控项原型：<br>
+<p class="indent--2">3.配置监控项原型：<br>
 <img src="https://img.hacpai.com/file/2019/08/image-cd010809.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>  <img src="https://img.hacpai.com/file/2019/08/image-a1485af4.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>  4.设置触发器：<br>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/08/image-a1485af4.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2">4.设置触发器：<br>
 <img src="https://img.hacpai.com/file/2019/08/image-35fbdb99.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>  <img src="https://img.hacpai.com/file/2019/08/image-1e53f5ab.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/08/image-1e53f5ab.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <ol start="5">
 <li>新建主机：<br>
 <img src="https://img.hacpai.com/file/2019/08/image-a0d93ccf.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"><br>
 绑定模板：<br>
 <img src="https://img.hacpai.com/file/2019/08/image-b70694e4.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></li>
 </ol>
-<p>  <strong>等待几分钟后便可出来结果（AP 上下行速率自动发现同理）：</strong><br>
+<p class="indent--2"><strong>等待几分钟后便可出来结果（AP 上下行速率自动发现同理）：</strong><br>
 <img src="https://img.hacpai.com/file/2019/08/image-b8b64fc0.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>  <strong>报警内容：</strong></p>
-<p>  <img src="https://b3logfile.com/file/2020/07/image-a08c8f3b.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><strong>报警内容：</strong></p>
+<p class="indent--2"><img src="https://b3logfile.com/file/2020/07/image-a08c8f3b.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
                     <div>
                         <hr>
 
@@ -383,7 +383,7 @@ snmpwalk -v 2c -c limi@2018  10.200.250.5 1.3.6.1.4.1.2011.6.139.13.3.10.1.45.<s
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1606244437047"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -417,7 +417,7 @@ snmpwalk -v 2c -c limi@2018  10.200.250.5 1.3.6.1.4.1.2011.6.139.13.3.10.1.45.<s
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1606244437047', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1564987766272",
@@ -439,4 +439,4 @@ snmpwalk -v 2c -c limi@2018  10.200.250.5 1.3.6.1.4.1.2011.6.139.13.3.10.1.45.<s
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 396ms, 2020/12/15 13:57:41 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 454ms, 2020/12/25 09:38:02 -->

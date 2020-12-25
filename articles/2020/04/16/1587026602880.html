@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>配置Openldap主从 - 邯城往事</title><meta name="description" content="  希望我跟你的名字能写在一起，不管是在婚礼的喜帖上，还是在葬礼的墓碑上。"/><meta property="og:description" content="  希望我跟你的名字能写在一起，不管是在婚礼的喜帖上，还是在葬礼的墓碑上。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="配置Openldap主从 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/04/16/1587026602880.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="配置Openldap主从 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/04/16/1587026602880.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1606244437047"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>配置Openldap主从 - 邯城往事</title><meta name="description" content="希望我跟你的名字能写在一起，不管是在婚礼的喜帖上，还是在葬礼的墓碑上。"/><meta property="og:description" content="希望我跟你的名字能写在一起，不管是在婚礼的喜帖上，还是在葬礼的墓碑上。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="配置Openldap主从 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/04/16/1587026602880.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="配置Openldap主从 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/04/16/1587026602880.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
             <link rel="prev" title="KUbernets实践之pod" href="https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html">
             <link rel="next" title="用Python实现widows下ping程序" href="https://cuijianzhe.github.io/articles/2020/04/18/1587188601330.html">
     <!--鼠标点击特效-->
@@ -29,7 +29,7 @@
                 <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
                     <img src="/images/github-icon.png" alt="我的开源"> 我的开源
                 </a>
-                <a class="fn__flex-inline" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
                      服务器倒计时
                 </a>
 
@@ -161,7 +161,7 @@
                 <blockquote>
 <p><strong>公司有一台单点 ldap 服务器，为了账户备份以及灾备，搭建从服务器。</strong></p>
 </blockquote>
-<p>  <strong>首先找两台机器：</strong></p>
+<p class="indent--2"><strong>首先找两台机器：</strong></p>
 <table>
 <thead>
 <tr>
@@ -183,17 +183,17 @@
 </tr>
 </tbody>
 </table>
-<p>  <strong>系统：</strong></p>
+<p class="indent--2"><strong>系统：</strong></p>
 <pre><code class="highlight-chroma">[root@ldap-slave ~]# cat /etc/redhat-release 
 CentOS Linux release 7.7.1908 (Core)
 </code></pre>
-<p>  <strong>配置 yum 源：</strong></p>
-<p>  <code>wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</code></p>
-<p>  <strong>主机名修改：</strong><br>
+<p class="indent--2"><strong>配置 yum 源：</strong></p>
+<p class="indent--2"><code>wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</code></p>
+<p class="indent--2"><strong>主机名修改：</strong><br>
 <code>hostnamectl set-hostname ldap-master</code></p>
 <h2 id="安装OpenLDAP"><strong>安装 OpenLDAP</strong></h2>
-<p>  <strong>master 和 slave 都需要执行安装和基本数据配置</strong></p>
-<p>  <code>yum -y install openldap compat-openldap openldap-clients openldap-servers openldap-servers-sql openldap-devel</code></p>
+<p class="indent--2"><strong>master 和 slave 都需要执行安装和基本数据配置</strong></p>
+<p class="indent--2"><code>yum -y install openldap compat-openldap openldap-clients openldap-servers openldap-servers-sql openldap-devel</code></p>
 <pre><code class="highlight-chroma">[root@ldap-master ~]# systemctl enable --now slapd
 [root@ldap-master ~]# slapd -VV 
 @(#) $OpenLDAP: slapd 2.4.44 (Jan 29 2019 17:42:45) $
@@ -205,7 +205,7 @@ CentOS Linux release 7.7.1908 (Core)
 {SSHA}LxwE7ndCNs3aE58ufW48/v7ziKKcbtEb
 </code></pre>
 <h3 id="修改openldap的基本配置"><strong>修改 openldap 的基本配置</strong></h3>
-<p>  <strong>设定数据库：</strong></p>
+<p class="indent--2"><strong>设定数据库：</strong></p>
 <pre><code class="highlight-chroma">cat &gt; db.ldif &lt;&lt;EOF
 dn: olcDatabase={2}hdb,cn=config
 changetype: modify
@@ -252,14 +252,14 @@ SASL username: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth
 SASL SSF: 0
 modifying entry "olcDatabase={1}monitor,cn=config"
 </code></pre>
-<p>  <strong>配置 ldap 数据库</strong><br>
+<p class="indent--2"><strong>配置 ldap 数据库</strong><br>
 <code>cp /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG </code></p>
-<p>  <strong>导入基础 schema</strong></p>
+<p class="indent--2"><strong>导入基础 schema</strong></p>
 <pre><code class="highlight-chroma">ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif
 ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif 
 ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
 </code></pre>
-<p>  <strong>配置 openldap 基础数据库</strong></p>
+<p class="indent--2"><strong>配置 openldap 基础数据库</strong></p>
 <pre><code class="highlight-chroma">cat &gt; base.ldif &lt;&lt;EOF
 dn: dc=limikeji,dc=com
 dc: limikeji
@@ -290,7 +290,7 @@ adding new entry "ou=People,dc=limikeji,dc=com"
 
 adding new entry "ou=Group,dc=limikeji,dc=com"
 </code></pre>
-<p>  <strong>开启日志</strong></p>
+<p class="indent--2"><strong>开启日志</strong></p>
 <pre><code class="highlight-chroma">cat &gt; loglevel.ldif &lt;&lt; EOF
 dn: cn=config
 changetype: modify
@@ -309,7 +309,7 @@ modifying entry "cn=config"
 [root@ldap-master ~]# systemctl restart slapd
 </code></pre>
 <h2 id="配置master"><strong>配置 master</strong></h2>
-<p>  <strong>创建一个对所有 LDAP 对象具有读访问权限的用户，用作 <code>slave</code> 访问 <code>master</code></strong></p>
+<p class="indent--2"><strong>创建一个对所有 LDAP 对象具有读访问权限的用户，用作 <code>slave</code> 访问 <code>master</code></strong></p>
 <pre><code class="highlight-chroma"> cat &gt; rpuser.ldif &lt;&lt;EOF
 dn: uid=repl,dc=limikeji,dc=com
 objectClass: simpleSecurityObject
@@ -322,7 +322,7 @@ EOF
 <pre><code class="highlight-chroma">[root@ldap-master ~]# ldapadd -x -w limikeji -D "cn=root,dc=limikeji,dc=com" -f rpuser.ldif
 adding new entry "uid=repl,dc=limikeji,dc=com"
 </code></pre>
-<p>  <strong>开启 syncprov module</strong></p>
+<p class="indent--2"><strong>开启 syncprov module</strong></p>
 <pre><code class="highlight-chroma">cat &gt;syncprov_mod.ldif &lt;&lt;EOF
 dn: cn=module,cn=config
 objectClass: olcModuleList
@@ -337,7 +337,7 @@ SASL username: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth
 SASL SSF: 0
 adding new entry "cn=module,cn=config"
 </code></pre>
-<p>  <strong>为每个目录开启 syncprov</strong></p>
+<p class="indent--2"><strong>为每个目录开启 syncprov</strong></p>
 <pre><code class="highlight-chroma">cat &gt;syncprov.ldif &lt;&lt;EOF
 dn: olcOverlay=syncprov,olcDatabase={2}hdb,cn=config
 objectClass: olcOverlayConfig
@@ -353,7 +353,7 @@ SASL SSF: 0
 adding new entry "olcOverlay=syncprov,olcDatabase={2}hdb,cn=config"
 </code></pre>
 <h2 id="配置slave"><strong>配置 slave</strong></h2>
-<p>  <strong>配置同步</strong></p>
+<p class="indent--2"><strong>配置同步</strong></p>
 <pre><code class="highlight-chroma">cat &gt;syncrepl.ldif &lt;&lt;EOF
 dn: olcDatabase={2}hdb,cn=config
 changetype: modify
@@ -386,7 +386,7 @@ modifying entry "olcDatabase={2}hdb,cn=config"
 <li>schemachecking=on   #同步更新时开启语法检测</li>
 </ul>
 <h3 id="测试LDAP的主从复制"><strong>测试 LDAP 的主从复制</strong></h3>
-<p>  <strong>在 master 上添加测试账号</strong></p>
+<p class="indent--2"><strong>在 master 上添加测试账号</strong></p>
 <pre><code class="highlight-chroma">cat &gt; ldaptest.ldif &lt;&lt; EOF
 dn: uid=repltest,ou=People,dc=limikeji,dc=com
 uid: repltest
@@ -413,7 +413,7 @@ EOF
 <pre><code class="highlight-chroma">[root@ldap-master ~]# ldapadd -x -w limikeji -D "cn=root,dc=limikeji,dc=com" -f ldaptest.ldif
 adding new entry "uid=repltest,ou=People,dc=limikeji,dc=com"
 </code></pre>
-<p>  <strong>在 slave 中搜索用户</strong></p>
+<p class="indent--2"><strong>在 slave 中搜索用户</strong></p>
 <pre><code class="highlight-chroma">[root@ldap-slave ~]# ldapsearch -x cn=repltest -b dc=limikeji,dc=com
 # extended LDIF
 #
@@ -467,7 +467,7 @@ Apr 16 04:14:29 ldap-master slapd[13291]: conn=1000 op=0 RESULT tag=97 err=0 tex
 Apr 16 04:14:29 ldap-master slapd[13291]: conn=1000 op=1 SRCH base="dc=limikeji,dc=com" scope=2 deref=0 filter="(objectClass=*)"
 Apr 16 04:14:29 ldap-master slapd[13291]: conn=1000 op=1 SRCH attr=* +
 </code></pre>
-<p>  参考：<br>
+<p class="indent--2">参考：<br>
 <a href="https://www.ilanni.com/?cat=1035" target="_blank">https://www.ilanni.com/?cat=1035</a><br>
 <a href="https://www.cnblogs.com/hope123/p/12083552.html" target="_blank">https://www.cnblogs.com/hope123/p/12083552.html</a><br>
 <a href="https://www.openldap.org/" target="_blank">https://www.openldap.org/</a><br>
@@ -596,7 +596,7 @@ Apr 16 04:14:29 ldap-master slapd[13291]: conn=1000 op=1 SRCH attr=* +
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1606244437047"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -630,7 +630,7 @@ Apr 16 04:14:29 ldap-master slapd[13291]: conn=1000 op=1 SRCH attr=* +
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1606244437047', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1587026602880",
@@ -652,4 +652,4 @@ Apr 16 04:14:29 ldap-master slapd[13291]: conn=1000 op=1 SRCH attr=* +
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 490ms, 2020/12/15 13:57:31 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 450ms, 2020/12/25 09:37:50 -->

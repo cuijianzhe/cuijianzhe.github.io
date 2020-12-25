@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>openstack系列- keystone部署文档 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="openstack系列- keystone部署文档 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/11/1570777511550.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="openstack系列- keystone部署文档 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/11/1570777511550.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1606244437047"/>
+              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
             <link rel="prev" title="通过python读取excel表格内容url批量下载" href="https://cuijianzhe.github.io/articles/2019/10/08/1570505431741.html">
             <link rel="next" title="openstack系列- glance 服务部署" href="https://cuijianzhe.github.io/articles/2019/10/13/1570938302267.html">
     <!--鼠标点击特效-->
@@ -29,7 +29,7 @@
                 <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
                     <img src="/images/github-icon.png" alt="我的开源"> 我的开源
                 </a>
-                <a class="fn__flex-inline" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
                      服务器倒计时
                 </a>
 
@@ -163,7 +163,7 @@
 <h3 id="主机名修改-">主机名修改：</h3>
 <pre><code class="highlight-chroma">hostnamectl set-hostname linux-node1
 </code></pre>
-<p>  修改 host 文件</p>
+<p class="indent--2">修改 host 文件</p>
 <pre><code class="highlight-chroma">10.200.51.100 linux-node1 linux-node1.limi.com
 10.200.51.31 linux-node2 linux-node2.limi.com
 </code></pre>
@@ -213,7 +213,7 @@ yum upgrade
 <h3 id="SQL-database安装"><a href="https://docs.openstack.org/install-guide/environment-sql-database.html" target="_blank">SQL database 安装</a></h3>
 <pre><code class="highlight-chroma">yum install mariadb mariadb-server python2-PyMySQL -y
 </code></pre>
-<p>  添加 openstack 配置文件</p>
+<p class="indent--2">添加 openstack 配置文件</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 my.cnf.d<span class="highlight-o">]</span><span class="highlight-c1"># cat /etc/my.cnf.d/openstack.cnf </span>
 <span class="highlight-o">[</span>mysqld<span class="highlight-o">]</span>
 bind-address <span class="highlight-o">=</span> 0.0.0.0
@@ -237,14 +237,14 @@ character-set-server <span class="highlight-o">=</span> utf8
 # systemctl enable rabbitmq-server.service
 # systemctl start rabbitmq-server.service
 </code></pre>
-<p>  创建 openstack 用户</p>
+<p class="indent--2">创建 openstack 用户</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1">#  rabbitmqctl add_user openstack openstack </span>
 Creating user <span class="highlight-s2">"openstack"</span>
 <span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># rabbitmqctl set_permissions openstack ".*" ".*" ".*"</span>
 Setting permissions <span class="highlight-k">for</span> user <span class="highlight-s2">"openstack"</span> in vhost <span class="highlight-s2">"/"</span>
 
 </code></pre>
-<p>  <a href="https://www.rabbitmq.com/rabbitmqctl.8.html#set_user_tags" target="_blank">rabbitmqctl 命令参考</a><br>
+<p class="indent--2"><a href="https://www.rabbitmq.com/rabbitmqctl.8.html#set_user_tags" target="_blank">rabbitmqctl 命令参考</a><br>
 <code>rabbitmq-plugins list</code> 查看 rabbitmq 插件列表<br>
 <code>rabbitmq-plugins enable rabbitmq_management</code> 开启 Web 管理功能<br>
 <code>rabbitmqctl  list_users</code> 查看用户列表<br>
@@ -265,7 +265,7 @@ cat /etc/sysconfig/memcached
 <h3 id="Etcd安装"><a href="https://docs.openstack.org/install-guide/environment-etcd.html" target="_blank">Etcd 安装</a></h3>
 <pre><code class="highlight-chroma"># yum install etcd
 </code></pre>
-<p>  <strong>配置</strong></p>
+<p class="indent--2"><strong>配置</strong></p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># grep -v "^#\|^$" /etc/etcd/etcd.conf </span>
 <span class="highlight-nv">ETCD_DATA_DIR</span><span class="highlight-o">=</span><span class="highlight-s2">"/var/lib/etcd/default.etcd"</span>
 <span class="highlight-nv">ETCD_LISTEN_PEER_URLS</span><span class="highlight-o">=</span><span class="highlight-s2">"http://10.200.51.100:2380"</span>
@@ -332,7 +332,7 @@ provider = fernet
 ...
 ServerName 10.200.51.100:80
 </code></pre>
-<p>  配置软链接</p>
+<p class="indent--2">配置软链接</p>
 <pre><code class="highlight-chroma">ln -s /usr/share/keystone/wsgi-keystone.conf /etc/httpd/conf.d/
 </code></pre>
 <ul>
@@ -645,7 +645,7 @@ Password:
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1606244437047"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -679,7 +679,7 @@ Password:
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1606244437047', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1570777511550",
@@ -701,4 +701,4 @@ Password:
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 443ms, 2020/12/15 13:57:36 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 508ms, 2020/12/25 09:37:57 -->

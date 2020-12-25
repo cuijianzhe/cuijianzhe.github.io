@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>kolla部署openstack（stein）部署---allinone - 邯城往事</title><meta name="description" content="  "/><meta property="og:description" content="  "/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="kolla部署openstack（stein）部署---allinone - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/27/1572172031071.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="kolla部署openstack（stein）部署---allinone - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/27/1572172031071.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1606244437047"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>kolla部署openstack（stein）部署---allinone - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="kolla部署openstack（stein）部署---allinone - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/27/1572172031071.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="kolla部署openstack（stein）部署---allinone - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/27/1572172031071.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
             <link rel="prev" title="修复nginx报错："upstream sent too big header while reading response header from upstream"" href="https://cuijianzhe.github.io/articles/2019/10/20/1571574453990.html">
             <link rel="next" title="ceph集群搭建" href="https://cuijianzhe.github.io/articles/2019/10/30/1572426357896.html">
     <!--鼠标点击特效-->
@@ -29,7 +29,7 @@
                 <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
                     <img src="/images/github-icon.png" alt="我的开源"> 我的开源
                 </a>
-                <a class="fn__flex-inline" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
                      服务器倒计时
                 </a>
 
@@ -183,7 +183,7 @@ index-url = http://mirrors.aliyun.com/pypi/simple/
 trusted-host=mirrors.aliyun.com
 </code></pre>
 <h3 id="配置网卡信息">配置网卡信息</h3>
-<p>  物理机，两张网卡，一张是管理网卡，另一张是桥接网卡（外网网卡）；</p>
+<p class="indent--2">物理机，两张网卡，一张是管理网卡，另一张是桥接网卡（外网网卡）；</p>
 <table>
 <thead>
 <tr>
@@ -208,7 +208,7 @@ trusted-host=mirrors.aliyun.com
 </tr>
 </tbody>
 </table>
-<p>  enp61s0f3 中的配置</p>
+<p class="indent--2">enp61s0f3 中的配置</p>
 <pre><code class="highlight-chroma">TYPE=Ethernet
 PROXY_METHOD=none
 BROWSER_ONLY=no
@@ -235,11 +235,11 @@ yum install -y yum-utils device-mapper-persistent-data lvm2
 <pre><code class="highlight-chroma">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 rpm --import https://mirrors.aliyun.com/docker-ce/linux/centos/gpg #导入rpm包密钥，检查后期在线安装的rpm是否安全
 </code></pre>
-<p>  安装 docker 社区版本</p>
+<p class="indent--2">安装 docker 社区版本</p>
 <pre><code class="highlight-chroma">yum -y install docker-ce
 systemctl start docker &amp;&amp; systemctl enable docker &amp;&amp; systemctl status docker
 </code></pre>
-<p>  设置 docker volume 卷挂载方式</p>
+<p class="indent--2">设置 docker volume 卷挂载方式</p>
 <pre><code class="highlight-chroma">mkdir /etc/systemd/system/docker.service.d
 tee /etc/systemd/system/docker.service.d/kolla.conf &lt;&lt; 'EOF'
 [Service]
@@ -250,10 +250,10 @@ EOF
 <p>注：加上 MountFlags=shared 后，当 docker 宿主机新增分区时，docker 服务不用重启。添加这个参考后，后期在 openstack 中使用 cinder 存储服务时，新加磁盘比较方便。</p>
 </blockquote>
 <h4 id="镜像加速器设置">镜像加速器设置</h4>
-<p>  在此我建议部署 stein 版本镜像加速器选择 <a href="https://www.daocloud.io/mirror" target="_blank">daocloud</a>，阿里、网易等加速器可能会出现 pull docker 出现问题。</p>
+<p class="indent--2">在此我建议部署 stein 版本镜像加速器选择 <a href="https://www.daocloud.io/mirror" target="_blank">daocloud</a>，阿里、网易等加速器可能会出现 pull docker 出现问题。</p>
 <pre><code class="highlight-chroma">curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io  
 </code></pre>
-<p>  重启相关服务</p>
+<p class="indent--2">重启相关服务</p>
 <pre><code class="highlight-chroma">systemctl daemon-reload
 systemctl restart docker &amp;&amp; systemctl status docker
 </code></pre>
@@ -265,7 +265,7 @@ pip install kolla-ansible
 <blockquote>
 <p>报错：已经安装 PyYAML 3.10，但是我们需要 PyYAML</p>
 </blockquote>
-<p>  解决：</p>
+<p class="indent--2">解决：</p>
 <pre><code class="highlight-chroma">pip install PyYAML --ignore-installed PyYAML
 </code></pre>
 <ul>
@@ -286,7 +286,7 @@ pip install --upgrade decorate
 <h2 id="自动生成openstack各服务的密码文件">自动生成 openstack 各服务的密码文件</h2>
 <pre><code class="highlight-chroma">kolla-genpwd
 </code></pre>
-<p>  修改/etc/kolla/passwords.yml</p>
+<p class="indent--2">修改/etc/kolla/passwords.yml</p>
 <pre><code class="highlight-chroma"> keystone_admin_password: 598941324
 </code></pre>
 <blockquote>
@@ -350,14 +350,14 @@ kolla
 [root@kolla ~]# docker images | wc -l 
 32
 </code></pre>
-<p>  大概会下载 32 个镜像文件</p>
+<p class="indent--2">大概会下载 32 个镜像文件</p>
 <h2 id="最后进入实际的OpenStack部署-">最后进入实际的 OpenStack 部署：</h2>
 <pre><code class="highlight-chroma">kolla-ansible -i /etc/kolla/all-in-one deploy
 </code></pre>
-<p>  部署完成后验证部署</p>
+<p class="indent--2">部署完成后验证部署</p>
 <pre><code class="highlight-chroma">kolla-ansible -i /etc/kolla/all-in-one post-deploy
 </code></pre>
-<p>  这样就创建 /etc/kolla/admin-openrc.sh 文件</p>
+<p class="indent--2">这样就创建 /etc/kolla/admin-openrc.sh 文件</p>
 <pre><code class="highlight-chroma">[root@kolla ~]# cat /etc/kolla/admin-openrc.sh 
 export OS_PROJECT_DOMAIN_NAME=Default
 export OS_USER_DOMAIN_NAME=Default
@@ -372,7 +372,7 @@ export OS_REGION_NAME=RegionOne
 export OS_AUTH_PLUGIN=password
 </code></pre>
 <h2 id="部署完成">部署完成</h2>
-<p>  访问 192.168.51.208 即可进去 openstack 页面</p>
+<p class="indent--2">访问 192.168.51.208 即可进去 openstack 页面</p>
 <h1 id="openstack-allinone使用方法">openstack-allinone 使用方法</h1>
 <h2 id="安装-openstack客户端并创建一个云主机">安装 openstack 客户端并创建一个云主机</h2>
 <h3 id="安装OpenStack-client端-方便后期使用命令行操作openstack">安装 OpenStack client 端，方便后期使用命令行操作 openstack</h3>
@@ -381,7 +381,7 @@ export OS_AUTH_PLUGIN=password
 <blockquote>
 <p>报错：ERROR: Package 'more-itertools' requires a different Python: 2.7.5 not in '&gt;=3.4'</p>
 </blockquote>
-<p>  解决：</p>
+<p class="indent--2">解决：</p>
 <pre><code class="highlight-chroma">pip install more-itertools==5.0.0
 pip install python-openstackclient
 </code></pre>
@@ -395,7 +395,7 @@ pip install python-openstackclient
 </blockquote>
 <h2 id="创建一个云项目">创建一个云项目</h2>
 <h3 id="修改init-runonce脚本-指定浮动IP地址范围">修改 init-runonce 脚本，指定浮动 IP 地址范围</h3>
-<p>  init-runonce 是在 openstack 中快速创建一个云项目例子的脚本。浮劢 IP 就是云主机的公网 IP。</p>
+<p class="indent--2">init-runonce 是在 openstack 中快速创建一个云项目例子的脚本。浮劢 IP 就是云主机的公网 IP。</p>
 <ul>
 <li>修改如下配置</li>
 </ul>
@@ -409,7 +409,7 @@ EXT_NET_GATEWAY='192.168.50.1'
 cd /usr/share/kolla-ansible
 ./init-runonce
 </code></pre>
-<p>  运行完毕之后出现如下：</p>
+<p class="indent--2">运行完毕之后出现如下：</p>
 <pre><code class="highlight-chroma">To deploy a demo instance, run:
 
 openstack server create \
@@ -419,7 +419,7 @@ openstack server create \
     --network demo-net \
     demo1
 </code></pre>
-<p>  运行即可安装</p>
+<p class="indent--2">运行即可安装</p>
 <pre><code class="highlight-chroma">[root@kolla kolla-ansible]# openstack server create \
 &gt;     --image cirros \
 &gt;     --flavor m1.tiny \
@@ -463,7 +463,7 @@ openstack server create \
 +-------------------------------------+-----------------------------------------------+
 </code></pre>
 <h3 id="此时即可在web上看到已创建的云主机">此时即可在 Web 上看到已创建的云主机</h3>
-<p>  <img src="https://img.hacpai.com/file/2019/10/image-23e2ad99.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/10/image-23e2ad99.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
                     <div>
                         <hr>
 
@@ -672,7 +672,7 @@ openstack server create \
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1606244437047"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -706,7 +706,7 @@ openstack server create \
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1606244437047', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1572172031071",
@@ -728,4 +728,4 @@ openstack server create \
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 417ms, 2020/12/15 13:57:38 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 464ms, 2020/12/25 09:37:58 -->

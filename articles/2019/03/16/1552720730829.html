@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>阿里云机器和本地IDC建立ipsec VPN - 邯城往事</title><meta name="description" content="  IPsec 主要由以下协议组成：一、认证头（AH），为 IP 数据报提供无连接数据完整性、消息认证以及防重放攻击保护；二、封装安全载荷（ESP），提供机密性、数据源认证、无连接完整性、防重放和有限的传输流（traffic-flow）机密性；三、安全关联（SA），提供算法和数据包，提供 AH、ESP 操作所需的参数。"/><meta property="og:description" content="  IPsec 主要由以下协议组成：一、认证头（AH），为 IP 数据报提供无连接数据完整性、消息认证以及防重放攻击保护；二、封装安全载荷（ESP），提供机密性、数据源认证、无连接完整性、防重放和有限的传输流（traffic-flow）机密性；三、安全关联（SA），提供算法和数据包，提供 AH、ESP 操作所需的参数。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="阿里云机器和本地IDC建立ipsec VPN - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/16/1552720730829.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="阿里云机器和本地IDC建立ipsec VPN - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/16/1552720730829.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1606244437047"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>阿里云机器和本地IDC建立ipsec VPN - 邯城往事</title><meta name="description" content="IPsec 主要由以下协议组成：一、认证头（AH），为 IP 数据报提供无连接数据完整性、消息认证以及防重放攻击保护；二、封装安全载荷（ESP），提供机密性、数据源认证、无连接完整性、防重放和有限的传输流（traffic-flow）机密性；三、安全关联（SA），提供算法和数据包，提供 AH、ESP 操作所需的参数。"/><meta property="og:description" content="IPsec 主要由以下协议组成：一、认证头（AH），为 IP 数据报提供无连接数据完整性、消息认证以及防重放攻击保护；二、封装安全载荷（ESP），提供机密性、数据源认证、无连接完整性、防重放和有限的传输流（traffic-flow）机密性；三、安全关联（SA），提供算法和数据包，提供 AH、ESP 操作所需的参数。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="阿里云机器和本地IDC建立ipsec VPN - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/16/1552720730829.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="阿里云机器和本地IDC建立ipsec VPN - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/16/1552720730829.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
             <link rel="prev" title="使用python发送邮件告知SSL证书到期时间" href="https://cuijianzhe.github.io/articles/2019/03/16/1552707556605.html">
             <link rel="next" title="通过查看nginx 日志进行分析" href="https://cuijianzhe.github.io/articles/2019/03/19/1552967425056.html">
     <!--鼠标点击特效-->
@@ -29,7 +29,7 @@
                 <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
                     <img src="/images/github-icon.png" alt="我的开源"> 我的开源
                 </a>
-                <a class="fn__flex-inline" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
                      服务器倒计时
                 </a>
 
@@ -158,7 +158,7 @@
         <div class="item__cover" style="background-image: url(https://img.hacpai.com/bing/20180607.jpg?imageView2/1/w/960/h/540/interlace/1/q/100)"></div>
         <div class="wrapper">
             <section class="item__content item__content--article vditor-reset">
-                <p>  <img src="https://img.hacpai.com/bing/20180607.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
+                <p class="indent--2"><img src="https://img.hacpai.com/bing/20180607.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
 <h2 id="阿里机器端-">阿里机器端：</h2>
 <h3 id="1--安装strongswan">1. 安装 strongswan</h3>
 <pre><code class="highlight-chroma">[root@blog_server ~]# yum install strongswan -y
@@ -316,7 +316,7 @@ conn IDC
  redirect-reverse next-hop 210.12.5.145
  ipsec policy ipsec1191138051
 </code></pre>
-<p>  验证：<br>
+<p class="indent--2">验证：<br>
 阿里侧 ip：</p>
 <pre><code class="highlight-chroma">[root@blog_server ~]# ifconfig
 
@@ -336,9 +336,9 @@ lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
         TX packets 48529  bytes 73198705 (69.8 MiB)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 </code></pre>
-<p>  测试：<br>
+<p class="indent--2">测试：<br>
 <img src="https://img.hacpai.com/file/2019/03/ping1-217514d6.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="ping1.png"></p>
-<p>  并且已经可以通过内网 ip 访问阿里云上的 Tomcat 服务<br>
+<p class="indent--2">并且已经可以通过内网 ip 访问阿里云上的 Tomcat 服务<br>
 <img src="https://img.hacpai.com/file/2019/03/tomcat-606db2be.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="tomcat.png"></p>
                     <div>
                         <hr>
@@ -473,7 +473,7 @@ lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1606244437047"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -507,7 +507,7 @@ lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1606244437047', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1552720730829",
@@ -529,4 +529,4 @@ lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 413ms, 2020/12/15 13:57:50 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 516ms, 2020/12/25 09:38:12 -->

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>linux使用sendEmail发送邮件 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="linux使用sendEmail发送邮件 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/16/1552701584725.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="linux使用sendEmail发送邮件 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/16/1552701584725.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1606244437047"/>
+              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
             <link rel="prev" title="nginx反向代理tomcat项目之solo" href="https://cuijianzhe.github.io/articles/2019/03/15/1552648638089.html">
             <link rel="next" title="LINUX脚本使用实战，持续更新" href="https://cuijianzhe.github.io/articles/2019/03/16/1552705047941.html">
     <!--鼠标点击特效-->
@@ -29,7 +29,7 @@
                 <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
                     <img src="/images/github-icon.png" alt="我的开源"> 我的开源
                 </a>
-                <a class="fn__flex-inline" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
                      服务器倒计时
                 </a>
 
@@ -156,13 +156,13 @@
         <div class="item__cover" style="background-image: url(https://img.hacpai.com/bing/20181220.jpg?imageView2/1/w/960/h/540/interlace/1/q/100)"></div>
         <div class="wrapper">
             <section class="item__content item__content--article vditor-reset">
-                <p>  <img src="https://img.hacpai.com/bing/20181220.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
+                <p class="indent--2"><img src="https://img.hacpai.com/bing/20181220.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
 <h3 id="sendEmail官方下载地址">sendEmail 官方下载地址</h3>
-<p>  <a href="https://" target="_blank">http://caspian.dotconf.net/menu/Software/SendEmail/</a></p>
-<p>  官网最新版本 1.5.6，可以直接下载上传到服务器，也可用 wget 方式</p>
-<p>  我生产环境是采用定时任务触发 sendEmail 并且发送每天的日志信息到邮箱进行保存。<br>
+<p class="indent--2"><a href="https://" target="_blank">http://caspian.dotconf.net/menu/Software/SendEmail/</a></p>
+<p class="indent--2">官网最新版本 1.5.6，可以直接下载上传到服务器，也可用 wget 方式</p>
+<p class="indent--2">我生产环境是采用定时任务触发 sendEmail 并且发送每天的日志信息到邮箱进行保存。<br>
 <img src="https://img.hacpai.com/file/2019/03/crontab-40bd3069.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="crontab.png"></p>
-<p>  <img src="https://img.hacpai.com/file/2019/03/sendEmail-2f2f3866.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="sendEmail.png"></p>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/03/sendEmail-2f2f3866.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="sendEmail.png"></p>
 <pre><code class="highlight-chroma">[root@localhost ~]# wget http://caspian.dotconf.net/menu/Software/SendEmail/sendEmail-v1.56.tar.gz
 [root@localhost ~]# tar zf sendEmail-v1.56.tar.gz -C /usr/local/
 [root@localhost ~]# cd /usr/local/sendEmail-v1.56/
@@ -177,14 +177,14 @@
 lrwxrwxrwx. 1 root root     9 9月  30 2009 sendEmail.pl -&gt; sendEmail
 -rw-r--r--. 1 root root  1229 9月  30 2009 TODO
 </code></pre>
-<p>  可以自定义脚本路径<br>
+<p class="indent--2">可以自定义脚本路径<br>
 <code>[root@localhost sendEmail-v1.56]# mv sendEmail  /usr/local/bin/</code></p>
 <h3 id="发送邮件-">发送邮件：</h3>
 <pre><code class="language-bash highlight-chroma">   /usr/local/bin/sendEmail -f jianzhecui@163.com -t 598941324@qq.com <span class="highlight-se">\
 </span><span class="highlight-se"></span>   -s smtp.163.com -u <span class="highlight-s2">"我是邮件主题"</span> -o message-content-type<span class="highlight-o">=</span>html <span class="highlight-se">\
 </span><span class="highlight-se"></span>    -o message-charset<span class="highlight-o">=</span>utf8 -xu jianzhecui@163.com -xp <span class="highlight-m">123456</span> -m <span class="highlight-s2">"我是邮件内容"</span>
 </code></pre>
-<p>  命令说明：</p>
+<p class="indent--2">命令说明：</p>
 <pre><code class="language-bash highlight-chroma">/usr/local/bin/sendEmail 　　　命令主程序
 
 -f yxylinux@163.com  　　　　　发件人邮箱
@@ -197,13 +197,13 @@ lrwxrwxrwx. 1 root root     9 9月  30 2009 sendEmail.pl -&gt; sendEmail
 -m <span class="highlight-s2">"我是邮件内容"</span>        　　邮件的具体内容
 </code></pre>
 <h3 id="测试发送邮件代码-">测试发送邮件代码：</h3>
-<p>  <img src="https://img.hacpai.com/file/2019/03/sendEmail1-ecf727f5.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="sendEmail1.png"></p>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/03/sendEmail1-ecf727f5.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="sendEmail1.png"></p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@zabbix ~<span class="highlight-o">]</span><span class="highlight-c1"># /data/sendEmail/sendEmail -f cuijianzhe@limikeji.com -t "cuijianzhe@limikeji.com" -s smtp.exmail.qq.com -u "loganalyzer 每日图片测试" -o message-charset=utf-8 -xu cuijianzhe@limikeji.com -xp 12345678 -m "附件为测试图片，请查收！" -a /var/www/html/images/backup.png </span>
 
 Apr <span class="highlight-m">15</span> 21:01:02 zabbix sendEmail<span class="highlight-o">[</span>31464<span class="highlight-o">]</span>: Email was sent successfully!
 </code></pre>
-<p>  发送成功会有 successfully……</p>
-<p>  查收邮件：<br>
+<p class="indent--2">发送成功会有 successfully……</p>
+<p class="indent--2">查收邮件：<br>
 <img src="https://img.hacpai.com/file/2019/03/sendEmail2-4f283eb1.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="sendEmail2.png"></p>
 <h3 id="sendEmail使用命令帮助-">sendEmail 使用命令帮助：</h3>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@localhost ~<span class="highlight-o">]</span><span class="highlight-c1"># /usr/local/bin/sendEmail --help</span>
@@ -366,7 +366,7 @@ Synopsis:  sendEmail -f ADDRESS <span class="highlight-o">[</span>options<span c
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1606244437047"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -400,7 +400,7 @@ Synopsis:  sendEmail -f ADDRESS <span class="highlight-o">[</span>options<span c
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1606244437047', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1552701584725",
@@ -422,4 +422,4 @@ Synopsis:  sendEmail -f ADDRESS <span class="highlight-o">[</span>options<span c
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 394ms, 2020/12/15 13:57:51 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 454ms, 2020/12/25 09:38:14 -->

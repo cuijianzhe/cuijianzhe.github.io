@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>K8S二进制部署过程-v1.17.0 - 邯城往事</title><meta name="description" content="  搭建 K8S 集群，一定要细心细心再细心。不然会为了自己的粗心排查好久……"/><meta property="og:description" content="  搭建 K8S 集群，一定要细心细心再细心。不然会为了自己的粗心排查好久……"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="K8S二进制部署过程-v1.17.0 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/12/24/1577178596028.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="K8S二进制部署过程-v1.17.0 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/12/24/1577178596028.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1606244437047"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>K8S二进制部署过程-v1.17.0 - 邯城往事</title><meta name="description" content="搭建 K8S 集群，一定要细心细心再细心。不然会为了自己的粗心排查好久……"/><meta property="og:description" content="搭建 K8S 集群，一定要细心细心再细心。不然会为了自己的粗心排查好久……"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="K8S二进制部署过程-v1.17.0 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/12/24/1577178596028.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="K8S二进制部署过程-v1.17.0 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/12/24/1577178596028.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
             <link rel="prev" title="K8S基础搭建使用" href="https://cuijianzhe.github.io/articles/2019/12/12/1576117964389.html">
             <link rel="next" title="2019年终惹人总结" href="https://cuijianzhe.github.io/articles/2019/12/28/1577514362771.html">
     <!--鼠标点击特效-->
@@ -29,7 +29,7 @@
                 <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
                     <img src="/images/github-icon.png" alt="我的开源"> 我的开源
                 </a>
-                <a class="fn__flex-inline" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
                      服务器倒计时
                 </a>
 
@@ -158,7 +158,7 @@
         <div class="item__cover" style="background-image: url(https://img.hacpai.com/bing/20181025.jpg?imageView2/1/w/960/h/540/interlace/1/q/100)"></div>
         <div class="wrapper">
             <section class="item__content item__content--article vditor-reset">
-                <p>  <img src="https://img.hacpai.com/bing/20181025.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
+                <p class="indent--2"><img src="https://img.hacpai.com/bing/20181025.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
 <h1 id="一--环境概述-">一 、环境概述：</h1>
 <pre><code class="highlight-chroma">cat &gt;&gt; /etc/hosts &lt;&lt;EOF
 10.0.0.202 master
@@ -166,7 +166,7 @@
 10.0.0.163 node2
 EOF
 </code></pre>
-<p>  <strong>挂载数据盘：</strong></p>
+<p class="indent--2"><strong>挂载数据盘：</strong></p>
 <pre><code class="highlight-chroma">mkdir /data
 mkfs.xfs -f /dev/vdb
 mount /dev/vdb /data
@@ -193,7 +193,7 @@ source /etc/profile
 <blockquote>
 <p>本次生成证书的工具采用 CFSSL，CFSSL 是 CloudFlare 开源的一款 PKI/TLS 工具。 CFSSL 包含一个命令行工具 和一个用于 签名，验证并且捆绑 TLS 证书的 HTTP API 服务。 使用 Go 语言编写。我们可以使用 JSON 去定义证书相关内容，看起来更加直观。</p>
 </blockquote>
-<p>  CFSSL 包括：</p>
+<p class="indent--2">CFSSL 包括：</p>
 <ul>
 <li>一组用于生成自定义 TLS PKI 的工具</li>
 <li><code>cfssl</code> 程序，是 CFSSL 的命令行工具</li>
@@ -286,7 +286,7 @@ EOF
 scp ca.csr ca.pem ca-key.pem ca-config.json node2:/data/kubernetes/ssl/
 </code></pre>
 <h1 id="三-etcd-集群">三、etcd 集群</h1>
-<p>  到 <a href="https://github.com/coreos/etcd/releases" target="_blank">https://github.com/coreos/etcd/releases</a> 页面下载最新版本的发布包：</p>
+<p class="indent--2">到 <a href="https://github.com/coreos/etcd/releases" target="_blank">https://github.com/coreos/etcd/releases</a> 页面下载最新版本的发布包：</p>
 <pre><code class="highlight-chroma">wget https://github.com/etcd-io/etcd/releases/download/v3.3.18/etcd-v3.3.18-linux-amd64.tar.gz
 tar zxf etcd-v3.3.18-linux-amd64.tar.gz
 #分发etcd软件
@@ -453,7 +453,7 @@ Created symlink from /etc/systemd/system/multi-user.target.wants/etcd.service to
    --cert-file=/data/kubernetes/ssl/etcd.pem \
    --key-file=/data/kubernetes/ssl/etcd-key.pem cluster-health
 </code></pre>
-<p>  结果：</p>
+<p class="indent--2">结果：</p>
 <pre><code class="highlight-chroma">[root@etcd1 bin]# etcdctl --endpoints=https://10.0.0.202:2379 \
 &gt;    --ca-file=/data/kubernetes/ssl/ca.pem \
 &gt;    --cert-file=/data/kubernetes/ssl/etcd.pem \
@@ -479,7 +479,7 @@ Dec 27 22:24:04 master etcd[19730]: health check for peer c91b0b181670aad could 
 Dec 27 22:24:04 master etcd[19730]: health check for peer c91b0b181670aad could not connect: dial tcp 10.0.0.163:2380: connect: connection refused (prober "ROUND_TRIPPER_SNAPSHOT")
 Dec 27 22:24:05 master etcd[19730]: updated the cluster version from 3.0 to 3.3
 </code></pre>
-<p>  <img src="https://img.hacpai.com/file/2019/12/image-21ab8a05.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-21ab8a05.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <ul>
 <li><strong>解决方法：</strong></li>
 </ul>
@@ -544,7 +544,7 @@ sudo systemctl start docker
 <blockquote>
 <p>生成 pem 证书文件</p>
 </blockquote>
-<p>  <img src="https://img.hacpai.com/file/2019/12/image-214c5358.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-214c5358.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <blockquote>
 <p>注意这个是分发到集群里的每一个节点</p>
 </blockquote>
@@ -618,8 +618,8 @@ tar zxf cni-plugins-linux-amd64-v0.8.3.tgz -C /data/kubernetes/bin/cni
 scp -r /data/kubernetes/bin/cni/* node1:/data/kubernetes/bin/cni/
 scp -r /data/kubernetes/bin/cni/* node2:/data/kubernetes/bin/cni/
 </code></pre>
-<p>  <strong>设置 etcd 的 key</strong></p>
-<p>  Falnnel 要用 etcd 存储自身一个子网信息，所以要保证能成功连接 Etcd，写入预定义子网段：</p>
+<p class="indent--2"><strong>设置 etcd 的 key</strong></p>
+<p class="indent--2">Falnnel 要用 etcd 存储自身一个子网信息，所以要保证能成功连接 Etcd，写入预定义子网段：</p>
 <pre><code class="highlight-chroma">/data/kubernetes/bin/etcdctl --ca-file /data/kubernetes/ssl/ca.pem --cert-file /data/kubernetes/ssl/flanneld.pem --key-file /data/kubernetes/ssl/flanneld-key.pem \
       --no-sync -C https://10.0.0.99:2379,https://10.0.0.111:2379,https://10.0.0.11:2379 \
 mk /kubernetes/network/config '{ "Network": "10.2.0.0/16", "Backend": { "Type": "vxlan", "VNI": 1 }}' &gt;/dev/null 2&gt;&amp;1
@@ -629,7 +629,7 @@ mk /kubernetes/network/config '{ "Network": "10.2.0.0/16", "Backend": { "Type": 
 &gt; mk /kubernetes/network/config '{ "Network": "10.2.0.0/16", "Backend": { "Type": "vxlan", "VNI": 1 }}' 
 { "Network": "10.2.0.0/16", "Backend": { "Type": "vxlan", "VNI": 1 }}
 </code></pre>
-<p>  <strong>查询写入 ETCD 的自定义网络是否成功：</strong></p>
+<p class="indent--2"><strong>查询写入 ETCD 的自定义网络是否成功：</strong></p>
 <pre><code class="highlight-chroma">etcdctl --endpoints=https://10.0.0.99:2379 \
    --ca-file=/data/kubernetes/ssl/ca.pem \
    --cert-file=/data/kubernetes/ssl/etcd.pem \
@@ -680,7 +680,7 @@ systemctl daemon-reload
 systemctl enable docker
 systemctl start docker
 </code></pre>
-<p>  这里注意一下，docker 启动会和 flannel 相辅相成，网络起不来，docker 也起不来。同时在 Service 段添加 EnvironmentFile=-/run/flannel/docker，这个文件是由 flannel 启动的时候通过 mk-docker-opts.sh 生成的，可以看一下这个文件的内容，通过—bip 来划分网段。</p>
+<p class="indent--2">这里注意一下，docker 启动会和 flannel 相辅相成，网络起不来，docker 也起不来。同时在 Service 段添加 EnvironmentFile=-/run/flannel/docker，这个文件是由 flannel 启动的时候通过 mk-docker-opts.sh 生成的，可以看一下这个文件的内容，通过—bip 来划分网段。</p>
 <pre><code class="highlight-chroma">[root@master ~]# cat  /run/flannel/docker 
 DOCKER_OPT_BIP="--bip=10.2.10.1/24"
 DOCKER_OPT_IPMASQ="--ip-masq=true"
@@ -690,9 +690,9 @@ DOCKER_OPTS=" --bip=10.2.10.1/24 --ip-masq=true --mtu=1400"
 <ul>
 <li>查看 flannel 和 docker 安装结果</li>
 </ul>
-<p>  <img src="https://img.hacpai.com/file/2019/12/image-c662e89a.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>  <img src="https://img.hacpai.com/file/2019/12/image-d98109fe.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>  <img src="https://img.hacpai.com/file/2019/12/image-a0f7890e.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-c662e89a.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-d98109fe.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-a0f7890e.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <blockquote>
 <p>可以看到 docker0 和 flannel.1 的地址是一段的，每个节点分到的网段是不一样的。flannel 部署完成。</p>
 </blockquote>
@@ -742,15 +742,15 @@ kube-scheduler<br>
 kube-controller-manager<br>
 kube-scheduler 和 kube-controller-manager 可以以集群模式运行，通过 leader 选举产生一个工作进程，其它进程处于阻塞模式。</p>
 </blockquote>
-<p>  目前这三个组件需要部署在同一台机器上：</p>
-<p>  kube-scheduler、kube-controller-manager 和 kube-apiserver 三者的功能紧密相关；</p>
-<p>  同时只能有一个 kube-scheduler、kube-controller-manager 进程处于工作状态，如果运行多个，则需要通过选举产生一个 leader；</p>
-<p>  本文档介绍部署单机 kubernetes master 节点的步骤，没有实现高可用 master 集群。</p>
-<p>  计划后续再介绍部署 LB 的步骤，客户端 (kubectl、kubelet、kube-proxy) 使用 LB 的 VIP 来访问 kube-apiserver，从而实现高可用 master 集群。</p>
-<p>  master 节点与 node 节点上的 Pods 通过 Pod 网络通信，所以需要在 master 节点上部署 Flannel 网络。</p>
+<p class="indent--2">目前这三个组件需要部署在同一台机器上：</p>
+<p class="indent--2">kube-scheduler、kube-controller-manager 和 kube-apiserver 三者的功能紧密相关；</p>
+<p class="indent--2">同时只能有一个 kube-scheduler、kube-controller-manager 进程处于工作状态，如果运行多个，则需要通过选举产生一个 leader；</p>
+<p class="indent--2">本文档介绍部署单机 kubernetes master 节点的步骤，没有实现高可用 master 集群。</p>
+<p class="indent--2">计划后续再介绍部署 LB 的步骤，客户端 (kubectl、kubelet、kube-proxy) 使用 LB 的 VIP 来访问 kube-apiserver，从而实现高可用 master 集群。</p>
+<p class="indent--2">master 节点与 node 节点上的 Pods 通过 Pod 网络通信，所以需要在 master 节点上部署 Flannel 网络。</p>
 <h2 id="6-1-准备软件包-科学上网-">6.1 <a href="https://dl.k8s.io/v1.16.4/kubernetes-server-linux-amd64.tar.gz" target="_blank">准备软件包（科学上网）</a></h2>
-<p>  点此链接：<a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.17.md" target="_blank">https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.17.md</a></p>
-<p>  解压后将 kube-apiserver，kube-controller-manager，kube-scheduler，kubctl 拷贝到 master 节点的 <code>/data/kubernetes/bin</code> 目录下。</p>
+<p class="indent--2">点此链接：<a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.17.md" target="_blank">https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.17.md</a></p>
+<p class="indent--2">解压后将 kube-apiserver，kube-controller-manager，kube-scheduler，kubctl 拷贝到 master 节点的 <code>/data/kubernetes/bin</code> 目录下。</p>
 <pre><code class="highlight-chroma">tar xf kubernetes-server-linux-amd64.tar.gz
 cp kube-scheduler kube-apiserver kube-controller-manager kubectl /data/kubernetes/bin/
 </code></pre>
@@ -887,8 +887,8 @@ WantedBy=multi-user.target
 <blockquote>
 <p>配置好前面生成的证书，确保能连接 etcd。</p>
 </blockquote>
-<p>  参数说明：</p>
-<p>  –logtostderr 启用日志<br>
+<p class="indent--2">参数说明：</p>
+<p class="indent--2">–logtostderr 启用日志<br>
 —v 日志等级<br>
 –etcd-servers etcd 集群地址<br>
 –bind-address 监听地址<br>
@@ -910,7 +910,7 @@ systemctl status kube-apiserver
 root     25785  3.5  8.4 549756 326552 ?       Ssl  21:47   0:22 /data/kubernetes/bin/kube-apiserver --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota,NodeRestriction --bind-address=0.0.0.0 --insecure-bind-address=0.0.0.0 --authorization-mode=Node,RBAC --runtime-config=rbac.authorization.k8s.io/v1 --kubelet-https=true --anonymous-auth=false --basic-auth-file=/data/kubernetes/ssl/basic-auth.csv --enable-bootstrap-token-auth --token-auth-file=/data/kubernetes/ssl/bootstrap-token.csv --service-cluster-ip-range=10.1.0.0/16 --service-node-port-range=20000-40000 --tls-cert-file=/data/kubernetes/ssl/kubernetes.pem --tls-private-key-file=/data/kubernetes/ssl/kubernetes-key.pem --client-ca-file=/data/kubernetes/ssl/ca.pem --service-account-key-file=/data/kubernetes/ssl/ca-key.pem --etcd-cafile=/data/kubernetes/ssl/ca.pem --etcd-certfile=/data/kubernetes/ssl/kubernetes.pem --etcd-keyfile=/data/kubernetes/ssl/kubernetes-key.pem --etcd-servers=https://10.0.0.99:2379,https://10.0.0.111:2379,https://10.0.0.11:2379 --enable-swagger-ui=true --allow-privileged=true --audit-log-maxage=30 --audit-log-maxbackup=3 --audit-log-maxsize=100 --audit-log-path=/data/kubernetes/log/api-audit.log --event-ttl=1h --v=2 --logtostderr=false --log-dir=/data/kubernetes/log
 root     26557  0.0  0.0 112712   964 pts/0    S+   21:58   0:00 grep --color=auto kube-apiserver
 </code></pre>
-<p>  <img src="https://img.hacpai.com/file/2019/12/image-6a8c7ed1.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-6a8c7ed1.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <pre><code class="highlight-chroma">[root@master ~]# netstat -tulnp | grep kube-apiserve
 tcp6       0      0 :::6443                 :::*                    LISTEN      18024/kube-apiserve 
 tcp6       0      0 :::8080                 :::*                    LISTEN      18024/kube-apiserve
@@ -944,7 +944,7 @@ RestartSec=5
 [Install]
 WantedBy=multi-user.target
 </code></pre>
-<p>  <strong>启动 kube-scheduler</strong></p>
+<p class="indent--2"><strong>启动 kube-scheduler</strong></p>
 <pre><code class="highlight-chroma">[root@master ~]# systemctl daemon-reload 
 [root@master ~]# systemctl enable kube-scheduler
 [root@master ~]# systemctl start  kube-scheduler 
@@ -1010,7 +1010,7 @@ tcp6       0      0 :::10257                :::*                    LISTEN      
 <p><strong>从监听端口上，可以看到 kube-controller 监听在本地的 10252 端口，外部是无法直接访问 kube-controller，需要通过 api-server 才能进行访问。</strong></p>
 </blockquote>
 <h2 id="6-5-部署-kubectl-服务">6.5 部署 kubectl 服务</h2>
-<p>  <strong>kubectl 用于日常直接管理 K8S 集群，那么 kubectl 要进行管理 k8s，就需要和 k8s 的组件进行通信，也就需要用到证书。此时 kubectl 需要单独部署，也是因为 kubectl 也是需要用到证书，而前面的 kube-apiserver、kube-controller、kube-scheduler 都是不需要用到证书，可以直接通过服务进行启动。</strong></p>
+<p class="indent--2"><strong>kubectl 用于日常直接管理 K8S 集群，那么 kubectl 要进行管理 k8s，就需要和 k8s 的组件进行通信，也就需要用到证书。此时 kubectl 需要单独部署，也是因为 kubectl 也是需要用到证书，而前面的 kube-apiserver、kube-controller、kube-scheduler 都是不需要用到证书，可以直接通过服务进行启动。</strong></p>
 <blockquote>
 <p>首先准备好 kubectl 的二进制文件分发到所有的 master 节点，然后创建 admin 的证书签名请求</p>
 </blockquote>
@@ -1118,15 +1118,15 @@ etcd-0               &lt;unknown&gt;
 <p>看过前辈的搭建过程，这里显示和之前的版本不一样，我查询相关资料找到你，<a href="https://github.com/kubernetes/kubernetes/issues/83024" target="_blank">这里有解释</a>。总体来说这个打印结果不影响使用。1.17.0 后面的版本会解决。</p>
 </blockquote>
 <h1 id="七-node-节点部署">七、node 节点部署</h1>
-<p>  kubernetes node 节点运行如下组件：<br>
+<p class="indent--2">kubernetes node 节点运行如下组件：<br>
 docker<br>
 kubelet<br>
 kube-proxy<br>
 准备 node 节点二进制包，将 kubelet，kube-proxy 分发到所有 node 节点的/alidata/kubernetes/bin 下。</p>
 <h2 id="7-1-部署-kubelet-组件">7.1 部署 kubelet 组件</h2>
-<p>  认证大致工作流程如图所示：<br>
+<p class="indent--2">认证大致工作流程如图所示：<br>
 <img src="https://img.hacpai.com/file/2019/12/20181204110257402-5f8e2a20.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="20181204110257402.png"></p>
-<p>  kublet 运行在每个 node 节点上，接收 kube-apiserver 发送的请求，管理 Pod 容器，执行交互式命令，如 exec、run、logs 等;<br>
+<p class="indent--2">kublet 运行在每个 node 节点上，接收 kube-apiserver 发送的请求，管理 Pod 容器，执行交互式命令，如 exec、run、logs 等;<br>
 分发启动文件到 node 节点：</p>
 <pre><code class="highlight-chroma">scp kube-proxy kubelet node1:/data/kubernetes/bin/
 scp kube-proxy kubelet node2:/data/kubernetes/bin/
@@ -1230,7 +1230,7 @@ RestartSec=5
 [root@node1 ~]# systemctl start kubelet 
 [root@node1 ~]# systemctl status kubelet
 </code></pre>
-<p>  此时 kubelet 启动失败报错：</p>
+<p class="indent--2">此时 kubelet 启动失败报错：</p>
 <pre><code class="highlight-chroma">[root@node1 ~]#  systemctl status kubelet -l
 ● kubelet.service - Kubernetes Kubelet
    Loaded: loaded (/usr/lib/systemd/system/kubelet.service; static; vendor preset: disabled)
@@ -1286,11 +1286,11 @@ RestartSec=5
 <blockquote>
 <p><strong>把参数：<code>--allow-privileged=true \</code> 删除即可</strong></p>
 </blockquote>
-<p>  <strong>参考：</strong><br>
+<p class="indent--2"><strong>参考：</strong><br>
 <a href="https://github.com/wk8/SDN/commit/8db8f06cd5ccdc91eb74ce1d00041597881cd0c1" target="_blank">https://github.com/wk8/SDN/commit/8db8f06cd5ccdc91eb74ce1d00041597881cd0c1</a><br>
 <a href="https://github.com/microsoft/SDN/issues/379" target="_blank">https://github.com/microsoft/SDN/issues/379</a><br>
 <a href="http://www.mamicode.com/info-detail-2738983.html" target="_blank">http://www.mamicode.com/info-detail-2738983.html</a></p>
-<p>  <img src="https://img.hacpai.com/file/2020/01/image-680a511b.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2020/01/image-680a511b.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <ul>
 <li>重新加载系统，重新启动 kubelet</li>
 </ul>
@@ -1352,14 +1352,14 @@ Type             Status  LastHeartbeatTime                 LastTransitionTime   
   Ready            False   Tue, 14 Jan 2020 04:01:04 -0500   Tue, 14 Jan 2020 02:31:35 -0500   KubeletNotReady              runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:docker: network plugin is not ready: cni config uninitialized
 ...
 </code></pre>
-<p>  <strong>查出是因为 CNI 插件没有初始化，但是我不知道用什么办法可以让 CNI 可以正常运行起来。<br>
+<p class="indent--2"><strong>查出是因为 CNI 插件没有初始化，但是我不知道用什么办法可以让 CNI 可以正常运行起来。<br>
 但是，我找到一个见不得人的方法：把 kubelet 启动文件中的 CNI 插件配置 <code>--network-plugin=cni </code> 删除，然后 node 节点注册成功。</strong>?</p>
 <pre><code class="highlight-chroma">[root@master ~]# kubectl get node 
 NAME         STATUS   ROLES    AGE    VERSION
 10.0.0.163   Ready    &lt;none&gt;   117m   v1.17.0
 10.0.0.197   Ready    &lt;none&gt;   117m   v1.17.0
 </code></pre>
-<p>  <strong>这里卡住了，我从 <a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.16.4" target="_blank">v1.16.4</a> 安装到现在的 <a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.7.md" target="_blank">v1.17.0</a> 又是这里……</strong></p>
+<p class="indent--2"><strong>这里卡住了，我从 <a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.16.4" target="_blank">v1.16.4</a> 安装到现在的 <a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.7.md" target="_blank">v1.17.0</a> 又是这里……</strong></p>
 <h2 id="7-2-kube-proxy-部署">7.2 kube-proxy 部署</h2>
 <blockquote>
 <p>kube-proxy 同样还是只部署在 node 节点上，在之前的操作中，已经将 kube-proxy 的二进制文件分发到 node 节点。</p>
@@ -1471,7 +1471,7 @@ systemctl status kube-proxy
 </blockquote>
 <pre><code class="highlight-chroma">--pod-infra-container-image=10.0.0.202:5000/mirrorgooglecontainers/pause-amd64:3.0 \
 </code></pre>
-<p>  配置 docker 本地仓库</p>
+<p class="indent--2">配置 docker 本地仓库</p>
 <pre><code class="highlight-chroma">[root@master ~]# cat /etc/sysconfig/docker 
 OPTIONS='--selinux-enabled --log-driver=journald --signature-verification=false --registry-mirror=https://vtbf99sa.mirror.aliyuncs.com --insecure-registry=10.0.0.202:5000'
 [root@master ~]# cat /etc/docker/daemon.json 
@@ -1514,7 +1514,7 @@ Events:
   Warning  FailedCreatePodSandBox  12s (x4 over 8m34s)  kubelet, 10.0.0.163  Failed to create pod sandbox: rpc error: code = Unknown desc = failed pulling image "mirrorgooglecontainers/pause-amd64:3.0": context canceled
 ...
 </code></pre>
-<p>  以上报错解决（nginx 需要提前上传到私有镜像仓库）：</p>
+<p class="indent--2">以上报错解决（nginx 需要提前上传到私有镜像仓库）：</p>
 <pre><code class="highlight-chroma">[root@master ~]# docker pull pupudaye/pause-amd64
 [root@master ~]# docker tag pupudaye/pause-amd64 10.0.0.202:5000/mirrorgooglecontainers/pause-amd64:3.0
 [root@master pod]# docker images
@@ -1757,7 +1757,7 @@ deployment.apps/nginx created
 </blockquote>
 <h1 id="九-创建-MySQL-服务">九、创建 MySQL 服务</h1>
 <h2 id="9-1-创建-MySQL-的-rc-以及-SVC-文件">9.1 创建 MySQL 的 rc 以及 SVC 文件</h2>
-<p>  <strong>RC 文件：</strong></p>
+<p class="indent--2"><strong>RC 文件：</strong></p>
 <pre><code class="highlight-chroma">[root@master ~]# cat k8s/rc/k8s_mysql.yaml 
 apiVersion: v1
 kind: ReplicationController
@@ -1781,7 +1781,7 @@ spec:
         - name: MYSQL_ROOT_PASSWORD
           value: '598941324'
 </code></pre>
-<p>  <strong>svc 文件：</strong></p>
+<p class="indent--2"><strong>svc 文件：</strong></p>
 <pre><code class="highlight-chroma">[root@master ~]# cat k8s/svc/k8s_mysql_svc.yaml 
 apiVersion: v1
 kind: Service
@@ -1796,11 +1796,11 @@ spec:
   selector:
     app: mysql
 </code></pre>
-<p>  <strong>检查结果：</strong></p>
+<p class="indent--2"><strong>检查结果：</strong></p>
 <pre><code class="highlight-chroma">[root@node2 ~]# netstat -antup | grep 30006
 tcp6       0      0 :::30006                :::*                    LISTEN      9501/kube-proxy
 </code></pre>
-<p>  <strong>测试：</strong></p>
+<p class="indent--2"><strong>测试：</strong></p>
 <pre><code class="highlight-chroma">[root@master ~]# mysql -uroot -p598941324 -h192.168.50.175 -P30006
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MySQL connection id is 5
@@ -1824,7 +1824,7 @@ MySQL [(none)]&gt; show databases;
 MySQL [(none)]&gt;
 </code></pre>
 <h1 id="其他操作">其他操作</h1>
-<p>  详见这里：<a href="https://www.cjzshilong.cn/articles/2019/12/12/1576117964389.html" target="_blank">比如 K8S 创建资源的几种方式、K8S 常见几种资源</a></p>
+<p class="indent--2">详见这里：<a href="https://www.cjzshilong.cn/articles/2019/12/12/1576117964389.html">比如 K8S 创建资源的几种方式、K8S 常见几种资源</a></p>
                     <div>
                         <hr>
 
@@ -2114,7 +2114,7 @@ MySQL [(none)]&gt;
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1606244437047"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -2148,7 +2148,7 @@ MySQL [(none)]&gt;
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1606244437047', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1577178596028",
@@ -2170,4 +2170,4 @@ MySQL [(none)]&gt;
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 425ms, 2020/12/15 13:57:31 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 492ms, 2020/12/25 09:37:51 -->

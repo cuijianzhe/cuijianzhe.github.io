@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>kolla-ansible部署openstack多节点 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="kolla-ansible部署openstack多节点 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/11/01/1572607586305.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="kolla-ansible部署openstack多节点 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/11/01/1572607586305.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1606244437047"/>
+              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
             <link rel="prev" title="ceph集群搭建" href="https://cuijianzhe.github.io/articles/2019/10/30/1572426357896.html">
             <link rel="next" title="ssh-key改变后出现的错误解决方法" href="https://cuijianzhe.github.io/articles/2019/11/02/1572658327824.html">
     <!--鼠标点击特效-->
@@ -29,7 +29,7 @@
                 <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
                     <img src="/images/github-icon.png" alt="我的开源"> 我的开源
                 </a>
-                <a class="fn__flex-inline" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
                      服务器倒计时
                 </a>
 
@@ -159,7 +159,7 @@
         <div class="wrapper">
             <section class="item__content item__content--article vditor-reset">
                 <h1 id="环境介绍">环境介绍</h1>
-<p>  <del>ceph 搭建先搞定</del><br>
+<p class="indent--2"><del>ceph 搭建先搞定</del><br>
 <img src="https://img.hacpai.com/file/2019/11/image-50dcc3d1.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"><br>
 对接 openstack 配置<a href="https://docs.ceph.com/docs/master/rbd/rbd-openstack/" target="_blank">参考这里:</a></p>
 <ul>
@@ -210,7 +210,7 @@
 [root@ceph2 ~]# ntpdate 192.168.51.212
 [root@ceph3 ~]# ntpdate 192.168.51.212
 </code></pre>
-<p>  或者所有节点配置统一互联网 ntp 服务</p>
+<p class="indent--2">或者所有节点配置统一互联网 ntp 服务</p>
 <pre><code class="highlight-chroma">ntpdate ntp1.aliyun.com
 timedatectl set-timezone Asia/Shanghai
 </code></pre>
@@ -223,7 +223,7 @@ pip install -U pip
 yum install -y yum-utils device-mapper-persistent-data lvm2
 yum install ansible
 </code></pre>
-<p>  controller 网卡（外网桥接网卡）配置：</p>
+<p class="indent--2">controller 网卡（外网桥接网卡）配置：</p>
 <blockquote>
 <p>注意：各个节点网卡名称必须一致</p>
 </blockquote>
@@ -301,7 +301,7 @@ WARNING: xfs signature detected on /dev/sda4 at offset 0. Wipe it? [y/n]: y
   VG             #PV #LV #SN Attr   VSize   VFree  
   cinder-volumes   1   0   0 wz--n- 461.12g 461.12g
 </code></pre>
-<p>  基础环境完成。</p>
+<p class="indent--2">基础环境完成。</p>
 <h2 id="storage配置cinder存储信息">storage 配置 cinder 存储信息</h2>
 <ul>
 <li>安装 lvm 相关的软件包</li>
@@ -405,7 +405,7 @@ compute
 storage
 monitoring
 </code></pre>
-<p>  其他配置不用修改</p>
+<p class="indent--2">其他配置不用修改</p>
 <ul>
 <li>配置完成后，我们可以进入部署阶段。 首先，我们需要设置基本的主机的软件包的依赖项，例如 docker。Kolla-Ansible 提供了一个将以正确版本安装所有必需服务的剧本 playbook。先安装具有 kolla 部署依赖关系的引导服务 bootstrap-servers</li>
 </ul>
@@ -418,8 +418,8 @@ monitoring
 ok: [controller]
 fatal: [cinder]: FAILED! =&gt; {"changed": false, "cmd": ["/bin/pip2", "install", "-U", "docker"], "msg": "stdout: Collecting docker\n  Using cached https://files.pythonhosted.org/packages/cc/ca/699d4754a932787ef353a157ada74efd1ceb6d1fc0bfb7989ae1e7b33111/docker-4.1.0-py2.py3-none-any.whl\nCollecting requests!=2.18.0,&gt;=2.14.2\n  Using cached https://files.pythonhosted.org/packages/51/bd/23c926cd341ea6b7dd0b2a00aba99ae0f828be89d72b2190f27c11d4b7fb/requests-2.22.0-py2.py3-none-any.whl\nCollecting websocket-client&gt;=0.32.0\n  Using cached https://files.pythonhosted.org/packages/29/19/44753eab1fdb50770ac69605527e8859468f3c0fd7dc5a76dd9c4dbd7906/websocket_client-0.56.0-py2.py3-none-any.whl\nRequirement already satisfied, skipping upgrade: ipaddress&gt;=1.0.16; python_version &lt; \"3.3\" in /usr/lib/python2.7/site-packages (from docker) (1.0.16)\nRequirement already satisfied, skipping upgrade: backports.ssl-match-hostname&gt;=3.5; python_version &lt; \"3.5\" in /usr/lib/python2.7/site-packages (from docker) (3.5.0.1)\nRequirement already satisfied, skipping upgrade: six&gt;=1.4.0 in /usr/lib/python2.7/site-packages (from docker) (1.9.0)\nRequirement already satisfied, skipping upgrade: chardet&lt;3.1.0,&gt;=3.0.2 in /usr/lib/python2.7/site-packages (from requests!=2.18.0,&gt;=2.14.2-&gt;docker) (3.0.4)\nRequirement already satisfied, skipping upgrade: idna&lt;2.9,&gt;=2.5 in /usr/lib/python2.7/site-packages (from requests!=2.18.0,&gt;=2.14.2-&gt;docker) (2.8)\nRequirement already satisfied, skipping upgrade: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /usr/lib/python2.7/site-packages (from requests!=2.18.0,&gt;=2.14.2-&gt;docker) (1.25.6)\nRequirement already satisfied, skipping upgrade: certifi&gt;=2017.4.17 in /usr/lib/python2.7/site-packages (from requests!=2.18.0,&gt;=2.14.2-&gt;docker) (2019.9.11)\nInstalling collected packages: requests, websocket-client, docker\n  Found existing installation: requests 2.6.0\n\n:stderr: DEPRECATION: Python 2.7 will reach the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 won't be maintained after that date. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support\nERROR: Cannot uninstall 'requests'. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.\n"}
 </code></pre>
-<p>  <img src="https://img.hacpai.com/file/2019/11/image-2ec2382c.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>  解决方法：（在对应节点进行配置）</p>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/11/image-2ec2382c.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2">解决方法：（在对应节点进行配置）</p>
 <pre><code class="highlight-chroma">yum install -y python-pip
 yum remove python-docker-py
 pip install -U docker
@@ -432,7 +432,7 @@ ok: [cinder]
 ok: [controller]
 fatal: [computer]: FAILED! =&gt; {"changed": false, "msg": "Download error on https://pypi.python.org/simple/pip/: [Errno 101] Network is unreachable -- Some packages may not be found!\nCouldn't find index page for 'pip' (maybe misspelled?)\nDownload error on https://pypi.python.org/simple/: [Errno 101] Network is unreachable -- Some packages may not be found!\nNo local packages or download links found for pip\nerror: Could not find suitable distribution for Requirement.parse('pip')\n"}
 </code></pre>
-<p>  解决：（在对应节点 computer 进行配置）</p>
+<p class="indent--2">解决：（在对应节点 computer 进行配置）</p>
 <pre><code class="highlight-chroma">pip install --upgrade pip
 </code></pre>
 <h3 id="对主机进行预部署检查">对主机进行预部署检查</h3>
@@ -451,10 +451,10 @@ fatal: [computer]: FAILED! =&gt; {"changed": false, "msg": "Download error on ht
 <h1 id="安装openstack-client端">安装 openstack client 端</h1>
 <pre><code class="highlight-chroma">pip install python-openstackclient python-glanceclient python-neutronclient
 </code></pre>
-<p>  如有报错：</p>
+<p class="indent--2">如有报错：</p>
 <pre><code class="highlight-chroma">ERROR: dogpile-cache 0.9.0 has requirement decorator&gt;=4.0.0, but you'll have decorator 3.4.0 which is incompatible.
 </code></pre>
-<p>  解决：</p>
+<p class="indent--2">解决：</p>
 <pre><code class="highlight-chroma">pip install -U decorator
 pip install --upgrade decorate
 </code></pre>
@@ -463,7 +463,7 @@ pip install --upgrade decorate
 </ul>
 <pre><code class="highlight-chroma">ERROR: Package 'more-itertools' requires a different Python: 2.7.5 not in '&gt;=3.4'
 </code></pre>
-<p>  解决：</p>
+<p class="indent--2">解决：</p>
 <pre><code class="highlight-chroma"> pip install more-itertools==5.0.0
 </code></pre>
 <ul>
@@ -479,11 +479,11 @@ pip install python-openstackclient
 </ul>
 <pre><code class="highlight-chroma">ImportError: No module named 'requests.packages.urllib3'
 </code></pre>
-<p>  解决：</p>
+<p class="indent--2">解决：</p>
 <pre><code class="highlight-chroma">pip install requests urllib3 pyOpenSSL --force --upgrade
 </code></pre>
 <h3 id="调整配置及重新部署">调整配置及重新部署</h3>
-<p>  如果需要调整配置。 那么编辑 globals.yml 后， 然后运行 reconfigure. 使用 -t 参数可以只对变动的模块进行调整。</p>
+<p class="indent--2">如果需要调整配置。 那么编辑 globals.yml 后， 然后运行 reconfigure. 使用 -t 参数可以只对变动的模块进行调整。</p>
 <pre><code class="highlight-chroma">kolla-ansible -i /etc/kolla/multinode reconfigure -t neutron
 kolla-ansible -i /etc/kolla/multinode  deploy -t neutron
 </code></pre>
@@ -494,12 +494,12 @@ kolla-ansible -i /etc/kolla/multinode  deploy -t neutron
 EXT_NET_RANGE='start=192.168.50.10,end=192.168.50.90'  
 EXT_NET_GATEWAY='192.168.50.1'  
 </code></pre>
-<p>  执行：</p>
+<p class="indent--2">执行：</p>
 <pre><code class="highlight-chroma">[root@controller ~]# cd /usr/share/kolla-ansible  
 [root@controller kolla-ansible]# source /etc/kolla/admin-openrc.sh  
 [root@controller kolla-ansible]# ./init-runonce   
 </code></pre>
-<p>  输出：</p>
+<p class="indent--2">输出：</p>
 <pre><code class="highlight-chroma">Done.  
   
 To deploy a demo instance, run:  
@@ -511,7 +511,7 @@ openstack server create \
  --network demo-net \  
  demo1  
 </code></pre>
-<p>  执行如上命令即可创建 demo1 实例</p>
+<p class="indent--2">执行如上命令即可创建 demo1 实例</p>
 <pre><code class="highlight-chroma">[root@controller kolla-ansible]# openstack server create \  
 &gt;     --image cirros \  
 &gt;     --flavor m1.tiny \  
@@ -693,7 +693,7 @@ openstack server create \
 +-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 </code></pre>
-<p>  *给外网和私网添加路由</p>
+<p class="indent--2">*给外网和私网添加路由</p>
 <pre><code class="highlight-chroma">[root@controller ~]# openstack router create demo-router
 +-------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Field                   | Value                                                                                                                                                            |
@@ -869,7 +869,7 @@ neutron CLI is deprecated and will be removed in the future. Use openstack CLI i
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1606244437047"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -903,7 +903,7 @@ neutron CLI is deprecated and will be removed in the future. Use openstack CLI i
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1606244437047', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1572607586305",
@@ -925,4 +925,4 @@ neutron CLI is deprecated and will be removed in the future. Use openstack CLI i
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 412ms, 2020/12/15 13:57:35 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 487ms, 2020/12/25 09:37:54 -->

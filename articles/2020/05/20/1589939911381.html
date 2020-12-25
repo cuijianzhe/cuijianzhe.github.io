@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>OpenVPN集成LDAP踩坑记 - 邯城往事</title><meta name="description" content="  月亮被嚼碎了变成星星，你就藏在那漫天星光？"/><meta property="og:description" content="  月亮被嚼碎了变成星星，你就藏在那漫天星光？"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="OpenVPN集成LDAP踩坑记 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/05/20/1589939911381.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="OpenVPN集成LDAP踩坑记 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/05/20/1589939911381.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1606244437047"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>OpenVPN集成LDAP踩坑记 - 邯城往事</title><meta name="description" content="月亮被嚼碎了变成星星，你就藏在那漫天星光？"/><meta property="og:description" content="月亮被嚼碎了变成星星，你就藏在那漫天星光？"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="OpenVPN集成LDAP踩坑记 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/05/20/1589939911381.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="OpenVPN集成LDAP踩坑记 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/05/20/1589939911381.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
             <link rel="prev" title="Python生成指定长度随机数密码文件" href="https://cuijianzhe.github.io/articles/2020/05/14/1589459519906.html">
             <link rel="next" title="表格数据抽取以及生成表格" href="https://cuijianzhe.github.io/articles/2020/06/02/1591098366985.html">
     <!--鼠标点击特效-->
@@ -29,7 +29,7 @@
                 <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
                     <img src="/images/github-icon.png" alt="我的开源"> 我的开源
                 </a>
-                <a class="fn__flex-inline" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
                      服务器倒计时
                 </a>
 
@@ -157,9 +157,9 @@
         <div class="wrapper">
             <section class="item__content item__content--article vditor-reset">
                 <h1 id="自建vpn">自建 VPN</h1>
-<p>  <img src="https://b3logfile.com/file/2020/05/image-dedc96b6.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>  需求：直接替换阿里云购买的 SSL VPN，硬刚……<img alt="trollface" class="emoji" src="https://cdn.jsdelivr.net/npm/vditor/dist/images/emoji/trollface.png" title="trollface"> <img alt="trollface" class="emoji" src="https://cdn.jsdelivr.net/npm/vditor/dist/images/emoji/trollface.png" title="trollface"> <img alt="trollface" class="emoji" src="https://cdn.jsdelivr.net/npm/vditor/dist/images/emoji/trollface.png" title="trollface"></p>
-<p>  openvpn 版本：2.4.9-1.el7<br>
+<p class="indent--2"><img src="https://b3logfile.com/file/2020/05/image-dedc96b6.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2">需求：直接替换阿里云购买的 SSL VPN，硬刚……<img alt="trollface" class="emoji" src="https://cdn.jsdelivr.net/npm/vditor/dist/images/emoji/trollface.png" title="trollface"> <img alt="trollface" class="emoji" src="https://cdn.jsdelivr.net/npm/vditor/dist/images/emoji/trollface.png" title="trollface"> <img alt="trollface" class="emoji" src="https://cdn.jsdelivr.net/npm/vditor/dist/images/emoji/trollface.png" title="trollface"></p>
+<p class="indent--2">openvpn 版本：2.4.9-1.el7<br>
 ease-rsa 版本：3.0.7-1.el7<br>
 openvpn-auth-ldap 版本：2.0.3-17.el7</p>
 <h2 id="搭建过程">搭建过程</h2>
@@ -233,7 +233,7 @@ Keypair and certificate request completed. Your files are:
 req: /etc/openvpn/easy-rsa/pki/reqs/cjzshilong.req
 key: /etc/openvpn/easy-rsa/pki/private/cjzshilong.key
 </code></pre>
-<p>  <img src="https://b3logfile.com/file/2020/05/image-71a30d52.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://b3logfile.com/file/2020/05/image-71a30d52.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <ol start="7">
 <li><strong>签发证书，签约服务端证书</strong></li>
 </ol>
@@ -267,7 +267,7 @@ Data Base Updated
 
 Certificate created at: /etc/openvpn/easy-rsa/pki/issued/cjzshilong.crt
 </code></pre>
-<p>  <img src="https://b3logfile.com/file/2020/05/image-093e0ec2.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://b3logfile.com/file/2020/05/image-093e0ec2.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <ol start="8">
 <li><strong>生成 Windows 客户端 test 用户</strong></li>
 </ol>
@@ -291,7 +291,7 @@ Certificate is to be certified until Aug 23 02:33:16 2022 GMT (825 days)
 Write out database with 1 new entries
 Data Base Updated
 </code></pre>
-<p>  <img src="https://b3logfile.com/file/2020/05/image-bfa7fd71.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://b3logfile.com/file/2020/05/image-bfa7fd71.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <blockquote>
 <p>注：生成客户端用户的时候会提示设置密码，可以直接回车密码为空，也可以输入密码，待客户端连接时需要输入密码。</p>
 </blockquote>
@@ -346,7 +346,7 @@ explicit-exit-notify <span class="highlight-m">1</span>
 openvpn  11941  0.0  0.1  77636  4940 ?        Ss   May19   0:01 /usr/sbin/openvpn --cd /etc/openvpn/ --config server.conf
 root     12992  0.0  0.0 112708   988 pts/2    S+   10:44   0:00 grep --color=auto openvpn
 </code></pre>
-<p>  查看安装 openvpn 后的网卡状态：</p>
+<p class="indent--2">查看安装 openvpn 后的网卡状态：</p>
 <pre><code class="highlight-chroma">[root@cjz ~]# ip a
 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -362,7 +362,7 @@ root     12992  0.0  0.0 112708   988 pts/2    S+   10:44   0:00 grep --color=au
        valid_lft forever preferred_lft forever
 </code></pre>
 <h2 id="客户端安装连接">客户端安装连接</h2>
-<p>  windows 64 位的 openvpn 版本为：2.4.9 可以从官网上下载<br>
+<p class="indent--2">windows 64 位的 openvpn 版本为：2.4.9 可以从官网上下载<br>
 下载链接：<a href="https://openvpn.net/community-downloads/" target="_blank">https://openvpn.net/community-downloads/</a></p>
 <ol>
 <li><strong>客户端需要的证书文件：</strong><br>
@@ -403,12 +403,12 @@ route-delay 2
 status test01-status.log
 log-append test01.log
 </code></pre>
-<p>  安装 Openvpn 2.4.9 x86_64 后，需要找到客户端安装目录下的 config 文件夹，清空 config 文件夹，然后将客户端证书和客户端配置文件复制到 config 文件夹下<br>
+<p class="indent--2">安装 Openvpn 2.4.9 x86_64 后，需要找到客户端安装目录下的 config 文件夹，清空 config 文件夹，然后将客户端证书和客户端配置文件复制到 config 文件夹下<br>
 <img src="https://b3logfile.com/file/2020/05/image-1fa58604.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>  <img src="https://b3logfile.com/file/2020/05/image-c4c098a0.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>  <img src="https://b3logfile.com/file/2020/05/image-4b5542b9.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://b3logfile.com/file/2020/05/image-c4c098a0.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://b3logfile.com/file/2020/05/image-4b5542b9.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <h3 id="直接对标阿里云SSL-VPN----"><strong>直接对标阿里云 SSL VPN</strong>   <img alt="trollface" class="emoji" src="https://cdn.jsdelivr.net/npm/vditor/dist/images/emoji/trollface.png" title="trollface"> <img alt="trollface" class="emoji" src="https://cdn.jsdelivr.net/npm/vditor/dist/images/emoji/trollface.png" title="trollface"></h3>
-<p>  <img src="https://b3logfile.com/file/2020/05/image-cd0f1862.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://b3logfile.com/file/2020/05/image-cd0f1862.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <h2 id="其他">其他</h2>
 <ol>
 <li><strong>如果生成证书时输错密码了（如 test 用户），报出如下错误：</strong><br>
@@ -440,11 +440,11 @@ iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
 </li>
 </ol>
 <h1 id="OpenVPN集成LDAP">OpenVPN 集成 LDAP</h1>
-<p>  OpenVPN 服务端集成的 OpenLDAP 认证，这样能够使客户端用户在连接 VPN 时直接使用统一的 OpenLDAP 账号</p>
+<p class="indent--2">OpenVPN 服务端集成的 OpenLDAP 认证，这样能够使客户端用户在连接 VPN 时直接使用统一的 OpenLDAP 账号</p>
 <h2 id="安装openvpn-auth-ldap">安装 openvpn-auth-ldap</h2>
-<p>  <code>yum install openvpn-auth-ldap -y</code></p>
-<p>  主要会安装 <code>/usr/lib64/openvpn/plugin/lib/openvpn-auth-ldap.so</code> 文件，和生成 <code>/etc/openvpn/auth/ldap.conf</code> 文件。</p>
-<p>  <strong>配置 <code>vim /etc/openvpn/auth/ldap.conf</code></strong></p>
+<p class="indent--2"><code>yum install openvpn-auth-ldap -y</code></p>
+<p class="indent--2">主要会安装 <code>/usr/lib64/openvpn/plugin/lib/openvpn-auth-ldap.so</code> 文件，和生成 <code>/etc/openvpn/auth/ldap.conf</code> 文件。</p>
+<p class="indent--2"><strong>配置 <code>vim /etc/openvpn/auth/ldap.conf</code></strong></p>
 <pre><code class="language-bash highlight-chroma">&lt;LDAP&gt;
 	URL		ldap://172.16.16.4:389
 	BindDN		<span class="highlight-nv">cn</span><span class="highlight-o">=</span>manager,dc<span class="highlight-o">=</span>limikeji,dc<span class="highlight-o">=</span>com
@@ -468,7 +468,7 @@ iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
 <blockquote>
 <p>注意上面的 ldap.conf 中如果设置 <code>RequireGroup true</code> 以及 Group 的配置实际我们期望是必须是 LDAP 中的名称为 VPN 的组下的用户才可以登录 VPN。但根据这个 <a href="https://github.com/threerings/openvpn-auth-ldap/issues/7" target="_blank">ISSUE</a>，当前 2.0.3 的 openvpn-auth-ldap 不支持。因此如果只想限制 LDAP 中某些用户可以使用 VPN 的话，只能设置 <code>RequireGroup fals</code>，然后可以在 SearchFilter 中做一些文章，比如(&amp;(uid=%u)(ou=vpn))即只有用户的 ou 字段为(vpn)的才可以。</p>
 </blockquote>
-<p>  <strong>配置 /etc/openvpn/server.conf，添加如下：</strong></p>
+<p class="indent--2"><strong>配置 /etc/openvpn/server.conf，添加如下：</strong></p>
 <pre><code class="highlight-chroma">...
 plugin /usr/lib64/openvpn/plugin/lib/openvpn-auth-ldap.so "/etc/openvpn/auth/ldap.conf"
 client-cert-not-required
@@ -506,16 +506,16 @@ log-append test01.log
 <li>上面的配置注释掉了 <code>cert client.crt</code> 和 <code>;key client.key</code> 不再需要客户端证书 client.crt 和秘钥 client.key</li>
 <li><code>ns-cert-type server</code> 和 <code>auth-user-pass</code> 是新加入的配置开启了用户名密码认证</li>
 </ul>
-<p>  此时集成 LDAP 的 OpenVPN 客户端认证文件目录如下：</p>
-<p>  <img src="https://b3logfile.com/file/2020/05/image-ddeb7a21.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>  <strong>配置参考 ：</strong><img alt="doge" class="emoji" src="https://cdn.jsdelivr.net/npm/vditor/dist/images/emoji/doge.png" title="doge"></p>
-<p>  [1] <a href="http://majinlei.com/2018/11/04/Centos7-2-OpenVPN-2-4-4-easy-rsa-3-0-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B" target="_blank">http://majinlei.com/2018/11/04/Centos7-2-OpenVPN-2-4-4-easy-rsa-3-0-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B</a></p>
-<p>  [2] <a href="https://i4t.com/4481.html" target="_blank">https://i4t.com/4481.html</a></p>
-<p>  [3] <a href="https://open.weave.pub/install_openvpn" target="_blank">https://open.weave.pub/install_openvpn</a></p>
-<p>  [4] <a href="https://blog.frognew.com/2017/09/openvpn-integration-ldap.html" target="_blank">https://blog.frognew.com/2017/09/openvpn-integration-ldap.html</a></p>
-<p>  <strong>LDAP 配置参考：?</strong></p>
-<p>  [5] <a href="https://github.com/threerings/openvpn-auth-ldap/wiki/Configuration" target="_blank">https://github.com/threerings/openvpn-auth-ldap/wiki/Configuration</a></p>
-<p>  <strong>FQA:?</strong><br>
+<p class="indent--2">此时集成 LDAP 的 OpenVPN 客户端认证文件目录如下：</p>
+<p class="indent--2"><img src="https://b3logfile.com/file/2020/05/image-ddeb7a21.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><strong>配置参考 ：</strong><img alt="doge" class="emoji" src="https://cdn.jsdelivr.net/npm/vditor/dist/images/emoji/doge.png" title="doge"></p>
+<p class="indent--2">[1] <a href="http://majinlei.com/2018/11/04/Centos7-2-OpenVPN-2-4-4-easy-rsa-3-0-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B" target="_blank">http://majinlei.com/2018/11/04/Centos7-2-OpenVPN-2-4-4-easy-rsa-3-0-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B</a></p>
+<p class="indent--2">[2] <a href="https://i4t.com/4481.html" target="_blank">https://i4t.com/4481.html</a></p>
+<p class="indent--2">[3] <a href="https://open.weave.pub/install_openvpn" target="_blank">https://open.weave.pub/install_openvpn</a></p>
+<p class="indent--2">[4] <a href="https://blog.frognew.com/2017/09/openvpn-integration-ldap.html" target="_blank">https://blog.frognew.com/2017/09/openvpn-integration-ldap.html</a></p>
+<p class="indent--2"><strong>LDAP 配置参考：?</strong></p>
+<p class="indent--2">[5] <a href="https://github.com/threerings/openvpn-auth-ldap/wiki/Configuration" target="_blank">https://github.com/threerings/openvpn-auth-ldap/wiki/Configuration</a></p>
+<p class="indent--2"><strong>FQA:?</strong><br>
 [6] <a href="https://forums.openvpn.net/viewtopic.php?t=2156" target="_blank">https://forums.openvpn.net/viewtopic.php?t=2156</a></p>
                     <div>
                         <hr>
@@ -641,7 +641,7 @@ log-append test01.log
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1606244437047"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -675,7 +675,7 @@ log-append test01.log
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1606244437047', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1589939911381",
@@ -697,4 +697,4 @@ log-append test01.log
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 391ms, 2020/12/15 13:57:25 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 449ms, 2020/12/25 09:37:44 -->

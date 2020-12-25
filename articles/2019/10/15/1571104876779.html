@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>openstack系列-neutron系列安装部署 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="openstack系列-neutron系列安装部署 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/15/1571104876779.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="openstack系列-neutron系列安装部署 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/15/1571104876779.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1606244437047"/>
+              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
             <link rel="prev" title="openstack系列-nova节点部署" href="https://cuijianzhe.github.io/articles/2019/10/13/1570962040262.html">
             <link rel="next" title="openstack系列-dashboard部署" href="https://cuijianzhe.github.io/articles/2019/10/15/1571128802984.html">
     <!--鼠标点击特效-->
@@ -29,7 +29,7 @@
                 <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
                     <img src="/images/github-icon.png" alt="我的开源"> 我的开源
                 </a>
-                <a class="fn__flex-inline" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
                      服务器倒计时
                 </a>
 
@@ -262,7 +262,7 @@ Repeat User Password:
 <li><a href="https://docs.openstack.org/neutron/rocky/install/controller-install-option1-rdo.html" target="_blank">Networking Option 1: Provider networks</a></li>
 <li><a href="https://docs.openstack.org/neutron/rocky/install/controller-install-option2-rdo.html" target="_blank">Networking Option 2: Self-service networks</a></li>
 </ul>
-<p>  选项 1 部署了最简单的架构，该架构仅支持将实例附加到提供商（外部）网络。没有自助（私有）网络，路由器或浮动 IP 地址。只有该 <code>admin</code> 特权用户或其他特权用户才能管理提供商网络。</p>
+<p class="indent--2">选项 1 部署了最简单的架构，该架构仅支持将实例附加到提供商（外部）网络。没有自助（私有）网络，路由器或浮动 IP 地址。只有该 <code>admin</code> 特权用户或其他特权用户才能管理提供商网络。</p>
 <pre><code class="highlight-chroma">yum install openstack-neutron openstack-neutron-ml2 \
   openstack-neutron-linuxbridge ebtables -y
 </code></pre>
@@ -322,7 +322,7 @@ password = 598941324
 lock_path = /var/lib/neutron/tmp
 </code></pre>
 <h3 id="配置模块化第2层-ML2-插件">配置模块化第 2 层（ML2）插件</h3>
-<p>  ####配置 /etc/neutron/plugins/ml2/ml2_conf.ini</p>
+<p class="indent--2">####配置 /etc/neutron/plugins/ml2/ml2_conf.ini</p>
 <ul>
 <li>在[ML2]部分中，启用平面和 VLAN 网络</li>
 </ul>
@@ -365,7 +365,7 @@ flat_networks = provider
 enable_ipset = true
 </code></pre>
 <h4 id="配置Linux网桥代理">配置 Linux 网桥代理</h4>
-<p>  编辑/etc/neutron/plugins/ml2/linuxbridge_agent.ini</p>
+<p class="indent--2">编辑/etc/neutron/plugins/ml2/linuxbridge_agent.ini</p>
 <ul>
 <li>在[Linux_Bridge]部分中，将提供程序虚拟网络映射到提供程序物理网络接口：</li>
 </ul>
@@ -405,7 +405,7 @@ net.bridge.bridge-nf-call-iptables <span class="highlight-o">=</span> <span clas
 bridge-nf-call-arptables  bridge-nf-call-ip6tables  bridge-nf-call-iptables  bridge-nf-filter-pppoe-tagged  bridge-nf-filter-vlan-tagged  bridge-nf-pass-vlan-input-dev
 </code></pre>
 <h3 id="配置DHCP代理">配置 DHCP 代理</h3>
-<p>  编辑 <code>/etc/neutron/dhcp_agent.ini</code> 文件</p>
+<p class="indent--2">编辑 <code>/etc/neutron/dhcp_agent.ini</code> 文件</p>
 <ul>
 <li>在[默认]部分中，配置 Linux 网桥接口驱动程序 dnsmasq dhcp 驱动程序，并启用隔离元数据，以便提供程序网络上的实例可以通过网络访问元数据：</li>
 </ul>
@@ -416,7 +416,7 @@ dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
 enable_isolated_metadata = true
 </code></pre>
 <h3 id="Networking-Option-2--Self-service-networks"><a href="https://docs.openstack.org/neutron/rocky/install/controller-install-option2-rdo.html" target="_blank">Networking Option 2: Self-service networks</a></h3>
-<p>  网络配置选项 2：</p>
+<p class="indent--2">网络配置选项 2：</p>
 <h3 id="配置元数据代理">配置元数据代理</h3>
 <ul>
 <li>在[DEFAULT]部分中，配置元数据主机和共享密钥：</li>
@@ -467,7 +467,7 @@ metadata_proxy_shared_secret = 598941324
   neutron-linuxbridge-agent.service neutron-dhcp-agent.service \
   neutron-metadata-agent.service
 </code></pre>
-<p>  <del>对于网络选项 2，还启用并启动第 3 层服务</del></p>
+<p class="indent--2"><del>对于网络选项 2，还启用并启动第 3 层服务</del></p>
 <pre><code class="highlight-chroma"># systemctl enable neutron-l3-agent.service
 # systemctl start neutron-l3-agent.service
 </code></pre>
@@ -506,14 +506,14 @@ password = 598941324
 lock_path = /var/lib/neutron/tmp
 </code></pre>
 <h2 id="配置网络选项-">配置网络选项</h2>
-<p>  Choose the same networking option that you chose for the controller node to configure services specific to it. Afterwards, return here and proceed to <a href="https://docs.openstack.org/neutron/rocky/install/compute-install-rdo.html#neutron-compute-compute-rdo" target="_blank">Configure the Compute service to use the Networking service</a>.</p>
+<p class="indent--2">Choose the same networking option that you chose for the controller node to configure services specific to it. Afterwards, return here and proceed to <a href="https://docs.openstack.org/neutron/rocky/install/compute-install-rdo.html#neutron-compute-compute-rdo" target="_blank">Configure the Compute service to use the Networking service</a>.</p>
 <ul>
 <li><a href="https://docs.openstack.org/neutron/rocky/install/compute-install-option1-rdo.html" target="_blank">Networking Option 1: Provider networks</a></li>
 <li><a href="https://docs.openstack.org/neutron/rocky/install/compute-install-option2-rdo.html" target="_blank">Networking Option 2: Self-service networks</a></li>
 </ul>
 <h3 id="toc_h3_17"><a href="https://docs.openstack.org/neutron/rocky/install/compute-install-option1-rdo.html" target="_blank"></a></h3>
-<h4 id="配置Linux网桥代理">配置 Linux 网桥代理</h4>
-<p>  编辑 <code>/etc/neutron/plugins/ml2/linuxbridge_agent.ini</code> 文件</p>
+<h4 id="配置Linux网桥代理-">配置 Linux 网桥代理</h4>
+<p class="indent--2">编辑 <code>/etc/neutron/plugins/ml2/linuxbridge_agent.ini</code> 文件</p>
 <ul>
 <li>[Linux_Bridge]部分中，将提供程序虚拟网络映射到提供程序物理网络接口</li>
 </ul>
@@ -546,7 +546,7 @@ bridge-nf-call-ip6tables  bridge-nf-filter-pppoe-tagged  bridge-nf-pass-vlan-inp
 net.bridge.bridge-nf-call-ip6tables = 1 
 net.bridge.bridge-nf-call-iptables = 1
 </code></pre>
-<p>  使其生效</p>
+<p class="indent--2">使其生效</p>
 <pre><code class="highlight-chroma">[root@linux-node2 ~]# sysctl -p
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
@@ -566,7 +566,7 @@ username = neutron
 password = 598941324
 </code></pre>
 <h3 id="第二种网络方法选项"><a href="https://docs.openstack.org/neutron/rocky/install/compute-install-option2-rdo.html" target="_blank">第二种网络方法选项</a></h3>
-<p>  暂不使用</p>
+<p class="indent--2">暂不使用</p>
 <h2 id="完成安装">完成安装</h2>
 <ul>
 <li>重启</li>
@@ -642,7 +642,7 @@ systemctl start neutron-linuxbridge-agent.service
 <pre><code class="highlight-chroma">[ml2_type_flat]  
 flat_networks = provider  
 </code></pre>
-<p>  --provider network type flat 选项使用来自以下文件的信息将扁平虚拟网络连接到主机上 ens0 接口上的扁平（本机/未标记）物理网络：在 /etc/neutron/plugins/ml2/linuxbridge_agent.ini</p>
+<p class="indent--2">--provider network type flat 选项使用来自以下文件的信息将扁平虚拟网络连接到主机上 ens0 接口上的扁平（本机/未标记）物理网络：在 /etc/neutron/plugins/ml2/linuxbridge_agent.ini</p>
 <pre><code class="highlight-chroma"> [linux_bridge]
 physical_interface_mappings = provider:enp61s0f0
 </code></pre>
@@ -682,11 +682,11 @@ physical_interface_mappings = provider:enp61s0f0
 DNS_RESOLVER 使用 DNS 解析程序的 IP 地址。在大多数情况下，可以使用主机上/etc/resolv.conf 文件中的一个。<br>
 <code>PROVIDER_NETWORK_GATEWAY</code> 提供程序网络上的网关 IP 地址，通常是“.1”IP 地址。</p>
 </blockquote>
-<p>  验证：</p>
+<p class="indent--2">验证：</p>
 <pre><code class="highlight-chroma">[root@linux-node1 ~]# ip netns
 qdhcp-e5179b09-cf50-46d5-b0e8-e02909b94ffe (id: 0)
 </code></pre>
-<p>  创建虚拟机：</p>
+<p class="indent--2">创建虚拟机：</p>
 <pre><code class="highlight-chroma">[root@linux-node1 ~]# openstack flavor create --id 0 --vcpus 1 --ram 64 --disk 1 m1.nano
 +----------------------------+---------+
 | Field                      | Value   |
@@ -719,7 +719,7 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
 | user_id     | 93fe6925e0fb476f9ee66d8598f189cf                |
 +-------------+-------------------------------------------------+
 </code></pre>
-<p>  验证密钥对的添加：</p>
+<p class="indent--2">验证密钥对的添加：</p>
 <pre><code class="highlight-chroma">[root@linux-node1 ~]# openstack keypair list
 +-------+-------------------------------------------------+
 | Name  | Fingerprint                                     |
@@ -728,7 +728,7 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
 +-------+-------------------------------------------------+
 </code></pre>
 <h3 id="添加安全组规则">添加安全组规则</h3>
-<p>  默认情况下，默认安全组应用于所有实例，并包含拒绝远程访问实例的防火墙规则。对于 cirros 等 Linux 映像，我们建议至少允许 icmp（ping）和 secure shell（SSH）。</p>
+<p class="indent--2">默认情况下，默认安全组应用于所有实例，并包含拒绝远程访问实例的防火墙规则。对于 cirros 等 Linux 映像，我们建议至少允许 icmp（ping）和 secure shell（SSH）。</p>
 <ul>
 <li>向默认安全组添加规则：<br>
 允许 ICMP（ping）：</li>
@@ -754,7 +754,7 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
 | updated_at        | 2019-10-19T06:31:41Z                 |
 +-------------------+--------------------------------------+
 </code></pre>
-<p>  允许安全（SSH）访问：</p>
+<p class="indent--2">允许安全（SSH）访问：</p>
 <pre><code class="highlight-chroma">[root@linux-node1 ~]# openstack security group rule create --proto tcp --dst-port 22 default
 +-------------------+--------------------------------------+
 | Field             | Value                                |
@@ -954,7 +954,7 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
 <ul>
 <li><a href="https://docs.openstack.org/install-guide/launch-instance-selfservice.html" target="_blank">启动实例</a></li>
 </ul>
-<p>  查看相关信息：</p>
+<p class="indent--2">查看相关信息：</p>
 <pre><code class="highlight-chroma">[root@controller ~]#  openstack flavor list
 +----+---------+-----+------+-----------+-------+-----------+
 | ID | Name    | RAM | Disk | Ephemeral | VCPUs | Is Public |
@@ -1122,7 +1122,7 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
             <a href="#toc_h3_17"></a>
         </li>
         <li class="toc__h4">
-            <a href="#配置Linux网桥代理">配置 Linux 网桥代理</a>
+            <a href="#配置Linux网桥代理-">配置 Linux 网桥代理</a>
         </li>
         <li class="toc__h3">
             <a href="#第二种网络方法选项">第二种网络方法选项</a>
@@ -1232,7 +1232,7 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1606244437047"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -1266,7 +1266,7 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1606244437047', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1571104876779",
@@ -1288,4 +1288,4 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 397ms, 2020/12/15 13:57:36 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 457ms, 2020/12/25 09:37:57 -->

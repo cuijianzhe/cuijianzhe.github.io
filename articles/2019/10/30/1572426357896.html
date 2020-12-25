@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>ceph集群搭建 - 邯城往事</title><meta name="description" content="  "/><meta property="og:description" content="  "/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="ceph集群搭建 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/30/1572426357896.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="ceph集群搭建 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/30/1572426357896.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1606244437047"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>ceph集群搭建 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="ceph集群搭建 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/30/1572426357896.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="ceph集群搭建 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/30/1572426357896.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
             <link rel="prev" title="kolla部署openstack（stein）部署---allinone" href="https://cuijianzhe.github.io/articles/2019/10/27/1572172031071.html">
             <link rel="next" title="kolla-ansible部署openstack多节点" href="https://cuijianzhe.github.io/articles/2019/11/01/1572607586305.html">
     <!--鼠标点击特效-->
@@ -29,7 +29,7 @@
                 <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
                     <img src="/images/github-icon.png" alt="我的开源"> 我的开源
                 </a>
-                <a class="fn__flex-inline" href="http://fuck.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
                      服务器倒计时
                 </a>
 
@@ -159,14 +159,14 @@
         <div class="wrapper">
             <section class="item__content item__content--article vditor-reset">
                 <h1 id="Ceph集群文档"><a href="http://docs.ceph.org.cn/rbd/rbd/" target="_blank">Ceph 集群文档</a></h1>
-<p>  集群架构：<br>
+<p class="indent--2">集群架构：<br>
 <img src="https://img.hacpai.com/file/2019/10/image-08283228.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p>  环境：<br>
+<p class="indent--2">环境：<br>
 10.200.51.4  admin、osd、mon 作为管理和监控节点<br>
 10.200.51.9  osd、mds<br>
 10.200.51.10  osd、mds<br>
 10.200.51.113~client 节点</p>
-<p>  ceph1 作为管理，osd.mon 节点。前三台新增硬盘</p>
+<p class="indent--2">ceph1 作为管理，osd.mon 节点。前三台新增硬盘</p>
 <pre><code class="highlight-chroma">[root@ceph1 ~]# mkfs.xfs /dev/sdb
 meta-data=/dev/sdb               isize=512    agcount=4, agsize=1310720 blks
          =                       sectsz=512   attr=2, projid32bit=1
@@ -234,11 +234,11 @@ ssh-copy-id ceph4
 [root@ceph2 ~]# ntpdate 10.200.51.4
 [root@ceph3 ~]# ntpdate 10.200.51.4
 </code></pre>
-<p>  或者所有节点配置统一互联网 ntp 服务</p>
+<p class="indent--2">或者所有节点配置统一互联网 ntp 服务</p>
 <pre><code class="highlight-chroma">ntpdate ntp1.aliyun.com
 </code></pre>
 <h2 id="管理节点安装"><a href="http://docs.ceph.org.cn/install/install-ceph-deploy/" target="_blank">管理节点安装</a></h2>
-<p>  添加 yum 源，<a href="https://opsx.alibaba.com/mirror/search?q=ceph&amp;lang=zh-CN" target="_blank">参考阿里镜像源</a><br>
+<p class="indent--2">添加 yum 源，<a href="https://opsx.alibaba.com/mirror/search?q=ceph&amp;lang=zh-CN" target="_blank">参考阿里镜像源</a><br>
 <a href="http://docs.ceph.org.cn/start/quick-start-preflight/#rpm" target="_blank">官方源</a></p>
 <pre><code class="highlight-chroma">[ceph]
 name=ceph
@@ -274,7 +274,7 @@ ceph-deploy new ceph1
 [root@ceph1 ceph]# ls
 ceph.conf  ceph-deploy-ceph.log  ceph.mon.keyring
 </code></pre>
-<p>  Ceph 配置文件、一个 monitor  密钥环和一个日志文件<br>
+<p class="indent--2">Ceph 配置文件、一个 monitor  密钥环和一个日志文件<br>
 修改副本数<br>
 <strong>#配置文件的默认副本数从</strong>  <strong>3  改成  2，这样只有两个  osd  也能达到  active+clean  状态，把下面这行加入到[global]段（可选配置），<a href="http://docs.ceph.org.cn/rados/configuration/ceph-conf/" target="_blank">参考这里</a></strong></p>
 <pre><code class="highlight-chroma">[root@ceph1 ceph]# vim ceph.conf
@@ -292,7 +292,7 @@ osd_pool_default_size = 2
 </ul>
 <pre><code class="highlight-chroma">[root@ceph1 ceph]# ceph-deploy install ceph1 ceph2 ceph3 ceph4 
 </code></pre>
-<p>  完成后：</p>
+<p class="indent--2">完成后：</p>
 <pre><code class="highlight-chroma">[root@ceph1 ceph]#  ceph --version
 ceph version 10.2.11 (e4b061b47f07f583c92a050d9e84b1813a35671e)
 </code></pre>
@@ -334,7 +334,7 @@ ceph version 10.2.11 (e4b061b47f07f583c92a050d9e84b1813a35671e)
 <pre><code class="highlight-chroma">[root@ceph1 ceph]# ceph-deploy gatherkeys ceph1
 </code></pre>
 <h2 id="部署osd服务"><a href="http://docs.ceph.org.cn/rados/deployment/ceph-deploy-osd/" target="_blank">部署 osd 服务</a></h2>
-<p>  添加 osd 节点<br>
+<p class="indent--2">添加 osd 节点<br>
 之前创建的目录/var/local/osd{id}</p>
 <ul>
 <li>准备 OSD</li>
@@ -464,7 +464,7 @@ chmod 777 -R /var/local/osd2/
 [ceph3][DEBUG ] detect machine type
 [ceph3][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
 </code></pre>
-<p>  各节点修改 ceph.client.admin.keyring  权限：</p>
+<p class="indent--2">各节点修改 ceph.client.admin.keyring  权限：</p>
 <pre><code class="highlight-chroma"> chmod +r /etc/ceph/ceph.client.admin.keyring
 </code></pre>
 <ul>
@@ -476,7 +476,7 @@ HEALTH_OK
 <h2 id="部署MDS服务"><a href="http://docs.ceph.org.cn/rados/deployment/ceph-deploy-mds/" target="_blank">部署 MDS 服务</a></h2>
 <pre><code class="highlight-chroma">[root@ceph1 ceph]# ceph-deploy mds create ceph2 ceph3  
 </code></pre>
-<p>  查看集群状态：</p>
+<p class="indent--2">查看集群状态：</p>
 <pre><code class="highlight-chroma">[root@ceph1 ceph]# ceph mds stat  
 e4:, 3 up:standby
 [root@ceph1 ceph]# ceph -s
@@ -491,7 +491,7 @@ e4:, 3 up:standby
                   64 active+clean
 </code></pre>
 <h2 id="创建存储系统"><a href="http://docs.ceph.org.cn/cephfs/createfs/" target="_blank">创建存储系统</a></h2>
-<p>  首先查看：</p>
+<p class="indent--2">首先查看：</p>
 <pre><code class="highlight-chroma">[root@ceph1 ceph]# ceph fs ls 
 No filesystems enabled
 </code></pre>
@@ -512,7 +512,7 @@ new fs with metadata pool 2 and data pool 1
 [root@ceph1 ceph]# ceph fs ls
 name: 128, metadata pool: cephfs_metadata, data pools: [cephfs_data ]
 </code></pre>
-<p>  文件系统创建完毕后， MDS 服务器就能达到 <em>active</em> 状态了，比如在一个单 MDS 系统中：</p>
+<p class="indent--2">文件系统创建完毕后， MDS 服务器就能达到 <em>active</em> 状态了，比如在一个单 MDS 系统中：</p>
 <pre><code class="highlight-chroma">[root@ceph1 ceph]#  ceph mds stat
 e7: 1/1/1 up {0=ceph3=up:active}, 2 up:standby
 </code></pre>
@@ -520,26 +520,26 @@ e7: 1/1/1 up {0=ceph3=up:active}, 2 up:standby
 <p>active  是活跃的，另 1 个是处于热备份的状态</p>
 </blockquote>
 <h1 id="挂载ceph文件系统">挂载 ceph 文件系统</h1>
-<p>  不同的挂载方式</p>
+<p class="indent--2">不同的挂载方式</p>
 <ul>
 <li><a href="http://docs.ceph.org.cn/cephfs/kernel" target="_blank">挂载 CephFS 文件系统</a></li>
 <li><a href="http://docs.ceph.org.cn/cephfs/fuse" target="_blank">把 CephFS 挂载为用户空间文件系统</a></li>
 </ul>
 <h2 id="用内核驱动挂载-CEPH-文件系统"><a href="http://docs.ceph.org.cn/cephfs/kernel/" target="_blank">用内核驱动挂载 CEPH 文件系统</a></h2>
-<p>  client 端配置：<br>
+<p class="indent--2">client 端配置：<br>
 #创建挂载点  存储密钥（如果没有在管理节点使用 ceph-deploy  拷贝 ceph  配置文件）</p>
 <pre><code class="highlight-chroma">[root@ceph3 ~]#  cat /etc/ceph/ceph.client.admin.keyring 
 [client.admin]
         key = AQA6drpdei+IORAA7Ogqh9Wn0NbdGI/juTXnqw==
 </code></pre>
-<p>  将如上 key 对应的值保存到客户端（/etc/ceph/admin.secret）</p>
+<p class="indent--2">将如上 key 对应的值保存到客户端（/etc/ceph/admin.secret）</p>
 <pre><code class="highlight-chroma">[root@ceph4 ceph]# cat /etc/ceph/admin.secret 
 AQA6drpdei+IORAA7Ogqh9Wn0NbdGI/juTXnqw==
 </code></pre>
-<p>  要挂载启用了 cephx 认证的 Ceph 文件系统，你必须指定用户名、密钥。</p>
+<p class="indent--2">要挂载启用了 cephx 认证的 Ceph 文件系统，你必须指定用户名、密钥。</p>
 <pre><code class="highlight-chroma">[root@ceph4 ~]# mount -t ceph 10.200.51.4:6789:/ /opt/ -o name=admin,secretfile=/etc/ceph/admin.secret  
 </code></pre>
-<p>  查看挂载情况：</p>
+<p class="indent--2">查看挂载情况：</p>
 <pre><code class="highlight-chroma">[root@ceph4 ~]# df -h 
 Filesystem               Size  Used Avail Use% Mounted on
 devtmpfs                 475M     0  475M   0% /dev
@@ -551,7 +551,7 @@ tmpfs                    487M     0  487M   0% /sys/fs/cgroup
 tmpfs                     98M     0   98M   0% /run/user/0
 10.200.51.4:6789:/        60G   16G   45G  26% /opt
 </code></pre>
-<p>  取消挂载</p>
+<p class="indent--2">取消挂载</p>
 <pre><code class="highlight-chroma">[root@ceph4 ~]# umount /opt/
 [root@ceph4 ~]# df -h       
 Filesystem               Size  Used Avail Use% Mounted on
@@ -688,7 +688,7 @@ tmpfs                     98M     0   98M   0% /run/user/0
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1606244437047"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -722,7 +722,7 @@ tmpfs                     98M     0   98M   0% /run/user/0
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1606244437047', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1572426357896",
@@ -744,4 +744,4 @@ tmpfs                     98M     0   98M   0% /run/user/0
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 419ms, 2020/12/15 13:57:35 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 494ms, 2020/12/25 09:37:55 -->
