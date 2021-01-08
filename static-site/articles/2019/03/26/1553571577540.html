@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>搭建docker之路-初识（1） - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="搭建docker之路-初识（1） - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/26/1553571577540.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="搭建docker之路-初识（1） - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/26/1553571577540.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources/skins/Casper/css/base.css?1609182030448"/>
+            <link rel="prev" title="uniq、sort命令理解" href="https://cuijianzhe.github.io/articles/2019/03/23/1553311254119.html">
+            <link rel="next" title="docker容器命名和资源配额控制(2)" href="https://cuijianzhe.github.io/articles/2019/03/27/1553650586883.html">
+    <!--鼠标点击特效-->
+<script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
+<!--页面动态樱花-->
+<!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
+<script src="https://cdn.jsdelivr.net/npm/vditor@3.6.6/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
+<body class="fn__flex-column">
+<div id="pjax" class="fn__flex-1">
+    
+    <header class="header header--article">
+        <div class="wrapper header__title">
+            <h1 class="header__h1 fn__flex-inline">
+                <img src="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png" alt="邯城往事">
+                <a href="https://cuijianzhe.github.io" rel="start" class="header__title">邯城往事</a>
+            </h1>
+            <h2 class="header__h2">               >>>  展颜笑夙愿，一笑泯恩仇 <<<</h2>
+        </div>
+        <nav class="wrapper header__nav fn__clear">
+            <a href="https://cuijianzhe.github.io" rel="start">
+                    邯城往事
+            </a>
+
+                <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
+                    <img src="/images/github-icon.png" alt="我的开源"> 我的开源
+                </a>
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                     服务器倒计时
+                </a>
+
+
+            <div class="fn__right">
+    <a href="https://ld246.com/member/cuijianzhe"
+       title="https://ld246.com/member/cuijianzhe"
+       class="user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+        <a href="https://github.com/cuijianzhe"
+           title="https://github.com/cuijianzhe"
+           class="user__site"
+           target="_blank" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
+        </a>
+
+        <a href="https://twitter.com/JianzheC"
+           title="https://twitter.com/JianzheC"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32.003 6.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
+            </svg>
+        </a>
+        <a href="https://weibo.com/3796930704"
+           title="https://weibo.com/3796930704"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+                <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+                <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+                <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+            </svg>
+        </a>
+        <a href="https://www.zhihu.com/people/wen-yang-24-36"
+           title="https://www.zhihu.com/people/wen-yang-24-36"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32 26.67c0 2.931-2.382 5.33-5.33 5.33h-21.339c-2.948 0-5.33-2.382-5.33-5.33v-21.339c0-2.948 2.382-5.33 5.33-5.33h21.339c2.948 0 5.33 2.382 5.33 5.33v21.339zM12.358 17.191h4.713c0-1.114-0.531-1.748-0.531-1.748h-4.079c0.103-2.005 0.189-4.576 0.223-5.536h3.874s-0.017-1.645-0.463-1.645h-6.822s0.411-2.142 0.96-3.085c0 0-2.040-0.12-2.742 2.605-0.686 2.725-1.731 4.354-1.851 4.662s0.6 0.137 0.891 0c0.309-0.137 1.663-0.617 2.057-2.537h2.108c0.034 1.2 0.12 4.885 0.086 5.536h-4.336c-0.6 0.446-0.823 1.748-0.823 1.748h4.971c-0.206 1.371-0.566 3.137-1.080 4.062-0.806 1.491-1.234 2.828-4.131 5.176 0 0-0.48 0.36 0.994 0.223 1.474-0.12 2.845-0.514 3.839-2.434 0.514-0.994 1.011-2.28 1.423-3.565l4.079 4.713s0.548-1.268 0.137-2.657l-3.034-3.394-1.028 0.754c0.291-0.994 0.497-1.988 0.548-2.845 0.017 0.017 0.017 0 0.017-0.034zM18.048 7.936v16.3h1.714l0.703 1.954 2.965-1.954h3.754v-16.3h-9.136zM25.401 22.487h-1.937l-2.434 1.611-0.566-1.611h-0.6v-12.735h5.553v12.735h-0.017z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=598941324"
+           title="598941324"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+        <a href="javascript:void(0)"
+           class="user__site" title="cjz5989">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+            </svg>
+        </a>
+                <a rel="alternate" href="https://cuijianzhe.github.io/rss.xml">
+                    RSS
+                </a>
+
+            </div>
+        </nav>
+    </header>
+    <div class="article__top">
+        <div class="fn__clear">
+            <div class="toc fn__none" onclick="$('.post__toc').slideToggle()">目录</div>
+            <div class="title fn__pointer" onclick="Util.goTop()">搭建docker之路-初识（1）</div>
+<div class="article__share"
+     data-title="搭建docker之路-初识（1）"
+     data-blogtitle="邯城往事"
+     data-url="https://cuijianzhe.github.io/articles/2019/03/26/1553571577540.html"
+     data-avatar="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100">
+    <span class="item" data-type="qqz">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M22.824 13.989l-8.348 6.287s3.351 0.522 8.404 0.461l-0.23-1.040 7.2-6.549c0.132-0.12 0.183-0.312 0.129-0.487s-0.203-0.299-0.377-0.314l-9.492-0.856-3.708-9.213c-0.068-0.169-0.226-0.279-0.401-0.279s-0.333 0.11-0.401 0.279l-3.708 9.213-9.492 0.856c-0.174 0.015-0.323 0.139-0.377 0.314s-0.004 0.366 0.129 0.487l7.2 6.549-2.158 9.742c-0.040 0.178 0.026 0.365 0.168 0.474 0.142 0.107 0.331 0.115 0.481 0.021l8.158-5.165 8.158 5.165c0.070 0.045 0.147 0.066 0.225 0.066 0.090 0 0.18-0.029 0.256-0.086 0.142-0.109 0.208-0.295 0.168-0.474l-1.707-7.704c0.732-0.386 1.538-1.040 1.538-1.040s-3.195 1.638-14.664 0.838l8.312-6.325s-0.327-0.534-10.744-0.914c-0.697-0.026 8.493-1.83 15.281-0.305z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="wechat">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="weibo">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+            <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+            <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+            <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="twitter">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M32.003 6.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
+        </svg>
+    </span>
+    <span class="item__qr"></span>
+</div>        </div>
+        <progress class="article__progress"></progress>
+    </div>
+    <div class="article">
+        <div class="ft__center">
+            <div class="item__meta">
+                <time>
+                    2019-10-31
+                </time>
+                /
+                    <a class="tag" rel="tag"
+                       href="https://cuijianzhe.github.io/tags/Linux">Linux</a> &nbsp;
+            </div>
+            <h2 class="item__title">
+                搭建docker之路-初识（1）
+            </h2>
+        </div>
+        <div class="item__cover" style="background-image: url(https://img.hacpai.com/file/2019/03/docker-7354c3c7.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100)"></div>
+        <div class="wrapper">
+            <section class="item__content item__content--article vditor-reset">
+                <h1 id="一--安装docker环境">一、 安装 docker 环境</h1>
+<h2 id="1-1-安装">1.1 安装</h2>
+<p class="indent--2"><code>[root@host ~]# yum install -y docker</code><br>
+查看信息：</p>
+<pre><code class="highlight-chroma">[root@bogon ~]# systemctl start docker 
+
+[root@bogon ~]# systemctl enable  docker 
+Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.
+[root@bogon ~]# docker version 
+Client:
+ Version:         1.13.1
+ API version:     1.26
+ Package version: docker-1.13.1-94.gitb2f74b2.el7.centos.x86_64
+ Go version:      go1.10.3
+ Git commit:      b2f74b2/1.13.1
+ Built:           Tue Mar 12 10:27:24 2019
+ OS/Arch:         linux/amd64
+
+Server:
+ Version:         1.13.1
+ API version:     1.26 (minimum version 1.12)
+ Package version: docker-1.13.1-94.gitb2f74b2.el7.centos.x86_64
+ Go version:      go1.10.3
+ Git commit:      b2f74b2/1.13.1
+ Built:           Tue Mar 12 10:27:24 2019
+ OS/Arch:         linux/amd64
+ Experimental:    false
+</code></pre>
+<h2 id="1-2-下载docker镜像">1.2 下载 docker 镜像</h2>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/03/dockerliucheng-1ea22883.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="dockerliucheng.jpg"></p>
+<pre><code class="highlight-chroma">[root@bogon ~]# docker search centos  //从dockerHub中查找符合条件的镜像
+INDEX       NAME                                         DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+docker.io   docker.io/centos                             The official build of CentOS.                   5270      [OK]       
+docker.io   docker.io/ansible/centos7-ansible            Ansible on Centos7                              121                  [OK]
+docker.io   docker.io/jdeathe/centos-ssh                 CentOS-6 6.10 x86_64 / CentOS-7 7.5.1804 x...   108                  [OK]
+docker.io   docker.io/consol/centos-xfce-vnc             Centos container with "headless" VNC sessi...   83                   [OK]
+docker.io   docker.io/imagine10255/centos6-lnmp-php56    centos6-lnmp-php56                              52                   [OK]
+docker.io   docker.io/centos/mysql-57-centos7            MySQL 5.7 SQL database server                   49                   
+docker.io   docker.io/tutum/centos                       Simple CentOS docker image with SSH access      44                   
+docker.io   docker.io/gluster/gluster-centos             Official GlusterFS Image [ CentOS-7 +  Glu...   40                   [OK]
+docker.io   docker.io/openshift/base-centos7             A Centos7 derived base image for Source-To...   40                   
+docker.io   docker.io/centos/postgresql-96-centos7       PostgreSQL is an advanced Object-Relationa...   37                   
+docker.io   docker.io/centos/python-35-centos7           Platform for building and running Python 3...   34                   
+docker.io   docker.io/kinogmt/centos-ssh                 CentOS with SSH                                 26                   [OK]
+docker.io   docker.io/centos/httpd-24-centos7            Platform for running Apache httpd 2.4 or b...   22                   
+docker.io   docker.io/centos/php-56-centos7              Platform for building and running PHP 5.6 ...   20                   
+docker.io   docker.io/openshift/jenkins-2-centos7        A Centos7 based Jenkins v2.x image for use...   20                   
+docker.io   docker.io/pivotaldata/centos-gpdb-dev        CentOS image for GPDB development. Tag nam...   10                   
+docker.io   docker.io/openshift/wildfly-101-centos7      A Centos7 based WildFly v10.1 image for us...   6                    
+docker.io   docker.io/openshift/jenkins-1-centos7        DEPRECATED: A Centos7 based Jenkins v1.x i...   4                    
+docker.io   docker.io/darksheer/centos                   Base Centos Image -- Updated hourly             3                    [OK]
+docker.io   docker.io/pivotaldata/centos                 Base centos, freshened up a little with a ...   3                    
+docker.io   docker.io/pivotaldata/centos-mingw           Using the mingw toolchain to cross-compile...   2                    
+docker.io   docker.io/blacklabelops/centos               CentOS Base Image! Built and Updates Daily!     1                    [OK]
+docker.io   docker.io/openshift/wildfly-81-centos7       A Centos7 based WildFly v8.1 image for use...   1                    
+docker.io   docker.io/pivotaldata/centos-gcc-toolchain   CentOS with a toolchain, but unaffiliated ...   1                    
+docker.io   docker.io/smartentry/centos                  centos with smartentry                          0 
+</code></pre>
+<p class="indent--2"><strong>从公网 dockerhub 上拉取镜像 image</strong></p>
+<pre><code class="highlight-chroma">[root@host ~]# docker pull docker.io/centos
+
+Using default tag: latest
+Trying to pull repository docker.io/library/centos ... 
+latest: Pulling from docker.io/library/centos
+8ba884070f61: Pull complete 
+Digest: sha256:8d487d68857f5bc9595793279b33d082b03713341ddec91054382641d14db861
+Status: Downloaded newer image for docker.io/centos:latest
+</code></pre>
+<p class="indent--2">开启 NAT 转发功能</p>
+<pre><code class="highlight-chroma">[root@host ~]# vim /etc/sysctl.conf
+net.ipv4.ip_forward = 1
+//执行sysctl -p生效
+[root@host ~]# sysctl -p
+net.ipv4.ip_forward = 1
+[root@host ~]# systemctl restart docker
+[root@host ~]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+docker.io/centos    latest              9f38484d220f        11 days ago         202 MB
+</code></pre>
+<h2 id="1-3实际应用-">1.3 实际应用：</h2>
+<h3 id="例1-运行一个--container--并加载镜像-centos-运行起来这个实例后-在实例中执行--bin-bash-命令">例 1：运行一个  container  并加载镜像 CentOS，运行起来这个实例后，在实例中执行 /bin/bash 命令</h3>
+<pre><code class="highlight-chroma">[root@host ~]# docker run -it docker.io/centos:latest /bin/bash    ##启动一个实例
+[root@ff20a65c5b95 /]# ls
+anaconda-post.log  bin  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+[root@ff20a65c5b95 /]# cat /etc/redhat-release
+CentOS Linux release 7.6.1810 (Core) 
+[root@ff20a65c5b95 /]# exit
+exit
+[root@host ~]# 
+</code></pre>
+<p class="indent--2">docker 常用参数：<br>
+run 运行<br>
+-i 以交互模式运行容器，通常不 -t  同时使用；<br>
+-t 为容器重新分配一个伪输入终端，通常和 -i 同时使用；</p>
+<h3 id="例2-在-container-中启动一个长久运行的进程-不断向-stdin-输出--hello-world---模拟一个后台运行的服务">例 2：在 container 中启动一个长久运行的进程，不断向 stdin 输出  hello world  。模拟一个后台运行的服务</h3>
+<pre><code class="highlight-chroma">[root@bogon ~]# docker run -d docker.io/centos:latest /bin/sh -c  "while  true;do echo hello world; sleep 1; done"
+
+6246ea4f21efb67018894fa78940210236e05d2e2953f942e5666488015b0f31
+  //容器的ID
+</code></pre>
+<h3 id="例3-从一个容器中取日志-查看输出的内容-可用于后期检查-docker-实例在标准输出中弹出的错误信息或正常的信息-">例 3：从一个容器中取日志，查看输出的内容，可用于后期检查 docker 实例在标准输出中弹出的错误信息或正常的信息。</h3>
+<p class="indent--2">语法：  docker logs  容器实例的  Name/ID</p>
+<pre><code class="highlight-chroma">[root@bogon ~]# docker logs 6246ea4f21efb67018894fa78940210236e05d2e2953f942e5666488015b0f31
+hello world
+hello world
+hello world
+hello world
+hello world
+hello world
+hello world
+hello world
+</code></pre>
+<p class="indent--2">查看正在运行的容器</p>
+<pre><code class="highlight-chroma">[root@bogon ~]# docker ps
+
+CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS               NAMES
+6246ea4f21ef        docker.io/centos:latest   "/bin/sh -c 'while..."   2 minutes ago       Up 2 minutes                            compassionate_hugle
+[root@bogon ~]#  docker ps -a     #-a 列出所有容器（包含沉睡/退出状态的容器）； 
+CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS                   PORTS               NAMES
+6246ea4f21ef        docker.io/centos:latest   "/bin/sh -c 'while..."   3 minutes ago       Up 3 minutes                                 compassionate_hugle
+ff20a65c5b95        docker.io/centos:latest   "/bin/bash"              3 hours ago         Exited (0) 3 hours ago                       serene_yalow
+</code></pre>
+<p class="indent--2">杀死一个容器</p>
+<pre><code class="highlight-chroma">[root@bogon ~]# docker kill 6246ea4f21ef
+
+6246ea4f21ef
+</code></pre>
+<h3 id="例4-启动-停止-重启-container-容器实例">例 4：启动、停止、重启 container 容器实例</h3>
+<p class="indent--2">启动： run # 创建并运行 docker 实例</p>
+<pre><code class="highlight-chroma">[root@bogon ~]# docker run -d docker.io/centos:latest /bin/sh -c  "while  true;do echo hello world; sleep 1; done"
+
+f639c4a00e22734e9c4faecd1480d01333c6049599d7e851342aa588e3e2926a
+[root@bogon ~]# 
+[root@bogon ~]# docker ps
+CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS               NAMES
+f639c4a00e22        docker.io/centos:latest   "/bin/sh -c 'while..."   7 seconds ago       Up 6 seconds                            infallible_lewin
+[root@bogon ~]# docker stop f639c4a00e22
+f639c4a00e22
+[root@bogon ~]# docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+[root@bogon ~]# 
+</code></pre>
+<h3 id="例5-删除指定-container---rm">例 5：删除指定 container ： rm</h3>
+<pre><code class="highlight-chroma">[root@bogon ~]# docker rm f639c4a00e22
+f639c4a00e22
+[root@bogon ~]# docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS        
+
+</code></pre>
+<h1 id="二-docker镜像制作的方法-">二、docker 镜像制作的方法：</h1>
+<p class="indent--2">Docker Image 的制作两种方法</p>
+<p class="indent--2">方法 1：docker commit	#保存 container 的当前状态到 image 后，然后生成对应的 image<br>
+方法 2：docker build #使用 Dockerfile 文件自动化制作 image</p>
+<h2 id="2-1-创建一个安装好-apache-web-服务器的容器镜像">2.1 创建一个安装好 apache Web 服务器的容器镜像</h2>
+<pre><code class="highlight-chroma">[root@bogon ~]# docker run -it docker.io/centos:latest /bin/bash
+[root@692713fffabb /]# yum install -y httpd 
+ #根据容器弼前状态做一个 image 镜像：创建一个安装了 apache 工具的 centos 镜像语法： docker commit &lt;container 的 ID&gt;或&lt;image_name&gt;
+[root@bogon ~]# docker ps -a
+CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS                        PORTS               NAMES
+692713fffabb        docker.io/centos:latest   "/bin/bash"              14 minutes ago      Exited (0) 2 minutes ago                          priceless_kare
+6246ea4f21ef        docker.io/centos:latest   "/bin/sh -c 'while..."   46 minutes ago      Exited (137) 40 minutes ago                       compassionate_hugle
+ff20a65c5b95        docker.io/centos:latest   "/bin/bash"              3 hours ago         Exited (0) 3 hours ago                            serene_yalow
+[root@bogon ~]# docker commit 692713fffabb docker.io/centos:apache 
+sha256:d61468f39896cf7f900f44b442c3e20960eba54bf877809f30a832e5c844ff15
+[root@bogon ~]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+docker.io/centos    apache              d61468f39896        7 seconds ago       318 MB
+docker.io/centos    latest              9f38484d220f        11 days ago         202 MB
+#使用新创建的 docker.io/centos：apache 镜像，生成一台容器实例： 镜像，生成一台容器实例：
+[root@bogon ~]# docker run -it centos:apache /bin/bash
+[root@e105be29362b /]# rpm -qa httpd
+httpd-2.4.6-88.el7.centos.x86_64
+[root@e105be29362b /]# 
+#查找安装包可以说明基于docker的apacheweb服务器构建成功
+
+</code></pre>
+<h2 id="2-2通过docker-build-创建一个基于-centos-的-httpd-web-服务器镜像-使用-docker-build-创建镜像时-需要使用-Dockerfile-文件自动化制作-image--镜像注-Dockerfile-有点像源码编译时--configure-后产生的-Makefile">2.2 通过 docker build 创建一个基于 CentOS 的 httpd Web 服务器镜像。使用 docker build 创建镜像时，需要使用 Dockerfile 文件自动化制作 image  镜像注：Dockerfile 有点像源码编译时./configure 后产生的 Makefile</h2>
+<p class="indent--2">以下操作要在 docker 物理机上操作：</p>
+<p class="indent--2">1、创建工作目录</p>
+<pre><code class="highlight-chroma">[root@bogon ~]# mkdir /docker-build 
+[root@bogon docker-build]# touch Dockerfile
+
+</code></pre>
+<p class="indent--2">2、编辑 Dockerfile<br>
+Dockerfile 用来创建一个自定义的 image,包含了用户指定的软件依赖等。</p>
+<pre><code class="highlight-chroma">[root@bogon docker-build]# vim Dockerfile 
+FROM docker.io/centos:latest
+MAINTAINER &lt;www.cjzshilong.cn&gt;
+RUN yum -y install httpd
+ADD start.sh /usr/local/bin/start.sh
+ADD index.html /var/www/html/index.html
+CMD /usr/local/bin/start.sh
+</code></pre>
+<p class="indent--2">注释：<br>
+FROM docker.io/centos:latest # FROM 基于哪个镜像 MAINTAINER &lt;www.cjzshilong.cn&gt;<br>
+MAINTAINER 镜像创建者<br>
+RUN yum -y install httpd	#RUN 安装软件用<br>
+ADD start.sh /usr/local/bin/start.sh<br>
+ADD index.html /var/www/html/index.html CMD /usr/local/bin/start.sh<br>
+ADD   将文件<src>拷贝到新产生的镜像的文件系统对应的路径<dest>。所有拷贝到新镜像中的文件和文件夹权限为 0755,uid 和 gid 为 0<br>
+CMD echo hello world	#container 启劢时执行的命令或启劢服务，但是一个 Dockerfile 中叧能有一条 CMD 命令，多条则叧执行最后一条 CMD.</dest></src></p>
+<p class="indent--2">3、创建  start.sh 脚本启动 httpd 服务和 apache 默认首页 index.html 文件</p>
+<pre><code class="highlight-chroma">[root@bogon docker-build]# echo "/usr/sbin/httpd -DFOREGROUND" &gt; start.sh
+[root@bogon docker-build]# chmod a+x start.sh 
+[root@bogon docker-build]# echo "docker images build test" &gt; index.html
+
+</code></pre>
+<p class="indent--2">注：/usr/sbin/httpd -DFOREGROUND 参数的含意：<br>
+Systemd is designed to run processes "in the foreground", that is, they don't have to specifically run themselves as daemons. The processes don't exactly run in the foreground, they run under systemd and it captures their input and output, but from the process's perspective, it is the same as running in the foreground.  That  is  systemd's  preferred method of operation, but it does have compatibility with traditional daemons.</p>
+<p class="indent--2">4、使用命令来创建新的 image<br>
+语法：docker build -t    父镜像名：镜像的 tag	Dockerfile 文件所在路径<br>
+-t :表示 tage，镜像名<br>
+例：使用命令 docker build 来创建新的 image,并命名为 docker.io/centos:httpd</p>
+<pre><code class="highlight-chroma">[root@bogon docker-build]# docker build -t docker.io/centos:httpd ./
+……
+Complete!
+ ---&gt; 15fa43bfc4fd
+Removing intermediate container 032876270cc9
+Step 4/6 : ADD start.sh /usr/local/bin/start.sh
+ ---&gt; 7c5122e78132
+Removing intermediate container d4788388dfd4
+Step 5/6 : ADD index.html /var/www/html/index.html
+ ---&gt; b02c0f7e5657
+Removing intermediate container e8fd13da450e
+Step 6/6 : CMD /usr/local/bin/start.sh
+ ---&gt; Running in e28625d1a0e3
+ ---&gt; 7703e62fc080
+Removing intermediate container e28625d1a0e3
+Successfully built 7703e62fc080
+
+[root@bogon docker-build]# docker images
+
+REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
+docker.io/centos    httpd               7703e62fc080        About a minute ago   318 MB
+docker.io/centos    apache              d61468f39896        27 minutes ago       318 MB
+docker.io/centos    latest              9f38484d220f        11 days ago          202 MB
+</code></pre>
+<p class="indent--2">./表示当前目录，当前目录要含有 Dockerfile 文件</p>
+<h1 id="三-Docker-images的发布">三、Docker images 的发布</h1>
+<p class="indent--2">方法 1：Save Image To TarBall<br>
+方法 2：Push Image To Docker Hub</p>
+<h2 id="3-1-方法1-Save-Image-To-TarBall">3.1 方法 1：Save Image To TarBall</h2>
+<p class="indent--2">保 存 Image 到 tar 包<br>
+语法：docker save -o 导出的镜像名.tar  本地镜像名：镜像标签例：</p>
+<pre><code class="highlight-chroma">[root@bogon ~]# docker save -o docker.io-centos-httpd-image.tar docker.io/centos:httpd
+
+[root@bogon ~]# ll -h
+总用量 311M
+-rw-------. 1 root root 311M 3月  26 18:38 docker.io-centos-httpd-image.tar
+</code></pre>
+<p class="indent--2">例：使用导入本地镜像：</p>
+<pre><code class="highlight-chroma">[root@bogon ~]# docker rmi docker.io/centos:httpd
+
+Untagged: docker.io/centos:httpd
+Deleted: sha256:7703e62fc0802dcb545ed4403dda4e343e0d51ae984db30efb2e32f0e045ef26
+Deleted: sha256:b02c0f7e565757ec489dd759a45abf321273bca9959e3193dcf9a6d3de4adf2b
+Deleted: sha256:1e9184e36e9a941d7bd35ae854ac2677367f0f0882d2d8056cc1a9b025dad4c3
+Deleted: sha256:7c5122e7813298d44726f2c4df0f27be01cfe85ab2cf530d3729d3e84908dd29
+Deleted: sha256:ff61787458e2102cfa4247fea79da7103d5017ef496ba8b9f83ad9296f1f60ea
+Deleted: sha256:15fa43bfc4fd425002a5b528d061782f954643234fdd0beef31f380646b8471b
+Deleted: sha256:0e4e270a381efa029a8d0a26e377055ca8aa49d1d3fe595d2c05fb76824ff809
+Deleted: sha256:bf93b347b502d32efcbfe18746fda992b7675e36ead5fb727e237194c999cdaf
+[root@bogon ~]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+docker.io/centos    apache              d61468f39896        34 minutes ago      318 MB
+docker.io/centos    latest              9f38484d220f        11 days ago         202 MB
+[root@bogon ~]# docker load -i docker.io-centos-httpd-image.tar 
+f42df3e4c26b: Loading layer [==================================================&gt;] 116.6 MB/116.6 MB
+b1e658f9a703: Loading layer [==================================================&gt;] 3.584 kB/3.584 kB
+1ebe4270a160: Loading layer [==================================================&gt;] 3.584 kB/3.584 kB
+Loaded image: docker.io/centos:httpd
+[root@bogon ~]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+docker.io/centos    httpd               7703e62fc080        10 minutes ago      318 MB
+docker.io/centos    apache              d61468f39896        35 minutes ago      318 MB
+docker.io/centos    latest              9f38484d220f        11 days ago         202 MB
+[root@bogon ~]# 
+</code></pre>
+<h2 id="3-2-方法2-Push-Image-To-Docker-Hub-发布到外网">3.2 方法 2：Push Image To Docker Hub 发布到外网</h2>
+<p class="indent--2">1、Signup on docker hub &amp; create repo	注册一个帐号 <a href="https://hub.docker.com/" target="_blank">https://hub.docker.com/</a><br>
+2、Login to docker hub<br>
+// docker login -u userabc -p abc123 -e <a href="mailto:userab@gmail.com" target="_blank">userab@gmail.com</a><br>
+3、Push image to docker hub	#上传镜像<br>
+// docker push centos:httpd<br>
+4、Pull image from docker hub	#下载镜像<br>
+//  docker pull userabc/centos:httpd	# 用户名/镜像名</p>
+<h2 id="3-2-方法3-使用阿里云的私有仓库来发布-">3.2 方法 3：使用阿里云的私有仓库来发布;</h2>
+<p class="indent--2">待实验……</p>
+<h1 id="四-Container-容器端口映射">四、Container 容器端口映射</h1>
+<h2 id="4-1-实战Container-端口映射">4.1 实战 Container 端口映射</h2>
+<p class="indent--2">启动 Container</p>
+<pre><code class="highlight-chroma">[root@bogon ~]# docker run -d -p 80:80 docker.io/centos:httpd 
+
+6a1fc818a972307687b9130ad7460c098c2bd88d60eb9026d565c7c24b71fe33
+[root@bogon ~]# 
+</code></pre>
+<p class="indent--2">注： -p 物理机的 80 端口:容器实例的 80 端口 ，把容器中的 80 端口映射到物理机上的 80 端口</p>
+<p class="indent--2">在物理机上查看容器状态</p>
+<pre><code class="highlight-chroma">[root@bogon ~]# docker ps
+
+CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS                NAMES
+6a1fc818a972        docker.io/centos:httpd   "/bin/sh -c /usr/l..."   43 seconds ago      Up 42 seconds       0.0.0.0:80-&gt;80/tcp   unruffled_yonath
+[root@bogon ~]# netstat -antup | grep 80
+tcp        0      0 192.168.89.209:22       192.168.89.80:62820     ESTABLISHED 1397/sshd: root@pts 
+tcp        0      0 192.168.89.209:22       192.168.89.80:62819     ESTABLISHED 1358/sshd: root@pts 
+tcp6       0      0 :::80                   :::*                    LISTEN      6742/docker-proxy-c 
+[root@bogon ~]# 
+</code></pre>
+<p class="indent--2">测试 http<br>
+<img src="https://img.hacpai.com/file/2019/03/dockerhtml-8795600a.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="dockerhtml.png"></p>
+<h2 id="4-2-访问正在运行的container容器实例">4.2 访问正在运行的 container 容器实例</h2>
+<p class="indent--2">语 法 ： docker exec -it &lt;container id | name&gt; /bin/bash<br>
+查看正在运行的容器 ID：</p>
+<pre><code class="highlight-chroma">[root@bogon ~]# docker ps 
+
+CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS                NAMES
+6a1fc818a972        docker.io/centos:httpd   "/bin/sh -c /usr/l..."   6 minutes ago       Up 6 minutes        0.0.0.0:80-&gt;80/tcp   unruffled_yonath
+[root@bogon ~]# docker exec -it 6a1fc818a972 /bin/bash 
+[root@6a1fc818a972 /]# echo cuijianzhe &gt; /var/www/html/test.html
+[root@6a1fc818a972 /]# exit
+exit
+[root@bogon ~]# curl http://192.168.89.209/test.html
+cuijianzhe
+[root@bogon ~]# 
+</code></pre>
+<p class="indent--2">查看物理机和容器的网络<br>
+查看容器的 ip</p>
+<pre><code class="highlight-chroma">[root@bogon ~]# docker exec -it 6a1fc818a972 /bin/bash 
+[root@6a1fc818a972 /]# yum install net-tools -y 
+Loaded plugins: fastestmirror, ovl
+Loading mirror speeds from cached hostfile
+ * base: mirrors.zju.edu.cn
+ * extras: mirrors.shu.edu.cn
+ * updates: mirrors.shu.edu.cn
+Resolving Dependencies
+--&gt; Running transaction check
+---&gt; Package net-tools.x86_64 0:2.0-0.24.20131004git.el7 will be installed
+--&gt; Finished Dependency Resolution
+
+Dependencies Resolved
+
+==========================================================================================================================================================================================================
+ Package                                        Arch                                        Version                                                       Repository                                 Size
+==========================================================================================================================================================================================================
+Installing:
+ net-tools                                      x86_64                                      2.0-0.24.20131004git.el7                                      base                                      306 k
+
+Transaction Summary
+==========================================================================================================================================================================================================
+Install  1 Package
+
+Total download size: 306 k
+Installed size: 918 k
+Downloading packages:
+net-tools-2.0-0.24.20131004git.el7.x86_64.rpm                                                                                                                                      | 306 kB  00:00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : net-tools-2.0-0.24.20131004git.el7.x86_64                                                                                                                                              1/1 
+  Verifying  : net-tools-2.0-0.24.20131004git.el7.x86_64                                                                                                                                              1/1 
+
+Installed:
+  net-tools.x86_64 0:2.0-0.24.20131004git.el7                                                                                                                                                             
+
+Complete!
+[root@6a1fc818a972 /]# ifconfig
+eth0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 172.17.0.2  netmask 255.255.0.0  broadcast 0.0.0.0
+        inet6 fe80::42:acff:fe11:2  prefixlen 64  scopeid 0x20&lt;link&gt;
+        ether 02:42:ac:11:00:02  txqueuelen 0  (Ethernet)
+        RX packets 184  bytes 326507 (318.8 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 162  bytes 11695 (11.4 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+[root@6a1fc818a972 /]# 
+</code></pre>
+<p class="indent--2">物理机的 ip：</p>
+<pre><code class="highlight-chroma">[root@bogon ~]# ifconfig
+
+docker0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 0.0.0.0
+        inet6 fe80::42:a1ff:fee8:1077  prefixlen 64  scopeid 0x20&lt;link&gt;
+        ether 02:42:a1:e8:10:77  txqueuelen 0  (Ethernet)
+        RX packets 33531  bytes 2208751 (2.1 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 37270  bytes 74193226 (70.7 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+ens33: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 192.168.89.209  netmask 255.255.255.0  broadcast 192.168.89.255
+        inet6 fe80::e99d:e9f2:8c11:9372  prefixlen 64  scopeid 0x20&lt;link&gt;
+        ether 00:0c:29:33:7b:83  txqueuelen 1000  (Ethernet)
+        RX packets 278009  bytes 207333025 (197.7 MiB)
+        RX errors 0  dropped 1  overruns 0  frame 0
+        TX packets 98075  bytes 8610553 (8.2 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 634  bytes 57000 (55.6 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 634  bytes 57000 (55.6 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+vethd559ccb: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet6 fe80::8cea:50ff:fe38:8696  prefixlen 64  scopeid 0x20&lt;link&gt;
+        ether 8e:ea:50:38:86:96  txqueuelen 0  (Ethernet)
+        RX packets 162  bytes 11695 (11.4 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 184  bytes 326507 (318.8 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+[root@bogon ~]# 
+</code></pre>
+<p class="indent--2">目前相当于虚拟机的 NAT 模式<br>
+<img src="https://img.hacpai.com/file/2019/03/dockermoshi-8b180ed2.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="dockermoshi.png"></p>
+<p class="indent--2">配置容器的 root 密码：</p>
+<pre><code class="highlight-chroma">[root@bogon ~]# docker exec -it 6a1fc818a972 /bin/bash 
+
+[root@6a1fc818a972 /]# echo 598941324 | passwd --stdin root
+Changing password for user root.
+passwd: all authentication tokens updated successfully.
+[root@6a1fc818a972 /]# 
+</code></pre>
+<p class="indent--2">在容器中安装 sshd 服务，然后把 22 端口映射出去，就可以远程登录容器了。</p>
+                    <div>
+                        <hr>
+
+标题：搭建docker之路-初识（1）<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2019/03/26/1553571577540.html" target="_blank">https://cuijianzhe.github.io/articles/2019/03/26/1553571577540.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<pre><p style="font-size:15px"><font color="#008000">
+<b>到头来
+我们记住的
+不是敌人的攻击
+而是朋友的沉默
+       ---马丁·路德·金</b></p><pre>
+
+                    </div>
+            </section>
+        </div>
+    </div>
+        <div class="post__toc">
+<ul class="article__toc">
+        <li class="toc__h1">
+            <a href="#一--安装docker环境">一、 安装 docker 环境</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#1-1-安装">1.1 安装</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#1-2-下载docker镜像">1.2 下载 docker 镜像</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#1-3实际应用-">1.3 实际应用：</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#例1-运行一个--container--并加载镜像-centos-运行起来这个实例后-在实例中执行--bin-bash-命令">例 1：运行一个 container 并加载镜像 CentOS，运行起来这个实例后，在实例中执行 /bin/bash 命令</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#例2-在-container-中启动一个长久运行的进程-不断向-stdin-输出--hello-world---模拟一个后台运行的服务">例 2：在 container 中启动一个长久运行的进程，不断向 stdin 输出 hello world 。模拟一个后台运行的服务</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#例3-从一个容器中取日志-查看输出的内容-可用于后期检查-docker-实例在标准输出中弹出的错误信息或正常的信息-">例 3：从一个容器中取日志，查看输出的内容，可用于后期检查 docker 实例在标准输出中弹出的错误信息或正常的信息。</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#例4-启动-停止-重启-container-容器实例">例 4：启动、停止、重启 container 容器实例</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#例5-删除指定-container---rm">例 5：删除指定 container ： rm</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#二-docker镜像制作的方法-">二、docker 镜像制作的方法：</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#2-1-创建一个安装好-apache-web-服务器的容器镜像">2.1 创建一个安装好 apache Web 服务器的容器镜像</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#2-2通过docker-build-创建一个基于-centos-的-httpd-web-服务器镜像-使用-docker-build-创建镜像时-需要使用-Dockerfile-文件自动化制作-image--镜像注-Dockerfile-有点像源码编译时--configure-后产生的-Makefile">2.2 通过 docker build 创建一个基于 CentOS 的 httpd Web 服务器镜像。使用 docker build 创建镜像时，需要使用 Dockerfile 文件自动化制作 image 镜像注：Dockerfile 有点像源码编译时./configure 后产生的 Makefile</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#三-Docker-images的发布">三、Docker images 的发布</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#3-1-方法1-Save-Image-To-TarBall">3.1 方法 1：Save Image To TarBall</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#3-2-方法2-Push-Image-To-Docker-Hub-发布到外网">3.2 方法 2：Push Image To Docker Hub 发布到外网</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#3-2-方法3-使用阿里云的私有仓库来发布-">3.2 方法 3：使用阿里云的私有仓库来发布;</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#四-Container-容器端口映射">四、Container 容器端口映射</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#4-1-实战Container-端口映射">4.1 实战 Container 端口映射</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#4-2-访问正在运行的container容器实例">4.2 访问正在运行的 container 容器实例</a>
+        </li>
+</ul>        </div>
+        <div id="gitalk-container" class="comment__wrapper wrapper" style="margin: 40px auto"></div>
+        <div id="b3logsolocomments"></div>
+        <div id="vcomment" class="comment__wrapper wrapper" style="margin: 40px auto" data-name="cuijianzhe" data-postId="1553571577540"></div>
+    <div class="article__bottom">
+        <div class="wrapper">
+            <div class="fn__flex">
+                    <div class="item" id="externalRelevantArticles"></div>
+                <div class="item" id="randomArticles"></div>
+                <div class="item" id="relevantArticles"></div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<footer class="footer">
+    <div class="wrapper fn__clear">
+        <div class="fn__left">
+            <br>
+            &copy; 2021
+            <a href="https://cuijianzhe.github.io">邯城往事</a>
+            <img style="width: 20px; height: 20px;" src="https://img.hacpai.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">冀ICP备19005901号</a> 
+
+<!--切换标签实现网页标题变化-->
+<script type="text/javascript">
+    /*自动刷新页面，避免无法访问*/
+    var OriginTitile = document.title;
+    var titleTime;
+    document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+            document.title = '一杯茶，一包烟，混过一天是一天';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '哈哈，我是大佬ヾ(ﾟ∀ﾟゞ)';
+            titleTime = setTimeout(function () {
+                document.title = OriginTitile;
+            }, 3000);
+        }
+    });
+</script>
+<!--切换标签实现网页标题变化 结束-->
+
+        </div>
+        <div class="fn__right">
+            <a href="https://cuijianzhe.github.io/tags.html" rel="section">
+            标签墙
+            </a>
+            &nbsp;•&nbsp;
+            <a href="https://cuijianzhe.github.io/archives.html">
+            存档
+            </a>
+            &nbsp;•&nbsp;
+            <a rel="archive" href="https://cuijianzhe.github.io/links.html">
+            友链
+            </a>
+            <br>
+            110 文章 &nbsp;
+            <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> 浏览 &nbsp;
+            
+        </div>
+    </div>
+</footer>
+
+<script>
+  var Label = {
+    speech: true,
+    servePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources",
+    luteAvailable: true,
+    hljsStyle: 'monokai',
+    langLabel: "zh_CN",
+    version: "4.3.1",
+    staticSite: true,
+    showCodeBlockLn: false,
+    articleId: "1553571577540",
+  }
+</script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources/skins/Casper/js/common.min.js?1609182030448"
+        charset="utf-8"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
+<div class="solo-kanbanniang">
+    <div class="solo-kanbanniang__tip"></div>
+    <canvas id="soloKanbanniang" width="280" height="250"></canvas>
+    <div class="solo-kanbanniang__tool">
+        <svg id="soloKanbanniangHome" viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M32 18.967l-16-12.42-16 12.42v-5.064l16-12.42 16 12.42zM28 18.516v12h-8v-8h-8v8h-8v-12l12-9z"></path>
+        </svg>
+        <svg id="soloKanbanniangRSS" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M320.364 768q0 45.728-32 77.728t-77.728 32-77.728-32-32-77.728 32-77.728 77.728-32 77.728 32 32 77.728zM612.94 838.272q1.152 16-9.728 27.424-10.272 12-26.848 12h-77.152q-14.272 0-24.576-9.44t-11.424-23.712q-12.576-130.848-105.44-223.712t-223.712-105.44q-14.272-1.152-23.712-11.424t-9.44-24.576V402.24q0-16.576 12-26.848 9.728-9.728 24.576-9.728h2.848q91.424 7.424 174.848 46.016t148 103.712q65.152 64.576 103.712 148t46.016 174.848z m292.576 1.152q1.152 15.424-10.272 26.848-10.272 11.424-26.272 11.424h-81.728q-14.848 0-25.44-10.016t-11.136-24.288q-6.848-122.848-57.728-233.44t-132.288-192-192-132.288-233.44-58.272q-14.272-0.576-24.288-11.136t-10.016-24.864V109.664q0-16 11.424-26.272 10.272-10.272 25.152-10.272h1.728q149.728 7.424 286.56 68.576t243.136 168q106.848 106.272 168 243.136t68.576 286.56z"></path>
+        </svg>
+        <svg id="soloKanbanniangChat" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M802.42709 96.163153H219.476155c-84.48109 0-154.896836 71.746044-154.896836 157.840888v393.119449c0 86.072331 70.415746 157.819398 154.896836 157.819399h214.038818V925.470963s22.526039 40.168862 64.767096 5.734608c30.965246-25.819039 126.721123-91.828428 171.775248-123.385145h132.369773c84.502579 0 154.896836-83.21526 154.896836-157.839865V251.125481c0-86.094844-70.394257-154.962328-154.896836-154.962328zM301.144176 518.002714c-39.427988 0-70.416769-31.576159-70.416769-71.746044 0-40.168862 30.988782-71.746044 70.416769-71.746044 39.426965 0 70.393233 31.577183 70.393234 71.746044 0 40.169885-30.966269 71.746044-70.393234 71.746044z m208.411657 0c-39.450501 0-70.415746-31.576159-70.415746-71.746044 0-40.168862 30.965246-71.746044 70.415746-71.746044 39.405475 0 70.394257 31.577183 70.394257 71.746044 0 40.169885-30.988782 71.746044-70.394257 71.746044z m211.203236 0c-39.426965 0-70.416769-31.576159-70.416769-71.746044 0-40.168862 30.988782-71.746044 70.416769-71.746044s70.415746 31.577183 70.415746 71.746044c-0.001023 40.169885-30.988782 71.746044-70.415746 71.746044z"></path>
+        </svg>
+        <svg id="soloKanbanniangChange" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M936.672 193.216l-226.88-64c-8.704-2.528-18.112-1.12-25.824 3.776-7.68 4.864-12.896 12.736-14.432 21.728C655.712 236.928 595.328 288 512 288c-71.424 0-142.464-103.296-163.776-143.104-7.136-13.28-22.528-19.84-37.024-15.68l-224 64C73.472 197.152 64 209.728 64 224v256a31.93 31.93 0 0 0 11.712 24.736c7.392 6.08 17.152 8.512 26.56 6.624L224 487.04V832c0 52.928 43.072 96 96 96h384c52.928 0 96-43.072 96-96V519.04l121.728 24.352c9.44 1.92 19.2-0.544 26.56-6.624C955.68 530.656 960 521.6 960 512V224c0-14.336-9.536-26.912-23.328-30.784zM672 800H352c-17.664 0-32-14.304-32-32s14.336-32 32-32h320c17.696 0 32 14.304 32 32s-14.304 32-32 32z"></path>
+        </svg>
+        <svg id="soloKanbanniangPhoto" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M898.048 258.048q23.552-1.024 46.592 9.216t40.96 27.136 28.672 39.424 10.752 46.08l0 390.144q0 24.576-10.752 47.104t-28.672 40.448-40.96 28.16-47.616 10.24l-697.344 0q-24.576 0-48.64-10.24t-42.496-27.648-29.696-40.448-11.264-48.64l0-381.952q0-22.528 10.752-45.568t28.672-41.472 39.936-30.208 44.544-11.776l63.488 0 13.312-83.968q3.072-20.48 18.432-32.768t34.816-12.288l456.704 0q19.456 0 34.304 10.752t16.896 34.304l14.336 83.968 54.272 0zM548.864 712.704q40.96 0 77.824-15.872t63.488-42.496 42.496-62.976 15.872-77.312-15.872-77.312-42.496-62.976-63.488-42.496-77.824-15.872-77.312 15.872-63.488 42.496-43.008 62.976-15.872 77.312 15.872 77.312 43.008 62.976 63.488 42.496 77.312 15.872z"></path>
+        </svg>
+        <svg id="soloKanbanniangGithub" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M1024 524.8c0 114.346667-32.554667 217.216-97.706667 308.565333-65.066667 91.306667-149.162667 154.538667-252.288 189.610667-11.989333 2.304-20.778667 0.682667-26.325333-4.778667a27.605333 27.605333 0 0 1-8.362667-20.48v-144.213333c0-44.16-11.52-76.501333-34.645333-97.024 25.344-2.730667 48.085333-6.826667 68.309333-12.288a268.629333 268.629333 0 0 0 62.72-26.666667 187.434667 187.434667 0 0 0 53.973334-45.44c14.421333-18.005333 26.197333-41.898667 35.328-71.765333 9.088-29.824 13.653333-64.128 13.653333-102.826667 0-55.125333-17.536-102.058667-52.650667-140.8 16.426667-41.429333 14.677333-87.893333-5.333333-139.392-12.458667-4.096-30.464-1.578667-54.016 7.509334a355.328 355.328 0 0 0-61.312 30.08L640 271.274667a462.336 462.336 0 0 0-128-17.749334c-43.989333 0-86.656 5.930667-128 17.749334a589.824 589.824 0 0 0-28.330667-18.432c-11.776-7.253333-30.336-16.042667-55.68-26.325334-25.344-10.24-44.416-13.312-57.301333-9.216-19.584 51.498667-21.12 97.962667-4.693333 139.434667-35.114667 38.698667-52.650667 85.632-52.650667 140.757333 0 38.698667 4.565333 72.874667 13.653333 102.485334 9.130667 29.610667 20.778667 53.546667 34.986667 71.765333 14.250667 18.218667 32.128 33.493333 53.674667 45.781333 21.546667 12.288 42.453333 21.205333 62.677333 26.666667 20.224 5.461333 43.008 9.557333 68.309333 12.288-17.749333 16.384-28.629333 39.850667-32.64 70.4a130.005333 130.005333 0 0 1-29.994666 10.24c-10.666667 2.261333-23.338667 3.413333-37.973334 3.413333-14.72 0-29.269333-4.906667-43.690666-14.677333-14.464-9.813333-26.794667-24.064-36.992-42.709333a109.226667 109.226667 0 0 0-32.341334-35.541334c-13.141333-9.130667-24.106667-14.592-33.024-16.426666l-13.312-2.048c-9.344 0-15.786667 1.024-19.328 3.072-3.584 2.090667-4.693333 4.693333-3.328 7.893333 1.28 3.157333 3.328 6.4 5.973334 9.557333 2.688 3.2 5.546667 5.930667 8.661333 8.192l4.693333 3.413334c9.770667 4.565333 19.413333 13.226667 29.013334 25.984 9.514667 12.757333 16.512 24.362667 20.992 34.858666l6.656 15.701334c5.76 17.322667 15.530667 31.317333 29.312 42.026666 13.781333 10.666667 28.672 17.536 44.672 20.48 16 2.986667 31.445333 4.565333 46.336 4.821334 14.890667 0.213333 27.221333-0.597333 36.992-2.389334l15.36-2.730666c0 17.28 0.085333 37.546667 0.298666 60.8l0.341334 36.906666a27.050667 27.050667 0 0 1-8.661334 20.48c-5.76 5.461333-14.677333 7.082667-26.666666 4.778667-103.125333-35.072-187.221333-98.261333-252.330667-189.610667C32.554667 742.058667 0 639.146667 0 524.8c0-95.232 22.869333-183.04 68.693333-263.466667A516.266667 516.266667 0 0 1 254.976 70.4C333.44 23.466667 419.114667 0 512 0c92.885333 0 178.56 23.466667 256.981333 70.4a516.266667 516.266667 0 0 1 186.368 190.976C1001.130667 341.802667 1024 429.653333 1024 524.842667z"></path>
+        </svg>
+        <svg id="soloKanbanniangClose" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M517.572566143763 1018.6748601482986C238.26554897656422 1018.6748601482986 11.897910175114305 792.2714997690043 11.897910175114305 513.0002041796496c0-279.3070171671984 226.36763880144977-505.71037754649296 505.6746559686481-505.71037754649296 279.2712955893538 0 505.6746559686481 226.40336037929444 505.6746559686481 505.71037754649296C1023.2472221124112 792.2714997690043 796.8795833109612 1018.6748601482986 517.572566143763 1018.6748601482986zM754.7281214542927 339.25044954334646c13.752807470184345-13.752807470184345 9.680547595895998-40.186775075214015-9.073280772537204-58.94060344364717l-2.143294670678079-2.1075730928334457c-18.7538283684332-18.7538283684332-45.15207439561819-22.861809820566194-58.90488186580257-9.073280772537204l-168.21291007038468 168.24863164822932-180.42968969324974-180.46541127109438c-13.967136937252159-13.967136937252159-40.72259874288353-9.823433907274534-59.72647815622916 9.216167083915742l-2.143294670678079 2.143294670678079c-19.039600991190277 19.003879413345654-23.111860865478626 45.75934121897699-9.180445506071107 59.655035000539876l180.42968969324974 180.46541127109438-176.07165719620428 176.03593561835962c-13.788529048028984 13.824250625873615-9.716269173740633 40.151053497369375 9.073280772537204 58.94060344364717l2.1075730928334457 2.1075730928334457c18.7538283684332 18.7538283684332 45.15207439561819 22.897531398410823 58.90488186580257 9.073280772537204l176.10737877404887-176.10737877404887 170.39192631890742 170.42764789675192c13.967136937252159 13.931415359407513 40.686877165038865 9.85915548511917 59.690756578384516-9.180445506071107l2.1790162485227142-2.1790162485227142c19.039600991190277-18.968157835501014 23.147582443323273-45.72361964113239 9.180445506071107-59.690756578384516l-170.39192631890742-170.42764789675192L754.7281214542927 339.25044954334646z"></path>
+        </svg>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources/js/page.min.js?1609182030448', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论不能为空",
+        "oId": "1553571577540",
+        "blogHost": "https://cuijianzhe.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "5";
+        page.loadRandomArticles('<h3>随机阅读</h3>');
+        page.loadExternalRelevantArticles("Linux",
+        '<h3>站外相关阅读</h3>');
+        page.loadRelevantArticles('1553571577540', '<h3>相关阅读</h3>');
+    Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 465ms, 2021/01/08 15:42:39 -->

@@ -1,0 +1,2173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>K8S二进制部署过程-v1.17.0 - 邯城往事</title><meta name="description" content="搭建 K8S 集群，一定要细心细心再细心。不然会为了自己的粗心排查好久……"/><meta property="og:description" content="搭建 K8S 集群，一定要细心细心再细心。不然会为了自己的粗心排查好久……"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="K8S二进制部署过程-v1.17.0 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/12/24/1577178596028.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="K8S二进制部署过程-v1.17.0 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/12/24/1577178596028.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources/skins/Casper/css/base.css?1609182030448"/>
+            <link rel="prev" title="K8S基础搭建使用" href="https://cuijianzhe.github.io/articles/2019/12/12/1576117964389.html">
+            <link rel="next" title="2019年终惹人总结" href="https://cuijianzhe.github.io/articles/2019/12/28/1577514362771.html">
+    <!--鼠标点击特效-->
+<script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
+<!--页面动态樱花-->
+<!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
+<script src="https://cdn.jsdelivr.net/npm/vditor@3.6.6/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
+<body class="fn__flex-column">
+<div id="pjax" class="fn__flex-1">
+    
+    <header class="header header--article">
+        <div class="wrapper header__title">
+            <h1 class="header__h1 fn__flex-inline">
+                <img src="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png" alt="邯城往事">
+                <a href="https://cuijianzhe.github.io" rel="start" class="header__title">邯城往事</a>
+            </h1>
+            <h2 class="header__h2">               >>>  展颜笑夙愿，一笑泯恩仇 <<<</h2>
+        </div>
+        <nav class="wrapper header__nav fn__clear">
+            <a href="https://cuijianzhe.github.io" rel="start">
+                    邯城往事
+            </a>
+
+                <a class="fn__flex-inline" href="/my-github-repos" target="_self" rel="section">
+                    <img src="/images/github-icon.png" alt="我的开源"> 我的开源
+                </a>
+                <a class="fn__flex-inline" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                     服务器倒计时
+                </a>
+
+
+            <div class="fn__right">
+    <a href="https://ld246.com/member/cuijianzhe"
+       title="https://ld246.com/member/cuijianzhe"
+       class="user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+        <a href="https://github.com/cuijianzhe"
+           title="https://github.com/cuijianzhe"
+           class="user__site"
+           target="_blank" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
+        </a>
+
+        <a href="https://twitter.com/JianzheC"
+           title="https://twitter.com/JianzheC"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32.003 6.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
+            </svg>
+        </a>
+        <a href="https://weibo.com/3796930704"
+           title="https://weibo.com/3796930704"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+                <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+                <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+                <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+            </svg>
+        </a>
+        <a href="https://www.zhihu.com/people/wen-yang-24-36"
+           title="https://www.zhihu.com/people/wen-yang-24-36"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32 26.67c0 2.931-2.382 5.33-5.33 5.33h-21.339c-2.948 0-5.33-2.382-5.33-5.33v-21.339c0-2.948 2.382-5.33 5.33-5.33h21.339c2.948 0 5.33 2.382 5.33 5.33v21.339zM12.358 17.191h4.713c0-1.114-0.531-1.748-0.531-1.748h-4.079c0.103-2.005 0.189-4.576 0.223-5.536h3.874s-0.017-1.645-0.463-1.645h-6.822s0.411-2.142 0.96-3.085c0 0-2.040-0.12-2.742 2.605-0.686 2.725-1.731 4.354-1.851 4.662s0.6 0.137 0.891 0c0.309-0.137 1.663-0.617 2.057-2.537h2.108c0.034 1.2 0.12 4.885 0.086 5.536h-4.336c-0.6 0.446-0.823 1.748-0.823 1.748h4.971c-0.206 1.371-0.566 3.137-1.080 4.062-0.806 1.491-1.234 2.828-4.131 5.176 0 0-0.48 0.36 0.994 0.223 1.474-0.12 2.845-0.514 3.839-2.434 0.514-0.994 1.011-2.28 1.423-3.565l4.079 4.713s0.548-1.268 0.137-2.657l-3.034-3.394-1.028 0.754c0.291-0.994 0.497-1.988 0.548-2.845 0.017 0.017 0.017 0 0.017-0.034zM18.048 7.936v16.3h1.714l0.703 1.954 2.965-1.954h3.754v-16.3h-9.136zM25.401 22.487h-1.937l-2.434 1.611-0.566-1.611h-0.6v-12.735h5.553v12.735h-0.017z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=598941324"
+           title="598941324"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+        <a href="javascript:void(0)"
+           class="user__site" title="cjz5989">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+            </svg>
+        </a>
+                <a rel="alternate" href="https://cuijianzhe.github.io/rss.xml">
+                    RSS
+                </a>
+
+            </div>
+        </nav>
+    </header>
+    <div class="article__top">
+        <div class="fn__clear">
+            <div class="toc fn__none" onclick="$('.post__toc').slideToggle()">目录</div>
+            <div class="title fn__pointer" onclick="Util.goTop()">K8S二进制部署过程-v1.17.0</div>
+<div class="article__share"
+     data-title="K8S二进制部署过程-v1.17.0"
+     data-blogtitle="邯城往事"
+     data-url="https://cuijianzhe.github.io/articles/2019/12/24/1577178596028.html"
+     data-avatar="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100">
+    <span class="item" data-type="qqz">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M22.824 13.989l-8.348 6.287s3.351 0.522 8.404 0.461l-0.23-1.040 7.2-6.549c0.132-0.12 0.183-0.312 0.129-0.487s-0.203-0.299-0.377-0.314l-9.492-0.856-3.708-9.213c-0.068-0.169-0.226-0.279-0.401-0.279s-0.333 0.11-0.401 0.279l-3.708 9.213-9.492 0.856c-0.174 0.015-0.323 0.139-0.377 0.314s-0.004 0.366 0.129 0.487l7.2 6.549-2.158 9.742c-0.040 0.178 0.026 0.365 0.168 0.474 0.142 0.107 0.331 0.115 0.481 0.021l8.158-5.165 8.158 5.165c0.070 0.045 0.147 0.066 0.225 0.066 0.090 0 0.18-0.029 0.256-0.086 0.142-0.109 0.208-0.295 0.168-0.474l-1.707-7.704c0.732-0.386 1.538-1.040 1.538-1.040s-3.195 1.638-14.664 0.838l8.312-6.325s-0.327-0.534-10.744-0.914c-0.697-0.026 8.493-1.83 15.281-0.305z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="wechat">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="weibo">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+            <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+            <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+            <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="twitter">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M32.003 6.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
+        </svg>
+    </span>
+    <span class="item__qr"></span>
+</div>        </div>
+        <progress class="article__progress"></progress>
+    </div>
+    <div class="article">
+        <div class="ft__center">
+            <div class="item__meta">
+                <time>
+                    2020-08-15
+                </time>
+                /
+                    <a class="tag" rel="tag"
+                       href="https://cuijianzhe.github.io/tags/Linux">Linux</a> &nbsp;
+                    <a class="tag" rel="tag"
+                       href="https://cuijianzhe.github.io/tags/kubernetes">kubernetes</a> &nbsp;
+            </div>
+            <h2 class="item__title">
+                K8S二进制部署过程-v1.17.0
+            </h2>
+        </div>
+        <div class="item__cover" style="background-image: url(https://img.hacpai.com/bing/20181025.jpg?imageView2/1/w/960/h/540/interlace/1/q/100)"></div>
+        <div class="wrapper">
+            <section class="item__content item__content--article vditor-reset">
+                <p class="indent--2"><img src="https://img.hacpai.com/bing/20181025.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
+<h1 id="一--环境概述-">一 、环境概述：</h1>
+<pre><code class="highlight-chroma">cat &gt;&gt; /etc/hosts &lt;&lt;EOF
+10.0.0.202 master
+10.0.0.197 node1
+10.0.0.163 node2
+EOF
+</code></pre>
+<p class="indent--2"><strong>挂载数据盘：</strong></p>
+<pre><code class="highlight-chroma">mkdir /data
+mkfs.xfs -f /dev/vdb
+mount /dev/vdb /data
+</code></pre>
+<ul>
+<li>安装部署 Docker，并修改 Docker 的数据存放位置。</li>
+<li>准备 Kubernetes 的 <a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.16.4" target="_blank">v1.16.4</a> 的相关二进制文件，具体可参考 <a href="https://github.com/kubernetes/kubernetes/archive/v1.16.4.tar.gz" target="_blank">CHANGELOG-1.16</a>。（略）</li>
+<li>系统主机名初始化，主机 SSH 授信免密登录。</li>
+</ul>
+<pre><code class="highlight-chroma">ssh-keygen -t rsa
+ssh-copy-id -i ~/.ssh/id_rsa.pub node1
+ssh-copy-id -i ~/.ssh/id_rsa.pub node2
+</code></pre>
+<ul>
+<li>关闭 selinux，关闭 iptables</li>
+<li>准备部署目录，并把/data/kubernetes/bin 加入到环境变量 PATH 中。</li>
+</ul>
+<pre><code class="highlight-chroma">mkdir -p /data/kubernetes/{cfg,bin,ssl,log}
+</code></pre>
+<pre><code class="highlight-chroma">echo "export PATH=$PATH:/data/kubernetes/bin" &gt;&gt; /etc/profile
+source /etc/profile
+</code></pre>
+<h1 id="二-手动制作-CA-证书-">二、手动制作 CA 证书：</h1>
+<blockquote>
+<p>本次生成证书的工具采用 CFSSL，CFSSL 是 CloudFlare 开源的一款 PKI/TLS 工具。 CFSSL 包含一个命令行工具 和一个用于 签名，验证并且捆绑 TLS 证书的 HTTP API 服务。 使用 Go 语言编写。我们可以使用 JSON 去定义证书相关内容，看起来更加直观。</p>
+</blockquote>
+<p class="indent--2">CFSSL 包括：</p>
+<ul>
+<li>一组用于生成自定义 TLS PKI 的工具</li>
+<li><code>cfssl</code> 程序，是 CFSSL 的命令行工具</li>
+<li><code>multirootca</code> 程序是可以使用多个签名密钥的证书颁发机构服务器</li>
+<li><code>mkbundle</code> 程序用于构建证书池</li>
+<li><code>cfssljson</code> 程序，从 <code>cfssl</code> 和 <code>multirootca</code> 程序获取 JSON 输出，并将证书，密钥，CSR 和 bundle 写入磁盘</li>
+</ul>
+<h2 id="2-1-准备-cfssl-的二进制文件-所有节点-">2.1 准备 cfssl 的二进制文件（所有节点）</h2>
+<pre><code class="highlight-chroma">wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64
+wget https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64
+wget https://pkg.cfssl.org/R1.2/cfssl-certinfo_linux-amd64
+chmod +x cfssl*
+mv cfssl-certinfo_linux-amd64 /data/kubernetes/bin/cfssl-certinfo
+mv cfssljson_linux-amd64  /data/kubernetes/bin/cfssljson
+mv cfssl_linux-amd64  /data/kubernetes/bin/cfssl
+</code></pre>
+<ul>
+<li>分发到所有的 k8s 节点，因为设置了免密因此无需输入密码，其余几个节点的分发省略，只写一个。</li>
+</ul>
+<pre><code class="highlight-chroma">scp /data/kubernetes/bin/cfssl* root@node1:/data/kubernetes/bin/
+</code></pre>
+<h3 id="2-1-1-初始化-cfssl">2.1.1 初始化 cfssl</h3>
+<pre><code class="highlight-chroma">mkdir /data/src &amp;&amp; cd /data/src
+cfssl print-defaults config &gt; config.json
+cfssl print-defaults csr &gt; csr.json
+</code></pre>
+<h3 id="2-1-2-创建用来生成-CA-文件的-JSON-配置文件">2.1.2 创建用来生成 CA 文件的 JSON 配置文件</h3>
+<pre><code class="highlight-chroma">cat &gt; ca-config.json &lt;&lt;EOF
+{
+  "signing": {
+    "default": {
+      "expiry": "8760h"
+    },
+    "profiles": {
+      "kubernetes": {
+        "usages": [
+            "signing",
+            "key encipherment",
+            "server auth",
+            "client auth"
+        ],
+        "expiry": "8760h"
+      }
+    }
+  }
+}
+EOF
+</code></pre>
+<blockquote>
+<p>说明：</p>
+<ul>
+<li>ca-config.json：可以定义多个 profiles，分别指定不同的过期时间，使用场景等参数。后面再签名某个证书时使用。</li>
+<li>signing：表示该证书可用于签名其他证书，生成的 ca.perm 证书中 CA=TRUE。</li>
+<li>server auth：表示 client 可以用该 CA 对 server 提供的证书进行验证。</li>
+<li>client auth：表示 server 可以用该 CA 对 client 提供的证书进行验证。</li>
+</ul>
+</blockquote>
+<h3 id="2-1-3-创建用来生成-CA-证书签名请求-CSR-的-JSON-配置文件">2.1.3 创建用来生成 CA 证书签名请求（CSR）的 JSON 配置文件</h3>
+<pre><code class="highlight-chroma">[root@master src]# cat ca-csr.json 
+{
+  "CN": "kubernetes",
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+   },
+  "names": [
+   {
+     "C": "CN",
+     "ST": "BeiJing",
+     "L": "BeiJing",
+     "O": "k8s",
+     "OU": "System"
+    }
+  ]
+}
+</code></pre>
+<blockquote>
+<p><strong>说明：</strong><br>
+<strong>"CN"</strong>：<strong><strong>Common Name</strong></strong>，<strong><strong>kube-apiserver</strong> <strong>从证书中提取该字段作为请求的用户名</strong> <strong>(User Name)</strong>；浏览器使用该字段验证网站是否合法；</strong><br>
+<strong>"O"</strong>：<strong><strong>Organization</strong></strong>，<strong><strong>kube-apiserver</strong> <strong>从证书中提取该字段作为请求用户所属的组</strong> <strong>(Group)</strong>；</strong></p>
+</blockquote>
+<h3 id="2-1-4-生成-CA-证书-ca-pem-和密钥-ca-key-pem-">2.1.4 生成 CA 证书（ca.pem）和密钥（ca-key.pem）</h3>
+<pre><code class="highlight-chroma">cfssl gencert -initca ca-csr.json | cfssljson -bare ca
+</code></pre>
+<h3 id="2-1-5-分发证书">2.1.5 分发证书</h3>
+<pre><code class="highlight-chroma">cp ca.csr ca.pem ca-key.pem ca-config.json /data/kubernetes/ssl/
+</code></pre>
+<h3 id="2-1-6-发布到其他节点-所有节点-">2.1.6 发布到其他节点(所有节点)</h3>
+<pre><code class="highlight-chroma">scp ca.csr ca.pem ca-key.pem ca-config.json node1:/data/kubernetes/ssl/
+scp ca.csr ca.pem ca-key.pem ca-config.json node2:/data/kubernetes/ssl/
+</code></pre>
+<h1 id="三-etcd-集群">三、etcd 集群</h1>
+<p class="indent--2">到 <a href="https://github.com/coreos/etcd/releases" target="_blank">https://github.com/coreos/etcd/releases</a> 页面下载最新版本的发布包：</p>
+<pre><code class="highlight-chroma">wget https://github.com/etcd-io/etcd/releases/download/v3.3.18/etcd-v3.3.18-linux-amd64.tar.gz
+tar zxf etcd-v3.3.18-linux-amd64.tar.gz
+#分发etcd软件
+chmod +x etcd*
+cp etcd etcdctl /data/kubernetes/bin/ 
+scp etcd* node1:/data/kubernetes/bin/
+scp etcd* node2:/data/kubernetes/bin/
+</code></pre>
+<h2 id="3-1-创建-etcd-证书签名请求">3.1 创建 etcd 证书签名请求</h2>
+<pre><code class="highlight-chroma">[root@etcd1 ssl]# cat etcd-csr.json 
+{
+  "CN": "etcd",
+  "hosts": [
+    "127.0.0.1",
+    "10.0.0.202",
+    "10.0.0.163",
+    "10.0.0.197"
+  ],
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [
+    {
+      "C": "CN",
+      "ST": "BeiJing",
+      "L": "BeiJing",
+      "O": "k8s",
+      "OU": "System"
+    }
+  ]
+}
+</code></pre>
+<blockquote>
+<ul>
+<li>hosts 字段指定授权使用该证书的 etcd 节点 IP；</li>
+</ul>
+</blockquote>
+<h2 id="3-2-生成-etcd-证书和私钥-">3.2 生成 etcd 证书和私钥：</h2>
+<pre><code class="highlight-chroma">cfssl gencert -ca=/data/kubernetes/ssl/ca.pem \
+  -ca-key=/data/kubernetes/ssl/ca-key.pem \
+  -config=/data/kubernetes/ssl/ca-config.json \
+  -profile=kubernetes etcd-csr.json | cfssljson -bare etcd
+</code></pre>
+<pre><code class="highlight-chroma">[root@etcd1 ssl]# ls etcd*
+etcd.csr  etcd-csr.json  etcd-key.pem  etcd.pem
+[root@etcd1 ssl]#
+</code></pre>
+<h2 id="3-3-分发生成的证书和私钥到各-etcd-节点">3.3 分发生成的证书和私钥到各 etcd 节点</h2>
+<pre><code class="highlight-chroma">scp etcd*.pem root@node1:/data/kubernetes/ssl
+ scp etcd*.pem root@node2:/data/kubernetes/ssl
+</code></pre>
+<h2 id="3-4-设置-ETCD-配置文件">3.4 设置 ETCD 配置文件</h2>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@master cfg<span class="highlight-o">]</span><span class="highlight-c1"># mkdir -p /var/lib/etcd/default.etcd</span>
+<span class="highlight-o">[</span>root@etcd1 cfg<span class="highlight-o">]</span><span class="highlight-c1"># cat etcd.conf </span>
+<span class="highlight-c1">#[member]</span>
+<span class="highlight-nv">ETCD_NAME</span><span class="highlight-o">=</span><span class="highlight-s2">"etcd1"</span>
+<span class="highlight-nv">ETCD_DATA_DIR</span><span class="highlight-o">=</span><span class="highlight-s2">"/var/lib/etcd/default.etcd"</span>
+<span class="highlight-c1">#ETCD_SNAPSHOT_COUNTER="10000"</span>
+<span class="highlight-c1">#ETCD_HEARTBEAT_INTERVAL="100"</span>
+<span class="highlight-c1">#ETCD_ELECTION_TIMEOUT="1000"</span>
+<span class="highlight-nv">ETCD_LISTEN_PEER_URLS</span><span class="highlight-o">=</span><span class="highlight-s2">"https://10.0.0.202:2380"</span>
+<span class="highlight-nv">ETCD_LISTEN_CLIENT_URLS</span><span class="highlight-o">=</span><span class="highlight-s2">"https://10.0.0.202:2379,https://127.0.0.1:2379"</span>
+<span class="highlight-c1">#ETCD_MAX_SNAPSHOTS="5"</span>
+<span class="highlight-c1">#ETCD_MAX_WALS="5"</span>
+<span class="highlight-c1">#ETCD_CORS=""</span>
+<span class="highlight-c1">#[cluster]</span>
+<span class="highlight-nv">ETCD_INITIAL_ADVERTISE_PEER_URLS</span><span class="highlight-o">=</span><span class="highlight-s2">"https://10.0.0.202:2380"</span>
+<span class="highlight-c1"># if you use different ETCD_NAME (e.g. test),</span>
+<span class="highlight-c1"># set ETCD_INITIAL_CLUSTER value for this name, i.e. "test=http://..."</span>
+<span class="highlight-nv">ETCD_INITIAL_CLUSTER</span><span class="highlight-o">=</span><span class="highlight-s2">"etcd1=https://10.0.0.202:2380,etcd2=https://10.0.0.197:2380,etcd3=https://10.0.0.163:2380"</span>
+<span class="highlight-nv">ETCD_INITIAL_CLUSTER_STATE</span><span class="highlight-o">=</span><span class="highlight-s2">"new"</span>
+<span class="highlight-nv">ETCD_INITIAL_CLUSTER_TOKEN</span><span class="highlight-o">=</span><span class="highlight-s2">"k8s-etcd-cluster"</span>
+<span class="highlight-nv">ETCD_ADVERTISE_CLIENT_URLS</span><span class="highlight-o">=</span><span class="highlight-s2">"https://10.0.0.202:2379"</span>
+<span class="highlight-c1">#[security]</span>
+<span class="highlight-nv">CLIENT_CERT_AUTH</span><span class="highlight-o">=</span><span class="highlight-s2">"true"</span>
+<span class="highlight-nv">ETCD_CA_FILE</span><span class="highlight-o">=</span><span class="highlight-s2">"/data/kubernetes/ssl/ca.pem"</span>
+<span class="highlight-nv">ETCD_CERT_FILE</span><span class="highlight-o">=</span><span class="highlight-s2">"/data/kubernetes/ssl/etcd.pem"</span>
+<span class="highlight-nv">ETCD_KEY_FILE</span><span class="highlight-o">=</span><span class="highlight-s2">"/data/kubernetes/ssl/etcd-key.pem"</span>
+<span class="highlight-nv">PEER_CLIENT_CERT_AUTH</span><span class="highlight-o">=</span><span class="highlight-s2">"true"</span>
+<span class="highlight-nv">ETCD_PEER_CA_FILE</span><span class="highlight-o">=</span><span class="highlight-s2">"/data/kubernetes/ssl/ca.pem"</span>
+<span class="highlight-nv">ETCD_PEER_CERT_FILE</span><span class="highlight-o">=</span><span class="highlight-s2">"/data/kubernetes/ssl/etcd.pem"</span>
+<span class="highlight-nv">ETCD_PEER_KEY_FILE</span><span class="highlight-o">=</span><span class="highlight-s2">"/data/kubernetes/ssl/etcd-key.pem"</span>
+</code></pre>
+<h2 id="3-5-创建-etcd-的系统服务">3.5 创建 etcd 的系统服务</h2>
+<pre><code class="highlight-chroma">cat /etc/systemd/system/etcd.service
+[Unit]
+Description=Etcd Server
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/lib/etcd
+EnvironmentFile=/data/kubernetes/cfg/etcd.conf
+# set GOMAXPROCS to number of processors
+ExecStart=/bin/bash -c "GOMAXPROCS=$(nproc) /data/kubernetes/bin/etcd"
+Type=notify
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<ul>
+<li>重载系统服务：</li>
+</ul>
+<pre><code class="highlight-chroma">systemctl daemon-reload
+</code></pre>
+<ul>
+<li>分发配置文件到 etcd 各个节点：</li>
+</ul>
+<pre><code class="highlight-chroma">scp etcd.conf etcd2:/data/kubernetes/cfg/
+scp etcd.conf etcd3:/data/kubernetes/cfg/
+scp /etc/systemd/system/etcd.service node1:/etc/systemd/system
+scp /etc/systemd/system/etcd.service node2:/etc/systemd/system
+</code></pre>
+<ul>
+<li>修改其他 etcd 节点的配置文件（etcd 集群中的每一个节点都要有，记得要改 etcd 的 name，以及监听的地址。）</li>
+</ul>
+<blockquote>
+<p>这里只展示一个</p>
+</blockquote>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@etcd2 bin<span class="highlight-o">]</span><span class="highlight-c1"># vim /data/kubernetes/cfg/etcd.conf </span>
+
+<span class="highlight-o">[</span>member<span class="highlight-o">]</span>
+<span class="highlight-nv">ETCD_NAME</span><span class="highlight-o">=</span><span class="highlight-s2">"node1"</span>
+<span class="highlight-nv">ETCD_DATA_DIR</span><span class="highlight-o">=</span><span class="highlight-s2">"/var/lib/etcd/default.etcd"</span>
+<span class="highlight-c1">#ETCD_SNAPSHOT_COUNTER="10000"</span>
+<span class="highlight-c1">#ETCD_HEARTBEAT_INTERVAL="100"</span>
+<span class="highlight-c1">#ETCD_ELECTION_TIMEOUT="1000"</span>
+<span class="highlight-nv">ETCD_LISTEN_PEER_URLS</span><span class="highlight-o">=</span><span class="highlight-s2">"https://10.0.0.197:2380"</span>
+<span class="highlight-nv">ETCD_LISTEN_CLIENT_URLS</span><span class="highlight-o">=</span><span class="highlight-s2">"https://10.0.0.197:2379,https://127.0.0.1:2379"</span>
+<span class="highlight-c1">#ETCD_MAX_SNAPSHOTS="5"</span>
+<span class="highlight-c1">#ETCD_MAX_WALS="5"</span>
+<span class="highlight-c1">#ETCD_CORS=""</span>
+<span class="highlight-c1">#[cluster]</span>
+<span class="highlight-nv">ETCD_INITIAL_ADVERTISE_PEER_URLS</span><span class="highlight-o">=</span><span class="highlight-s2">"https://10.0.0.197:2380"</span>
+<span class="highlight-c1"># if you use different ETCD_NAME (e.g. test),</span>
+<span class="highlight-c1"># set ETCD_INITIAL_CLUSTER value for this name, i.e. "test=http://..."</span>
+<span class="highlight-nv">ETCD_INITIAL_CLUSTER</span><span class="highlight-o">=</span><span class="highlight-s2">"etcd1=https://10.0.0.202:2380,etcd2=https://10.0.0.197:2380,etcd3=https://10.0.0.163:2380"</span>
+<span class="highlight-nv">ETCD_INITIAL_CLUSTER_STATE</span><span class="highlight-o">=</span><span class="highlight-s2">"new"</span>
+<span class="highlight-nv">ETCD_INITIAL_CLUSTER_TOKEN</span><span class="highlight-o">=</span><span class="highlight-s2">"k8s-etcd-cluster"</span>
+<span class="highlight-nv">ETCD_ADVERTISE_CLIENT_URLS</span><span class="highlight-o">=</span><span class="highlight-s2">"https://10.0.0.197:2379"</span>
+<span class="highlight-c1">#[security]</span>
+<span class="highlight-nv">CLIENT_CERT_AUTH</span><span class="highlight-o">=</span><span class="highlight-s2">"true"</span>
+<span class="highlight-nv">ETCD_CA_FILE</span><span class="highlight-o">=</span><span class="highlight-s2">"/data/kubernetes/ssl/ca.pem"</span>
+<span class="highlight-nv">ETCD_CERT_FILE</span><span class="highlight-o">=</span><span class="highlight-s2">"/data/kubernetes/ssl/etcd.pem"</span>
+<span class="highlight-nv">ETCD_KEY_FILE</span><span class="highlight-o">=</span><span class="highlight-s2">"/data/kubernetes/ssl/etcd-key.pem"</span>
+<span class="highlight-nv">PEER_CLIENT_CERT_AUTH</span><span class="highlight-o">=</span><span class="highlight-s2">"true"</span>
+<span class="highlight-nv">ETCD_PEER_CA_FILE</span><span class="highlight-o">=</span><span class="highlight-s2">"/data/kubernetes/ssl/ca.pem"</span>
+<span class="highlight-nv">ETCD_PEER_CERT_FILE</span><span class="highlight-o">=</span><span class="highlight-s2">"/data/kubernetes/ssl/etcd.pem"</span>
+<span class="highlight-nv">ETCD_PEER_KEY_FILE</span><span class="highlight-o">=</span><span class="highlight-s2">"/data/kubernetes/ssl/etcd-key.pem"</span>
+</code></pre>
+<h3 id="3-5-1-启动-etcd-服务">3.5.1 启动 etcd 服务</h3>
+<pre><code class="highlight-chroma">[root@etcd2 bin]# systemctl daemon-reload
+[root@etcd2 bin]# systemctl  enable etcd
+Created symlink from /etc/systemd/system/multi-user.target.wants/etcd.service to /etc/systemd/system/etcd.service.
+[root@etcd2 bin]# systemctl  start  etcd
+</code></pre>
+<blockquote>
+<p>另外两台机器配置完成后，启动 etcd 服务，三台都需启动。</p>
+</blockquote>
+<h2 id="3-6-验证集群">3.6 验证集群</h2>
+<pre><code class="highlight-chroma">etcdctl --endpoints=https://10.0.0.202:2379 \
+   --ca-file=/data/kubernetes/ssl/ca.pem \
+   --cert-file=/data/kubernetes/ssl/etcd.pem \
+   --key-file=/data/kubernetes/ssl/etcd-key.pem cluster-health
+</code></pre>
+<p class="indent--2">结果：</p>
+<pre><code class="highlight-chroma">[root@etcd1 bin]# etcdctl --endpoints=https://10.0.0.202:2379 \
+&gt;    --ca-file=/data/kubernetes/ssl/ca.pem \
+&gt;    --cert-file=/data/kubernetes/ssl/etcd.pem \
+&gt;    --key-file=/data/kubernetes/ssl/etcd-key.pem cluster-health
+member 4cf18011db57d17a is healthy: got healthy result from https://10.0.0.202:2379
+member 85fd5487299e2fbd is healthy: got healthy result from https://10.0.0.197:2379
+member f96d77d9089bd1e3 is healthy: got healthy result from https://10.0.0.163:2379
+cluster is healthy
+</code></pre>
+<h2 id="3-7-etcd-集群排障">3.7 etcd 集群排障</h2>
+<ul>
+<li><strong>出现如下报错：</strong></li>
+</ul>
+<pre><code class="highlight-chroma">[root@master ~]# systemctl status etcd
+● etcd.service - Etcd Server
+   Loaded: loaded (/usr/lib/systemd/system/etcd.service; enabled; vendor preset: disabled)
+   Active: active (running) since Fri 2019-12-27 22:23:49 EST; 29min ago
+ Main PID: 19730 (etcd)
+   CGroup: /system.slice/etcd.service
+           └─19730 /data/kubernetes/bin/etcd
+
+Dec 27 22:24:04 master etcd[19730]: health check for peer c91b0b181670aad could not connect: dial tcp 10.0.0.163:2380: connect: connection refused (prober "ROUND_TRIPPER_RAFT_MESSAGE")
+Dec 27 22:24:04 master etcd[19730]: health check for peer c91b0b181670aad could not connect: dial tcp 10.0.0.163:2380: connect: connection refused (prober "ROUND_TRIPPER_SNAPSHOT")
+Dec 27 22:24:05 master etcd[19730]: updated the cluster version from 3.0 to 3.3
+</code></pre>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-21ab8a05.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<ul>
+<li><strong>解决方法：</strong></li>
+</ul>
+<pre><code class="highlight-chroma">[root@master ~]# cd /var/lib/etcd/
+[root@master etcd]# ll
+total 0
+drwxr-xr-x. 3 root root 20 Dec 28 11:23 default.etcd
+[root@master etcd]# rm -rf default.etcd/
+</code></pre>
+<blockquote>
+<p><strong>删除/var/lib/etcd 底下的文件重新启动 etcd 服务。</strong></p>
+</blockquote>
+<h1 id="在-node-安装-docker"><del>在 node 安装 docker</del></h1>
+<ul>
+<li><a href="https://developer.aliyun.com/mirror/docker-ce?spm=a2c6h.13651102.0.0.53322f70J4jbSZ" target="_blank"><del>阿里镜像站点链接</del></a></li>
+<li><a href="https://developer.aliyun.com/mirror/docker-ce?spm=a2c6h.13651102.0.0.53322f70J4jbSZ" target="_blank"><del>安装 docker 链接</del></a></li>
+</ul>
+<pre><code class="highlight-chroma"># step 1: 安装必要的一些系统工具
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+# Step 2: 添加软件源信息
+sudo yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+# Step 3: 更新并安装Docker-CE
+sudo yum makecache fast
+sudo yum -y install docker-ce
+# Step 4: 开启Docker服务
+sudo systemctl start docker
+</code></pre>
+<ul>
+<li><a href="https://www.daocloud.io/mirror" target="_blank"><del>配置 docker 镜像源链接：</del></a></li>
+</ul>
+<pre><code class="highlight-chroma">curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
+</code></pre>
+<h1 id="四--Flannel-网络部署">四、 Flannel 网络部署</h1>
+<ul>
+<li>创建 flanneld 的证书 JSON 文件</li>
+</ul>
+<pre><code class="highlight-chroma">[root@master ssl]# cat flanneld-csr.json 
+{
+  "CN": "flanneld",
+  "hosts": [],
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+    },
+  "names": [
+    {
+      "C": "CN",
+      "ST": "BeiJing",
+      "L": "BeiJing",
+      "O": "k8s",
+      "OU": "System"
+     }
+  ]
+}
+</code></pre>
+<h2 id="4-1-生成证书并且分发证书">4.1 生成证书并且分发证书</h2>
+<pre><code class="highlight-chroma">cfssl gencert -ca=/data/kubernetes/ssl/ca.pem \
+   -ca-key=/data/kubernetes/ssl/ca-key.pem \
+   -config=/data/kubernetes/ssl/ca-config.json \
+   -profile=kubernetes flanneld-csr.json | cfssljson -bare flanneld
+</code></pre>
+<blockquote>
+<p>生成 pem 证书文件</p>
+</blockquote>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-214c5358.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<blockquote>
+<p>注意这个是分发到集群里的每一个节点</p>
+</blockquote>
+<pre><code class="highlight-chroma">cp flanneld*.pem /data/kubernetes/ssl/
+scp flanneld*.pem node1:/data/kubernetes/ssl/
+scp flanneld*.pem node2:/data/kubernetes/ssl/
+</code></pre>
+<ul>
+<li><a href="https://github.com/coreos/flannel/releases" target="_blank">准备 flannel 的二进制文件</a></li>
+</ul>
+<pre><code class="highlight-chroma">wget https://github.com/coreos/flannel/releases/download/v0.11.0/flannel-v0.11.0-linux-amd64.tar.gz
+</code></pre>
+<pre><code class="highlight-chroma">[root@master ~]# tar zxvf flannel-v0.11.0-linux-amd64.tar.gz -C /data/src/flanneld/
+flanneld
+mk-docker-opts.sh
+README.md
+[root@master ~]# cd /data/src/flanneld/
+[root@master flanneld]# cp flanneld mk-docker-opts.sh /data/kubernetes/bin/
+#分发到其他节点
+[root@master flanneld]# scp flanneld mk-docker-opts.sh node1:/data/kubernetes/bin/
+flanneld                                                                                                                                                   100%   34MB  79.3MB/s   00:00    
+mk-docker-opts.sh                                                                                                                                          100% 2139     1.3MB/s   00:00    
+[root@master flanneld]# scp flanneld mk-docker-opts.sh node2:/data/kubernetes/bin/
+flanneld                                                                                                                                                   100%   34MB  98.5MB/s   00:00    
+mk-docker-opts.sh                                                                                                                                          100% 2139     1.6MB/s   00:00
+</code></pre>
+<ul>
+<li>配置 flannel，配置完成以后进行分发，保证每一个节点都有一个这个配置文件供 flannel 使用。</li>
+</ul>
+<pre><code class="highlight-chroma">[root@master cfg]# cat flannel 
+FLANNEL_ETCD="-etcd-endpoints=https://10.0.0.99:2379,https://10.0.0.111:2379,https://10.0.0.11:2379"
+FLANNEL_ETCD_KEY="-etcd-prefix=/kubernetes/network"
+FLANNEL_ETCD_CAFILE="--etcd-cafile=/data/kubernetes/ssl/ca.pem"
+FLANNEL_ETCD_CERTFILE="--etcd-certfile=/data/kubernetes/ssl/flanneld.pem"
+FLANNEL_ETCD_KEYFILE="--etcd-keyfile=/data/kubernetes/ssl/flanneld-key.pem"
+</code></pre>
+<pre><code class="highlight-chroma">scp /data/kubernetes/cfg/flannel node1:/data/kubernetes/cfg/flannel
+scp /data/kubernetes/cfg/flannel node2:/data/kubernetes/cfg/flannel
+scp /usr/lib/systemd/system/flannel.service node1:/usr/lib/systemd/system/flannel.service
+scp /usr/lib/systemd/system/flannel.service node2:/usr/lib/systemd/system/flannel.service
+</code></pre>
+<ul>
+<li>设置 flannel 的系统服务配置</li>
+</ul>
+<pre><code class="highlight-chroma">cat /usr/lib/systemd/system/flannel.service
+[Unit]
+Description=Flanneld overlay address etcd agent
+After=network.target
+Before=docker.service
+
+[Service]
+EnvironmentFile=-/data/kubernetes/cfg/flannel
+ExecStart=/data/kubernetes/bin/flanneld ${FLANNEL_ETCD} ${FLANNEL_ETCD_KEY} ${FLANNEL_ETCD_CAFILE} ${FLANNEL_ETCD_CERTFILE} ${FLANNEL_ETCD_KEYFILE}
+ExecStartPost=/data/kubernetes/bin/mk-docker-opts.sh -d /run/flannel/docker
+
+Type=notify
+
+[Install]
+WantedBy=multi-user.target
+RequiredBy=docker.service
+</code></pre>
+<blockquote>
+<p>mk-docker-opts.sh 脚本将分配给 flanneld 的 Pod 子网网段信息写入 /run/flannel/docker 文件，后续 docker 启动时 使用这个文件中的环境变量配置 docker0 网桥；</p>
+</blockquote>
+<ul>
+<li>flannel 集成 <a href="https://github.com/containernetworking/plugins/releases" target="_blank">CNI</a><br>
+<a href="https://github.com/containernetworking/plugins/releases/download/v0.8.3/cni-plugins-linux-amd64-v0.8.3.tgz" target="_blank">下载 CNI</a> 后解压，分发到各个节点。</li>
+</ul>
+<pre><code class="highlight-chroma">wget https://github.com/containernetworking/plugins/releases/download/v0.8.3/cni-plugins-linux-amd64-v0.8.3.tgz
+tar zxf cni-plugins-linux-amd64-v0.8.3.tgz -C /data/kubernetes/bin/cni
+scp -r /data/kubernetes/bin/cni/* node1:/data/kubernetes/bin/cni/
+scp -r /data/kubernetes/bin/cni/* node2:/data/kubernetes/bin/cni/
+</code></pre>
+<p class="indent--2"><strong>设置 etcd 的 key</strong></p>
+<p class="indent--2">Falnnel 要用 etcd 存储自身一个子网信息，所以要保证能成功连接 Etcd，写入预定义子网段：</p>
+<pre><code class="highlight-chroma">/data/kubernetes/bin/etcdctl --ca-file /data/kubernetes/ssl/ca.pem --cert-file /data/kubernetes/ssl/flanneld.pem --key-file /data/kubernetes/ssl/flanneld-key.pem \
+      --no-sync -C https://10.0.0.99:2379,https://10.0.0.111:2379,https://10.0.0.11:2379 \
+mk /kubernetes/network/config '{ "Network": "10.2.0.0/16", "Backend": { "Type": "vxlan", "VNI": 1 }}' &gt;/dev/null 2&gt;&amp;1
+</code></pre>
+<pre><code class="highlight-chroma">[root@etcd1 ssl]# /data/kubernetes/bin/etcdctl --ca-file /data/kubernetes/ssl/ca.pem --cert-file /data/kubernetes/ssl/flanneld.pem --key-file /data/kubernetes/ssl/flanneld-key.pem \
+&gt;       --no-sync -C https://10.0.0.99:2379,https://10.0.0.111:2379,https://10.0.0.11:2379 \
+&gt; mk /kubernetes/network/config '{ "Network": "10.2.0.0/16", "Backend": { "Type": "vxlan", "VNI": 1 }}' 
+{ "Network": "10.2.0.0/16", "Backend": { "Type": "vxlan", "VNI": 1 }}
+</code></pre>
+<p class="indent--2"><strong>查询写入 ETCD 的自定义网络是否成功：</strong></p>
+<pre><code class="highlight-chroma">etcdctl --endpoints=https://10.0.0.99:2379 \
+   --ca-file=/data/kubernetes/ssl/ca.pem \
+   --cert-file=/data/kubernetes/ssl/etcd.pem \
+   --key-file=/data/kubernetes/ssl/etcd-key.pem get /kubernetes/network/config
+</code></pre>
+<h1 id="五-二进制部署docker">五、<a href="https://download.docker.com/linux/static/edge/x86_64/" target="_blank">二进制部署 docker</a></h1>
+<h2 id="5-1-下载docker">5.1 <a href="https://download.docker.com/linux/static/stable/x86_64/" target="_blank">下载 docker</a></h2>
+<pre><code class="highlight-chroma">wget https://download.docker.com/linux/static/stable/x86_64/docker-19.03.5.tgz
+tar -xf docker-19.03.5.tgz
+mkdir -p /usr/local/docker/bin
+cp docker/docker* /usr/local/docker/bin/
+yum install -y yum-utils device-mapper-persistent-data lvm2
+</code></pre>
+<h3 id="5-1-2-编辑-docker-系统服务-配置-docker-使用-flannel-">5.1.2 编辑 docker 系统服务(配置 docker 使用 flannel)</h3>
+<pre><code class="highlight-chroma">cat /usr/lib/systemd/system/docker.service
+[Unit]
+Description=Docker Application Container Engine
+Documentation=http://docs.docker.io
+After=network-online.target firewalld.service flannel.service
+Wants=network-online.target
+Requires=flannel.service
+
+[Service]
+Environment="PATH=/usr/local/docker/bin:/bin:/sbin:/usr/bin:/usr/sbin"
+EnvironmentFile=-/run/flannel/docker
+#ExecStart=/usr/local/docker/bin/dockerd --log-level=error $DOCKER_NETWORK_OPTIONS
+ExecStart=/usr/local/docker/bin/dockerd $DOCKER_OPTS
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=on-failure
+RestartSec=5
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+Delegate=yes
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<ul>
+<li>分发 docker 系统服务和启动文件</li>
+</ul>
+<pre><code class="highlight-chroma">scp docker/docker* node1:/usr/local/docker/bin/
+scp docker/docker* node2:/usr/local/docker/bin/
+scp /usr/lib/systemd/system/docker.service node1:/usr/lib/systemd/system/docker.service 
+scp /usr/lib/systemd/system/docker.service node2:/usr/lib/systemd/system/docker.service 
+systemctl daemon-reload
+systemctl enable docker
+systemctl start docker
+</code></pre>
+<p class="indent--2">这里注意一下，docker 启动会和 flannel 相辅相成，网络起不来，docker 也起不来。同时在 Service 段添加 EnvironmentFile=-/run/flannel/docker，这个文件是由 flannel 启动的时候通过 mk-docker-opts.sh 生成的，可以看一下这个文件的内容，通过—bip 来划分网段。</p>
+<pre><code class="highlight-chroma">[root@master ~]# cat  /run/flannel/docker 
+DOCKER_OPT_BIP="--bip=10.2.10.1/24"
+DOCKER_OPT_IPMASQ="--ip-masq=true"
+DOCKER_OPT_MTU="--mtu=1400"
+DOCKER_OPTS=" --bip=10.2.10.1/24 --ip-masq=true --mtu=1400"
+</code></pre>
+<ul>
+<li>查看 flannel 和 docker 安装结果</li>
+</ul>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-c662e89a.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-d98109fe.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-a0f7890e.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<blockquote>
+<p>可以看到 docker0 和 flannel.1 的地址是一段的，每个节点分到的网段是不一样的。flannel 部署完成。</p>
+</blockquote>
+<h2 id="5-2-docker-通过-yum-安装也可">5.2 docker 通过 yum 安装也可</h2>
+<ul>
+<li>各个节点安装 yum 源：</li>
+</ul>
+<pre><code class="highlight-chroma">cd /etc/yum.repos.d/
+wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+</code></pre>
+<ul>
+<li>配置 docker 使用 flannel：</li>
+</ul>
+<pre><code class="highlight-chroma">[root@master ~]# vim /usr/lib/systemd/system/docker.service 
+
+[Unit]     #在Unit下面修改After和增加Requires
+Description=Docker Application Container Engine
+Documentation=https://docs.docker.com
+BindsTo=containerd.service
+After=network-online.target firewalld.service   containerd.service flannel.service
+Wants=network-online.target
+Requires=flannel.service
+
+[Service]
+#增加EnvironmentFile=-/run/flannel/docker
+Type=notify
+EnvironmentFile=-/run/flannel/docker   #加载环境文件，设置docker0的ip地址为flannel分配的ip地址
+# the default is not to use systemd for cgroups because the delegate issues still
+# exists and systemd currently does not support the cgroup feature set required
+# for containers run by docker
+#ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+ExecStart=/usr/bin/dockerd  $DOCKER_OPTS
+ExecReload=/bin/kill -s HUP $MAINPID
+TimeoutSec=0
+RestartSec=2
+Restart=always
+......
+</code></pre>
+<pre><code class="highlight-chroma">systemctl daemon-reload
+ systemctl restart docker
+</code></pre>
+<h1 id="六-master-节点部署">六、master 节点部署</h1>
+<blockquote>
+<p>kubernetes master 节点运行如下组件：<br>
+kube-apiserver<br>
+kube-scheduler<br>
+kube-controller-manager<br>
+kube-scheduler 和 kube-controller-manager 可以以集群模式运行，通过 leader 选举产生一个工作进程，其它进程处于阻塞模式。</p>
+</blockquote>
+<p class="indent--2">目前这三个组件需要部署在同一台机器上：</p>
+<p class="indent--2">kube-scheduler、kube-controller-manager 和 kube-apiserver 三者的功能紧密相关；</p>
+<p class="indent--2">同时只能有一个 kube-scheduler、kube-controller-manager 进程处于工作状态，如果运行多个，则需要通过选举产生一个 leader；</p>
+<p class="indent--2">本文档介绍部署单机 kubernetes master 节点的步骤，没有实现高可用 master 集群。</p>
+<p class="indent--2">计划后续再介绍部署 LB 的步骤，客户端 (kubectl、kubelet、kube-proxy) 使用 LB 的 VIP 来访问 kube-apiserver，从而实现高可用 master 集群。</p>
+<p class="indent--2">master 节点与 node 节点上的 Pods 通过 Pod 网络通信，所以需要在 master 节点上部署 Flannel 网络。</p>
+<h2 id="6-1-准备软件包-科学上网-">6.1 <a href="https://dl.k8s.io/v1.16.4/kubernetes-server-linux-amd64.tar.gz" target="_blank">准备软件包（科学上网）</a></h2>
+<p class="indent--2">点此链接：<a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.17.md" target="_blank">https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.17.md</a></p>
+<p class="indent--2">解压后将 kube-apiserver，kube-controller-manager，kube-scheduler，kubctl 拷贝到 master 节点的 <code>/data/kubernetes/bin</code> 目录下。</p>
+<pre><code class="highlight-chroma">tar xf kubernetes-server-linux-amd64.tar.gz
+cp kube-scheduler kube-apiserver kube-controller-manager kubectl /data/kubernetes/bin/
+</code></pre>
+<h2 id="6-2-配置-kubernetes-相关证书">6.2 配置 kubernetes 相关证书</h2>
+<h3 id="6-2-1-创建生成-CSR-的-JSON-配置文件">6.2.1 创建生成 CSR 的 JSON 配置文件</h3>
+<blockquote>
+<p>把 k8s 集群中的所有节点都加进去了</p>
+</blockquote>
+<pre><code class="highlight-chroma">[root@master ssl]# cat  kubernetes-csr.json 
+{
+  "CN": "kubernetes",
+  "hosts": [
+    "127.0.0.1",
+    "10.0.0.99",
+    "10.0.0.111",
+    "10.0.0.11",
+    "10.0.0.163",
+    "10.0.0.202",
+    "10.0.0.197",
+    "kubernetes",
+    "kubernetes.default",
+    "kubernetes.default.svc",
+    "kubernetes.default.svc.cluster",
+    "kubernetes.default.svc.cluster.local"
+    ],
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+   },
+  "names": [
+    {
+     "C": "CN",
+     "ST": "BeiJing",
+     "L": "BeiJing",
+     "O": "k8s",
+     "OU": "System"
+    }
+  ]
+}
+</code></pre>
+<h3 id="6-2-2-生成-Kubernetes-的证书和私钥">6.2.2 生成 Kubernetes 的证书和私钥</h3>
+<pre><code class="highlight-chroma">cfssl gencert -ca=/data/kubernetes/ssl/ca.pem \
+   -ca-key=/data/kubernetes/ssl/ca-key.pem \
+   -config=/data/kubernetes/ssl/ca-config.json \
+   -profile=kubernetes kubernetes-csr.json | cfssljson -bare kubernetes
+</code></pre>
+<ul>
+<li>分发证书到集群所有节点</li>
+</ul>
+<pre><code class="highlight-chroma">scp kubernetes*.pem node1:/data/kubernetes/ssl/
+</code></pre>
+<h3 id="6-2-3-部署-kube-apiserver-组件">6.2.3 部署 kube-apiserver 组件</h3>
+<ul>
+<li>apiserver 提供集群管理的 REST API 接口，包括认证授权、数据校验以及集群状态变更等。</li>
+<li>只有 API Server 才能直接操作 etcd；</li>
+<li>其他模块通过 API Server 查询或修改数据</li>
+<li>提供其他模块之间的数据交互和通信枢纽</li>
+</ul>
+<blockquote>
+<p><strong>创建 TLS Bootstrapping Token</strong></p>
+</blockquote>
+<pre><code class="highlight-chroma">[root@master ssl]# head -c 16 /dev/urandom | od -An -t x | tr -d ' '
+7b54ba2ddce122d1784ac6a243be7fde
+</code></pre>
+<blockquote>
+<p><strong>创建 apiserver 配置文件</strong><br>
+第一列：随机字符串，自己可生成<br>
+第二列：用户名<br>
+第三列：UID<br>
+第四列：用户组</p>
+</blockquote>
+<pre><code class="highlight-chroma">[root@master ssl]# cat bootstrap-token.csv  
+7b54ba2ddce122d1784ac6a243be7fde,kubelet-bootstrap,10001,"system:kubelet-bootstrap"
+</code></pre>
+<blockquote>
+<p><strong>创建基础用户名和密码认证配置</strong></p>
+</blockquote>
+<pre><code class="highlight-chroma">[root@master ssl]# cat basic-auth.csv 
+admin,admin,1
+readonly,readonly,2
+</code></pre>
+<blockquote>
+<p><strong>分发配置文件到 node</strong></p>
+</blockquote>
+<pre><code class="highlight-chroma">scp /data/kubernetes/ssl/bootstrap-token.csv basic-auth.csv node1:/data/kubernetes/ssl/
+</code></pre>
+<h3 id="6-2-4-创建-kube-apiserver-系统配置文件">6.2.4 创建 kube-apiserver 系统配置文件</h3>
+<pre><code class="highlight-chroma">cat /usr/lib/systemd/system/kube-apiserver.service
+[Unit]
+Description=Kubernetes API Server
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+After=network.target
+
+[Service]
+ExecStart=/data/kubernetes/bin/kube-apiserver \
+  --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota,NodeRestriction \
+  --bind-address=0.0.0.0 \
+  --insecure-bind-address=0.0.0.0 \
+  --authorization-mode=Node,RBAC \
+  --runtime-config=rbac.authorization.k8s.io/v1 \
+  --kubelet-https=true \
+  --anonymous-auth=false \
+  --basic-auth-file=/data/kubernetes/ssl/basic-auth.csv \
+  --enable-bootstrap-token-auth \
+  --token-auth-file=/data/kubernetes/ssl/bootstrap-token.csv \
+  --service-cluster-ip-range=10.1.0.0/16 \
+  --service-node-port-range=20000-40000 \
+  --tls-cert-file=/data/kubernetes/ssl/kubernetes.pem \
+  --tls-private-key-file=/data/kubernetes/ssl/kubernetes-key.pem \
+  --client-ca-file=/data/kubernetes/ssl/ca.pem \
+  --service-account-key-file=/data/kubernetes/ssl/ca-key.pem \
+  --etcd-cafile=/data/kubernetes/ssl/ca.pem \
+  --etcd-certfile=/data/kubernetes/ssl/kubernetes.pem \
+  --etcd-keyfile=/data/kubernetes/ssl/kubernetes-key.pem \
+  --etcd-servers=https://10.0.0.99:2379,https://10.0.0.111:2379,https://10.0.0.11:2379 \
+  --enable-swagger-ui=true \
+  --allow-privileged=true \
+  --audit-log-maxage=30 \
+  --audit-log-maxbackup=3 \
+  --audit-log-maxsize=100 \
+  --audit-log-path=/data/kubernetes/log/api-audit.log \
+  --event-ttl=1h \
+  --v=2 \
+  --logtostderr=false \
+  --log-dir=/data/kubernetes/log
+Restart=on-failure
+RestartSec=5
+Type=notify
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<blockquote>
+<p>配置好前面生成的证书，确保能连接 etcd。</p>
+</blockquote>
+<p class="indent--2">参数说明：</p>
+<p class="indent--2">–logtostderr 启用日志<br>
+—v 日志等级<br>
+–etcd-servers etcd 集群地址<br>
+–bind-address 监听地址<br>
+–secure-port https 安全端口<br>
+–advertise-address 集群通告地址<br>
+–allow-privileged 启用授权<br>
+–service-cluster-ip-range Service 虚拟 IP 地址段<br>
+–enable-admission-plugins 准入控制模块<br>
+–authorization-mode 认证授权，启用 RBAC 授权和节点自管理<br>
+–enable-bootstrap-token-auth 启用 TLS bootstrap 功能<br>
+–token-auth-file token 文件<br>
+–service-node-port-range Service Node 类型默认分配端口范围</p>
+<h3 id="6-2-5-启动-apiserver">6.2.5 启动 apiserver</h3>
+<pre><code class="highlight-chroma">systemctl daemon-reload
+systemctl enable kube-apiserver
+systemctl start kube-apiserver
+systemctl status kube-apiserver
+[root@master ssl]# ps -aux | grep kube-apiserver
+root     25785  3.5  8.4 549756 326552 ?       Ssl  21:47   0:22 /data/kubernetes/bin/kube-apiserver --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota,NodeRestriction --bind-address=0.0.0.0 --insecure-bind-address=0.0.0.0 --authorization-mode=Node,RBAC --runtime-config=rbac.authorization.k8s.io/v1 --kubelet-https=true --anonymous-auth=false --basic-auth-file=/data/kubernetes/ssl/basic-auth.csv --enable-bootstrap-token-auth --token-auth-file=/data/kubernetes/ssl/bootstrap-token.csv --service-cluster-ip-range=10.1.0.0/16 --service-node-port-range=20000-40000 --tls-cert-file=/data/kubernetes/ssl/kubernetes.pem --tls-private-key-file=/data/kubernetes/ssl/kubernetes-key.pem --client-ca-file=/data/kubernetes/ssl/ca.pem --service-account-key-file=/data/kubernetes/ssl/ca-key.pem --etcd-cafile=/data/kubernetes/ssl/ca.pem --etcd-certfile=/data/kubernetes/ssl/kubernetes.pem --etcd-keyfile=/data/kubernetes/ssl/kubernetes-key.pem --etcd-servers=https://10.0.0.99:2379,https://10.0.0.111:2379,https://10.0.0.11:2379 --enable-swagger-ui=true --allow-privileged=true --audit-log-maxage=30 --audit-log-maxbackup=3 --audit-log-maxsize=100 --audit-log-path=/data/kubernetes/log/api-audit.log --event-ttl=1h --v=2 --logtostderr=false --log-dir=/data/kubernetes/log
+root     26557  0.0  0.0 112712   964 pts/0    S+   21:58   0:00 grep --color=auto kube-apiserver
+</code></pre>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-6a8c7ed1.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<pre><code class="highlight-chroma">[root@master ~]# netstat -tulnp | grep kube-apiserve
+tcp6       0      0 :::6443                 :::*                    LISTEN      18024/kube-apiserve 
+tcp6       0      0 :::8080                 :::*                    LISTEN      18024/kube-apiserve
+</code></pre>
+<blockquote>
+<p><strong>从监听端口可以看到 api-server 监听在 6443 端口，同时也监听了本地的 8080 端口，是提供 kube-schduler 和 kube-controller 使用。</strong></p>
+</blockquote>
+<h2 id="6-3-准备-kube-scheduler-的服务配置文件">6.3 准备 kube-scheduler 的服务配置文件</h2>
+<ul>
+<li>scheduler 负责分配调度 Pod 到集群内的 node 节点</li>
+<li>监听 kube-apiserver，查询还未分配的 Node 的 Pod</li>
+<li>根据调度策略为这些 Pod 分配节点</li>
+</ul>
+<pre><code class="highlight-chroma">cat /usr/lib/systemd/system/kube-scheduler.service
+[Unit]
+Description=Kubernetes Scheduler
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+
+[Service]
+ExecStart=/data/kubernetes/bin/kube-scheduler \
+  --address=0.0.0.0 \
+  --master=http://10.0.0.202:8080 \
+  --leader-elect=true \
+  --v=2 \
+  --logtostderr=false \
+  --log-dir=/data/kubernetes/log
+
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p class="indent--2"><strong>启动 kube-scheduler</strong></p>
+<pre><code class="highlight-chroma">[root@master ~]# systemctl daemon-reload 
+[root@master ~]# systemctl enable kube-scheduler
+[root@master ~]# systemctl start  kube-scheduler 
+[root@master ~]# systemctl status  kube-scheduler 
+[root@master ~]# ps -aux | grep kube-scheduler
+root     27465  0.4  0.5 147088 22024 ?        Ssl  22:10   0:01 /data/kubernetes/bin/kube-scheduler --address=0.0.0.0 --master=http://10.0.0.202:8080 --leader-elect=true --v=2 --logtostderr=false --log-dir=/data/kubernetes/log
+root     27829  0.0  0.0 112712   964 pts/0    S+   22:14   0:00 grep --color=auto kube-scheduler
+</code></pre>
+<pre><code class="highlight-chroma">[root@master ~]# netstat -tulnp |grep kube-sched
+tcp6       0      0 :::10251                :::*                    LISTEN      18081/kube-schedule 
+tcp6       0      0 :::10259                :::*                    LISTEN      18081/kube-schedule
+</code></pre>
+<blockquote>
+<p><strong>从 kube-scheduler 的监听端口上，同样可以看到监听在本地的 10251 端口上，外部无法直接访问，同样是需要通过 api-server 进行访问。</strong></p>
+</blockquote>
+<h2 id="6-4-部署-kube-controller-manager">6.4 部署 kube-controller-manager</h2>
+<ul>
+<li>controller-manager 由一系列的控制器组成，它通过 apiserver 监控整个集群的状态，并确保集群处于预期的工作状态。</li>
+</ul>
+<h3 id="6-4-1-创建-kube-controller-manager-配置文件">6.4.1 创建 kube-controller-manager 配置文件</h3>
+<pre><code class="highlight-chroma">cat /usr/lib/systemd/system/kube-controller-manager.service
+[Unit]
+Description=Kubernetes Controller Manager
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+
+[Service]
+ExecStart=/data/kubernetes/bin/kube-controller-manager \
+  --address=0.0.0.0 \
+  --master=http://10.0.0.202:8080 \
+  --allocate-node-cidrs=true \
+  --service-cluster-ip-range=10.1.0.0/16 \
+  --cluster-cidr=10.2.0.0/16 \
+  --cluster-name=kubernetes \
+  --cluster-signing-cert-file=/data/kubernetes/ssl/ca.pem \
+  --cluster-signing-key-file=/data/kubernetes/ssl/ca-key.pem \
+  --service-account-private-key-file=/data/kubernetes/ssl/ca-key.pem \
+  --root-ca-file=/data/kubernetes/ssl/ca.pem \
+  --leader-elect=true \
+  --v=2 \
+  --logtostderr=false \
+  --log-dir=/data/kubernetes/log
+
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<h3 id="启动-kube-controller-manager">启动 kube-controller-manager</h3>
+<pre><code class="highlight-chroma">[root@master ~]# systemctl daemon-reload
+[root@master ~]# systemctl enable kube-controller-manager 
+[root@master ~]# systemctl start  kube-controller-manager 
+[root@master ~]# systemctl status  kube-controller-manager 
+[root@master ~]# ps -aux | grep kube-controller-manager
+root     28587  3.6  1.3 221388 51892 ?        Ssl  22:24   0:02 /data/kubernetes/bin/kube-controller-manager --address=0.0.0.0 --master=http://10.0.0.202:8080 --allocate-node-cidrs=true --service-cluster-ip-range=10.1.0.0/16 --cluster-cidr=10.2.0.0/16 --cluster-name=kubernetes --cluster-signing-cert-file=/data/kubernetes/ssl/ca.pem --cluster-signing-key-file=/data/kubernetes/ssl/ca-key.pem --service-account-private-key-file=/data/kubernetes/ssl/ca-key.pem --root-ca-file=/data/kubernetes/ssl/ca.pem --leader-elect=true --v=2 --logtostderr=false --log-dir=/data/kubernetes/log
+root     28675  0.0  0.0 112712   968 pts/0    S+   22:25   0:00 grep --color=auto kube-controller-manager
+</code></pre>
+<pre><code class="highlight-chroma">[root@master ~]# netstat -tulnp | grep kube-control
+tcp6       0      0 :::10252                :::*                    LISTEN      18137/kube-controll 
+tcp6       0      0 :::10257                :::*                    LISTEN      18137/kube-controll
+</code></pre>
+<blockquote>
+<p><strong>从监听端口上，可以看到 kube-controller 监听在本地的 10252 端口，外部是无法直接访问 kube-controller，需要通过 api-server 才能进行访问。</strong></p>
+</blockquote>
+<h2 id="6-5-部署-kubectl-服务">6.5 部署 kubectl 服务</h2>
+<p class="indent--2"><strong>kubectl 用于日常直接管理 K8S 集群，那么 kubectl 要进行管理 k8s，就需要和 k8s 的组件进行通信，也就需要用到证书。此时 kubectl 需要单独部署，也是因为 kubectl 也是需要用到证书，而前面的 kube-apiserver、kube-controller、kube-scheduler 都是不需要用到证书，可以直接通过服务进行启动。</strong></p>
+<blockquote>
+<p>首先准备好 kubectl 的二进制文件分发到所有的 master 节点，然后创建 admin 的证书签名请求</p>
+</blockquote>
+<pre><code class="highlight-chroma">[root@master ssl]# cat admin-csr.json 
+{
+  "CN": "admin",
+  "hosts": [],
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+   },
+  "names": [
+     {
+       "C": "CN",
+       "ST": "BeiJing",
+       "L": "BeiJing",
+       "O": "system:masters",
+       "OU": "System"
+      }
+  ]
+}
+</code></pre>
+<ul>
+<li>生成 admin 的证书和密钥</li>
+</ul>
+<pre><code class="highlight-chroma">cfssl gencert -ca=/data/kubernetes/ssl/ca.pem \
+   -ca-key=/data/kubernetes/ssl/ca-key.pem \
+   -config=/data/kubernetes/ssl/ca-config.json \
+   -profile=kubernetes admin-csr.json | cfssljson -bare admin
+</code></pre>
+<ul>
+<li>设置集群参数，注意 master 的 ip 为 vip，证书以嵌入的形式生成 config 文件。</li>
+</ul>
+<pre><code class="highlight-chroma">kubectl config set-cluster kubernetes \
+   --certificate-authority=/data/kubernetes/ssl/ca.pem \
+   --embed-certs=true \
+   --server=https://10.0.0.202:6443
+</code></pre>
+<ul>
+<li>设置客户端认证参数</li>
+</ul>
+<pre><code class="highlight-chroma">kubectl config set-credentials admin \
+   --client-certificate=/data/kubernetes/ssl/admin.pem \
+   --embed-certs=true \
+   --client-key=/data/kubernetes/ssl/admin-key.pem
+</code></pre>
+<ul>
+<li>设置上下文参数</li>
+</ul>
+<pre><code class="highlight-chroma">kubectl config set-context kubernetes \
+   --cluster=kubernetes \
+   --user=admin
+</code></pre>
+<ul>
+<li>设置默认上下文</li>
+</ul>
+<pre><code class="highlight-chroma">kubectl config use-context kubernetes
+</code></pre>
+<ul>
+<li>查看当前 config</li>
+</ul>
+<pre><code class="highlight-chroma">[root@master ssl]# kubectl config view
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: DATA+OMITTED
+    server: https://10.0.0.202:6443
+  name: kubernetes
+contexts:
+- context:
+    cluster: kubernetes
+    user: admin
+  name: kubernetes
+current-context: kubernetes
+kind: Config
+preferences: {}
+users:
+- name: admin
+  user:
+    client-certificate-data: REDACTED
+    client-key-data: REDACTED
+</code></pre>
+<ul>
+<li><strong>上面过程的配置是为了在家目录下生成 config 文件，之后 kubectl 和 API 通信就需要用到该文件，这也就是说如果在其他节点上需要用到这个 kubectl，就需要将该文件拷贝到其他节点。</strong></li>
+</ul>
+<pre><code class="highlight-chroma">[root@master ~]# cat .kube/config
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSU
+...
+</code></pre>
+<ul>
+<li>使用 kubectl 工具</li>
+</ul>
+<pre><code class="highlight-chroma">[root@master ssl]#  kubectl get cs
+NAME                 AGE
+controller-manager   &lt;unknown&gt;
+scheduler            &lt;unknown&gt;
+etcd-1               &lt;unknown&gt;
+etcd-2               &lt;unknown&gt;
+etcd-0               &lt;unknown&gt;
+</code></pre>
+<blockquote>
+<p>看过前辈的搭建过程，这里显示和之前的版本不一样，我查询相关资料找到你，<a href="https://github.com/kubernetes/kubernetes/issues/83024" target="_blank">这里有解释</a>。总体来说这个打印结果不影响使用。1.17.0 后面的版本会解决。</p>
+</blockquote>
+<h1 id="七-node-节点部署">七、node 节点部署</h1>
+<p class="indent--2">kubernetes node 节点运行如下组件：<br>
+docker<br>
+kubelet<br>
+kube-proxy<br>
+准备 node 节点二进制包，将 kubelet，kube-proxy 分发到所有 node 节点的/alidata/kubernetes/bin 下。</p>
+<h2 id="7-1-部署-kubelet-组件">7.1 部署 kubelet 组件</h2>
+<p class="indent--2">认证大致工作流程如图所示：<br>
+<img src="https://img.hacpai.com/file/2019/12/20181204110257402-5f8e2a20.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="20181204110257402.png"></p>
+<p class="indent--2">kublet 运行在每个 node 节点上，接收 kube-apiserver 发送的请求，管理 Pod 容器，执行交互式命令，如 exec、run、logs 等;<br>
+分发启动文件到 node 节点：</p>
+<pre><code class="highlight-chroma">scp kube-proxy kubelet node1:/data/kubernetes/bin/
+scp kube-proxy kubelet node2:/data/kubernetes/bin/
+</code></pre>
+<ul>
+<li>创建角色绑定</li>
+</ul>
+<pre><code class="highlight-chroma">kubectl create clusterrolebinding kubelet-bootstrap --clusterrole=system:node-bootstrapper --user=kubelet-bootstrap
+</code></pre>
+<ul>
+<li>创建 kubelet bootstrapping kubeconfig 文件 设置集群参数</li>
+</ul>
+<pre><code class="highlight-chroma">kubectl config set-cluster kubernetes \
+   --certificate-authority=/data/kubernetes/ssl/ca.pem \
+   --embed-certs=true \
+   --server=https://10.0.0.202:6443 \
+   --kubeconfig=bootstrap.kubeconfig
+</code></pre>
+<ul>
+<li>设置客户端认证参数</li>
+</ul>
+<blockquote>
+<p>注意这 token 是 kube-apiserver 使用的客户端 token 文件中的 token，填写在这里。</p>
+</blockquote>
+<pre><code class="highlight-chroma">kubectl config set-credentials kubelet-bootstrap \
+   --token=7b54ba2ddce122d1784ac6a243be7fde  \
+   --kubeconfig=bootstrap.kubeconfig
+</code></pre>
+<ul>
+<li>设置上下文参数</li>
+</ul>
+<pre><code class="highlight-chroma">kubectl config set-context default \
+   --cluster=kubernetes \
+   --user=kubelet-bootstrap \
+   --kubeconfig=bootstrap.kubeconfig
+</code></pre>
+<ul>
+<li>选择默认上下文</li>
+</ul>
+<pre><code class="highlight-chroma">kubectl config use-context default --kubeconfig=bootstrap.kubeconfig
+</code></pre>
+<ul>
+<li>其实做了上面这么一堆操作，结果就是生成了一个 bootstarp.kubeconfig 文件，我们需要将这个 kubeconfig 文件分发到其他节点， <code>kubectl</code> 命令生成文件以后把这个文件分发就可以。</li>
+</ul>
+<pre><code class="highlight-chroma">cp bootstrap.kubeconfig /data/kubernetes/cfg/
+scp bootstrap.kubeconfig node1:/data/kubernetes/cfg/
+scp bootstrap.kubeconfig node2:/data/kubernetes/cfg/
+</code></pre>
+<h3 id="7-1-1-设置-CNI-支持">7.1.1 设置 CNI 支持</h3>
+<pre><code class="highlight-chroma">mkdir -p /etc/cni/net.d
+</code></pre>
+<pre><code class="highlight-chroma">cat /etc/cni/net.d/10-default.conf
+{
+  "name": "flannel",
+  "type": "flannel",
+  "delegate": {
+    "bridge": "docker0",
+    "isDefaultGateway": true,
+    "mtu": 1400
+    }
+}
+</code></pre>
+<ul>
+<li>创建 kubelet 目录</li>
+</ul>
+<pre><code class="highlight-chroma">mkdir /var/lib/kubelet
+</code></pre>
+<pre><code class="highlight-chroma">[root@node1 ~]# cat  /usr/lib/systemd/system/kubelet.service
+[Unit]
+Description=Kubernetes Kubelet
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+After=docker.service
+Requires=docker.service
+
+[Service]
+WorkingDirectory=/var/lib/kubelet
+ExecStart=/data/kubernetes/bin/kubelet \
+  --address=10.0.0.197 \
+  --hostname-override=10.0.0.197 \
+  --pod-infra-container-image=mirrorgooglecontainers/pause-amd64:3.0 \
+  --experimental-bootstrap-kubeconfig=/data/kubernetes/cfg/bootstrap.kubeconfig \
+  --kubeconfig=/data/kubernetes/cfg/kubelet.kubeconfig \
+  --cert-dir=/data/kubernetes/ssl \
+  --network-plugin=cni \
+  --cni-conf-dir=/etc/cni/net.d \
+  --cni-bin-dir=/data/kubernetes/bin/cni \
+  --cluster-dns=10.1.0.2 \
+  --cluster-domain=cluster.local. \
+  --hairpin-mode hairpin-veth \
+  --allow-privileged=true \
+  --fail-swap-on=false \
+  --logtostderr=true \
+  --v=2 \
+  --logtostderr=false \
+  --log-dir=/data/kubernetes/log
+Restart=on-failure
+RestartSec=5
+</code></pre>
+<h3 id="7-1-2-报错排查">7.1.2 报错排查</h3>
+<pre><code class="highlight-chroma">[root@node1 ~]# systemctl daemon-reload
+[root@node1 ~]# systemctl start kubelet 
+[root@node1 ~]# systemctl status kubelet
+</code></pre>
+<p class="indent--2">此时 kubelet 启动失败报错：</p>
+<pre><code class="highlight-chroma">[root@node1 ~]#  systemctl status kubelet -l
+● kubelet.service - Kubernetes Kubelet
+   Loaded: loaded (/usr/lib/systemd/system/kubelet.service; static; vendor preset: disabled)
+   Active: activating (auto-restart) (Result: exit-code) since Fri 2020-01-10 15:34:37 CST; 651ms ago
+     Docs: https://github.com/GoogleCloudPlatform/kubernetes
+  Process: 31057 ExecStart=/data/kubernetes/bin/kubelet --address=10.0.0.197 --hostname-override=10.0.0.197 --pod-infra-container-im=/data/kubernetes/cfg/bootstrap.kubeconfig --kubeconfig=/data/kubernetes/cfg/kubelet.kubeconfig --cert-dir=/data/kubernetes/ssl --nebin/cni --cluster-dns=10.1.0.2 --cluster-domain=cluster.local. --hairpin-mode hairpin-veth --allow-privileged=true --fail-swap-on=fag (code=exited, status=255)
+ Main PID: 31057 (code=exited, status=255)
+
+Jan 10 15:34:37 node1 kubelet[31057]: --tls-cipher-suites strings                                                                   , the default Go cipher suites will be used. Possible values: TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_C_SHA,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_RC4_128_SHA,TLS_ECDHE_RSA_S_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_DES_EDE_CBC_SHA,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_CBis parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/tasks/admini
+Jan 10 15:34:37 node1 kubelet[31057]: --tls-min-version string                                                                      rsionTLS11, VersionTLS12, VersionTLS13 (DEPRECATED: This parameter should be set via the config file specified by the Kubelet's --cofig-file/ for more information.)
+Jan 10 15:34:37 node1 kubelet[31057]: --tls-private-key-file string                                                                 ECATED: This parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/ta
+Jan 10 15:34:37 node1 kubelet[31057]: --topology-manager-policy string                                                              ffort', 'restricted', 'single-numa-node'. (default "none") (DEPRECATED: This parameter should be set via the config file specified b-cluster/kubelet-config-file/ for more information.)
+Jan 10 15:34:37 node1 kubelet[31057]: -v, --v Level                                                                                 
+Jan 10 15:34:37 node1 kubelet[31057]: --version version[=true]                                                                      
+Jan 10 15:34:37 node1 kubelet[31057]: --vmodule moduleSpec                                                                          ging
+Jan 10 15:34:37 node1 kubelet[31057]: --volume-plugin-dir string                                                                     third party volume plugins (default "/usr/libexec/kubernetes/kubelet-plugins/volume/exec/")
+Jan 10 15:34:37 node1 kubelet[31057]: --volume-stats-agg-period duration                                                             disk usage for all pods and volumes.  To disable volume calculations, set to 0. (default 1m0s) (DEPRECATED: This parameter should b//kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/ for more information.)
+Jan 10 15:34:37 node1 kubelet[31057]: F0110 15:34:37.575781   31057 server.go:154] unknown flag: --allow-privileged
+</code></pre>
+<ul>
+<li>解决方法：</li>
+</ul>
+<pre><code class="highlight-chroma">[root@node1 ~]# vim /usr/lib/systemd/system/kubelet.service
+[Unit]
+Description=Kubernetes Kubelet
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+After=docker.service
+Requires=docker.service
+
+[Service]
+WorkingDirectory=/var/lib/kubelet
+ExecStart=/data/kubernetes/bin/kubelet \
+  --address=10.0.0.197 \
+  --hostname-override=10.0.0.197 \
+  --pod-infra-container-image=mirrorgooglecontainers/pause-amd64:3.0 \
+  --experimental-bootstrap-kubeconfig=/data/kubernetes/cfg/bootstrap.kubeconfig \
+  --kubeconfig=/data/kubernetes/cfg/kubelet.kubeconfig \
+  --cert-dir=/data/kubernetes/ssl \
+  --network-plugin=cni \
+  --cni-conf-dir=/etc/cni/net.d \
+  --cni-bin-dir=/data/kubernetes/bin/cni \
+  --cluster-dns=10.1.0.2 \
+  --cluster-domain=cluster.local. \
+  --hairpin-mode hairpin-veth \
+  --fail-swap-on=false \
+  --logtostderr=true \
+  --v=2 \
+  --logtostderr=false \
+  --log-dir=/data/kubernetes/log
+Restart=on-failure
+RestartSec=5
+</code></pre>
+<blockquote>
+<p><strong>把参数：<code>--allow-privileged=true \</code> 删除即可</strong></p>
+</blockquote>
+<p class="indent--2"><strong>参考：</strong><br>
+<a href="https://github.com/wk8/SDN/commit/8db8f06cd5ccdc91eb74ce1d00041597881cd0c1" target="_blank">https://github.com/wk8/SDN/commit/8db8f06cd5ccdc91eb74ce1d00041597881cd0c1</a><br>
+<a href="https://github.com/microsoft/SDN/issues/379" target="_blank">https://github.com/microsoft/SDN/issues/379</a><br>
+<a href="http://www.mamicode.com/info-detail-2738983.html" target="_blank">http://www.mamicode.com/info-detail-2738983.html</a></p>
+<p class="indent--2"><img src="https://img.hacpai.com/file/2020/01/image-680a511b.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<ul>
+<li>重新加载系统，重新启动 kubelet</li>
+</ul>
+<pre><code class="highlight-chroma">[root@node2 ~]# systemctl daemon-reload &amp;&amp; systemctl start kubelet &amp;&amp; systemctl status kubelet
+</code></pre>
+<blockquote>
+<p>kubelet 启动参数参考：<br>
+<a href="https://my.oschina.net/u/3797264/blog/2222877" target="_blank">https://my.oschina.net/u/3797264/blog/2222877</a></p>
+</blockquote>
+<h3 id="7-1-3-查看-CSR-请求">7.1.3 查看 CSR 请求</h3>
+<pre><code class="highlight-chroma">[root@master ssl]# kubectl get csr
+NAME                                                   AGE   REQUESTOR           CONDITION
+node-csr-Sfja1KrymePmfnaQJ9Nh3ZQuL07i9F_2IVoevDOTXm4   15s   kubelet-bootstrap   Pending
+node-csr-Tje055FJKPKKgubNuHL5MSEhyrU-RZ1e0pfXVxSz-dw   13s   kubelet-bootstrap   Pending
+</code></pre>
+<h4 id="7-1-3-1-批准-kubelet-的-TLS-证书请求">7.1.3.1 批准 kubelet 的 TLS 证书请求</h4>
+<pre><code class="highlight-chroma">[root@master ssl]# kubectl get csr | grep 'Pend' | awk 'NR&gt;0{print $1}'
+node-csr-Sfja1KrymePmfnaQJ9Nh3ZQuL07i9F_2IVoevDOTXm4
+node-csr-Tje055FJKPKKgubNuHL5MSEhyrU-RZ1e0pfXVxSz-dw
+[root@master ssl]# kubectl get csr | grep 'Pend' | awk 'NR&gt;0{print $1}' | xargs kubectl certificate approve
+certificatesigningrequest.certificates.k8s.io/node-csr-Sfja1KrymePmfnaQJ9Nh3ZQuL07i9F_2IVoevDOTXm4 approved
+certificatesigningrequest.certificates.k8s.io/node-csr-Tje055FJKPKKgubNuHL5MSEhyrU-RZ1e0pfXVxSz-dw approved
+[root@master ssl]# kubectl get csr
+NAME                                                   AGE    REQUESTOR           CONDITION
+node-csr-Sfja1KrymePmfnaQJ9Nh3ZQuL07i9F_2IVoevDOTXm4   4m9s   kubelet-bootstrap   Approved,Issued
+node-csr-Tje055FJKPKKgubNuHL5MSEhyrU-RZ1e0pfXVxSz-dw   4m7s   kubelet-bootstrap   Approved,Issued
+</code></pre>
+<h4 id="7-1-3-2-kubectl-get-csr-显示-No-Resources-Found-的解决记录">7.1.3.2 kubectl get csr 显示 No Resources Found 的解决记录</h4>
+<ul>
+<li>
+<ol>
+<li><code>kubelet</code> 使用的 <code>bootstrap.kubeconfig</code> 文件中 User 是否是 <code>kubelet-boostrap</code> ，是否包含 <code>token</code> ；</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li><code>token</code> 是否位于 <code>kube-apiserver</code> 使用的 <code>token.csv</code> 文件中；</li>
+</ol>
+</li>
+</ul>
+<h4 id="7-1-3-3-查看节点状态">7.1.3.3 查看节点状态</h4>
+<pre><code class="highlight-chroma">[root@master ~]# kubectl get node 
+NAME         STATUS     ROLES    AGE   VERSION
+10.0.0.163   NotReady   &lt;none&gt;   63m   v1.17.0
+10.0.0.197   NotReady   &lt;none&gt;   63m   v1.17.0
+</code></pre>
+<blockquote>
+<p>现在状态不对，找原因没找到<br>
+但是通过</p>
+</blockquote>
+<pre><code class="highlight-chroma">[root@master ~]# kubectl describe node 10.0.0.163
+....
+Conditions:
+Type             Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----             ------  -----------------                 ------------------                ------                       -------
+  MemoryPressure   False   Tue, 14 Jan 2020 04:01:04 -0500   Tue, 14 Jan 2020 02:31:35 -0500   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure     False   Tue, 14 Jan 2020 04:01:04 -0500   Tue, 14 Jan 2020 02:31:35 -0500   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure      False   Tue, 14 Jan 2020 04:01:04 -0500   Tue, 14 Jan 2020 02:31:35 -0500   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready            False   Tue, 14 Jan 2020 04:01:04 -0500   Tue, 14 Jan 2020 02:31:35 -0500   KubeletNotReady              runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:docker: network plugin is not ready: cni config uninitialized
+...
+</code></pre>
+<p class="indent--2"><strong>查出是因为 CNI 插件没有初始化，但是我不知道用什么办法可以让 CNI 可以正常运行起来。<br>
+但是，我找到一个见不得人的方法：把 kubelet 启动文件中的 CNI 插件配置 <code>--network-plugin=cni </code> 删除，然后 node 节点注册成功。</strong>?</p>
+<pre><code class="highlight-chroma">[root@master ~]# kubectl get node 
+NAME         STATUS   ROLES    AGE    VERSION
+10.0.0.163   Ready    &lt;none&gt;   117m   v1.17.0
+10.0.0.197   Ready    &lt;none&gt;   117m   v1.17.0
+</code></pre>
+<p class="indent--2"><strong>这里卡住了，我从 <a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.16.4" target="_blank">v1.16.4</a> 安装到现在的 <a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.7.md" target="_blank">v1.17.0</a> 又是这里……</strong></p>
+<h2 id="7-2-kube-proxy-部署">7.2 kube-proxy 部署</h2>
+<blockquote>
+<p>kube-proxy 同样还是只部署在 node 节点上，在之前的操作中，已经将 kube-proxy 的二进制文件分发到 node 节点。</p>
+</blockquote>
+<h3 id="7-2-1-开始准备证书的-JSON-文件-">7.2.1 开始准备证书的 JSON 文件。</h3>
+<pre><code class="highlight-chroma">{
+  "CN": "system:kube-proxy",
+  "hosts": [],
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+    },
+  "names": [
+     {
+       "C": "CN",
+       "ST": "BeiJing",
+       "L": "BeiJing",
+       "O": "k8s",
+       "OU": "System"
+     }
+  ]
+}
+</code></pre>
+<h3 id="7-2-2-生成证书">7.2.2 生成证书</h3>
+<pre><code class="highlight-chroma">cfssl gencert -ca=/data/kubernetes/ssl/ca.pem \
+   -ca-key=/data/kubernetes/ssl/ca-key.pem \
+   -config=/data/kubernetes/ssl/ca-config.json \
+   -profile=kubernetes  kube-proxy-csr.json | cfssljson -bare kube-proxy
+</code></pre>
+<h3 id="7-2-3-分发证书到所有的-Node-节点">7.2.3 分发证书到所有的(Node)节点</h3>
+<pre><code class="highlight-chroma">[root@master ssl]# scp kube-proxy*.pem node1:/data/kubernetes/ssl/ 
+[root@master ssl]# scp kube-proxy*.pem node2:/data/kubernetes/ssl/
+</code></pre>
+<h3 id="7-2-4-创建-kube-proxy-的配置文件-master-节点-">7.2.4 创建 kube-proxy 的配置文件（master 节点）</h3>
+<pre><code class="highlight-chroma">kubectl config set-cluster kubernetes \
+   --certificate-authority=/data/kubernetes/ssl/ca.pem \
+   --embed-certs=true \
+   --server=https://10.0.0.202:6443 \
+   --kubeconfig=kube-proxy.kubeconfig
+</code></pre>
+<pre><code class="highlight-chroma">kubectl config set-credentials kube-proxy \
+   --client-certificate=/data/kubernetes/ssl/kube-proxy.pem \
+   --client-key=/data/kubernetes/ssl/kube-proxy-key.pem \
+   --embed-certs=true \
+   --kubeconfig=kube-proxy.kubeconfig
+</code></pre>
+<pre><code class="highlight-chroma">kubectl config set-context default \
+   --cluster=kubernetes \
+   --user=kube-proxy \
+   --kubeconfig=kube-proxy.kubeconfig
+</code></pre>
+<pre><code class="highlight-chroma">kubectl config use-context default --kubeconfig=kube-proxy.kubeconfig
+</code></pre>
+<blockquote>
+<p><strong>和 kubelet 一样，上面的操作同样是生成了一个 kube-proxy 的 kubeconfig 文件，把这个 kube-config 文件分发到所有的 node 节点</strong></p>
+</blockquote>
+<pre><code class="highlight-chroma">scp kube-proxy.kubeconfig node1:/data/kubernetes/cfg/
+scp kube-proxy.kubeconfig node2:/data/kubernetes/cfg/
+</code></pre>
+<h3 id="7-2-5-创建系统服务配置">7.2.5 创建系统服务配置</h3>
+<pre><code class="highlight-chroma">[root@node2 ~]# cat !$
+cat /usr/lib/systemd/system/kube-proxy.service
+[Unit]
+Description=Kubernetes Kube-Proxy Server
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+After=network.target
+
+[Service]
+WorkingDirectory=/var/lib/kube-proxy
+ExecStart=/data/kubernetes/bin/kube-proxy \
+  --bind-address=10.0.0.163 \
+  --hostname-override=10.0.0.163 \
+  --kubeconfig=/data/kubernetes/cfg/kube-proxy.kubeconfig \
+  --masquerade-all \
+  --feature-gates=SupportIPVSProxyMode=true \
+  --proxy-mode=ipvs \
+  --ipvs-min-sync-period=5s \
+  --ipvs-sync-period=5s \
+  --ipvs-scheduler=rr \
+  --logtostderr=true \
+  --v=2 \
+  --logtostderr=false \
+  --log-dir=/data/kubernetes/log
+            
+Restart=on-failure
+RestartSec=5
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<h3 id="7-2-6-安装依赖并启动">7.2.6 安装依赖并启动</h3>
+<pre><code class="highlight-chroma">yum install -y ipvsadm ipset conntrack
+systemctl daemon-reload
+systemctl enable kube-proxy
+systemctl start kube-proxy
+systemctl status kube-proxy
+</code></pre>
+<h3 id="7-2-7-在-node-节点检查-kube-proxy-的服务状态">7.2.7 在 node 节点检查 kube-proxy 的服务状态</h3>
+<pre><code class="highlight-chroma">ipvsadm -L -n
+</code></pre>
+<h1 id="八-创建-K8S-nginx-应用">八、创建 K8S nginx 应用</h1>
+<h2 id="8-1-创建-pod">8.1 创建 pod</h2>
+<ul>
+<li>把 master 设置成为私有仓库</li>
+</ul>
+<blockquote>
+<p>为 kubelet 添加一个额外的参数 // 这样 kubelet 就不会在启动 pod 的时候去墙外的 k8s 仓库拉取 pause-amd64:3.0 镜像了</p>
+</blockquote>
+<pre><code class="highlight-chroma">--pod-infra-container-image=10.0.0.202:5000/mirrorgooglecontainers/pause-amd64:3.0 \
+</code></pre>
+<p class="indent--2">配置 docker 本地仓库</p>
+<pre><code class="highlight-chroma">[root@master ~]# cat /etc/sysconfig/docker 
+OPTIONS='--selinux-enabled --log-driver=journald --signature-verification=false --registry-mirror=https://vtbf99sa.mirror.aliyuncs.com --insecure-registry=10.0.0.202:5000'
+[root@master ~]# cat /etc/docker/daemon.json 
+{
+"registry-mirrors": ["https://vtbf99sa.mirror.aliyuncs.com"],
+"insecure-registries": ["10.0.0.202:5000"]
+}
+[root@master ~]# docker run -d -p 5000:5000 --restart=always --name registry -v /opt/myregistry:/var/lib/registry  registry
+</code></pre>
+<ul>
+<li>创建 YAML 文件</li>
+</ul>
+<pre><code class="highlight-chroma">[root@master pod]# cat k8s_pod.yaml 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    app: web
+spec:
+  containers:
+    - name: nginx
+      image: 10.0.0.202:5000/nginx:latest
+      ports:
+        - containerPort: 80
+</code></pre>
+<ul>
+<li>创建 pod</li>
+</ul>
+<pre><code class="highlight-chroma">[root@master pod]# kubectl create -f k8s_pod.yaml
+[root@master pod]# kubectl get pod
+NAME    READY   STATUS              RESTARTS   AGE
+nginx   0/1     ContainerCreating   0          8s
+[root@master pod]# kubectl describe  pod nginx
+...
+Events:
+  Type     Reason                  Age                  From                 Message
+  ----     ------                  ----                 ----                 -------
+  Normal   Scheduled               &lt;unknown&gt;            default-scheduler    Successfully assigned default/nginx to 10.0.0.163
+  Warning  FailedCreatePodSandBox  12s (x4 over 8m34s)  kubelet, 10.0.0.163  Failed to create pod sandbox: rpc error: code = Unknown desc = failed pulling image "mirrorgooglecontainers/pause-amd64:3.0": context canceled
+...
+</code></pre>
+<p class="indent--2">以上报错解决（nginx 需要提前上传到私有镜像仓库）：</p>
+<pre><code class="highlight-chroma">[root@master ~]# docker pull pupudaye/pause-amd64
+[root@master ~]# docker tag pupudaye/pause-amd64 10.0.0.202:5000/mirrorgooglecontainers/pause-amd64:3.0
+[root@master pod]# docker images
+REPOSITORY                                           TAG                 IMAGE ID            CREATED             SIZE
+10.0.0.202:5000/nginx                                latest              c7460dfcab50        5 days ago          126MB
+nginx                                                latest              c7460dfcab50        5 days ago          126MB
+registry                                             latest              f32a97de94e1        10 months ago       25.8MB
+pupudaye/pause-amd64                                 latest              a9e33c9ff5e5        2 years ago         747kB
+10.0.0.202:5000/mirrorgooglecontainers/pause-amd64   3.0                 a9e33c9ff5e5        2 years ago         747kB
+[root@master pod]# kubectl get pod
+NAME    READY   STATUS    RESTARTS   AGE
+nginx   1/1     Running   0          3h21m
+</code></pre>
+<h2 id="8-3-以-Deployment-YAML-方式创建-Nginx-服务">8.3 <strong>以 Deployment YAML 方式创建 Nginx 服务</strong></h2>
+<pre><code class="highlight-chroma">[root@master deploy]# cat  k8s_deploy.yaml 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: 10.0.0.202:5000/nginx:1.14.2
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 100m
+          requests:
+            cpu: 100m
+</code></pre>
+<blockquote>
+<p>① apiVersion 是当前配置格式的版本。<br>
+先执行 <code>kubectl api-resources</code> 找到所有的资源　　<br>
+再执行命令 <code> kubectl explain deploy</code> 即可获取到版本和类型信息<br>
+<img src="https://img.hacpai.com/file/2020/01/image-9deca0bd.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"><br>
+② kind 是要创建的资源类型，这里是 Deployment。<br>
+③ metadata 是该资源的元数据，name 是必需的元数据项。<br>
+④ spec 部分是该 Deployment 的规格说明。<br>
+⑤ replicas 指明副本数量，默认为 1。<br>
+⑥ template 定义 Pod 的模板，这是配置文件的重要部分。<br>
+⑦ metadata 定义 Pod 的元数据，至少要定义一个 label。label 的 key 和 value 可以任意指定。<br>
+⑧ spec 描述 Pod 的规格，此部分定义 Pod 中每一个容器的属性，name 和 image 是必需的。</p>
+</blockquote>
+<pre><code class="highlight-chroma">[root@master deploy]# kubectl get deploy
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   3/3     3            3           107s
+</code></pre>
+<ul>
+<li><strong>分配 nginx-deployment 配端口：</strong></li>
+</ul>
+<pre><code class="highlight-chroma">[root@master deploy]# kubectl expose deployment nginx-deployment --type=NodePort --port=80
+service/nginx-deployment exposed
+[root@master deploy]# kubectl get svc 
+NAME               TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
+kubernetes         ClusterIP   10.1.0.1      &lt;none&gt;        443/TCP        2d
+myweb              NodePort    10.1.143.89   &lt;none&gt;        80:30000/TCP   3h40m
+nginx-deployment   NodePort    10.1.248.23   &lt;none&gt;        80:28250/TCP   8s
+</code></pre>
+<ul>
+<li><strong>测试</strong>：</li>
+</ul>
+<pre><code class="highlight-chroma">[root@master deploy]# curl -I 10.0.0.197:28250
+HTTP/1.1 200 OK
+Server: nginx/1.14.2
+Date: Thu, 16 Jan 2020 06:26:29 GMT
+Content-Type: text/html
+Content-Length: 612
+Last-Modified: Tue, 04 Dec 2018 14:44:49 GMT
+Connection: keep-alive
+ETag: "5c0692e1-264"
+Accept-Ranges: bytes
+</code></pre>
+<h3 id="8-3-1-升级以及回滚">8.3.1 升级以及回滚</h3>
+<h4 id="8-3-1-1-升级">8.3.1.1 升级</h4>
+<ul>
+<li>更改 deployment 配置文件中镜像为最新</li>
+</ul>
+<pre><code class="highlight-chroma">[root@master deploy]# kubectl edit deployment nginx-deployment 
+deployment.apps/nginx-deployment edited
+....
+spec:
+      containers:
+      - image: 10.0.0.202:5000/nginx:latest
+        imagePullPolicy: IfNotPresent
+        name: nginx
+....
+</code></pre>
+<pre><code class="highlight-chroma">[root@master deploy]# curl -I 10.0.0.197:28250
+HTTP/1.1 200 OK
+Server: nginx/1.17.7
+Date: Thu, 16 Jan 2020 06:36:00 GMT
+Content-Type: text/html
+Content-Length: 612
+Last-Modified: Tue, 24 Dec 2019 13:07:53 GMT
+Connection: keep-alive
+ETag: "5e020da9-264"
+Accept-Ranges: bytes
+</code></pre>
+<h4 id="8-3-1-2-回滚">8.3.1.2 回滚</h4>
+<ul>
+<li><strong>第一种：指定回滚版本号：</strong></li>
+</ul>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@master deploy<span class="highlight-o">]</span><span class="highlight-c1"># kubectl rollout history deployment nginx-deployment</span>
+deployment.apps/nginx-deployment 
+REVISION  CHANGE-CAUSE
+<span class="highlight-m">1</span>         &lt;none&gt;
+<span class="highlight-m">2</span>         &lt;none&gt;
+<span class="highlight-o">[</span>root@master deploy<span class="highlight-o">]</span><span class="highlight-c1"># kubectl rollout undo deployment nginx-deployment</span>
+deployment.apps/nginx-deployment rolled back
+<span class="highlight-o">[</span>root@master deploy<span class="highlight-o">]</span><span class="highlight-c1"># kubectl rollout history deployment nginx-deployment</span>
+deployment.apps/nginx-deployment 
+REVISION  CHANGE-CAUSE
+<span class="highlight-m">2</span>         &lt;none&gt;
+<span class="highlight-m">3</span>         &lt;none&gt;
+<span class="highlight-o">[</span>root@master deploy<span class="highlight-o">]</span><span class="highlight-c1"># curl -I 10.0.0.197:28250</span>
+HTTP/1.1 <span class="highlight-m">200</span> OK
+Server: nginx/1.14.2
+Date: Thu, <span class="highlight-m">16</span> Jan <span class="highlight-m">2020</span> 06:37:35 GMT
+Content-Type: text/html
+Content-Length: <span class="highlight-m">612</span>
+Last-Modified: Tue, <span class="highlight-m">04</span> Dec <span class="highlight-m">2018</span> 14:44:49 GMT
+Connection: keep-alive
+ETag: <span class="highlight-s2">"5c0692e1-264"</span>
+Accept-Ranges: bytes
+</code></pre>
+<pre><code class="highlight-chroma">root@master deploy]# kubectl rollout undo deployment nginx-deployment --to-revision=3
+deployment.apps/nginx-deployment rolled back
+</code></pre>
+<ul>
+<li><strong>第二种：因为第一种版本号镜像版本没有详细版本，删除 deplotment 用命令行启动 deployment，再次查看会发现具体到相关镜像版本号等信息</strong></li>
+</ul>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@master ~<span class="highlight-o">]</span><span class="highlight-c1"># kubectl delete deploy nginx </span>
+deployment.apps <span class="highlight-s2">"nginx"</span> deleted
+<span class="highlight-o">[</span>root@master ~<span class="highlight-o">]</span><span class="highlight-c1"># kubectl run nginx --image=10.0.0.202:5000/nginx:latest --replicas=3 --record</span>
+kubectl run --generator<span class="highlight-o">=</span>deployment/apps.v1 is DEPRECATED and will be removed in a future version. Use kubectl run --generator<span class="highlight-o">=</span>run-pod/v1 or kubectl create instead.
+deployment.apps/nginx created
+<span class="highlight-o">[</span>root@master ~<span class="highlight-o">]</span><span class="highlight-c1"># kubectl set image deploy nginx nginx=10.0.0.202:5000/nginx:1.16.1 --record</span>
+deployment.apps/nginx image updated
+<span class="highlight-o">[</span>root@master ~<span class="highlight-o">]</span><span class="highlight-c1"># kubectl set image deploy nginx nginx=10.0.0.202:5000/nginx:1.14.2 --record</span>
+deployment.apps/nginx image updated
+<span class="highlight-o">[</span>root@master ~<span class="highlight-o">]</span><span class="highlight-c1">#  kubectl rollout history deployment nginx</span>
+deployment.apps/nginx 
+REVISION  CHANGE-CAUSE
+<span class="highlight-m">1</span>         kubectl run nginx --image<span class="highlight-o">=</span>10.0.0.202:5000/nginx:latest --replicas<span class="highlight-o">=</span><span class="highlight-m">3</span> --record<span class="highlight-o">=</span><span class="highlight-nb">true</span>
+<span class="highlight-m">2</span>         kubectl <span class="highlight-nb">set</span> image deploy nginx <span class="highlight-nv">nginx</span><span class="highlight-o">=</span>10.0.0.202:5000/nginx:1.16.1 --record<span class="highlight-o">=</span><span class="highlight-nb">true</span>
+<span class="highlight-m">3</span>         kubectl <span class="highlight-nb">set</span> image deploy nginx <span class="highlight-nv">nginx</span><span class="highlight-o">=</span>10.0.0.202:5000/nginx:1.14.2 --record<span class="highlight-o">=</span><span class="highlight-nb">true</span>
+<span class="highlight-o">[</span>root@master ~<span class="highlight-o">]</span><span class="highlight-c1"># kubectl expose deployment nginx --type=NodePort --port=80</span>
+service/nginx exposed
+<span class="highlight-o">[</span>root@master ~<span class="highlight-o">]</span><span class="highlight-c1"># kubectl get svc -o wide</span>
+NAME         TYPE        CLUSTER-IP    EXTERNAL-IP   PORT<span class="highlight-o">(</span>S<span class="highlight-o">)</span>        AGE     SELECTOR
+kubernetes   ClusterIP   10.1.0.1      &lt;none&gt;        443/TCP        2d2h    &lt;none&gt;
+myweb        NodePort    10.1.143.89   &lt;none&gt;        80:30000/TCP   6h32m   <span class="highlight-nv">app</span><span class="highlight-o">=</span>myweb2
+nginx        NodePort    10.1.246.22   &lt;none&gt;        80:38003/TCP   4s      <span class="highlight-nv">run</span><span class="highlight-o">=</span>nginx
+<span class="highlight-o">[</span>root@master ~<span class="highlight-o">]</span><span class="highlight-c1"># curl -I 10.0.0.197:38003</span>
+HTTP/1.1 <span class="highlight-m">200</span> OK
+Server: nginx/1.14.2
+Date: Thu, <span class="highlight-m">16</span> Jan <span class="highlight-m">2020</span> 09:17:28 GMT
+Content-Type: text/html
+Content-Length: <span class="highlight-m">612</span>
+Last-Modified: Tue, <span class="highlight-m">04</span> Dec <span class="highlight-m">2018</span> 14:44:49 GMT
+Connection: keep-alive
+ETag: <span class="highlight-s2">"5c0692e1-264"</span>
+Accept-Ranges: bytes
+
+<span class="highlight-o">[</span>root@master ~<span class="highlight-o">]</span><span class="highlight-c1">#  kubectl rollout history deployment nginx</span>
+deployment.apps/nginx 
+REVISION  CHANGE-CAUSE
+<span class="highlight-m">1</span>         kubectl run nginx --image<span class="highlight-o">=</span>10.0.0.202:5000/nginx:latest --replicas<span class="highlight-o">=</span><span class="highlight-m">3</span> --record<span class="highlight-o">=</span><span class="highlight-nb">true</span>
+<span class="highlight-m">2</span>         kubectl <span class="highlight-nb">set</span> image deploy nginx <span class="highlight-nv">nginx</span><span class="highlight-o">=</span>10.0.0.202:5000/nginx:1.16.1 --record<span class="highlight-o">=</span><span class="highlight-nb">true</span>
+<span class="highlight-m">3</span>         kubectl <span class="highlight-nb">set</span> image deploy nginx <span class="highlight-nv">nginx</span><span class="highlight-o">=</span>10.0.0.202:5000/nginx:1.14.2 --record<span class="highlight-o">=</span><span class="highlight-nb">true</span>
+
+<span class="highlight-o">[</span>root@master ~<span class="highlight-o">]</span><span class="highlight-c1"># kubectl rollout undo deployment nginx</span>
+deployment.apps/nginx rolled back
+<span class="highlight-o">[</span>root@master ~<span class="highlight-o">]</span><span class="highlight-c1"># curl -I 10.0.0.197:38003</span>
+HTTP/1.1 <span class="highlight-m">200</span> OK
+Server: nginx/1.16.1
+Date: Thu, <span class="highlight-m">16</span> Jan <span class="highlight-m">2020</span> 09:18:16 GMT
+Content-Type: text/html
+Content-Length: <span class="highlight-m">612</span>
+Last-Modified: Tue, <span class="highlight-m">13</span> Aug <span class="highlight-m">2019</span> 10:05:00 GMT
+Connection: keep-alive
+ETag: <span class="highlight-s2">"5d528b4c-264"</span>
+Accept-Ranges: bytes
+
+<span class="highlight-o">[</span>root@master ~<span class="highlight-o">]</span><span class="highlight-c1">#  kubectl rollout history deployment nginx</span>
+deployment.apps/nginx 
+REVISION  CHANGE-CAUSE
+<span class="highlight-m">1</span>         kubectl run nginx --image<span class="highlight-o">=</span>10.0.0.202:5000/nginx:latest --replicas<span class="highlight-o">=</span><span class="highlight-m">3</span> --record<span class="highlight-o">=</span><span class="highlight-nb">true</span>
+<span class="highlight-m">3</span>         kubectl <span class="highlight-nb">set</span> image deploy nginx <span class="highlight-nv">nginx</span><span class="highlight-o">=</span>10.0.0.202:5000/nginx:1.14.2 --record<span class="highlight-o">=</span><span class="highlight-nb">true</span>
+<span class="highlight-m">4</span>         kubectl <span class="highlight-nb">set</span> image deploy nginx <span class="highlight-nv">nginx</span><span class="highlight-o">=</span>10.0.0.202:5000/nginx:1.16.1 --record<span class="highlight-o">=</span><span class="highlight-nb">true</span>
+
+<span class="highlight-o">[</span>root@master ~<span class="highlight-o">]</span><span class="highlight-c1"># kubectl rollout undo deployment nginx  --to-revision=1</span>
+deployment.apps/nginx rolled back
+<span class="highlight-o">[</span>root@master ~<span class="highlight-o">]</span><span class="highlight-c1"># curl -I 10.0.0.197:38003</span>
+HTTP/1.1 <span class="highlight-m">200</span> OK
+Server: nginx/1.17.7
+Date: Thu, <span class="highlight-m">16</span> Jan <span class="highlight-m">2020</span> 09:19:25 GMT
+Content-Type: text/html
+Content-Length: <span class="highlight-m">612</span>
+Last-Modified: Tue, <span class="highlight-m">24</span> Dec <span class="highlight-m">2019</span> 13:07:53 GMT
+Connection: keep-alive
+ETag: <span class="highlight-s2">"5e020da9-264"</span>
+Accept-Ranges: bytes
+</code></pre>
+<blockquote>
+<p><strong>deployment 升级和回滚</strong></p>
+</blockquote>
+<ul>
+<li>命令行创建 deployment<br>
+<code>kubectl run nginx --image=10.0.0.202:5000/nginx:1.14.2 --replicas=3 --record</code></li>
+<li>命令行升级版本<br>
+<code>kubectl set image deploy nginx nginx=10.0.0.202:5000/nginx:1.16.1 --record</code></li>
+<li>查看 deployment 所有历史版本<br>
+<code>kubectl rollout history deployment nginx</code></li>
+<li>deployment 回滚到上一个版本<br>
+<code>kubectl rollout undo deployment nginx</code></li>
+<li>deployment 回滚到指定版本<br>
+<code>kubectl rollout undo deployment nginx --to-revision=2</code></li>
+<li>给 deploy 指定端口，会出现新的 SVC 服务<br>
+<code>kubectl expose deployment nginx --type=NodePort --port=80</code></li>
+</ul>
+<pre><code class="highlight-chroma">[root@master ~]# kubectl run nginx --image=10.0.0.202:5000/nginx:latest --replicas=3 --record
+kubectl run --generator=deployment/apps.v1 is DEPRECATED and will be removed in a future version. Use kubectl run --generator=run-pod/v1 or kubectl create instead.
+deployment.apps/nginx created
+</code></pre>
+<blockquote>
+<p><strong>kubectl run--generator=deployment/apps.v1 已弃用，将在将来的版本中删除。改用 kubectl run--generator=run pod/v1 或 kubectl create。</strong></p>
+</blockquote>
+<h1 id="九-创建-MySQL-服务">九、创建 MySQL 服务</h1>
+<h2 id="9-1-创建-MySQL-的-rc-以及-SVC-文件">9.1 创建 MySQL 的 rc 以及 SVC 文件</h2>
+<p class="indent--2"><strong>RC 文件：</strong></p>
+<pre><code class="highlight-chroma">[root@master ~]# cat k8s/rc/k8s_mysql.yaml 
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: mysql
+spec:
+  replicas: 1
+  selector:
+    app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: 10.0.0.202:5000/mysql:5.7
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: '598941324'
+</code></pre>
+<p class="indent--2"><strong>svc 文件：</strong></p>
+<pre><code class="highlight-chroma">[root@master ~]# cat k8s/svc/k8s_mysql_svc.yaml 
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+spec:
+  type: NodePort  #ClusterIP
+  ports:
+    - port: 3306
+      nodePort: 30006
+      targetPort: 3306    #pod port
+  selector:
+    app: mysql
+</code></pre>
+<p class="indent--2"><strong>检查结果：</strong></p>
+<pre><code class="highlight-chroma">[root@node2 ~]# netstat -antup | grep 30006
+tcp6       0      0 :::30006                :::*                    LISTEN      9501/kube-proxy
+</code></pre>
+<p class="indent--2"><strong>测试：</strong></p>
+<pre><code class="highlight-chroma">[root@master ~]# mysql -uroot -p598941324 -h192.168.50.175 -P30006
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 5
+Server version: 5.7.29 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+MySQL [(none)]&gt;
+</code></pre>
+<h1 id="其他操作">其他操作</h1>
+<p class="indent--2">详见这里：<a href="https://www.cjzshilong.cn/articles/2019/12/12/1576117964389.html">比如 K8S 创建资源的几种方式、K8S 常见几种资源</a></p>
+                    <div>
+                        <hr>
+
+标题：K8S二进制部署过程-v1.17.0<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2019/12/24/1577178596028.html" target="_blank">https://cuijianzhe.github.io/articles/2019/12/24/1577178596028.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+<pre><p style="font-size:15px"><font color="#008000">
+<b>到头来
+我们记住的
+不是敌人的攻击
+而是朋友的沉默
+       ---马丁·路德·金</b></p><pre>
+
+                    </div>
+            </section>
+        </div>
+    </div>
+        <div class="post__toc">
+<ul class="article__toc">
+        <li class="toc__h1">
+            <a href="#一--环境概述-">一 、环境概述：</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#二-手动制作-CA-证书-">二、手动制作 CA 证书：</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#2-1-准备-cfssl-的二进制文件-所有节点-">2.1 准备 cfssl 的二进制文件（所有节点）</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#2-1-1-初始化-cfssl">2.1.1 初始化 cfssl</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#2-1-2-创建用来生成-CA-文件的-JSON-配置文件">2.1.2 创建用来生成 CA 文件的 JSON 配置文件</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#2-1-3-创建用来生成-CA-证书签名请求-CSR-的-JSON-配置文件">2.1.3 创建用来生成 CA 证书签名请求（CSR）的 JSON 配置文件</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#2-1-4-生成-CA-证书-ca-pem-和密钥-ca-key-pem-">2.1.4 生成 CA 证书（ca.pem）和密钥（ca-key.pem）</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#2-1-5-分发证书">2.1.5 分发证书</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#2-1-6-发布到其他节点-所有节点-">2.1.6 发布到其他节点(所有节点)</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#三-etcd-集群">三、etcd 集群</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#3-1-创建-etcd-证书签名请求">3.1 创建 etcd 证书签名请求</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#3-2-生成-etcd-证书和私钥-">3.2 生成 etcd 证书和私钥：</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#3-3-分发生成的证书和私钥到各-etcd-节点">3.3 分发生成的证书和私钥到各 etcd 节点</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#3-4-设置-ETCD-配置文件">3.4 设置 ETCD 配置文件</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#3-5-创建-etcd-的系统服务">3.5 创建 etcd 的系统服务</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#3-5-1-启动-etcd-服务">3.5.1 启动 etcd 服务</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#3-6-验证集群">3.6 验证集群</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#3-7-etcd-集群排障">3.7 etcd 集群排障</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#在-node-安装-docker">在 node 安装 docker</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#四--Flannel-网络部署">四、 Flannel 网络部署</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#4-1-生成证书并且分发证书">4.1 生成证书并且分发证书</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#五-二进制部署docker">五、二进制部署 docker</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#5-1-下载docker">5.1 下载 docker</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#5-1-2-编辑-docker-系统服务-配置-docker-使用-flannel-">5.1.2 编辑 docker 系统服务(配置 docker 使用 flannel)</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#5-2-docker-通过-yum-安装也可">5.2 docker 通过 yum 安装也可</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#六-master-节点部署">六、master 节点部署</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#6-1-准备软件包-科学上网-">6.1 准备软件包（科学上网）</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#6-2-配置-kubernetes-相关证书">6.2 配置 kubernetes 相关证书</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#6-2-1-创建生成-CSR-的-JSON-配置文件">6.2.1 创建生成 CSR 的 JSON 配置文件</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#6-2-2-生成-Kubernetes-的证书和私钥">6.2.2 生成 Kubernetes 的证书和私钥</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#6-2-3-部署-kube-apiserver-组件">6.2.3 部署 kube-apiserver 组件</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#6-2-4-创建-kube-apiserver-系统配置文件">6.2.4 创建 kube-apiserver 系统配置文件</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#6-2-5-启动-apiserver">6.2.5 启动 apiserver</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#6-3-准备-kube-scheduler-的服务配置文件">6.3 准备 kube-scheduler 的服务配置文件</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#6-4-部署-kube-controller-manager">6.4 部署 kube-controller-manager</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#6-4-1-创建-kube-controller-manager-配置文件">6.4.1 创建 kube-controller-manager 配置文件</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#启动-kube-controller-manager">启动 kube-controller-manager</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#6-5-部署-kubectl-服务">6.5 部署 kubectl 服务</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#七-node-节点部署">七、node 节点部署</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#7-1-部署-kubelet-组件">7.1 部署 kubelet 组件</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#7-1-1-设置-CNI-支持">7.1.1 设置 CNI 支持</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#7-1-2-报错排查">7.1.2 报错排查</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#7-1-3-查看-CSR-请求">7.1.3 查看 CSR 请求</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#7-1-3-1-批准-kubelet-的-TLS-证书请求">7.1.3.1 批准 kubelet 的 TLS 证书请求</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#7-1-3-2-kubectl-get-csr-显示-No-Resources-Found-的解决记录">7.1.3.2 kubectl get csr 显示 No Resources Found 的解决记录</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#7-1-3-3-查看节点状态">7.1.3.3 查看节点状态</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#7-2-kube-proxy-部署">7.2 kube-proxy 部署</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#7-2-1-开始准备证书的-JSON-文件-">7.2.1 开始准备证书的 JSON 文件。</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#7-2-2-生成证书">7.2.2 生成证书</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#7-2-3-分发证书到所有的-Node-节点">7.2.3 分发证书到所有的(Node)节点</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#7-2-4-创建-kube-proxy-的配置文件-master-节点-">7.2.4 创建 kube-proxy 的配置文件（master 节点）</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#7-2-5-创建系统服务配置">7.2.5 创建系统服务配置</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#7-2-6-安装依赖并启动">7.2.6 安装依赖并启动</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#7-2-7-在-node-节点检查-kube-proxy-的服务状态">7.2.7 在 node 节点检查 kube-proxy 的服务状态</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#八-创建-K8S-nginx-应用">八、创建 K8S nginx 应用</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#8-1-创建-pod">8.1 创建 pod</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#8-3-以-Deployment-YAML-方式创建-Nginx-服务">8.3 以 Deployment YAML 方式创建 Nginx 服务</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#8-3-1-升级以及回滚">8.3.1 升级以及回滚</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#8-3-1-1-升级">8.3.1.1 升级</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#8-3-1-2-回滚">8.3.1.2 回滚</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#九-创建-MySQL-服务">九、创建 MySQL 服务</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#9-1-创建-MySQL-的-rc-以及-SVC-文件">9.1 创建 MySQL 的 rc 以及 SVC 文件</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#其他操作">其他操作</a>
+        </li>
+</ul>        </div>
+        <div id="gitalk-container" class="comment__wrapper wrapper" style="margin: 40px auto"></div>
+        <div id="b3logsolocomments"></div>
+        <div id="vcomment" class="comment__wrapper wrapper" style="margin: 40px auto" data-name="cuijianzhe" data-postId="1577178596028"></div>
+    <div class="article__bottom">
+        <div class="wrapper">
+            <div class="fn__flex">
+                    <div class="item" id="externalRelevantArticles"></div>
+                <div class="item" id="randomArticles"></div>
+                <div class="item" id="relevantArticles"></div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<footer class="footer">
+    <div class="wrapper fn__clear">
+        <div class="fn__left">
+            <br>
+            &copy; 2021
+            <a href="https://cuijianzhe.github.io">邯城往事</a>
+            <img style="width: 20px; height: 20px;" src="https://img.hacpai.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">冀ICP备19005901号</a> 
+
+<!--切换标签实现网页标题变化-->
+<script type="text/javascript">
+    /*自动刷新页面，避免无法访问*/
+    var OriginTitile = document.title;
+    var titleTime;
+    document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+            document.title = '一杯茶，一包烟，混过一天是一天';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '哈哈，我是大佬ヾ(ﾟ∀ﾟゞ)';
+            titleTime = setTimeout(function () {
+                document.title = OriginTitile;
+            }, 3000);
+        }
+    });
+</script>
+<!--切换标签实现网页标题变化 结束-->
+
+        </div>
+        <div class="fn__right">
+            <a href="https://cuijianzhe.github.io/tags.html" rel="section">
+            标签墙
+            </a>
+            &nbsp;•&nbsp;
+            <a href="https://cuijianzhe.github.io/archives.html">
+            存档
+            </a>
+            &nbsp;•&nbsp;
+            <a rel="archive" href="https://cuijianzhe.github.io/links.html">
+            友链
+            </a>
+            <br>
+            110 文章 &nbsp;
+            <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> 浏览 &nbsp;
+            
+        </div>
+    </div>
+</footer>
+
+<script>
+  var Label = {
+    speech: true,
+    servePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources",
+    luteAvailable: true,
+    hljsStyle: 'monokai',
+    langLabel: "zh_CN",
+    version: "4.3.1",
+    staticSite: true,
+    showCodeBlockLn: false,
+    articleId: "1577178596028",
+  }
+</script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources/skins/Casper/js/common.min.js?1609182030448"
+        charset="utf-8"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
+<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
+<div class="solo-kanbanniang">
+    <div class="solo-kanbanniang__tip"></div>
+    <canvas id="soloKanbanniang" width="280" height="250"></canvas>
+    <div class="solo-kanbanniang__tool">
+        <svg id="soloKanbanniangHome" viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M32 18.967l-16-12.42-16 12.42v-5.064l16-12.42 16 12.42zM28 18.516v12h-8v-8h-8v8h-8v-12l12-9z"></path>
+        </svg>
+        <svg id="soloKanbanniangRSS" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M320.364 768q0 45.728-32 77.728t-77.728 32-77.728-32-32-77.728 32-77.728 77.728-32 77.728 32 32 77.728zM612.94 838.272q1.152 16-9.728 27.424-10.272 12-26.848 12h-77.152q-14.272 0-24.576-9.44t-11.424-23.712q-12.576-130.848-105.44-223.712t-223.712-105.44q-14.272-1.152-23.712-11.424t-9.44-24.576V402.24q0-16.576 12-26.848 9.728-9.728 24.576-9.728h2.848q91.424 7.424 174.848 46.016t148 103.712q65.152 64.576 103.712 148t46.016 174.848z m292.576 1.152q1.152 15.424-10.272 26.848-10.272 11.424-26.272 11.424h-81.728q-14.848 0-25.44-10.016t-11.136-24.288q-6.848-122.848-57.728-233.44t-132.288-192-192-132.288-233.44-58.272q-14.272-0.576-24.288-11.136t-10.016-24.864V109.664q0-16 11.424-26.272 10.272-10.272 25.152-10.272h1.728q149.728 7.424 286.56 68.576t243.136 168q106.848 106.272 168 243.136t68.576 286.56z"></path>
+        </svg>
+        <svg id="soloKanbanniangChat" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M802.42709 96.163153H219.476155c-84.48109 0-154.896836 71.746044-154.896836 157.840888v393.119449c0 86.072331 70.415746 157.819398 154.896836 157.819399h214.038818V925.470963s22.526039 40.168862 64.767096 5.734608c30.965246-25.819039 126.721123-91.828428 171.775248-123.385145h132.369773c84.502579 0 154.896836-83.21526 154.896836-157.839865V251.125481c0-86.094844-70.394257-154.962328-154.896836-154.962328zM301.144176 518.002714c-39.427988 0-70.416769-31.576159-70.416769-71.746044 0-40.168862 30.988782-71.746044 70.416769-71.746044 39.426965 0 70.393233 31.577183 70.393234 71.746044 0 40.169885-30.966269 71.746044-70.393234 71.746044z m208.411657 0c-39.450501 0-70.415746-31.576159-70.415746-71.746044 0-40.168862 30.965246-71.746044 70.415746-71.746044 39.405475 0 70.394257 31.577183 70.394257 71.746044 0 40.169885-30.988782 71.746044-70.394257 71.746044z m211.203236 0c-39.426965 0-70.416769-31.576159-70.416769-71.746044 0-40.168862 30.988782-71.746044 70.416769-71.746044s70.415746 31.577183 70.415746 71.746044c-0.001023 40.169885-30.988782 71.746044-70.415746 71.746044z"></path>
+        </svg>
+        <svg id="soloKanbanniangChange" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M936.672 193.216l-226.88-64c-8.704-2.528-18.112-1.12-25.824 3.776-7.68 4.864-12.896 12.736-14.432 21.728C655.712 236.928 595.328 288 512 288c-71.424 0-142.464-103.296-163.776-143.104-7.136-13.28-22.528-19.84-37.024-15.68l-224 64C73.472 197.152 64 209.728 64 224v256a31.93 31.93 0 0 0 11.712 24.736c7.392 6.08 17.152 8.512 26.56 6.624L224 487.04V832c0 52.928 43.072 96 96 96h384c52.928 0 96-43.072 96-96V519.04l121.728 24.352c9.44 1.92 19.2-0.544 26.56-6.624C955.68 530.656 960 521.6 960 512V224c0-14.336-9.536-26.912-23.328-30.784zM672 800H352c-17.664 0-32-14.304-32-32s14.336-32 32-32h320c17.696 0 32 14.304 32 32s-14.304 32-32 32z"></path>
+        </svg>
+        <svg id="soloKanbanniangPhoto" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M898.048 258.048q23.552-1.024 46.592 9.216t40.96 27.136 28.672 39.424 10.752 46.08l0 390.144q0 24.576-10.752 47.104t-28.672 40.448-40.96 28.16-47.616 10.24l-697.344 0q-24.576 0-48.64-10.24t-42.496-27.648-29.696-40.448-11.264-48.64l0-381.952q0-22.528 10.752-45.568t28.672-41.472 39.936-30.208 44.544-11.776l63.488 0 13.312-83.968q3.072-20.48 18.432-32.768t34.816-12.288l456.704 0q19.456 0 34.304 10.752t16.896 34.304l14.336 83.968 54.272 0zM548.864 712.704q40.96 0 77.824-15.872t63.488-42.496 42.496-62.976 15.872-77.312-15.872-77.312-42.496-62.976-63.488-42.496-77.824-15.872-77.312 15.872-63.488 42.496-43.008 62.976-15.872 77.312 15.872 77.312 43.008 62.976 63.488 42.496 77.312 15.872z"></path>
+        </svg>
+        <svg id="soloKanbanniangGithub" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M1024 524.8c0 114.346667-32.554667 217.216-97.706667 308.565333-65.066667 91.306667-149.162667 154.538667-252.288 189.610667-11.989333 2.304-20.778667 0.682667-26.325333-4.778667a27.605333 27.605333 0 0 1-8.362667-20.48v-144.213333c0-44.16-11.52-76.501333-34.645333-97.024 25.344-2.730667 48.085333-6.826667 68.309333-12.288a268.629333 268.629333 0 0 0 62.72-26.666667 187.434667 187.434667 0 0 0 53.973334-45.44c14.421333-18.005333 26.197333-41.898667 35.328-71.765333 9.088-29.824 13.653333-64.128 13.653333-102.826667 0-55.125333-17.536-102.058667-52.650667-140.8 16.426667-41.429333 14.677333-87.893333-5.333333-139.392-12.458667-4.096-30.464-1.578667-54.016 7.509334a355.328 355.328 0 0 0-61.312 30.08L640 271.274667a462.336 462.336 0 0 0-128-17.749334c-43.989333 0-86.656 5.930667-128 17.749334a589.824 589.824 0 0 0-28.330667-18.432c-11.776-7.253333-30.336-16.042667-55.68-26.325334-25.344-10.24-44.416-13.312-57.301333-9.216-19.584 51.498667-21.12 97.962667-4.693333 139.434667-35.114667 38.698667-52.650667 85.632-52.650667 140.757333 0 38.698667 4.565333 72.874667 13.653333 102.485334 9.130667 29.610667 20.778667 53.546667 34.986667 71.765333 14.250667 18.218667 32.128 33.493333 53.674667 45.781333 21.546667 12.288 42.453333 21.205333 62.677333 26.666667 20.224 5.461333 43.008 9.557333 68.309333 12.288-17.749333 16.384-28.629333 39.850667-32.64 70.4a130.005333 130.005333 0 0 1-29.994666 10.24c-10.666667 2.261333-23.338667 3.413333-37.973334 3.413333-14.72 0-29.269333-4.906667-43.690666-14.677333-14.464-9.813333-26.794667-24.064-36.992-42.709333a109.226667 109.226667 0 0 0-32.341334-35.541334c-13.141333-9.130667-24.106667-14.592-33.024-16.426666l-13.312-2.048c-9.344 0-15.786667 1.024-19.328 3.072-3.584 2.090667-4.693333 4.693333-3.328 7.893333 1.28 3.157333 3.328 6.4 5.973334 9.557333 2.688 3.2 5.546667 5.930667 8.661333 8.192l4.693333 3.413334c9.770667 4.565333 19.413333 13.226667 29.013334 25.984 9.514667 12.757333 16.512 24.362667 20.992 34.858666l6.656 15.701334c5.76 17.322667 15.530667 31.317333 29.312 42.026666 13.781333 10.666667 28.672 17.536 44.672 20.48 16 2.986667 31.445333 4.565333 46.336 4.821334 14.890667 0.213333 27.221333-0.597333 36.992-2.389334l15.36-2.730666c0 17.28 0.085333 37.546667 0.298666 60.8l0.341334 36.906666a27.050667 27.050667 0 0 1-8.661334 20.48c-5.76 5.461333-14.677333 7.082667-26.666666 4.778667-103.125333-35.072-187.221333-98.261333-252.330667-189.610667C32.554667 742.058667 0 639.146667 0 524.8c0-95.232 22.869333-183.04 68.693333-263.466667A516.266667 516.266667 0 0 1 254.976 70.4C333.44 23.466667 419.114667 0 512 0c92.885333 0 178.56 23.466667 256.981333 70.4a516.266667 516.266667 0 0 1 186.368 190.976C1001.130667 341.802667 1024 429.653333 1024 524.842667z"></path>
+        </svg>
+        <svg id="soloKanbanniangClose" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M517.572566143763 1018.6748601482986C238.26554897656422 1018.6748601482986 11.897910175114305 792.2714997690043 11.897910175114305 513.0002041796496c0-279.3070171671984 226.36763880144977-505.71037754649296 505.6746559686481-505.71037754649296 279.2712955893538 0 505.6746559686481 226.40336037929444 505.6746559686481 505.71037754649296C1023.2472221124112 792.2714997690043 796.8795833109612 1018.6748601482986 517.572566143763 1018.6748601482986zM754.7281214542927 339.25044954334646c13.752807470184345-13.752807470184345 9.680547595895998-40.186775075214015-9.073280772537204-58.94060344364717l-2.143294670678079-2.1075730928334457c-18.7538283684332-18.7538283684332-45.15207439561819-22.861809820566194-58.90488186580257-9.073280772537204l-168.21291007038468 168.24863164822932-180.42968969324974-180.46541127109438c-13.967136937252159-13.967136937252159-40.72259874288353-9.823433907274534-59.72647815622916 9.216167083915742l-2.143294670678079 2.143294670678079c-19.039600991190277 19.003879413345654-23.111860865478626 45.75934121897699-9.180445506071107 59.655035000539876l180.42968969324974 180.46541127109438-176.07165719620428 176.03593561835962c-13.788529048028984 13.824250625873615-9.716269173740633 40.151053497369375 9.073280772537204 58.94060344364717l2.1075730928334457 2.1075730928334457c18.7538283684332 18.7538283684332 45.15207439561819 22.897531398410823 58.90488186580257 9.073280772537204l176.10737877404887-176.10737877404887 170.39192631890742 170.42764789675192c13.967136937252159 13.931415359407513 40.686877165038865 9.85915548511917 59.690756578384516-9.180445506071107l2.1790162485227142-2.1790162485227142c19.039600991190277-18.968157835501014 23.147582443323273-45.72361964113239 9.180445506071107-59.690756578384516l-170.39192631890742-170.42764789675192L754.7281214542927 339.25044954334646z"></path>
+        </svg>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources/js/page.min.js?1609182030448', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论不能为空",
+        "oId": "1577178596028",
+        "blogHost": "https://cuijianzhe.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "5";
+        page.loadRandomArticles('<h3>随机阅读</h3>');
+        page.loadExternalRelevantArticles("Linux,kubernetes",
+        '<h3>站外相关阅读</h3>');
+        page.loadRelevantArticles('1577178596028', '<h3>相关阅读</h3>');
+    Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 421ms, 2021/01/08 15:42:22 -->
