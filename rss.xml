@@ -6,7 +6,7 @@
     <atom:link href="https://cuijianzhe.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>               &gt;&gt;&gt;  展颜笑夙愿，一笑泯恩仇 &lt;&lt;&lt;</description>
     <generator>Solo, v4.3.1, https://b3log.org/solo</generator>
-    <lastBuildDate>Fri, 25 Dec 2020 09:37:37 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 08 Jan 2021 15:42:06 +0800</lastBuildDate>
     <language>zh-cn</language>
     <item>
       <title>阿里云同步资产信息到Jumpserver</title>
@@ -14,9 +14,27 @@
       <description><![CDATA[<p class="indent--2">欲寄彩笺兼尺素。山长水阔知何处。</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/07/16/1594900059981.html</guid>
-      <category>Python</category>
       <category>Jumpserver</category>
-      <pubDate>Wed, 23 Dec 2020 18:27:04 +0800</pubDate>
+      <category>Python</category>
+      <pubDate>Fri, 08 Jan 2021 15:38:51 +0800</pubDate>
+    </item>
+    <item>
+      <title>Django 添加ldap认证细节注意</title>
+      <link>https://cuijianzhe.github.io/articles/2020/12/26/1608967635869.html</link>
+      <description><![CDATA[<p class="indent--2">后来我才发现，很多人的世界根本不缺我。</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/12/26/1608967635869.html</guid>
+      <category>Python</category>
+      <pubDate>Wed, 30 Dec 2020 14:26:49 +0800</pubDate>
+    </item>
+    <item>
+      <title>docker安装openldap</title>
+      <link>https://cuijianzhe.github.io/articles/2020/12/26/1608954669638.html</link>
+      <description><![CDATA[<p class="indent--2">你在我身边也好，在天边也罢，想到世界的角落有一个你，觉得整个世界也变得温柔安定了。</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/12/26/1608954669638.html</guid>
+      <category>Openldap</category>
+      <pubDate>Sat, 26 Dec 2020 12:00:21 +0800</pubDate>
     </item>
     <item>
       <title>表格数据提取</title>
@@ -42,8 +60,8 @@
       <description/>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html</guid>
-      <category>mysql</category>
       <category>Python</category>
+      <category>mysql</category>
       <pubDate>Tue, 08 Dec 2020 16:16:33 +0800</pubDate>
     </item>
     <item>
@@ -83,25 +101,6 @@
       <guid>https://cuijianzhe.github.io/articles/2019/03/16/1552705047941.html</guid>
       <category>Linux</category>
       <pubDate>Tue, 13 Oct 2020 17:36:40 +0800</pubDate>
-    </item>
-    <item>
-      <title>站点推荐【转】</title>
-      <link>https://cuijianzhe.github.io/articles/2019/11/13/1573637956893.html</link>
-      <description><![CDATA[<p class="indent--2"><img src="https://img.hacpai.com/bing/20191030.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""><br>
-人生不如意，十有八九</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2019/11/13/1573637956893.html</guid>
-      <category>solo</category>
-      <pubDate>Thu, 17 Sep 2020 14:07:07 +0800</pubDate>
-    </item>
-    <item>
-      <title>咪咪【合集】</title>
-      <link>https://cuijianzhe.github.io/articles/2020/09/08/1599570901121.html</link>
-      <description><![CDATA[<p class="indent--2">当你年轻时，以为什么都有答案，可是老了的时候，你可能又觉得其实人生并没有所谓的答案。</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/09/08/1599570901121.html</guid>
-      <category>咪咪</category>
-      <pubDate>Thu, 17 Sep 2020 10:20:12 +0800</pubDate>
     </item>
   </channel>
 </rss>

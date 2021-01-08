@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>KUbernets实践之pod控制器 - 邯城往事</title><meta name="description" content="拒绝了所有人的邀请，不愿与除你之外的人看风景"/><meta property="og:description" content="拒绝了所有人的邀请，不愿与除你之外的人看风景"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="KUbernets实践之pod控制器 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/04/22/1587528230774.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="KUbernets实践之pod控制器 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/04/22/1587528230774.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>KUbernets实践之pod控制器 - 邯城往事</title><meta name="description" content="拒绝了所有人的邀请，不愿与除你之外的人看风景"/><meta property="og:description" content="拒绝了所有人的邀请，不愿与除你之外的人看风景"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="KUbernets实践之pod控制器 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/04/22/1587528230774.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="KUbernets实践之pod控制器 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/04/22/1587528230774.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources/skins/Casper/css/base.css?1609182030448"/>
             <link rel="prev" title="用Python实现widows下ping程序" href="https://cuijianzhe.github.io/articles/2020/04/18/1587188601330.html">
             <link rel="next" title="Kubernetes服务访问" href="https://cuijianzhe.github.io/articles/2020/04/23/1587624487440.html">
     <!--鼠标点击特效-->
@@ -159,12 +159,12 @@
         <div class="wrapper">
             <section class="item__content item__content--article vditor-reset">
                 <h1 id="为什么用pod控制器-">为什么用 pod 控制器？</h1>
-<p class="indent--2">只使用 Pod, 将会面临如下需求：</p>
+<p class="indent--2">只使用 Pod, 将会面临如下需求:</p>
 <ol>
 <li>业务应用启动多个副本</li>
 <li>Pod 重建后 IP 会变化，外部如何访问 Pod 服务</li>
 <li>运行业务 Pod 的某个节点挂了，可以自动帮我把 Pod 转移到集群中的可用节点启动起来</li>
-<li>我的业务应用功能是收集节点监控数据，需要把 Pod 运行在 k8 集群的各个节点上</li>
+<li>我的业务应用功能是收集节点监控数据,需要把 Pod 运行在 k8 集群的各个节点上</li>
 </ol>
 <h1 id="Workload--工作负载-">Workload (工作负载)</h1>
 <p class="indent--2">控制器又称工作负载是用于实现管理 pod 的中间层，确保 pod 资源符合预期的状态，pod 的资源出现故障时，会尝试 进行重启，当根据重启策略无效，则会重新新建 pod 的资源。</p>
@@ -388,7 +388,7 @@ NAME                     READY   STATUS    RESTARTS   AGE   IP               NOD
 myblog-b66554b87-phv4x   1/1     Running   0          73s   10.244.2.13      k8s-slave2   &lt;none&gt;           &lt;none&gt;
 mysql-8fcc5595f-trnx9    1/1     Running   0          28h   192.168.51.210   k8s-slave1   &lt;none&gt;           &lt;none&gt;
 </code></pre>
-<h4 id="设置两个副本--或者通过的方式-最好通过修改文件-然后apply的方式-这样yaml文件可以保持同步">设置两个副本， 或者通过 <code>kubectl -n demo edit deploy myblog</code> 的方式，最好通过修改文件，然后 apply 的方式，这样 YAML 文件可以保持同步</h4>
+<h4 id="设置两个副本--或者通过的方式-最好通过修改文件-然后apply的方式-这样yaml文件可以保持同步">设置两个副本, 或者通过 <code>kubectl -n demo edit deploy myblog</code> 的方式，最好通过修改文件，然后 apply 的方式，这样 YAML 文件可以保持同步</h4>
 <pre><code class="highlight-chroma">[root@k8s-master deployment]# kubectl -n demo scale deploy myblog --replicas=2
 deployment.apps/myblog scaled
 </code></pre>
@@ -446,11 +446,11 @@ spec:
 <p class="indent--2"><img src="https://img.hacpai.com/file/2020/04/update-eef5c14a.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="update.png"><br>
 策略控制：</p>
 <ul>
-<li>maxSurge：最大激增数， 指更新过程中， 最多可以比 replicas 预先设定值多出的 pod 数量， 可以为固定值或百分比，默认为 desired Pods 数的 25%。计算时向上取整(比如 3.4，取 4)，更新过程中最多会有 replicas + maxSurge 个 pod</li>
-<li>maxUnavailable： 指更新过程中， 最多有几个 pod 处于无法服务状态 , 可以为固定值或百分比，默认为 desired Pods 数的 25%。计算时向下取整(比如 3.6，取 3)</li>
+<li>maxSurge：最大激增数, 指更新过程中, 最多可以比 replicas 预先设定值多出的 pod 数量, 可以为固定值或百分比,默认为 desired Pods 数的 25%。计算时向上取整(比如 3.4，取 4)，更新过程中最多会有 replicas + maxSurge 个 pod</li>
+<li>maxUnavailable： 指更新过程中, 最多有几个 pod 处于无法服务状态 , 可以为固定值或百分比，默认为 desired Pods 数的 25%。计算时向下取整(比如 3.6，取 3)</li>
 </ul>
 <p class="indent--2"><em>在 Deployment rollout 时，需要保证 Available(Ready) Pods 数不低于 desired pods number - maxUnavailable; 保证所有的非异常状态 Pods 数不多于 desired pods number + maxSurge</em>。</p>
-<p class="indent--2">以 myblog 为例，使用默认的策略，更新过程：</p>
+<p class="indent--2">以 myblog 为例，使用默认的策略，更新过程:</p>
 <ol>
 <li>maxSurge 25%，2 个实例，向上取整，则 maxSurge 为 1，意味着最多可以有 2+1=3 个 Pod，那么此时会新创建 1 个 ReplicaSet，RS-new，把副本数置为 1，此时呢，副本控制器就去创建这个新的 Pod</li>
 <li>同时，maxUnavailable 是 25%，副本数 2*25%，向下取整，则为 0，意味着，滚动更新的过程中，不能有少于 2 个可用的 Pod，因此，旧的 Replica（RS-old）会先保持不动，等 RS-new 管理的 Pod 状态 Ready 后，此时已经有 3 个 Ready 状态的 Pod 了，那么由于只要保证有 2 个可用的 Pod 即可，因此，RS-old 的副本数会有 2 个变成 1 个，此时，会删掉一个旧的 Pod</li>
@@ -692,7 +692,7 @@ spec:
             <a href="#删除pod-观察pod状态变化">删除 pod，观察 pod 状态变化</a>
         </li>
         <li class="toc__h4">
-            <a href="#设置两个副本--或者通过的方式-最好通过修改文件-然后apply的方式-这样yaml文件可以保持同步">设置两个副本， 或者通过 kubectl -n demo edit deploy myblog 的方式，最好通过修改文件，然后 apply 的方式，这样 YAML 文件可以保持同步</a>
+            <a href="#设置两个副本--或者通过的方式-最好通过修改文件-然后apply的方式-这样yaml文件可以保持同步">设置两个副本, 或者通过 kubectl -n demo edit deploy myblog 的方式，最好通过修改文件，然后 apply 的方式，这样 YAML 文件可以保持同步</a>
         </li>
         <li class="toc__h3">
             <a href="#Pod驱逐策略">Pod 驱逐策略</a>
@@ -743,7 +743,7 @@ spec:
     <div class="wrapper fn__clear">
         <div class="fn__left">
             <br>
-            &copy; 2020
+            &copy; 2021
             <a href="https://cuijianzhe.github.io">邯城往事</a>
             <img style="width: 20px; height: 20px;" src="https://img.hacpai.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">冀ICP备19005901号</a> 
 
@@ -780,7 +780,7 @@ spec:
             友链
             </a>
             <br>
-            108 文章 &nbsp;
+            110 文章 &nbsp;
             <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> 浏览 &nbsp;
             
         </div>
@@ -791,7 +791,7 @@ spec:
   var Label = {
     speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources",
     luteAvailable: true,
     hljsStyle: 'monokai',
     langLabel: "zh_CN",
@@ -802,7 +802,7 @@ spec:
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources/skins/Casper/js/common.min.js?1609182030448"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -836,7 +836,7 @@ spec:
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources/js/page.min.js?1609182030448', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1587528230774",
@@ -858,4 +858,4 @@ spec:
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 488ms, 2020/12/25 09:37:46 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 421ms, 2021/01/08 15:42:18 -->

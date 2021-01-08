@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>K8S基础搭建使用 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="K8S基础搭建使用 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/12/12/1576117964389.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="K8S基础搭建使用 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/12/12/1576117964389.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>K8S基础搭建使用 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="K8S基础搭建使用 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/12/12/1576117964389.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="K8S基础搭建使用 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/12/12/1576117964389.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources/skins/Casper/css/base.css?1609182030448"/>
             <link rel="prev" title="Our love history" href="https://cuijianzhe.github.io/articles/2019/12/11/1576058698755.html">
             <link rel="next" title="K8S二进制部署过程-v1.17.0" href="https://cuijianzhe.github.io/articles/2019/12/24/1577178596028.html">
     <!--鼠标点击特效-->
@@ -197,10 +197,10 @@
 </table>
 <h2 id="K8S核心功能-">K8S 核心功能：</h2>
 <ul>
-<li>自愈： 重新启动失败的容器，在节点不可用时，替换和重新调度节点上的容器，对用户定义的健康检查不响应的容器会被中止，并且在容器准备好服务之前不会把其向客户端广播。</li>
-<li>弹性伸缩： 通过监控容器的 CPU 的负载值，如果这个平均高于 80%，增加容器的数量，如果这个平均低于 10%，减少容器的数量</li>
-<li>服务的自动发现和负载均衡： 不需要修改您的应用程序来使用不熟悉的服务发现机制，Kubernetes 为容器提供了自己的 IP 地址和一组容器的单个 DNS 名称，并可以在它们之间进行负载均衡。</li>
-<li>滚动升级和一键回滚： Kubernetes 逐渐部署对应用程序或其配置的更改，同时监视应用程序运行状况，以确保它不会同时终止所有实例。 如果出现问题，Kubernetes 会为您恢复更改，利用日益增长的部署解决方案的生态系统。</li>
+<li>自愈: 重新启动失败的容器，在节点不可用时，替换和重新调度节点上的容器，对用户定义的健康检查不响应的容器会被中止，并且在容器准备好服务之前不会把其向客户端广播。</li>
+<li>弹性伸缩: 通过监控容器的 CPU 的负载值,如果这个平均高于 80%,增加容器的数量,如果这个平均低于 10%,减少容器的数量</li>
+<li>服务的自动发现和负载均衡: 不需要修改您的应用程序来使用不熟悉的服务发现机制，Kubernetes 为容器提供了自己的 IP 地址和一组容器的单个 DNS 名称，并可以在它们之间进行负载均衡。</li>
+<li>滚动升级和一键回滚: Kubernetes 逐渐部署对应用程序或其配置的更改，同时监视应用程序运行状况，以确保它不会同时终止所有实例。 如果出现问题，Kubernetes 会为您恢复更改，利用日益增长的部署解决方案的生态系统。</li>
 </ul>
 <h2 id="1-1环境准备">1.1 环境准备</h2>
 <pre><code class="language-bash highlight-chroma">cat &gt;&gt; /etc/hosts <span class="highlight-s">&lt;&lt;EOF
@@ -313,7 +313,7 @@ docker run -d -p 5000:5000 --restart<span class="highlight-o">=</span>always --n
 </code></pre>
 <h1 id="二--K8S常用资源">二、 K8S 常用资源</h1>
 <h2 id="2-1-pod资源">2.1 pod 资源</h2>
-<p class="indent--2">pod 是最小资源单位。</p>
+<p class="indent--2">pod 是最小资源单位.</p>
 <p class="indent--2">k8s YAML 的主要组成</p>
 <pre><code class="highlight-chroma">apiVersion: v1  api版本
 kind: pod   资源类型
@@ -445,7 +445,7 @@ nginx     1/1       Running   <span class="highlight-m">0</span>          15h   
 <h4 id="查看k8s-pod的容器资源详细信息-">查看 k8s pod 的容器资源详细信息：</h4>
 <pre><code class="highlight-chroma">docker inspect 3f6cdafa32f5
 </code></pre>
-<p class="indent--2"><strong>创建一个 pod 资源，才能实现 k8s 的高级功能。</strong><br>
+<p class="indent--2"><strong>创建一个 pod 资源，才能实现 k8s 的高级功能.</strong><br>
 pod 容器：基础架构容器<br>
 nginx 容器： 业务容器</p>
 <pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># docker ps   </span>
@@ -455,13 +455,13 @@ d0198f64f479        10.0.0.202:5000/rhel7/pod-infrastructure:latest   <span clas
 </code></pre>
 <h2 id="2-2-ReplicationController资源">2.2 ReplicationController 资源</h2>
 <blockquote>
-<p>k8s 资源的常见操作：<br>
+<p>k8s 资源的常见操作:<br>
 kubectl create -f xxx.yaml<br>
 kubectl get pod|rc<br>
 kubectl describe pod nginx<br>
 kubectl delete pod nginx 或者 kubectl delete -f xxx.yaml<br>
 kubectl edit pod nginx<br>
-rc:保证指定数量的 pod 始终存活，rc 通过标签选择器来关联 pod</p>
+rc:保证指定数量的 pod 始终存活,rc 通过标签选择器来关联 pod</p>
 </blockquote>
 <p class="indent--2">POD 资源被关闭也会及时启动自愈。</p>
 <h2 id="rc资源">rc 资源</h2>
@@ -712,7 +712,7 @@ kubectl expose rc nginx --type=NodePort --port=80
 </code></pre>
 <p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-9f3051f7.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <h2 id="2-4-deployment资源">2.4 deployment 资源</h2>
-<p class="indent--2">有 rc 在滚动升级之后，会造成服务访问中断，于是 k8s 引入了 deployment 资源</p>
+<p class="indent--2">有 rc 在滚动升级之后,会造成服务访问中断,于是 k8s 引入了 deployment 资源</p>
 <ul>
 <li>创建 deployment</li>
 </ul>
@@ -842,7 +842,7 @@ deployment 回滚到指定版本<br>
 <code>kubectl rollout undo deployment nginx --to-revision=2</code></p>
 </blockquote>
 <h1 id="三--Tomcat-Mysql练习">三、 Tomcat+Mysql 练习</h1>
-<p class="indent--2">在 K8S 容器之间相互访问，通过 VIP 地址！</p>
+<p class="indent--2">在 K8S 容器之间相互访问,通过 VIP 地址!</p>
 <ol>
 <li>启动 MySQL YAML 配置文件，创建 Rc 资源</li>
 </ol>
@@ -1077,7 +1077,7 @@ service "tomcat" created
     <div class="wrapper fn__clear">
         <div class="fn__left">
             <br>
-            &copy; 2020
+            &copy; 2021
             <a href="https://cuijianzhe.github.io">邯城往事</a>
             <img style="width: 20px; height: 20px;" src="https://img.hacpai.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">冀ICP备19005901号</a> 
 
@@ -1114,7 +1114,7 @@ service "tomcat" created
             友链
             </a>
             <br>
-            108 文章 &nbsp;
+            110 文章 &nbsp;
             <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> 浏览 &nbsp;
             
         </div>
@@ -1125,7 +1125,7 @@ service "tomcat" created
   var Label = {
     speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources",
     luteAvailable: true,
     hljsStyle: 'monokai',
     langLabel: "zh_CN",
@@ -1136,7 +1136,7 @@ service "tomcat" created
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources/skins/Casper/js/common.min.js?1609182030448"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -1170,7 +1170,7 @@ service "tomcat" created
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources/js/page.min.js?1609182030448', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1576117964389",
@@ -1192,4 +1192,4 @@ service "tomcat" created
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 452ms, 2020/12/25 09:37:54 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 415ms, 2021/01/08 15:42:23 -->

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>KUbernets实践之pod - 邯城往事</title><meta name="description" content="如果陪我到最后的人是你，那么以前经历过的苦难"/><meta property="og:description" content="如果陪我到最后的人是你，那么以前经历过的苦难"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="KUbernets实践之pod - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="KUbernets实践之pod - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/css/base.css?1608803069102"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>KUbernets实践之pod - 邯城往事</title><meta name="description" content="如果陪我到最后的人是你，那么以前经历过的苦难"/><meta property="og:description" content="如果陪我到最后的人是你，那么以前经历过的苦难"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="KUbernets实践之pod - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="KUbernets实践之pod - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources/skins/Casper/css/base.css?1609182030448"/>
             <link rel="prev" title="Django应用容器化 " href="https://cuijianzhe.github.io/articles/2020/04/12/1586677258146.html">
             <link rel="next" title="配置Openldap主从" href="https://cuijianzhe.github.io/articles/2020/04/16/1587026602880.html">
     <!--鼠标点击特效-->
@@ -163,10 +163,10 @@
 <h2 id="核心组件">核心组件</h2>
 <p class="indent--2"><img src="https://img.hacpai.com/file/2020/04/7a3d98a9a2744883a8c3b306deaf4cac.webp?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="doge"></p>
 <ul>
-<li>ETCD：分布式高性能键值数据库，存储整个集群的所有元数据</li>
-<li>ApiServer:  API 服务器，集群资源访问控制入口，提供 restAPI 及安全访问控制</li>
-<li>Scheduler：调度器，负责把业务容器调度到最合适的 Node 节点</li>
-<li>Controller Manager：控制器管理，确保集群资源按照期望的方式运行
+<li>ETCD：分布式高性能键值数据库,存储整个集群的所有元数据</li>
+<li>ApiServer:  API 服务器,集群资源访问控制入口,提供 restAPI 及安全访问控制</li>
+<li>Scheduler：调度器,负责把业务容器调度到最合适的 Node 节点</li>
+<li>Controller Manager：控制器管理,确保集群资源按照期望的方式运行
 <ul>
 <li>Replication Controller</li>
 <li>Node controller</li>
@@ -181,12 +181,12 @@
 <li>kubelet：运行在每运行在每个节点上的主要的“节点代理”个节点上的主要的“节点代理”
 <ul>
 <li>pod 管理：kubelet 定期从所监听的数据源获取节点上 pod/container 的期望状态（运行什么容器、运行的副本数量、网络或者存储如何配置等等），并调用对应的容器平台接口达到这个状态。</li>
-<li>容器健康检查：kubelet 创建了容器之后还要查看容器是否正常运行，如果容器运行出错，就要根据 pod 设置的重启策略进行处理。</li>
+<li>容器健康检查：kubelet 创建了容器之后还要查看容器是否正常运行，如果容器运行出错，就要根据 pod 设置的重启策略进行处理.</li>
 <li>容器监控：kubelet 会监控所在节点的资源使用情况，并定时向 master 报告，资源使用数据都是通过 cAdvisor 获取的。知道整个集群所有节点的资源情况，对于 pod 的调度和正常运行至关重要</li>
 </ul>
 </li>
 <li>kubectl: 命令行接口，用于对 Kubernetes 集群运行命令  <a href="https://kubernetes.io/zh/docs/reference/kubectl/" target="_blank">https://kubernetes.io/zh/docs/reference/kubectl/</a></li>
-<li>CNI 实现： 通用网络接口， 我们使用 flannel 来作为 k8s 集群的网络插件， 实现跨节点通信</li>
+<li>CNI 实现: 通用网络接口, 我们使用 flannel 来作为 k8s 集群的网络插件, 实现跨节点通信</li>
 </ul>
 <h3 id="工作流程">工作流程</h3>
 <p class="indent--2"><img src="https://img.hacpai.com/file/2020/04/process-3988c703.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="process.png"></p>
@@ -229,7 +229,7 @@ $ kubectl create namespace -h
 <ul>
 <li>与容器引擎解耦<br>
 Docker、Rkt。平台设计与引擎的具体的实现解耦</li>
-<li>多容器共享网络 | 存储 | 进程 空间， 支持的业务场景更加灵活</li>
+<li>多容器共享网络 | 存储 | 进程 空间, 支持的业务场景更加灵活</li>
 </ul>
 <h4 id="使用yaml格式定义Pod"><strong>使用 YAML 格式定义 Pod</strong></h4>
 <pre><code class="highlight-chroma">apiVersion: v1
@@ -306,7 +306,7 @@ $ kubectl explain Pod.apiVersion
 NAME     READY   STATUS    RESTARTS   AGE     IP           NODE         NOMINATED NODE   READINESS GATES
 myblog   2/2     Running   0          2m12s   10.244.1.6   k8s-slave1   &lt;none&gt;           &lt;none&gt;
 </code></pre>
-<p class="indent--2"><strong>进入容器，执行初始化， 不必到对应的主机执行 docker exec</strong></p>
+<p class="indent--2"><strong>进入容器,执行初始化, 不必到对应的主机执行 docker exec</strong></p>
 <pre><code class="highlight-chroma">[root@k8s-master myblog]#  kubectl -n demo exec -ti myblog -c myblog bash
 [root@myblog myblog]# env
 [root@myblog myblog]# python3 manage.py migrate
@@ -322,7 +322,7 @@ root@myblog:/# mysql -p123456
 <pre><code class="highlight-chroma">[root@k8s-master myblog]# kubectl -n demo exec -ti myblog -c myblog bash
 [root@myblog myblog]# ifconfig
 </code></pre>
-<p class="indent--2"><strong>pod 容器命名：</strong> <code>k8s_&lt;container_name&gt;_&lt;pod_name&gt;_&lt;namespace&gt;_&lt;random_string&gt;</code></p>
+<p class="indent--2"><strong>pod 容器命名:</strong> <code>k8s_&lt;container_name&gt;_&lt;pod_name&gt;_&lt;namespace&gt;_&lt;random_string&gt;</code></p>
 <h4 id="查看pod详细信息"><strong>查看 pod 详细信息</strong></h4>
 <p class="indent--2"><strong>查看 pod 调度节点及 pod_ip</strong><br>
 <code>$ kubectl -n demo get pods -o wide</code><br>
@@ -333,7 +333,7 @@ root@myblog:/# mysql -p123456
 <p class="indent--2"><strong>Troubleshooting and Debugging</strong><br>
 <strong>进入 Pod 内的容器</strong><br>
 <code>$ kubectl -n &lt;namespace&gt; exec &lt;pod_name&gt; -c &lt;container_name&gt; -ti /bin/sh</code></p>
-<p class="indent--2"><strong>查看 Pod 内容器日志，显示标准或者错误输出日志</strong><br>
+<p class="indent--2"><strong>查看 Pod 内容器日志,显示标准或者错误输出日志</strong><br>
 <code>$ kubectl -n &lt;namespace&gt; logs -f &lt;pod_name&gt; -c &lt;container_name&gt;</code></p>
 <h4 id="更新服务版本"><strong>更新服务版本</strong></h4>
 <p class="indent--2"><code>kubectl apply -f demo-pod.yaml</code><br>
@@ -653,7 +653,7 @@ spec:
 </code></pre>
 <p class="indent--2">requests：</p>
 <ul>
-<li>容器使用的最小资源需求，作用于 schedule 阶段，作为容器调度时资源分配的判断依赖</li>
+<li>容器使用的最小资源需求,作用于 schedule 阶段，作为容器调度时资源分配的判断依赖</li>
 <li>只有当前节点上可分配的资源量 &gt;= request 时才允许将容器调度到该节点</li>
 <li>request 参数不限制容器的最大可使用资源</li>
 <li>requests.cpu 被转成 docker 的--cpu-shares 参数，与 cgroup cpu.shares 功能相同 (无论宿主机有多少个 CPU 或者内核，--cpu-shares 选项都会按照比例分配 CPU 资源）</li>
@@ -662,7 +662,7 @@ spec:
 <p class="indent--2">limits：</p>
 <ul>
 <li>容器能使用资源的最大值</li>
-<li>设置为 0 表示对使用的资源不做限制， 可无限的使用</li>
+<li>设置为 0 表示对使用的资源不做限制, 可无限的使用</li>
 <li>当 pod 内存超过 limit 时，会被 oom</li>
 <li>当 CPU 超过 limit 时，不会被 kill，但是会限制不超过 limit 值</li>
 <li>limits.cpu 会被转换成 docker 的–cpu-quota 参数。与 cgroup cpu.cfs_quota_us 功能相同</li>
@@ -1248,7 +1248,7 @@ sleep 10; echo $(date +%s): END &gt;&gt; /loap/timing;']
     <div class="wrapper fn__clear">
         <div class="fn__left">
             <br>
-            &copy; 2020
+            &copy; 2021
             <a href="https://cuijianzhe.github.io">邯城往事</a>
             <img style="width: 20px; height: 20px;" src="https://img.hacpai.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">冀ICP备19005901号</a> 
 
@@ -1285,7 +1285,7 @@ sleep 10; echo $(date +%s): END &gt;&gt; /loap/timing;']
             友链
             </a>
             <br>
-            108 文章 &nbsp;
+            110 文章 &nbsp;
             <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> 浏览 &nbsp;
             
         </div>
@@ -1296,7 +1296,7 @@ sleep 10; echo $(date +%s): END &gt;&gt; /loap/timing;']
   var Label = {
     speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources",
     luteAvailable: true,
     hljsStyle: 'monokai',
     langLabel: "zh_CN",
@@ -1307,7 +1307,7 @@ sleep 10; echo $(date +%s): END &gt;&gt; /loap/timing;']
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/skins/Casper/js/common.min.js?1608803069102"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources/skins/Casper/js/common.min.js?1609182030448"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -1341,7 +1341,7 @@ sleep 10; echo $(date +%s): END &gt;&gt; /loap/timing;']
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@fd76918/src/main/resources/js/page.min.js?1608803069102', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources/js/page.min.js?1609182030448', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1587015956420",
@@ -1363,4 +1363,4 @@ sleep 10; echo $(date +%s): END &gt;&gt; /loap/timing;']
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 455ms, 2020/12/25 09:37:50 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 420ms, 2021/01/08 15:42:16 -->
