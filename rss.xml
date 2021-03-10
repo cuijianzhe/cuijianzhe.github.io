@@ -6,16 +6,43 @@
     <atom:link href="https://cuijianzhe.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>               &gt;&gt;&gt;  展颜笑夙愿，一笑泯恩仇 &lt;&lt;&lt;</description>
     <generator>Solo, v4.3.1, https://b3log.org/solo</generator>
-    <lastBuildDate>Fri, 08 Jan 2021 15:42:06 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 10 Mar 2021 17:15:16 +0800</lastBuildDate>
     <language>zh-cn</language>
+    <item>
+      <title>yapi 集成LDAP配置文件</title>
+      <link>https://cuijianzhe.github.io/articles/2021/02/28/1614504777881.html</link>
+      <description><![CDATA[<p class="indent--2">拨云见日终有时,守得云开见月明</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2021/02/28/1614504777881.html</guid>
+      <category>Linux</category>
+      <pubDate>Sun, 28 Feb 2021 17:32:57 +0800</pubDate>
+    </item>
+    <item>
+      <title>温夏</title>
+      <link>https://cuijianzhe.github.io/articles/2021/01/31/1612104113027.html</link>
+      <description><![CDATA[<p class="indent--2">我从不喜欢迁就，却用真心为你妥协了很久。</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2021/01/31/1612104113027.html</guid>
+      <category>人情世故</category>
+      <pubDate>Sun, 31 Jan 2021 22:41:53 +0800</pubDate>
+    </item>
+    <item>
+      <title>感想</title>
+      <link>https://cuijianzhe.github.io/articles/2021/01/28/1611838945032.html</link>
+      <description><![CDATA[<p class="indent--2">那些可以在一起的人，请好好珍惜。因为，有些人想在一起，却不能。</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2021/01/28/1611838945032.html</guid>
+      <category>人情世故</category>
+      <pubDate>Thu, 28 Jan 2021 21:02:25 +0800</pubDate>
+    </item>
     <item>
       <title>阿里云同步资产信息到Jumpserver</title>
       <link>https://cuijianzhe.github.io/articles/2020/07/16/1594900059981.html</link>
       <description><![CDATA[<p class="indent--2">欲寄彩笺兼尺素。山长水阔知何处。</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/07/16/1594900059981.html</guid>
-      <category>Jumpserver</category>
       <category>Python</category>
+      <category>Jumpserver</category>
       <pubDate>Fri, 08 Jan 2021 15:38:51 +0800</pubDate>
     </item>
     <item>
@@ -60,8 +87,8 @@
       <description/>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html</guid>
-      <category>Python</category>
       <category>mysql</category>
+      <category>Python</category>
       <pubDate>Tue, 08 Dec 2020 16:16:33 +0800</pubDate>
     </item>
     <item>
@@ -74,33 +101,6 @@
       <guid>https://cuijianzhe.github.io/articles/2019/11/26/1555140148890.html</guid>
       <category>Linux</category>
       <pubDate>Sat, 05 Dec 2020 15:17:28 +0800</pubDate>
-    </item>
-    <item>
-      <title>永远</title>
-      <link>https://cuijianzhe.github.io/articles/2020/07/27/1595829232315.html</link>
-      <description><![CDATA[<p class="indent--2">我并不痴情，可我回守侯你一生；我不是弱智，但我会傻傻的爱你——到永远！</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/07/27/1595829232315.html</guid>
-      <category>随笔</category>
-      <pubDate>Wed, 11 Nov 2020 11:28:43 +0800</pubDate>
-    </item>
-    <item>
-      <title>利用Python对windows桌面自动更换壁纸</title>
-      <link>https://cuijianzhe.github.io/articles/2020/10/29/1603943265897.html</link>
-      <description><![CDATA[<p class="indent--2">每个人的抽屉里，都曾有一封写好，却没有勇气寄出的信。每个人的心中，都有一个渴望，却不曾牵手的爱人。</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/10/29/1603943265897.html</guid>
-      <category>Python</category>
-      <pubDate>Sat, 31 Oct 2020 14:18:51 +0800</pubDate>
-    </item>
-    <item>
-      <title>LINUX脚本使用实战，持续更新</title>
-      <link>https://cuijianzhe.github.io/articles/2019/03/16/1552705047941.html</link>
-      <description/>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2019/03/16/1552705047941.html</guid>
-      <category>Linux</category>
-      <pubDate>Tue, 13 Oct 2020 17:36:40 +0800</pubDate>
     </item>
   </channel>
 </rss>

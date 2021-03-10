@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>python 实现 AI 换脸 - 邯城往事</title><meta name="description" content="AI 换脸实现 科普：我们人眼看到连续画面的帧数为 24 帧，大约 0.04 秒，低于 0.04 就会卡成 ppt。电影胶片是 24 帧 也就是每秒钟可以看到 24 张图像 低于这个数值就会感觉画面不流畅 所以以 24 帧为界限 实现思路： 先把源视频文件转换成图片，在用 API 面部识别进行融合更换面部内容变成其他图形，并且利用软件完成对源文件音频的提取，再次把更换过的图片转换成为视频，并和音频进行融合。 原视频转图片 提取原视频音源 图片面部识别并更换 变化后的图片转视频 音频和视频融合 环境：python3.7 + pycharm-2019.1 + FFmpeg FFmpeg 官网 使用实例： 提取音频： FFmpeg -i 1.mp4 -f mp3 1.mp3 2.合成视频和音频 FFmpeg -i 没有声音.mp4 -i 提取生成的.mp3 -strict -2 -f mp4 合成的.mp4 需要的库文件： opencv-python pillow（PIL） subprocess Face++ 面部识别 在此使用旷视科技的人脸识别 API 进行完成。先对图片进行脸部识别并进行融合，看这里： F...."/><meta property="og:description" content="AI 换脸实现 科普：我们人眼看到连续画面的帧数为 24 帧，大约 0.04 秒，低于 0.04 就会卡成 ppt。电影胶片是 24 帧 也就是每秒钟可以看到 24 张图像 低于这个数值就会感觉画面不流畅 所以以 24 帧为界限 实现思路： 先把源视频文件转换成图片，在用 API 面部识别进行融合更换面部内容变成其他图形，并且利用软件完成对源文件音频的提取，再次把更换过的图片转换成为视频，并和音频进行融合。 原视频转图片 提取原视频音源 图片面部识别并更换 变化后的图片转视频 音频和视频融合 环境：python3.7 + pycharm-2019.1 + FFmpeg FFmpeg 官网 使用实例： 提取音频： FFmpeg -i 1.mp4 -f mp3 1.mp3 2.合成视频和音频 FFmpeg -i 没有声音.mp4 -i 提取生成的.mp3 -strict -2 -f mp4 合成的.mp4 需要的库文件： opencv-python pillow（PIL） subprocess Face++ 面部识别 在此使用旷视科技的人脸识别 API 进行完成。先对图片进行脸部识别并进行融合，看这里： F...."/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="python 实现 AI 换脸 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="python 实现 AI 换脸 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources/skins/Casper/css/base.css?1609182030448"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>python 实现 AI 换脸 - 邯城往事</title><meta name="description" content="AI 换脸实现 科普：我们人眼看到连续画面的帧数为 24 帧，大约 0.04 秒，低于 0.04 就会卡成 ppt。电影胶片是 24 帧 也就是每秒钟可以看到 24 张图像 低于这个数值就会感觉画面不流畅 所以以 24 帧为界限 实现思路： 先把源视频文件转换成图片，在用 API 面部识别进行融合更换面部内容变成其他图形，并且利用软件完成对源文件音频的提取，再次把更换过的图片转换成为视频，并和音频进行融合。 原视频转图片 提取原视频音源 图片面部识别并更换 变化后的图片转视频 音频和视频融合 环境：python3.7 + pycharm-2019.1 + FFmpeg FFmpeg 官网 使用实例： 提取音频： FFmpeg -i 1.mp4 -f mp3 1.mp3 2.合成视频和音频 FFmpeg -i 没有声音.mp4 -i 提取生成的.mp3 -strict -2 -f mp4 合成的.mp4 需要的库文件： opencv-python pillow（PIL） subprocess Face++ 面部识别 在此使用旷视科技的人脸识别 API 进行完成。先对图片进行脸部识别并进行融合，看这里： F...."/><meta property="og:description" content="AI 换脸实现 科普：我们人眼看到连续画面的帧数为 24 帧，大约 0.04 秒，低于 0.04 就会卡成 ppt。电影胶片是 24 帧 也就是每秒钟可以看到 24 张图像 低于这个数值就会感觉画面不流畅 所以以 24 帧为界限 实现思路： 先把源视频文件转换成图片，在用 API 面部识别进行融合更换面部内容变成其他图形，并且利用软件完成对源文件音频的提取，再次把更换过的图片转换成为视频，并和音频进行融合。 原视频转图片 提取原视频音源 图片面部识别并更换 变化后的图片转视频 音频和视频融合 环境：python3.7 + pycharm-2019.1 + FFmpeg FFmpeg 官网 使用实例： 提取音频： FFmpeg -i 1.mp4 -f mp3 1.mp3 2.合成视频和音频 FFmpeg -i 没有声音.mp4 -i 提取生成的.mp3 -strict -2 -f mp4 合成的.mp4 需要的库文件： opencv-python pillow（PIL） subprocess Face++ 面部识别 在此使用旷视科技的人脸识别 API 进行完成。先对图片进行脸部识别并进行融合，看这里： F...."/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@eee2048/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@eee2048/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="python 实现 AI 换脸 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="python 实现 AI 换脸 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/08/31/1567234676723.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@eee2048/src/main/resources/skins/Casper/css/base.css?1614366031655"/>
             <link rel="prev" title="【福利】python3爬取妹子图" href="https://cuijianzhe.github.io/articles/2019/08/20/1566301838555.html">
             <link rel="next" title="python获取数据实现echarts出图" href="https://cuijianzhe.github.io/articles/2019/09/06/1567757692612.html">
     <!--鼠标点击特效-->
 <script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
 <!--页面动态樱花-->
 <!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vditor@3.6.6/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
 <body class="fn__flex-column">
 <div id="pjax" class="fn__flex-1">
@@ -586,7 +589,7 @@
             <br>
             &copy; 2021
             <a href="https://cuijianzhe.github.io">邯城往事</a>
-            <img style="width: 20px; height: 20px;" src="https://img.hacpai.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">冀ICP备19005901号</a> 
+            <img style="width: 20px; height: 20px;" src="https://img.hacpai.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">冀ICP备19005901号-1</a> 
 
 <!--切换标签实现网页标题变化-->
 <script type="text/javascript">
@@ -607,6 +610,25 @@
 </script>
 <!--切换标签实现网页标题变化 结束-->
 
+
+<script>
+  document.addEventListener("DOMContentLoaded", function (event) {
+    if (Label.articleId) {
+      const gitalk = new Gitalk({
+        clientID: '4e3eaf0bc17bd516ba5b',
+        clientSecret: '644d549c51d9fece70856677fc92411e6b6ced0e',
+        repo: 'solo-blog',
+        owner: 'cuijianzhe',
+        admin: ['cuijianzhe'],
+        id: Label.articleId,
+        distractionFreeMode: false
+      })
+
+      gitalk.render('gitalk-container')
+    }
+  })
+</script>
+
         </div>
         <div class="fn__right">
             <a href="https://cuijianzhe.github.io/tags.html" rel="section">
@@ -621,7 +643,7 @@
             友链
             </a>
             <br>
-            110 文章 &nbsp;
+            113 文章 &nbsp;
             <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> 浏览 &nbsp;
             
         </div>
@@ -632,7 +654,7 @@
   var Label = {
     speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@eee2048/src/main/resources",
     luteAvailable: true,
     hljsStyle: 'monokai',
     langLabel: "zh_CN",
@@ -643,7 +665,7 @@
   }
 </script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources/skins/Casper/js/common.min.js?1609182030448"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@eee2048/src/main/resources/skins/Casper/js/common.min.js?1614366031655"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -677,7 +699,7 @@
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@601801c/src/main/resources/js/page.min.js?1609182030448', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@eee2048/src/main/resources/js/page.min.js?1614366031655', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1567234676723",
@@ -699,4 +721,4 @@
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 421ms, 2021/01/08 15:42:31 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 41ms, 2021/03/10 17:15:18 -->
