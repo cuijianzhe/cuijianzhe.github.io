@@ -6,8 +6,26 @@
     <atom:link href="https://cuijianzhe.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>               &gt;&gt;&gt;  展颜笑夙愿，一笑泯恩仇 &lt;&lt;&lt;</description>
     <generator>Solo, v4.3.1, https://b3log.org/solo</generator>
-    <lastBuildDate>Wed, 10 Mar 2021 17:15:16 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 17 Mar 2021 15:09:07 +0800</lastBuildDate>
     <language>zh-cn</language>
+    <item>
+      <title>语录</title>
+      <link>https://cuijianzhe.github.io/articles/2019/07/23/1563852507972.html</link>
+      <description><![CDATA[<p class="indent--2"><img src="https://img.hacpai.com/file/2019/08/crowwingsbirdswing850551920x108074a91101-4beea9f3.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="crowwingsbirdswing850551920x108074a91101.jpg"></p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2019/07/23/1563852507972.html</guid>
+      <category>鸡汤</category>
+      <pubDate>Wed, 17 Mar 2021 14:39:51 +0800</pubDate>
+    </item>
+    <item>
+      <title>vnote初始配置</title>
+      <link>https://cuijianzhe.github.io/articles/2021/03/11/1615446222120.html</link>
+      <description><![CDATA[<p class="indent--2">我卑微了自己，躲在心底想你。</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2021/03/11/1615446222120.html</guid>
+      <category>笔记</category>
+      <pubDate>Thu, 11 Mar 2021 15:03:42 +0800</pubDate>
+    </item>
     <item>
       <title>yapi 集成LDAP配置文件</title>
       <link>https://cuijianzhe.github.io/articles/2021/02/28/1614504777881.html</link>
@@ -41,8 +59,8 @@
       <description><![CDATA[<p class="indent--2">欲寄彩笺兼尺素。山长水阔知何处。</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/07/16/1594900059981.html</guid>
-      <category>Python</category>
       <category>Jumpserver</category>
+      <category>Python</category>
       <pubDate>Fri, 08 Jan 2021 15:38:51 +0800</pubDate>
     </item>
     <item>
@@ -80,27 +98,6 @@
       <guid>https://cuijianzhe.github.io/articles/2020/12/08/1607423165456.html</guid>
       <category>Linux</category>
       <pubDate>Tue, 08 Dec 2020 18:35:12 +0800</pubDate>
-    </item>
-    <item>
-      <title>学生管理系统</title>
-      <link>https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html</link>
-      <description/>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2019/08/02/1564728341878.html</guid>
-      <category>mysql</category>
-      <category>Python</category>
-      <pubDate>Tue, 08 Dec 2020 16:16:33 +0800</pubDate>
-    </item>
-    <item>
-      <title>zabbix LLD 自动发现</title>
-      <link>https://cuijianzhe.github.io/articles/2019/11/26/1555140148890.html</link>
-      <description><![CDATA[<ol>
-<li>不同业务对应不同模板，现在创建一个模板，用于当前这个特殊业务  创建完成后，点击右上角的创建自动发现规则。  2.键值脚本内容  [root@zabbix zabbix_agentd.d]# /usr/lib/zabbix/externalscripts/apdiscovery.sh {"data":[ {"{#APID}":"0"},{"{#APID}":"1"},{"{#APID}":"2"},{"{#APID}":"3"},{"{#APID}":"4"},{"{#APID}":"5"},{"{#APID}":"6"},{"{#APID}":"7"},{"{#APID}":"8"},{"{#APID}":"9"},{"{#APID}":"10"},{"{#APID}":"11"},{"{#APID}":"12"},{"{#APID}":"13"},{"{#APID}":"14"},{"{#APID}":"15"},{"{#APID}":"16"},{"{#APID}":"17"},{"{#APID}":"18"},{"{#APID}":"19"},{"{#APID}":"20....</li>
-</ol>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2019/11/26/1555140148890.html</guid>
-      <category>Linux</category>
-      <pubDate>Sat, 05 Dec 2020 15:17:28 +0800</pubDate>
     </item>
   </channel>
 </rss>
