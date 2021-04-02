@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>用Python实现widows下ping程序 - 邯城往事</title><meta name="description" content="理想一生有温暖有阳光有沙发有鲜花有猪还有你"/><meta property="og:description" content="理想一生有温暖有阳光有沙发有鲜花有猪还有你"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@eee2048/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@eee2048/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="用Python实现widows下ping程序 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/04/18/1587188601330.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="用Python实现widows下ping程序 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/04/18/1587188601330.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@eee2048/src/main/resources/skins/Pinghsu/css/base.css?1614366031655"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>用Python实现widows下ping程序 - 邯城往事</title><meta name="description" content="理想一生有温暖有阳光有沙发有鲜花有猪还有你"/><meta property="og:description" content="理想一生有温暖有阳光有沙发有鲜花有猪还有你"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@3e5209c/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@3e5209c/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="用Python实现widows下ping程序 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/04/18/1587188601330.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="用Python实现widows下ping程序 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/04/18/1587188601330.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@3e5209c/src/main/resources/skins/Pinghsu/css/base.css?1617303621572"/>
             <link rel="prev" title="配置Openldap主从" href="https://cuijianzhe.github.io/articles/2020/04/16/1587026602880.html">
             <link rel="next" title="KUbernets实践之pod控制器" href="https://cuijianzhe.github.io/articles/2020/04/22/1587528230774.html">
     <!--鼠标点击特效-->
@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vditor@3.6.6/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
+<script src="https://cdn.jsdelivr.net/npm/vditor@3.8.4/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
 <body>
 <header class="header">
     <div class="wrapper">
@@ -85,7 +85,7 @@
         <div class="ft__fade item__meta">
                 Updated on
             <time>
-                Apr 20, 2020
+                Apr 2, 2021
             </time>
                 in <a href="https://cuijianzhe.github.io/category/python">人生苦短,我用Python</a>
             with <span data-uvstaturl="https://cuijianzhe.github.io/articles/2020/04/18/1587188601330.html">0</span> views
@@ -101,6 +101,41 @@
 <p class="indent--2">公司直播间直播课程，有时会出现发题、金币刷新等卡顿问题，为了解释不是网络而是接口或者服务问题，此程序诞生。<br>
 因为不带<strong>多线程</strong>版本 ping 程序挂钩多个 ip 的话，容易出现时间缺失（如下），所以加上多线程，同时程序简化了很多……<br>
 <img src="https://img.hacpai.com/file/2020/04/image-b819cf9c.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<blockquote>
+<p>ping 参数自选</p>
+</blockquote>
+<pre><code class="highlight-chroma">用法: ping [-t] [-a] [-n count] [-l size] [-f] [-i TTL] [-v TOS]
+            [-r count] [-s count] [[-j host-list] | [-k host-list]]
+            [-w timeout] [-R] [-S srcaddr] [-c compartment] [-p]
+            [-4] [-6] target_name
+
+选项:
+    -t             Ping 指定的主机，直到停止。
+                   若要查看统计信息并继续操作，请键入 Ctrl+Break；
+                   若要停止，请键入 Ctrl+C。
+    -a             将地址解析为主机名。
+    -n count       要发送的回显请求数。
+    -l size        发送缓冲区大小。
+    -f             在数据包中设置“不分段”标记(仅适用于 IPv4)。
+    -i TTL         生存时间。
+    -v TOS         服务类型(仅适用于 IPv4。该设置已被弃用，
+                   对 IP 标头中的服务类型字段没有任何
+                   影响)。
+    -r count       记录计数跃点的路由(仅适用于 IPv4)。
+    -s count       计数跃点的时间戳(仅适用于 IPv4)。
+    -j host-list   与主机列表一起使用的松散源路由(仅适用于 IPv4)。
+    -k host-list    与主机列表一起使用的严格源路由(仅适用于 IPv4)。
+    -w timeout     等待每次回复的超时时间(毫秒)。
+    -R             同样使用路由标头测试反向路由(仅适用于 IPv6)。
+                   根据 RFC 5095，已弃用此路由标头。
+                   如果使用此标头，某些系统可能丢弃
+                   回显请求。
+    -S srcaddr     要使用的源地址。
+    -c compartment 路由隔离舱标识符。
+    -p             Ping Hyper-V 网络虚拟化提供程序地址。
+    -4             强制使用 IPv4。
+    -6             强制使用 IPv6。
+</code></pre>
 <h1 id="带多线程ping指定主机">带多线程 ping 指定主机</h1>
 <pre><code class="language-python highlight-chroma"><span class="highlight-ch">#!/bin/python3</span>
 <span class="highlight-c1">#######################################################</span>
@@ -113,12 +148,11 @@
 <span class="highlight-kn">import</span> <span class="highlight-nn">os</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">subprocess</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">re</span>
-<span class="highlight-kn">import</span> <span class="highlight-nn">datetime</span> <span class="highlight-kn">as</span> <span class="highlight-nn">dt</span>
 <span class="highlight-kn">import</span> <span class="highlight-nn">time</span>
-
+<span class="highlight-kn">import</span> <span class="highlight-nn">datetime</span> <span class="highlight-kn">as</span> <span class="highlight-nn">dt</span>
 <span class="highlight-k">def</span> <span class="highlight-nf">ping_host</span><span class="highlight-p">(</span><span class="highlight-n">ip</span><span class="highlight-p">):</span>
     <span class="highlight-n">nowdate</span> <span class="highlight-o">=</span> <span class="highlight-n">dt</span><span class="highlight-o">.</span><span class="highlight-n">datetime</span><span class="highlight-o">.</span><span class="highlight-n">now</span><span class="highlight-p">()</span><span class="highlight-o">.</span><span class="highlight-n">strftime</span><span class="highlight-p">(</span><span class="highlight-s1">'%Y%m</span><span class="highlight-si">%d</span><span class="highlight-s1">'</span><span class="highlight-p">)</span>  <span class="highlight-c1"># 获取文件日期后缀</span>
-    <span class="highlight-n">p</span> <span class="highlight-o">=</span> <span class="highlight-n">subprocess</span><span class="highlight-o">.</span><span class="highlight-n">Popen</span><span class="highlight-p">([</span><span class="highlight-s2">"ping.exe"</span><span class="highlight-p">,</span> <span class="highlight-s1">'-n'</span><span class="highlight-p">,</span> <span class="highlight-s1">'1'</span><span class="highlight-p">,</span> <span class="highlight-s1">'-w'</span><span class="highlight-p">,</span> <span class="highlight-s1">'1'</span><span class="highlight-p">,</span> <span class="highlight-n">ip</span><span class="highlight-p">],</span>
+    <span class="highlight-n">p</span> <span class="highlight-o">=</span> <span class="highlight-n">subprocess</span><span class="highlight-o">.</span><span class="highlight-n">Popen</span><span class="highlight-p">([</span><span class="highlight-s2">"ping.exe"</span><span class="highlight-p">,</span> <span class="highlight-s1">'-n'</span><span class="highlight-p">,</span> <span class="highlight-s1">'1'</span><span class="highlight-p">,</span> <span class="highlight-n">ip</span><span class="highlight-p">],</span>
                          <span class="highlight-n">stdin</span><span class="highlight-o">=</span><span class="highlight-n">subprocess</span><span class="highlight-o">.</span><span class="highlight-n">PIPE</span><span class="highlight-p">,</span>
                          <span class="highlight-n">stdout</span><span class="highlight-o">=</span><span class="highlight-n">subprocess</span><span class="highlight-o">.</span><span class="highlight-n">PIPE</span><span class="highlight-p">,</span>
                          <span class="highlight-n">stderr</span><span class="highlight-o">=</span><span class="highlight-n">subprocess</span><span class="highlight-o">.</span><span class="highlight-n">PIPE</span><span class="highlight-p">,</span>
@@ -126,13 +160,16 @@
     <span class="highlight-n">out</span> <span class="highlight-o">=</span> <span class="highlight-n">p</span><span class="highlight-o">.</span><span class="highlight-n">stdout</span><span class="highlight-o">.</span><span class="highlight-n">read</span><span class="highlight-p">()</span><span class="highlight-o">.</span><span class="highlight-n">decode</span><span class="highlight-p">(</span><span class="highlight-s1">'gbk'</span><span class="highlight-p">)</span>
     <span class="highlight-n">ping</span> <span class="highlight-o">=</span> <span class="highlight-n">re</span><span class="highlight-o">.</span><span class="highlight-n">search</span><span class="highlight-p">(</span><span class="highlight-sa">r</span><span class="highlight-s1">'来自..+|请求..+'</span><span class="highlight-p">,</span> <span class="highlight-n">out</span><span class="highlight-p">)</span><span class="highlight-o">.</span><span class="highlight-n">group</span><span class="highlight-p">()</span>
     <span class="highlight-n">now_time</span> <span class="highlight-o">=</span> <span class="highlight-n">dt</span><span class="highlight-o">.</span><span class="highlight-n">datetime</span><span class="highlight-o">.</span><span class="highlight-n">now</span><span class="highlight-p">()</span><span class="highlight-o">.</span><span class="highlight-n">strftime</span><span class="highlight-p">(</span><span class="highlight-s1">'</span><span class="highlight-si">%F</span><span class="highlight-s1"> %T'</span><span class="highlight-p">)</span>
-    <span class="highlight-n">file_name</span> <span class="highlight-o">=</span> <span class="highlight-s1">'ping</span><span class="highlight-si">%s</span><span class="highlight-s1">_</span><span class="highlight-si">%s</span><span class="highlight-s1">.txt'</span> <span class="highlight-o">%</span> <span class="highlight-p">(</span><span class="highlight-n">ip</span><span class="highlight-p">,</span><span class="highlight-n">nowdate</span><span class="highlight-p">)</span>
-    <span class="highlight-k">with</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-s1">'C:\limi_ppt_log\</span><span class="highlight-si">%s</span><span class="highlight-s1">'</span> <span class="highlight-o">%</span> <span class="highlight-n">file_name</span><span class="highlight-p">,</span> <span class="highlight-s1">'a'</span><span class="highlight-p">)</span> <span class="highlight-k">as</span> <span class="highlight-n">f</span><span class="highlight-p">:</span>
+    <span class="highlight-n">file_name</span> <span class="highlight-o">=</span> <span class="highlight-s1">'ping_</span><span class="highlight-si">%s</span><span class="highlight-s1">_</span><span class="highlight-si">%s</span><span class="highlight-s1">.txt'</span> <span class="highlight-o">%</span> <span class="highlight-p">(</span><span class="highlight-n">ip</span><span class="highlight-p">,</span><span class="highlight-n">nowdate</span><span class="highlight-p">)</span>
+    <span class="highlight-k">with</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-s1">'C:\limi_ppt_log\ping\</span><span class="highlight-si">%s</span><span class="highlight-s1">'</span> <span class="highlight-o">%</span> <span class="highlight-n">file_name</span><span class="highlight-p">,</span> <span class="highlight-s1">'a'</span><span class="highlight-p">)</span> <span class="highlight-k">as</span> <span class="highlight-n">f</span><span class="highlight-p">:</span>
         <span class="highlight-n">f</span><span class="highlight-o">.</span><span class="highlight-n">write</span><span class="highlight-p">(</span><span class="highlight-nb">str</span><span class="highlight-p">(</span><span class="highlight-n">now_time</span><span class="highlight-p">)</span> <span class="highlight-o">+</span> <span class="highlight-s1">'  '</span> <span class="highlight-o">+</span> <span class="highlight-nb">str</span><span class="highlight-p">(</span><span class="highlight-n">ping</span><span class="highlight-p">))</span>
 
 <span class="highlight-k">if</span> <span class="highlight-vm">__name__</span> <span class="highlight-o">==</span> <span class="highlight-s1">'__main__'</span><span class="highlight-p">:</span>
-    <span class="highlight-n">hosts</span> <span class="highlight-o">=</span> <span class="highlight-p">[</span><span class="highlight-s1">'www.baidu.com'</span><span class="highlight-p">,</span> <span class="highlight-s1">'10.200.200.1'</span><span class="highlight-p">,</span> <span class="highlight-s1">'api-teacher.limiketang.com'</span><span class="highlight-p">,</span> <span class="highlight-s1">'www.qq.com'</span><span class="highlight-p">]</span>
-    <span class="highlight-n">path</span> <span class="highlight-o">=</span> <span class="highlight-s2">"C:\limi_ppt_log"</span>
+    <span class="highlight-n">time</span><span class="highlight-o">.</span><span class="highlight-n">sleep</span><span class="highlight-p">(</span><span class="highlight-mi">10</span><span class="highlight-p">)</span>
+    <span class="highlight-k">with</span> <span class="highlight-nb">open</span><span class="highlight-p">(</span><span class="highlight-s1">'./hosts.txt'</span><span class="highlight-p">,</span><span class="highlight-s1">'r'</span><span class="highlight-p">)</span> <span class="highlight-k">as</span> <span class="highlight-n">f</span><span class="highlight-p">:</span>
+        <span class="highlight-n">hosts</span> <span class="highlight-o">=</span> <span class="highlight-n">f</span><span class="highlight-o">.</span><span class="highlight-n">read</span><span class="highlight-p">()</span><span class="highlight-o">.</span><span class="highlight-n">split</span><span class="highlight-p">(</span><span class="highlight-s1">'</span><span class="highlight-se">\n</span><span class="highlight-s1">'</span><span class="highlight-p">)</span>
+
+    <span class="highlight-n">path</span> <span class="highlight-o">=</span> <span class="highlight-s2">"C:\limi_ppt_log\ping"</span>
     <span class="highlight-k">if</span> <span class="highlight-n">os</span><span class="highlight-o">.</span><span class="highlight-n">path</span><span class="highlight-o">.</span><span class="highlight-n">isdir</span><span class="highlight-p">(</span><span class="highlight-n">path</span><span class="highlight-p">):</span>
         <span class="highlight-k">while</span> <span class="highlight-bp">True</span><span class="highlight-p">:</span>
             <span class="highlight-n">time</span><span class="highlight-o">.</span><span class="highlight-n">sleep</span><span class="highlight-p">(</span><span class="highlight-mi">1</span><span class="highlight-p">)</span>
@@ -141,7 +178,7 @@
                 <span class="highlight-n">thread</span> <span class="highlight-o">=</span> <span class="highlight-n">threading</span><span class="highlight-o">.</span><span class="highlight-n">Thread</span><span class="highlight-p">(</span><span class="highlight-n">target</span><span class="highlight-o">=</span><span class="highlight-n">ping_host</span><span class="highlight-p">,</span><span class="highlight-n">args</span><span class="highlight-o">=</span><span class="highlight-p">(</span><span class="highlight-n">IP</span><span class="highlight-p">,))</span>
                 <span class="highlight-n">thread</span><span class="highlight-o">.</span><span class="highlight-n">start</span><span class="highlight-p">()</span>
     <span class="highlight-k">else</span><span class="highlight-p">:</span>
-        <span class="highlight-n">os</span><span class="highlight-o">.</span><span class="highlight-n">mkdir</span><span class="highlight-p">(</span><span class="highlight-n">path</span><span class="highlight-p">)</span>
+        <span class="highlight-n">os</span><span class="highlight-o">.</span><span class="highlight-n">makedirs</span><span class="highlight-p">(</span><span class="highlight-n">path</span><span class="highlight-p">)</span> <span class="highlight-c1">#可创建多级目录</span>
         <span class="highlight-k">while</span> <span class="highlight-bp">True</span><span class="highlight-p">:</span>
             <span class="highlight-n">time</span><span class="highlight-o">.</span><span class="highlight-n">sleep</span><span class="highlight-p">(</span><span class="highlight-mi">1</span><span class="highlight-p">)</span>
             <span class="highlight-k">for</span> <span class="highlight-n">IP</span> <span class="highlight-ow">in</span> <span class="highlight-n">hosts</span><span class="highlight-p">:</span>
@@ -219,6 +256,9 @@
 <h2 id="生成exe文件">生成 exe 文件</h2>
 <p class="indent--2"><code>D:\python_cuijianzhe\cuijianzhe\limi&gt;pyinstaller -F -w  test.py </code></p>
 <p class="indent--2">-w：关闭调试窗口</p>
+<blockquote>
+<p>切记，不可将该程序命名为 <code>ping.exe</code></p>
+</blockquote>
                 <div>
                     <hr>
 
@@ -482,7 +522,7 @@
   var Label = {
     speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@eee2048/src/main/resources",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@3e5209c/src/main/resources",
     luteAvailable: true,
     hljsStyle: 'monokai',
     langLabel: "zh_CN",
@@ -492,9 +532,9 @@
     articleId: "1587188601330",
   }
 </script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@eee2048/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@3e5209c/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@eee2048/src/main/resources/skins/Pinghsu/js/common.min.js?1614366031655"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@3e5209c/src/main/resources/skins/Pinghsu/js/common.min.js?1617303621572"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -529,7 +569,7 @@
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@eee2048/src/main/resources/js/page.min.js?1614366031655', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@3e5209c/src/main/resources/js/page.min.js?1617303621572', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1587188601330",
@@ -551,4 +591,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 53ms, 2021/03/17 15:09:08 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 112ms, 2021/04/02 14:38:24 -->

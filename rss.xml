@@ -6,8 +6,17 @@
     <atom:link href="https://cuijianzhe.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>               &gt;&gt;&gt;  展颜笑夙愿，一笑泯恩仇 &lt;&lt;&lt;</description>
     <generator>Solo, v4.3.1, https://b3log.org/solo</generator>
-    <lastBuildDate>Wed, 17 Mar 2021 15:09:07 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 02 Apr 2021 14:38:22 +0800</lastBuildDate>
     <language>zh-cn</language>
+    <item>
+      <title>用Python实现widows下ping程序</title>
+      <link>https://cuijianzhe.github.io/articles/2020/04/18/1587188601330.html</link>
+      <description><![CDATA[<p class="indent--2">理想一生有温暖有阳光有沙发有鲜花有猪还有你</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2020/04/18/1587188601330.html</guid>
+      <category>Python</category>
+      <pubDate>Fri, 02 Apr 2021 14:25:45 +0800</pubDate>
+    </item>
     <item>
       <title>语录</title>
       <link>https://cuijianzhe.github.io/articles/2019/07/23/1563852507972.html</link>
@@ -59,8 +68,8 @@
       <description><![CDATA[<p class="indent--2">欲寄彩笺兼尺素。山长水阔知何处。</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/07/16/1594900059981.html</guid>
-      <category>Jumpserver</category>
       <category>Python</category>
+      <category>Jumpserver</category>
       <pubDate>Fri, 08 Jan 2021 15:38:51 +0800</pubDate>
     </item>
     <item>
@@ -89,15 +98,6 @@
       <guid>https://cuijianzhe.github.io/articles/2020/12/14/1607958685328.html</guid>
       <category>Python</category>
       <pubDate>Tue, 15 Dec 2020 13:56:58 +0800</pubDate>
-    </item>
-    <item>
-      <title>l2tp over ipsec添加用户登陆日志</title>
-      <link>https://cuijianzhe.github.io/articles/2020/12/08/1607423165456.html</link>
-      <description><![CDATA[<p class="indent--2">越长大越觉得，比起诉说自己的委屈与不甘，沉默最好。反正，你信你的，我活我的。</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/12/08/1607423165456.html</guid>
-      <category>Linux</category>
-      <pubDate>Tue, 08 Dec 2020 18:35:12 +0800</pubDate>
     </item>
   </channel>
 </rss>
