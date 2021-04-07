@@ -6,8 +6,27 @@
     <atom:link href="https://cuijianzhe.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>               &gt;&gt;&gt;  展颜笑夙愿，一笑泯恩仇 &lt;&lt;&lt;</description>
     <generator>Solo, v4.3.1, https://b3log.org/solo</generator>
-    <lastBuildDate>Fri, 02 Apr 2021 14:38:22 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 07 Apr 2021 15:43:02 +0800</lastBuildDate>
     <language>zh-cn</language>
+    <item>
+      <title>zabbix自动发现华为AC6605管理AP状态以及连接数</title>
+      <link>https://cuijianzhe.github.io/articles/2019/08/05/1564987766272.html</link>
+      <description><![CDATA[<p class="indent--2">金纵买相如赋，脉脉此情谁诉。</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2019/08/05/1564987766272.html</guid>
+      <category>Linux</category>
+      <category>zabbix</category>
+      <pubDate>Wed, 07 Apr 2021 14:30:22 +0800</pubDate>
+    </item>
+    <item>
+      <title>redis 命令行查询</title>
+      <link>https://cuijianzhe.github.io/articles/2021/04/03/1617425338282.html</link>
+      <description><![CDATA[<p class="indent--2">拨云见日终有时，守得云开见月明</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2021/04/03/1617425338282.html</guid>
+      <category>redis</category>
+      <pubDate>Sat, 03 Apr 2021 12:48:58 +0800</pubDate>
+    </item>
     <item>
       <title>用Python实现widows下ping程序</title>
       <link>https://cuijianzhe.github.io/articles/2020/04/18/1587188601330.html</link>
@@ -68,8 +87,8 @@
       <description><![CDATA[<p class="indent--2">欲寄彩笺兼尺素。山长水阔知何处。</p>]]></description>
       <author>cuijianzhe</author>
       <guid>https://cuijianzhe.github.io/articles/2020/07/16/1594900059981.html</guid>
-      <category>Python</category>
       <category>Jumpserver</category>
+      <category>Python</category>
       <pubDate>Fri, 08 Jan 2021 15:38:51 +0800</pubDate>
     </item>
     <item>
@@ -80,24 +99,6 @@
       <guid>https://cuijianzhe.github.io/articles/2020/12/26/1608967635869.html</guid>
       <category>Python</category>
       <pubDate>Wed, 30 Dec 2020 14:26:49 +0800</pubDate>
-    </item>
-    <item>
-      <title>docker安装openldap</title>
-      <link>https://cuijianzhe.github.io/articles/2020/12/26/1608954669638.html</link>
-      <description><![CDATA[<p class="indent--2">你在我身边也好，在天边也罢，想到世界的角落有一个你，觉得整个世界也变得温柔安定了。</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/12/26/1608954669638.html</guid>
-      <category>Openldap</category>
-      <pubDate>Sat, 26 Dec 2020 12:00:21 +0800</pubDate>
-    </item>
-    <item>
-      <title>表格数据提取</title>
-      <link>https://cuijianzhe.github.io/articles/2020/12/14/1607958685328.html</link>
-      <description><![CDATA[<p class="indent--2">你可知南山水北，我遇见你多不容易。</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/12/14/1607958685328.html</guid>
-      <category>Python</category>
-      <pubDate>Tue, 15 Dec 2020 13:56:58 +0800</pubDate>
     </item>
   </channel>
 </rss>

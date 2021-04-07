@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>docker容器命名和资源配额控制(2) - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@3e5209c/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@3e5209c/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="docker容器命名和资源配额控制(2) - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/27/1553650586883.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="docker容器命名和资源配额控制(2) - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/27/1553650586883.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@3e5209c/src/main/resources/skins/Pinghsu/css/base.css?1617303621572"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>docker容器命名和资源配额控制(2) - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="docker容器命名和资源配额控制(2) - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/27/1553650586883.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="docker容器命名和资源配额控制(2) - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/27/1553650586883.html">        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/skins/Pinghsu/css/base.css?1617776880435"/>
             <link rel="prev" title="搭建docker之路-初识（1）" href="https://cuijianzhe.github.io/articles/2019/03/26/1553571577540.html">
             <link rel="next" title="docker网络" href="https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html">
     <!--鼠标点击特效-->
@@ -411,7 +411,7 @@ cgroup 是 Control Groups 的缩写，是 Linux 内核提供的一种可以限�
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                114
+                115
                 文章
             </a>
            <br>
@@ -466,7 +466,7 @@ cgroup 是 Control Groups 的缩写，是 Linux 内核提供的一种可以限�
   var Label = {
     speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@3e5209c/src/main/resources",
+    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources",
     luteAvailable: true,
     hljsStyle: 'monokai',
     langLabel: "zh_CN",
@@ -476,9 +476,9 @@ cgroup 是 Control Groups 的缩写，是 Linux 内核提供的一种可以限�
     articleId: "1553650586883",
   }
 </script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@3e5209c/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@3e5209c/src/main/resources/skins/Pinghsu/js/common.min.js?1617303621572"
+        src="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/skins/Pinghsu/js/common.min.js?1617776880435"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -513,7 +513,7 @@ cgroup 是 Control Groups 的缩写，是 Linux 内核提供的一种可以限�
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@3e5209c/src/main/resources/js/page.min.js?1617303621572', 'soloPageScript')
+    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/js/page.min.js?1617776880435', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1553650586883",
@@ -535,4 +535,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 76ms, 2021/04/02 14:38:28 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 62ms, 2021/04/07 15:43:10 -->
