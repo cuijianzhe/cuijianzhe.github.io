@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>KUbernets实践之pod - 邯城往事</title><meta name="description" content="如果陪我到最后的人是你，那么以前经历过的苦难"/><meta property="og:description" content="如果陪我到最后的人是你，那么以前经历过的苦难"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="KUbernets实践之pod - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="KUbernets实践之pod - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/skins/Pinghsu/css/base.css?1617776880435"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>KUbernets实践之pod - 邯城往事</title><meta name="description" content="一、组件和资源 核心组件 ETCD：分布式高性能键值数据库,存储整个集群的所有元数据 ApiServer: API 服务器,集群资源访问控制入口,提供 restAPI 及安全访问控制 Scheduler：调度器,负责把业务容器调度到最合适的 Node 节点 Controller Manager：控制器管理,确保集群资源按照期望的方式运行 Replication Controller Node controller ResourceQuota Controller Namespace Controller ServiceAccount Controller Tocken Controller Service Controller Endpoints Controller kubelet：运行在每运行在每个节点上的主要的“节点代理”个节点上的主要的“节点代理” pod 管理：kubelet 定期从所监听的数据源获取节点上 pod/container 的期望状态（运行什么容器、运行的副本数量、网络或者存储如何配置等等），并调用对应的容器平台接口达到这个状态。 容器健康检查：kubelet 创建了容...."/><meta property="og:description" content="一、组件和资源 核心组件 ETCD：分布式高性能键值数据库,存储整个集群的所有元数据 ApiServer: API 服务器,集群资源访问控制入口,提供 restAPI 及安全访问控制 Scheduler：调度器,负责把业务容器调度到最合适的 Node 节点 Controller Manager：控制器管理,确保集群资源按照期望的方式运行 Replication Controller Node controller ResourceQuota Controller Namespace Controller ServiceAccount Controller Tocken Controller Service Controller Endpoints Controller kubelet：运行在每运行在每个节点上的主要的“节点代理”个节点上的主要的“节点代理” pod 管理：kubelet 定期从所监听的数据源获取节点上 pod/container 的期望状态（运行什么容器、运行的副本数量、网络或者存储如何配置等等），并调用对应的容器平台接口达到这个状态。 容器健康检查：kubelet 创建了容...."/>    <meta name="keywords" content="Solo,Java,博客,开源"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="https://unpkg.com"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"/><link rel="apple-touch-icon" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"><link rel="shortcut icon" type="image/x-icon" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="KUbernets实践之pod - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html?"/><meta property="og:image" content="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"/><link rel="search" type="application/opensearchdescription+xml" title="KUbernets实践之pod - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html">        <link rel="stylesheet"
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1701918811548"/>
             <link rel="prev" title="Django应用容器化 " href="https://cuijianzhe.github.io/articles/2020/04/12/1586677258146.html">
             <link rel="next" title="配置Openldap主从" href="https://cuijianzhe.github.io/articles/2020/04/16/1587026602880.html">
-    <!--鼠标点击特效-->
-<script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
-<!--页面动态樱花-->
-<!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vditor@3.8.4/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
+    <script src="https://unpkg.com/vditor@3.8.15/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
 <body>
 <header class="header">
     <div class="wrapper">
         <a href="https://cuijianzhe.github.io" rel="start" class="header__logo">
-            <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="邯城往事"/>
+            <img src="https://b3logfile.com/avatar/1551626533851_1560155807399.gif?imageView2/1/w/128/h/128/interlace/0/q/100" alt="邯城往事"/>
             邯城往事
         </a>
 
@@ -46,7 +39,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                        <a href="http://times.cjzshilong.cn/time/" target="_blank" rel="section">
                             服务器倒计时
                         </a>
                     </li>
@@ -83,13 +76,12 @@
             </a>
         </h2>
         <div class="ft__fade item__meta">
-                Updated on
+                Published on
             <time>
-                Aug 15, 2020
+                Apr 16, 2020
             </time>
-                in <a href="https://cuijianzhe.github.io/category/linux">Linux系列</a>
             with <span data-uvstaturl="https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html">0</span> views
-                and <a href="#b3logsolocomments"><span data-uvstatcmt="1587015956420">0</span> comments</a>
+                and <a href="#b3logsolocomments"><span data-uvstatcmt="1587015956134">0</span> comments</a>
         </div>
         <div class="item__tags">
                 <a rel="tag" class="tag tag--0" href="https://cuijianzhe.github.io/tags/Linux">
@@ -101,9 +93,9 @@
         </div>
         <div class="vditor-reset">
             <h1 id="一-组件和资源">一、组件和资源</h1>
-<p class="indent--2"><img src="https://img.hacpai.com/file/2019/07/architecture-6a07dfea.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="architecture.png"></p>
+<p class="indent--2"><img src="https://b3logfile.com/file/2019/07/architecture-6a07dfea.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="architecture.png"></p>
 <h2 id="核心组件">核心组件</h2>
-<p class="indent--2"><img src="https://img.hacpai.com/file/2020/04/7a3d98a9a2744883a8c3b306deaf4cac.webp?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="doge"></p>
+<p class="indent--2"><img src="https://b3logfile.com/file/2020/04/7a3d98a9a2744883a8c3b306deaf4cac.webp?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="doge"></p>
 <ul>
 <li>ETCD：分布式高性能键值数据库,存储整个集群的所有元数据</li>
 <li>ApiServer:  API 服务器,集群资源访问控制入口,提供 restAPI 及安全访问控制</li>
@@ -131,7 +123,7 @@
 <li>CNI 实现: 通用网络接口, 我们使用 flannel 来作为 k8s 集群的网络插件, 实现跨节点通信</li>
 </ul>
 <h3 id="工作流程">工作流程</h3>
-<p class="indent--2"><img src="https://img.hacpai.com/file/2020/04/process-3988c703.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="process.png"></p>
+<p class="indent--2"><img src="https://b3logfile.com/file/2020/04/process-3988c703.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="process.png"></p>
 <ol>
 <li>用户准备一个资源文件（记录了业务应用的名称、镜像地址等信息），通过调用 APIServer 执行创建 Pod</li>
 <li>APIServer 收到用户的 Pod 创建请求，将 Pod 信息写入到 etcd 中</li>
@@ -144,14 +136,14 @@
 <p class="indent--2"><strong>集群中的所有资源可以提供如下方式查看：</strong><br>
 <code>kubectl api-resources</code></p>
 <p class="indent--2"><strong>命名空间，集群内一个虚拟的概念，类似于资源池的概念，一个池子里可以有各种资源类型，绝大多数的资源都必须属于某一个 namespace。集群初始化安装好之后，会默认有如下几个 namespace：</strong></p>
-<pre><code class="highlight-chroma">[root@k8s-master ~]# kubectl get namespaces
-NAME                   STATUS   AGE
-default                Active   22h
-kube-node-lease        Active   22h
-kube-public            Active   22h
-kube-system            Active   22h
-kubernetes-dashboard   Active   21h
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@k8s-master ~]# kubectl get namespaces
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME                   STATUS   AGE
+</span></span><span class="highlight-line"><span class="highlight-cl">default                Active   22h
+</span></span><span class="highlight-line"><span class="highlight-cl">kube-node-lease        Active   22h
+</span></span><span class="highlight-line"><span class="highlight-cl">kube-public            Active   22h
+</span></span><span class="highlight-line"><span class="highlight-cl">kube-system            Active   22h
+</span></span><span class="highlight-line"><span class="highlight-cl">kubernetes-dashboard   Active   21h
+</span></span></code></pre>
 <ul>
 <li>所有 NAMESPACED 的资源，在创建的时候都需要指定 namespace，若不指定，默认会在 default 命名空间下</li>
 <li>相同 namespace 下的同类资源不可以重名，不同类型的资源可以重名</li>
@@ -159,11 +151,11 @@ kubernetes-dashboard   Active   21h
 <li>通常在项目使用的时候，我们会创建带有业务含义的 namespace 来做逻辑上的整合</li>
 </ul>
 <h3 id="kubectl的使用">kubectl 的使用</h3>
-<pre><code class="highlight-chroma">$ kubectl -h
-$ kubectl get -h
-$ kubectl create -h
-$ kubectl create namespace -h
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">$ kubectl -h
+</span></span><span class="highlight-line"><span class="highlight-cl">$ kubectl get -h
+</span></span><span class="highlight-line"><span class="highlight-cl">$ kubectl create -h
+</span></span><span class="highlight-line"><span class="highlight-cl">$ kubectl create namespace -h
+</span></span></code></pre>
 <p class="indent--2"><strong>kubectl 如何管理集群资源</strong><br>
 <code>kubectl get po -v=7</code></p>
 <h2 id="使用k8s管理业务应用">使用 k8s 管理业务应用</h2>
@@ -174,34 +166,34 @@ Docker、Rkt。平台设计与引擎的具体的实现解耦</li>
 <li>多容器共享网络 | 存储 | 进程 空间, 支持的业务场景更加灵活</li>
 </ul>
 <h4 id="使用yaml格式定义Pod"><strong>使用 YAML 格式定义 Pod</strong></h4>
-<pre><code class="highlight-chroma">apiVersion: v1
-kind: Pod
-metadata:
-  name: myblog
-  namespace: demo
-  labels:
-    component: myblog
-spec:
-  containers:
-  - name: myblog
-    image: 192.168.51.209:5000/myblog
-    env:
-    - name: MYSQL_HOST   #  指定root用户的用户名
-      value: "127.0.0.1"
-    - name: MYSQL_PASSWD
-      value: "123456"
-    ports:
-    - containerPort: 8002
-  - name: mysql
-    image: 192.168.51.209:5000/mysql:5.7-utf8
-    ports:
-    - containerPort: 3306
-    env:
-    - name: MYSQL_ROOT_PASSWORD
-      value: "123456"
-    - name: MYSQL_DATABASE
-      value: "myblog"
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: Pod
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">  namespace: demo
+</span></span><span class="highlight-line"><span class="highlight-cl">  labels:
+</span></span><span class="highlight-line"><span class="highlight-cl">    component: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">  containers:
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">    image: 192.168.51.209:5000/myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">    env:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_HOST   #  指定root用户的用户名
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: "127.0.0.1"
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_PASSWD
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: "123456"
+</span></span><span class="highlight-line"><span class="highlight-cl">    ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - containerPort: 8002
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">    image: 192.168.51.209:5000/mysql:5.7-utf8
+</span></span><span class="highlight-line"><span class="highlight-cl">    ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - containerPort: 3306
+</span></span><span class="highlight-line"><span class="highlight-cl">    env:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_ROOT_PASSWORD
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: "123456"
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_DATABASE
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: "myblog"
+</span></span></code></pre>
 <table>
 <thead>
 <tr>
@@ -234,9 +226,9 @@ spec:
 </table>
 <p class="indent--2"><strong>资源类型与 apiVersion 对照表</strong></p>
 <p class="indent--2"><strong>快速获得资源和版本</strong></p>
-<pre><code class="highlight-chroma">$ kubectl explain pod
-$ kubectl explain Pod.apiVersion
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">$ kubectl explain pod
+</span></span><span class="highlight-line"><span class="highlight-cl">$ kubectl explain Pod.apiVersion
+</span></span></code></pre>
 <h3 id="创建和访问pod">创建和访问 pod</h3>
 <p class="indent--2"><strong>创建 namespace, namespace 是逻辑上的资源池</strong><br>
 <code>kubectl create namespace demo</code><br>
@@ -244,26 +236,26 @@ $ kubectl explain Pod.apiVersion
 <code>kubectl create -f demo-pod.yaml</code></p>
 <p class="indent--2"><strong>查看 pod，可以简写 po<br>
 所有的操作都需要指定 namespace，如果是在 default 命名空间下，则可以省略</strong></p>
-<pre><code class="highlight-chroma">[root@k8s-master myblog]# kubectl -n demo get pods -o wide 
-NAME     READY   STATUS    RESTARTS   AGE     IP           NODE         NOMINATED NODE   READINESS GATES
-myblog   2/2     Running   0          2m12s   10.244.1.6   k8s-slave1   &lt;none&gt;           &lt;none&gt;
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@k8s-master myblog]# kubectl -n demo get pods -o wide 
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME     READY   STATUS    RESTARTS   AGE     IP           NODE         NOMINATED NODE   READINESS GATES
+</span></span><span class="highlight-line"><span class="highlight-cl">myblog   2/2     Running   0          2m12s   10.244.1.6   k8s-slave1   &lt;none&gt;           &lt;none&gt;
+</span></span></code></pre>
 <p class="indent--2"><strong>进入容器,执行初始化, 不必到对应的主机执行 docker exec</strong></p>
-<pre><code class="highlight-chroma">[root@k8s-master myblog]#  kubectl -n demo exec -ti myblog -c myblog bash
-[root@myblog myblog]# env
-[root@myblog myblog]# python3 manage.py migrate
-</code></pre>
-<pre><code class="highlight-chroma">[root@k8s-master myblog]#  kubectl -n demo exec -ti myblog -c mysql bash
-root@myblog:/# mysql -p123456
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@k8s-master myblog]#  kubectl -n demo exec -ti myblog -c myblog bash
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@myblog myblog]# env
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@myblog myblog]# python3 manage.py migrate
+</span></span></code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@k8s-master myblog]#  kubectl -n demo exec -ti myblog -c mysql bash
+</span></span><span class="highlight-line"><span class="highlight-cl">root@myblog:/# mysql -p123456
+</span></span></code></pre>
 <h3 id="Infra容器">Infra 容器</h3>
 <p class="indent--2">登录 <code>k8s-slave1</code> 节点<br>
 ##其中包含 MySQL 和 myblog 程序以及 Infra 容器<br>
 ##为了实现 Pod 内部的容器可以通过 localhost 通信，每个 Pod 都会启动 Infra 容器，然后 Pod 内部的其他容器的网络空间会共享该 Infra 容器的网络空间(Docker 网络的 container 模式)，Infra 容器只需要 hang 住网络空间，不需要额外的功能，因此资源消耗极低。</p>
 <p class="indent--2"><strong>登录 master 节点，查看 pod 内部的容器 ip 均相同，为 pod ip</strong></p>
-<pre><code class="highlight-chroma">[root@k8s-master myblog]# kubectl -n demo exec -ti myblog -c myblog bash
-[root@myblog myblog]# ifconfig
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@k8s-master myblog]# kubectl -n demo exec -ti myblog -c myblog bash
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@myblog myblog]# ifconfig
+</span></span></code></pre>
 <p class="indent--2"><strong>pod 容器命名:</strong> <code>k8s_&lt;container_name&gt;_&lt;pod_name&gt;_&lt;namespace&gt;_&lt;random_string&gt;</code></p>
 <h4 id="查看pod详细信息"><strong>查看 pod 详细信息</strong></h4>
 <p class="indent--2"><strong>查看 pod 调度节点及 pod_ip</strong><br>
@@ -289,113 +281,113 @@ root@myblog:/# mysql -p123456
 <ul>
 <li>定点使用 hostpath 挂载，nodeSelector 定点</li>
 </ul>
-<pre><code class="language-bash highlight-chroma">apiVersion: v1
-kind: Pod
-metadata:
-  name: myblog
-  namespace: demo
-  labels:
-    component: myblog
-spec:
-  volumes: 
-  - name: mysql-data
-    hostPath: 
-      path: /data/mysql/data
-  nodeSelector:   <span class="highlight-c1"># 使用节点选择器将Pod调度到指定label的节点</span>
-    component: mysql
-  containers:
-  - name: myblog
-    image: 192.168.51.209:5000/myblog
-    env:
-    - name: MYSQL_HOST   <span class="highlight-c1">#  指定root用户的用户名</span>
-      value: <span class="highlight-s2">"127.0.0.1"</span>
-    - name: MYSQL_PASSWD
-      value: <span class="highlight-s2">"123456"</span>
-    ports:
-    - containerPort: <span class="highlight-m">8002</span>
-  - name: mysql
-    image: 192.168.51.209:5000/mysql:5.7-utf8
-    ports:
-    - containerPort: <span class="highlight-m">3306</span>
-    env:
-    - name: MYSQL_ROOT_PASSWORD
-      value: <span class="highlight-s2">"123456"</span>
-    - name: MYSQL_DATABASE
-      value: <span class="highlight-s2">"myblog"</span>
-    volumeMounts:
-    - name: mysql-data
-      mountPath: /var/lib/mysql
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: Pod
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">  namespace: demo
+</span></span><span class="highlight-line"><span class="highlight-cl">  labels:
+</span></span><span class="highlight-line"><span class="highlight-cl">    component: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">  volumes: 
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: mysql-data
+</span></span><span class="highlight-line"><span class="highlight-cl">    hostPath: 
+</span></span><span class="highlight-line"><span class="highlight-cl">      path: /data/mysql/data
+</span></span><span class="highlight-line"><span class="highlight-cl">  nodeSelector:   <span class="highlight-c1"># 使用节点选择器将Pod调度到指定label的节点</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    component: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">  containers:
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">    image: 192.168.51.209:5000/myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">    env:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_HOST   <span class="highlight-c1">#  指定root用户的用户名</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: <span class="highlight-s2">"127.0.0.1"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_PASSWD
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: <span class="highlight-s2">"123456"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - containerPort: <span class="highlight-m">8002</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">    image: 192.168.51.209:5000/mysql:5.7-utf8
+</span></span><span class="highlight-line"><span class="highlight-cl">    ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - containerPort: <span class="highlight-m">3306</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    env:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_ROOT_PASSWORD
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: <span class="highlight-s2">"123456"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_DATABASE
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: <span class="highlight-s2">"myblog"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    volumeMounts:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: mysql-data
+</span></span><span class="highlight-line"><span class="highlight-cl">      mountPath: /var/lib/mysql
+</span></span></code></pre>
 <p class="indent--2"><strong>若存在旧的同名服务，先删除掉，后创建</strong><br>
 <code>kubectl -n demo delete pod myblog</code></p>
 <h3 id="创建">创建</h3>
-<pre><code class="highlight-chroma">[root@k8s-master one-pod]# kubectl create -f pod-with-volume.yaml
-pod/myblog created
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@k8s-master one-pod]# kubectl create -f pod-with-volume.yaml
+</span></span><span class="highlight-line"><span class="highlight-cl">pod/myblog created
+</span></span></code></pre>
 <p class="indent--2">此时：此时 pod 状态 Pending</p>
-<pre><code class="highlight-chroma">[root@k8s-master one-pod]# kubectl -n demo get pods 
-NAME     READY   STATUS    RESTARTS   AGE
-myblog   0/2     Pending   0          43s
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@k8s-master one-pod]# kubectl -n demo get pods 
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME     READY   STATUS    RESTARTS   AGE
+</span></span><span class="highlight-line"><span class="highlight-cl">myblog   0/2     Pending   0          43s
+</span></span></code></pre>
 <p class="indent--2"><strong>查看原因，提示调度失败，因为节点不满足 node selector</strong></p>
-<pre><code class="highlight-chroma">[root@k8s-master myblog]# kubectl -n demo describe pod myblog
-...
-Events:
-  Type     Reason            Age        From               Message
-  ----     ------            ----       ----               -------
-  Warning  FailedScheduling  &lt;unknown&gt;  default-scheduler  0/3 nodes are available: 3 node(s) didn't match node selector.
-  Warning  FailedScheduling  &lt;unknown&gt;  default-scheduler  0/3 nodes are available: 3 node(s) didn't match node selector.
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@k8s-master myblog]# kubectl -n demo describe pod myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">...
+</span></span><span class="highlight-line"><span class="highlight-cl">Events:
+</span></span><span class="highlight-line"><span class="highlight-cl">  Type     Reason            Age        From               Message
+</span></span><span class="highlight-line"><span class="highlight-cl">  ----     ------            ----       ----               -------
+</span></span><span class="highlight-line"><span class="highlight-cl">  Warning  FailedScheduling  &lt;unknown&gt;  default-scheduler  0/3 nodes are available: 3 node(s) didn't match node selector.
+</span></span><span class="highlight-line"><span class="highlight-cl">  Warning  FailedScheduling  &lt;unknown&gt;  default-scheduler  0/3 nodes are available: 3 node(s) didn't match node selector.
+</span></span></code></pre>
 <p class="indent--2"><strong>为节点打标签</strong></p>
-<pre><code class="highlight-chroma">[root@k8s-master myblog]# kubectl label node k8s-slave1 component=mysql
-node/k8s-slave1 labeled
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@k8s-master myblog]# kubectl label node k8s-slave1 component=mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">node/k8s-slave1 labeled
+</span></span></code></pre>
 <p class="indent--2"><strong>再次查看，已经运行成功</strong></p>
-<pre><code class="highlight-chroma">[root@k8s-master myblog]# kubectl -n demo get po
-NAME     READY   STATUS    RESTARTS   AGE
-myblog   2/2     Running   0          4m51s
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@k8s-master myblog]# kubectl -n demo get po
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME     READY   STATUS    RESTARTS   AGE
+</span></span><span class="highlight-line"><span class="highlight-cl">myblog   2/2     Running   0          4m51s
+</span></span></code></pre>
 <p class="indent--2"><strong>到 k8s-slave1 节点，查看/opt/mysql/data</strong></p>
-<pre><code class="highlight-chroma">[root@k8s-slave1 ~]# ll /data/mysql/data/
-total 188484
--rw-r-----. 1 polkitd input       56 Apr 18 06:15 auto.cnf
--rw-------. 1 polkitd input     1676 Apr 18 06:15 ca-key.pem
--rw-r--r--. 1 polkitd input     1112 Apr 18 06:15 ca.pem
--rw-r--r--. 1 polkitd input     1112 Apr 18 06:15 client-cert.pem
--rw-------. 1 polkitd input     1680 Apr 18 06:15 client-key.pem
--rw-r-----. 1 polkitd input     1346 Apr 18 06:16 ib_buffer_pool
--rw-r-----. 1 polkitd input 79691776 Apr 18 06:16 ibdata1
--rw-r-----. 1 polkitd input 50331648 Apr 18 06:16 ib_logfile0
--rw-r-----. 1 polkitd input 50331648 Apr 18 06:15 ib_logfile1
--rw-r-----. 1 polkitd input 12582912 Apr 18 06:16 ibtmp1
-drwxr-x---. 2 polkitd input       20 Apr 18 06:16 myblog
-drwxr-x---. 2 polkitd input     4096 Apr 18 06:15 mysql
-drwxr-x---. 2 polkitd input     8192 Apr 18 06:15 performance_schema
--rw-------. 1 polkitd input     1676 Apr 18 06:15 private_key.pem
--rw-r--r--. 1 polkitd input      452 Apr 18 06:15 public_key.pem
--rw-r--r--. 1 polkitd input     1112 Apr 18 06:15 server-cert.pem
--rw-------. 1 polkitd input     1680 Apr 18 06:15 server-key.pem
-drwxr-x---. 2 polkitd input     8192 Apr 18 06:15 sys
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@k8s-slave1 ~]# ll /data/mysql/data/
+</span></span><span class="highlight-line"><span class="highlight-cl">total 188484
+</span></span><span class="highlight-line"><span class="highlight-cl">-rw-r-----. 1 polkitd input       56 Apr 18 06:15 auto.cnf
+</span></span><span class="highlight-line"><span class="highlight-cl">-rw-------. 1 polkitd input     1676 Apr 18 06:15 ca-key.pem
+</span></span><span class="highlight-line"><span class="highlight-cl">-rw-r--r--. 1 polkitd input     1112 Apr 18 06:15 ca.pem
+</span></span><span class="highlight-line"><span class="highlight-cl">-rw-r--r--. 1 polkitd input     1112 Apr 18 06:15 client-cert.pem
+</span></span><span class="highlight-line"><span class="highlight-cl">-rw-------. 1 polkitd input     1680 Apr 18 06:15 client-key.pem
+</span></span><span class="highlight-line"><span class="highlight-cl">-rw-r-----. 1 polkitd input     1346 Apr 18 06:16 ib_buffer_pool
+</span></span><span class="highlight-line"><span class="highlight-cl">-rw-r-----. 1 polkitd input 79691776 Apr 18 06:16 ibdata1
+</span></span><span class="highlight-line"><span class="highlight-cl">-rw-r-----. 1 polkitd input 50331648 Apr 18 06:16 ib_logfile0
+</span></span><span class="highlight-line"><span class="highlight-cl">-rw-r-----. 1 polkitd input 50331648 Apr 18 06:15 ib_logfile1
+</span></span><span class="highlight-line"><span class="highlight-cl">-rw-r-----. 1 polkitd input 12582912 Apr 18 06:16 ibtmp1
+</span></span><span class="highlight-line"><span class="highlight-cl">drwxr-x---. 2 polkitd input       20 Apr 18 06:16 myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">drwxr-x---. 2 polkitd input     4096 Apr 18 06:15 mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">drwxr-x---. 2 polkitd input     8192 Apr 18 06:15 performance_schema
+</span></span><span class="highlight-line"><span class="highlight-cl">-rw-------. 1 polkitd input     1676 Apr 18 06:15 private_key.pem
+</span></span><span class="highlight-line"><span class="highlight-cl">-rw-r--r--. 1 polkitd input      452 Apr 18 06:15 public_key.pem
+</span></span><span class="highlight-line"><span class="highlight-cl">-rw-r--r--. 1 polkitd input     1112 Apr 18 06:15 server-cert.pem
+</span></span><span class="highlight-line"><span class="highlight-cl">-rw-------. 1 polkitd input     1680 Apr 18 06:15 server-key.pem
+</span></span><span class="highlight-line"><span class="highlight-cl">drwxr-x---. 2 polkitd input     8192 Apr 18 06:15 sys
+</span></span></code></pre>
 <p class="indent--2"><strong>执行 migrate，创建数据库表，然后删掉 pod，再次创建后验证数据是否存在</strong><br>
 <code>kubectl -n demo exec -ti myblog python3 manage.py migrate</code><br>
 <strong>测试一下服务是否正常</strong></p>
-<pre><code class="highlight-chroma">[root@k8s-master ~]# kubectl -n demo get po -o wide
-NAME     READY   STATUS    RESTARTS   AGE    IP           NODE         NOMINATED NODE   READINESS GATES
-myblog   2/2     Running   0          7m6s   10.244.1.7   k8s-slave1   &lt;none&gt;           &lt;none&gt;
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@k8s-master ~]# kubectl -n demo get po -o wide
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME     READY   STATUS    RESTARTS   AGE    IP           NODE         NOMINATED NODE   READINESS GATES
+</span></span><span class="highlight-line"><span class="highlight-cl">myblog   2/2     Running   0          7m6s   10.244.1.7   k8s-slave1   &lt;none&gt;           &lt;none&gt;
+</span></span></code></pre>
 <p class="indent--2"><strong>删除 pod 再创建</strong></p>
-<pre><code class="highlight-chroma">[root@k8s-master myblog]# kubectl delete -f pod-with-volume.yaml
-pod "myblog" deleted
-[root@k8s-master myblog]# 
-[root@k8s-master myblog]# kubectl create -f pod-with-volume.yaml
-pod/myblog created
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@k8s-master myblog]# kubectl delete -f pod-with-volume.yaml
+</span></span><span class="highlight-line"><span class="highlight-cl">pod "myblog" deleted
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@k8s-master myblog]# 
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@k8s-master myblog]# kubectl create -f pod-with-volume.yaml
+</span></span><span class="highlight-line"><span class="highlight-cl">pod/myblog created
+</span></span></code></pre>
 <p class="indent--2"><strong>查看 pod ip 并访问服务</strong>*</p>
-<pre><code class="highlight-chroma">[root@k8s-master myblog]# kubectl -n demo get po -o wide
-NAME     READY   STATUS    RESTARTS   AGE   IP           NODE         NOMINATED NODE   READINESS GATES
-myblog   2/2     Running   0          34s   10.244.1.8   k8s-slave1   &lt;none&gt;           &lt;none&gt;
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@k8s-master myblog]# kubectl -n demo get po -o wide
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME     READY   STATUS    RESTARTS   AGE   IP           NODE         NOMINATED NODE   READINESS GATES
+</span></span><span class="highlight-line"><span class="highlight-cl">myblog   2/2     Running   0          34s   10.244.1.8   k8s-slave1   &lt;none&gt;           &lt;none&gt;
+</span></span></code></pre>
 <p class="indent--2"><strong>测试一次啊：</strong><br>
 <code>[root@k8s-master myblog]# curl 10.244.1.8:8002/myblog/index</code></p>
 <ul>
@@ -420,69 +412,69 @@ myblog   2/2     Running   0          34s   10.244.1.8   k8s-slave1   &lt;none&g
 <li>tcpSocket：通过容器的 IP 和 Port 执行 TCP 检查，如果能够建立 TCP 连接，则表明容器健康</li>
 </ul>
 <p class="indent--2">示例：</p>
-<pre><code class="language-bash highlight-chroma">apiVersion: v1
-kind: Pod
-metadata:
-  name: myblog
-  namespace: demo
-  labels:
-    component: myblog
-spec:
-  volumes: 
-  - name: mysql-data
-    hostPath: 
-      path: /data/mysql/data
-  nodeSelector:   <span class="highlight-c1"># 使用节点选择器将Pod调度到指定label的节点</span>
-    component: mysql
-  containers:
-  - name: myblog
-    image: 192.168.51.209:5000/myblog
-    env:
-    - name: MYSQL_HOST   <span class="highlight-c1">#  指定root用户的用户名</span>
-      value: <span class="highlight-s2">"127.0.0.1"</span>
-    - name: MYSQL_PASSWD
-      value: <span class="highlight-s2">"123456"</span>
-    ports:
-    - containerPort: <span class="highlight-m">8002</span>
-    livenessProbe:
-      httpGet:
-        path: /blog/index/
-        port: <span class="highlight-m">8002</span>
-        scheme: HTTP
-      initialDelaySeconds: <span class="highlight-m">10</span>  <span class="highlight-c1"># 容器启动后第一次执行探测是需要等待多少秒</span>
-      periodSeconds: <span class="highlight-m">15</span> 	<span class="highlight-c1"># 执行探测的频率</span>
-      timeoutSeconds: 2		<span class="highlight-c1"># 探测超时时间</span>
-    readinessProbe: 
-      httpGet: 
-        path: /blog/index/
-        port: <span class="highlight-m">8002</span>
-        scheme: HTTP
-      initialDelaySeconds: <span class="highlight-m">10</span> 
-      timeoutSeconds: <span class="highlight-m">2</span>
-      periodSeconds: <span class="highlight-m">15</span>
-  - name: mysql
-    image: 192.168.51.209:5000/mysql:5.7-utf8
-    ports:
-    - containerPort: <span class="highlight-m">3306</span>
-    env:
-    - name: MYSQL_ROOT_PASSWORD
-      value: <span class="highlight-s2">"123456"</span>
-    - name: MYSQL_DATABASE
-      value: <span class="highlight-s2">"myblog"</span>
-    readinessProbe:
-      tcpSocket:
-        port: <span class="highlight-m">3306</span>
-      initialDelaySeconds: <span class="highlight-m">5</span>
-      periodSeconds: <span class="highlight-m">10</span>
-    livenessProbe:
-      tcpSocket:
-        port: <span class="highlight-m">3306</span>
-      initialDelaySeconds: <span class="highlight-m">15</span>
-      periodSeconds: <span class="highlight-m">20</span>
-    volumeMounts:
-    - name: mysql-data
-      mountPath: /var/lib/mysql
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: Pod
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">  namespace: demo
+</span></span><span class="highlight-line"><span class="highlight-cl">  labels:
+</span></span><span class="highlight-line"><span class="highlight-cl">    component: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">  volumes: 
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: mysql-data
+</span></span><span class="highlight-line"><span class="highlight-cl">    hostPath: 
+</span></span><span class="highlight-line"><span class="highlight-cl">      path: /data/mysql/data
+</span></span><span class="highlight-line"><span class="highlight-cl">  nodeSelector:   <span class="highlight-c1"># 使用节点选择器将Pod调度到指定label的节点</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    component: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">  containers:
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">    image: 192.168.51.209:5000/myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">    env:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_HOST   <span class="highlight-c1">#  指定root用户的用户名</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: <span class="highlight-s2">"127.0.0.1"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_PASSWD
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: <span class="highlight-s2">"123456"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - containerPort: <span class="highlight-m">8002</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    livenessProbe:
+</span></span><span class="highlight-line"><span class="highlight-cl">      httpGet:
+</span></span><span class="highlight-line"><span class="highlight-cl">        path: /blog/index/
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: <span class="highlight-m">8002</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">        scheme: HTTP
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: <span class="highlight-m">10</span>  <span class="highlight-c1"># 容器启动后第一次执行探测是需要等待多少秒</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: <span class="highlight-m">15</span> 	<span class="highlight-c1"># 执行探测的频率</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      timeoutSeconds: 2		<span class="highlight-c1"># 探测超时时间</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    readinessProbe: 
+</span></span><span class="highlight-line"><span class="highlight-cl">      httpGet: 
+</span></span><span class="highlight-line"><span class="highlight-cl">        path: /blog/index/
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: <span class="highlight-m">8002</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">        scheme: HTTP
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: <span class="highlight-m">10</span> 
+</span></span><span class="highlight-line"><span class="highlight-cl">      timeoutSeconds: <span class="highlight-m">2</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: <span class="highlight-m">15</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">    image: 192.168.51.209:5000/mysql:5.7-utf8
+</span></span><span class="highlight-line"><span class="highlight-cl">    ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - containerPort: <span class="highlight-m">3306</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    env:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_ROOT_PASSWORD
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: <span class="highlight-s2">"123456"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_DATABASE
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: <span class="highlight-s2">"myblog"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    readinessProbe:
+</span></span><span class="highlight-line"><span class="highlight-cl">      tcpSocket:
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: <span class="highlight-m">3306</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: <span class="highlight-m">5</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: <span class="highlight-m">10</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    livenessProbe:
+</span></span><span class="highlight-line"><span class="highlight-cl">      tcpSocket:
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: <span class="highlight-m">3306</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: <span class="highlight-m">15</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: <span class="highlight-m">20</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    volumeMounts:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: mysql-data
+</span></span><span class="highlight-line"><span class="highlight-cl">      mountPath: /var/lib/mysql
+</span></span></code></pre>
 <ul>
 <li>initialDelaySeconds：容器启动后第一次执行探测是需要等待多少秒。</li>
 <li>periodSeconds：执行探测的频率。默认是 10 秒，最小 1 秒。</li>
@@ -500,12 +492,12 @@ Pod 的重启策略包括 Always、OnFailure 和 Never，默认值为 Always。<
 <li>Never：不论容器运行状态如何，kubelet 都不会重启该容器。</li>
 </ul>
 <h4 id="镜像拉取策略"><strong>镜像拉取策略</strong></h4>
-<pre><code class="highlight-chroma">spec:
-  containers:
-  - name: myblog
-    image: 192.168.51.209:5000/demo/myblog
-    imagePullPolicy: IfNotPresent
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">  containers:
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">    image: 192.168.51.209:5000/demo/myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">    imagePullPolicy: IfNotPresent
+</span></span></code></pre>
 <p class="indent--2">设置镜像的拉取策略，默认为 IfNotPresent</p>
 <ul>
 <li>Always，总是拉取镜像，即使本地有镜像也从仓库拉取</li>
@@ -516,83 +508,83 @@ Pod 的重启策略包括 Always、OnFailure 和 Never，默认值为 Always。<
 <p class="indent--2">为了保证充分利用集群资源，且确保重要容器在运行周期内能够分配到足够的资源稳定运行，因此平台需要具备</p>
 <p class="indent--2">Pod 的资源限制的能力。 对于一个 pod 来说，资源最基础的 2 个的指标就是：CPU 和内存。</p>
 <p class="indent--2">Kubernetes 提供了个采用 requests 和 limits 两种类型参数对资源进行预分配和使用限制。</p>
-<pre><code class="language-bash highlight-chroma">apiVersion: v1
-kind: Pod
-metadata:
-  name: myblog
-  namespace: demo
-  labels:
-    component: myblog
-spec:
-  volumes: 
-  - name: mysql-data
-    hostPath: 
-      path: /data/mysql/data
-  nodeSelector:   <span class="highlight-c1"># 使用节点选择器将Pod调度到指定label的节点</span>
-    component: mysql
-  containers:
-  - name: myblog
-    image: 192.168.51.209:5000/myblog
-    env:
-    - name: MYSQL_HOST   <span class="highlight-c1">#  指定root用户的用户名</span>
-      value: <span class="highlight-s2">"127.0.0.1"</span>
-    - name: MYSQL_PASSWD
-      value: <span class="highlight-s2">"123456"</span>
-    ports:
-    - containerPort: <span class="highlight-m">8002</span>
-    resources:
-      requests:
-        memory: 100Mi
-        cpu: 50m
-      limits:
-        memory: 500Mi
-        cpu: 100m
-    livenessProbe:
-      httpGet:
-        path: /blog/index/
-        port: <span class="highlight-m">8002</span>
-        scheme: HTTP
-      initialDelaySeconds: <span class="highlight-m">10</span>  <span class="highlight-c1"># 容器启动后第一次执行探测是需要等待多少秒</span>
-      periodSeconds: <span class="highlight-m">15</span> 	<span class="highlight-c1"># 执行探测的频率</span>
-      timeoutSeconds: 2		<span class="highlight-c1"># 探测超时时间</span>
-    readinessProbe: 
-      httpGet: 
-        path: /blog/index/
-        port: <span class="highlight-m">8002</span>
-        scheme: HTTP
-      initialDelaySeconds: <span class="highlight-m">10</span> 
-      timeoutSeconds: <span class="highlight-m">2</span>
-      periodSeconds: <span class="highlight-m">15</span>
-  - name: mysql
-    image: 192.168.51.209:5000/mysql:5.7-utf8
-    ports:
-    - containerPort: <span class="highlight-m">3306</span>
-    env:
-    - name: MYSQL_ROOT_PASSWORD
-      value: <span class="highlight-s2">"123456"</span>
-    - name: MYSQL_DATABASE
-      value: <span class="highlight-s2">"myblog"</span>
-    resources:
-      requests:
-        memory: 100Mi
-        cpu: 50m
-      limits:
-        memory: 500Mi
-        cpu: 100m
-    readinessProbe:
-      tcpSocket:
-        port: <span class="highlight-m">3306</span>
-      initialDelaySeconds: <span class="highlight-m">5</span>
-      periodSeconds: <span class="highlight-m">10</span>
-    livenessProbe:
-      tcpSocket:
-        port: <span class="highlight-m">3306</span>
-      initialDelaySeconds: <span class="highlight-m">15</span>
-      periodSeconds: <span class="highlight-m">20</span>
-    volumeMounts:
-    - name: mysql-data
-      mountPath: /var/lib/mysql
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: Pod
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">  namespace: demo
+</span></span><span class="highlight-line"><span class="highlight-cl">  labels:
+</span></span><span class="highlight-line"><span class="highlight-cl">    component: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">  volumes: 
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: mysql-data
+</span></span><span class="highlight-line"><span class="highlight-cl">    hostPath: 
+</span></span><span class="highlight-line"><span class="highlight-cl">      path: /data/mysql/data
+</span></span><span class="highlight-line"><span class="highlight-cl">  nodeSelector:   <span class="highlight-c1"># 使用节点选择器将Pod调度到指定label的节点</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    component: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">  containers:
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">    image: 192.168.51.209:5000/myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">    env:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_HOST   <span class="highlight-c1">#  指定root用户的用户名</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: <span class="highlight-s2">"127.0.0.1"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_PASSWD
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: <span class="highlight-s2">"123456"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - containerPort: <span class="highlight-m">8002</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    resources:
+</span></span><span class="highlight-line"><span class="highlight-cl">      requests:
+</span></span><span class="highlight-line"><span class="highlight-cl">        memory: 100Mi
+</span></span><span class="highlight-line"><span class="highlight-cl">        cpu: 50m
+</span></span><span class="highlight-line"><span class="highlight-cl">      limits:
+</span></span><span class="highlight-line"><span class="highlight-cl">        memory: 500Mi
+</span></span><span class="highlight-line"><span class="highlight-cl">        cpu: 100m
+</span></span><span class="highlight-line"><span class="highlight-cl">    livenessProbe:
+</span></span><span class="highlight-line"><span class="highlight-cl">      httpGet:
+</span></span><span class="highlight-line"><span class="highlight-cl">        path: /blog/index/
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: <span class="highlight-m">8002</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">        scheme: HTTP
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: <span class="highlight-m">10</span>  <span class="highlight-c1"># 容器启动后第一次执行探测是需要等待多少秒</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: <span class="highlight-m">15</span> 	<span class="highlight-c1"># 执行探测的频率</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      timeoutSeconds: 2		<span class="highlight-c1"># 探测超时时间</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    readinessProbe: 
+</span></span><span class="highlight-line"><span class="highlight-cl">      httpGet: 
+</span></span><span class="highlight-line"><span class="highlight-cl">        path: /blog/index/
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: <span class="highlight-m">8002</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">        scheme: HTTP
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: <span class="highlight-m">10</span> 
+</span></span><span class="highlight-line"><span class="highlight-cl">      timeoutSeconds: <span class="highlight-m">2</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: <span class="highlight-m">15</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">    image: 192.168.51.209:5000/mysql:5.7-utf8
+</span></span><span class="highlight-line"><span class="highlight-cl">    ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - containerPort: <span class="highlight-m">3306</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    env:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_ROOT_PASSWORD
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: <span class="highlight-s2">"123456"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_DATABASE
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: <span class="highlight-s2">"myblog"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    resources:
+</span></span><span class="highlight-line"><span class="highlight-cl">      requests:
+</span></span><span class="highlight-line"><span class="highlight-cl">        memory: 100Mi
+</span></span><span class="highlight-line"><span class="highlight-cl">        cpu: 50m
+</span></span><span class="highlight-line"><span class="highlight-cl">      limits:
+</span></span><span class="highlight-line"><span class="highlight-cl">        memory: 500Mi
+</span></span><span class="highlight-line"><span class="highlight-cl">        cpu: 100m
+</span></span><span class="highlight-line"><span class="highlight-cl">    readinessProbe:
+</span></span><span class="highlight-line"><span class="highlight-cl">      tcpSocket:
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: <span class="highlight-m">3306</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: <span class="highlight-m">5</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: <span class="highlight-m">10</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    livenessProbe:
+</span></span><span class="highlight-line"><span class="highlight-cl">      tcpSocket:
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: <span class="highlight-m">3306</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: <span class="highlight-m">15</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: <span class="highlight-m">20</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    volumeMounts:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: mysql-data
+</span></span><span class="highlight-line"><span class="highlight-cl">      mountPath: /var/lib/mysql
+</span></span></code></pre>
 <p class="indent--2">requests：</p>
 <ul>
 <li>容器使用的最小资源需求,作用于 schedule 阶段，作为容器调度时资源分配的判断依赖</li>
@@ -620,83 +612,83 @@ spec:
 <p>注意：若内存使用超出限制，会引发系统的 OOM 机制，因 CPU 是可压缩资源，不会引发 Pod 退出或重建</p>
 </blockquote>
 <h1 id="yaml优化">YAML 优化</h1>
-<pre><code class="language-bash highlight-chroma">apiVersion: v1
-kind: Pod
-metadata:
-  name: myblog
-  namespace: demo
-  labels:
-    component: myblog
-spec:
-  volumes: 
-  - name: mysql-data
-    hostPath: 
-      path: /data/mysql/data
-  nodeSelector:   <span class="highlight-c1"># 使用节点选择器将Pod调度到指定label的节点</span>
-    component: mysql
-  containers:
-  - name: myblog
-    image: 192.168.51.209:5000/myblog
-    env:
-    - name: MYSQL_HOST   <span class="highlight-c1">#  指定root用户的用户名</span>
-      value: <span class="highlight-s2">"127.0.0.1"</span>
-    - name: MYSQL_PASSWD
-      value: <span class="highlight-s2">"123456"</span>
-    ports:
-    - containerPort: <span class="highlight-m">8002</span>
-    resources:
-      requests:
-        memory: 100Mi
-        cpu: 50m
-      limits:
-        memory: 500Mi
-        cpu: 100m
-    livenessProbe:
-      httpGet:
-        path: /blog/index/
-        port: <span class="highlight-m">8002</span>
-        scheme: HTTP
-      initialDelaySeconds: <span class="highlight-m">10</span>  <span class="highlight-c1"># 容器启动后第一次执行探测是需要等待多少秒</span>
-      periodSeconds: <span class="highlight-m">15</span> 	<span class="highlight-c1"># 执行探测的频率</span>
-      timeoutSeconds: 2		<span class="highlight-c1"># 探测超时时间</span>
-    readinessProbe: 
-      httpGet: 
-        path: /blog/index/
-        port: <span class="highlight-m">8002</span>
-        scheme: HTTP
-      initialDelaySeconds: <span class="highlight-m">10</span> 
-      timeoutSeconds: <span class="highlight-m">2</span>
-      periodSeconds: <span class="highlight-m">15</span>
-  - name: mysql
-    image: 192.168.51.209:5000/mysql:5.7-utf8
-    ports:
-    - containerPort: <span class="highlight-m">3306</span>
-    env:
-    - name: MYSQL_ROOT_PASSWORD
-      value: <span class="highlight-s2">"123456"</span>
-    - name: MYSQL_DATABASE
-      value: <span class="highlight-s2">"myblog"</span>
-    resources:
-      requests:
-        memory: 100Mi
-        cpu: 50m
-      limits:
-        memory: 500Mi
-        cpu: 100m
-    readinessProbe:
-      tcpSocket:
-        port: <span class="highlight-m">3306</span>
-      initialDelaySeconds: <span class="highlight-m">5</span>
-      periodSeconds: <span class="highlight-m">10</span>
-    livenessProbe:
-      tcpSocket:
-        port: <span class="highlight-m">3306</span>
-      initialDelaySeconds: <span class="highlight-m">15</span>
-      periodSeconds: <span class="highlight-m">20</span>
-    volumeMounts:
-    - name: mysql-data
-      mountPath: /var/lib/mysql
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: Pod
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">  namespace: demo
+</span></span><span class="highlight-line"><span class="highlight-cl">  labels:
+</span></span><span class="highlight-line"><span class="highlight-cl">    component: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">  volumes: 
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: mysql-data
+</span></span><span class="highlight-line"><span class="highlight-cl">    hostPath: 
+</span></span><span class="highlight-line"><span class="highlight-cl">      path: /data/mysql/data
+</span></span><span class="highlight-line"><span class="highlight-cl">  nodeSelector:   <span class="highlight-c1"># 使用节点选择器将Pod调度到指定label的节点</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    component: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">  containers:
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">    image: 192.168.51.209:5000/myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">    env:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_HOST   <span class="highlight-c1">#  指定root用户的用户名</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: <span class="highlight-s2">"127.0.0.1"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_PASSWD
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: <span class="highlight-s2">"123456"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - containerPort: <span class="highlight-m">8002</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    resources:
+</span></span><span class="highlight-line"><span class="highlight-cl">      requests:
+</span></span><span class="highlight-line"><span class="highlight-cl">        memory: 100Mi
+</span></span><span class="highlight-line"><span class="highlight-cl">        cpu: 50m
+</span></span><span class="highlight-line"><span class="highlight-cl">      limits:
+</span></span><span class="highlight-line"><span class="highlight-cl">        memory: 500Mi
+</span></span><span class="highlight-line"><span class="highlight-cl">        cpu: 100m
+</span></span><span class="highlight-line"><span class="highlight-cl">    livenessProbe:
+</span></span><span class="highlight-line"><span class="highlight-cl">      httpGet:
+</span></span><span class="highlight-line"><span class="highlight-cl">        path: /blog/index/
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: <span class="highlight-m">8002</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">        scheme: HTTP
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: <span class="highlight-m">10</span>  <span class="highlight-c1"># 容器启动后第一次执行探测是需要等待多少秒</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: <span class="highlight-m">15</span> 	<span class="highlight-c1"># 执行探测的频率</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      timeoutSeconds: 2		<span class="highlight-c1"># 探测超时时间</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    readinessProbe: 
+</span></span><span class="highlight-line"><span class="highlight-cl">      httpGet: 
+</span></span><span class="highlight-line"><span class="highlight-cl">        path: /blog/index/
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: <span class="highlight-m">8002</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">        scheme: HTTP
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: <span class="highlight-m">10</span> 
+</span></span><span class="highlight-line"><span class="highlight-cl">      timeoutSeconds: <span class="highlight-m">2</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: <span class="highlight-m">15</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">    image: 192.168.51.209:5000/mysql:5.7-utf8
+</span></span><span class="highlight-line"><span class="highlight-cl">    ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - containerPort: <span class="highlight-m">3306</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    env:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_ROOT_PASSWORD
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: <span class="highlight-s2">"123456"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_DATABASE
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: <span class="highlight-s2">"myblog"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    resources:
+</span></span><span class="highlight-line"><span class="highlight-cl">      requests:
+</span></span><span class="highlight-line"><span class="highlight-cl">        memory: 100Mi
+</span></span><span class="highlight-line"><span class="highlight-cl">        cpu: 50m
+</span></span><span class="highlight-line"><span class="highlight-cl">      limits:
+</span></span><span class="highlight-line"><span class="highlight-cl">        memory: 500Mi
+</span></span><span class="highlight-line"><span class="highlight-cl">        cpu: 100m
+</span></span><span class="highlight-line"><span class="highlight-cl">    readinessProbe:
+</span></span><span class="highlight-line"><span class="highlight-cl">      tcpSocket:
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: <span class="highlight-m">3306</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: <span class="highlight-m">5</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: <span class="highlight-m">10</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    livenessProbe:
+</span></span><span class="highlight-line"><span class="highlight-cl">      tcpSocket:
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: <span class="highlight-m">3306</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: <span class="highlight-m">15</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: <span class="highlight-m">20</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    volumeMounts:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: mysql-data
+</span></span><span class="highlight-line"><span class="highlight-cl">      mountPath: /var/lib/mysql
+</span></span></code></pre>
 <p class="indent--2"><strong>为什么要优化</strong></p>
 <ul>
 <li>考虑真实的使用场景，像数据库这类中间件，是作为公共资源，为多个项目提供服务，不适合和业务容器绑定在同一个 Pod 中，因为业务容器是经常变更的，而数据库不需要频繁迭代</li>
@@ -704,137 +696,137 @@ spec:
 </ul>
 <p class="indent--2"><strong>解决问题一，需要拆分 YAML</strong><br>
 <strong>mysql.yaml 文件内容</strong></p>
-<pre><code class="language-bash highlight-chroma">apiVersion: v1
-kind: Pod
-metadata:
-  name: mysql
-  namespace: demo
-  labels:
-    component: mysql
-spec:
-  hostNetwork: <span class="highlight-nb">true</span>	<span class="highlight-c1"># 声明pod的网络模式为host模式，效果通docker run --net=host</span>
-  volumes: 
-  - name: mysql-data
-    hostPath: 
-      path: /data/mysql/data
-  nodeSelector:   <span class="highlight-c1"># 使用节点选择器将Pod调度到指定label的节点</span>
-    component: mysql
-  containers:
-  - name: mysql
-    image: 192.168.51.209:5000/mysql:5.7-utf8
-    ports:
-    - containerPort: <span class="highlight-m">3306</span>
-    env:
-    - name: MYSQL_ROOT_PASSWORD
-      value: <span class="highlight-s2">"123456"</span>
-    - name: MYSQL_DATABASE
-      value: <span class="highlight-s2">"myblog"</span>
-    resources:
-      requests:
-        memory: 100Mi
-        cpu: 50m
-      limits:
-        memory: 500Mi
-        cpu: 100m
-    readinessProbe:
-      tcpSocket:
-        port: <span class="highlight-m">3306</span>
-      initialDelaySeconds: <span class="highlight-m">5</span>
-      periodSeconds: <span class="highlight-m">10</span>
-    livenessProbe:
-      tcpSocket:
-        port: <span class="highlight-m">3306</span>
-      initialDelaySeconds: <span class="highlight-m">15</span>
-      periodSeconds: <span class="highlight-m">20</span>
-    volumeMounts:
-    - name: mysql-data
-      mountPath: /var/lib/mysql
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: Pod
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">  namespace: demo
+</span></span><span class="highlight-line"><span class="highlight-cl">  labels:
+</span></span><span class="highlight-line"><span class="highlight-cl">    component: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">  hostNetwork: <span class="highlight-nb">true</span>	<span class="highlight-c1"># 声明pod的网络模式为host模式，效果通docker run --net=host</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">  volumes: 
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: mysql-data
+</span></span><span class="highlight-line"><span class="highlight-cl">    hostPath: 
+</span></span><span class="highlight-line"><span class="highlight-cl">      path: /data/mysql/data
+</span></span><span class="highlight-line"><span class="highlight-cl">  nodeSelector:   <span class="highlight-c1"># 使用节点选择器将Pod调度到指定label的节点</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    component: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">  containers:
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">    image: 192.168.51.209:5000/mysql:5.7-utf8
+</span></span><span class="highlight-line"><span class="highlight-cl">    ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - containerPort: <span class="highlight-m">3306</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    env:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_ROOT_PASSWORD
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: <span class="highlight-s2">"123456"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_DATABASE
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: <span class="highlight-s2">"myblog"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    resources:
+</span></span><span class="highlight-line"><span class="highlight-cl">      requests:
+</span></span><span class="highlight-line"><span class="highlight-cl">        memory: 100Mi
+</span></span><span class="highlight-line"><span class="highlight-cl">        cpu: 50m
+</span></span><span class="highlight-line"><span class="highlight-cl">      limits:
+</span></span><span class="highlight-line"><span class="highlight-cl">        memory: 500Mi
+</span></span><span class="highlight-line"><span class="highlight-cl">        cpu: 100m
+</span></span><span class="highlight-line"><span class="highlight-cl">    readinessProbe:
+</span></span><span class="highlight-line"><span class="highlight-cl">      tcpSocket:
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: <span class="highlight-m">3306</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: <span class="highlight-m">5</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: <span class="highlight-m">10</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    livenessProbe:
+</span></span><span class="highlight-line"><span class="highlight-cl">      tcpSocket:
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: <span class="highlight-m">3306</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: <span class="highlight-m">15</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: <span class="highlight-m">20</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">    volumeMounts:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: mysql-data
+</span></span><span class="highlight-line"><span class="highlight-cl">      mountPath: /var/lib/mysql
+</span></span></code></pre>
 <p class="indent--2"><strong>myblog.yaml 文件内容</strong></p>
-<pre><code class="highlight-chroma">apiVersion: v1
-kind: Pod
-metadata:
-  name: myblog
-  namespace: demo
-  labels:
-    component: myblog
-spec:
-  containers:
-  - name: myblog
-    image: 192.168.51.209:5000/myblog
-    imagePullPolicy: IfNotPresent
-    env:
-    - name: MYSQL_HOST   #  指定root用户的用户名
-      value: "192.168.51.209"
-    - name: MYSQL_PASSWD
-      value: "123456"
-    ports:
-    - containerPort: 8002
-    resources:
-      requests:
-        memory: 100Mi
-        cpu: 50m
-      limits:
-        memory: 500Mi
-        cpu: 100m
-    livenessProbe:
-      httpGet:
-        path: /blog/index/
-        port: 8002
-        scheme: HTTP
-      initialDelaySeconds: 10  # 容器启动后第一次执行探测是需要等待多少秒
-      periodSeconds: 15 	# 执行探测的频率
-      timeoutSeconds: 2		# 探测超时时间
-    readinessProbe: 
-      httpGet: 
-        path: /blog/index/
-        port: 8002
-        scheme: HTTP
-      initialDelaySeconds: 10 
-      timeoutSeconds: 2
-      periodSeconds: 15
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: Pod
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">  namespace: demo
+</span></span><span class="highlight-line"><span class="highlight-cl">  labels:
+</span></span><span class="highlight-line"><span class="highlight-cl">    component: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">  containers:
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">    image: 192.168.51.209:5000/myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">    imagePullPolicy: IfNotPresent
+</span></span><span class="highlight-line"><span class="highlight-cl">    env:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_HOST   #  指定root用户的用户名
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: "192.168.51.209"
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_PASSWD
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: "123456"
+</span></span><span class="highlight-line"><span class="highlight-cl">    ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - containerPort: 8002
+</span></span><span class="highlight-line"><span class="highlight-cl">    resources:
+</span></span><span class="highlight-line"><span class="highlight-cl">      requests:
+</span></span><span class="highlight-line"><span class="highlight-cl">        memory: 100Mi
+</span></span><span class="highlight-line"><span class="highlight-cl">        cpu: 50m
+</span></span><span class="highlight-line"><span class="highlight-cl">      limits:
+</span></span><span class="highlight-line"><span class="highlight-cl">        memory: 500Mi
+</span></span><span class="highlight-line"><span class="highlight-cl">        cpu: 100m
+</span></span><span class="highlight-line"><span class="highlight-cl">    livenessProbe:
+</span></span><span class="highlight-line"><span class="highlight-cl">      httpGet:
+</span></span><span class="highlight-line"><span class="highlight-cl">        path: /blog/index/
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: 8002
+</span></span><span class="highlight-line"><span class="highlight-cl">        scheme: HTTP
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: 10  # 容器启动后第一次执行探测是需要等待多少秒
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: 15 	# 执行探测的频率
+</span></span><span class="highlight-line"><span class="highlight-cl">      timeoutSeconds: 2		# 探测超时时间
+</span></span><span class="highlight-line"><span class="highlight-cl">    readinessProbe: 
+</span></span><span class="highlight-line"><span class="highlight-cl">      httpGet: 
+</span></span><span class="highlight-line"><span class="highlight-cl">        path: /blog/index/
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: 8002
+</span></span><span class="highlight-line"><span class="highlight-cl">        scheme: HTTP
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: 10 
+</span></span><span class="highlight-line"><span class="highlight-cl">      timeoutSeconds: 2
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: 15
+</span></span></code></pre>
 <p class="indent--2"><strong>创建测试</strong></p>
 <ul>
 <li>先删除旧 pod<br>
 <code> kubectl -n demo delete po myblog</code></li>
 <li>分别创建 MySQL 和 myblog</li>
 </ul>
-<pre><code class="highlight-chroma">kubectl create -f mysql.yaml
-kubectl create -f myblog.yaml
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">kubectl create -f mysql.yaml
+</span></span><span class="highlight-line"><span class="highlight-cl">kubectl create -f myblog.yaml
+</span></span></code></pre>
 <ul>
 <li>查看 pod，注意 mysqlIP 为宿主机 IP，因为网络模式为 host</li>
 </ul>
-<pre><code class="highlight-chroma">[root@k8s-master two-pod]# kubectl -n demo get pods -o wide 
-NAME     READY   STATUS    RESTARTS   AGE   IP               NODE         NOMINATED NODE   READINESS GATES
-myblog   1/1     Running   0          26s   10.244.1.9       k8s-slave1   &lt;none&gt;           &lt;none&gt;
-mysql    1/1     Running   0          33s   192.168.51.210   k8s-slave1   &lt;none&gt;           &lt;none&gt;
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@k8s-master two-pod]# kubectl -n demo get pods -o wide 
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME     READY   STATUS    RESTARTS   AGE   IP               NODE         NOMINATED NODE   READINESS GATES
+</span></span><span class="highlight-line"><span class="highlight-cl">myblog   1/1     Running   0          26s   10.244.1.9       k8s-slave1   &lt;none&gt;           &lt;none&gt;
+</span></span><span class="highlight-line"><span class="highlight-cl">mysql    1/1     Running   0          33s   192.168.51.210   k8s-slave1   &lt;none&gt;           &lt;none&gt;
+</span></span></code></pre>
 <ul>
 <li>访问 myblog 服务正常</li>
 </ul>
-<pre><code class="highlight-chroma">[root@k8s-master two-pod]# curl 10.244.1.9:8002/blog/index/
-&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;首页&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h3&gt;我的博客列表：&lt;/h3&gt;
-    
-        &lt;a href="/blog/article/1"&gt; nihao &lt;/a&gt;
-        &lt;br/&gt;
-    
-
-    &lt;/br&gt;
-    &lt;/br&gt;
-    &lt;a href=" /blog/article/edit/0 "&gt;写博客&lt;/a&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@k8s-master two-pod]# curl 10.244.1.9:8002/blog/index/
+</span></span><span class="highlight-line"><span class="highlight-cl">&lt;!DOCTYPE html&gt;
+</span></span><span class="highlight-line"><span class="highlight-cl">&lt;html lang="en"&gt;
+</span></span><span class="highlight-line"><span class="highlight-cl">&lt;head&gt;
+</span></span><span class="highlight-line"><span class="highlight-cl">    &lt;meta charset="UTF-8"&gt;
+</span></span><span class="highlight-line"><span class="highlight-cl">    &lt;title&gt;首页&lt;/title&gt;
+</span></span><span class="highlight-line"><span class="highlight-cl">&lt;/head&gt;
+</span></span><span class="highlight-line"><span class="highlight-cl">&lt;body&gt;
+</span></span><span class="highlight-line"><span class="highlight-cl">&lt;h3&gt;我的博客列表：&lt;/h3&gt;
+</span></span><span class="highlight-line"><span class="highlight-cl">    
+</span></span><span class="highlight-line"><span class="highlight-cl">        &lt;a href="/blog/article/1"&gt; nihao &lt;/a&gt;
+</span></span><span class="highlight-line"><span class="highlight-cl">        &lt;br/&gt;
+</span></span><span class="highlight-line"><span class="highlight-cl">    
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">    &lt;/br&gt;
+</span></span><span class="highlight-line"><span class="highlight-cl">    &lt;/br&gt;
+</span></span><span class="highlight-line"><span class="highlight-cl">    &lt;a href=" /blog/article/edit/0 "&gt;写博客&lt;/a&gt;
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">&lt;/body&gt;
+</span></span><span class="highlight-line"><span class="highlight-cl">&lt;/html&gt;
+</span></span></code></pre>
 <p class="indent--2"><strong>解决问题二，环境变量中敏感信息带来的安全隐患</strong></p>
 <p class="indent--2">为什么要统一管理环境变量</p>
 <ul>
@@ -843,175 +835,175 @@ mysql    1/1     Running   0          33s   192.168.51.210   k8s-slave1   &lt;no
 <li>对于开发、测试、生产环境，由于配置均不同，每套环境部署的时候都要修改 YAML，带来额外的开销</li>
 </ul>
 <p class="indent--2">k8s 提供两类资源，configMap 和 Secret，可以用来实现业务配置的统一管理， 允许将配置文件与镜像文件分离，以使容器化的应用程序具有可移植性 。<br>
-<img src="https://img.hacpai.com/file/2020/04/configmap-169a37af.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="configmap.png"></p>
+<img src="https://b3logfile.com/file/2020/04/configmap-169a37af.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="configmap.png"></p>
 <ul>
 <li>configMap，通常用来管理应用的配置文件或者环境变量，<code>myblog/two-pod/configmap.yaml</code></li>
 </ul>
-<pre><code class="highlight-chroma">apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: myblog
-  namespace: demo
-data:
-  MYSQL_HOST: "192.168.51.209"
-  MYSQL_PORT: "3306"
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: ConfigMap
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">  namespace: demo
+</span></span><span class="highlight-line"><span class="highlight-cl">data:
+</span></span><span class="highlight-line"><span class="highlight-cl">  MYSQL_HOST: "192.168.51.209"
+</span></span><span class="highlight-line"><span class="highlight-cl">  MYSQL_PORT: "3306"
+</span></span></code></pre>
 <p class="indent--2">Secret，管理敏感类的信息，默认会 base64 编码存储，有三种类型</p>
 <ul>
 <li>Service Account ：用来访问 Kubernetes API，由 Kubernetes 自动创建，并且会自动挂载到 Pod 的/run/secrets/kubernetes.io/serviceaccount 目录中；创建 ServiceAccount 后，Pod 中指定 serviceAccount 后，自动创建该 ServiceAccount 对应的 secret；</li>
 <li>Opaque ： base64 编码格式的 Secret，用来存储密码、密钥等；</li>
 <li>kubernetes.io/dockerconfigjson ：用来存储私有 docker registry 的认证信息。</li>
 </ul>
-<pre><code class="highlight-chroma">apiVersion: v1
-kind: Secret
-metadata:
-  name: myblog
-  namespace: demo
-type: Opaque
-data:
-  MYSQL_USER: cm9vdA==  #注意加-n参数， echo -n root|base64
-  MYSQL_PASSWD: MTIzNDU2
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: Secret
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">  namespace: demo
+</span></span><span class="highlight-line"><span class="highlight-cl">type: Opaque
+</span></span><span class="highlight-line"><span class="highlight-cl">data:
+</span></span><span class="highlight-line"><span class="highlight-cl">  MYSQL_USER: cm9vdA==  #注意加-n参数， echo -n root|base64
+</span></span><span class="highlight-line"><span class="highlight-cl">  MYSQL_PASSWD: MTIzNDU2
+</span></span></code></pre>
 <p class="indent--2"><strong>创建并查看：</strong></p>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@k8s-master two-pod<span class="highlight-o">]</span><span class="highlight-c1"># kubectl create -f secret.yaml </span>
-secret/myblog created
-<span class="highlight-o">[</span>root@k8s-master two-pod<span class="highlight-o">]</span><span class="highlight-c1"># kubectl -n demo get secret </span>
-NAME                  TYPE                                  DATA   AGE
-default-token-cv8ks   kubernetes.io/service-account-token   <span class="highlight-m">3</span>      103m
-myblog                Opaque                                <span class="highlight-m">2</span>      28s
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@k8s-master two-pod<span class="highlight-o">]</span><span class="highlight-c1"># kubectl create -f secret.yaml </span>
+</span></span><span class="highlight-line"><span class="highlight-cl">secret/myblog created
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@k8s-master two-pod<span class="highlight-o">]</span><span class="highlight-c1"># kubectl -n demo get secret </span>
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME                  TYPE                                  DATA   AGE
+</span></span><span class="highlight-line"><span class="highlight-cl">default-token-cv8ks   kubernetes.io/service-account-token   <span class="highlight-m">3</span>      103m
+</span></span><span class="highlight-line"><span class="highlight-cl">myblog                Opaque                                <span class="highlight-m">2</span>      28s
+</span></span></code></pre>
 <p class="indent--2"><strong>如果不习惯这种方式，可以通过如下方式：</strong></p>
-<pre><code class="highlight-chroma">[root@k8s-master two-pod]# cat secret.txt 
-MYSQL_USER=root
-MYSQL_PASSWD=123456
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@k8s-master two-pod]# cat secret.txt 
+</span></span><span class="highlight-line"><span class="highlight-cl">MYSQL_USER=root
+</span></span><span class="highlight-line"><span class="highlight-cl">MYSQL_PASSWD=123456
+</span></span></code></pre>
 <p class="indent--2"><code>kubectl -n demo create secret generic myblog --from-env-file=secret.txt</code></p>
 <p class="indent--2"><strong>修改后的 MySQL 的 YAML 文件：</strong></p>
-<pre><code class="highlight-chroma">apiVersion: v1
-kind: Pod
-metadata:
-  name: mysql
-  namespace: demo
-  labels:
-    component: mysql
-spec:
-  hostNetwork: true	# 声明pod的网络模式为host模式，效果通docker run --net=host
-  volumes: 
-  - name: mysql-data
-    hostPath: 
-      path: /data/mysql/data
-  nodeSelector:   # 使用节点选择器将Pod调度到指定label的节点
-    component: mysql
-  containers:
-  - name: mysql
-    image: 192.168.51.209:5000/mysql:5.7-utf8
-    ports:
-    - containerPort: 3306
-    env:
-    - name: MYSQL_USER
-      valueFrom:
-        secretKeyRef:
-          name: myblog
-          key: MYSQL_USER
-    - name: MYSQL_PASSWD
-      valueFrom:
-        secretKeyRef:
-          name: myblog
-          key: MYSQL_PASSWD
-    - name: MYSQL_DATABASE
-      value: "myblog"
-    resources:
-      requests:
-        memory: 100Mi
-        cpu: 50m
-      limits:
-        memory: 500Mi
-        cpu: 100m
-    readinessProbe:
-      tcpSocket:
-        port: 3306
-      initialDelaySeconds: 5
-      periodSeconds: 10
-    livenessProbe:
-      tcpSocket:
-        port: 3306
-      initialDelaySeconds: 15
-      periodSeconds: 20
-    volumeMounts:
-    - name: mysql-data
-      mountPath: /var/lib/mysql
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: Pod
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">  namespace: demo
+</span></span><span class="highlight-line"><span class="highlight-cl">  labels:
+</span></span><span class="highlight-line"><span class="highlight-cl">    component: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">  hostNetwork: true	# 声明pod的网络模式为host模式，效果通docker run --net=host
+</span></span><span class="highlight-line"><span class="highlight-cl">  volumes: 
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: mysql-data
+</span></span><span class="highlight-line"><span class="highlight-cl">    hostPath: 
+</span></span><span class="highlight-line"><span class="highlight-cl">      path: /data/mysql/data
+</span></span><span class="highlight-line"><span class="highlight-cl">  nodeSelector:   # 使用节点选择器将Pod调度到指定label的节点
+</span></span><span class="highlight-line"><span class="highlight-cl">    component: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">  containers:
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">    image: 192.168.51.209:5000/mysql:5.7-utf8
+</span></span><span class="highlight-line"><span class="highlight-cl">    ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - containerPort: 3306
+</span></span><span class="highlight-line"><span class="highlight-cl">    env:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_USER
+</span></span><span class="highlight-line"><span class="highlight-cl">      valueFrom:
+</span></span><span class="highlight-line"><span class="highlight-cl">        secretKeyRef:
+</span></span><span class="highlight-line"><span class="highlight-cl">          name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">          key: MYSQL_USER
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_PASSWD
+</span></span><span class="highlight-line"><span class="highlight-cl">      valueFrom:
+</span></span><span class="highlight-line"><span class="highlight-cl">        secretKeyRef:
+</span></span><span class="highlight-line"><span class="highlight-cl">          name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">          key: MYSQL_PASSWD
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_DATABASE
+</span></span><span class="highlight-line"><span class="highlight-cl">      value: "myblog"
+</span></span><span class="highlight-line"><span class="highlight-cl">    resources:
+</span></span><span class="highlight-line"><span class="highlight-cl">      requests:
+</span></span><span class="highlight-line"><span class="highlight-cl">        memory: 100Mi
+</span></span><span class="highlight-line"><span class="highlight-cl">        cpu: 50m
+</span></span><span class="highlight-line"><span class="highlight-cl">      limits:
+</span></span><span class="highlight-line"><span class="highlight-cl">        memory: 500Mi
+</span></span><span class="highlight-line"><span class="highlight-cl">        cpu: 100m
+</span></span><span class="highlight-line"><span class="highlight-cl">    readinessProbe:
+</span></span><span class="highlight-line"><span class="highlight-cl">      tcpSocket:
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: 3306
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: 5
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: 10
+</span></span><span class="highlight-line"><span class="highlight-cl">    livenessProbe:
+</span></span><span class="highlight-line"><span class="highlight-cl">      tcpSocket:
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: 3306
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: 15
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: 20
+</span></span><span class="highlight-line"><span class="highlight-cl">    volumeMounts:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: mysql-data
+</span></span><span class="highlight-line"><span class="highlight-cl">      mountPath: /var/lib/mysql
+</span></span></code></pre>
 <p class="indent--2"><strong>修改后的 myblog 的 YAML</strong></p>
-<pre><code class="highlight-chroma">apiVersion: v1
-kind: Pod
-metadata:
-  name: myblog
-  namespace: demo
-  labels:
-    component: myblog
-spec:
-  containers:
-  - name: myblog
-    image: 192.168.51.209:5000/myblog
-    imagePullPolicy: IfNotPresent
-    env:
-    - name: MYSQL_HOST
-      valueFrom:
-        configMapKeyRef:
-          name: myblog
-          key: MYSQL_HOST
-    - name: MYSQL_PORT
-      valueFrom:
-        configMapKeyRef:
-          name: myblog
-          key: MYSQL_PORT
-    - name: MYSQL_USER
-      valueFrom:
-        secretKeyRef:
-          name: myblog
-          key: MYSQL_USER
-    - name: MYSQL_PASSWD
-      valueFrom:
-        secretKeyRef:
-          name: myblog
-          key: MYSQL_PASSWD
-    ports:
-    - containerPort: 8002
-    resources:
-      requests:
-        memory: 100Mi
-        cpu: 50m
-      limits:
-        memory: 500Mi
-        cpu: 100m
-    livenessProbe:
-      httpGet:
-        path: /blog/index/
-        port: 8002
-        scheme: HTTP
-      initialDelaySeconds: 10  # 容器启动后第一次执行探测是需要等待多少秒
-      periodSeconds: 15 	# 执行探测的频率
-      timeoutSeconds: 2		# 探测超时时间
-    readinessProbe: 
-      httpGet: 
-        path: /blog/index/
-        port: 8002
-        scheme: HTTP
-      initialDelaySeconds: 10 
-      timeoutSeconds: 2
-      periodSeconds: 15
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: Pod
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">  namespace: demo
+</span></span><span class="highlight-line"><span class="highlight-cl">  labels:
+</span></span><span class="highlight-line"><span class="highlight-cl">    component: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">  containers:
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">    image: 192.168.51.209:5000/myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">    imagePullPolicy: IfNotPresent
+</span></span><span class="highlight-line"><span class="highlight-cl">    env:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_HOST
+</span></span><span class="highlight-line"><span class="highlight-cl">      valueFrom:
+</span></span><span class="highlight-line"><span class="highlight-cl">        configMapKeyRef:
+</span></span><span class="highlight-line"><span class="highlight-cl">          name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">          key: MYSQL_HOST
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_PORT
+</span></span><span class="highlight-line"><span class="highlight-cl">      valueFrom:
+</span></span><span class="highlight-line"><span class="highlight-cl">        configMapKeyRef:
+</span></span><span class="highlight-line"><span class="highlight-cl">          name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">          key: MYSQL_PORT
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_USER
+</span></span><span class="highlight-line"><span class="highlight-cl">      valueFrom:
+</span></span><span class="highlight-line"><span class="highlight-cl">        secretKeyRef:
+</span></span><span class="highlight-line"><span class="highlight-cl">          name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">          key: MYSQL_USER
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: MYSQL_PASSWD
+</span></span><span class="highlight-line"><span class="highlight-cl">      valueFrom:
+</span></span><span class="highlight-line"><span class="highlight-cl">        secretKeyRef:
+</span></span><span class="highlight-line"><span class="highlight-cl">          name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">          key: MYSQL_PASSWD
+</span></span><span class="highlight-line"><span class="highlight-cl">    ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - containerPort: 8002
+</span></span><span class="highlight-line"><span class="highlight-cl">    resources:
+</span></span><span class="highlight-line"><span class="highlight-cl">      requests:
+</span></span><span class="highlight-line"><span class="highlight-cl">        memory: 100Mi
+</span></span><span class="highlight-line"><span class="highlight-cl">        cpu: 50m
+</span></span><span class="highlight-line"><span class="highlight-cl">      limits:
+</span></span><span class="highlight-line"><span class="highlight-cl">        memory: 500Mi
+</span></span><span class="highlight-line"><span class="highlight-cl">        cpu: 100m
+</span></span><span class="highlight-line"><span class="highlight-cl">    livenessProbe:
+</span></span><span class="highlight-line"><span class="highlight-cl">      httpGet:
+</span></span><span class="highlight-line"><span class="highlight-cl">        path: /blog/index/
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: 8002
+</span></span><span class="highlight-line"><span class="highlight-cl">        scheme: HTTP
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: 10  # 容器启动后第一次执行探测是需要等待多少秒
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: 15 	# 执行探测的频率
+</span></span><span class="highlight-line"><span class="highlight-cl">      timeoutSeconds: 2		# 探测超时时间
+</span></span><span class="highlight-line"><span class="highlight-cl">    readinessProbe: 
+</span></span><span class="highlight-line"><span class="highlight-cl">      httpGet: 
+</span></span><span class="highlight-line"><span class="highlight-cl">        path: /blog/index/
+</span></span><span class="highlight-line"><span class="highlight-cl">        port: 8002
+</span></span><span class="highlight-line"><span class="highlight-cl">        scheme: HTTP
+</span></span><span class="highlight-line"><span class="highlight-cl">      initialDelaySeconds: 10 
+</span></span><span class="highlight-line"><span class="highlight-cl">      timeoutSeconds: 2
+</span></span><span class="highlight-line"><span class="highlight-cl">      periodSeconds: 15
+</span></span></code></pre>
 <p class="indent--2">在部署不同的环境时，pod 的 YAML 无须再变化，只需要在每套环境中维护一套 ConfigMap 和 Secret 即可。但是注意 configmap 和 secret 不能跨 namespace 使用，且更新后，pod 内的 env 不会自动更新，重建后方可更新。<br>
 <strong>configmap 文件</strong></p>
-<pre><code class="highlight-chroma">apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: myblog
-  namespace: demo
-data:
-  MYSQL_HOST: "192.168.51.209"
-  MYSQL_PORT: "3306"
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: ConfigMap
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: myblog
+</span></span><span class="highlight-line"><span class="highlight-cl">  namespace: demo
+</span></span><span class="highlight-line"><span class="highlight-cl">data:
+</span></span><span class="highlight-line"><span class="highlight-cl">  MYSQL_HOST: "192.168.51.209"
+</span></span><span class="highlight-line"><span class="highlight-cl">  MYSQL_PORT: "3306"
+</span></span></code></pre>
 <h3 id="如何编写资源yaml">如何编写资源 YAML</h3>
 <ol>
 <li>从机器中已有的资源中拿<br>
@@ -1029,50 +1021,50 @@ Running | Pod 内容器均已创建，且至少有一个容器处于运行状态
 | CrashLoopBackOff | Pod 内有容器启动失败，比如配置文件丢失导致主进程启动失败 |<br>
 | Unknown | 由于某种原因无法获取该 Pod 的状态，可能由于网络通信不畅导致 |</p>
 <p class="indent--2"><strong>生命周期示意图：</strong><br>
-<img src="https://img.hacpai.com/file/2020/04/fcachl-5d9a8910.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="fcachl.jpg"><br>
+<img src="https://b3logfile.com/file/2020/04/fcachl-5d9a8910.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="fcachl.jpg"><br>
 <strong>启动和关闭示意：</strong><br>
-<img src="https://img.hacpai.com/file/2020/04/AOQgQj-60354f4f.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="AOQgQj.jpg"></p>
-<pre><code class="highlight-chroma">apiVersion: v1
-kind: Pod
-metadata:
-  name: demo-start-stop
-  namespace: demo
-  labels:
-    component: demo-start-stop
-spec:
-  initContainers:
-  - name: init
-    image: busybox
-    command: ['sh', '-c', 'echo $(date +%s): INIT &gt;&gt; /loap/timing']
-    volumeMounts:
-    - mountPath: /loap
-      name: timing
-  containers:
-  - name: main
-    image: busybox
-    command: ['sh', '-c', 'echo $(date +%s): START &gt;&gt; /loap/timing;
-sleep 10; echo $(date +%s): END &gt;&gt; /loap/timing;']
-    volumeMounts:
-    - mountPath: /loap 
-      name: timing
-    livenessProbe:
-      exec:
-        command: ['sh', '-c', 'echo $(date +%s): LIVENESS &gt;&gt; /loap/timing']
-    readinessProbe:
-      exec:
-        command: ['sh', '-c', 'echo $(date +%s): READINESS &gt;&gt; /loap/timing']
-    lifecycle:
-      postStart:
-        exec:
-          command: ['sh', '-c', 'echo $(date +%s): POST-START &gt;&gt; /loap/timing']
-      preStop:
-        exec:
-          command: ['sh', '-c', 'echo $(date +%s): PRE-STOP &gt;&gt; /loap/timing']
-  volumes:
-  - name: timing
-    hostPath:
-      path: /tmp/loap
-</code></pre>
+<img src="https://b3logfile.com/file/2020/04/AOQgQj-60354f4f.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="AOQgQj.jpg"></p>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: Pod
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: demo-start-stop
+</span></span><span class="highlight-line"><span class="highlight-cl">  namespace: demo
+</span></span><span class="highlight-line"><span class="highlight-cl">  labels:
+</span></span><span class="highlight-line"><span class="highlight-cl">    component: demo-start-stop
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">  initContainers:
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: init
+</span></span><span class="highlight-line"><span class="highlight-cl">    image: busybox
+</span></span><span class="highlight-line"><span class="highlight-cl">    command: ['sh', '-c', 'echo $(date +%s): INIT &gt;&gt; /loap/timing']
+</span></span><span class="highlight-line"><span class="highlight-cl">    volumeMounts:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - mountPath: /loap
+</span></span><span class="highlight-line"><span class="highlight-cl">      name: timing
+</span></span><span class="highlight-line"><span class="highlight-cl">  containers:
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: main
+</span></span><span class="highlight-line"><span class="highlight-cl">    image: busybox
+</span></span><span class="highlight-line"><span class="highlight-cl">    command: ['sh', '-c', 'echo $(date +%s): START &gt;&gt; /loap/timing;
+</span></span><span class="highlight-line"><span class="highlight-cl">sleep 10; echo $(date +%s): END &gt;&gt; /loap/timing;']
+</span></span><span class="highlight-line"><span class="highlight-cl">    volumeMounts:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - mountPath: /loap 
+</span></span><span class="highlight-line"><span class="highlight-cl">      name: timing
+</span></span><span class="highlight-line"><span class="highlight-cl">    livenessProbe:
+</span></span><span class="highlight-line"><span class="highlight-cl">      exec:
+</span></span><span class="highlight-line"><span class="highlight-cl">        command: ['sh', '-c', 'echo $(date +%s): LIVENESS &gt;&gt; /loap/timing']
+</span></span><span class="highlight-line"><span class="highlight-cl">    readinessProbe:
+</span></span><span class="highlight-line"><span class="highlight-cl">      exec:
+</span></span><span class="highlight-line"><span class="highlight-cl">        command: ['sh', '-c', 'echo $(date +%s): READINESS &gt;&gt; /loap/timing']
+</span></span><span class="highlight-line"><span class="highlight-cl">    lifecycle:
+</span></span><span class="highlight-line"><span class="highlight-cl">      postStart:
+</span></span><span class="highlight-line"><span class="highlight-cl">        exec:
+</span></span><span class="highlight-line"><span class="highlight-cl">          command: ['sh', '-c', 'echo $(date +%s): POST-START &gt;&gt; /loap/timing']
+</span></span><span class="highlight-line"><span class="highlight-cl">      preStop:
+</span></span><span class="highlight-line"><span class="highlight-cl">        exec:
+</span></span><span class="highlight-line"><span class="highlight-cl">          command: ['sh', '-c', 'echo $(date +%s): PRE-STOP &gt;&gt; /loap/timing']
+</span></span><span class="highlight-line"><span class="highlight-cl">  volumes:
+</span></span><span class="highlight-line"><span class="highlight-cl">  - name: timing
+</span></span><span class="highlight-line"><span class="highlight-cl">    hostPath:
+</span></span><span class="highlight-line"><span class="highlight-cl">      path: /tmp/loap
+</span></span></code></pre>
 <p class="indent--2"><strong>创建 pod 测试：</strong></p>
 <p class="indent--2"><code>[root@k8s-master myblog]# kubectl create -f demo-pod-start.yaml</code></p>
 <p class="indent--2"><strong>查看 demo 状态</strong><br>
@@ -1098,13 +1090,6 @@ sleep 10; echo $(date +%s): END &gt;&gt; /loap/timing;']
 
 <!-- 签名档内可使用 HTML、JavaScript -->
 <br>
-<pre><p style="font-size:15px"><font color="#008000">
-<b>到头来
-我们记住的
-不是敌人的攻击
-而是朋友的沉默
-       ---马丁·路德·金</b></p><pre>
-
                 </div>
         </div>
     </div>
@@ -1175,7 +1160,7 @@ sleep 10; echo $(date +%s): END &gt;&gt; /loap/timing;']
         <div class="wrapper comment">
                 <div id="gitalk-container" style="padding: 30px 0;"></div>
                 <div id="b3logsolocomments"></div>
-                <div id="vcomment" style="padding: 30px 0;" data-name="cuijianzhe" data-postId="1587015956420"></div>
+                <div id="vcomment" style="padding: 30px 0;" data-name="cuijianzhe" data-postId="1587015956134"></div>
 
             <div class="post__list fn__flex">
                 <div class="fn__flex-1">
@@ -1203,7 +1188,7 @@ sleep 10; echo $(date +%s): END &gt;&gt; /loap/timing;']
                       data-title="KUbernets实践之pod"
                       data-blogtitle="邯城往事"
                       data-url="https://cuijianzhe.github.io/articles/2020/04/16/1587015956420.html"
-                      data-avatar="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100">
+                      data-avatar="https://b3logfile.com/avatar/1551626533851_1560155807399.gif?imageView2/1/w/128/h/128/interlace/0/q/100">
                     WeChat
                     <span class="qrcode"></span>
                 </span>
@@ -1295,7 +1280,7 @@ sleep 10; echo $(date +%s): END &gt;&gt; /loap/timing;']
             <a class="ft__link" href="/my-github-repos" target="_self" rel="section">
                 我的开源
             </a>
-            <a class="ft__link" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+            <a class="ft__link" href="http://times.cjzshilong.cn/time/" target="_blank" rel="section">
                 服务器倒计时
             </a>
         <a class="ft__link" rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">RSS</a>
@@ -1303,93 +1288,24 @@ sleep 10; echo $(date +%s): END &gt;&gt; /loap/timing;']
     <div class="footer__border mobile__none"></div>
     <div class="wrapper fn__flex">
         <div class="fn__flex-1 mobile__none">
-            <div class="ft__fade">cuijianzhe -                >>>  展颜笑夙愿，一笑泯恩仇 <<<</div>
+            <div class="ft__fade">cuijianzhe - 来自邯郸社畜的呐喊</div>
             <br>
-                <!-- MetingJS音乐播放器 不能放到 head 导致系统功能加载异常-->
-<link rel="stylesheet" href="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css">
-<script src="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-<meting-js server="netease" type="playlist" id="728729850"  autoplay="false" fixed ="true" order = "random"</meting-js>
-
-<h1><p style="font-size:10px"><font color="#2F4F4F">红笺小字，说尽平生意。<br/>鸿雁在云鱼在水，惆怅此情难寄。<br/>             ——晏殊· 《清平乐》</font> </p></h1>
+                <h1 class="title" id="character" ><p style="font-size:10px"><font color="#FF00FF">红笺小字，说尽平生意。<br/>鸿雁在云鱼在水，惆怅此情难寄。<br/>             ——晏殊· 《清平乐》</font> </p></h1>
 
         </div>
 
-            <div class="footer__mid fn__flex-1 mobile__none">
-                <div class="ft__fade">分类</div>
-                <br>
-                    <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="36 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        人生苦短,我用Python</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="0 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        Java是世界上最好的语言</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="52 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        Linux系列</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/network"
-                       aria-label="4 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        Network系列</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/young"
-                       aria-label="8 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        江湖就是人情世故</a> &nbsp; &nbsp;
-            </div>
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                115
+                166
                 文章
             </a>
            <br>
-            <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> <span class="ft-gray">浏览</span>
+            <span data-uvstaturl="https://cuijianzhe.github.io">0</span> <span class="ft-gray">浏览</span>
  <br>
-            &copy; 2021
+            &copy; 2023
             <a class="ft__link" href="https://cuijianzhe.github.io">邯城往事</a>
-            <img style="width: 20px; height: 20px;" src="https://img.hacpai.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">冀ICP备19005901号-1</a> 
-
-<!--切换标签实现网页标题变化-->
-<script type="text/javascript">
-    /*自动刷新页面，避免无法访问*/
-    var OriginTitile = document.title;
-    var titleTime;
-    document.addEventListener('visibilitychange', function () {
-        if (document.hidden) {
-            document.title = '一杯茶，一包烟，混过一天是一天';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '哈哈，我是大佬ヾ(ﾟ∀ﾟゞ)';
-            titleTime = setTimeout(function () {
-                document.title = OriginTitile;
-            }, 3000);
-        }
-    });
-</script>
-<!--切换标签实现网页标题变化 结束-->
-
-
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '4e3eaf0bc17bd516ba5b',
-        clientSecret: '644d549c51d9fece70856677fc92411e6b6ced0e',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
-
+            <img style="width: 20px; height: 20px;" src="https://b3logfile.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">冀ICP备19005901号-1</a>
         </div>
     </div>
 </footer>
@@ -1397,68 +1313,37 @@ sleep 10; echo $(date +%s): END &gt;&gt; /loap/timing;']
   var Label = {
     speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources",
+    staticServePath: "https://cuijianzhe.github.io",
     luteAvailable: true,
-    hljsStyle: 'monokai',
+    hljsStyle: 'vs',
     langLabel: "zh_CN",
-    version: "4.3.1",
+    version: "4.4.0",
     staticSite: true,
     showCodeBlockLn: false,
-    articleId: "1587015956420",
+    articleId: "1587015956134",
   }
 </script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/skins/Pinghsu/js/common.min.js?1617776880435"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1701918811548"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
-<div class="solo-kanbanniang">
-    <div class="solo-kanbanniang__tip"></div>
-    <canvas id="soloKanbanniang" width="280" height="250"></canvas>
-    <div class="solo-kanbanniang__tool">
-        <svg id="soloKanbanniangHome" viewBox="0 0 32 32" width="100%" height="100%">
-            <path d="M32 18.967l-16-12.42-16 12.42v-5.064l16-12.42 16 12.42zM28 18.516v12h-8v-8h-8v8h-8v-12l12-9z"></path>
-        </svg>
-        <svg id="soloKanbanniangRSS" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M320.364 768q0 45.728-32 77.728t-77.728 32-77.728-32-32-77.728 32-77.728 77.728-32 77.728 32 32 77.728zM612.94 838.272q1.152 16-9.728 27.424-10.272 12-26.848 12h-77.152q-14.272 0-24.576-9.44t-11.424-23.712q-12.576-130.848-105.44-223.712t-223.712-105.44q-14.272-1.152-23.712-11.424t-9.44-24.576V402.24q0-16.576 12-26.848 9.728-9.728 24.576-9.728h2.848q91.424 7.424 174.848 46.016t148 103.712q65.152 64.576 103.712 148t46.016 174.848z m292.576 1.152q1.152 15.424-10.272 26.848-10.272 11.424-26.272 11.424h-81.728q-14.848 0-25.44-10.016t-11.136-24.288q-6.848-122.848-57.728-233.44t-132.288-192-192-132.288-233.44-58.272q-14.272-0.576-24.288-11.136t-10.016-24.864V109.664q0-16 11.424-26.272 10.272-10.272 25.152-10.272h1.728q149.728 7.424 286.56 68.576t243.136 168q106.848 106.272 168 243.136t68.576 286.56z"></path>
-        </svg>
-        <svg id="soloKanbanniangChat" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M802.42709 96.163153H219.476155c-84.48109 0-154.896836 71.746044-154.896836 157.840888v393.119449c0 86.072331 70.415746 157.819398 154.896836 157.819399h214.038818V925.470963s22.526039 40.168862 64.767096 5.734608c30.965246-25.819039 126.721123-91.828428 171.775248-123.385145h132.369773c84.502579 0 154.896836-83.21526 154.896836-157.839865V251.125481c0-86.094844-70.394257-154.962328-154.896836-154.962328zM301.144176 518.002714c-39.427988 0-70.416769-31.576159-70.416769-71.746044 0-40.168862 30.988782-71.746044 70.416769-71.746044 39.426965 0 70.393233 31.577183 70.393234 71.746044 0 40.169885-30.966269 71.746044-70.393234 71.746044z m208.411657 0c-39.450501 0-70.415746-31.576159-70.415746-71.746044 0-40.168862 30.965246-71.746044 70.415746-71.746044 39.405475 0 70.394257 31.577183 70.394257 71.746044 0 40.169885-30.988782 71.746044-70.394257 71.746044z m211.203236 0c-39.426965 0-70.416769-31.576159-70.416769-71.746044 0-40.168862 30.988782-71.746044 70.416769-71.746044s70.415746 31.577183 70.415746 71.746044c-0.001023 40.169885-30.988782 71.746044-70.415746 71.746044z"></path>
-        </svg>
-        <svg id="soloKanbanniangChange" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M936.672 193.216l-226.88-64c-8.704-2.528-18.112-1.12-25.824 3.776-7.68 4.864-12.896 12.736-14.432 21.728C655.712 236.928 595.328 288 512 288c-71.424 0-142.464-103.296-163.776-143.104-7.136-13.28-22.528-19.84-37.024-15.68l-224 64C73.472 197.152 64 209.728 64 224v256a31.93 31.93 0 0 0 11.712 24.736c7.392 6.08 17.152 8.512 26.56 6.624L224 487.04V832c0 52.928 43.072 96 96 96h384c52.928 0 96-43.072 96-96V519.04l121.728 24.352c9.44 1.92 19.2-0.544 26.56-6.624C955.68 530.656 960 521.6 960 512V224c0-14.336-9.536-26.912-23.328-30.784zM672 800H352c-17.664 0-32-14.304-32-32s14.336-32 32-32h320c17.696 0 32 14.304 32 32s-14.304 32-32 32z"></path>
-        </svg>
-        <svg id="soloKanbanniangPhoto" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M898.048 258.048q23.552-1.024 46.592 9.216t40.96 27.136 28.672 39.424 10.752 46.08l0 390.144q0 24.576-10.752 47.104t-28.672 40.448-40.96 28.16-47.616 10.24l-697.344 0q-24.576 0-48.64-10.24t-42.496-27.648-29.696-40.448-11.264-48.64l0-381.952q0-22.528 10.752-45.568t28.672-41.472 39.936-30.208 44.544-11.776l63.488 0 13.312-83.968q3.072-20.48 18.432-32.768t34.816-12.288l456.704 0q19.456 0 34.304 10.752t16.896 34.304l14.336 83.968 54.272 0zM548.864 712.704q40.96 0 77.824-15.872t63.488-42.496 42.496-62.976 15.872-77.312-15.872-77.312-42.496-62.976-63.488-42.496-77.824-15.872-77.312 15.872-63.488 42.496-43.008 62.976-15.872 77.312 15.872 77.312 43.008 62.976 63.488 42.496 77.312 15.872z"></path>
-        </svg>
-        <svg id="soloKanbanniangGithub" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M1024 524.8c0 114.346667-32.554667 217.216-97.706667 308.565333-65.066667 91.306667-149.162667 154.538667-252.288 189.610667-11.989333 2.304-20.778667 0.682667-26.325333-4.778667a27.605333 27.605333 0 0 1-8.362667-20.48v-144.213333c0-44.16-11.52-76.501333-34.645333-97.024 25.344-2.730667 48.085333-6.826667 68.309333-12.288a268.629333 268.629333 0 0 0 62.72-26.666667 187.434667 187.434667 0 0 0 53.973334-45.44c14.421333-18.005333 26.197333-41.898667 35.328-71.765333 9.088-29.824 13.653333-64.128 13.653333-102.826667 0-55.125333-17.536-102.058667-52.650667-140.8 16.426667-41.429333 14.677333-87.893333-5.333333-139.392-12.458667-4.096-30.464-1.578667-54.016 7.509334a355.328 355.328 0 0 0-61.312 30.08L640 271.274667a462.336 462.336 0 0 0-128-17.749334c-43.989333 0-86.656 5.930667-128 17.749334a589.824 589.824 0 0 0-28.330667-18.432c-11.776-7.253333-30.336-16.042667-55.68-26.325334-25.344-10.24-44.416-13.312-57.301333-9.216-19.584 51.498667-21.12 97.962667-4.693333 139.434667-35.114667 38.698667-52.650667 85.632-52.650667 140.757333 0 38.698667 4.565333 72.874667 13.653333 102.485334 9.130667 29.610667 20.778667 53.546667 34.986667 71.765333 14.250667 18.218667 32.128 33.493333 53.674667 45.781333 21.546667 12.288 42.453333 21.205333 62.677333 26.666667 20.224 5.461333 43.008 9.557333 68.309333 12.288-17.749333 16.384-28.629333 39.850667-32.64 70.4a130.005333 130.005333 0 0 1-29.994666 10.24c-10.666667 2.261333-23.338667 3.413333-37.973334 3.413333-14.72 0-29.269333-4.906667-43.690666-14.677333-14.464-9.813333-26.794667-24.064-36.992-42.709333a109.226667 109.226667 0 0 0-32.341334-35.541334c-13.141333-9.130667-24.106667-14.592-33.024-16.426666l-13.312-2.048c-9.344 0-15.786667 1.024-19.328 3.072-3.584 2.090667-4.693333 4.693333-3.328 7.893333 1.28 3.157333 3.328 6.4 5.973334 9.557333 2.688 3.2 5.546667 5.930667 8.661333 8.192l4.693333 3.413334c9.770667 4.565333 19.413333 13.226667 29.013334 25.984 9.514667 12.757333 16.512 24.362667 20.992 34.858666l6.656 15.701334c5.76 17.322667 15.530667 31.317333 29.312 42.026666 13.781333 10.666667 28.672 17.536 44.672 20.48 16 2.986667 31.445333 4.565333 46.336 4.821334 14.890667 0.213333 27.221333-0.597333 36.992-2.389334l15.36-2.730666c0 17.28 0.085333 37.546667 0.298666 60.8l0.341334 36.906666a27.050667 27.050667 0 0 1-8.661334 20.48c-5.76 5.461333-14.677333 7.082667-26.666666 4.778667-103.125333-35.072-187.221333-98.261333-252.330667-189.610667C32.554667 742.058667 0 639.146667 0 524.8c0-95.232 22.869333-183.04 68.693333-263.466667A516.266667 516.266667 0 0 1 254.976 70.4C333.44 23.466667 419.114667 0 512 0c92.885333 0 178.56 23.466667 256.981333 70.4a516.266667 516.266667 0 0 1 186.368 190.976C1001.130667 341.802667 1024 429.653333 1024 524.842667z"></path>
-        </svg>
-        <svg id="soloKanbanniangClose" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M517.572566143763 1018.6748601482986C238.26554897656422 1018.6748601482986 11.897910175114305 792.2714997690043 11.897910175114305 513.0002041796496c0-279.3070171671984 226.36763880144977-505.71037754649296 505.6746559686481-505.71037754649296 279.2712955893538 0 505.6746559686481 226.40336037929444 505.6746559686481 505.71037754649296C1023.2472221124112 792.2714997690043 796.8795833109612 1018.6748601482986 517.572566143763 1018.6748601482986zM754.7281214542927 339.25044954334646c13.752807470184345-13.752807470184345 9.680547595895998-40.186775075214015-9.073280772537204-58.94060344364717l-2.143294670678079-2.1075730928334457c-18.7538283684332-18.7538283684332-45.15207439561819-22.861809820566194-58.90488186580257-9.073280772537204l-168.21291007038468 168.24863164822932-180.42968969324974-180.46541127109438c-13.967136937252159-13.967136937252159-40.72259874288353-9.823433907274534-59.72647815622916 9.216167083915742l-2.143294670678079 2.143294670678079c-19.039600991190277 19.003879413345654-23.111860865478626 45.75934121897699-9.180445506071107 59.655035000539876l180.42968969324974 180.46541127109438-176.07165719620428 176.03593561835962c-13.788529048028984 13.824250625873615-9.716269173740633 40.151053497369375 9.073280772537204 58.94060344364717l2.1075730928334457 2.1075730928334457c18.7538283684332 18.7538283684332 45.15207439561819 22.897531398410823 58.90488186580257 9.073280772537204l176.10737877404887-176.10737877404887 170.39192631890742 170.42764789675192c13.967136937252159 13.931415359407513 40.686877165038865 9.85915548511917 59.690756578384516-9.180445506071107l2.1790162485227142-2.1790162485227142c19.039600991190277-18.968157835501014 23.147582443323273-45.72361964113239 9.180445506071107-59.690756578384516l-170.39192631890742-170.42764789675192L754.7281214542927 339.25044954334646z"></path>
-        </svg>
-    </div>
-</div>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/js/page.min.js?1617776880435', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1701918811548', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
-        "oId": "1587015956420",
+        "oId": "1587015956134",
         "blogHost": "https://cuijianzhe.github.io",
         "randomArticles1Label": "随机阅读：",
         "externalRelevantArticles1Label": "站外相关阅读："
     });
     $(document).ready(function () {
         page.load();
-    page.tips.externalRelevantArticlesDisplayCount = "5";
+    page.tips.externalRelevantArticlesDisplayCount = "0";
     page.loadRandomArticles('<h3>RECOMMEND POSTS</h3>');
-    page.loadExternalRelevantArticles("Linux,kubernets",
-    '<h3>HACPAI POSTS</h3>');
-    page.loadRelevantArticles('1587015956420', '<h3>RELEVANT POSTS</h3>');
+    page.loadRelevantArticles('1587015956134', '<h3>RELEVANT POSTS</h3>');
 Skin.initArticle()
     });
 </script>
@@ -1466,4 +1351,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 61ms, 2021/04/07 15:43:06 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 43ms, 2023/12/11 19:00:40 -->

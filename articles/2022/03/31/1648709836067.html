@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>面试官：用过Linux吗？ - 邯城往事</title><meta name="description" content="在 Linux 操作系统中，所有被操作系统管理的资源，例如网络接口卡、磁盘驱动器、打印机、输入输出设备、普通文件或是目录都被看作是一个文件。也就是说在 Linux 系统中有一个重要的概念：一切都是文件。其实这是 UNIX 哲学的一个体现，而 Linux 是重写 UNIX 而来，所以这个概念也就传承了下来。在 UNIX 系统中，把一切资源都看作是文件，包括硬件设备。UNIX 系统把每个硬件都看成是一个文件，通常称为设备文件，这样用户就可以用读写文件的方式实现对硬件的访问。 Linux 目录树 所有可操作的计算机资源都存在于目录树这个结构中，对计算资源的访问，可以看做是对这棵目录树的访问 Linux 文件系统的结构层次鲜明，就像一棵倒立的树，最顶层是其根目录： 常见目录说明： /bin： 存放二进制可执行文件(ls、cat、mkdir 等)，常用命令一般都在这里； /etc： 存放系统管理和配置文件； /home： 存放所有用户文件的根目录，是用户主目录的基点，比如用户 user 的主目录就是/home/user，可以用~user 表示； /usr ： 用于存放系统应用程序； /opt： 额外安装的可选应用程序包所放置的位置。...."/><meta property="og:description" content="在 Linux 操作系统中，所有被操作系统管理的资源，例如网络接口卡、磁盘驱动器、打印机、输入输出设备、普通文件或是目录都被看作是一个文件。也就是说在 Linux 系统中有一个重要的概念：一切都是文件。其实这是 UNIX 哲学的一个体现，而 Linux 是重写 UNIX 而来，所以这个概念也就传承了下来。在 UNIX 系统中，把一切资源都看作是文件，包括硬件设备。UNIX 系统把每个硬件都看成是一个文件，通常称为设备文件，这样用户就可以用读写文件的方式实现对硬件的访问。 Linux 目录树 所有可操作的计算机资源都存在于目录树这个结构中，对计算资源的访问，可以看做是对这棵目录树的访问 Linux 文件系统的结构层次鲜明，就像一棵倒立的树，最顶层是其根目录： 常见目录说明： /bin： 存放二进制可执行文件(ls、cat、mkdir 等)，常用命令一般都在这里； /etc： 存放系统管理和配置文件； /home： 存放所有用户文件的根目录，是用户主目录的基点，比如用户 user 的主目录就是/home/user，可以用~user 表示； /usr ： 用于存放系统应用程序； /opt： 额外安装的可选应用程序包所放置的位置。...."/>    <meta name="keywords" content="Solo,Java,博客,开源"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="https://unpkg.com"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"/><link rel="apple-touch-icon" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"><link rel="shortcut icon" type="image/x-icon" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="面试官：用过Linux吗？ - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2022/03/31/1648709836067.html?"/><meta property="og:image" content="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"/><link rel="search" type="application/opensearchdescription+xml" title="面试官：用过Linux吗？ - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2022/03/31/1648709836067.html">        <link rel="stylesheet"
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1701918811548"/>
+            <link rel="prev" title="TCP三次握手与四次挥手" href="https://cuijianzhe.github.io/articles/2022/03/24/1648101463008.html">
+            <link rel="next" title="java线上故障排查方案" href="https://cuijianzhe.github.io/articles/2022/03/31/1648720724120.html">
+    <script src="https://unpkg.com/vditor@3.8.15/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
+<body>
+<header class="header">
+    <div class="wrapper">
+        <a href="https://cuijianzhe.github.io" rel="start" class="header__logo">
+            <img src="https://b3logfile.com/avatar/1551626533851_1560155807399.gif?imageView2/1/w/128/h/128/interlace/0/q/100" alt="邯城往事"/>
+            邯城往事
+        </a>
+
+        <nav class="header__nav mobile__none">
+            <a href="https://cuijianzhe.github.io/tags.html" rel="section">
+                Tags
+            </a>
+            <a href="https://cuijianzhe.github.io/archives.html">
+                Archives
+            </a>
+            <a rel="archive" href="https://cuijianzhe.github.io/links.html">
+                Links
+            </a>
+        </nav>
+
+        <div class="header__bar fn__none" onclick="$(this).next().slideToggle()">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                <path fill="#444" d="M0 3h20v2h-20v-2zM0 9h20v2h-20v-2zM0 15h20v2h-20v-2z"></path>
+            </svg>
+        </div>
+        <main class="header__menu fn__none">
+            <ul>
+                    <li>
+                        <a href="/my-github-repos" target="_self" rel="section">
+                            我的开源
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://times.cjzshilong.cn/time/" target="_blank" rel="section">
+                            服务器倒计时
+                        </a>
+                    </li>
+                <li>
+                    <a href="https://cuijianzhe.github.io/tags.html" rel="section">
+                        Tags
+                    </a>
+                </li>
+                <li>
+                    <a href="https://cuijianzhe.github.io/archives.html">
+                        Archives
+                    </a>
+                </li>
+                <li>
+                    <a rel="archive" href="https://cuijianzhe.github.io/links.html">
+                        Links
+                    </a>
+                </li>
+                <li>
+                    <a rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">
+                        RSS
+                    </a>
+                </li>
+            </ul>
+        </main>
+    </div>
+</header>
+<main id="pjax" class="fn__flex-1">
+    
+    <div class="post wrapper wrapper--miner">
+        <h2 class="item__title">
+            <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2022/03/31/1648709836067.html">
+                面试官：用过Linux吗？
+            </a>
+        </h2>
+        <div class="ft__fade item__meta">
+                Published on
+            <time>
+                Mar 31, 2022
+            </time>
+            with <span data-uvstaturl="https://cuijianzhe.github.io/articles/2022/03/31/1648709836067.html">0</span> views
+                and <a href="#b3logsolocomments"><span data-uvstatcmt="1648709836137">0</span> comments</a>
+        </div>
+        <div class="item__tags">
+                <a rel="tag" class="tag tag--0" href="https://cuijianzhe.github.io/tags/Linux">
+                    <b># Linux</b>
+                </a>
+        </div>
+        <div class="vditor-reset">
+            <p class="indent--2"><img src="https://b3logfile.com/bing/20210224.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
+<blockquote>
+<p>在 Linux 操作系统中，所有被操作系统管理的资源，例如网络接口卡、磁盘驱动器、打印机、输入输出设备、普通文件或是目录都被看作是一个文件。也就是说在 Linux 系统中有一个重要的概念：一切都是文件。其实这是 UNIX 哲学的一个体现，而 Linux 是重写 UNIX 而来，所以这个概念也就传承了下来。在 UNIX 系统中，把一切资源都看作是文件，包括硬件设备。UNIX 系统把每个硬件都看成是一个文件，通常称为设备文件，这样用户就可以用读写文件的方式实现对硬件的访问。</p>
+</blockquote>
+<h5 id="Linux目录树">Linux 目录树</h5>
+<p class="indent--2">所有可操作的计算机资源都存在于目录树这个结构中，对计算资源的访问，可以看做是对这棵目录树的访问</p>
+<p class="indent--2">Linux 文件系统的结构层次鲜明，就像一棵倒立的树，最顶层是其根目录：<br>
+<img src="https://b3logfile.com/file/2022/03/image-20220331131757-qfg3xm8-65f3892f.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image20220331131757qfg3xm8.png"></p>
+<h5 id="常见目录说明-">常见目录说明：</h5>
+<ul>
+<li>/bin： 存放二进制可执行文件(ls、cat、mkdir 等)，常用命令一般都在这里；</li>
+<li>/etc： 存放系统管理和配置文件；</li>
+<li>/home： 存放所有用户文件的根目录，是用户主目录的基点，比如用户 user 的主目录就是/home/user，可以用~user 表示；</li>
+<li>/usr ： 用于存放系统应用程序；</li>
+<li>/opt： 额外安装的可选应用程序包所放置的位置。一般情况下，我们可以把 Tomcat 等都安装到这里；</li>
+<li>/proc： 虚拟文件系统目录，是系统内存的映射。可直接访问这个目录来获取系统信息；</li>
+<li>/root： 超级用户（系统管理员）的主目录（特权阶级 ^o^）；</li>
+<li>/sbin: 存放二进制可执行文件，只有 root 才能访问。这里存放的是系统管理员使用的系统级别的管理命令和程序。如 ifconfig 等；</li>
+<li>/dev： 用于存放设备文件；</li>
+<li>/mnt： 系统管理员安装临时文件系统的安装点，系统提供这个目录是让用户临时挂载其他的文件系统；</li>
+<li>/boot： 存放用于系统引导时使用的各种文件；</li>
+<li>/lib ： 存放着和系统运行相关的库文件 ；</li>
+<li>/tmp： 用于存放各种临时文件，是公用的临时文件存储点；</li>
+<li>/var： 用于存放运行时需要改变数据的文件，也是某些大文件的溢出区，比方说各种服务的日志文件（系统启动日志等。）等；</li>
+<li>/lost+found： 这个目录平时是空的，系统非正常关机而留下“无家可归”的文件（windows 下叫什么.chk）就在这里。</li>
+</ul>
+<h5 id="Linux基本命令">Linux 基本命令</h5>
+<h6 id="目录切换命令"><strong>目录切换命令</strong></h6>
+<ul>
+<li>cd usr ： 切换到该目录下 usr 目录</li>
+<li>cd ..（或 cd../） ： 切换到上一层目录</li>
+<li>cd / ： 切换到系统根目录</li>
+<li>cd ~ ： 切换到用户主目录</li>
+<li>cd - ： 切换到上一个操作所在目录</li>
+</ul>
+<h6 id="目录的操作命令-增删改查-"><strong>目录的操作命令(增删改查)</strong></h6>
+<ul>
+<li><code>mkdir 目录名称</code> ： 增加目录</li>
+<li><code>ls或者ll</code> （ll 是 ls -l 的别名，ll 命令可以看到该目录下的所有目录和文件的详细信息）：查看目录信息</li>
+<li><code>find 目录 参数</code> ： 寻找目录（查）<br>
+示例：<br>列出当前目录及子目录下所有文件和文件夹: <code>find .</code><br>在 /home 目录下查找以.txt 结尾的文件名: <code>find /home -name ".txt"</code><br>同上，但忽略大小写: <code>find /home -iname ".txt"</code><br>当前目录及子目录下查找所有以.txt 和.pdf 结尾的文件: <code>find . -name ".txt" -o -name ".pdf"</code></li>
+<li><code>mv 目录名称 新目录名称</code> ： 修改目录的名称（改）<br>
+注意：mv 的语法不仅可以对目录进行重命名而且也可以对各种文件，压缩包等进行 重命名的操<br>作。mv 命令用来对文件或目录重新命名，或者将文件从一个目录移到另一个目录中。后面会介绍<br>到 mv 命令的另一个用法。</li>
+<li><code>mv 目录名称 目录的新位置</code>： 移动目录的位置---剪切（改）<br>
+注意：mv 语法不仅可以对目录进行剪切操作，对文件和压缩包等都可执行剪切操作。另外 mv 与 cp<br>的结果不同，mv 好像文件“搬家”，文件个数并未增加。而 cp 对文件进行复制，文件个数增加了。</li>
+<li><code>cp -r 目录名称 目录拷贝的目标位置</code> ： 拷贝目录（改），-r 代表递归拷贝<br>
+注意：cp 命令不仅可以拷贝目录还可以拷贝文件，压缩包等，拷贝文件和压缩包时不 用写-r 递归</li>
+<li><code>rm [-rf] 目录</code> : 删除目录（删）</li>
+</ul>
+<h6 id="文件的操作命令-增删改查-"><strong>文件的操作命令(增删改查)</strong></h6>
+<ul>
+<li><code>touch 文件名称</code> : 文件的创建（增）</li>
+<li><code>cat/more/less/tail 文件名称</code>: 文件的查看（查）</li>
+<li><code>cat</code>： 查看显示文件内容<br><code>more</code>： 可以显示百分比，回车可以向下一行， 空格可以向下一页，q 可以退出查看<br><code>less</code>： 可以使用键盘上的 PgUp 和 PgDn 向上 和向下翻页，q 结束查看<br><code>tail-10</code>： 查看文件的后 10 行，Ctrl+C 结束<br>
+注意：命令 tail -f 文件 可以对某个文件进行动态监控，例如 Tomcat 的日志文件， 会随着程序的运<br>行，日志会变化，可以使用 tail -f catalina-2016-11-11.log 监控 文 件的变化</li>
+<li><code>vim</code> 文件 ： 修改文件的内容（改）<br>
+VIM 编辑器是 Linux 中的强大组件，是 vi 编辑器的加强版，VIM 编辑器的命令和快捷方式有很多，但<br>此处不一一阐述，大家也无需研究的很透彻，使用 VIM 编辑修改文件的方式基本会使用就可以了。<br>在实际开发中，使用 VIM 编辑器主要作用就是修改配置文件，下面是一般步骤：<br>VIM 文件------&gt; 进入文件-----&gt; 命令模式------&gt; 按 i 进入编辑模式-----&gt; 编辑文件 -------&gt; 按 Esc 进入底行<br>模式-----&gt; 输入：wq/q! （输入 wq 代表写入内容并退出，即保存；输入 q!代表强制退出不保存。）</li>
+<li><code>rm -rf 文件</code> ： 删除文件（删）</li>
+</ul>
+<h6 id="压缩文件的操作命令"><strong>压缩文件的操作命令</strong></h6>
+<p class="indent--2">打包并压缩文件：</p>
+<p class="indent--2">Linux 中的打包文件一般是以.tar 结尾的，压缩的命令一般是以.gz 结尾的。</p>
+<p class="indent--2">而一般情况下打包和压缩是一起进行的，打包并压缩后的文件的后缀名一般.tar.gz。</p>
+<p class="indent--2">命令： <code>tar -zcvf 打包压缩后的文件名 要打包压缩的文件</code></p>
+<p class="indent--2">其中：<br> z：调用 gzip 压缩命令进行压缩<br> c：打包文件<br> v：显示运行过程<br> f：指定文件名<br>比如：假如 test 目录下有三个文件分别是：aaa.txt bbb.txt ccc.txt，如果我们要打包 test 目录并指定压<br>缩后的压缩包名称为 test.tar.gz 可以使用命令： <code>tar -zcvf test.tar.gz aaa.txt bbb.txt ccc.txt</code> 或： <code>tar -zcvf test.tar.gz /test/</code></p>
+<p class="indent--2">解压压缩包：</p>
+<p class="indent--2">命令：tar [-xvf] 压缩文件<br>其中：x：代表解压<br>示例：<br>1 将/test 下的 test.tar.gz 解压到当前目录下可以使用命令： tar -xvf test.tar.gz<br>2 将/test 下的 test.tar.gz 解压到根目录/usr 下: tar -xvf test.tar.gz -C /usr （- C 代表指定解压的位置）</p>
+<h5 id="Linux的权限命令">Linux 的权限命令</h5>
+<blockquote>
+<p>操作系统中每个文件都拥有特定的权限、所属用户和所属组。权限是操作系统用来限制资源访问的机<br>制，在 Linux 中权限一般分为读(readable)、写(writable)和执行(excutable)，分为三组。分别对应文件<br>的属主(owner)，属组(group)和其他用户(other)，通过这样的机制来限制哪些用户、哪些组可以对特定<br>的文件进行什么样的操作。通过 ls -l 命令我们可以 查看某个目录下的文件或目录的权限</p>
+</blockquote>
+<p class="indent--2">示例：在随意某个目录下 <code>ls -l</code><br>
+<img src="https://b3logfile.com/file/2022/03/image-20220331135903-s78omys-9a7b0738.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image20220331135903s78omys.png"></p>
+<p class="indent--2">第一列的内容的信息解释如下：<br>
+<img src="https://b3logfile.com/file/2022/03/image-20220331135939-de6e6lm-0271a240.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image20220331135939de6e6lm.png"></p>
+<p class="indent--2">下面将详细讲解文件的类型、Linux 中权限以及文件有所有者、所在组、其它组具体是什么？</p>
+<p class="indent--2"><strong>文件的类型</strong>：</p>
+<ul>
+<li>d： 代表目录</li>
+<li>-： 代表文件</li>
+<li>l： 代表软链接（可以认为是 window 中的快捷方式）</li>
+</ul>
+<p class="indent--2"><strong>Linux 中权限分为以下几种</strong>：</p>
+<ul>
+<li>r：代表权限是可读，r 也可以用数字 4 表示</li>
+<li>w：代表权限是可写，w 也可以用数字 2 表示</li>
+<li>x：代表权限是可执行，x 也可以用数字 1 表示</li>
+</ul>
+<p class="indent--2"><strong>文件和目录权限的区别</strong>：</p>
+<p class="indent--2">对文件和目录而言，读写执行表示不同的意义。</p>
+<p class="indent--2">对于文件：</p>
+<table>
+<thead>
+<tr>
+<th align="left">权限名称</th>
+<th align="right">可执行操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">r</td>
+<td align="right">可以使用 cat 查看文件的内容</td>
+</tr>
+<tr>
+<td align="left">w</td>
+<td align="right">可以修改文件的内容</td>
+</tr>
+<tr>
+<td align="left">x</td>
+<td align="right">可以将其运行为二进制文件</td>
+</tr>
+</tbody>
+</table>
+<p class="indent--2">对于目录：</p>
+<table>
+<thead>
+<tr>
+<th align="left">权限名称</th>
+<th align="right">可执行操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">r</td>
+<td align="right">可以查看目录下列表</td>
+</tr>
+<tr>
+<td align="left">w</td>
+<td align="right">可以创建和删除目录下文件</td>
+</tr>
+<tr>
+<td align="left">x</td>
+<td align="right">可以使用 cd 进入目录</td>
+</tr>
+</tbody>
+</table>
+<p class="indent--2">需要注意的是超级用户可以无视普通用户的权限，即使文件目录权限是 000，依旧可以访问。<br>在 Linux 中的每个用户必须属于一个组，不能独立于组外。在 Linux 中每个文件有所有者、所在组、其它<br>组的概念。</p>
+<ul>
+<li>所有者<br>
+一般为文件的创建者，谁创建了该文件，就天然的成为该文件的所有者，用 <code>ls-ahl</code> 命令可以看到文<br>件的所有者 也可以使用 <code>chown 用户名 文件名</code> 来修改文件的所有者 。</li>
+<li>文件所在组<br>
+当某个用户创建了一个文件后，这个文件的所在组就是该用户所在的组 用 <code>ls -ahl</code> 命令可以看到文<br>件的所有组 也可以使用 <code>chgrp 组名 文件名</code> 来修改文件所在的组。</li>
+<li>其它组<br>
+除开文件的所有者和所在组的用户外，系统的其它用户都是文件的其它组</li>
+</ul>
+<p class="indent--2"><strong>修改文件/目录的权限</strong>：</p>
+<p class="indent--2">修改文件/目录的权限的命令： chmod</p>
+<p class="indent--2">示例：修改/test 下的 aaa.txt 的权限为属主有全部权限，属主所在的组有读写权限，其他用户只有读的权限<br><code>chmod u=rwx,g=rw,o=r aaa.txt</code> 或者可以写成 <code>chmod 764 aaa.txt</code><br><code>chmod -R u=rwx,g=rwx,o=rwx ./log</code> 递归给 log 目录下的所有文件授权</p>
+<p class="indent--2">补充一个比较常用的东西:</p>
+<p class="indent--2">假如我们装了一个 zookeeper，我们每次开机到要求其自动启动该怎么办？</p>
+<ol>
+<li>新建一个脚本 zookeeper</li>
+<li>为新建的脚本 zookeeper 添加可执行权限，命令是: <code>chmod +x zookeeper</code></li>
+<li>把 zookeeper 这个脚本添加到开机启动项里面，命令是： <code>chkconfig --add zookeeper</code></li>
+<li>如果想看看是否添加成功，命令是： <code>chkconfig --list</code></li>
+</ol>
+<h6 id="Linux-用户管理">Linux 用户管理</h6>
+<p class="indent--2">Linux 系统是一个多用户多任务的分时操作系统，任何一个要使用系统资源的用户，都必须首先向系统<br>
+管理员申请一个账号，然后以这个账号的身份进入系统。<br>
+用户的账号一方面可以帮助系统管理员对使用系统的用户进行跟踪，并控制他们对系统资源的访问；另<br>
+一方面也可以帮助用户组织文件，并为用户提供安全性保护。</p>
+<p class="indent--2"><strong>Linux 用户管理相关命令</strong>:</p>
+<ul>
+<li><code>useradd 选项 用户名</code> :添加用户账号</li>
+<li><code>userdel 选项 用户名</code> :删除用户帐号</li>
+<li><code>usermod 选项 用户名</code> :修改帐号</li>
+<li><code>passwd 用户名</code> :更改或创建用户的密码</li>
+<li><code>passwd -S 用户名</code> :显示用户账号密码信息</li>
+<li><code>passwd -d 用户名</code> : 清除用户密码</li>
+</ul>
+<blockquote>
+<p>useradd 命令用于 Linux 中创建的新的系统用户。useradd 可用来建立用户帐号。帐号建好之后，再用<br>
+passwd 设定帐号的密码．而可用 userdel 删除帐号。使用 useradd 指令所建立的帐号，实际上是保存<br>
+在/etc/passwd 文本文件中。<br>
+passwd 命令用于设置用户的认证信息，包括用户密码、密码过期时间等。系统管理者则能用它管理系<br>
+统用户的密码。只有管理者可以指定用户名称，一般用户只能变更自己的密码。</p>
+</blockquote>
+<h6 id="Linux系统用户组的管理">Linux 系统用户组的管理</h6>
+<p class="indent--2">每个用户都有一个用户组，系统可以对一个用户组中的所有用户进行集中管理。不同 Linux 系统对用户<br>
+组的规定有所不同，如 Linux 下的用户属于与它同名的用户组，这个用户组在创建用户时同时创建。<br>
+用户组的管理涉及用户组的添加、删除和修改。组的增加、删除和修改实际上就是对/etc/group 文件的<br>
+更新。</p>
+<p class="indent--2">Linux 系统用户组的管理相关命令:</p>
+<ul>
+<li><code>groupadd 选项 用户组</code> :增加一个新的用户组</li>
+<li><code>groupdel 用户组</code> :要删除一个已有的用户组</li>
+<li><code>groupmod 选项 用户组</code> : 修改用户组的属性</li>
+</ul>
+<h6 id="其他常用命令"><strong>其他常用命令</strong></h6>
+<p class="indent--2"><code>ps -ef</code></p>
+<blockquote>
+<p>-A	显示所有进程，同 -e<br>
+-N	显示与指定参数不符的所有进程（默认显示除当前终端下的程序外所有程序），同 --deselect<br>
+-a	显示除控制进程和无终端进程外的所有进程<br>
+-d	显示除控制进程外的所有进程<br>
+-e	显示所有进程，同 -A<br>
+-C cmdlist	显示包含在 cmdlist 列表中的进程<br>
+-G grplist	显示组 ID 包含在 grplist 列表中的进程<br>
+-U userlist	显示属主用户 ID 包含在 userlist 列表中的进程，同 --User<br>
+-g grplist	显示会话或组 ID 在 grplist 列表中的进程（到底是会话 ID 还是有有效组 ID 取决与具体 Linux 发行版）<br>
+-p pidlist	显示 PID 在 pidlist 列表中的进程，同 p 和 --pid<br>
+-s sesslist	显示会话 ID 在 sesslist 列表中的进程<br>
+-t ttylist	显示终端 ID 在 ttylist 列表中的进程，同 t 和 --tty<br>
+-u userlist	显示有效用户 ID 在 userlist 列表中的进程，同 U 和 --user<br>
+-F	显示更多额外输出（相较于 -f 参数）<br>
+-O format	显示默认的输出列以及 format 列表指定的特定列<br>
+-M	显示进程的安全信息<br>
+-c	显示进程的额外调度信息<br>
+-f	显示完整格式的输出<br>
+-j	显示任务信息<br>
+-l	显示长列表<br>
+-o format	仅显示由 format 指定的列，同 o 和 --format<br>
+-y	不显示进程标记（process flag，表明进程状态）<br>
+-Z	显示安全标签（security context/label）信息<br>
+-H	用层级格式（树状格式，表明进程间的父子关系）来显示进程<br>
+-n namelist	设定名称列表文件路径（有些 Linux 发行版不支持）<br>
+-w	采用宽输出模式，不限宽度显示<br>
+-L	显示进程中的线程<br>
+-V	显示 ps 命令的版本号</p>
+</blockquote>
+<p class="indent--2"><code>netstat -atunlp</code>,各参数含义如下:</p>
+<p class="indent--2"><code>netstat -an|grep 8080</code></p>
+<blockquote>
+<p>-t : 指明显示 TCP 端口<br>
+-u : 指明显示 UDP 端口<br>
+-l : 仅显示监听套接字(LISTEN 状态的套接字)<br>
+-p : 显示进程标识符和程序名称，每一个套接字/端口都属于一个程序<br>
+-n : 不进行 DNS 解析<br>
+-a 显示所有连接的端口</p>
+</blockquote>
+<p class="indent--2"><code>lsof -i:8080</code></p>
+<p class="indent--2"><code>yum install lsof</code></p>
+<blockquote>
+<p>lsof 的作用是列出当前系统打开文件(list open files)，不过通过 <code>-i</code> 参数也能查看端口的连接情况，-i 后跟冒号端口可以查看指定端口信息，直接-i 是系统当前所有打开的端口<br>
+-a 列出打开文件存在的进程<br>
+-c&lt; 进程名 &gt; 列出指定进程所打开的文件<br>
+-g  列出 GID 号进程详情<br>
+-d&lt; 文件号 &gt; 列出占用该文件号的进程<br>
++d&lt; 目录 &gt;  列出目录下被打开的文件<br>
++D&lt; 目录 &gt;  递归列出目录下被打开的文件<br>
+-n&lt; 目录 &gt;  列出使用 NFS 的文件<br>
+-i&lt; 条件 &gt;  列出符合条件的进程。（4、6、协议、:端口、 @ip ）<br>
+-p&lt; 进程号 &gt; 列出指定进程号所打开的文件<br>
+-u  列出 UID 号进程详情<br>
+-h 显示帮助信息<br>
+-v 显示版本信息<br>
+ln 命令</p>
+</blockquote>
+<p class="indent--2"><strong>功能：</strong> 为某一个文件在另外一个位置建立一个链接，这个命令最常用的参数是-s，具体用法是：ln –s 源文件 目标文件。-s 是代号（symbolic）的意思。</p>
+<p class="indent--2"><strong>优点：</strong> 当我们需要在不同的目录，用到相同的文件时，我们不需要在每一个需要的目录下都放一个必须相同的文件，我们只要在某个固定的目录，放上该文件，然后在 其它的目录下用 ln 命令链接（link）它就可以，不必重复的占用磁盘空间。</p>
+<p class="indent--2"><strong>注意：</strong></p>
+<ul>
+<li>ln 命令会保持每一处链接文件的同步性，也就是说，不论你改动了哪一处，其它的文件都会发生相同的变化；</li>
+<li>ln 的链接又分为<strong>软链接</strong>和<strong>硬链接</strong>两种，软链接就是 ln –s ，它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，硬链接 ln ，没有参数-s， 它会在你选定的位置上生成一个和源文件大小相同的文件，无论是软链接还是硬链接，文件都保持同步变化。</li>
+<li>如果你用 ls 察看一个目录时，发现有的文件后面有一个 @ 的符号，那就是一个用 ln 命令生成的文件，用 ls –l 命令去察看，就可以看到显示的 link 的路径了。</li>
+<li>不论是硬链接或软链接都不会将原本的档案复制一份，只会占用非常少量的磁碟空间。</li>
+</ul>
+<p class="indent--2"><strong>说明 :</strong> Linux/Unix 档案系统中，有所谓的链接(link)，我们可以将其视为档案的别名，而链接又可分为两种 : 硬链接(hard link)与软链接(symbolic link)，硬链接的意思是一个档案可以有多个名称，而软链接的方式则是产生一个特殊的档案，该档案的内容是指向另一个档案的位置。硬链接是存在同一个档案系统中，而软链接却可以跨越不同的档案系统。</p>
+<blockquote>
+<p>-f : 链接时先将与 dist 同档名的档案删除<br>
+-d : 允许系统管理者硬链接自己的目录<br>
+-i : 在删除与 dist 同档名的档案时先进行询问<br>
+-n : 在进行软链接时，将 dist 视为一般的档案<br>
+-s : 进行软链接(symbolic link)<br>
+-v : 在链接之前显示其档名<br>
+-b : 将在链接时会被覆写或删除的档案进行备份<br>
+-S SUFFIX : 将备份的档案都加上 SUFFIX 的字尾<br>
+-V METHOD : 指定备份的方式<br>
+--help : 显示辅助说明<br>
+--version : 显示版本</p>
+</blockquote>
+                <div>
+                    <hr>
+
+标题：面试官：用过Linux吗？<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2022/03/31/1648709836067.html" target="_blank">https://cuijianzhe.github.io/articles/2022/03/31/1648709836067.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+                </div>
+        </div>
+    </div>
+    <div class="post__toc">
+<ul class="article__toc">
+        <li class="toc__h5">
+            <a href="#Linux目录树">Linux 目录树</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#常见目录说明-">常见目录说明：</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#Linux基本命令">Linux 基本命令</a>
+        </li>
+        <li class="toc__h6">
+            <a href="#目录切换命令">目录切换命令</a>
+        </li>
+        <li class="toc__h6">
+            <a href="#目录的操作命令-增删改查-">目录的操作命令(增删改查)</a>
+        </li>
+        <li class="toc__h6">
+            <a href="#文件的操作命令-增删改查-">文件的操作命令(增删改查)</a>
+        </li>
+        <li class="toc__h6">
+            <a href="#压缩文件的操作命令">压缩文件的操作命令</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#Linux的权限命令">Linux 的权限命令</a>
+        </li>
+        <li class="toc__h6">
+            <a href="#Linux-用户管理">Linux 用户管理</a>
+        </li>
+        <li class="toc__h6">
+            <a href="#Linux系统用户组的管理">Linux 系统用户组的管理</a>
+        </li>
+        <li class="toc__h6">
+            <a href="#其他常用命令">其他常用命令</a>
+        </li>
+</ul>    </div>
+    <div class="body--gray post__gray">
+        <div class="wrapper comment">
+                <div id="gitalk-container" style="padding: 30px 0;"></div>
+                <div id="b3logsolocomments"></div>
+                <div id="vcomment" style="padding: 30px 0;" data-name="cuijianzhe" data-postId="1648709836137"></div>
+
+            <div class="post__list fn__flex">
+                <div class="fn__flex-1">
+                    <div id="externalRelevantArticles"></div>
+                </div>
+                <div class="post__list-mid fn__flex-1">
+                    <div id="randomArticles"></div>
+                </div>
+                <div class="fn__flex-1">
+                    <div id="relevantArticles"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="post__fix">
+        <div class="wrapper">
+            <span class="post__share mobile__none">
+                Share
+                <span class="tag tag--4" data-type="weibo">WeiBo</span>
+                <span class="tag tag--5" data-type="twitter">Twitter</span>
+                <span class="tag tag--6" data-type="qqz">QZone</span>
+                <span class="post__code tag tag--7"
+                      data-type="wechat"
+                      data-title="面试官：用过Linux吗？"
+                      data-blogtitle="邯城往事"
+                      data-url="https://cuijianzhe.github.io/articles/2022/03/31/1648709836067.html"
+                      data-avatar="https://b3logfile.com/avatar/1551626533851_1560155807399.gif?imageView2/1/w/128/h/128/interlace/0/q/100">
+                    WeChat
+                    <span class="qrcode"></span>
+                </span>
+            </span>
+            <span class="post__arrow">
+                    <a href="https://cuijianzhe.github.io/articles/2022/03/24/1648101463008.html" rel="prev"
+                       class="vditor-tooltipped__n vditor-tooltipped"
+                       pjax-title="TCP三次握手与四次挥手"
+                       aria-label="旧一篇: TCP三次握手与四次挥手">←</a>
+
+                    <a href="https://cuijianzhe.github.io/articles/2022/03/31/1648720724120.html" rel="next"
+                       class="vditor-tooltipped__n vditor-tooltipped"
+                       pjax-title="java线上故障排查方案"
+                       aria-label="新一篇: java线上故障排查方案">→</a>
+                <a href="javascript:Util.goTop()" class="vditor-tooltipped__n vditor-tooltipped"
+                   aria-label="移动到顶部">↑</a>
+                <a href="javascript:Util.goBottom()" class="vditor-tooltipped__n vditor-tooltipped"
+                   aria-label="移动到底部">↓</a>
+            </span>
+        </div>
+    </div>
+    
+</main>
+<footer class="footer">
+    <div class="ft__center">
+    <a href="https://ld246.com/member/cuijianzhe"
+       aria-label="https://ld246.com/member/cuijianzhe"
+       class="vditor-tooltipped__n vditor-tooltipped  user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+        <a href="https://github.com/cuijianzhe"
+           aria-label="https://github.com/cuijianzhe"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site"
+           target="_blank" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
+        </a>
+
+        <a href="https://twitter.com/JianzheC"
+           aria-label="https://twitter.com/JianzheC"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32.003 6.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
+            </svg>
+        </a>
+        <a href="https://weibo.com/3796930704"
+           aria-label="https://weibo.com/3796930704"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+                <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+                <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+                <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+            </svg>
+        </a>
+        <a href="https://www.zhihu.com/people/wen-yang-24-36"
+           aria-label="https://www.zhihu.com/people/wen-yang-24-36"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32 26.67c0 2.931-2.382 5.33-5.33 5.33h-21.339c-2.948 0-5.33-2.382-5.33-5.33v-21.339c0-2.948 2.382-5.33 5.33-5.33h21.339c2.948 0 5.33 2.382 5.33 5.33v21.339zM12.358 17.191h4.713c0-1.114-0.531-1.748-0.531-1.748h-4.079c0.103-2.005 0.189-4.576 0.223-5.536h3.874s-0.017-1.645-0.463-1.645h-6.822s0.411-2.142 0.96-3.085c0 0-2.040-0.12-2.742 2.605-0.686 2.725-1.731 4.354-1.851 4.662s0.6 0.137 0.891 0c0.309-0.137 1.663-0.617 2.057-2.537h2.108c0.034 1.2 0.12 4.885 0.086 5.536h-4.336c-0.6 0.446-0.823 1.748-0.823 1.748h4.971c-0.206 1.371-0.566 3.137-1.080 4.062-0.806 1.491-1.234 2.828-4.131 5.176 0 0-0.48 0.36 0.994 0.223 1.474-0.12 2.845-0.514 3.839-2.434 0.514-0.994 1.011-2.28 1.423-3.565l4.079 4.713s0.548-1.268 0.137-2.657l-3.034-3.394-1.028 0.754c0.291-0.994 0.497-1.988 0.548-2.845 0.017 0.017 0.017 0 0.017-0.034zM18.048 7.936v16.3h1.714l0.703 1.954 2.965-1.954h3.754v-16.3h-9.136zM25.401 22.487h-1.937l-2.434 1.611-0.566-1.611h-0.6v-12.735h5.553v12.735h-0.017z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=598941324"
+           aria-label="598941324"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+        <a href="javascript:void(0)"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" aria-label="cjz5989">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+            </svg>
+        </a>
+    </div>
+    <nav class="footer__nav mobile__none">
+            <a class="ft__link" href="/my-github-repos" target="_self" rel="section">
+                我的开源
+            </a>
+            <a class="ft__link" href="http://times.cjzshilong.cn/time/" target="_blank" rel="section">
+                服务器倒计时
+            </a>
+        <a class="ft__link" rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">RSS</a>
+    </nav>
+    <div class="footer__border mobile__none"></div>
+    <div class="wrapper fn__flex">
+        <div class="fn__flex-1 mobile__none">
+            <div class="ft__fade">cuijianzhe - 来自邯郸社畜的呐喊</div>
+            <br>
+                <h1 class="title" id="character" ><p style="font-size:10px"><font color="#FF00FF">红笺小字，说尽平生意。<br/>鸿雁在云鱼在水，惆怅此情难寄。<br/>             ——晏殊· 《清平乐》</font> </p></h1>
+
+        </div>
+
+
+        <div class="fn__flex-1 footer__copyright">
+            <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
+                166
+                文章
+            </a>
+           <br>
+            <span data-uvstaturl="https://cuijianzhe.github.io">0</span> <span class="ft-gray">浏览</span>
+ <br>
+            &copy; 2023
+            <a class="ft__link" href="https://cuijianzhe.github.io">邯城往事</a>
+            <img style="width: 20px; height: 20px;" src="https://b3logfile.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">冀ICP备19005901号-1</a>
+        </div>
+    </div>
+</footer>
+<script>
+  var Label = {
+    speech: true,
+    servePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cuijianzhe.github.io",
+    luteAvailable: true,
+    hljsStyle: 'vs',
+    langLabel: "zh_CN",
+    version: "4.4.0",
+    staticSite: true,
+    showCodeBlockLn: false,
+    articleId: "1648709836137",
+  }
+</script>
+<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1701918811548"
+        charset="utf-8"></script>
+
+
+
+<script type="text/javascript">
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1701918811548', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论不能为空",
+        "oId": "1648709836137",
+        "blogHost": "https://cuijianzhe.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "0";
+    page.loadRandomArticles('<h3>RECOMMEND POSTS</h3>');
+    page.loadRelevantArticles('1648709836137', '<h3>RELEVANT POSTS</h3>');
+Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 43ms, 2023/12/11 19:00:38 -->

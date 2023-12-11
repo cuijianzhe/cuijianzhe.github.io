@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>HTTP 响应代码 - 邯城往事</title><meta name="description" content="HTTP 响应状态代码指示特定 HTTP 请求是否已成功完成。响应分为五类：信息响应(100–199)，成功响应(200–299)，重定向(300–399)，客户端错误(400–499)和服务器错误 (500–599)。状态代码由 section 10 of RFC 2616 定义 信息响应 100 Continue 这个临时响应表明，迄今为止的所有内容都是可行的，客户端应该继续请求，如果已经完成，则忽略它。101 Switching Protocol 该代码是响应客户端的 Upgrade 标头发送的，并且指示服务器也正在切换的协议。102 Processing (WebDAV)此代码表示服务器已收到并正在处理该请求，但没有响应可用。103 Early Hints 此状态代码主要用于与 Link 链接头一起使用，以允许用户代理在服务器仍在准备响应时开始预加载资源。 成功响应 200 OK 请求成功。成功的含义取决于 HTTP 方法： GET：资源已被提取并在消息正文中传输。 HEAD：实体标头位于消息正文中。 POST：描述动作结果的资源在消息体中传输。 TRACE：消息正文包含服务器收到的请求消息...."/><meta property="og:description" content="HTTP 响应状态代码指示特定 HTTP 请求是否已成功完成。响应分为五类：信息响应(100–199)，成功响应(200–299)，重定向(300–399)，客户端错误(400–499)和服务器错误 (500–599)。状态代码由 section 10 of RFC 2616 定义 信息响应 100 Continue 这个临时响应表明，迄今为止的所有内容都是可行的，客户端应该继续请求，如果已经完成，则忽略它。101 Switching Protocol 该代码是响应客户端的 Upgrade 标头发送的，并且指示服务器也正在切换的协议。102 Processing (WebDAV)此代码表示服务器已收到并正在处理该请求，但没有响应可用。103 Early Hints 此状态代码主要用于与 Link 链接头一起使用，以允许用户代理在服务器仍在准备响应时开始预加载资源。 成功响应 200 OK 请求成功。成功的含义取决于 HTTP 方法： GET：资源已被提取并在消息正文中传输。 HEAD：实体标头位于消息正文中。 POST：描述动作结果的资源在消息体中传输。 TRACE：消息正文包含服务器收到的请求消息...."/>    <meta name="keywords" content="Solo,Java,博客,开源"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="https://unpkg.com"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"/><link rel="apple-touch-icon" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"><link rel="shortcut icon" type="image/x-icon" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="HTTP 响应代码 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2021/03/16/1615856788363.html?"/><meta property="og:image" content="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"/><link rel="search" type="application/opensearchdescription+xml" title="HTTP 响应代码 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2021/03/16/1615856788363.html">        <link rel="stylesheet"
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1701918811548"/>
+            <link rel="prev" title="2021年两会闭幕" href="https://cuijianzhe.github.io/articles/2021/03/13/1615606827047.html">
+            <link rel="next" title="redis批量修改查询key" href="https://cuijianzhe.github.io/articles/2021/04/03/1617425259423.html">
+    <script src="https://unpkg.com/vditor@3.8.15/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
+<body>
+<header class="header">
+    <div class="wrapper">
+        <a href="https://cuijianzhe.github.io" rel="start" class="header__logo">
+            <img src="https://b3logfile.com/avatar/1551626533851_1560155807399.gif?imageView2/1/w/128/h/128/interlace/0/q/100" alt="邯城往事"/>
+            邯城往事
+        </a>
+
+        <nav class="header__nav mobile__none">
+            <a href="https://cuijianzhe.github.io/tags.html" rel="section">
+                Tags
+            </a>
+            <a href="https://cuijianzhe.github.io/archives.html">
+                Archives
+            </a>
+            <a rel="archive" href="https://cuijianzhe.github.io/links.html">
+                Links
+            </a>
+        </nav>
+
+        <div class="header__bar fn__none" onclick="$(this).next().slideToggle()">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                <path fill="#444" d="M0 3h20v2h-20v-2zM0 9h20v2h-20v-2zM0 15h20v2h-20v-2z"></path>
+            </svg>
+        </div>
+        <main class="header__menu fn__none">
+            <ul>
+                    <li>
+                        <a href="/my-github-repos" target="_self" rel="section">
+                            我的开源
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://times.cjzshilong.cn/time/" target="_blank" rel="section">
+                            服务器倒计时
+                        </a>
+                    </li>
+                <li>
+                    <a href="https://cuijianzhe.github.io/tags.html" rel="section">
+                        Tags
+                    </a>
+                </li>
+                <li>
+                    <a href="https://cuijianzhe.github.io/archives.html">
+                        Archives
+                    </a>
+                </li>
+                <li>
+                    <a rel="archive" href="https://cuijianzhe.github.io/links.html">
+                        Links
+                    </a>
+                </li>
+                <li>
+                    <a rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">
+                        RSS
+                    </a>
+                </li>
+            </ul>
+        </main>
+    </div>
+</header>
+<main id="pjax" class="fn__flex-1">
+    
+    <div class="post wrapper wrapper--miner">
+        <h2 class="item__title">
+            <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2021/03/16/1615856788363.html">
+                HTTP 响应代码
+            </a>
+        </h2>
+        <div class="ft__fade item__meta">
+                Published on
+            <time>
+                Mar 16, 2021
+            </time>
+            with <span data-uvstaturl="https://cuijianzhe.github.io/articles/2021/03/16/1615856788363.html">0</span> views
+                and <a href="#b3logsolocomments"><span data-uvstatcmt="1615856788004">0</span> comments</a>
+        </div>
+        <div class="item__tags">
+                <a rel="tag" class="tag tag--0" href="https://cuijianzhe.github.io/tags/java">
+                    <b># java</b>
+                </a>
+        </div>
+        <div class="vditor-reset">
+            <p class="indent--2"><img src="https://b3logfile.com/bing/20200616.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
+<p class="indent--2">HTTP 响应状态代码指示特定 <a href="https://developer.mozilla.org/zh-cn/HTTP" title="zh-CN/HTTP" target="_blank">HTTP</a> 请求是否已成功完成。响应分为五类：信息响应(<code>100</code>–<code>199</code>)，成功响应(<code>200</code>–<code>299</code>)，重定向(<code>300</code>–<code>399</code>)，客户端错误(<code>400</code>–<code>499</code>)和服务器错误 (<code>500</code>–<code>599</code>)。状态代码由 <a href="https://tools.ietf.org/html/rfc2616#section-10" target="_blank">section 10 of RFC 2616</a> 定义</p>
+<h2 id="信息响应"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status#%E4%BF%A1%E6%81%AF%E5%93%8D%E5%BA%94" title="Permalink to 信息响应" target="_blank">信息响应</a></h2>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/100" target="_blank"><code>100 Continue</code></a>这个临时响应表明，迄今为止的所有内容都是可行的，客户端应该继续请求，如果已经完成，则忽略它。<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/101" target="_blank"><code>101 Switching Protocol</code></a>该代码是响应客户端的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Upgrade" target="_blank"><code>Upgrade</code></a> 标头发送的，并且指示服务器也正在切换的协议。<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/102" target="_blank"><code>102 Processing</code></a> (<a href="https://developer.mozilla.org/en-US/docs/Glossary/WebDAV" target="_blank">WebDAV</a>)此代码表示服务器已收到并正在处理该请求，但没有响应可用。<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/103" target="_blank"><code>103 Early Hints</code></a> 此状态代码主要用于与<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Link" target="_blank"><code>Link</code></a> 链接头一起使用，以允许用户代理在服务器仍在准备响应时开始预加载资源。</p>
+<h2 id="成功响应"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status#%E6%88%90%E5%8A%9F%E5%93%8D%E5%BA%94" title="Permalink to 成功响应" target="_blank">成功响应</a></h2>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/200" target="_blank"><code>200 OK</code></a>请求成功。成功的含义取决于 HTTP 方法：</p>
+<ul>
+<li>GET：资源已被提取并在消息正文中传输。</li>
+<li>HEAD：实体标头位于消息正文中。</li>
+<li>POST：描述动作结果的资源在消息体中传输。</li>
+<li>TRACE：消息正文包含服务器收到的请求消息</li>
+</ul>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/201" target="_blank"><code>201 Created</code></a><br>
+该请求已成功，并因此创建了一个新的资源。这通常是在 POST 请求，或是某些 PUT 请求之后返回的响应。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/202" target="_blank"><code>202 Accepted</code></a><br>
+请求已经接收到，但还未响应，没有结果。意味着不会有一个异步的响应去表明当前请求的结果，预期另外的进程和服务去处理请求，或者批处理。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/203" target="_blank"><code>203 Non-Authoritative Information</code></a><br>
+服务器已成功处理了请求，但返回的实体头部元信息不是在原始服务器上有效的确定集合，而是来自本地或者第三方的拷贝。当前的信息可能是原始版本的子集或者超集。例如，包含资源的元数据可能导致原始服务器知道元信息的超集。使用此状态码不是必须的，而且只有在响应不使用此状态码便会返回 200 OK 的情况下才是合适的。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/204" target="_blank"><code>204 No Content</code></a><br>
+服务器成功处理了请求，但不需要返回任何实体内容，并且希望返回更新了的元信息。响应可能通过实体头部的形式，返回新的或更新后的元信息。如果存在这些头部信息，则应当与所请求的变量相呼应。如果客户端是浏览器的话，那么用户浏览器应保留发送了该请求的页面，而不产生任何文档视图上的变化，即使按照规范新的或更新后的元信息应当被应用到用户浏览器活动视图中的文档。由于 204 响应被禁止包含任何消息体，因此它始终以消息头后的第一个空行结尾。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/205" target="_blank"><code>205 Reset Content</code></a><br>
+服务器成功处理了请求，且没有返回任何内容。但是与 204 响应不同，返回此状态码的响应要求请求者重置文档视图。该响应主要是被用于接受用户输入后，立即重置表单，以便用户能够轻松地开始另一次输入。与 204 响应一样，该响应也被禁止包含任何消息体，且以消息头后的第一个空行结束。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/206" target="_blank"><code>206 Partial Content</code></a><br>
+服务器已经成功处理了部分 GET 请求。类似于 FlashGet 或者迅雷这类的 HTTP 下载工具都是使用此类响应实现断点续传或者将一个大文档分解为多个下载段同时下载。该请求必须包含 Range 头信息来指示客户端希望得到的内容范围，并且可能包含 If-Range 来作为请求条件。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/207" target="_blank"><code>207 Multi-Status</code></a> (<a href="https://developer.mozilla.org/en-US/docs/Glossary/WebDAV" target="_blank">WebDAV</a>)<br>
+由 WebDAV(RFC 2518)扩展的状态码，代表之后的消息体将是一个 XML 消息，并且可能依照之前子请求数量的不同，包含一系列独立的响应代码。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/208" target="_blank"><code>208 Already Reported</code></a> (<a href="https://developer.mozilla.org/en-US/docs/Glossary/WebDAV" target="_blank">WebDAV</a>)<br>
+在 DAV 里面使用: propstat 响应元素以避免重复枚举多个绑定的内部成员到同一个集合。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/226" target="_blank"><code>226 IM Used</code></a> (<a href="https://tools.ietf.org/html/rfc3229" target="_blank">HTTP Delta encoding</a>)<br>
+服务器已经完成了对资源的 GET 请求，并且响应是对当前实例应用的一个或多个实例操作结果的表示。</p>
+<h2 id="重定向"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status#%E9%87%8D%E5%AE%9A%E5%90%91" title="Permalink to 重定向" target="_blank">重定向</a></h2>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/300" target="_blank"><code>300 Multiple Choice</code></a><br>
+被请求的资源有一系列可供选择的回馈信息，每个都有自己特定的地址和浏览器驱动的商议信息。用户或浏览器能够自行选择一个首选的地址进行重定向。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/301" target="_blank"><code>301 Moved Permanently</code></a><br>
+被请求的资源已永久移动到新位置，并且将来任何对此资源的引用都应该使用本响应返回的若干个 URI 之一。如果可能，拥有链接编辑功能的客户端应当自动把请求的地址修改为从服务器反馈回来的地址。除非额外指定，否则这个响应也是可缓存的。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/302" target="_blank"><code>302 Found</code></a><br>
+请求的资源现在临时从不同的 URI 响应请求。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求。只有在 Cache-Control 或 Expires 中进行了指定的情况下，这个响应才是可缓存的。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/303" target="_blank"><code>303 See Other</code></a><br>
+对应当前请求的响应可以在另一个 URI 上被找到，而且客户端应当采用 GET 的方式访问那个资源。这个方法的存在主要是为了允许由脚本激活的 POST 请求输出重定向到一个新的资源。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/304" target="_blank"><code>304 Not Modified</code></a><br>
+如果客户端发送了一个带条件的 GET 请求且该请求已被允许，而文档的内容（自上次访问以来或者根据请求的条件）并没有改变，则服务器应当返回这个状态码。304 响应禁止包含消息体，因此始终以消息头后的第一个空行结尾。</p>
+<hr>
+<p class="indent--2"><code>305 Use Proxy</code><br>
+被请求的资源必须通过指定的代理才能被访问。Location 域中将给出指定的代理所在的 URI 信息，接收者需要重复发送一个单独的请求，通过这个代理才能访问相应资源。只有原始服务器才能建立 305 响应。</p>
+<hr>
+<p class="indent--2"><code>306 unused</code><br>
+在最新版的规范中，306 状态码已经不再被使用。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/307" target="_blank"><code>307 Temporary Redirect</code></a><br>
+请求的资源现在临时从不同的 URI 响应请求。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求。只有在 Cache-Control 或 Expires 中进行了指定的情况下，这个响应才是可缓存的。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/308" target="_blank"><code>308 Permanent Redirect</code></a><br>
+这意味着资源现在永久位于由 <code>Location:</code> HTTP Response 标头指定的另一个 URI。 这与 <code>301 Moved Permanently HTTP</code> 响应代码具有相同的语义，但用户代理不能更改所使用的 HTTP 方法：如果在第一个请求中使用 <code>POST</code>，则必须在第二个请求中使用 <code>POST</code>。</p>
+<h2 id="客户端响应"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%93%8D%E5%BA%94" title="Permalink to 客户端响应" target="_blank">客户端响应</a></h2>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/400" target="_blank"><code>400 Bad Request</code></a></p>
+<ol>
+<li>语义有误，当前请求无法被服务器理解。除非进行修改，否则客户端不应该重复提交这个请求。2、请求参数有误。</li>
+</ol>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/401" target="_blank"><code>401 Unauthorized</code></a><br>
+当前请求需要用户验证。该响应必须包含一个适用于被请求资源的 WWW-Authenticate 信息头用以询问用户信息。客户端可以重复提交一个包含恰当的 Authorization 头信息的请求。如果当前请求已经包含了 Authorization 证书，那么 401 响应代表着服务器验证已经拒绝了那些证书。如果 401 响应包含了与前一个响应相同的身份验证询问，且浏览器已经至少尝试了一次验证，那么浏览器应当向用户展示响应中包含的实体信息，因为这个实体信息中可能包含了相关诊断信息。</p>
+<hr>
+<p class="indent--2"><code>402 Payment Required</code><br>
+此响应码保留以便将来使用，创造此响应码的最初目的是用于数字支付系统，然而现在并未使用。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/403" target="_blank"><code>403 Forbidden</code></a><br>
+服务器已经理解请求，但是拒绝执行它。与 401 响应不同的是，身份验证并不能提供任何帮助，而且这个请求也不应该被重复提交。如果这不是一个 HEAD 请求，而且服务器希望能够讲清楚为何请求不能被执行，那么就应该在实体内描述拒绝的原因。当然服务器也可以返回一个 404 响应，假如它不希望让客户端获得任何信息。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/404" target="_blank"><code>404 Not Found</code></a><br>
+请求失败，请求所希望得到的资源未被在服务器上发现。没有信息能够告诉用户这个状况到底是暂时的还是永久的。假如服务器知道情况的话，应当使用 410 状态码来告知旧资源因为某些内部的配置机制问题，已经永久的不可用，而且没有任何可以跳转的地址。404 这个状态码被广泛应用于当服务器不想揭示到底为何请求被拒绝或者没有其他适合的响应可用的情况下。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/405" target="_blank"><code>405 Method Not Allowed</code></a><br>
+请求行中指定的请求方法不能被用于请求相应的资源。该响应必须返回一个 Allow 头信息用以表示出当前资源能够接受的请求方法的列表。 鉴于 PUT，DELETE 方法会对服务器上的资源进行写操作，因而绝大部分的网页服务器都不支持或者在默认配置下不允许上述请求方法，对于此类请求均会返回 405 错误。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/406" target="_blank"><code>406 Not Acceptable</code></a><br>
+请求的资源的内容特性无法满足请求头中的条件，因而无法生成响应实体。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/407" target="_blank"><code>407 Proxy Authentication Required</code></a><br>
+与 401 响应类似，只不过客户端必须在代理服务器上进行身份验证。代理服务器必须返回一个 Proxy-Authenticate 用以进行身份询问。客户端可以返回一个 Proxy-Authorization 信息头用以验证。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/408" target="_blank"><code>408 Request Timeout</code></a><br>
+请求超时。客户端没有在服务器预备等待的时间内完成一个请求的发送。客户端可以随时再次提交这一请求而无需进行任何更改。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/409" target="_blank"><code>409 Conflict</code></a><br>
+由于和被请求的资源的当前状态之间存在冲突，请求无法完成。这个代码只允许用在这样的情况下才能被使用：用户被认为能够解决冲突，并且会重新提交新的请求。该响应应当包含足够的信息以便用户发现冲突的源头。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/410" target="_blank"><code>410 Gone</code></a><br>
+被请求的资源在服务器上已经不再可用，而且没有任何已知的转发地址。这样的状况应当被认为是永久性的。如果可能，拥有链接编辑功能的客户端应当在获得用户许可后删除所有指向这个地址的引用。如果服务器不知道或者无法确定这个状况是否是永久的，那么就应该使用 404 状态码。除非额外说明，否则这个响应是可缓存的。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/411" target="_blank"><code>411 Length Required</code></a><br>
+服务器拒绝在没有定义 <code>Content-Length</code> 头的情况下接受请求。在添加了表明请求消息体长度的有效 <code>Content-Length</code> 头之后，客户端可以再次提交该请求。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/412" target="_blank"><code>412 Precondition Failed</code></a><br>
+服务器在验证在请求的头字段中给出先决条件时，没能满足其中的一个或多个。这个状态码允许客户端在获取资源时在请求的元信息（请求头字段数据）中设置先决条件，以此避免该请求方法被应用到其希望的内容以外的资源上。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/413" target="_blank"><code>413 Payload Too Large</code></a><br>
+服务器拒绝处理当前请求，因为该请求提交的实体数据大小超过了服务器愿意或者能够处理的范围。此种情况下，服务器可以关闭连接以免客户端继续发送此请求。如果这个状况是临时的，服务器应当返回一个 <code>Retry-After</code> 的响应头，以告知客户端可以在多少时间以后重新尝试。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/414" target="_blank"><code>414 URI Too Long</code></a><br>
+请求的 URI 长度超过了服务器能够解释的长度，因此服务器拒绝对该请求提供服务。这比较少见，通常的情况包括：本应使用 POST 方法的表单提交变成了 GET 方法，导致查询字符串（Query String）过长。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/415" target="_blank"><code>415 Unsupported Media Type</code></a><br>
+对于当前请求的方法和所请求的资源，请求中提交的实体并不是服务器中所支持的格式，因此请求被拒绝。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/416" target="_blank"><code>416 Range Not Satisfiable</code></a><br>
+如果请求中包含了 Range 请求头，并且 Range 中指定的任何数据范围都与当前资源的可用范围不重合，同时请求中又没有定义 If-Range 请求头，那么服务器就应当返回 416 状态码。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/417" target="_blank"><code>417 Expectation Failed</code></a><br>
+此响应代码意味着服务器无法满足 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Expect" target="_blank"><code>Expect</code></a> 请求标头字段指示的期望值。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/418" target="_blank"><code>418 I'm a teapot</code></a><br>
+服务器拒绝尝试用 <code>“&lt;a href="https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E5%92%96%E5%95%A1%E5%A3%B6%E6%8E%A7%E5%88%B6%E5%8D%8F%E8%AE%AE" class="external" rel=" noopener"&gt;茶壶冲泡咖啡&lt;/a&gt;”</code>。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/421" target="_blank"><code>421 Misdirected Request</code></a><br>
+该请求针对的是无法产生响应的服务器。 这可以由服务器发送，该服务器未配置为针对包含在请求 URI 中的方案和权限的组合产生响应。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/422" target="_blank"><code>422 Unprocessable Entity</code></a> (<a href="https://developer.mozilla.org/en-US/docs/Glossary/WebDAV" target="_blank">WebDAV</a>)<br>
+请求格式良好，但由于语义错误而无法遵循。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/423" target="_blank"><code>423 Locked</code></a> (<a href="https://developer.mozilla.org/en-US/docs/Glossary/WebDAV" target="_blank">WebDAV</a>)<br>
+正在访问的资源被锁定。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/424" target="_blank"><code>424 Failed Dependency</code></a> (<a href="https://developer.mozilla.org/en-US/docs/Glossary/WebDAV" target="_blank">WebDAV</a>)<br>
+由于先前的请求失败，所以此次请求失败。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/425" target="_blank"><code>425 Too Early</code></a><br>
+服务器不愿意冒着风险去处理可能重播的请求。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/426" target="_blank"><code>426 Upgrade Required</code></a><br>
+服务器拒绝使用当前协议执行请求，但可能在客户机升级到其他协议后愿意这样做。 服务器在 426 响应中发送 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Upgrade" target="_blank"><code>Upgrade</code></a> 头以指示所需的协议。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/428" target="_blank"><code>428 Precondition Required</code></a><br>
+原始服务器要求该请求是有条件的。 旨在防止“丢失更新”问题，即客户端获取资源状态，修改该状态并将其返回服务器，同时第三方修改服务器上的状态，从而导致冲突。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/429" target="_blank"><code>429 Too Many Requests</code></a><br>
+用户在给定的时间内发送了太多请求（“限制请求速率”）。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/431" target="_blank"><code>431 Request Header Fields Too Large</code></a><br>
+服务器不愿意处理请求，因为它的 请求头字段太大（ Request Header Fields Too Large）。 请求可以在减小请求头字段的大小后重新提交。<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/451" target="_blank"><code>451 Unavailable For Legal Reasons</code></a>用户请求非法资源，例如：由政府审查的网页。</p>
+<h2 id="服务端响应"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%93%8D%E5%BA%94" title="Permalink to 服务端响应" target="_blank">服务端响应</a></h2>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/500" target="_blank"><code>500 Internal Server Error</code></a><br>
+服务器遇到了不知道如何处理的情况。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/501" target="_blank"><code>501 Not Implemented</code></a><br>
+此请求方法不被服务器支持且无法被处理。只有 <code>GET</code> 和 <code>HEAD</code> 是要求服务器支持的，它们必定不会返回此错误代码。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/502" target="_blank"><code>502 Bad Gateway</code></a><br>
+此错误响应表明服务器作为网关需要得到一个处理这个请求的响应，但是得到一个错误的响应。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/503" target="_blank"><code>503 Service Unavailable</code></a><br>
+服务器没有准备好处理请求。 常见原因是服务器因维护或重载而停机。 请注意，与此响应一起，应发送解释问题的用户友好页面。 这个响应应该用于临时条件和 <code>Retry-After</code>：如果可能的话，HTTP 头应该包含恢复服务之前的估计时间。 网站管理员还必须注意与此响应一起发送的与缓存相关的标头，因为这些临时条件响应通常不应被缓存。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/504" target="_blank"><code>504 Gateway Timeout</code></a><br>
+当服务器作为网关，不能及时得到响应时返回此错误代码。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/505" target="_blank"><code>505 HTTP Version Not Supported</code></a><br>
+服务器不支持请求中所使用的 HTTP 协议版本。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/506" target="_blank"><code>506 Variant Also Negotiates</code></a><br>
+服务器有一个内部配置错误：对请求的透明内容协商导致循环引用。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/507" target="_blank"><code>507 Insufficient Storage</code></a><br>
+服务器有内部配置错误：所选的变体资源被配置为参与透明内容协商本身，因此不是协商过程中的适当端点。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/508" target="_blank"><code>508 Loop Detected</code></a> (<a href="https://developer.mozilla.org/en-US/docs/Glossary/WebDAV" target="_blank">WebDAV</a>)<br>
+服务器在处理请求时检测到无限循环。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/510" target="_blank"><code>510 Not Extended</code></a><br>
+客户端需要对请求进一步扩展，服务器才能实现它。服务器会回复客户端发出扩展请求所需的所有信息。</p>
+<hr>
+<p class="indent--2"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/511" target="_blank"><code>511 Network Authentication Required</code></a><br>
+511 状态码指示客户端需要进行身份验证才能获得网络访问权限。</p>
+<h5 id="原文链接"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP" target="_blank">原文链接</a></h5>
+                <div>
+                    <hr>
+
+标题：HTTP 响应代码<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2021/03/16/1615856788363.html" target="_blank">https://cuijianzhe.github.io/articles/2021/03/16/1615856788363.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+                </div>
+        </div>
+    </div>
+    <div class="post__toc">
+<ul class="article__toc">
+        <li class="toc__h2">
+            <a href="#信息响应">信息响应</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#成功响应">成功响应</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#重定向">重定向</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#客户端响应">客户端响应</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#服务端响应">服务端响应</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#原文链接">原文链接</a>
+        </li>
+</ul>    </div>
+    <div class="body--gray post__gray">
+        <div class="wrapper comment">
+                <div id="gitalk-container" style="padding: 30px 0;"></div>
+                <div id="b3logsolocomments"></div>
+                <div id="vcomment" style="padding: 30px 0;" data-name="cuijianzhe" data-postId="1615856788004"></div>
+
+            <div class="post__list fn__flex">
+                <div class="fn__flex-1">
+                    <div id="externalRelevantArticles"></div>
+                </div>
+                <div class="post__list-mid fn__flex-1">
+                    <div id="randomArticles"></div>
+                </div>
+                <div class="fn__flex-1">
+                    <div id="relevantArticles"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="post__fix">
+        <div class="wrapper">
+            <span class="post__share mobile__none">
+                Share
+                <span class="tag tag--4" data-type="weibo">WeiBo</span>
+                <span class="tag tag--5" data-type="twitter">Twitter</span>
+                <span class="tag tag--6" data-type="qqz">QZone</span>
+                <span class="post__code tag tag--7"
+                      data-type="wechat"
+                      data-title="HTTP 响应代码"
+                      data-blogtitle="邯城往事"
+                      data-url="https://cuijianzhe.github.io/articles/2021/03/16/1615856788363.html"
+                      data-avatar="https://b3logfile.com/avatar/1551626533851_1560155807399.gif?imageView2/1/w/128/h/128/interlace/0/q/100">
+                    WeChat
+                    <span class="qrcode"></span>
+                </span>
+            </span>
+            <span class="post__arrow">
+                    <a href="https://cuijianzhe.github.io/articles/2021/03/13/1615606827047.html" rel="prev"
+                       class="vditor-tooltipped__n vditor-tooltipped"
+                       pjax-title="2021年两会闭幕"
+                       aria-label="旧一篇: 2021年两会闭幕">←</a>
+
+                    <a href="https://cuijianzhe.github.io/articles/2021/04/03/1617425259423.html" rel="next"
+                       class="vditor-tooltipped__n vditor-tooltipped"
+                       pjax-title="redis批量修改查询key"
+                       aria-label="新一篇: redis批量修改查询key">→</a>
+                <a href="javascript:Util.goTop()" class="vditor-tooltipped__n vditor-tooltipped"
+                   aria-label="移动到顶部">↑</a>
+                <a href="javascript:Util.goBottom()" class="vditor-tooltipped__n vditor-tooltipped"
+                   aria-label="移动到底部">↓</a>
+            </span>
+        </div>
+    </div>
+    
+</main>
+<footer class="footer">
+    <div class="ft__center">
+    <a href="https://ld246.com/member/cuijianzhe"
+       aria-label="https://ld246.com/member/cuijianzhe"
+       class="vditor-tooltipped__n vditor-tooltipped  user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+        <a href="https://github.com/cuijianzhe"
+           aria-label="https://github.com/cuijianzhe"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site"
+           target="_blank" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
+        </a>
+
+        <a href="https://twitter.com/JianzheC"
+           aria-label="https://twitter.com/JianzheC"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32.003 6.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
+            </svg>
+        </a>
+        <a href="https://weibo.com/3796930704"
+           aria-label="https://weibo.com/3796930704"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+                <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+                <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+                <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+            </svg>
+        </a>
+        <a href="https://www.zhihu.com/people/wen-yang-24-36"
+           aria-label="https://www.zhihu.com/people/wen-yang-24-36"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32 26.67c0 2.931-2.382 5.33-5.33 5.33h-21.339c-2.948 0-5.33-2.382-5.33-5.33v-21.339c0-2.948 2.382-5.33 5.33-5.33h21.339c2.948 0 5.33 2.382 5.33 5.33v21.339zM12.358 17.191h4.713c0-1.114-0.531-1.748-0.531-1.748h-4.079c0.103-2.005 0.189-4.576 0.223-5.536h3.874s-0.017-1.645-0.463-1.645h-6.822s0.411-2.142 0.96-3.085c0 0-2.040-0.12-2.742 2.605-0.686 2.725-1.731 4.354-1.851 4.662s0.6 0.137 0.891 0c0.309-0.137 1.663-0.617 2.057-2.537h2.108c0.034 1.2 0.12 4.885 0.086 5.536h-4.336c-0.6 0.446-0.823 1.748-0.823 1.748h4.971c-0.206 1.371-0.566 3.137-1.080 4.062-0.806 1.491-1.234 2.828-4.131 5.176 0 0-0.48 0.36 0.994 0.223 1.474-0.12 2.845-0.514 3.839-2.434 0.514-0.994 1.011-2.28 1.423-3.565l4.079 4.713s0.548-1.268 0.137-2.657l-3.034-3.394-1.028 0.754c0.291-0.994 0.497-1.988 0.548-2.845 0.017 0.017 0.017 0 0.017-0.034zM18.048 7.936v16.3h1.714l0.703 1.954 2.965-1.954h3.754v-16.3h-9.136zM25.401 22.487h-1.937l-2.434 1.611-0.566-1.611h-0.6v-12.735h5.553v12.735h-0.017z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=598941324"
+           aria-label="598941324"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+        <a href="javascript:void(0)"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" aria-label="cjz5989">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+            </svg>
+        </a>
+    </div>
+    <nav class="footer__nav mobile__none">
+            <a class="ft__link" href="/my-github-repos" target="_self" rel="section">
+                我的开源
+            </a>
+            <a class="ft__link" href="http://times.cjzshilong.cn/time/" target="_blank" rel="section">
+                服务器倒计时
+            </a>
+        <a class="ft__link" rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">RSS</a>
+    </nav>
+    <div class="footer__border mobile__none"></div>
+    <div class="wrapper fn__flex">
+        <div class="fn__flex-1 mobile__none">
+            <div class="ft__fade">cuijianzhe - 来自邯郸社畜的呐喊</div>
+            <br>
+                <h1 class="title" id="character" ><p style="font-size:10px"><font color="#FF00FF">红笺小字，说尽平生意。<br/>鸿雁在云鱼在水，惆怅此情难寄。<br/>             ——晏殊· 《清平乐》</font> </p></h1>
+
+        </div>
+
+
+        <div class="fn__flex-1 footer__copyright">
+            <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
+                166
+                文章
+            </a>
+           <br>
+            <span data-uvstaturl="https://cuijianzhe.github.io">0</span> <span class="ft-gray">浏览</span>
+ <br>
+            &copy; 2023
+            <a class="ft__link" href="https://cuijianzhe.github.io">邯城往事</a>
+            <img style="width: 20px; height: 20px;" src="https://b3logfile.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">冀ICP备19005901号-1</a>
+        </div>
+    </div>
+</footer>
+<script>
+  var Label = {
+    speech: true,
+    servePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cuijianzhe.github.io",
+    luteAvailable: true,
+    hljsStyle: 'vs',
+    langLabel: "zh_CN",
+    version: "4.4.0",
+    staticSite: true,
+    showCodeBlockLn: false,
+    articleId: "1615856788004",
+  }
+</script>
+<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1701918811548"
+        charset="utf-8"></script>
+
+
+
+<script type="text/javascript">
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1701918811548', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论不能为空",
+        "oId": "1615856788004",
+        "blogHost": "https://cuijianzhe.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "0";
+    page.loadRandomArticles('<h3>RECOMMEND POSTS</h3>');
+    page.loadRelevantArticles('1615856788004', '<h3>RELEVANT POSTS</h3>');
+Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 40ms, 2023/12/11 19:00:39 -->

@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>openstack系列-neutron系列安装部署 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="openstack系列-neutron系列安装部署 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/15/1571104876779.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="openstack系列-neutron系列安装部署 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/15/1571104876779.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/skins/Pinghsu/css/base.css?1617776880435"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>openstack系列-neutron系列安装部署 - 邯城往事</title><meta name="description" content="neutron 部署 MySQL 库创建 CREATE DATABASE neutron; GRANT ALL PRIVILEGES ON neutron.* TO &#39;neutron&#39;@&#39;localhost&#39; \ IDENTIFIED BY &#39;neutron&#39;; GRANT ALL PRIVILEGES ON neutron.* TO &#39;neutron&#39;@&#39;%&#39; \ IDENTIFIED BY &#39;neutron&#39;; 创建服务凭据 创建 neutron 用户 [root@linux-node1 ~]# . admin-openrc [root@linux-node1 ~]# openstack user create --domain default --password-prompt neutron User Password: Repeat User Password: +---------------------+----------------------------------+ | Field | Value | +---------------------+---...."/><meta property="og:description" content="neutron 部署 MySQL 库创建 CREATE DATABASE neutron; GRANT ALL PRIVILEGES ON neutron.* TO &#39;neutron&#39;@&#39;localhost&#39; \ IDENTIFIED BY &#39;neutron&#39;; GRANT ALL PRIVILEGES ON neutron.* TO &#39;neutron&#39;@&#39;%&#39; \ IDENTIFIED BY &#39;neutron&#39;; 创建服务凭据 创建 neutron 用户 [root@linux-node1 ~]# . admin-openrc [root@linux-node1 ~]# openstack user create --domain default --password-prompt neutron User Password: Repeat User Password: +---------------------+----------------------------------+ | Field | Value | +---------------------+---...."/>    <meta name="keywords" content="Solo,Java,博客,开源"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="https://unpkg.com"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"/><link rel="apple-touch-icon" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"><link rel="shortcut icon" type="image/x-icon" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="openstack系列-neutron系列安装部署 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/10/15/1571104876779.html?"/><meta property="og:image" content="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"/><link rel="search" type="application/opensearchdescription+xml" title="openstack系列-neutron系列安装部署 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/10/15/1571104876779.html">        <link rel="stylesheet"
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1701918811548"/>
             <link rel="prev" title="openstack系列-nova节点部署" href="https://cuijianzhe.github.io/articles/2019/10/13/1570962040262.html">
             <link rel="next" title="openstack系列-dashboard部署" href="https://cuijianzhe.github.io/articles/2019/10/15/1571128802984.html">
-    <!--鼠标点击特效-->
-<script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
-<!--页面动态樱花-->
-<!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vditor@3.8.4/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
+    <script src="https://unpkg.com/vditor@3.8.15/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
 <body>
 <header class="header">
     <div class="wrapper">
         <a href="https://cuijianzhe.github.io" rel="start" class="header__logo">
-            <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="邯城往事"/>
+            <img src="https://b3logfile.com/avatar/1551626533851_1560155807399.gif?imageView2/1/w/128/h/128/interlace/0/q/100" alt="邯城往事"/>
             邯城往事
         </a>
 
@@ -46,7 +39,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                        <a href="http://times.cjzshilong.cn/time/" target="_blank" rel="section">
                             服务器倒计时
                         </a>
                     </li>
@@ -83,13 +76,12 @@
             </a>
         </h2>
         <div class="ft__fade item__meta">
-                Updated on
+                Published on
             <time>
-                Oct 31, 2019
+                Oct 15, 2019
             </time>
-                in <a href="https://cuijianzhe.github.io/category/linux">Linux系列</a>
             with <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/10/15/1571104876779.html">0</span> views
-                and <a href="#b3logsolocomments"><span data-uvstatcmt="1571104876779">0</span> comments</a>
+                and <a href="#b3logsolocomments"><span data-uvstatcmt="1571104876254">0</span> comments</a>
         </div>
         <div class="item__tags">
                 <a rel="tag" class="tag tag--0" href="https://cuijianzhe.github.io/tags/Linux">
@@ -102,100 +94,100 @@
         <div class="vditor-reset">
             <h1 id="neutron-部署"><a href="https://docs.openstack.org/neutron/rocky/install/controller-install-rdo.html" target="_blank">neutron 部署</a></h1>
 <h2 id="mysql-库创建">MySQL 库创建</h2>
-<pre><code class="highlight-chroma">CREATE DATABASE neutron;
- GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'localhost' \
-  IDENTIFIED BY 'neutron';
-GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'%' \
-  IDENTIFIED BY 'neutron';
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">CREATE DATABASE neutron;
+</span></span><span class="highlight-line"><span class="highlight-cl"> GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'localhost' \
+</span></span><span class="highlight-line"><span class="highlight-cl">  IDENTIFIED BY 'neutron';
+</span></span><span class="highlight-line"><span class="highlight-cl">GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'%' \
+</span></span><span class="highlight-line"><span class="highlight-cl">  IDENTIFIED BY 'neutron';
+</span></span></code></pre>
 <h2 id="创建服务凭据">创建服务凭据</h2>
 <ul>
 <li>创建 neutron 用户</li>
 </ul>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># . admin-openrc </span>
-<span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># openstack user create --domain default --password-prompt neutron</span>
-User Password:
-Repeat User Password:
-+---------------------+----------------------------------+
-<span class="highlight-p">|</span> Field               <span class="highlight-p">|</span> Value                            <span class="highlight-p">|</span>
-+---------------------+----------------------------------+
-<span class="highlight-p">|</span> domain_id           <span class="highlight-p">|</span> default                          <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> enabled             <span class="highlight-p">|</span> True                             <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> id                  <span class="highlight-p">|</span> c0ce9b3d5a134ad08ce402c7528b1e91 <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> name                <span class="highlight-p">|</span> neutron                          <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> options             <span class="highlight-p">|</span> <span class="highlight-o">{}</span>                               <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> password_expires_at <span class="highlight-p">|</span> None                             <span class="highlight-p">|</span>
-+---------------------+----------------------------------+
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># . admin-openrc </span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># openstack user create --domain default --password-prompt neutron</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">User Password:
+</span></span><span class="highlight-line"><span class="highlight-cl">Repeat User Password:
+</span></span><span class="highlight-line"><span class="highlight-cl">+---------------------+----------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> Field               <span class="highlight-p">|</span> Value                            <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">+---------------------+----------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> domain_id           <span class="highlight-p">|</span> default                          <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> enabled             <span class="highlight-p">|</span> True                             <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> id                  <span class="highlight-p">|</span> c0ce9b3d5a134ad08ce402c7528b1e91 <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> name                <span class="highlight-p">|</span> neutron                          <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> options             <span class="highlight-p">|</span> <span class="highlight-o">{}</span>                               <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> password_expires_at <span class="highlight-p">|</span> None                             <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">+---------------------+----------------------------------+
+</span></span></code></pre>
 <ul>
 <li>向 neutron 用户添加管理员角色</li>
 </ul>
-<pre><code class="highlight-chroma">openstack role add --project service --user neutron admin
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">openstack role add --project service --user neutron admin
+</span></span></code></pre>
 <ul>
 <li>创建 neutron 服务实体</li>
 </ul>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># openstack service create --name neutron \</span>
-&gt;   --description <span class="highlight-s2">"OpenStack Networking"</span> network
-+-------------+----------------------------------+
-<span class="highlight-p">|</span> Field       <span class="highlight-p">|</span> Value                            <span class="highlight-p">|</span>
-+-------------+----------------------------------+
-<span class="highlight-p">|</span> description <span class="highlight-p">|</span> OpenStack Networking             <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> enabled     <span class="highlight-p">|</span> True                             <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> id          <span class="highlight-p">|</span> bf1996ceb1d846deb8af3b208f2ff4e1 <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> name        <span class="highlight-p">|</span> neutron                          <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> <span class="highlight-nb">type</span>        <span class="highlight-p">|</span> network                          <span class="highlight-p">|</span>
-+-------------+----------------------------------+
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># openstack service create --name neutron \</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">&gt;   --description <span class="highlight-s2">"OpenStack Networking"</span> network
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------+----------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> Field       <span class="highlight-p">|</span> Value                            <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------+----------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> description <span class="highlight-p">|</span> OpenStack Networking             <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> enabled     <span class="highlight-p">|</span> True                             <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> id          <span class="highlight-p">|</span> bf1996ceb1d846deb8af3b208f2ff4e1 <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> name        <span class="highlight-p">|</span> neutron                          <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> <span class="highlight-nb">type</span>        <span class="highlight-p">|</span> network                          <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------+----------------------------------+
+</span></span></code></pre>
 <h2 id="创建网络服务API-endpoint">创建网络服务 API endpoint</h2>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1">#   openstack endpoint create --region RegionOne \</span>
-&gt;   network public http://10.200.51.100:9696
-+--------------+----------------------------------+
-<span class="highlight-p">|</span> Field        <span class="highlight-p">|</span> Value                            <span class="highlight-p">|</span>
-+--------------+----------------------------------+
-<span class="highlight-p">|</span> enabled      <span class="highlight-p">|</span> True                             <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> id           <span class="highlight-p">|</span> 5ef730844dab4c4c9c348a003b1cb8f7 <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> interface    <span class="highlight-p">|</span> public                           <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> region       <span class="highlight-p">|</span> RegionOne                        <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> region_id    <span class="highlight-p">|</span> RegionOne                        <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> service_id   <span class="highlight-p">|</span> bf1996ceb1d846deb8af3b208f2ff4e1 <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> service_name <span class="highlight-p">|</span> neutron                          <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> service_type <span class="highlight-p">|</span> network                          <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> url          <span class="highlight-p">|</span> http://10.200.51.100:9696        <span class="highlight-p">|</span>
-+--------------+----------------------------------+
-<span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1">#   openstack endpoint create --region RegionOne \</span>
-&gt;   network internal http://10.200.51.100:9696
-
-+--------------+----------------------------------+
-<span class="highlight-p">|</span> Field        <span class="highlight-p">|</span> Value                            <span class="highlight-p">|</span>
-+--------------+----------------------------------+
-<span class="highlight-p">|</span> enabled      <span class="highlight-p">|</span> True                             <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> id           <span class="highlight-p">|</span> 89e583655b7c4446892cb58dcc40152a <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> interface    <span class="highlight-p">|</span> internal                         <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> region       <span class="highlight-p">|</span> RegionOne                        <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> region_id    <span class="highlight-p">|</span> RegionOne                        <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> service_id   <span class="highlight-p">|</span> bf1996ceb1d846deb8af3b208f2ff4e1 <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> service_name <span class="highlight-p">|</span> neutron                          <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> service_type <span class="highlight-p">|</span> network                          <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> url          <span class="highlight-p">|</span> http://10.200.51.100:9696        <span class="highlight-p">|</span>
-+--------------+----------------------------------+
-<span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1">#   </span>
-<span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1">#    openstack endpoint create --region RegionOne \</span>
-&gt;   network admin http://10.200.51.100:9696
-+--------------+----------------------------------+
-<span class="highlight-p">|</span> Field        <span class="highlight-p">|</span> Value                            <span class="highlight-p">|</span>
-+--------------+----------------------------------+
-<span class="highlight-p">|</span> enabled      <span class="highlight-p">|</span> True                             <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> id           <span class="highlight-p">|</span> 9abfbfb1288f40c7a92845ffcb6c3d8e <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> interface    <span class="highlight-p">|</span> admin                            <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> region       <span class="highlight-p">|</span> RegionOne                        <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> region_id    <span class="highlight-p">|</span> RegionOne                        <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> service_id   <span class="highlight-p">|</span> bf1996ceb1d846deb8af3b208f2ff4e1 <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> service_name <span class="highlight-p">|</span> neutron                          <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> service_type <span class="highlight-p">|</span> network                          <span class="highlight-p">|</span>
-<span class="highlight-p">|</span> url          <span class="highlight-p">|</span> http://10.200.51.100:9696        <span class="highlight-p">|</span>
-+--------------+----------------------------------+
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1">#   openstack endpoint create --region RegionOne \</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">&gt;   network public http://10.200.51.100:9696
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------+----------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> Field        <span class="highlight-p">|</span> Value                            <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------+----------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> enabled      <span class="highlight-p">|</span> True                             <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> id           <span class="highlight-p">|</span> 5ef730844dab4c4c9c348a003b1cb8f7 <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> interface    <span class="highlight-p">|</span> public                           <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> region       <span class="highlight-p">|</span> RegionOne                        <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> region_id    <span class="highlight-p">|</span> RegionOne                        <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> service_id   <span class="highlight-p">|</span> bf1996ceb1d846deb8af3b208f2ff4e1 <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> service_name <span class="highlight-p">|</span> neutron                          <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> service_type <span class="highlight-p">|</span> network                          <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> url          <span class="highlight-p">|</span> http://10.200.51.100:9696        <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------+----------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1">#   openstack endpoint create --region RegionOne \</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">&gt;   network internal http://10.200.51.100:9696
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------+----------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> Field        <span class="highlight-p">|</span> Value                            <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------+----------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> enabled      <span class="highlight-p">|</span> True                             <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> id           <span class="highlight-p">|</span> 89e583655b7c4446892cb58dcc40152a <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> interface    <span class="highlight-p">|</span> internal                         <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> region       <span class="highlight-p">|</span> RegionOne                        <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> region_id    <span class="highlight-p">|</span> RegionOne                        <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> service_id   <span class="highlight-p">|</span> bf1996ceb1d846deb8af3b208f2ff4e1 <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> service_name <span class="highlight-p">|</span> neutron                          <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> service_type <span class="highlight-p">|</span> network                          <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> url          <span class="highlight-p">|</span> http://10.200.51.100:9696        <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------+----------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1">#   </span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1">#    openstack endpoint create --region RegionOne \</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">&gt;   network admin http://10.200.51.100:9696
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------+----------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> Field        <span class="highlight-p">|</span> Value                            <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------+----------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> enabled      <span class="highlight-p">|</span> True                             <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> id           <span class="highlight-p">|</span> 9abfbfb1288f40c7a92845ffcb6c3d8e <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> interface    <span class="highlight-p">|</span> admin                            <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> region       <span class="highlight-p">|</span> RegionOne                        <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> region_id    <span class="highlight-p">|</span> RegionOne                        <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> service_id   <span class="highlight-p">|</span> bf1996ceb1d846deb8af3b208f2ff4e1 <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> service_name <span class="highlight-p">|</span> neutron                          <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> service_type <span class="highlight-p">|</span> network                          <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-p">|</span> url          <span class="highlight-p">|</span> http://10.200.51.100:9696        <span class="highlight-p">|</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------+----------------------------------+
+</span></span></code></pre>
 <h2 id="配置网络选项">配置网络选项</h2>
 <blockquote>
 <p>Choose one of the following networking options to configure services specific to it. Afterwards, return here and proceed to <a href="https://docs.openstack.org/neutron/rocky/install/controller-install-rdo.html#neutron-controller-metadata-agent-rdo" target="_blank">Configure the metadata agent</a>.</p>
@@ -205,248 +197,248 @@ Repeat User Password:
 <li><a href="https://docs.openstack.org/neutron/rocky/install/controller-install-option2-rdo.html" target="_blank">Networking Option 2: Self-service networks</a></li>
 </ul>
 <p class="indent--2">选项 1 部署了最简单的架构，该架构仅支持将实例附加到提供商（外部）网络。没有自助（私有）网络，路由器或浮动 IP 地址。只有该 <code>admin</code> 特权用户或其他特权用户才能管理提供商网络。</p>
-<pre><code class="highlight-chroma">yum install openstack-neutron openstack-neutron-ml2 \
-  openstack-neutron-linuxbridge ebtables -y
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">yum install openstack-neutron openstack-neutron-ml2 \
+</span></span><span class="highlight-line"><span class="highlight-cl">  openstack-neutron-linuxbridge ebtables -y
+</span></span></code></pre>
 <h3 id="编辑-文件">编辑 <code>/etc/neutron/neutron.conf</code> 文件</h3>
 <ul>
 <li>在[database]部分中，配置数据库访问：</li>
 </ul>
-<pre><code class="highlight-chroma">[database]
-connection = mysql+pymysql://neutron:neutron@10.200.51.100/neutron
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[database]
+</span></span><span class="highlight-line"><span class="highlight-cl">connection = mysql+pymysql://neutron:neutron@10.200.51.100/neutron
+</span></span></code></pre>
 <ul>
 <li>在[DEFAULT]部分中</li>
 </ul>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>DEFAULT<span class="highlight-o">]</span>
-<span class="highlight-c1">#启用模块化层2（ml2）插件并禁用其他插件</span>
-<span class="highlight-nv">core_plugin</span> <span class="highlight-o">=</span> ml2
-<span class="highlight-nv">service_plugins</span> <span class="highlight-o">=</span>
-<span class="highlight-c1">#配置rabbitmq消息队列访问</span>
-<span class="highlight-nv">transport_url</span> <span class="highlight-o">=</span> rabbit://openstack:openstack@10.200.51.100
-<span class="highlight-nv">auth_strategy</span> <span class="highlight-o">=</span> keystone
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>DEFAULT<span class="highlight-o">]</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-c1">#启用模块化层2（ml2）插件并禁用其他插件</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-nv">core_plugin</span> <span class="highlight-o">=</span> ml2
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-nv">service_plugins</span> <span class="highlight-o">=</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-c1">#配置rabbitmq消息队列访问</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-nv">transport_url</span> <span class="highlight-o">=</span> rabbit://openstack:openstack@10.200.51.100
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-nv">auth_strategy</span> <span class="highlight-o">=</span> keystone
+</span></span></code></pre>
 <ul>
 <li>在[default]和[keystone_authToken]部分中，配置标识服务访问：</li>
 </ul>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>keystone_authtoken<span class="highlight-o">]</span>
-<span class="highlight-nv">www_authenticate_uri</span> <span class="highlight-o">=</span> http://10.200.51.100:5000
-<span class="highlight-nv">auth_url</span> <span class="highlight-o">=</span> http://10.200.51.100:5000
-<span class="highlight-nv">memcached_servers</span> <span class="highlight-o">=</span> 10.200.51.100:11211
-<span class="highlight-nv">auth_type</span> <span class="highlight-o">=</span> password
-<span class="highlight-nv">project_domain_name</span> <span class="highlight-o">=</span> default
-<span class="highlight-nv">user_domain_name</span> <span class="highlight-o">=</span> default
-<span class="highlight-nv">project_name</span> <span class="highlight-o">=</span> service
-<span class="highlight-nv">username</span> <span class="highlight-o">=</span> neutron
-<span class="highlight-nv">password</span> <span class="highlight-o">=</span> <span class="highlight-m">598941324</span>
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>keystone_authtoken<span class="highlight-o">]</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-nv">www_authenticate_uri</span> <span class="highlight-o">=</span> http://10.200.51.100:5000
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-nv">auth_url</span> <span class="highlight-o">=</span> http://10.200.51.100:5000
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-nv">memcached_servers</span> <span class="highlight-o">=</span> 10.200.51.100:11211
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-nv">auth_type</span> <span class="highlight-o">=</span> password
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-nv">project_domain_name</span> <span class="highlight-o">=</span> default
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-nv">user_domain_name</span> <span class="highlight-o">=</span> default
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-nv">project_name</span> <span class="highlight-o">=</span> service
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-nv">username</span> <span class="highlight-o">=</span> neutron
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-nv">password</span> <span class="highlight-o">=</span> <span class="highlight-m">598941324</span>
+</span></span></code></pre>
 <ul>
 <li>在[default]和[nova]部分中，配置 networking 以通知 compute 网络拓扑更改</li>
 </ul>
-<pre><code class="highlight-chroma">[DEFAULT]
-notify_nova_on_port_status_changes = true
-notify_nova_on_port_data_changes = true
-</code></pre>
-<pre><code class="highlight-chroma">[nova]
-auth_url = http://10.200.51.100:5000
-auth_type = password
-project_domain_name = default
-user_domain_name = default
-region_name = RegionOne
-project_name = service
-username = nova
-password = 598941324
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[DEFAULT]
+</span></span><span class="highlight-line"><span class="highlight-cl">notify_nova_on_port_status_changes = true
+</span></span><span class="highlight-line"><span class="highlight-cl">notify_nova_on_port_data_changes = true
+</span></span></code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[nova]
+</span></span><span class="highlight-line"><span class="highlight-cl">auth_url = http://10.200.51.100:5000
+</span></span><span class="highlight-line"><span class="highlight-cl">auth_type = password
+</span></span><span class="highlight-line"><span class="highlight-cl">project_domain_name = default
+</span></span><span class="highlight-line"><span class="highlight-cl">user_domain_name = default
+</span></span><span class="highlight-line"><span class="highlight-cl">region_name = RegionOne
+</span></span><span class="highlight-line"><span class="highlight-cl">project_name = service
+</span></span><span class="highlight-line"><span class="highlight-cl">username = nova
+</span></span><span class="highlight-line"><span class="highlight-cl">password = 598941324
+</span></span></code></pre>
 <ul>
 <li>在[oslo_concurrency]部分中，配置锁路径</li>
 </ul>
-<pre><code class="highlight-chroma">[oslo_concurrency]
-lock_path = /var/lib/neutron/tmp
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[oslo_concurrency]
+</span></span><span class="highlight-line"><span class="highlight-cl">lock_path = /var/lib/neutron/tmp
+</span></span></code></pre>
 <h3 id="配置模块化第2层-ML2-插件">配置模块化第 2 层（ML2）插件</h3>
 <p class="indent--2">####配置 /etc/neutron/plugins/ml2/ml2_conf.ini</p>
 <ul>
 <li>在[ML2]部分中，启用平面和 VLAN 网络</li>
 </ul>
-<pre><code class="highlight-chroma">[ml2]
-type_drivers = flat,vlan
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[ml2]
+</span></span><span class="highlight-line"><span class="highlight-cl">type_drivers = flat,vlan
+</span></span></code></pre>
 <ul>
 <li>在[ML2]部分中，禁用自助服务网络</li>
 </ul>
-<pre><code class="highlight-chroma">[ml2]
-tenant_network_types =
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[ml2]
+</span></span><span class="highlight-line"><span class="highlight-cl">tenant_network_types =
+</span></span></code></pre>
 <ul>
 <li>在[ml2]部分中，启用 Linux 网桥机制</li>
 </ul>
-<pre><code class="highlight-chroma">[ml2]
-mechanism_drivers = linuxbridge
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[ml2]
+</span></span><span class="highlight-line"><span class="highlight-cl">mechanism_drivers = linuxbridge
+</span></span></code></pre>
 <blockquote>
 <p>After you configure the ML2 plug-in, removing values in the <code>type_drivers</code> option can lead to database inconsistency.</p>
 </blockquote>
 <ul>
 <li>在[ML2]部分中，启用端口安全扩展驱动程序：</li>
 </ul>
-<pre><code class="highlight-chroma">[ml2]
-extension_drivers = port_security
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[ml2]
+</span></span><span class="highlight-line"><span class="highlight-cl">extension_drivers = port_security
+</span></span></code></pre>
 <ul>
 <li>在[ml2_type_flat]部分中，将提供商虚拟网络配置为平面网络</li>
 </ul>
-<pre><code class="highlight-chroma">[ml2_type_flat]
-# ...
-flat_networks = provider
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[ml2_type_flat]
+</span></span><span class="highlight-line"><span class="highlight-cl"># ...
+</span></span><span class="highlight-line"><span class="highlight-cl">flat_networks = provider
+</span></span></code></pre>
 <ul>
 <li>在[SecurityGroup]部分中，启用 IPset 以提高安全组规则的效率</li>
 </ul>
-<pre><code class="highlight-chroma">[securitygroup]
-# ...
-enable_ipset = true
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[securitygroup]
+</span></span><span class="highlight-line"><span class="highlight-cl"># ...
+</span></span><span class="highlight-line"><span class="highlight-cl">enable_ipset = true
+</span></span></code></pre>
 <h4 id="配置Linux网桥代理">配置 Linux 网桥代理</h4>
 <p class="indent--2">编辑/etc/neutron/plugins/ml2/linuxbridge_agent.ini</p>
 <ul>
 <li>在[Linux_Bridge]部分中，将提供程序虚拟网络映射到提供程序物理网络接口：</li>
 </ul>
-<pre><code class="highlight-chroma">[linux_bridge]
-physical_interface_mappings = provider:ens33
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[linux_bridge]
+</span></span><span class="highlight-line"><span class="highlight-cl">physical_interface_mappings = provider:ens33
+</span></span></code></pre>
 <ul>
 <li>在[vxlan]部分，禁用 vxlan 覆盖网络：</li>
 </ul>
-<pre><code class="highlight-chroma">[vxlan]
-enable_vxlan = false
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[vxlan]
+</span></span><span class="highlight-line"><span class="highlight-cl">enable_vxlan = false
+</span></span></code></pre>
 <ul>
 <li>在[SecurityGroup]部分中，启用安全组并配置 Linux 网桥 iptables 防火墙驱动程序：</li>
 </ul>
-<pre><code class="highlight-chroma">[securitygroup]
-enable_security_group = true
-firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[securitygroup]
+</span></span><span class="highlight-line"><span class="highlight-cl">enable_security_group = true
+</span></span><span class="highlight-line"><span class="highlight-cl">firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
+</span></span></code></pre>
 <ul>
 <li>通过验证以下所有 sysctl 值均设置为 1，确保 Linux 操作系统内核支持网络桥筛选器</li>
 </ul>
-<pre><code class="language-bash highlight-chroma">vim /etc/sysctl.conf
-<span class="highlight-c1">#...</span>
-net.bridge.bridge-nf-call-ip6tables <span class="highlight-o">=</span> <span class="highlight-m">1</span>
-net.bridge.bridge-nf-call-iptables <span class="highlight-o">=</span> <span class="highlight-m">1</span>
-</code></pre>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># sysctl -p </span>
-net.bridge.bridge-nf-call-ip6tables <span class="highlight-o">=</span> <span class="highlight-m">1</span>
-net.bridge.bridge-nf-call-iptables <span class="highlight-o">=</span> <span class="highlight-m">1</span>
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl">vim /etc/sysctl.conf
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-c1">#...</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">net.bridge.bridge-nf-call-ip6tables <span class="highlight-o">=</span> <span class="highlight-m">1</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">net.bridge.bridge-nf-call-iptables <span class="highlight-o">=</span> <span class="highlight-m">1</span>
+</span></span></code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@linux-node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># sysctl -p </span>
+</span></span><span class="highlight-line"><span class="highlight-cl">net.bridge.bridge-nf-call-ip6tables <span class="highlight-o">=</span> <span class="highlight-m">1</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">net.bridge.bridge-nf-call-iptables <span class="highlight-o">=</span> <span class="highlight-m">1</span>
+</span></span></code></pre>
 <blockquote>
 <p>要启用网桥支持，通常需要加载 bru netfilter 内核模块.</p>
 </blockquote>
-<pre><code class="highlight-chroma">[root@linux-node1 ~]#  modprobe br_netfilter
-[root@linux-node1 ~]#  ls /proc/sys/net/bridge
-bridge-nf-call-arptables  bridge-nf-call-ip6tables  bridge-nf-call-iptables  bridge-nf-filter-pppoe-tagged  bridge-nf-filter-vlan-tagged  bridge-nf-pass-vlan-input-dev
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]#  modprobe br_netfilter
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]#  ls /proc/sys/net/bridge
+</span></span><span class="highlight-line"><span class="highlight-cl">bridge-nf-call-arptables  bridge-nf-call-ip6tables  bridge-nf-call-iptables  bridge-nf-filter-pppoe-tagged  bridge-nf-filter-vlan-tagged  bridge-nf-pass-vlan-input-dev
+</span></span></code></pre>
 <h3 id="配置DHCP代理">配置 DHCP 代理</h3>
 <p class="indent--2">编辑 <code>/etc/neutron/dhcp_agent.ini</code> 文件</p>
 <ul>
 <li>在[默认]部分中，配置 Linux 网桥接口驱动程序 dnsmasq dhcp 驱动程序，并启用隔离元数据，以便提供程序网络上的实例可以通过网络访问元数据：</li>
 </ul>
-<pre><code class="highlight-chroma">[DEFAULT]
-# ...
-interface_driver = linuxbridge
-dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
-enable_isolated_metadata = true
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[DEFAULT]
+</span></span><span class="highlight-line"><span class="highlight-cl"># ...
+</span></span><span class="highlight-line"><span class="highlight-cl">interface_driver = linuxbridge
+</span></span><span class="highlight-line"><span class="highlight-cl">dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
+</span></span><span class="highlight-line"><span class="highlight-cl">enable_isolated_metadata = true
+</span></span></code></pre>
 <h3 id="Networking-Option-2--Self-service-networks"><a href="https://docs.openstack.org/neutron/rocky/install/controller-install-option2-rdo.html" target="_blank">Networking Option 2: Self-service networks</a></h3>
 <p class="indent--2">网络配置选项 2：</p>
 <h3 id="配置元数据代理">配置元数据代理</h3>
 <ul>
 <li>在[DEFAULT]部分中，配置元数据主机和共享密钥：</li>
 </ul>
-<pre><code class="highlight-chroma">[DEFAULT]
-nova_metadata_host = 10.200.51.100
-metadata_proxy_shared_secret = 598941324
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[DEFAULT]
+</span></span><span class="highlight-line"><span class="highlight-cl">nova_metadata_host = 10.200.51.100
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata_proxy_shared_secret = 598941324
+</span></span></code></pre>
 <h3 id="将计算服务配置为使用网络服务">将计算服务配置为使用网络服务</h3>
 <ul>
 <li>编辑/etc/nova/nova.conf 文件</li>
 </ul>
-<pre><code class="highlight-chroma">[neutron]
-url = http://10.200.51.100:9696
-auth_url = http://10.200.51.100:5000
-auth_type = 598941324
-project_domain_name = default
-user_domain_name = default
-region_name = RegionOne
-project_name = service
-username = neutron
-password = 598941324
-service_metadata_proxy = true
-metadata_proxy_shared_secret = 598941324
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[neutron]
+</span></span><span class="highlight-line"><span class="highlight-cl">url = http://10.200.51.100:9696
+</span></span><span class="highlight-line"><span class="highlight-cl">auth_url = http://10.200.51.100:5000
+</span></span><span class="highlight-line"><span class="highlight-cl">auth_type = 598941324
+</span></span><span class="highlight-line"><span class="highlight-cl">project_domain_name = default
+</span></span><span class="highlight-line"><span class="highlight-cl">user_domain_name = default
+</span></span><span class="highlight-line"><span class="highlight-cl">region_name = RegionOne
+</span></span><span class="highlight-line"><span class="highlight-cl">project_name = service
+</span></span><span class="highlight-line"><span class="highlight-cl">username = neutron
+</span></span><span class="highlight-line"><span class="highlight-cl">password = 598941324
+</span></span><span class="highlight-line"><span class="highlight-cl">service_metadata_proxy = true
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata_proxy_shared_secret = 598941324
+</span></span></code></pre>
 <h3 id="最后安装">最后安装</h3>
 <ul>
 <li>网络服务初始化脚本需要一个指向 ml2 插件配置文件/etc/neutron/plugins/ml2/ml2_conf.ini 的符号链接/etc/neutron/plugins.ini。如果此符号链接不存在，则使用以下命令创建它：</li>
 </ul>
-<pre><code class="highlight-chroma">ln -s /etc/neutron/plugins/ml2/ml2_conf.ini /etc/neutron/plugin.ini
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">ln -s /etc/neutron/plugins/ml2/ml2_conf.ini /etc/neutron/plugin.ini
+</span></span></code></pre>
 <h3 id="填充数据库-">填充数据库：</h3>
-<pre><code class="highlight-chroma">su -s /bin/sh -c "neutron-db-manage --config-file /etc/neutron/neutron.conf \
-  --config-file /etc/neutron/plugins/ml2/ml2_conf.ini upgrade head" neutron
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">su -s /bin/sh -c "neutron-db-manage --config-file /etc/neutron/neutron.conf \
+</span></span><span class="highlight-line"><span class="highlight-cl">  --config-file /etc/neutron/plugins/ml2/ml2_conf.ini upgrade head" neutron
+</span></span></code></pre>
 <ul>
 <li>重新启动计算 API 服务：</li>
 </ul>
-<pre><code class="highlight-chroma">systemctl restart openstack-nova-api.service
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">systemctl restart openstack-nova-api.service
+</span></span></code></pre>
 <ul>
 <li>启动网络服务并将其配置为在系统启动时启动。对于两种网络选项：</li>
 </ul>
-<pre><code class="highlight-chroma"># systemctl enable neutron-server.service \
-  neutron-linuxbridge-agent.service neutron-dhcp-agent.service \
-  neutron-metadata-agent.service
-# systemctl start neutron-server.service \
-  neutron-linuxbridge-agent.service neutron-dhcp-agent.service \
-  neutron-metadata-agent.service
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl"># systemctl enable neutron-server.service \
+</span></span><span class="highlight-line"><span class="highlight-cl">  neutron-linuxbridge-agent.service neutron-dhcp-agent.service \
+</span></span><span class="highlight-line"><span class="highlight-cl">  neutron-metadata-agent.service
+</span></span><span class="highlight-line"><span class="highlight-cl"># systemctl start neutron-server.service \
+</span></span><span class="highlight-line"><span class="highlight-cl">  neutron-linuxbridge-agent.service neutron-dhcp-agent.service \
+</span></span><span class="highlight-line"><span class="highlight-cl">  neutron-metadata-agent.service
+</span></span></code></pre>
 <p class="indent--2"><del>对于网络选项 2，还启用并启动第 3 层服务</del></p>
-<pre><code class="highlight-chroma"># systemctl enable neutron-l3-agent.service
-# systemctl start neutron-l3-agent.service
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl"># systemctl enable neutron-l3-agent.service
+</span></span><span class="highlight-line"><span class="highlight-cl"># systemctl start neutron-l3-agent.service
+</span></span></code></pre>
 <blockquote>
 <p>这里我是第一种</p>
 </blockquote>
 <h1 id="neutron计算节点安装"><a href="https://docs.openstack.org/neutron/rocky/install/compute-install-rdo.html" target="_blank">neutron 计算节点安装</a></h1>
-<pre><code class="highlight-chroma">yum install openstack-neutron-linuxbridge ebtables ipset
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">yum install openstack-neutron-linuxbridge ebtables ipset
+</span></span></code></pre>
 <h2 id="配置公共组件">配置公共组件</h2>
-<pre><code class="highlight-chroma">[DEFAULT]
-transport_url = rabbit://openstack:openstack@10.200.51.100
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[DEFAULT]
+</span></span><span class="highlight-line"><span class="highlight-cl">transport_url = rabbit://openstack:openstack@10.200.51.100
+</span></span></code></pre>
 <ul>
 <li>在[default]和[keystone_authToken]部分中，配置标识服务访问：</li>
 </ul>
-<pre><code class="highlight-chroma">[DEFAULT]
-# ...
-auth_strategy = keystone
-
-[keystone_authtoken]
-www_authenticate_uri = http://10.200.51.100:5000
-auth_url = http://10.200.51.100:5000
-memcached_servers = 10.200.51.100:11211
-auth_type = password
-project_domain_name = default
-user_domain_name = default
-project_name = service
-username = neutron
-password = 598941324
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[DEFAULT]
+</span></span><span class="highlight-line"><span class="highlight-cl"># ...
+</span></span><span class="highlight-line"><span class="highlight-cl">auth_strategy = keystone
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">[keystone_authtoken]
+</span></span><span class="highlight-line"><span class="highlight-cl">www_authenticate_uri = http://10.200.51.100:5000
+</span></span><span class="highlight-line"><span class="highlight-cl">auth_url = http://10.200.51.100:5000
+</span></span><span class="highlight-line"><span class="highlight-cl">memcached_servers = 10.200.51.100:11211
+</span></span><span class="highlight-line"><span class="highlight-cl">auth_type = password
+</span></span><span class="highlight-line"><span class="highlight-cl">project_domain_name = default
+</span></span><span class="highlight-line"><span class="highlight-cl">user_domain_name = default
+</span></span><span class="highlight-line"><span class="highlight-cl">project_name = service
+</span></span><span class="highlight-line"><span class="highlight-cl">username = neutron
+</span></span><span class="highlight-line"><span class="highlight-cl">password = 598941324
+</span></span></code></pre>
 <ul>
 <li>在[oslo_concurrency]部分中，配置锁路径：</li>
 </ul>
-<pre><code class="highlight-chroma">[oslo_concurrency]
-lock_path = /var/lib/neutron/tmp
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[oslo_concurrency]
+</span></span><span class="highlight-line"><span class="highlight-cl">lock_path = /var/lib/neutron/tmp
+</span></span></code></pre>
 <h2 id="配置网络选项-">配置网络选项</h2>
 <p class="indent--2">Choose the same networking option that you chose for the controller node to configure services specific to it. Afterwards, return here and proceed to <a href="https://docs.openstack.org/neutron/rocky/install/compute-install-rdo.html#neutron-compute-compute-rdo" target="_blank">Configure the Compute service to use the Networking service</a>.</p>
 <ul>
@@ -459,165 +451,165 @@ lock_path = /var/lib/neutron/tmp
 <ul>
 <li>[Linux_Bridge]部分中，将提供程序虚拟网络映射到提供程序物理网络接口</li>
 </ul>
-<pre><code class="highlight-chroma">[linux_bridge]
-physical_interface_mappings = provider:ens33
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[linux_bridge]
+</span></span><span class="highlight-line"><span class="highlight-cl">physical_interface_mappings = provider:ens33
+</span></span></code></pre>
 <ul>
 <li>在[vxlan]部分，禁用 vxlan 覆盖网络：</li>
 </ul>
-<pre><code class="highlight-chroma">[vxlan]
-enable_vxlan = false
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[vxlan]
+</span></span><span class="highlight-line"><span class="highlight-cl">enable_vxlan = false
+</span></span></code></pre>
 <ul>
 <li>在[SecurityGroup]部分中，启用安全组并配置 Linux 网桥 iptables 防火墙驱动程序：</li>
 </ul>
-<pre><code class="highlight-chroma">[securitygroup]
-# ...
-enable_security_group = true
-firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[securitygroup]
+</span></span><span class="highlight-line"><span class="highlight-cl"># ...
+</span></span><span class="highlight-line"><span class="highlight-cl">enable_security_group = true
+</span></span><span class="highlight-line"><span class="highlight-cl">firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
+</span></span></code></pre>
 <ul>
 <li>通过验证以下所有 sysctl 值均设置为 1，确保 Linux 操作系统内核支持网络桥筛选器：</li>
 </ul>
-<pre><code class="highlight-chroma">[root@linux-node2 ~]# modprobe br_netfilter
-[root@linux-node2 ~]# ls /proc/sys/net/bridge
-bridge-nf-call-arptables  bridge-nf-call-iptables        bridge-nf-filter-vlan-tagged
-bridge-nf-call-ip6tables  bridge-nf-filter-pppoe-tagged  bridge-nf-pass-vlan-input-dev
-</code></pre>
-<pre><code class="highlight-chroma">vim /etc/sysctl.conf 
-net.bridge.bridge-nf-call-ip6tables = 1 
-net.bridge.bridge-nf-call-iptables = 1
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@linux-node2 ~]# modprobe br_netfilter
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@linux-node2 ~]# ls /proc/sys/net/bridge
+</span></span><span class="highlight-line"><span class="highlight-cl">bridge-nf-call-arptables  bridge-nf-call-iptables        bridge-nf-filter-vlan-tagged
+</span></span><span class="highlight-line"><span class="highlight-cl">bridge-nf-call-ip6tables  bridge-nf-filter-pppoe-tagged  bridge-nf-pass-vlan-input-dev
+</span></span></code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">vim /etc/sysctl.conf 
+</span></span><span class="highlight-line"><span class="highlight-cl">net.bridge.bridge-nf-call-ip6tables = 1 
+</span></span><span class="highlight-line"><span class="highlight-cl">net.bridge.bridge-nf-call-iptables = 1
+</span></span></code></pre>
 <p class="indent--2">使其生效</p>
-<pre><code class="highlight-chroma">[root@linux-node2 ~]# sysctl -p
-net.bridge.bridge-nf-call-ip6tables = 1
-net.bridge.bridge-nf-call-iptables = 1
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@linux-node2 ~]# sysctl -p
+</span></span><span class="highlight-line"><span class="highlight-cl">net.bridge.bridge-nf-call-ip6tables = 1
+</span></span><span class="highlight-line"><span class="highlight-cl">net.bridge.bridge-nf-call-iptables = 1
+</span></span></code></pre>
 <ul>
 <li>编辑/etc/nova/nova.conf 文件并完成以下操作：</li>
 </ul>
-<pre><code class="highlight-chroma">[neutron]
-url = http://10.200.51.100:9696
-auth_url = http://10.200.51.100:5000
-auth_type = password
-project_domain_name = default
-user_domain_name = default
-region_name = RegionOne
-project_name = service
-username = neutron
-password = 598941324
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[neutron]
+</span></span><span class="highlight-line"><span class="highlight-cl">url = http://10.200.51.100:9696
+</span></span><span class="highlight-line"><span class="highlight-cl">auth_url = http://10.200.51.100:5000
+</span></span><span class="highlight-line"><span class="highlight-cl">auth_type = password
+</span></span><span class="highlight-line"><span class="highlight-cl">project_domain_name = default
+</span></span><span class="highlight-line"><span class="highlight-cl">user_domain_name = default
+</span></span><span class="highlight-line"><span class="highlight-cl">region_name = RegionOne
+</span></span><span class="highlight-line"><span class="highlight-cl">project_name = service
+</span></span><span class="highlight-line"><span class="highlight-cl">username = neutron
+</span></span><span class="highlight-line"><span class="highlight-cl">password = 598941324
+</span></span></code></pre>
 <h3 id="第二种网络方法选项"><a href="https://docs.openstack.org/neutron/rocky/install/compute-install-option2-rdo.html" target="_blank">第二种网络方法选项</a></h3>
 <p class="indent--2">暂不使用</p>
 <h2 id="完成安装">完成安装</h2>
 <ul>
 <li>重启</li>
 </ul>
-<pre><code class="highlight-chroma">systemctl restart openstack-nova-compute.service
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">systemctl restart openstack-nova-compute.service
+</span></span></code></pre>
 <ul>
 <li>启动 Linux 网桥代理并将其配置为在系统引导时启动</li>
 </ul>
-<pre><code class="highlight-chroma">systemctl enable neutron-linuxbridge-agent.service 
-systemctl start neutron-linuxbridge-agent.service
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">systemctl enable neutron-linuxbridge-agent.service 
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl start neutron-linuxbridge-agent.service
+</span></span></code></pre>
 <h2 id="验证操作"><a href="https://docs.openstack.org/neutron/rocky/install/verify.html" target="_blank">验证操作</a></h2>
 <ul>
 <li>列出 neutron 验证成功的代理</li>
 </ul>
-<pre><code class="highlight-chroma">[root@linux-node1 ~]# openstack network agent list
-+--------------------------------------+--------------------+-------------+-------------------+-------+-------+---------------------------+
-| ID                                   | Agent Type         | Host        | Availability Zone | Alive | State | Binary                    |
-+--------------------------------------+--------------------+-------------+-------------------+-------+-------+---------------------------+
-| 3a300c2c-73dd-4ddd-b8af-2e39b54846b5 | Metadata agent     | linux-node1 | None              | :-)   | UP    | neutron-metadata-agent    |
-| 5ad73cc8-8a6d-4fcb-a630-7fb52722f2a8 | Linux bridge agent | linux-node1 | None              | :-)   | UP    | neutron-linuxbridge-agent |
-| aa8498be-1f4e-4151-b9ed-50b474e49e28 | Linux bridge agent | linux-node2 | None              | :-)   | UP    | neutron-linuxbridge-agent |
-| dfcc05c5-2a57-49ee-9013-8097d8ecb854 | DHCP agent         | linux-node1 | nova              | :-)   | UP    | neutron-dhcp-agent        |
-+--------------------------------------+--------------------+-------------+-------------------+-------+-------+---------------------------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]# openstack network agent list
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+--------------------+-------------+-------------------+-------+-------+---------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| ID                                   | Agent Type         | Host        | Availability Zone | Alive | State | Binary                    |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+--------------------+-------------+-------------------+-------+-------+---------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| 3a300c2c-73dd-4ddd-b8af-2e39b54846b5 | Metadata agent     | linux-node1 | None              | :-)   | UP    | neutron-metadata-agent    |
+</span></span><span class="highlight-line"><span class="highlight-cl">| 5ad73cc8-8a6d-4fcb-a630-7fb52722f2a8 | Linux bridge agent | linux-node1 | None              | :-)   | UP    | neutron-linuxbridge-agent |
+</span></span><span class="highlight-line"><span class="highlight-cl">| aa8498be-1f4e-4151-b9ed-50b474e49e28 | Linux bridge agent | linux-node2 | None              | :-)   | UP    | neutron-linuxbridge-agent |
+</span></span><span class="highlight-line"><span class="highlight-cl">| dfcc05c5-2a57-49ee-9013-8097d8ecb854 | DHCP agent         | linux-node1 | nova              | :-)   | UP    | neutron-dhcp-agent        |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+--------------------+-------------+-------------------+-------+-------+---------------------------+
+</span></span></code></pre>
 <h1 id="创建网络"><a href="https://docs.openstack.org/install-guide/launch-instance-networks-provider.html" target="_blank">创建网络</a></h1>
 <blockquote>
 <p>首先需要创建一个虚拟网络，根据配置 Neutron 时选择的网络选项进行虚拟网络的配置。</p>
 </blockquote>
 <h2 id="创建网络-">创建网络</h2>
-<pre><code class="highlight-chroma">[root@linux-node1 ~]# . admin-openrc 
-[root@linux-node1 ~]# openstack network create  --share --external \
-&gt;   --provider-physical-network provider \
-&gt;   --provider-network-type flat provider
-+---------------------------+--------------------------------------+
-| Field                     | Value                                |
-+---------------------------+--------------------------------------+
-| admin_state_up            | UP                                   |
-| availability_zone_hints   |                                      |
-| availability_zones        |                                      |
-| created_at                | 2019-10-19T03:02:06Z                 |
-| description               |                                      |
-| dns_domain                | None                                 |
-| id                        | e5179b09-cf50-46d5-b0e8-e02909b94ffe |
-| ipv4_address_scope        | None                                 |
-| ipv6_address_scope        | None                                 |
-| is_default                | None                                 |
-| is_vlan_transparent       | None                                 |
-| mtu                       | 1500                                 |
-| name                      | provider                             |
-| port_security_enabled     | True                                 |
-| project_id                | 6385e862e7874f0f91d4a46772a0d4e7     |
-| provider:network_type     | flat                                 |
-| provider:physical_network | provider                             |
-| provider:segmentation_id  | None                                 |
-| qos_policy_id             | None                                 |
-| revision_number           | 0                                    |
-| router:external           | External                             |
-| segments                  | None                                 |
-| shared                    | True                                 |
-| status                    | ACTIVE                               |
-| subnets                   |                                      |
-| tags                      |                                      |
-| updated_at                | 2019-10-19T03:02:06Z                 |
-+---------------------------+--------------------------------------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]# . admin-openrc 
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]# openstack network create  --share --external \
+</span></span><span class="highlight-line"><span class="highlight-cl">&gt;   --provider-physical-network provider \
+</span></span><span class="highlight-line"><span class="highlight-cl">&gt;   --provider-network-type flat provider
+</span></span><span class="highlight-line"><span class="highlight-cl">+---------------------------+--------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| Field                     | Value                                |
+</span></span><span class="highlight-line"><span class="highlight-cl">+---------------------------+--------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| admin_state_up            | UP                                   |
+</span></span><span class="highlight-line"><span class="highlight-cl">| availability_zone_hints   |                                      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| availability_zones        |                                      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| created_at                | 2019-10-19T03:02:06Z                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| description               |                                      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| dns_domain                | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| id                        | e5179b09-cf50-46d5-b0e8-e02909b94ffe |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ipv4_address_scope        | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ipv6_address_scope        | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| is_default                | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| is_vlan_transparent       | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| mtu                       | 1500                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| name                      | provider                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| port_security_enabled     | True                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| project_id                | 6385e862e7874f0f91d4a46772a0d4e7     |
+</span></span><span class="highlight-line"><span class="highlight-cl">| provider:network_type     | flat                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| provider:physical_network | provider                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| provider:segmentation_id  | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| qos_policy_id             | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| revision_number           | 0                                    |
+</span></span><span class="highlight-line"><span class="highlight-cl">| router:external           | External                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| segments                  | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| shared                    | True                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| status                    | ACTIVE                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| subnets                   |                                      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| tags                      |                                      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| updated_at                | 2019-10-19T03:02:06Z                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">+---------------------------+--------------------------------------+
+</span></span></code></pre>
 <blockquote>
 <p>--share 选项允许所有项目使用虚拟网络。<br>
 --external 选项将虚拟网络定义为外部网络。如果希望创建内部网络，可以使用--internal 代替。默认值为内部。<br>
 --provider physical network provider 为在/etc/neutron/plugins/ml2/ml2_conf.ini 中配置的 flat_networks。</p>
 </blockquote>
-<pre><code class="highlight-chroma">[ml2_type_flat]  
-flat_networks = provider  
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[ml2_type_flat]  
+</span></span><span class="highlight-line"><span class="highlight-cl">flat_networks = provider
+</span></span></code></pre>
 <p class="indent--2">--provider network type flat 选项使用来自以下文件的信息将扁平虚拟网络连接到主机上 ens0 接口上的扁平（本机/未标记）物理网络：在 /etc/neutron/plugins/ml2/linuxbridge_agent.ini</p>
-<pre><code class="highlight-chroma"> [linux_bridge]
-physical_interface_mappings = provider:enp61s0f0
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[linux_bridge]
+</span></span><span class="highlight-line"><span class="highlight-cl">physical_interface_mappings = provider:enp61s0f0
+</span></span></code></pre>
 <ul>
 <li>在网络上创建子网：</li>
 </ul>
-<pre><code class="highlight-chroma">[root@linux-node1 ~]# openstack subnet create --network provider   --allocation-pool start=192.168.51.10,end=192.168.51.150   --dns-nameserver 223.5.5.5  --gateway 192.168.51.1   --subnet-range 192.168.51.0/24 public
-+-------------------+--------------------------------------+
-| Field             | Value                                |
-+-------------------+--------------------------------------+
-| allocation_pools  | 192.168.51.10-192.168.51.150         |
-| cidr              | 192.168.51.0/24                      |
-| created_at        | 2019-10-19T03:39:46Z                 |
-| description       |                                      |
-| dns_nameservers   | 223.5.5.5                            |
-| enable_dhcp       | True                                 |
-| gateway_ip        | 192.168.51.1                         |
-| host_routes       |                                      |
-| id                | 0f6331e7-8f1d-4231-a2a4-f4bcd895ad83 |
-| ip_version        | 4                                    |
-| ipv6_address_mode | None                                 |
-| ipv6_ra_mode      | None                                 |
-| name              | public                               |
-| network_id        | e5179b09-cf50-46d5-b0e8-e02909b94ffe |
-| project_id        | 6385e862e7874f0f91d4a46772a0d4e7     |
-| revision_number   | 0                                    |
-| segment_id        | None                                 |
-| service_types     |                                      |
-| subnetpool_id     | None                                 |
-| tags              |                                      |
-| updated_at        | 2019-10-19T03:39:46Z                 |
-+-------------------+--------------------------------------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]# openstack subnet create --network provider   --allocation-pool start=192.168.51.10,end=192.168.51.150   --dns-nameserver 223.5.5.5  --gateway 192.168.51.1   --subnet-range 192.168.51.0/24 public
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+--------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| Field             | Value                                |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+--------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| allocation_pools  | 192.168.51.10-192.168.51.150         |
+</span></span><span class="highlight-line"><span class="highlight-cl">| cidr              | 192.168.51.0/24                      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| created_at        | 2019-10-19T03:39:46Z                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| description       |                                      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| dns_nameservers   | 223.5.5.5                            |
+</span></span><span class="highlight-line"><span class="highlight-cl">| enable_dhcp       | True                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| gateway_ip        | 192.168.51.1                         |
+</span></span><span class="highlight-line"><span class="highlight-cl">| host_routes       |                                      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| id                | 0f6331e7-8f1d-4231-a2a4-f4bcd895ad83 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ip_version        | 4                                    |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ipv6_address_mode | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ipv6_ra_mode      | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| name              | public                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| network_id        | e5179b09-cf50-46d5-b0e8-e02909b94ffe |
+</span></span><span class="highlight-line"><span class="highlight-cl">| project_id        | 6385e862e7874f0f91d4a46772a0d4e7     |
+</span></span><span class="highlight-line"><span class="highlight-cl">| revision_number   | 0                                    |
+</span></span><span class="highlight-line"><span class="highlight-cl">| segment_id        | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| service_types     |                                      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| subnetpool_id     | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| tags              |                                      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| updated_at        | 2019-10-19T03:39:46Z                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+--------------------------------------+
+</span></span></code></pre>
 <blockquote>
 <p>PROVIDER_NETWORK_CIDR 采用物理网络上的 CIDR 子网表示。<br>
 <code>START_IP_ADDRESS</code> and <code>END_IP_ADDRESS</code>：子网中要为实例分配的范围的第一个和最后一个 IP 地址。此范围不得包含任何现有的活动 IP 地址。<br>
@@ -625,353 +617,353 @@ DNS_RESOLVER 使用 DNS 解析程序的 IP 地址。在大多数情况下，可�
 <code>PROVIDER_NETWORK_GATEWAY</code> 提供程序网络上的网关 IP 地址，通常是“.1”IP 地址。</p>
 </blockquote>
 <p class="indent--2">验证：</p>
-<pre><code class="highlight-chroma">[root@linux-node1 ~]# ip netns
-qdhcp-e5179b09-cf50-46d5-b0e8-e02909b94ffe (id: 0)
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]# ip netns
+</span></span><span class="highlight-line"><span class="highlight-cl">qdhcp-e5179b09-cf50-46d5-b0e8-e02909b94ffe (id: 0)
+</span></span></code></pre>
 <p class="indent--2">创建虚拟机：</p>
-<pre><code class="highlight-chroma">[root@linux-node1 ~]# openstack flavor create --id 0 --vcpus 1 --ram 64 --disk 1 m1.nano
-+----------------------------+---------+
-| Field                      | Value   |
-+----------------------------+---------+
-| OS-FLV-DISABLED:disabled   | False   |
-| OS-FLV-EXT-DATA:ephemeral  | 0       |
-| disk                       | 1       |
-| id                         | 0       |
-| name                       | m1.nano |
-| os-flavor-access:is_public | True    |
-| properties                 |         |
-| ram                        | 64      |
-| rxtx_factor                | 1.0     |
-| swap                       |         |
-| vcpus                      | 1       |
-+----------------------------+---------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]# openstack flavor create --id 0 --vcpus 1 --ram 64 --disk 1 m1.nano
+</span></span><span class="highlight-line"><span class="highlight-cl">+----------------------------+---------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| Field                      | Value   |
+</span></span><span class="highlight-line"><span class="highlight-cl">+----------------------------+---------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-FLV-DISABLED:disabled   | False   |
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-FLV-EXT-DATA:ephemeral  | 0       |
+</span></span><span class="highlight-line"><span class="highlight-cl">| disk                       | 1       |
+</span></span><span class="highlight-line"><span class="highlight-cl">| id                         | 0       |
+</span></span><span class="highlight-line"><span class="highlight-cl">| name                       | m1.nano |
+</span></span><span class="highlight-line"><span class="highlight-cl">| os-flavor-access:is_public | True    |
+</span></span><span class="highlight-line"><span class="highlight-cl">| properties                 |         |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ram                        | 64      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| rxtx_factor                | 1.0     |
+</span></span><span class="highlight-line"><span class="highlight-cl">| swap                       |         |
+</span></span><span class="highlight-line"><span class="highlight-cl">| vcpus                      | 1       |
+</span></span><span class="highlight-line"><span class="highlight-cl">+----------------------------+---------+
+</span></span></code></pre>
 <ul>
 <li>生成密钥对<br>
 生成密钥对并添加公钥：</li>
 </ul>
-<pre><code class="highlight-chroma">[root@linux-node1 ~]# ssh-keygen -q -N ""
-Enter file in which to save the key (/root/.ssh/id_rsa): 
-[root@linux-node1 ~]# openstack keypair create --public-key ~/.ssh/id_rsa.pub mykey
-+-------------+-------------------------------------------------+
-| Field       | Value                                           |
-+-------------+-------------------------------------------------+
-| fingerprint | ca:96:b1:22:4e:dd:7b:ed:26:9d:24:07:83:05:25:66 |
-| name        | mykey                                           |
-| user_id     | 93fe6925e0fb476f9ee66d8598f189cf                |
-+-------------+-------------------------------------------------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]# ssh-keygen -q -N ""
+</span></span><span class="highlight-line"><span class="highlight-cl">Enter file in which to save the key (/root/.ssh/id_rsa): 
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]# openstack keypair create --public-key ~/.ssh/id_rsa.pub mykey
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------+-------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| Field       | Value                                           |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------+-------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| fingerprint | ca:96:b1:22:4e:dd:7b:ed:26:9d:24:07:83:05:25:66 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| name        | mykey                                           |
+</span></span><span class="highlight-line"><span class="highlight-cl">| user_id     | 93fe6925e0fb476f9ee66d8598f189cf                |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------+-------------------------------------------------+
+</span></span></code></pre>
 <p class="indent--2">验证密钥对的添加：</p>
-<pre><code class="highlight-chroma">[root@linux-node1 ~]# openstack keypair list
-+-------+-------------------------------------------------+
-| Name  | Fingerprint                                     |
-+-------+-------------------------------------------------+
-| mykey | ca:96:b1:22:4e:dd:7b:ed:26:9d:24:07:83:05:25:66 |
-+-------+-------------------------------------------------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]# openstack keypair list
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------+-------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| Name  | Fingerprint                                     |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------+-------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| mykey | ca:96:b1:22:4e:dd:7b:ed:26:9d:24:07:83:05:25:66 |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------+-------------------------------------------------+
+</span></span></code></pre>
 <h3 id="添加安全组规则">添加安全组规则</h3>
 <p class="indent--2">默认情况下，默认安全组应用于所有实例，并包含拒绝远程访问实例的防火墙规则。对于 cirros 等 Linux 映像，我们建议至少允许 icmp（ping）和 secure shell（SSH）。</p>
 <ul>
 <li>向默认安全组添加规则：<br>
 允许 ICMP（ping）：</li>
 </ul>
-<pre><code class="highlight-chroma">[root@linux-node1 ~]#  openstack security group rule create --proto icmp default
-+-------------------+--------------------------------------+
-| Field             | Value                                |
-+-------------------+--------------------------------------+
-| created_at        | 2019-10-19T06:31:41Z                 |
-| description       |                                      |
-| direction         | ingress                              |
-| ether_type        | IPv4                                 |
-| id                | 07a5686f-bac8-4b36-b036-1c67ca55f02e |
-| name              | None                                 |
-| port_range_max    | None                                 |
-| port_range_min    | None                                 |
-| project_id        | d13cc91dc74347628cb460d6f497ee47     |
-| protocol          | icmp                                 |
-| remote_group_id   | None                                 |
-| remote_ip_prefix  | 0.0.0.0/0                            |
-| revision_number   | 0                                    |
-| security_group_id | 346b8ee6-7b94-4cff-a902-fdeadb812892 |
-| updated_at        | 2019-10-19T06:31:41Z                 |
-+-------------------+--------------------------------------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]#  openstack security group rule create --proto icmp default
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+--------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| Field             | Value                                |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+--------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| created_at        | 2019-10-19T06:31:41Z                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| description       |                                      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| direction         | ingress                              |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ether_type        | IPv4                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| id                | 07a5686f-bac8-4b36-b036-1c67ca55f02e |
+</span></span><span class="highlight-line"><span class="highlight-cl">| name              | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| port_range_max    | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| port_range_min    | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| project_id        | d13cc91dc74347628cb460d6f497ee47     |
+</span></span><span class="highlight-line"><span class="highlight-cl">| protocol          | icmp                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| remote_group_id   | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| remote_ip_prefix  | 0.0.0.0/0                            |
+</span></span><span class="highlight-line"><span class="highlight-cl">| revision_number   | 0                                    |
+</span></span><span class="highlight-line"><span class="highlight-cl">| security_group_id | 346b8ee6-7b94-4cff-a902-fdeadb812892 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| updated_at        | 2019-10-19T06:31:41Z                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+--------------------------------------+
+</span></span></code></pre>
 <p class="indent--2">允许安全（SSH）访问：</p>
-<pre><code class="highlight-chroma">[root@linux-node1 ~]# openstack security group rule create --proto tcp --dst-port 22 default
-+-------------------+--------------------------------------+
-| Field             | Value                                |
-+-------------------+--------------------------------------+
-| created_at        | 2019-10-19T06:32:24Z                 |
-| description       |                                      |
-| direction         | ingress                              |
-| ether_type        | IPv4                                 |
-| id                | 4aabf58b-1d99-47ca-bef0-a423f2fb2e3a |
-| name              | None                                 |
-| port_range_max    | 22                                   |
-| port_range_min    | 22                                   |
-| project_id        | d13cc91dc74347628cb460d6f497ee47     |
-| protocol          | tcp                                  |
-| remote_group_id   | None                                 |
-| remote_ip_prefix  | 0.0.0.0/0                            |
-| revision_number   | 0                                    |
-| security_group_id | 346b8ee6-7b94-4cff-a902-fdeadb812892 |
-| updated_at        | 2019-10-19T06:32:24Z                 |
-+-------------------+--------------------------------------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]# openstack security group rule create --proto tcp --dst-port 22 default
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+--------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| Field             | Value                                |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+--------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| created_at        | 2019-10-19T06:32:24Z                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| description       |                                      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| direction         | ingress                              |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ether_type        | IPv4                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| id                | 4aabf58b-1d99-47ca-bef0-a423f2fb2e3a |
+</span></span><span class="highlight-line"><span class="highlight-cl">| name              | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| port_range_max    | 22                                   |
+</span></span><span class="highlight-line"><span class="highlight-cl">| port_range_min    | 22                                   |
+</span></span><span class="highlight-line"><span class="highlight-cl">| project_id        | d13cc91dc74347628cb460d6f497ee47     |
+</span></span><span class="highlight-line"><span class="highlight-cl">| protocol          | tcp                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| remote_group_id   | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| remote_ip_prefix  | 0.0.0.0/0                            |
+</span></span><span class="highlight-line"><span class="highlight-cl">| revision_number   | 0                                    |
+</span></span><span class="highlight-line"><span class="highlight-cl">| security_group_id | 346b8ee6-7b94-4cff-a902-fdeadb812892 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| updated_at        | 2019-10-19T06:32:24Z                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+--------------------------------------+
+</span></span></code></pre>
 <h3 id="启动网络实例"><a href="https://docs.openstack.org/install-guide/launch-instance-provider.html" target="_blank">启动网络实例</a></h3>
 <ul>
 <li>Flavor 指定了一个虚拟资源分配配置文件，其中包括处理器、内存和存储。列出可用的口味：</li>
 </ul>
-<pre><code class="highlight-chroma">[root@linux-node1 ~]# . myuser-openrc 
-[root@linux-node1 ~]#  openstack flavor list
-+----+---------+-----+------+-----------+-------+-----------+
-| ID | Name    | RAM | Disk | Ephemeral | VCPUs | Is Public |
-+----+---------+-----+------+-----------+-------+-----------+
-| 0  | m1.nano |  64 |    1 |         0 |     1 | True      |
-+----+---------+-----+------+-----------+-------+-----------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]# . myuser-openrc 
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]#  openstack flavor list
+</span></span><span class="highlight-line"><span class="highlight-cl">+----+---------+-----+------+-----------+-------+-----------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| ID | Name    | RAM | Disk | Ephemeral | VCPUs | Is Public |
+</span></span><span class="highlight-line"><span class="highlight-cl">+----+---------+-----+------+-----------+-------+-----------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| 0  | m1.nano |  64 |    1 |         0 |     1 | True      |
+</span></span><span class="highlight-line"><span class="highlight-cl">+----+---------+-----+------+-----------+-------+-----------+
+</span></span></code></pre>
 <ul>
 <li>列出可用图像：</li>
 </ul>
-<pre><code class="highlight-chroma">[root@linux-node1 ~]# openstack image list
-
-+--------------------------------------+--------+--------+
-| ID                                   | Name   | Status |
-+--------------------------------------+--------+--------+
-| 44dbc6cf-cf2a-4d0a-af1f-39489c454f39 | cirros | active |
-+--------------------------------------+--------+--------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]# openstack image list
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+--------+--------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| ID                                   | Name   | Status |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+--------+--------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| 44dbc6cf-cf2a-4d0a-af1f-39489c454f39 | cirros | active |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+--------+--------+
+</span></span></code></pre>
 <ul>
 <li>列出可用网络：</li>
 </ul>
-<pre><code class="highlight-chroma">[root@linux-node1 ~]#  openstack network list
-+--------------------------------------+----------+--------------------------------------+
-| ID                                   | Name     | Subnets                              |
-+--------------------------------------+----------+--------------------------------------+
-| e5179b09-cf50-46d5-b0e8-e02909b94ffe | provider | 0f6331e7-8f1d-4231-a2a4-f4bcd895ad83 |
-+--------------------------------------+----------+--------------------------------------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]#  openstack network list
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+----------+--------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| ID                                   | Name     | Subnets                              |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+----------+--------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| e5179b09-cf50-46d5-b0e8-e02909b94ffe | provider | 0f6331e7-8f1d-4231-a2a4-f4bcd895ad83 |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+----------+--------------------------------------+
+</span></span></code></pre>
 <ul>
 <li>列出可用的安全组：</li>
 </ul>
-<pre><code class="highlight-chroma">[root@linux-node1 ~]# openstack security group list
-+--------------------------------------+---------+------------------------+----------------------------------+------+
-| ID                                   | Name    | Description            | Project                          | Tags |
-+--------------------------------------+---------+------------------------+----------------------------------+------+
-| 346b8ee6-7b94-4cff-a902-fdeadb812892 | default | Default security group | d13cc91dc74347628cb460d6f497ee47 | []   |
-+--------------------------------------+---------+------------------------+----------------------------------+------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]# openstack security group list
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+---------+------------------------+----------------------------------+------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| ID                                   | Name    | Description            | Project                          | Tags |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+---------+------------------------+----------------------------------+------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| 346b8ee6-7b94-4cff-a902-fdeadb812892 | default | Default security group | d13cc91dc74347628cb460d6f497ee47 | []   |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+---------+------------------------+----------------------------------+------+
+</span></span></code></pre>
 <h3 id="启动实例">启动实例</h3>
-<pre><code class="highlight-chroma">[root@linux-node1 ~]#  openstack server create --flavor m1.nano --image cirros   --security-group default   --key-name mykey provider-instance
-+-----------------------------+-----------------------------------------------+
-| Field                       | Value                                         |
-+-----------------------------+-----------------------------------------------+
-| OS-DCF:diskConfig           | MANUAL                                        |
-| OS-EXT-AZ:availability_zone |                                               |
-| OS-EXT-STS:power_state      | NOSTATE                                       |
-| OS-EXT-STS:task_state       | scheduling                                    |
-| OS-EXT-STS:vm_state         | building                                      |
-| OS-SRV-USG:launched_at      | None                                          |
-| OS-SRV-USG:terminated_at    | None                                          |
-| accessIPv4                  |                                               |
-| accessIPv6                  |                                               |
-| addresses                   |                                               |
-| adminPass                   | xEbweLr2Yz74                                  |
-| config_drive                |                                               |
-| created                     | 2019-10-19T06:38:44Z                          |
-| flavor                      | m1.nano (0)                                   |
-| hostId                      |                                               |
-| id                          | 1e497f41-aa2a-458a-9970-261d6fdc06dc          |
-| image                       | cirros (44dbc6cf-cf2a-4d0a-af1f-39489c454f39) |
-| key_name                    | mykey                                         |
-| name                        | provider-instance                             |
-| progress                    | 0                                             |
-| project_id                  | d13cc91dc74347628cb460d6f497ee47              |
-| properties                  |                                               |
-| security_groups             | name='346b8ee6-7b94-4cff-a902-fdeadb812892'   |
-| status                      | BUILD                                         |
-| updated                     | 2019-10-19T06:38:44Z                          |
-| user_id                     | 93fe6925e0fb476f9ee66d8598f189cf              |
-| volumes_attached            |                                               |
-+-----------------------------+-----------------------------------------------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]#  openstack server create --flavor m1.nano --image cirros   --security-group default   --key-name mykey provider-instance
+</span></span><span class="highlight-line"><span class="highlight-cl">+-----------------------------+-----------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| Field                       | Value                                         |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-----------------------------+-----------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-DCF:diskConfig           | MANUAL                                        |
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-EXT-AZ:availability_zone |                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-EXT-STS:power_state      | NOSTATE                                       |
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-EXT-STS:task_state       | scheduling                                    |
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-EXT-STS:vm_state         | building                                      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-SRV-USG:launched_at      | None                                          |
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-SRV-USG:terminated_at    | None                                          |
+</span></span><span class="highlight-line"><span class="highlight-cl">| accessIPv4                  |                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| accessIPv6                  |                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| addresses                   |                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| adminPass                   | xEbweLr2Yz74                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| config_drive                |                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| created                     | 2019-10-19T06:38:44Z                          |
+</span></span><span class="highlight-line"><span class="highlight-cl">| flavor                      | m1.nano (0)                                   |
+</span></span><span class="highlight-line"><span class="highlight-cl">| hostId                      |                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| id                          | 1e497f41-aa2a-458a-9970-261d6fdc06dc          |
+</span></span><span class="highlight-line"><span class="highlight-cl">| image                       | cirros (44dbc6cf-cf2a-4d0a-af1f-39489c454f39) |
+</span></span><span class="highlight-line"><span class="highlight-cl">| key_name                    | mykey                                         |
+</span></span><span class="highlight-line"><span class="highlight-cl">| name                        | provider-instance                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| progress                    | 0                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| project_id                  | d13cc91dc74347628cb460d6f497ee47              |
+</span></span><span class="highlight-line"><span class="highlight-cl">| properties                  |                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| security_groups             | name='346b8ee6-7b94-4cff-a902-fdeadb812892'   |
+</span></span><span class="highlight-line"><span class="highlight-cl">| status                      | BUILD                                         |
+</span></span><span class="highlight-line"><span class="highlight-cl">| updated                     | 2019-10-19T06:38:44Z                          |
+</span></span><span class="highlight-line"><span class="highlight-cl">| user_id                     | 93fe6925e0fb476f9ee66d8598f189cf              |
+</span></span><span class="highlight-line"><span class="highlight-cl">| volumes_attached            |                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-----------------------------+-----------------------------------------------+
+</span></span></code></pre>
 <ul>
 <li>检查实例的状态：</li>
 </ul>
-<pre><code class="highlight-chroma">[root@linux-node1 ~]# openstack server list
-+--------------------------------------+-------------------+--------+----------+--------+---------+
-| ID                                   | Name              | Status | Networks | Image  | Flavor  |
-+--------------------------------------+-------------------+--------+----------+--------+---------+
-| 1e497f41-aa2a-458a-9970-261d6fdc06dc | provider-instance | ERROR  |          | cirros | m1.nano |
-+--------------------------------------+-------------------+--------+----------+--------+---------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@linux-node1 ~]# openstack server list
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+-------------------+--------+----------+--------+---------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| ID                                   | Name              | Status | Networks | Image  | Flavor  |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+-------------------+--------+----------+--------+---------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| 1e497f41-aa2a-458a-9970-261d6fdc06dc | provider-instance | ERROR  |          | cirros | m1.nano |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+-------------------+--------+----------+--------+---------+
+</span></span></code></pre>
 <h3 id="使用虚拟主控台存取执行个体">使用虚拟主控台存取执行个体</h3>
 <ul>
 <li>获取实例的虚拟网络计算（VNC）会话 URL 并从 Web 浏览器访问它：</li>
 </ul>
 <h2 id="创建实例-"><a href="https://docs.openstack.org/install-guide/launch-instance.html#launch-instance-networks" target="_blank">创建实例：</a></h2>
-<pre><code class="highlight-chroma">[root@controller ~]# openstack flavor create --id 0 --vcpus 1 --ram 64 --disk 1 m1.nano
-+----------------------------+---------+
-| Field                      | Value   |
-+----------------------------+---------+
-| OS-FLV-DISABLED:disabled   | False   |
-| OS-FLV-EXT-DATA:ephemeral  | 0       |
-| disk                       | 1       |
-| id                         | 0       |
-| name                       | m1.nano |
-| os-flavor-access:is_public | True    |
-| properties                 |         |
-| ram                        | 64      |
-| rxtx_factor                | 1.0     |
-| swap                       |         |
-| vcpus                      | 1       |
-+----------------------------+---------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# openstack flavor create --id 0 --vcpus 1 --ram 64 --disk 1 m1.nano
+</span></span><span class="highlight-line"><span class="highlight-cl">+----------------------------+---------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| Field                      | Value   |
+</span></span><span class="highlight-line"><span class="highlight-cl">+----------------------------+---------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-FLV-DISABLED:disabled   | False   |
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-FLV-EXT-DATA:ephemeral  | 0       |
+</span></span><span class="highlight-line"><span class="highlight-cl">| disk                       | 1       |
+</span></span><span class="highlight-line"><span class="highlight-cl">| id                         | 0       |
+</span></span><span class="highlight-line"><span class="highlight-cl">| name                       | m1.nano |
+</span></span><span class="highlight-line"><span class="highlight-cl">| os-flavor-access:is_public | True    |
+</span></span><span class="highlight-line"><span class="highlight-cl">| properties                 |         |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ram                        | 64      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| rxtx_factor                | 1.0     |
+</span></span><span class="highlight-line"><span class="highlight-cl">| swap                       |         |
+</span></span><span class="highlight-line"><span class="highlight-cl">| vcpus                      | 1       |
+</span></span><span class="highlight-line"><span class="highlight-cl">+----------------------------+---------+
+</span></span></code></pre>
 <ul>
 <li>创建 SSH key</li>
 </ul>
-<pre><code class="highlight-chroma">[root@controller ~]#  ssh-keygen -q -N ""
-Enter file in which to save the key (/root/.ssh/id_rsa): 
-[root@controller ~]# openstack keypair create --public-key ~/.ssh/id_rsa.pub mykey
-+-------------+-------------------------------------------------+
-| Field       | Value                                           |
-+-------------+-------------------------------------------------+
-| fingerprint | ea:57:21:d5:cf:1b:be:f4:27:c3:11:4d:ca:63:ce:1f |
-| name        | mykey                                           |
-| user_id     | 3642a0239ea24f98a8eb39b5685e1fff                |
-+-------------+-------------------------------------------------+
-</code></pre>
-<pre><code class="highlight-chroma">[root@controller ~]# openstack keypair list
-+-------+-------------------------------------------------+
-| Name  | Fingerprint                                     |
-+-------+-------------------------------------------------+
-| mykey | ea:57:21:d5:cf:1b:be:f4:27:c3:11:4d:ca:63:ce:1f |
-+-------+-------------------------------------------------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller ~]#  ssh-keygen -q -N ""
+</span></span><span class="highlight-line"><span class="highlight-cl">Enter file in which to save the key (/root/.ssh/id_rsa): 
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# openstack keypair create --public-key ~/.ssh/id_rsa.pub mykey
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------+-------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| Field       | Value                                           |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------+-------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| fingerprint | ea:57:21:d5🇨🇫1b🇧🇪f4:27:c3:11:4d🇨🇦63:ce:1f |
+</span></span><span class="highlight-line"><span class="highlight-cl">| name        | mykey                                           |
+</span></span><span class="highlight-line"><span class="highlight-cl">| user_id     | 3642a0239ea24f98a8eb39b5685e1fff                |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------+-------------------------------------------------+
+</span></span></code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# openstack keypair list
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------+-------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| Name  | Fingerprint                                     |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------+-------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| mykey | ea:57:21:d5🇨🇫1b🇧🇪f4:27:c3:11:4d🇨🇦63:ce:1f |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------+-------------------------------------------------+
+</span></span></code></pre>
 <ul>
 <li>安全组配置（放通 ping 和 SSH 远程端口）</li>
 </ul>
-<pre><code class="highlight-chroma">[root@controller ~]# openstack security group rule create --proto icmp default
-+-------------------+--------------------------------------+
-| Field             | Value                                |
-+-------------------+--------------------------------------+
-| created_at        | 2019-10-23T02:04:22Z                 |
-| description       |                                      |
-| direction         | ingress                              |
-| ether_type        | IPv4                                 |
-| id                | 01e7d03e-ac6b-40e8-99ac-751ae6435be7 |
-| name              | None                                 |
-| port_range_max    | None                                 |
-| port_range_min    | None                                 |
-| project_id        | 0eeb62090a094959ae36ce627f10cc1b     |
-| protocol          | icmp                                 |
-| remote_group_id   | None                                 |
-| remote_ip_prefix  | 0.0.0.0/0                            |
-| revision_number   | 0                                    |
-| security_group_id | ae62b441-4ec0-46b0-aed8-51f0bef56610 |
-| updated_at        | 2019-10-23T02:04:22Z                 |
-+-------------------+--------------------------------------+
-</code></pre>
-<pre><code class="highlight-chroma">[root@controller ~]# openstack security group rule create --proto tcp --dst-port 22 default
-+-------------------+--------------------------------------+
-| Field             | Value                                |
-+-------------------+--------------------------------------+
-| created_at        | 2019-10-23T02:05:33Z                 |
-| description       |                                      |
-| direction         | ingress                              |
-| ether_type        | IPv4                                 |
-| id                | a81df169-6582-4f72-901d-503e05ad33a8 |
-| name              | None                                 |
-| port_range_max    | 22                                   |
-| port_range_min    | 22                                   |
-| project_id        | 0eeb62090a094959ae36ce627f10cc1b     |
-| protocol          | tcp                                  |
-| remote_group_id   | None                                 |
-| remote_ip_prefix  | 0.0.0.0/0                            |
-| revision_number   | 0                                    |
-| security_group_id | ae62b441-4ec0-46b0-aed8-51f0bef56610 |
-| updated_at        | 2019-10-23T02:05:33Z                 |
-+-------------------+--------------------------------------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# openstack security group rule create --proto icmp default
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+--------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| Field             | Value                                |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+--------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| created_at        | 2019-10-23T02:04:22Z                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| description       |                                      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| direction         | ingress                              |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ether_type        | IPv4                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| id                | 01e7d03e-ac6b-40e8-99ac-751ae6435be7 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| name              | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| port_range_max    | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| port_range_min    | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| project_id        | 0eeb62090a094959ae36ce627f10cc1b     |
+</span></span><span class="highlight-line"><span class="highlight-cl">| protocol          | icmp                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| remote_group_id   | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| remote_ip_prefix  | 0.0.0.0/0                            |
+</span></span><span class="highlight-line"><span class="highlight-cl">| revision_number   | 0                                    |
+</span></span><span class="highlight-line"><span class="highlight-cl">| security_group_id | ae62b441-4ec0-46b0-aed8-51f0bef56610 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| updated_at        | 2019-10-23T02:04:22Z                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+--------------------------------------+
+</span></span></code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# openstack security group rule create --proto tcp --dst-port 22 default
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+--------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| Field             | Value                                |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+--------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| created_at        | 2019-10-23T02:05:33Z                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| description       |                                      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| direction         | ingress                              |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ether_type        | IPv4                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| id                | a81df169-6582-4f72-901d-503e05ad33a8 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| name              | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| port_range_max    | 22                                   |
+</span></span><span class="highlight-line"><span class="highlight-cl">| port_range_min    | 22                                   |
+</span></span><span class="highlight-line"><span class="highlight-cl">| project_id        | 0eeb62090a094959ae36ce627f10cc1b     |
+</span></span><span class="highlight-line"><span class="highlight-cl">| protocol          | tcp                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| remote_group_id   | None                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| remote_ip_prefix  | 0.0.0.0/0                            |
+</span></span><span class="highlight-line"><span class="highlight-cl">| revision_number   | 0                                    |
+</span></span><span class="highlight-line"><span class="highlight-cl">| security_group_id | ae62b441-4ec0-46b0-aed8-51f0bef56610 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| updated_at        | 2019-10-23T02:05:33Z                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+--------------------------------------+
+</span></span></code></pre>
 <ul>
 <li><a href="https://docs.openstack.org/install-guide/launch-instance-selfservice.html" target="_blank">启动实例</a></li>
 </ul>
 <p class="indent--2">查看相关信息：</p>
-<pre><code class="highlight-chroma">[root@controller ~]#  openstack flavor list
-+----+---------+-----+------+-----------+-------+-----------+
-| ID | Name    | RAM | Disk | Ephemeral | VCPUs | Is Public |
-+----+---------+-----+------+-----------+-------+-----------+
-| 0  | m1.nano |  64 |    1 |         0 |     1 | True      |
-+----+---------+-----+------+-----------+-------+-----------+
-[root@controller ~]#  openstack image list
-+--------------------------------------+--------+--------+
-| ID                                   | Name   | Status |
-+--------------------------------------+--------+--------+
-| f5f2008a-a230-4692-8fec-2634b4eaaac9 | cirros | active |
-+--------------------------------------+--------+--------+
-[root@controller ~]#  openstack network list
-
-+--------------------------------------+-------------+--------------------------------------+
-| ID                                   | Name        | Subnets                              |
-+--------------------------------------+-------------+--------------------------------------+
-| cd7dd9bc-c2fd-40a9-9a77-a8573091e272 | selfservice | 4d190708-3579-4040-a578-d54143339515 |
-+--------------------------------------+-------------+--------------------------------------+
-[root@controller ~]# 
-[root@controller ~]#  openstack security group list
-+--------------------------------------+---------+------------------------+----------------------------------+------+
-| ID                                   | Name    | Description            | Project                          | Tags |
-+--------------------------------------+---------+------------------------+----------------------------------+------+
-| ae62b441-4ec0-46b0-aed8-51f0bef56610 | default | Default security group | 0eeb62090a094959ae36ce627f10cc1b | []   |
-+--------------------------------------+---------+------------------------+----------------------------------+------+
-</code></pre>
-<pre><code class="highlight-chroma">[root@controller ~]#  openstack server create --flavor m1.nano --image cirros \
-&gt;   --nic net-id=cd7dd9bc-c2fd-40a9-9a77-a8573091e272 --security-group default \
-&gt;   --key-name mykey selfservice-instance
-+-------------------------------------+-----------------------------------------------+
-| Field                               | Value                                         |
-+-------------------------------------+-----------------------------------------------+
-| OS-DCF:diskConfig                   | MANUAL                                        |
-| OS-EXT-AZ:availability_zone         |                                               |
-| OS-EXT-SRV-ATTR:host                | None                                          |
-| OS-EXT-SRV-ATTR:hypervisor_hostname | None                                          |
-| OS-EXT-SRV-ATTR:instance_name       |                                               |
-| OS-EXT-STS:power_state              | NOSTATE                                       |
-| OS-EXT-STS:task_state               | scheduling                                    |
-| OS-EXT-STS:vm_state                 | building                                      |
-| OS-SRV-USG:launched_at              | None                                          |
-| OS-SRV-USG:terminated_at            | None                                          |
-| accessIPv4                          |                                               |
-| accessIPv6                          |                                               |
-| addresses                           |                                               |
-| adminPass                           | 48QHgJn8fsL4                                  |
-| config_drive                        |                                               |
-| created                             | 2019-10-23T02:19:11Z                          |
-| flavor                              | m1.nano (0)                                   |
-| hostId                              |                                               |
-| id                                  | 5ef50bf1-90f6-42be-ad4c-97e76b921ab4          |
-| image                               | cirros (f5f2008a-a230-4692-8fec-2634b4eaaac9) |
-| key_name                            | mykey                                         |
-| name                                | selfservice-instance                          |
-| progress                            | 0                                             |
-| project_id                          | 0eeb62090a094959ae36ce627f10cc1b              |
-| properties                          |                                               |
-| security_groups                     | name='ae62b441-4ec0-46b0-aed8-51f0bef56610'   |
-| status                              | BUILD                                         |
-| updated                             | 2019-10-23T02:19:11Z                          |
-| user_id                             | 3642a0239ea24f98a8eb39b5685e1fff              |
-| volumes_attached                    |                                               |
-+-------------------------------------+-----------------------------------------------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller ~]#  openstack flavor list
+</span></span><span class="highlight-line"><span class="highlight-cl">+----+---------+-----+------+-----------+-------+-----------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| ID | Name    | RAM | Disk | Ephemeral | VCPUs | Is Public |
+</span></span><span class="highlight-line"><span class="highlight-cl">+----+---------+-----+------+-----------+-------+-----------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| 0  | m1.nano |  64 |    1 |         0 |     1 | True      |
+</span></span><span class="highlight-line"><span class="highlight-cl">+----+---------+-----+------+-----------+-------+-----------+
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@controller ~]#  openstack image list
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+--------+--------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| ID                                   | Name   | Status |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+--------+--------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| f5f2008a-a230-4692-8fec-2634b4eaaac9 | cirros | active |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+--------+--------+
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@controller ~]#  openstack network list
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+-------------+--------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| ID                                   | Name        | Subnets                              |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+-------------+--------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| cd7dd9bc-c2fd-40a9-9a77-a8573091e272 | selfservice | 4d190708-3579-4040-a578-d54143339515 |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+-------------+--------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# 
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@controller ~]#  openstack security group list
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+---------+------------------------+----------------------------------+------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| ID                                   | Name    | Description            | Project                          | Tags |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+---------+------------------------+----------------------------------+------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| ae62b441-4ec0-46b0-aed8-51f0bef56610 | default | Default security group | 0eeb62090a094959ae36ce627f10cc1b | []   |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+---------+------------------------+----------------------------------+------+
+</span></span></code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller ~]#  openstack server create --flavor m1.nano --image cirros \
+</span></span><span class="highlight-line"><span class="highlight-cl">&gt;   --nic net-id=cd7dd9bc-c2fd-40a9-9a77-a8573091e272 --security-group default \
+</span></span><span class="highlight-line"><span class="highlight-cl">&gt;   --key-name mykey selfservice-instance
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------------------------+-----------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| Field                               | Value                                         |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------------------------+-----------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-DCF:diskConfig                   | MANUAL                                        |
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-EXT-AZ:availability_zone         |                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-EXT-SRV-ATTR:host                | None                                          |
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-EXT-SRV-ATTR:hypervisor_hostname | None                                          |
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-EXT-SRV-ATTR:instance_name       |                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-EXT-STS:power_state              | NOSTATE                                       |
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-EXT-STS:task_state               | scheduling                                    |
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-EXT-STS:vm_state                 | building                                      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-SRV-USG:launched_at              | None                                          |
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-SRV-USG:terminated_at            | None                                          |
+</span></span><span class="highlight-line"><span class="highlight-cl">| accessIPv4                          |                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| accessIPv6                          |                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| addresses                           |                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| adminPass                           | 48QHgJn8fsL4                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| config_drive                        |                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| created                             | 2019-10-23T02:19:11Z                          |
+</span></span><span class="highlight-line"><span class="highlight-cl">| flavor                              | m1.nano (0)                                   |
+</span></span><span class="highlight-line"><span class="highlight-cl">| hostId                              |                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| id                                  | 5ef50bf1-90f6-42be-ad4c-97e76b921ab4          |
+</span></span><span class="highlight-line"><span class="highlight-cl">| image                               | cirros (f5f2008a-a230-4692-8fec-2634b4eaaac9) |
+</span></span><span class="highlight-line"><span class="highlight-cl">| key_name                            | mykey                                         |
+</span></span><span class="highlight-line"><span class="highlight-cl">| name                                | selfservice-instance                          |
+</span></span><span class="highlight-line"><span class="highlight-cl">| progress                            | 0                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| project_id                          | 0eeb62090a094959ae36ce627f10cc1b              |
+</span></span><span class="highlight-line"><span class="highlight-cl">| properties                          |                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| security_groups                     | name='ae62b441-4ec0-46b0-aed8-51f0bef56610'   |
+</span></span><span class="highlight-line"><span class="highlight-cl">| status                              | BUILD                                         |
+</span></span><span class="highlight-line"><span class="highlight-cl">| updated                             | 2019-10-23T02:19:11Z                          |
+</span></span><span class="highlight-line"><span class="highlight-cl">| user_id                             | 3642a0239ea24f98a8eb39b5685e1fff              |
+</span></span><span class="highlight-line"><span class="highlight-cl">| volumes_attached                    |                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------------------------+-----------------------------------------------+
+</span></span></code></pre>
 <ul>
 <li>检查实例的状态：</li>
 </ul>
-<pre><code class="highlight-chroma">[root@controller ~]# openstack server list 
-+--------------------------------------+----------------------+--------+----------+--------+---------+
-| ID                                   | Name                 | Status | Networks | Image  | Flavor  |
-+--------------------------------------+----------------------+--------+----------+--------+---------+
-| 5ef50bf1-90f6-42be-ad4c-97e76b921ab4 | selfservice-instance | ERROR  |          | cirros | m1.nano |
-+--------------------------------------+----------------------+--------+----------+--------+---------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# openstack server list 
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+----------------------+--------+----------+--------+---------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| ID                                   | Name                 | Status | Networks | Image  | Flavor  |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+----------------------+--------+----------+--------+---------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| 5ef50bf1-90f6-42be-ad4c-97e76b921ab4 | selfservice-instance | ERROR  |          | cirros | m1.nano |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+----------------------+--------+----------+--------+---------+
+</span></span></code></pre>
                 <div>
                     <hr>
 
@@ -981,28 +973,6 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
 
 <!-- 签名档内可使用 HTML、JavaScript -->
 <br>
-<span class="name">搭讪 你就破功了，老弟！</span>
-<style>
-.name{   
-    font-size:30px;
-    background-clip: border-box;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: #FF512F;
-    font-weight: 650;
-    text-shadow: 0px 0px 7px #ffd800;
-    background-image: linear-gradient(90deg, #ffd800 0%, #ff512f 100%, #fff);
-    animation: glow-animation 2s infinite linear;
-    color: #FFC0CB;
-    box-sizing: border-box;
-    vertical-align: inherit;
-}
-@keyframes glow-animation{
-    0%{filter:hue-rotate(-360deg)}
-    100%{filter:hue-rotate(360deg)}
-}
-</style>
-
                 </div>
         </div>
     </div>
@@ -1100,7 +1070,7 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
         <div class="wrapper comment">
                 <div id="gitalk-container" style="padding: 30px 0;"></div>
                 <div id="b3logsolocomments"></div>
-                <div id="vcomment" style="padding: 30px 0;" data-name="cuijianzhe" data-postId="1571104876779"></div>
+                <div id="vcomment" style="padding: 30px 0;" data-name="cuijianzhe" data-postId="1571104876254"></div>
 
             <div class="post__list fn__flex">
                 <div class="fn__flex-1">
@@ -1128,7 +1098,7 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
                       data-title="openstack系列-neutron系列安装部署"
                       data-blogtitle="邯城往事"
                       data-url="https://cuijianzhe.github.io/articles/2019/10/15/1571104876779.html"
-                      data-avatar="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100">
+                      data-avatar="https://b3logfile.com/avatar/1551626533851_1560155807399.gif?imageView2/1/w/128/h/128/interlace/0/q/100">
                     WeChat
                     <span class="qrcode"></span>
                 </span>
@@ -1220,7 +1190,7 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
             <a class="ft__link" href="/my-github-repos" target="_self" rel="section">
                 我的开源
             </a>
-            <a class="ft__link" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+            <a class="ft__link" href="http://times.cjzshilong.cn/time/" target="_blank" rel="section">
                 服务器倒计时
             </a>
         <a class="ft__link" rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">RSS</a>
@@ -1228,93 +1198,24 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
     <div class="footer__border mobile__none"></div>
     <div class="wrapper fn__flex">
         <div class="fn__flex-1 mobile__none">
-            <div class="ft__fade">cuijianzhe -                >>>  展颜笑夙愿，一笑泯恩仇 <<<</div>
+            <div class="ft__fade">cuijianzhe - 来自邯郸社畜的呐喊</div>
             <br>
-                <!-- MetingJS音乐播放器 不能放到 head 导致系统功能加载异常-->
-<link rel="stylesheet" href="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css">
-<script src="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-<meting-js server="netease" type="playlist" id="728729850"  autoplay="false" fixed ="true" order = "random"</meting-js>
-
-<h1><p style="font-size:10px"><font color="#2F4F4F">红笺小字，说尽平生意。<br/>鸿雁在云鱼在水，惆怅此情难寄。<br/>             ——晏殊· 《清平乐》</font> </p></h1>
+                <h1 class="title" id="character" ><p style="font-size:10px"><font color="#FF00FF">红笺小字，说尽平生意。<br/>鸿雁在云鱼在水，惆怅此情难寄。<br/>             ——晏殊· 《清平乐》</font> </p></h1>
 
         </div>
 
-            <div class="footer__mid fn__flex-1 mobile__none">
-                <div class="ft__fade">分类</div>
-                <br>
-                    <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="36 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        人生苦短,我用Python</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="0 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        Java是世界上最好的语言</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="52 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        Linux系列</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/network"
-                       aria-label="4 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        Network系列</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/young"
-                       aria-label="8 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        江湖就是人情世故</a> &nbsp; &nbsp;
-            </div>
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                115
+                166
                 文章
             </a>
            <br>
-            <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> <span class="ft-gray">浏览</span>
+            <span data-uvstaturl="https://cuijianzhe.github.io">0</span> <span class="ft-gray">浏览</span>
  <br>
-            &copy; 2021
+            &copy; 2023
             <a class="ft__link" href="https://cuijianzhe.github.io">邯城往事</a>
-            <img style="width: 20px; height: 20px;" src="https://img.hacpai.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">冀ICP备19005901号-1</a> 
-
-<!--切换标签实现网页标题变化-->
-<script type="text/javascript">
-    /*自动刷新页面，避免无法访问*/
-    var OriginTitile = document.title;
-    var titleTime;
-    document.addEventListener('visibilitychange', function () {
-        if (document.hidden) {
-            document.title = '一杯茶，一包烟，混过一天是一天';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '哈哈，我是大佬ヾ(ﾟ∀ﾟゞ)';
-            titleTime = setTimeout(function () {
-                document.title = OriginTitile;
-            }, 3000);
-        }
-    });
-</script>
-<!--切换标签实现网页标题变化 结束-->
-
-
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '4e3eaf0bc17bd516ba5b',
-        clientSecret: '644d549c51d9fece70856677fc92411e6b6ced0e',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
-
+            <img style="width: 20px; height: 20px;" src="https://b3logfile.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">冀ICP备19005901号-1</a>
         </div>
     </div>
 </footer>
@@ -1322,68 +1223,37 @@ Enter file in which to save the key (/root/.ssh/id_rsa):
   var Label = {
     speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources",
+    staticServePath: "https://cuijianzhe.github.io",
     luteAvailable: true,
-    hljsStyle: 'monokai',
+    hljsStyle: 'vs',
     langLabel: "zh_CN",
-    version: "4.3.1",
+    version: "4.4.0",
     staticSite: true,
     showCodeBlockLn: false,
-    articleId: "1571104876779",
+    articleId: "1571104876254",
   }
 </script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/skins/Pinghsu/js/common.min.js?1617776880435"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1701918811548"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
-<div class="solo-kanbanniang">
-    <div class="solo-kanbanniang__tip"></div>
-    <canvas id="soloKanbanniang" width="280" height="250"></canvas>
-    <div class="solo-kanbanniang__tool">
-        <svg id="soloKanbanniangHome" viewBox="0 0 32 32" width="100%" height="100%">
-            <path d="M32 18.967l-16-12.42-16 12.42v-5.064l16-12.42 16 12.42zM28 18.516v12h-8v-8h-8v8h-8v-12l12-9z"></path>
-        </svg>
-        <svg id="soloKanbanniangRSS" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M320.364 768q0 45.728-32 77.728t-77.728 32-77.728-32-32-77.728 32-77.728 77.728-32 77.728 32 32 77.728zM612.94 838.272q1.152 16-9.728 27.424-10.272 12-26.848 12h-77.152q-14.272 0-24.576-9.44t-11.424-23.712q-12.576-130.848-105.44-223.712t-223.712-105.44q-14.272-1.152-23.712-11.424t-9.44-24.576V402.24q0-16.576 12-26.848 9.728-9.728 24.576-9.728h2.848q91.424 7.424 174.848 46.016t148 103.712q65.152 64.576 103.712 148t46.016 174.848z m292.576 1.152q1.152 15.424-10.272 26.848-10.272 11.424-26.272 11.424h-81.728q-14.848 0-25.44-10.016t-11.136-24.288q-6.848-122.848-57.728-233.44t-132.288-192-192-132.288-233.44-58.272q-14.272-0.576-24.288-11.136t-10.016-24.864V109.664q0-16 11.424-26.272 10.272-10.272 25.152-10.272h1.728q149.728 7.424 286.56 68.576t243.136 168q106.848 106.272 168 243.136t68.576 286.56z"></path>
-        </svg>
-        <svg id="soloKanbanniangChat" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M802.42709 96.163153H219.476155c-84.48109 0-154.896836 71.746044-154.896836 157.840888v393.119449c0 86.072331 70.415746 157.819398 154.896836 157.819399h214.038818V925.470963s22.526039 40.168862 64.767096 5.734608c30.965246-25.819039 126.721123-91.828428 171.775248-123.385145h132.369773c84.502579 0 154.896836-83.21526 154.896836-157.839865V251.125481c0-86.094844-70.394257-154.962328-154.896836-154.962328zM301.144176 518.002714c-39.427988 0-70.416769-31.576159-70.416769-71.746044 0-40.168862 30.988782-71.746044 70.416769-71.746044 39.426965 0 70.393233 31.577183 70.393234 71.746044 0 40.169885-30.966269 71.746044-70.393234 71.746044z m208.411657 0c-39.450501 0-70.415746-31.576159-70.415746-71.746044 0-40.168862 30.965246-71.746044 70.415746-71.746044 39.405475 0 70.394257 31.577183 70.394257 71.746044 0 40.169885-30.988782 71.746044-70.394257 71.746044z m211.203236 0c-39.426965 0-70.416769-31.576159-70.416769-71.746044 0-40.168862 30.988782-71.746044 70.416769-71.746044s70.415746 31.577183 70.415746 71.746044c-0.001023 40.169885-30.988782 71.746044-70.415746 71.746044z"></path>
-        </svg>
-        <svg id="soloKanbanniangChange" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M936.672 193.216l-226.88-64c-8.704-2.528-18.112-1.12-25.824 3.776-7.68 4.864-12.896 12.736-14.432 21.728C655.712 236.928 595.328 288 512 288c-71.424 0-142.464-103.296-163.776-143.104-7.136-13.28-22.528-19.84-37.024-15.68l-224 64C73.472 197.152 64 209.728 64 224v256a31.93 31.93 0 0 0 11.712 24.736c7.392 6.08 17.152 8.512 26.56 6.624L224 487.04V832c0 52.928 43.072 96 96 96h384c52.928 0 96-43.072 96-96V519.04l121.728 24.352c9.44 1.92 19.2-0.544 26.56-6.624C955.68 530.656 960 521.6 960 512V224c0-14.336-9.536-26.912-23.328-30.784zM672 800H352c-17.664 0-32-14.304-32-32s14.336-32 32-32h320c17.696 0 32 14.304 32 32s-14.304 32-32 32z"></path>
-        </svg>
-        <svg id="soloKanbanniangPhoto" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M898.048 258.048q23.552-1.024 46.592 9.216t40.96 27.136 28.672 39.424 10.752 46.08l0 390.144q0 24.576-10.752 47.104t-28.672 40.448-40.96 28.16-47.616 10.24l-697.344 0q-24.576 0-48.64-10.24t-42.496-27.648-29.696-40.448-11.264-48.64l0-381.952q0-22.528 10.752-45.568t28.672-41.472 39.936-30.208 44.544-11.776l63.488 0 13.312-83.968q3.072-20.48 18.432-32.768t34.816-12.288l456.704 0q19.456 0 34.304 10.752t16.896 34.304l14.336 83.968 54.272 0zM548.864 712.704q40.96 0 77.824-15.872t63.488-42.496 42.496-62.976 15.872-77.312-15.872-77.312-42.496-62.976-63.488-42.496-77.824-15.872-77.312 15.872-63.488 42.496-43.008 62.976-15.872 77.312 15.872 77.312 43.008 62.976 63.488 42.496 77.312 15.872z"></path>
-        </svg>
-        <svg id="soloKanbanniangGithub" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M1024 524.8c0 114.346667-32.554667 217.216-97.706667 308.565333-65.066667 91.306667-149.162667 154.538667-252.288 189.610667-11.989333 2.304-20.778667 0.682667-26.325333-4.778667a27.605333 27.605333 0 0 1-8.362667-20.48v-144.213333c0-44.16-11.52-76.501333-34.645333-97.024 25.344-2.730667 48.085333-6.826667 68.309333-12.288a268.629333 268.629333 0 0 0 62.72-26.666667 187.434667 187.434667 0 0 0 53.973334-45.44c14.421333-18.005333 26.197333-41.898667 35.328-71.765333 9.088-29.824 13.653333-64.128 13.653333-102.826667 0-55.125333-17.536-102.058667-52.650667-140.8 16.426667-41.429333 14.677333-87.893333-5.333333-139.392-12.458667-4.096-30.464-1.578667-54.016 7.509334a355.328 355.328 0 0 0-61.312 30.08L640 271.274667a462.336 462.336 0 0 0-128-17.749334c-43.989333 0-86.656 5.930667-128 17.749334a589.824 589.824 0 0 0-28.330667-18.432c-11.776-7.253333-30.336-16.042667-55.68-26.325334-25.344-10.24-44.416-13.312-57.301333-9.216-19.584 51.498667-21.12 97.962667-4.693333 139.434667-35.114667 38.698667-52.650667 85.632-52.650667 140.757333 0 38.698667 4.565333 72.874667 13.653333 102.485334 9.130667 29.610667 20.778667 53.546667 34.986667 71.765333 14.250667 18.218667 32.128 33.493333 53.674667 45.781333 21.546667 12.288 42.453333 21.205333 62.677333 26.666667 20.224 5.461333 43.008 9.557333 68.309333 12.288-17.749333 16.384-28.629333 39.850667-32.64 70.4a130.005333 130.005333 0 0 1-29.994666 10.24c-10.666667 2.261333-23.338667 3.413333-37.973334 3.413333-14.72 0-29.269333-4.906667-43.690666-14.677333-14.464-9.813333-26.794667-24.064-36.992-42.709333a109.226667 109.226667 0 0 0-32.341334-35.541334c-13.141333-9.130667-24.106667-14.592-33.024-16.426666l-13.312-2.048c-9.344 0-15.786667 1.024-19.328 3.072-3.584 2.090667-4.693333 4.693333-3.328 7.893333 1.28 3.157333 3.328 6.4 5.973334 9.557333 2.688 3.2 5.546667 5.930667 8.661333 8.192l4.693333 3.413334c9.770667 4.565333 19.413333 13.226667 29.013334 25.984 9.514667 12.757333 16.512 24.362667 20.992 34.858666l6.656 15.701334c5.76 17.322667 15.530667 31.317333 29.312 42.026666 13.781333 10.666667 28.672 17.536 44.672 20.48 16 2.986667 31.445333 4.565333 46.336 4.821334 14.890667 0.213333 27.221333-0.597333 36.992-2.389334l15.36-2.730666c0 17.28 0.085333 37.546667 0.298666 60.8l0.341334 36.906666a27.050667 27.050667 0 0 1-8.661334 20.48c-5.76 5.461333-14.677333 7.082667-26.666666 4.778667-103.125333-35.072-187.221333-98.261333-252.330667-189.610667C32.554667 742.058667 0 639.146667 0 524.8c0-95.232 22.869333-183.04 68.693333-263.466667A516.266667 516.266667 0 0 1 254.976 70.4C333.44 23.466667 419.114667 0 512 0c92.885333 0 178.56 23.466667 256.981333 70.4a516.266667 516.266667 0 0 1 186.368 190.976C1001.130667 341.802667 1024 429.653333 1024 524.842667z"></path>
-        </svg>
-        <svg id="soloKanbanniangClose" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M517.572566143763 1018.6748601482986C238.26554897656422 1018.6748601482986 11.897910175114305 792.2714997690043 11.897910175114305 513.0002041796496c0-279.3070171671984 226.36763880144977-505.71037754649296 505.6746559686481-505.71037754649296 279.2712955893538 0 505.6746559686481 226.40336037929444 505.6746559686481 505.71037754649296C1023.2472221124112 792.2714997690043 796.8795833109612 1018.6748601482986 517.572566143763 1018.6748601482986zM754.7281214542927 339.25044954334646c13.752807470184345-13.752807470184345 9.680547595895998-40.186775075214015-9.073280772537204-58.94060344364717l-2.143294670678079-2.1075730928334457c-18.7538283684332-18.7538283684332-45.15207439561819-22.861809820566194-58.90488186580257-9.073280772537204l-168.21291007038468 168.24863164822932-180.42968969324974-180.46541127109438c-13.967136937252159-13.967136937252159-40.72259874288353-9.823433907274534-59.72647815622916 9.216167083915742l-2.143294670678079 2.143294670678079c-19.039600991190277 19.003879413345654-23.111860865478626 45.75934121897699-9.180445506071107 59.655035000539876l180.42968969324974 180.46541127109438-176.07165719620428 176.03593561835962c-13.788529048028984 13.824250625873615-9.716269173740633 40.151053497369375 9.073280772537204 58.94060344364717l2.1075730928334457 2.1075730928334457c18.7538283684332 18.7538283684332 45.15207439561819 22.897531398410823 58.90488186580257 9.073280772537204l176.10737877404887-176.10737877404887 170.39192631890742 170.42764789675192c13.967136937252159 13.931415359407513 40.686877165038865 9.85915548511917 59.690756578384516-9.180445506071107l2.1790162485227142-2.1790162485227142c19.039600991190277-18.968157835501014 23.147582443323273-45.72361964113239 9.180445506071107-59.690756578384516l-170.39192631890742-170.42764789675192L754.7281214542927 339.25044954334646z"></path>
-        </svg>
-    </div>
-</div>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/js/page.min.js?1617776880435', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1701918811548', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
-        "oId": "1571104876779",
+        "oId": "1571104876254",
         "blogHost": "https://cuijianzhe.github.io",
         "randomArticles1Label": "随机阅读：",
         "externalRelevantArticles1Label": "站外相关阅读："
     });
     $(document).ready(function () {
         page.load();
-    page.tips.externalRelevantArticlesDisplayCount = "5";
+    page.tips.externalRelevantArticlesDisplayCount = "0";
     page.loadRandomArticles('<h3>RECOMMEND POSTS</h3>');
-    page.loadExternalRelevantArticles("Linux,openstack",
-    '<h3>HACPAI POSTS</h3>');
-    page.loadRelevantArticles('1571104876779', '<h3>RELEVANT POSTS</h3>');
+    page.loadRelevantArticles('1571104876254', '<h3>RELEVANT POSTS</h3>');
 Skin.initArticle()
     });
 </script>
@@ -1391,4 +1261,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 52ms, 2021/04/07 15:43:07 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 47ms, 2023/12/11 19:00:41 -->

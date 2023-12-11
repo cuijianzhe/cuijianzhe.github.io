@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Git操作指令收集 - 邯城往事</title><meta name="description" content="查看 Git 安装位置 where Git 查看 Git 版本 Git version 检查 Git 的某一项配置 Git config user.name 查看所有配置以及他们所在的文件 Git config --list --show-origin 由于 Git 会从多个文件中读取同一配置变量的不同值，因此你可能会在其中看到意料之外的值而不知道为什么。 此时，你可以查询 Git 中该变量的 原始 值，它会告诉你哪一个配置文件最后设置了该值： Git config --show-origin user.name 设置用户名和邮件地址 Git config --global user.name &quot;John Doe&quot; Git config --global user.email johndoe@example.com 配置 Git 的默认编辑器为 NotePad++ Git config --global core.editor &quot;&#39;C:/Program Files (x86)/Notepad++/notepad++.exe&#39; -multiInst -notabbar -nosession -noP...."/><meta property="og:description" content="查看 Git 安装位置 where Git 查看 Git 版本 Git version 检查 Git 的某一项配置 Git config user.name 查看所有配置以及他们所在的文件 Git config --list --show-origin 由于 Git 会从多个文件中读取同一配置变量的不同值，因此你可能会在其中看到意料之外的值而不知道为什么。 此时，你可以查询 Git 中该变量的 原始 值，它会告诉你哪一个配置文件最后设置了该值： Git config --show-origin user.name 设置用户名和邮件地址 Git config --global user.name &quot;John Doe&quot; Git config --global user.email johndoe@example.com 配置 Git 的默认编辑器为 NotePad++ Git config --global core.editor &quot;&#39;C:/Program Files (x86)/Notepad++/notepad++.exe&#39; -multiInst -notabbar -nosession -noP...."/>    <meta name="keywords" content="Solo,Java,博客,开源"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="https://unpkg.com"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"/><link rel="apple-touch-icon" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"><link rel="shortcut icon" type="image/x-icon" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Git操作指令收集 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2021/07/23/1627051781843.html?"/><meta property="og:image" content="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"/><link rel="search" type="application/opensearchdescription+xml" title="Git操作指令收集 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2021/07/23/1627051781843.html">        <link rel="stylesheet"
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1701918811548"/>
+            <link rel="prev" title="关于思源笔记的同步" href="https://cuijianzhe.github.io/articles/2021/07/18/1626590767973.html">
+            <link rel="next" title="亏麻了,炒股日记" href="https://cuijianzhe.github.io/articles/2021/07/28/1627474382397.html">
+    <script src="https://unpkg.com/vditor@3.8.15/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
+<body>
+<header class="header">
+    <div class="wrapper">
+        <a href="https://cuijianzhe.github.io" rel="start" class="header__logo">
+            <img src="https://b3logfile.com/avatar/1551626533851_1560155807399.gif?imageView2/1/w/128/h/128/interlace/0/q/100" alt="邯城往事"/>
+            邯城往事
+        </a>
+
+        <nav class="header__nav mobile__none">
+            <a href="https://cuijianzhe.github.io/tags.html" rel="section">
+                Tags
+            </a>
+            <a href="https://cuijianzhe.github.io/archives.html">
+                Archives
+            </a>
+            <a rel="archive" href="https://cuijianzhe.github.io/links.html">
+                Links
+            </a>
+        </nav>
+
+        <div class="header__bar fn__none" onclick="$(this).next().slideToggle()">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                <path fill="#444" d="M0 3h20v2h-20v-2zM0 9h20v2h-20v-2zM0 15h20v2h-20v-2z"></path>
+            </svg>
+        </div>
+        <main class="header__menu fn__none">
+            <ul>
+                    <li>
+                        <a href="/my-github-repos" target="_self" rel="section">
+                            我的开源
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://times.cjzshilong.cn/time/" target="_blank" rel="section">
+                            服务器倒计时
+                        </a>
+                    </li>
+                <li>
+                    <a href="https://cuijianzhe.github.io/tags.html" rel="section">
+                        Tags
+                    </a>
+                </li>
+                <li>
+                    <a href="https://cuijianzhe.github.io/archives.html">
+                        Archives
+                    </a>
+                </li>
+                <li>
+                    <a rel="archive" href="https://cuijianzhe.github.io/links.html">
+                        Links
+                    </a>
+                </li>
+                <li>
+                    <a rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">
+                        RSS
+                    </a>
+                </li>
+            </ul>
+        </main>
+    </div>
+</header>
+<main id="pjax" class="fn__flex-1">
+    
+    <div class="post wrapper wrapper--miner">
+        <h2 class="item__title">
+            <a rel="bookmark" href="https://cuijianzhe.github.io/articles/2021/07/23/1627051781843.html">
+                Git操作指令收集
+            </a>
+        </h2>
+        <div class="ft__fade item__meta">
+                Published on
+            <time>
+                Jul 23, 2021
+            </time>
+            with <span data-uvstaturl="https://cuijianzhe.github.io/articles/2021/07/23/1627051781843.html">0</span> views
+                and <a href="#b3logsolocomments"><span data-uvstatcmt="1627051781205">0</span> comments</a>
+        </div>
+        <div class="item__tags">
+                <a rel="tag" class="tag tag--0" href="https://cuijianzhe.github.io/tags/git">
+                    <b># git</b>
+                </a>
+        </div>
+        <div class="vditor-reset">
+            <p class="indent--2"><img src="https://b3logfile.com/bing/20200203.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
+<h5 id="查看git安装位置">查看 Git 安装位置</h5>
+<p class="indent--2"><code>where git</code></p>
+<hr>
+<h5 id="查看git版本">查看 Git 版本</h5>
+<p class="indent--2"><code>git version</code></p>
+<hr>
+<h5 id="检查-Git-的某一项配置">检查 Git 的某一项配置</h5>
+<p class="indent--2"><code>git config user.name</code></p>
+<hr>
+<h5 id="查看所有配置以及他们所在的文件">查看所有配置以及他们所在的文件</h5>
+<p class="indent--2"><code>git config --list --show-origin</code></p>
+<hr>
+<h5 id="由于-Git-会从多个文件中读取同一配置变量的不同值-因此你可能会在其中看到意料之外的值而不知道为什么--此时-你可以查询-Git-中该变量的-原始-值-它会告诉你哪一个配置文件最后设置了该值-">由于 Git 会从多个文件中读取同一配置变量的不同值，因此你可能会在其中看到意料之外的值而不知道为什么。 此时，你可以查询 Git 中该变量的 原始 值，它会告诉你哪一个配置文件最后设置了该值：</h5>
+<p class="indent--2"><code>git config --show-origin user.name</code></p>
+<hr>
+<h5 id="设置用户名和邮件地址">设置用户名和邮件地址</h5>
+<p class="indent--2"><code>git config --global user.name "John Doe" </code><br>
+<code>git config --global user.email johndoe@example.com</code></p>
+<hr>
+<h5 id="配置git的默认编辑器为NotePad--">配置 Git 的默认编辑器为 NotePad++</h5>
+<p class="indent--2"><code>git config --global core.editor "'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"</code></p>
+<hr>
+<h5 id="获取完整git命令帮助">获取完整 Git 命令帮助</h5>
+<p class="indent--2"><code>git config --help 或 git help config 或 git config -h</code></p>
+<hr>
+<h5 id="克隆仓库">克隆仓库</h5>
+<p class="indent--2"><code>git clone https://github.com/libgit2/libgit2</code></p>
+<hr>
+<h5 id="检查当前文件状态">检查当前文件状态</h5>
+<p class="indent--2"><code>git status 或 git status --short</code></p>
+<hr>
+<h5 id="跟踪新文件">跟踪新文件</h5>
+<p class="indent--2"><code>git add &lt;file&gt;</code></p>
+<hr>
+<h5 id="git提交">Git 提交</h5>
+<p class="indent--2"><code>git commit -o &lt;file1&gt; &lt;file2&gt; -m '提交特定两个文件'</code><br>
+<code>git commit -a -m '提交所有文件'</code></p>
+<hr>
+<h5 id="忽略文件">忽略文件</h5>
+<p class="indent--2"><code>创建gitignore.txt</code><br>
+<code>ren gitignore.txt .gitignore</code><br>
+<code>忽略所有的 .a 文件 *.a </code><br>
+<code>但跟踪所有的 lib.a，即便你在前面忽略了 .a 文件 !lib.a</code><br>
+<code>只忽略当前目录下的 TODO 文件，而不忽略 subdir/TODO /TODO</code><br>
+<code>忽略任何目录下名为 build 的文件夹 build/</code><br>
+<code>忽略 doc/notes.txt，但不忽略 doc/server/arch.txt  doc/*.txt</code><br>
+<code>忽略 doc/ 目录及其所有子目录下的 .pdf 文件 doc/**/*.pdf</code></p>
+<hr>
+<h5 id="比较文件">比较文件</h5>
+<p class="indent--2"><code>git diff 只显示尚未暂存的改动</code><br>
+<code>git diff --staged 或 git diff --cached 比对已暂存文件与最后一次提交的文件差异</code></p>
+<hr>
+<h5 id="提交文件">提交文件</h5>
+<p class="indent--2"><code>git commit -a -m '注释'</code><br>
+<code>git commit --amend 有时候我们提交完了才发现漏掉了几个文件没有添加，或者提交信息写错了。 此时，可以运行带有 --amend 选项的提交命令来重新提交</code></p>
+<hr>
+<h5 id="删除文件">删除文件</h5>
+<p class="indent--2"><code>git rm --cached README 从暂存区删除文件，但仍在工作目录中</code><br>
+<code>git rm log/\*.log 此命令删除 log/ 目录下扩展名为 .log 的所有文件</code></p>
+<hr>
+<h5 id="移动文件">移动文件</h5>
+<p class="indent--2"><code>git mv from.txt to.txt</code><br>
+<code>运行 git mv 就相当于运行了下面三条命令 mv README.md README git rm README.md git add README</code></p>
+<hr>
+<h5 id="查看提交历史">查看提交历史</h5>
+<p class="indent--2"><code>git log 显示所有提交记录</code><br>
+<code>git log -p -2  显示最近两次提交，并显示提交的补丁差异</code><br>
+<code>git log --stat 查看简短版的提交差异</code><br>
+<code>git log --pretty=oneline 美化显示日志，一次提交放在一行</code><br>
+<code>git log --pretty=format:"%h - %an, %ar : %s" 按指定格式输出日志</code><br>
+<code>git log --pretty=format:"%h %s" --graph 这个选项添加了一些 ASCII 字符串来形象地展示你的分支、合并历史</code><br>
+<code>git log --since=2.weeks 打印近两周的日志，可以是类似 "2008-01-15" 的具体的某一天，也可以是类似 "2 years 1 day 3 minutes ago" 的相对日期。</code><br>
+<code>还可以过滤出匹配指定条件的提交。 用 --author 选项显示指定作者的提交，用 --grep 选项搜索提交说明中的关键字。</code><br>
+<code>git log -S function_name 根据修改内容查找日志</code><br>
+<code>git log --pretty="%h - %s" --author='Junio C Hamano' --since="2008-10-01" \ --before="2008-11-01" --no-merges -- t/ --no-merges不显示合并的提交记录</code></p>
+<hr>
+<h5 id="撤销提交">撤销提交</h5>
+<p class="indent--2"><code>git reset HEAD CONTRIBUTING.md 取消暂存的文件，但不会撤消对文件的修改</code><br>
+<code>git checkout -- CONTRIBUTING.md 撤消对文件的修改,还原到最近提交的版本</code></p>
+<hr>
+<h5 id="打标签">打标签</h5>
+<p class="indent--2"><code>git tag 查看所有标签</code><br>
+<code>git tag -a v1.4 -m "my version 1.4" 如果只写了git tag -a v1.4 则会调用你配置的默认编辑器去输入附注</code><br>
+<code>git show v1.4 显示标签信息</code><br>
+<code>git tag v1.4-lw 创建轻量标签，不需要输入附注信息</code><br>
+<code>git log --pretty=oneline</code><br>
+<code>git tag -a v1.2 9fceb02 后期打标签</code><br>
+<code>git tag -d v1.2 删除标签</code><br>
+<code>git push origin --delete &lt;tagname&gt; 删除远程标签</code><br>
+<code>git checkout v1.1 根据标签检出代码</code></p>
+<hr>
+<h5 id="设置别名">设置别名</h5>
+<p class="indent--2"><code>git config --global alias.ci commit 当要输入 git commit 时，只需要输入 git ci</code></p>
+<hr>
+<h5 id="分支创建">分支创建</h5>
+<p class="indent--2"><code>git branch testing </code></p>
+<hr>
+<h5 id="查看各个分支的指针所指的对象">查看各个分支的指针所指的对象</h5>
+<p class="indent--2"><code>git log --oneline --decorate </code></p>
+<hr>
+<h5 id="切换分支">切换分支</h5>
+<p class="indent--2"><code>git checkout testing</code></p>
+<hr>
+<h5 id="创建新分支的同时切换过去">创建新分支的同时切换过去</h5>
+<p class="indent--2"><code>git checkout -b &lt;newbranchname&gt; </code></p>
+<hr>
+<h5 id="合并分支">合并分支</h5>
+<p class="indent--2"><code>git merge hotfix</code></p>
+<hr>
+<h5 id="删除分支">删除分支</h5>
+<p class="indent--2"><code>git branch -d hotfix</code></p>
+<hr>
+<h5 id="强制删除分支-并丢掉那些工作">强制删除分支，并丢掉那些工作</h5>
+<p class="indent--2"><code>git branch -D hotfix</code></p>
+<hr>
+<h5 id="遇到冲突时的分支合并">遇到冲突时的分支合并</h5>
+<p class="indent--2"><code>git merge testing</code><br>
+<code>git status</code><br>
+<code>git commit -a -m '修改冲突后提交'</code></p>
+<hr>
+<h5 id="管理分支">管理分支</h5>
+<p class="indent--2"><code>git branch 获取分支列表</code></p>
+<hr>
+<h5 id="查看每一个分支的最后一次提交">查看每一个分支的最后一次提交</h5>
+<p class="indent--2"><code>git branch -v</code></p>
+<hr>
+<h5 id="查看哪些分支已经合并到当前分支">查看哪些分支已经合并到当前分支</h5>
+<p class="indent--2"><code>git branch --merged</code></p>
+<hr>
+<h5 id="查看哪些分支没有合并到当前分支">查看哪些分支没有合并到当前分支</h5>
+<p class="indent--2"><code>git branch --no-merged</code></p>
+<hr>
+<h5 id="git变基">Git 变基</h5>
+<p class="indent--2"><code>git checkout experiment</code><br>
+<code>git rebase master</code><br>
+<code>检出 experiment 分支，然后将它变基到 master 分支上 它的原理是首先找到这两个分支（即当前分支 experiment、变基操作的目标基底分支 master） 的最近共同祖先 C2， 然后对比当前分支相对于该祖先的历次提交，提取相应的修改并存为临时文件， 然后将当前分支指向目标基底 C3, 最后以此将之前另存为临时文件的修改依序应用。 变基与merge达到的效果一样，但变基是将一系列提交按照原有次序依次应用到另一分支上，而合并是把最终结果合在一起。</code></p>
+<hr>
+<h5 id="交互式暂存与取消暂存文件">交互式暂存与取消暂存文件</h5>
+<p class="indent--2"><code>git add -i</code></p>
+<hr>
+<h5 id="贮藏与清理">贮藏与清理</h5>
+<p class="indent--2"><code>有时，当你在项目的一部分上已经工作一段时间后，所有东西都进入了混乱的状态，  而这时你想要切换到另一个分支做一点别的事情。 问题是，你不想仅仅因为过会儿回到这一点而为做了一半的工作创建一次提交。  针对这个问题的答案是 git stash 命令。</code></p>
+<hr>
+<h5 id="查看贮藏列表">查看贮藏列表</h5>
+<p class="indent--2"><code>git stash list</code></p>
+<hr>
+<h5 id="应用最近的一次贮藏">应用最近的一次贮藏</h5>
+<p class="indent--2"><code>git stash apply</code></p>
+<hr>
+<h5 id="应用某一个版本的贮藏">应用某一个版本的贮藏</h5>
+<p class="indent--2"><code>git stash apply stash@{2}</code></p>
+<hr>
+<h5 id="移除贮藏">移除贮藏</h5>
+<p class="indent--2"><code>git stash drop stash@{0}</code></p>
+<hr>
+<h5 id="贮藏的同时还保持文件为已改动状态">贮藏的同时还保持文件为已改动状态</h5>
+<p class="indent--2"><code>git stash --keep-index</code></p>
+<hr>
+<h5 id="同时贮藏未跟踪文件">同时贮藏未跟踪文件</h5>
+<p class="indent--2"><code>git stash --include-untracked</code></p>
+<hr>
+<h5 id="同时贮藏忽略文件">同时贮藏忽略文件</h5>
+<p class="indent--2"><code>git stash -all</code></p>
+<hr>
+<h5 id="根据贮藏创建一个分支">根据贮藏创建一个分支</h5>
+<p class="indent--2"><code>git stash branch &lt;new branchname&gt; </code></p>
+<hr>
+<h5 id="强制移除工作目录中所有未追踪的文件以及空的子目录">强制移除工作目录中所有未追踪的文件以及空的子目录</h5>
+<p class="indent--2"><code>git clean -f -d -n (-f强制，-d删除，-n输出内容)</code></p>
+<hr>
+<h5 id="交互式移除">交互式移除</h5>
+<p class="indent--2"><code>git clean -x -i (-x移除未跟踪忽略的文件，-i交互)</code></p>
+<hr>
+<h5 id="重写历史">重写历史</h5>
+<p class="indent--2"><code>git commit --amend 修改最近的一次提交</code></p>
+<hr>
+<h5 id="交互式变基">交互式变基</h5>
+<p class="indent--2"><code>git rebase -i HEAD~3 列出之前三次提交让你更改，可以修改/删除/压缩/拆分提交，</code></p>
+<hr>
+<h5 id="核武器级选项">核武器级选项</h5>
+<p class="indent--2"><code>git filter-branch --tree-filter 'rm -f passwords.txt' HEAD 全局修改你的邮箱地址或从每一个提交中移除一个文件</code></p>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl">全局修改邮箱地址，可以修改之前提交记录里的邮箱地址
+</span></span><span class="highlight-line"><span class="highlight-cl">git filter-branch --commit-filter <span class="highlight-s1">'
+</span></span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-s1">        if [ "$GIT_AUTHOR_EMAIL" = "schacon@localhost" ];
+</span></span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-s1">        then
+</span></span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-s1">                GIT_AUTHOR_NAME="Scott Chacon";
+</span></span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-s1">                GIT_AUTHOR_EMAIL="schacon@example.com";
+</span></span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-s1">                git commit-tree "$@";
+</span></span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-s1">        else
+</span></span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-s1">                git commit-tree "$@";
+</span></span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-s1">        fi'</span> HEAD
+</span></span></code></pre>
+<hr>
+<h5 id="回到上一次提交的状态">回到上一次提交的状态</h5>
+<p class="indent--2"><code>git reset --hard HEAD</code></p>
+<hr>
+<h5 id="设置提交时的默认注释信息">设置提交时的默认注释信息</h5>
+<p class="indent--2"><code>git config --global commit.template ~/.gitmessage.txt</code></p>
+<hr>
+<h5 id="查看分支branch-A的创建者信息">查看分支 branch_A 的创建者信息</h5>
+<p class="indent--2"><code>git for-each-ref --format='%(committerdate) %09 %(authorname) %09 %(refname)' | sort -k5n -k2M -k3n -k4n|grep branch_A</code></p>
+<hr>
+<h5 id="查看分支创建时间">查看分支创建时间</h5>
+<p class="indent--2"><code>git reflog show --date=iso master</code></p>
+<hr>
+<h5 id="查看已合并到当前分支的分支">查看已合并到当前分支的分支</h5>
+<p class="indent--2"><code>git branch --merged</code></p>
+<hr>
+<h5 id="查看未合并到当前分支的分支">查看未合并到当前分支的分支</h5>
+<p class="indent--2"><code>git branch --no-merged</code></p>
+<hr>
+<h6 id="参考网址">参考网址</h6>
+<p class="indent--2"><a href="https://git-scm.com/book/zh/v2" target="_blank">https://git-scm.com/book/zh/v2</a></p>
+<hr>
+<h6 id="git聊天室-外国友人-">Git 聊天室（外国友人）</h6>
+<p class="indent--2"><a href="https://freenode.net" target="_blank">https://freenode.net</a></p>
+                <div>
+                    <hr>
+
+标题：Git操作指令收集<br>
+作者：<a href="https://cuijianzhe.github.io" target="_blank">cuijianzhe</a><br>
+地址：<a href="https://cuijianzhe.github.io/articles/2021/07/23/1627051781843.html" target="_blank">https://cuijianzhe.github.io/articles/2021/07/23/1627051781843.html</a><br>
+
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+                </div>
+        </div>
+    </div>
+    <div class="post__toc">
+<ul class="article__toc">
+        <li class="toc__h5">
+            <a href="#查看git安装位置">查看 Git 安装位置</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#查看git版本">查看 Git 版本</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#检查-Git-的某一项配置">检查 Git 的某一项配置</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#查看所有配置以及他们所在的文件">查看所有配置以及他们所在的文件</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#由于-Git-会从多个文件中读取同一配置变量的不同值-因此你可能会在其中看到意料之外的值而不知道为什么--此时-你可以查询-Git-中该变量的-原始-值-它会告诉你哪一个配置文件最后设置了该值-">由于 Git 会从多个文件中读取同一配置变量的不同值，因此你可能会在其中看到意料之外的值而不知道为什么。 此时，你可以查询 Git 中该变量的 原始 值，它会告诉你哪一个配置文件最后设置了该值：</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#设置用户名和邮件地址">设置用户名和邮件地址</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#配置git的默认编辑器为NotePad--">配置 Git 的默认编辑器为 NotePad++</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#获取完整git命令帮助">获取完整 Git 命令帮助</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#克隆仓库">克隆仓库</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#检查当前文件状态">检查当前文件状态</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#跟踪新文件">跟踪新文件</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#git提交">Git 提交</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#忽略文件">忽略文件</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#比较文件">比较文件</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#提交文件">提交文件</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#删除文件">删除文件</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#移动文件">移动文件</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#查看提交历史">查看提交历史</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#撤销提交">撤销提交</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#打标签">打标签</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#设置别名">设置别名</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#分支创建">分支创建</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#查看各个分支的指针所指的对象">查看各个分支的指针所指的对象</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#切换分支">切换分支</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#创建新分支的同时切换过去">创建新分支的同时切换过去</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#合并分支">合并分支</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#删除分支">删除分支</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#强制删除分支-并丢掉那些工作">强制删除分支，并丢掉那些工作</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#遇到冲突时的分支合并">遇到冲突时的分支合并</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#管理分支">管理分支</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#查看每一个分支的最后一次提交">查看每一个分支的最后一次提交</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#查看哪些分支已经合并到当前分支">查看哪些分支已经合并到当前分支</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#查看哪些分支没有合并到当前分支">查看哪些分支没有合并到当前分支</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#git变基">Git 变基</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#交互式暂存与取消暂存文件">交互式暂存与取消暂存文件</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#贮藏与清理">贮藏与清理</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#查看贮藏列表">查看贮藏列表</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#应用最近的一次贮藏">应用最近的一次贮藏</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#应用某一个版本的贮藏">应用某一个版本的贮藏</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#移除贮藏">移除贮藏</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#贮藏的同时还保持文件为已改动状态">贮藏的同时还保持文件为已改动状态</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#同时贮藏未跟踪文件">同时贮藏未跟踪文件</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#同时贮藏忽略文件">同时贮藏忽略文件</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#根据贮藏创建一个分支">根据贮藏创建一个分支</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#强制移除工作目录中所有未追踪的文件以及空的子目录">强制移除工作目录中所有未追踪的文件以及空的子目录</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#交互式移除">交互式移除</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#重写历史">重写历史</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#交互式变基">交互式变基</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#核武器级选项">核武器级选项</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#回到上一次提交的状态">回到上一次提交的状态</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#设置提交时的默认注释信息">设置提交时的默认注释信息</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#查看分支branch-A的创建者信息">查看分支 branch_A 的创建者信息</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#查看分支创建时间">查看分支创建时间</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#查看已合并到当前分支的分支">查看已合并到当前分支的分支</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#查看未合并到当前分支的分支">查看未合并到当前分支的分支</a>
+        </li>
+        <li class="toc__h6">
+            <a href="#参考网址">参考网址</a>
+        </li>
+        <li class="toc__h6">
+            <a href="#git聊天室-外国友人-">Git 聊天室（外国友人）</a>
+        </li>
+</ul>    </div>
+    <div class="body--gray post__gray">
+        <div class="wrapper comment">
+                <div id="gitalk-container" style="padding: 30px 0;"></div>
+                <div id="b3logsolocomments"></div>
+                <div id="vcomment" style="padding: 30px 0;" data-name="cuijianzhe" data-postId="1627051781205"></div>
+
+            <div class="post__list fn__flex">
+                <div class="fn__flex-1">
+                    <div id="externalRelevantArticles"></div>
+                </div>
+                <div class="post__list-mid fn__flex-1">
+                    <div id="randomArticles"></div>
+                </div>
+                <div class="fn__flex-1">
+                    <div id="relevantArticles"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="post__fix">
+        <div class="wrapper">
+            <span class="post__share mobile__none">
+                Share
+                <span class="tag tag--4" data-type="weibo">WeiBo</span>
+                <span class="tag tag--5" data-type="twitter">Twitter</span>
+                <span class="tag tag--6" data-type="qqz">QZone</span>
+                <span class="post__code tag tag--7"
+                      data-type="wechat"
+                      data-title="Git操作指令收集"
+                      data-blogtitle="邯城往事"
+                      data-url="https://cuijianzhe.github.io/articles/2021/07/23/1627051781843.html"
+                      data-avatar="https://b3logfile.com/avatar/1551626533851_1560155807399.gif?imageView2/1/w/128/h/128/interlace/0/q/100">
+                    WeChat
+                    <span class="qrcode"></span>
+                </span>
+            </span>
+            <span class="post__arrow">
+                    <a href="https://cuijianzhe.github.io/articles/2021/07/18/1626590767973.html" rel="prev"
+                       class="vditor-tooltipped__n vditor-tooltipped"
+                       pjax-title="关于思源笔记的同步"
+                       aria-label="旧一篇: 关于思源笔记的同步">←</a>
+
+                    <a href="https://cuijianzhe.github.io/articles/2021/07/28/1627474382397.html" rel="next"
+                       class="vditor-tooltipped__n vditor-tooltipped"
+                       pjax-title="亏麻了,炒股日记"
+                       aria-label="新一篇: 亏麻了,炒股日记">→</a>
+                <a href="javascript:Util.goTop()" class="vditor-tooltipped__n vditor-tooltipped"
+                   aria-label="移动到顶部">↑</a>
+                <a href="javascript:Util.goBottom()" class="vditor-tooltipped__n vditor-tooltipped"
+                   aria-label="移动到底部">↓</a>
+            </span>
+        </div>
+    </div>
+    
+</main>
+<footer class="footer">
+    <div class="ft__center">
+    <a href="https://ld246.com/member/cuijianzhe"
+       aria-label="https://ld246.com/member/cuijianzhe"
+       class="vditor-tooltipped__n vditor-tooltipped  user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+        <a href="https://github.com/cuijianzhe"
+           aria-label="https://github.com/cuijianzhe"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site"
+           target="_blank" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
+        </a>
+
+        <a href="https://twitter.com/JianzheC"
+           aria-label="https://twitter.com/JianzheC"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32.003 6.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
+            </svg>
+        </a>
+        <a href="https://weibo.com/3796930704"
+           aria-label="https://weibo.com/3796930704"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+                <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+                <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+                <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+            </svg>
+        </a>
+        <a href="https://www.zhihu.com/people/wen-yang-24-36"
+           aria-label="https://www.zhihu.com/people/wen-yang-24-36"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32 26.67c0 2.931-2.382 5.33-5.33 5.33h-21.339c-2.948 0-5.33-2.382-5.33-5.33v-21.339c0-2.948 2.382-5.33 5.33-5.33h21.339c2.948 0 5.33 2.382 5.33 5.33v21.339zM12.358 17.191h4.713c0-1.114-0.531-1.748-0.531-1.748h-4.079c0.103-2.005 0.189-4.576 0.223-5.536h3.874s-0.017-1.645-0.463-1.645h-6.822s0.411-2.142 0.96-3.085c0 0-2.040-0.12-2.742 2.605-0.686 2.725-1.731 4.354-1.851 4.662s0.6 0.137 0.891 0c0.309-0.137 1.663-0.617 2.057-2.537h2.108c0.034 1.2 0.12 4.885 0.086 5.536h-4.336c-0.6 0.446-0.823 1.748-0.823 1.748h4.971c-0.206 1.371-0.566 3.137-1.080 4.062-0.806 1.491-1.234 2.828-4.131 5.176 0 0-0.48 0.36 0.994 0.223 1.474-0.12 2.845-0.514 3.839-2.434 0.514-0.994 1.011-2.28 1.423-3.565l4.079 4.713s0.548-1.268 0.137-2.657l-3.034-3.394-1.028 0.754c0.291-0.994 0.497-1.988 0.548-2.845 0.017 0.017 0.017 0 0.017-0.034zM18.048 7.936v16.3h1.714l0.703 1.954 2.965-1.954h3.754v-16.3h-9.136zM25.401 22.487h-1.937l-2.434 1.611-0.566-1.611h-0.6v-12.735h5.553v12.735h-0.017z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=598941324"
+           aria-label="598941324"
+           target="_blank"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+        <a href="javascript:void(0)"
+           class="vditor-tooltipped__n vditor-tooltipped  user__site" aria-label="cjz5989">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+            </svg>
+        </a>
+    </div>
+    <nav class="footer__nav mobile__none">
+            <a class="ft__link" href="/my-github-repos" target="_self" rel="section">
+                我的开源
+            </a>
+            <a class="ft__link" href="http://times.cjzshilong.cn/time/" target="_blank" rel="section">
+                服务器倒计时
+            </a>
+        <a class="ft__link" rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">RSS</a>
+    </nav>
+    <div class="footer__border mobile__none"></div>
+    <div class="wrapper fn__flex">
+        <div class="fn__flex-1 mobile__none">
+            <div class="ft__fade">cuijianzhe - 来自邯郸社畜的呐喊</div>
+            <br>
+                <h1 class="title" id="character" ><p style="font-size:10px"><font color="#FF00FF">红笺小字，说尽平生意。<br/>鸿雁在云鱼在水，惆怅此情难寄。<br/>             ——晏殊· 《清平乐》</font> </p></h1>
+
+        </div>
+
+
+        <div class="fn__flex-1 footer__copyright">
+            <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
+                166
+                文章
+            </a>
+           <br>
+            <span data-uvstaturl="https://cuijianzhe.github.io">0</span> <span class="ft-gray">浏览</span>
+ <br>
+            &copy; 2023
+            <a class="ft__link" href="https://cuijianzhe.github.io">邯城往事</a>
+            <img style="width: 20px; height: 20px;" src="https://b3logfile.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">冀ICP备19005901号-1</a>
+        </div>
+    </div>
+</footer>
+<script>
+  var Label = {
+    speech: true,
+    servePath: "https://cuijianzhe.github.io",
+    staticServePath: "https://cuijianzhe.github.io",
+    luteAvailable: true,
+    hljsStyle: 'vs',
+    langLabel: "zh_CN",
+    version: "4.4.0",
+    staticSite: true,
+    showCodeBlockLn: false,
+    articleId: "1627051781205",
+  }
+</script>
+<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1701918811548"
+        charset="utf-8"></script>
+
+
+
+<script type="text/javascript">
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1701918811548', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论不能为空",
+        "oId": "1627051781205",
+        "blogHost": "https://cuijianzhe.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "0";
+    page.loadRandomArticles('<h3>RECOMMEND POSTS</h3>');
+    page.loadRelevantArticles('1627051781205', '<h3>RELEVANT POSTS</h3>');
+Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 42ms, 2023/12/11 19:00:39 -->

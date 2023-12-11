@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>docker网络 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="docker网络 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="docker网络 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/skins/Pinghsu/css/base.css?1617776880435"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>docker网络 - 邯城往事</title><meta name="description" content="一、docker 的网络模式 网络模式 我们在使用 docker run 创建 Docker 容器时，可以用--net 选项指定容器的网络模式，Docker 有以下 4 种网络模式： bridge 模式，使用--net=bridge 指定，默认设置 host 模式，使用--net=host 指定，容器内部网络空间共享宿主机的空间，效果类似直接在宿主机上启动一个进程，端口信息和宿主机共用。 container 模式，使用--net=container:NAME_or_ID 指定 指定容器与特定容器共享网络命名空间 none 模式，使用--net=none 指定 网络模式为空，即仅保留网络命名空间，但是不做任何网络相关的配置(网卡、IP、路由等) 默认选择 bridge 的情况下，容器启动后会通过 DHCP 获取一个地址，这可能不是我们想要的，在 CentOS7 系统上， docker 环境下可以使用 pipework 脚本对容器分配固定 IP（这个 IP 可以是和物理机同网段 IP）。 注： docker 默认是 bridge（--net=bridge）模式，相当于 VMware 中 NAT 模式。 docker 环境下...."/><meta property="og:description" content="一、docker 的网络模式 网络模式 我们在使用 docker run 创建 Docker 容器时，可以用--net 选项指定容器的网络模式，Docker 有以下 4 种网络模式： bridge 模式，使用--net=bridge 指定，默认设置 host 模式，使用--net=host 指定，容器内部网络空间共享宿主机的空间，效果类似直接在宿主机上启动一个进程，端口信息和宿主机共用。 container 模式，使用--net=container:NAME_or_ID 指定 指定容器与特定容器共享网络命名空间 none 模式，使用--net=none 指定 网络模式为空，即仅保留网络命名空间，但是不做任何网络相关的配置(网卡、IP、路由等) 默认选择 bridge 的情况下，容器启动后会通过 DHCP 获取一个地址，这可能不是我们想要的，在 CentOS7 系统上， docker 环境下可以使用 pipework 脚本对容器分配固定 IP（这个 IP 可以是和物理机同网段 IP）。 注： docker 默认是 bridge（--net=bridge）模式，相当于 VMware 中 NAT 模式。 docker 环境下...."/>    <meta name="keywords" content="Solo,Java,博客,开源"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="https://unpkg.com"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"/><link rel="apple-touch-icon" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"><link rel="shortcut icon" type="image/x-icon" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="docker网络 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html?"/><meta property="og:image" content="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"/><link rel="search" type="application/opensearchdescription+xml" title="docker网络 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html">        <link rel="stylesheet"
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1701918811548"/>
             <link rel="prev" title="docker容器命名和资源配额控制(2)" href="https://cuijianzhe.github.io/articles/2019/03/27/1553650586883.html">
             <link rel="next" title="docker安装mysql" href="https://cuijianzhe.github.io/articles/2019/03/27/1553678573009.html">
-    <!--鼠标点击特效-->
-<script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
-<!--页面动态樱花-->
-<!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vditor@3.8.4/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
+    <script src="https://unpkg.com/vditor@3.8.15/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
 <body>
 <header class="header">
     <div class="wrapper">
         <a href="https://cuijianzhe.github.io" rel="start" class="header__logo">
-            <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="邯城往事"/>
+            <img src="https://b3logfile.com/avatar/1551626533851_1560155807399.gif?imageView2/1/w/128/h/128/interlace/0/q/100" alt="邯城往事"/>
             邯城往事
         </a>
 
@@ -46,7 +39,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                        <a href="http://times.cjzshilong.cn/time/" target="_blank" rel="section">
                             服务器倒计时
                         </a>
                     </li>
@@ -83,13 +76,12 @@
             </a>
         </h2>
         <div class="ft__fade item__meta">
-                Updated on
+                Published on
             <time>
-                Apr 12, 2020
+                Mar 27, 2019
             </time>
-                in <a href="https://cuijianzhe.github.io/category/linux">Linux系列</a>
             with <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html">0</span> views
-                and <a href="#b3logsolocomments"><span data-uvstatcmt="1553657246955">0</span> comments</a>
+                and <a href="#b3logsolocomments"><span data-uvstatcmt="1553657247097">0</span> comments</a>
         </div>
         <div class="item__tags">
                 <a rel="tag" class="tag tag--0" href="https://cuijianzhe.github.io/tags/Linux">
@@ -116,13 +108,13 @@ docker 环境下可以使用 pipework 脚本对容器分配固定 IP，相当于
 </blockquote>
 <h3 id="配置桥接网络">配置桥接网络</h3>
 <p class="indent--2">桥接本地物理网络的目的,是为了局域网内用户方便访问 docker 实例中服务,丌要需要各种端口映射即可访问服务。 但是这样做,又违背了 docker 容器的安全隔离的原则,工作中辩证的选择.</p>
-<p class="indent--2"><img src="https://img.hacpai.com/file/2020/04/dockerbridge-74399047.jpeg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="dockerbridge.jpeg"></p>
+<p class="indent--2"><img src="https://b3logfile.com/file/2020/04/dockerbridge-74399047.jpeg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="dockerbridge.jpeg"></p>
 <p class="indent--2">网桥在哪，查看网桥</p>
-<pre><code class="highlight-chroma">$ yum install -y bridge-utils
-$ brctl show
-bridge name     bridge id               STP enabled     interfaces
-docker0         8000.0242b5fbe57b       no              veth3a496ed
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">$ yum install -y bridge-utils
+</span></span><span class="highlight-line"><span class="highlight-cl">$ brctl show
+</span></span><span class="highlight-line"><span class="highlight-cl">bridge name     bridge id               STP enabled     interfaces
+</span></span><span class="highlight-line"><span class="highlight-cl">docker0         8000.0242b5fbe57b       no              veth3a496ed
+</span></span></code></pre>
 <p class="indent--2">有了网桥之后，那我们看下 docker 在启动一个容器的时候做了哪些事情才能实现容器间的互联互通</p>
 <p class="indent--2">Docker 创建一个容器的时候，会执行如下操作：</p>
 <ul>
@@ -133,85 +125,84 @@ docker0         8000.0242b5fbe57b       no              veth3a496ed
 <li>配置默认路由到网桥</li>
 </ul>
 <p class="indent--2">那整个过程其实是 docker 自动帮我们完成的，清理掉所有容器，来验证。</p>
-<pre><code class="highlight-chroma">## 清掉所有容器
-$ docker rm -f `docker ps -aq`
-$ docker ps
-$ brctl show # 查看网桥中的接口，目前没有
-
-## 创建测试容器test1
-$ docker run -d --name test1 nginx:alpine
-$ brctl show # 查看网桥中的接口，已经把test1的veth端接入到网桥中
-$ ip a |grep veth # 已在宿主机中可以查看到
-$ docker exec -ti test1 sh 
-/ # ifconfig  # 查看容器的eth0网卡及分配的容器ip
-/ # route -n  # 观察默认网关都指向了网桥的地址，即所有流量都转向网桥，等于是在veth pair接通了网线
-Kernel IP routing table
-Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
-0.0.0.0         172.17.0.1      0.0.0.0         UG    0      0        0 eth0
-172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 eth0
-
-# 再来启动一个测试容器，测试容器间的通信
-$ docker run -d --name test2 nginx:alpine
-$ docker exec -ti test sh
-/ # sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
-/ # apk add curl
-/ # curl 172.17.0.8:80
-
-## 为啥可以通信，因为两个容器是接在同一个网桥中的，通信其实是通过mac地址和端口的的记录来做转发的。test1访问test2，通过test1的eth0发送ARP广播，网桥会维护一份mac映射表，我们可以大概通过命令来看一下，
-$ brctl showmacs docker0
-## 这些mac地址是主机端的veth网卡对应的mac，可以查看一下
-$ ip a 
-
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">## 清掉所有容器
+</span></span><span class="highlight-line"><span class="highlight-cl">$ docker rm -f `docker ps -aq`
+</span></span><span class="highlight-line"><span class="highlight-cl">$ docker ps
+</span></span><span class="highlight-line"><span class="highlight-cl">$ brctl show # 查看网桥中的接口，目前没有
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">## 创建测试容器test1
+</span></span><span class="highlight-line"><span class="highlight-cl">$ docker run -d --name test1 nginx:alpine
+</span></span><span class="highlight-line"><span class="highlight-cl">$ brctl show # 查看网桥中的接口，已经把test1的veth端接入到网桥中
+</span></span><span class="highlight-line"><span class="highlight-cl">$ ip a |grep veth # 已在宿主机中可以查看到
+</span></span><span class="highlight-line"><span class="highlight-cl">$ docker exec -ti test1 sh 
+</span></span><span class="highlight-line"><span class="highlight-cl">/ # ifconfig  # 查看容器的eth0网卡及分配的容器ip
+</span></span><span class="highlight-line"><span class="highlight-cl">/ # route -n  # 观察默认网关都指向了网桥的地址，即所有流量都转向网桥，等于是在veth pair接通了网线
+</span></span><span class="highlight-line"><span class="highlight-cl">Kernel IP routing table
+</span></span><span class="highlight-line"><span class="highlight-cl">Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+</span></span><span class="highlight-line"><span class="highlight-cl">0.0.0.0         172.17.0.1      0.0.0.0         UG    0      0        0 eth0
+</span></span><span class="highlight-line"><span class="highlight-cl">172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 eth0
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl"># 再来启动一个测试容器，测试容器间的通信
+</span></span><span class="highlight-line"><span class="highlight-cl">$ docker run -d --name test2 nginx:alpine
+</span></span><span class="highlight-line"><span class="highlight-cl">$ docker exec -ti test sh
+</span></span><span class="highlight-line"><span class="highlight-cl">/ # sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
+</span></span><span class="highlight-line"><span class="highlight-cl">/ # apk add curl
+</span></span><span class="highlight-line"><span class="highlight-cl">/ # curl 172.17.0.8:80
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">## 为啥可以通信，因为两个容器是接在同一个网桥中的，通信其实是通过mac地址和端口的的记录来做转发的。test1访问test2，通过test1的eth0发送ARP广播，网桥会维护一份mac映射表，我们可以大概通过命令来看一下，
+</span></span><span class="highlight-line"><span class="highlight-cl">$ brctl showmacs docker0
+</span></span><span class="highlight-line"><span class="highlight-cl">## 这些mac地址是主机端的veth网卡对应的mac，可以查看一下
+</span></span><span class="highlight-line"><span class="highlight-cl">$ ip a
+</span></span></code></pre>
 <p class="indent--2">我们如何知道网桥上的这些虚拟网卡与容器端是如何对应？</p>
 <p class="indent--2">通过 ifindex，网卡索引号</p>
-<pre><code class="highlight-chroma">## 查看test1容器的网卡索引
-$ docker exec -ti test1 cat /sys/class/net/eth0/ifindex
-
-## 主机中找到虚拟网卡后面这个@ifxx的值，如果是同一个值，说明这个虚拟网卡和这个容器的eth0网卡是配对的。
-$ ip a |grep @if
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">## 查看test1容器的网卡索引
+</span></span><span class="highlight-line"><span class="highlight-cl">$ docker exec -ti test1 cat /sys/class/net/eth0/ifindex
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">## 主机中找到虚拟网卡后面这个@ifxx的值，如果是同一个值，说明这个虚拟网卡和这个容器的eth0网卡是配对的。
+</span></span><span class="highlight-line"><span class="highlight-cl">$ ip a |grep @if
+</span></span></code></pre>
 <p class="indent--2">整理脚本，快速查看对应：</p>
-<pre><code class="highlight-chroma">for container in $(docker ps -q); do
-    iflink=`docker exec -it $container sh -c 'cat /sys/class/net/eth0/iflink'`
-    iflink=`echo $iflink|tr -d '\r'`
-    veth=`grep -l $iflink /sys/class/net/veth*/ifindex`
-    veth=`echo $veth|sed -e 's;^.*net/\(.*\)/ifindex$;\1;'`
-    echo $container:$veth
-done
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">for container in $(docker ps -q); do
+</span></span><span class="highlight-line"><span class="highlight-cl">    iflink=`docker exec -it $container sh -c 'cat /sys/class/net/eth0/iflink'`
+</span></span><span class="highlight-line"><span class="highlight-cl">    iflink=`echo $iflink|tr -d '\r'`
+</span></span><span class="highlight-line"><span class="highlight-cl">    veth=`grep -l $iflink /sys/class/net/veth*/ifindex`
+</span></span><span class="highlight-line"><span class="highlight-cl">    veth=`echo $veth|sed -e 's;^.*net/\(.*\)/ifindex$;\1;'`
+</span></span><span class="highlight-line"><span class="highlight-cl">    echo $container:$veth
+</span></span><span class="highlight-line"><span class="highlight-cl">done
+</span></span></code></pre>
 <p class="indent--2">上面我们讲解了容器之间的通信，那么容器与宿主机的通信是如何做的？<br>
-<img src="https://img.hacpai.com/file/2020/04/20171130dockernetworktopology-931fdd8a.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="20171130dockernetworktopology.png"><br>
+<img src="https://b3logfile.com/file/2020/04/20171130dockernetworktopology-931fdd8a.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="20171130dockernetworktopology.png"><br>
 添加端口映射：</p>
-<pre><code class="highlight-chroma">## 启动容器的时候通过-p参数添加宿主机端口与容器内部服务端口的映射
-$ docker run --name test -d -p 8088:80 nginx:alpine
-$ curl localhost:8088
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">## 启动容器的时候通过-p参数添加宿主机端口与容器内部服务端口的映射
+</span></span><span class="highlight-line"><span class="highlight-cl">$ docker run --name test -d -p 8088:80 nginx:alpine
+</span></span><span class="highlight-line"><span class="highlight-cl">$ curl localhost:8088
+</span></span></code></pre>
 <p class="indent--2">端口映射如何实现的？先来回顾 iptables 链表图<br>
-<img src="https://img.hacpai.com/file/2020/04/iptables-b41f77d5.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="iptables.png"><br>
+<img src="https://b3logfile.com/file/2020/04/iptables-b41f77d5.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="iptables.png"><br>
 访问本机的 8088 端口，数据包会从流入方向进入本机，因此涉及到 PREROUTING 和 INPUT 链，我们是通过做宿主机与容器之间加的端口映射，所以肯定会涉及到端口转换，那哪个表是负责存储端口转换信息的呢，就是 nat 表，负责维护网络地址转换信息的。因此我们来查看一下 PREROUTING 链的 nat 表：</p>
-<pre><code class="highlight-chroma">$ iptables -t nat -nvL PREROUTING
-Chain PREROUTING (policy ACCEPT 159 packets, 20790 bytes)
- pkts bytes target     prot opt in     out     source               destination
-    3   156 DOCKER     all  --  *      *       0.0.0.0/0            0.0.0.0/0            
-ADDRTYPE match dst-type LOCAL
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">$ iptables -t nat -nvL PREROUTING
+</span></span><span class="highlight-line"><span class="highlight-cl">Chain PREROUTING (policy ACCEPT 159 packets, 20790 bytes)
+</span></span><span class="highlight-line"><span class="highlight-cl"> pkts bytes target     prot opt in     out     source               destination
+</span></span><span class="highlight-line"><span class="highlight-cl">    3   156 DOCKER     all  --  *      *       0.0.0.0/0            0.0.0.0/0            
+</span></span><span class="highlight-line"><span class="highlight-cl">ADDRTYPE match dst-type LOCAL
+</span></span></code></pre>
 <p class="indent--2">规则利用了 iptables 的 addrtype 拓展，匹配网络类型为本地的包，如何确定哪些是匹配本地，</p>
-<pre><code class="highlight-chroma">$ ip route show table local type local
-local 127.0.0.0/8 dev lo proto kernel scope host src 127.0.0.1
-local 127.0.0.1 dev lo proto kernel scope host src 127.0.0.1
-local 172.17.0.1 dev docker0 proto kernel scope host src 172.17.0.1
-local 192.168.136.133 dev ens33 proto kernel scope host src 192.168.136.133
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">$ ip route show table local type local
+</span></span><span class="highlight-line"><span class="highlight-cl">local 127.0.0.0/8 dev lo proto kernel scope host src 127.0.0.1
+</span></span><span class="highlight-line"><span class="highlight-cl">local 127.0.0.1 dev lo proto kernel scope host src 127.0.0.1
+</span></span><span class="highlight-line"><span class="highlight-cl">local 172.17.0.1 dev docker0 proto kernel scope host src 172.17.0.1
+</span></span><span class="highlight-line"><span class="highlight-cl">local 192.168.136.133 dev ens33 proto kernel scope host src 192.168.136.133
+</span></span></code></pre>
 <p class="indent--2">此条规则就是对主机收到的目的端口为 8088 的 tcp 流量进行 DNAT 转换，将流量发往 172.17.0.2:80，172.17.0.2 地址是不是就是我们上面创建的 Docker 容器的 ip 地址，流量走到网桥上了，后面就走网桥的转发就 ok 了。<br>
 所以，外界只需访问 192.168.136.133:8088 就可以访问到容器中的服务了。</p>
 <p class="indent--2">数据包在出口方向走 POSTROUTING 链，我们查看一下规则：</p>
-<pre><code class="highlight-chroma">$ iptables -t nat -nvL POSTROUTING
-Chain POSTROUTING (policy ACCEPT 1099 packets, 67268 bytes)
- pkts bytes target     prot opt in     out     source               destination
-   86  5438 MASQUERADE  all  --  *      !docker0  172.17.0.0/16        0.0.0.0/0
-    0     0 MASQUERADE  tcp  --  *      *       172.17.0.4           172.17.0.4           tcp dpt:80
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">$ iptables -t nat -nvL POSTROUTING
+</span></span><span class="highlight-line"><span class="highlight-cl">Chain POSTROUTING (policy ACCEPT 1099 packets, 67268 bytes)
+</span></span><span class="highlight-line"><span class="highlight-cl"> pkts bytes target     prot opt in     out     source               destination
+</span></span><span class="highlight-line"><span class="highlight-cl">   86  5438 MASQUERADE  all  --  *      !docker0  172.17.0.0/16        0.0.0.0/0
+</span></span><span class="highlight-line"><span class="highlight-cl">    0     0 MASQUERADE  tcp  --  *      *       172.17.0.4           172.17.0.4           tcp dpt:80
+</span></span></code></pre>
 <p class="indent--2">大家注意 MASQUERADE 这个动作是什么意思，其实是一种更灵活的 SNAT，把源地址转换成主机的出口 ip 地址，那解释一下这条规则的意思:</p>
 <p class="indent--2">这条规则会将源地址为 172.17.0.0/16 的包（也就是从 Docker 容器产生的包），并且不是从 docker0 网卡发出的，进行源地址转换，转换成主机网卡的地址。大概的过程就是 ACK 的包在容器里面发出来，会路由到网桥 docker0，网桥根据宿主机的路由规则会转给宿主机网卡 eth0，这时候包就从 docker0 网卡转到 eth0 网卡了，并从 eth0 网卡发出去，这时候这条规则就会生效了，把源地址换成了 eth0 的 ip 地址。</p>
 <blockquote>
@@ -222,22 +213,22 @@ Chain POSTROUTING (policy ACCEPT 1099 packets, 67268 bytes)
 <p class="indent--2"><code>$ docker run --net host -d --name mysql mysql:5.7</code></p>
 <h3 id="Conatiner模式">Conatiner 模式</h3>
 <p class="indent--2">这个模式指定新创建的容器和已经存在的一个容器共享一个 Network Namespace，而不是和宿主机共享。新创建的容器不会创建自己的网卡，配置自己的 IP，而是和一个指定的容器共享 IP、端口范围等。同样，两个容器除了网络方面，其他的如文件系统、进程列表等还是隔离的。两个容器的进程可以通过 lo 网卡设备通信。<br>
-<img src="https://img.hacpai.com/file/2020/04/dockernetworkcontainer-1d6b0e07.jpeg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="dockernetworkcontainer.jpeg"></p>
-<pre><code class="highlight-chroma"># 启动测试容器，共享mysql的网络空间
-$ docker run -ti --rm --net=container:mysql busybox sh
-/ # ip a
-/ # netstat -tlp|grep 3306
-/ # telnet localhost 3306
-</code></pre>
+<img src="https://b3logfile.com/file/2020/04/dockernetworkcontainer-1d6b0e07.jpeg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="dockernetworkcontainer.jpeg"></p>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl"># 启动测试容器，共享mysql的网络空间
+</span></span><span class="highlight-line"><span class="highlight-cl">$ docker run -ti --rm --net=container:mysql busybox sh
+</span></span><span class="highlight-line"><span class="highlight-cl">/ # ip a
+</span></span><span class="highlight-line"><span class="highlight-cl">/ # netstat -tlp|grep 3306
+</span></span><span class="highlight-line"><span class="highlight-cl">/ # telnet localhost 3306
+</span></span></code></pre>
 <h2 id="实用技巧">实用技巧</h2>
 <ul>
 <li>清理主机上所有退出的容器<br>
 <code> docker rm  $(docker ps -aq)</code></li>
 <li>调试或者排查容器启动错误</li>
 </ul>
-<pre><code class="highlight-chroma">## 若有时遇到容器启动失败的情况，可以先使用相同的镜像启动一个临时容器，先进入容器
-$ docker exec -ti --rm &lt;image_id&gt; bash
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">## 若有时遇到容器启动失败的情况，可以先使用相同的镜像启动一个临时容器，先进入容器
+</span></span><span class="highlight-line"><span class="highlight-cl">$ docker exec -ti --rm &lt;image_id&gt; bash
+</span></span></code></pre>
 <p class="indent--2">#进入容器后，手动执行该容器对应的 ENTRYPOINT 或者 CMD 命令，这样即使出错，容器也不会退出，因为 bash 作为 1 号进程，我们只要不退出容器，该容器就不会自动退出</p>
                 <div>
                     <hr>
@@ -248,294 +239,6 @@ $ docker exec -ti --rm &lt;image_id&gt; bash
 
 <!-- 签名档内可使用 HTML、JavaScript -->
 <br>
-<style>
-.page-thunder-to-text {
-  position: relative;
-  overflow: hidden;
-}
-.page-thunder-to-text canvas {
-  display: block;
-}
-.page-thunder-to-text input {
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  display: none;
-  outline: none;
-  background-color: rgba(38, 50, 56, 0.2);
-  color: #ffffff;
-  border: none;
-  width: 200px;
-  max-width: 200px;
-  margin: auto;
-  height: 60px;
-  line-height: 60px;
-  font-size: 40px;
-  padding: 0 20px;
-}
-.page-thunder-to-text input:hover, .page-thunder-to-text input:focus {
-  border: 1px solid rgba(38, 50, 56, 0.6);
-}
-.page-thunder-to-text input::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.1);
-}
-</style>
-
-</head>
-<body>
-<br/>
-<br/>
-<div class="page page-thunder-to-text">
-	<input id="input" type="text" maxlength="24" placeholder="">
-	<canvas id="canvas" width="80" height="160"></canvas>
-</div>
-
-<script>
-let canvas, ctx, w, h, thunder, text, particles, input;
-
-function Thunder(options) {
-    options = options || {};
-    this.lifespan = options.lifespan || Math.round(Math.random() * 10 + 10);
-    this.maxlife = this.lifespan;
-    this.color = options.color || '#fefefe';
-    this.glow = options.glow || '#2323fe';
-    this.x = options.x || Math.random() * w;
-    this.y = options.y || Math.random() * h;
-    this.width = options.width || 2;
-    this.direct = options.direct || Math.random() * Math.PI * 2;
-    this.max = options.max || Math.round(Math.random() * 10 + 20);
-    this.segments = [...new Array(this.max)].map(() => {//雷电特效速度
-        return {
-            direct: this.direct + (Math.PI * Math.random() * 0.2 - 0.1),
-            length: Math.random() * 20 + 80,
-            change: Math.random() * 0.04 - 0.02
-        };
-    });
-
-    this.update = function(index, array) {
-        this.segments.forEach(s => { (s.direct += s.change) && Math.random() > 0.96 && (s.change *= -1) });
-        (this.lifespan > 0 && this.lifespan--) || this.remove(index, array);
-    }
-
-    this.render = function(ctx) {
-        if (this.lifespan <= 0) return;
-        ctx.beginPath();
-        ctx.globalAlpha = this.lifespan / this.maxlife;
-        ctx.strokeStyle = this.color;
-        ctx.lineWidth = this.width;
-        ctx.shadowBlur = 32;
-        ctx.shadowColor = this.glow;
-        ctx.moveTo(this.x, this.y);
-        let prev = { x: this.x, y: this.y };
-        this.segments.forEach(s => {
-            const x = prev.x + Math.cos(s.direct) * s.length;
-            const y = prev.y + Math.sin(s.direct) * s.length;
-            prev = { x: x, y: y };
-            ctx.lineTo(x, y);
-        });
-        ctx.stroke();
-        ctx.closePath();
-        ctx.shadowBlur = 0;
-        const strength = Math.random() * 80 + 40;
-        const light = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, strength);
-        light.addColorStop(0, 'rgba(250, 200, 50, 0.6)');
-        light.addColorStop(0.1, 'rgba(250, 200, 50, 0.2)');
-        light.addColorStop(0.4, 'rgba(250, 200, 50, 0.06)');
-        light.addColorStop(0.65, 'rgba(250, 200, 50, 0.01)');
-        light.addColorStop(0.8, 'rgba(250, 200, 50, 0)');
-        ctx.beginPath();
-        ctx.fillStyle = light;
-        ctx.arc(this.x, this.y, strength, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.closePath();
-    }
-
-    this.remove = function(index, array) {
-        array.splice(index, 1);
-    }
-}
-
-function Spark(options) {
-    options = options || {};
-    this.x = options.x || w * 0.5;
-    this.y = options.y || h * 0.5;
-    this.v = options.v || { direct: Math.random() * Math.PI * 2, weight: Math.random() * 14 + 2, friction: 0.88 };
-    this.a = options.a || { change: Math.random() * 0.4 - 0.2, min: this.v.direct - Math.PI * 0.4, max: this.v.direct + Math.PI * 0.4 };
-    this.g = options.g || { direct: Math.PI * 0.5 + (Math.random() * 0.4 - 0.2), weight: Math.random() * 0.25 + 0.25 };
-    this.width = options.width || Math.random() * 10;//火花效果
-    this.lifespan = options.lifespan || Math.round(Math.random() * 20 + 40);
-    this.maxlife = this.lifespan;
-    this.color = options.color || '#feca32';
-    this.prev = { x: this.x, y: this.y };
-
-    this.update = function(index, array) {
-        this.prev = { x: this.x, y: this.y };
-        this.x += Math.cos(this.v.direct) * this.v.weight;
-        this.x += Math.cos(this.g.direct) * this.g.weight;
-        this.y += Math.sin(this.v.direct) * this.v.weight;
-        this.y += Math.sin(this.g.direct) * this.g.weight;
-        this.v.weight > 0.2 && (this.v.weight *= this.v.friction);
-        this.v.direct += this.a.change;
-        (this.v.direct > this.a.max || this.v.direct < this.a.min) && (this.a.change *= -1);
-        this.lifespan > 0 && this.lifespan--;
-        this.lifespan <= 0 && this.remove(index, array);
-    }
-
-    this.render = function(ctx) {
-        if (this.lifespan <= 0) return;
-        ctx.beginPath();
-        ctx.globalAlpha = this.lifespan / this.maxlife;
-        ctx.strokeStyle = this.color;
-        ctx.lineWidth = this.width;
-        ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.prev.x, this.prev.y);
-        ctx.stroke();
-        ctx.closePath();
-    }
-
-    this.remove = function(index, array) {
-        array.splice(index, 1);
-    }
-}
-
-function Particles(options) {//黄色火花速度
-    options = options || {};
-    this.max = options.max || Math.round(Math.random() * 10 + 10);
-    this.sparks = [...new Array(this.max)].map(() => new Spark(options));
-
-    this.update = function() {
-        this.sparks.forEach((s, i) => s.update(i, this.sparks));
-    }
-
-    this.render = function(ctx) {
-        this.sparks.forEach(s => s.render(ctx));
-    }
-}
-
-function Text(options) {
-    options = options || {};
-    const pool = document.createElement('canvas');
-    const buffer = pool.getContext('2d');
-    pool.width = w;
-    buffer.fillStyle = '#000000';
-    buffer.fillRect(0, 0, pool.width, pool.height);
-
-    this.size = 50;
-    this.copy = (options.copy || `Hello!`) + ' ';
-    this.color = options.color || '#cd96fe';
-    //this.delay = options.delay || 5;
-    this.delay = 0.1;//字体显示速度
-    this.basedelay = this.delay;
-    buffer.font = `${this.size}px Comic Sans MS`;
-    this.bound = buffer.measureText(this.copy);
-    this.bound.height = this.size * 1.8;
-    this.x = 60;
-    this.y = 0;
-
-    buffer.strokeStyle = this.color;
-    buffer.strokeText(this.copy, 0, this.bound.height * 0.8);
-    this.data = buffer.getImageData(0, 0, this.bound.width, this.bound.height);
-    this.index = 0;
-
-    this.update = function() {
-        if (this.index >= this.bound.width) {
-            this.index = 0;
-            return;
-        }
-        const data = this.data.data;
-        for (let i = this.index * 4; i < data.length; i += (4 * this.data.width)) {
-            const bitmap = data[i] + data[i + 1] + data[i + 2] + data[i + 3];
-            if (bitmap > 255 && Math.random() > 0.96) {
-                const x = this.x + this.index;
-                const y = this.y + (i / this.bound.width / 4);
-                thunder.push(new Thunder({
-                    x: x,
-                    y: y
-                }));
-                Math.random() > 0.5 && particles.push(new Particles({
-                    x: x,
-                    y: y
-                }));
-            }
-        }
-        if (this.delay-- < 0) {
-            this.index++;
-            this.delay += this.basedelay;
-        }
-    }
-
-    this.render = function(ctx) {
-        ctx.putImageData(this.data, this.x, this.y, 0, 0, this.index, this.bound.height);
-    }
-}
-
-function loop() {
-    update();
-    render();
-    requestAnimationFrame(loop);
-}
-
-function update() {
-    text.update();
-    thunder.forEach((l, i) => l.update(i, thunder));
-    particles.forEach(p => p.update());
-}
-
-function render() {
-    ctx.globalCompositeOperation = 'source-over';
-    ctx.globalAlpha = 1;
-    ctx.fillStyle = '#000000';
-    ctx.fillRect(0, 0, w, h);
-    //
-    ctx.globalCompositeOperation = 'screen';
-    text.render(ctx);
-    thunder.forEach(l => l.render(ctx));
-    particles.forEach(p => p.render(ctx));
-}
-
-(function () {
-    //
-    canvas = document.getElementById('canvas');
-    input = document.getElementById('input');
-    ctx = canvas.getContext('2d');
-    w = window.innerWidth;
-    h = window.innerHeight;
-    canvas.width = 740;
-    canvas.height = 140;
-    thunder = [];
-    particles = [];
-    //
-    text = new Text({
-        copy: '喜欢唱跳，rap和篮球'
-    });
-    canvas.addEventListener('click', (e) => {
-        const x = e.clientX;
-        const y = e.clientY;
-        thunder.push(new Thunder({
-            x: x,
-            y: y
-        }));
-        particles.push(new Particles({
-            x: x,
-            y: y
-        }));
-    });
-    let cb = 0;
-    input.addEventListener('keyup', (e) => {
-        clearTimeout(cb);
-        cb = setTimeout(() => {
-            text = new Text({
-                copy: input.value
-            });
-        }, 300);
-    });
-    //
-    loop();
-})()
-</script>
-</body>
-
                 </div>
         </div>
     </div>
@@ -564,7 +267,7 @@ function render() {
         <div class="wrapper comment">
                 <div id="gitalk-container" style="padding: 30px 0;"></div>
                 <div id="b3logsolocomments"></div>
-                <div id="vcomment" style="padding: 30px 0;" data-name="cuijianzhe" data-postId="1553657246955"></div>
+                <div id="vcomment" style="padding: 30px 0;" data-name="cuijianzhe" data-postId="1553657247097"></div>
 
             <div class="post__list fn__flex">
                 <div class="fn__flex-1">
@@ -592,7 +295,7 @@ function render() {
                       data-title="docker网络"
                       data-blogtitle="邯城往事"
                       data-url="https://cuijianzhe.github.io/articles/2019/03/27/1553657246955.html"
-                      data-avatar="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100">
+                      data-avatar="https://b3logfile.com/avatar/1551626533851_1560155807399.gif?imageView2/1/w/128/h/128/interlace/0/q/100">
                     WeChat
                     <span class="qrcode"></span>
                 </span>
@@ -684,7 +387,7 @@ function render() {
             <a class="ft__link" href="/my-github-repos" target="_self" rel="section">
                 我的开源
             </a>
-            <a class="ft__link" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+            <a class="ft__link" href="http://times.cjzshilong.cn/time/" target="_blank" rel="section">
                 服务器倒计时
             </a>
         <a class="ft__link" rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">RSS</a>
@@ -692,93 +395,24 @@ function render() {
     <div class="footer__border mobile__none"></div>
     <div class="wrapper fn__flex">
         <div class="fn__flex-1 mobile__none">
-            <div class="ft__fade">cuijianzhe -                >>>  展颜笑夙愿，一笑泯恩仇 <<<</div>
+            <div class="ft__fade">cuijianzhe - 来自邯郸社畜的呐喊</div>
             <br>
-                <!-- MetingJS音乐播放器 不能放到 head 导致系统功能加载异常-->
-<link rel="stylesheet" href="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css">
-<script src="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-<meting-js server="netease" type="playlist" id="728729850"  autoplay="false" fixed ="true" order = "random"</meting-js>
-
-<h1><p style="font-size:10px"><font color="#2F4F4F">红笺小字，说尽平生意。<br/>鸿雁在云鱼在水，惆怅此情难寄。<br/>             ——晏殊· 《清平乐》</font> </p></h1>
+                <h1 class="title" id="character" ><p style="font-size:10px"><font color="#FF00FF">红笺小字，说尽平生意。<br/>鸿雁在云鱼在水，惆怅此情难寄。<br/>             ——晏殊· 《清平乐》</font> </p></h1>
 
         </div>
 
-            <div class="footer__mid fn__flex-1 mobile__none">
-                <div class="ft__fade">分类</div>
-                <br>
-                    <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="36 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        人生苦短,我用Python</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="0 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        Java是世界上最好的语言</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="52 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        Linux系列</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/network"
-                       aria-label="4 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        Network系列</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/young"
-                       aria-label="8 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        江湖就是人情世故</a> &nbsp; &nbsp;
-            </div>
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                115
+                166
                 文章
             </a>
            <br>
-            <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> <span class="ft-gray">浏览</span>
+            <span data-uvstaturl="https://cuijianzhe.github.io">0</span> <span class="ft-gray">浏览</span>
  <br>
-            &copy; 2021
+            &copy; 2023
             <a class="ft__link" href="https://cuijianzhe.github.io">邯城往事</a>
-            <img style="width: 20px; height: 20px;" src="https://img.hacpai.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">冀ICP备19005901号-1</a> 
-
-<!--切换标签实现网页标题变化-->
-<script type="text/javascript">
-    /*自动刷新页面，避免无法访问*/
-    var OriginTitile = document.title;
-    var titleTime;
-    document.addEventListener('visibilitychange', function () {
-        if (document.hidden) {
-            document.title = '一杯茶，一包烟，混过一天是一天';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '哈哈，我是大佬ヾ(ﾟ∀ﾟゞ)';
-            titleTime = setTimeout(function () {
-                document.title = OriginTitile;
-            }, 3000);
-        }
-    });
-</script>
-<!--切换标签实现网页标题变化 结束-->
-
-
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '4e3eaf0bc17bd516ba5b',
-        clientSecret: '644d549c51d9fece70856677fc92411e6b6ced0e',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
-
+            <img style="width: 20px; height: 20px;" src="https://b3logfile.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">冀ICP备19005901号-1</a>
         </div>
     </div>
 </footer>
@@ -786,68 +420,37 @@ function render() {
   var Label = {
     speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources",
+    staticServePath: "https://cuijianzhe.github.io",
     luteAvailable: true,
-    hljsStyle: 'monokai',
+    hljsStyle: 'vs',
     langLabel: "zh_CN",
-    version: "4.3.1",
+    version: "4.4.0",
     staticSite: true,
     showCodeBlockLn: false,
-    articleId: "1553657246955",
+    articleId: "1553657247097",
   }
 </script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/skins/Pinghsu/js/common.min.js?1617776880435"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1701918811548"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
-<div class="solo-kanbanniang">
-    <div class="solo-kanbanniang__tip"></div>
-    <canvas id="soloKanbanniang" width="280" height="250"></canvas>
-    <div class="solo-kanbanniang__tool">
-        <svg id="soloKanbanniangHome" viewBox="0 0 32 32" width="100%" height="100%">
-            <path d="M32 18.967l-16-12.42-16 12.42v-5.064l16-12.42 16 12.42zM28 18.516v12h-8v-8h-8v8h-8v-12l12-9z"></path>
-        </svg>
-        <svg id="soloKanbanniangRSS" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M320.364 768q0 45.728-32 77.728t-77.728 32-77.728-32-32-77.728 32-77.728 77.728-32 77.728 32 32 77.728zM612.94 838.272q1.152 16-9.728 27.424-10.272 12-26.848 12h-77.152q-14.272 0-24.576-9.44t-11.424-23.712q-12.576-130.848-105.44-223.712t-223.712-105.44q-14.272-1.152-23.712-11.424t-9.44-24.576V402.24q0-16.576 12-26.848 9.728-9.728 24.576-9.728h2.848q91.424 7.424 174.848 46.016t148 103.712q65.152 64.576 103.712 148t46.016 174.848z m292.576 1.152q1.152 15.424-10.272 26.848-10.272 11.424-26.272 11.424h-81.728q-14.848 0-25.44-10.016t-11.136-24.288q-6.848-122.848-57.728-233.44t-132.288-192-192-132.288-233.44-58.272q-14.272-0.576-24.288-11.136t-10.016-24.864V109.664q0-16 11.424-26.272 10.272-10.272 25.152-10.272h1.728q149.728 7.424 286.56 68.576t243.136 168q106.848 106.272 168 243.136t68.576 286.56z"></path>
-        </svg>
-        <svg id="soloKanbanniangChat" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M802.42709 96.163153H219.476155c-84.48109 0-154.896836 71.746044-154.896836 157.840888v393.119449c0 86.072331 70.415746 157.819398 154.896836 157.819399h214.038818V925.470963s22.526039 40.168862 64.767096 5.734608c30.965246-25.819039 126.721123-91.828428 171.775248-123.385145h132.369773c84.502579 0 154.896836-83.21526 154.896836-157.839865V251.125481c0-86.094844-70.394257-154.962328-154.896836-154.962328zM301.144176 518.002714c-39.427988 0-70.416769-31.576159-70.416769-71.746044 0-40.168862 30.988782-71.746044 70.416769-71.746044 39.426965 0 70.393233 31.577183 70.393234 71.746044 0 40.169885-30.966269 71.746044-70.393234 71.746044z m208.411657 0c-39.450501 0-70.415746-31.576159-70.415746-71.746044 0-40.168862 30.965246-71.746044 70.415746-71.746044 39.405475 0 70.394257 31.577183 70.394257 71.746044 0 40.169885-30.988782 71.746044-70.394257 71.746044z m211.203236 0c-39.426965 0-70.416769-31.576159-70.416769-71.746044 0-40.168862 30.988782-71.746044 70.416769-71.746044s70.415746 31.577183 70.415746 71.746044c-0.001023 40.169885-30.988782 71.746044-70.415746 71.746044z"></path>
-        </svg>
-        <svg id="soloKanbanniangChange" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M936.672 193.216l-226.88-64c-8.704-2.528-18.112-1.12-25.824 3.776-7.68 4.864-12.896 12.736-14.432 21.728C655.712 236.928 595.328 288 512 288c-71.424 0-142.464-103.296-163.776-143.104-7.136-13.28-22.528-19.84-37.024-15.68l-224 64C73.472 197.152 64 209.728 64 224v256a31.93 31.93 0 0 0 11.712 24.736c7.392 6.08 17.152 8.512 26.56 6.624L224 487.04V832c0 52.928 43.072 96 96 96h384c52.928 0 96-43.072 96-96V519.04l121.728 24.352c9.44 1.92 19.2-0.544 26.56-6.624C955.68 530.656 960 521.6 960 512V224c0-14.336-9.536-26.912-23.328-30.784zM672 800H352c-17.664 0-32-14.304-32-32s14.336-32 32-32h320c17.696 0 32 14.304 32 32s-14.304 32-32 32z"></path>
-        </svg>
-        <svg id="soloKanbanniangPhoto" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M898.048 258.048q23.552-1.024 46.592 9.216t40.96 27.136 28.672 39.424 10.752 46.08l0 390.144q0 24.576-10.752 47.104t-28.672 40.448-40.96 28.16-47.616 10.24l-697.344 0q-24.576 0-48.64-10.24t-42.496-27.648-29.696-40.448-11.264-48.64l0-381.952q0-22.528 10.752-45.568t28.672-41.472 39.936-30.208 44.544-11.776l63.488 0 13.312-83.968q3.072-20.48 18.432-32.768t34.816-12.288l456.704 0q19.456 0 34.304 10.752t16.896 34.304l14.336 83.968 54.272 0zM548.864 712.704q40.96 0 77.824-15.872t63.488-42.496 42.496-62.976 15.872-77.312-15.872-77.312-42.496-62.976-63.488-42.496-77.824-15.872-77.312 15.872-63.488 42.496-43.008 62.976-15.872 77.312 15.872 77.312 43.008 62.976 63.488 42.496 77.312 15.872z"></path>
-        </svg>
-        <svg id="soloKanbanniangGithub" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M1024 524.8c0 114.346667-32.554667 217.216-97.706667 308.565333-65.066667 91.306667-149.162667 154.538667-252.288 189.610667-11.989333 2.304-20.778667 0.682667-26.325333-4.778667a27.605333 27.605333 0 0 1-8.362667-20.48v-144.213333c0-44.16-11.52-76.501333-34.645333-97.024 25.344-2.730667 48.085333-6.826667 68.309333-12.288a268.629333 268.629333 0 0 0 62.72-26.666667 187.434667 187.434667 0 0 0 53.973334-45.44c14.421333-18.005333 26.197333-41.898667 35.328-71.765333 9.088-29.824 13.653333-64.128 13.653333-102.826667 0-55.125333-17.536-102.058667-52.650667-140.8 16.426667-41.429333 14.677333-87.893333-5.333333-139.392-12.458667-4.096-30.464-1.578667-54.016 7.509334a355.328 355.328 0 0 0-61.312 30.08L640 271.274667a462.336 462.336 0 0 0-128-17.749334c-43.989333 0-86.656 5.930667-128 17.749334a589.824 589.824 0 0 0-28.330667-18.432c-11.776-7.253333-30.336-16.042667-55.68-26.325334-25.344-10.24-44.416-13.312-57.301333-9.216-19.584 51.498667-21.12 97.962667-4.693333 139.434667-35.114667 38.698667-52.650667 85.632-52.650667 140.757333 0 38.698667 4.565333 72.874667 13.653333 102.485334 9.130667 29.610667 20.778667 53.546667 34.986667 71.765333 14.250667 18.218667 32.128 33.493333 53.674667 45.781333 21.546667 12.288 42.453333 21.205333 62.677333 26.666667 20.224 5.461333 43.008 9.557333 68.309333 12.288-17.749333 16.384-28.629333 39.850667-32.64 70.4a130.005333 130.005333 0 0 1-29.994666 10.24c-10.666667 2.261333-23.338667 3.413333-37.973334 3.413333-14.72 0-29.269333-4.906667-43.690666-14.677333-14.464-9.813333-26.794667-24.064-36.992-42.709333a109.226667 109.226667 0 0 0-32.341334-35.541334c-13.141333-9.130667-24.106667-14.592-33.024-16.426666l-13.312-2.048c-9.344 0-15.786667 1.024-19.328 3.072-3.584 2.090667-4.693333 4.693333-3.328 7.893333 1.28 3.157333 3.328 6.4 5.973334 9.557333 2.688 3.2 5.546667 5.930667 8.661333 8.192l4.693333 3.413334c9.770667 4.565333 19.413333 13.226667 29.013334 25.984 9.514667 12.757333 16.512 24.362667 20.992 34.858666l6.656 15.701334c5.76 17.322667 15.530667 31.317333 29.312 42.026666 13.781333 10.666667 28.672 17.536 44.672 20.48 16 2.986667 31.445333 4.565333 46.336 4.821334 14.890667 0.213333 27.221333-0.597333 36.992-2.389334l15.36-2.730666c0 17.28 0.085333 37.546667 0.298666 60.8l0.341334 36.906666a27.050667 27.050667 0 0 1-8.661334 20.48c-5.76 5.461333-14.677333 7.082667-26.666666 4.778667-103.125333-35.072-187.221333-98.261333-252.330667-189.610667C32.554667 742.058667 0 639.146667 0 524.8c0-95.232 22.869333-183.04 68.693333-263.466667A516.266667 516.266667 0 0 1 254.976 70.4C333.44 23.466667 419.114667 0 512 0c92.885333 0 178.56 23.466667 256.981333 70.4a516.266667 516.266667 0 0 1 186.368 190.976C1001.130667 341.802667 1024 429.653333 1024 524.842667z"></path>
-        </svg>
-        <svg id="soloKanbanniangClose" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M517.572566143763 1018.6748601482986C238.26554897656422 1018.6748601482986 11.897910175114305 792.2714997690043 11.897910175114305 513.0002041796496c0-279.3070171671984 226.36763880144977-505.71037754649296 505.6746559686481-505.71037754649296 279.2712955893538 0 505.6746559686481 226.40336037929444 505.6746559686481 505.71037754649296C1023.2472221124112 792.2714997690043 796.8795833109612 1018.6748601482986 517.572566143763 1018.6748601482986zM754.7281214542927 339.25044954334646c13.752807470184345-13.752807470184345 9.680547595895998-40.186775075214015-9.073280772537204-58.94060344364717l-2.143294670678079-2.1075730928334457c-18.7538283684332-18.7538283684332-45.15207439561819-22.861809820566194-58.90488186580257-9.073280772537204l-168.21291007038468 168.24863164822932-180.42968969324974-180.46541127109438c-13.967136937252159-13.967136937252159-40.72259874288353-9.823433907274534-59.72647815622916 9.216167083915742l-2.143294670678079 2.143294670678079c-19.039600991190277 19.003879413345654-23.111860865478626 45.75934121897699-9.180445506071107 59.655035000539876l180.42968969324974 180.46541127109438-176.07165719620428 176.03593561835962c-13.788529048028984 13.824250625873615-9.716269173740633 40.151053497369375 9.073280772537204 58.94060344364717l2.1075730928334457 2.1075730928334457c18.7538283684332 18.7538283684332 45.15207439561819 22.897531398410823 58.90488186580257 9.073280772537204l176.10737877404887-176.10737877404887 170.39192631890742 170.42764789675192c13.967136937252159 13.931415359407513 40.686877165038865 9.85915548511917 59.690756578384516-9.180445506071107l2.1790162485227142-2.1790162485227142c19.039600991190277-18.968157835501014 23.147582443323273-45.72361964113239 9.180445506071107-59.690756578384516l-170.39192631890742-170.42764789675192L754.7281214542927 339.25044954334646z"></path>
-        </svg>
-    </div>
-</div>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/js/page.min.js?1617776880435', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1701918811548', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
-        "oId": "1553657246955",
+        "oId": "1553657247097",
         "blogHost": "https://cuijianzhe.github.io",
         "randomArticles1Label": "随机阅读：",
         "externalRelevantArticles1Label": "站外相关阅读："
     });
     $(document).ready(function () {
         page.load();
-    page.tips.externalRelevantArticlesDisplayCount = "5";
+    page.tips.externalRelevantArticlesDisplayCount = "0";
     page.loadRandomArticles('<h3>RECOMMEND POSTS</h3>');
-    page.loadExternalRelevantArticles("Linux",
-    '<h3>HACPAI POSTS</h3>');
-    page.loadRelevantArticles('1553657246955', '<h3>RELEVANT POSTS</h3>');
+    page.loadRelevantArticles('1553657247097', '<h3>RELEVANT POSTS</h3>');
 Skin.initArticle()
     });
 </script>
@@ -855,4 +458,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 81ms, 2021/04/07 15:43:10 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 41ms, 2023/12/11 19:00:42 -->

@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>kolla-ansible部署openstack多节点 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="kolla-ansible部署openstack多节点 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/11/01/1572607586305.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="kolla-ansible部署openstack多节点 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/11/01/1572607586305.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/skins/Pinghsu/css/base.css?1617776880435"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>kolla-ansible部署openstack多节点 - 邯城往事</title><meta name="description" content="环境介绍 ceph 搭建先搞定 对接 openstack 配置参考这里: 主机： IP 作用 主机名 192.168.51.204 存储节点 cinder 192.168.51.209 计算节点 computer3 192.168.51.210 计算节点 compute2 192.168.51.211 计算节点 compute1 192.168.51.212 control 节点 control 同步时间 在 ceph1 上安装 ntp 服务，是 2、3 同步 1 的时间 [root@ceph1 ~]# yum install ntp -y &amp;&amp; systemctl enable ntpd.service &amp;&amp; systemctl start ntpd.service [root@ceph1 ~]# systemctl start ntpd [root@ceph2 ~]# ntpdate 192.168.51.212 [root@ceph3 ~]# ntpdate 192.168.51.212 或者所有节点配置统一互联网 ntp 服务 ntpdate ntp1.aliyun.c...."/><meta property="og:description" content="环境介绍 ceph 搭建先搞定 对接 openstack 配置参考这里: 主机： IP 作用 主机名 192.168.51.204 存储节点 cinder 192.168.51.209 计算节点 computer3 192.168.51.210 计算节点 compute2 192.168.51.211 计算节点 compute1 192.168.51.212 control 节点 control 同步时间 在 ceph1 上安装 ntp 服务，是 2、3 同步 1 的时间 [root@ceph1 ~]# yum install ntp -y &amp;&amp; systemctl enable ntpd.service &amp;&amp; systemctl start ntpd.service [root@ceph1 ~]# systemctl start ntpd [root@ceph2 ~]# ntpdate 192.168.51.212 [root@ceph3 ~]# ntpdate 192.168.51.212 或者所有节点配置统一互联网 ntp 服务 ntpdate ntp1.aliyun.c...."/>    <meta name="keywords" content="Solo,Java,博客,开源"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="https://unpkg.com"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"/><link rel="apple-touch-icon" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"><link rel="shortcut icon" type="image/x-icon" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="kolla-ansible部署openstack多节点 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/11/01/1572607586305.html?"/><meta property="og:image" content="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"/><link rel="search" type="application/opensearchdescription+xml" title="kolla-ansible部署openstack多节点 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/11/01/1572607586305.html">        <link rel="stylesheet"
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1701918811548"/>
             <link rel="prev" title="ceph集群搭建" href="https://cuijianzhe.github.io/articles/2019/10/30/1572426357896.html">
             <link rel="next" title="ssh-key改变后出现的错误解决方法" href="https://cuijianzhe.github.io/articles/2019/11/02/1572658327824.html">
-    <!--鼠标点击特效-->
-<script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
-<!--页面动态樱花-->
-<!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vditor@3.8.4/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
+    <script src="https://unpkg.com/vditor@3.8.15/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
 <body>
 <header class="header">
     <div class="wrapper">
         <a href="https://cuijianzhe.github.io" rel="start" class="header__logo">
-            <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="邯城往事"/>
+            <img src="https://b3logfile.com/avatar/1551626533851_1560155807399.gif?imageView2/1/w/128/h/128/interlace/0/q/100" alt="邯城往事"/>
             邯城往事
         </a>
 
@@ -46,7 +39,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                        <a href="http://times.cjzshilong.cn/time/" target="_blank" rel="section">
                             服务器倒计时
                         </a>
                     </li>
@@ -83,13 +76,12 @@
             </a>
         </h2>
         <div class="ft__fade item__meta">
-                Updated on
+                Published on
             <time>
-                Dec 20, 2019
+                Nov 1, 2019
             </time>
-                in <a href="https://cuijianzhe.github.io/category/linux">Linux系列</a>
             with <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/11/01/1572607586305.html">0</span> views
-                and <a href="#b3logsolocomments"><span data-uvstatcmt="1572607586305">0</span> comments</a>
+                and <a href="#b3logsolocomments"><span data-uvstatcmt="1572607586025">0</span> comments</a>
         </div>
         <div class="item__tags">
                 <a rel="tag" class="tag tag--0" href="https://cuijianzhe.github.io/tags/Linux">
@@ -102,7 +94,7 @@
         <div class="vditor-reset">
             <h1 id="环境介绍">环境介绍</h1>
 <p class="indent--2"><del>ceph 搭建先搞定</del><br>
-<img src="https://img.hacpai.com/file/2019/11/image-50dcc3d1.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"><br>
+<img src="https://b3logfile.com/file/2019/11/image-50dcc3d1.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"><br>
 对接 openstack 配置<a href="https://docs.ceph.com/docs/master/rbd/rbd-openstack/" target="_blank">参考这里:</a></p>
 <ul>
 <li>主机：</li>
@@ -147,537 +139,536 @@
 <li>同步时间<br>
 在 ceph1 上安装 ntp 服务，是 2、3 同步 1 的时间</li>
 </ul>
-<pre><code class="highlight-chroma">[root@ceph1 ~]# yum install ntp -y &amp;&amp; systemctl enable ntpd.service &amp;&amp; systemctl start ntpd.service
-[root@ceph1 ~]# systemctl start ntpd
-[root@ceph2 ~]# ntpdate 192.168.51.212
-[root@ceph3 ~]# ntpdate 192.168.51.212
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@ceph1 ~]# yum install ntp -y &amp;&amp; systemctl enable ntpd.service &amp;&amp; systemctl start ntpd.service
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@ceph1 ~]# systemctl start ntpd
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@ceph2 ~]# ntpdate 192.168.51.212
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@ceph3 ~]# ntpdate 192.168.51.212
+</span></span></code></pre>
 <p class="indent--2">或者所有节点配置统一互联网 ntp 服务</p>
-<pre><code class="highlight-chroma">ntpdate ntp1.aliyun.com
-timedatectl set-timezone Asia/Shanghai
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">ntpdate ntp1.aliyun.com
+</span></span><span class="highlight-line"><span class="highlight-cl">timedatectl set-timezone Asia/Shanghai
+</span></span></code></pre>
 <h2 id="基础环境">基础环境</h2>
 <ul>
 <li>controller 配置</li>
 </ul>
-<pre><code class="highlight-chroma">yum install python-devel libffi-devel gcc openssl-devel git python-pip -y
-pip install -U pip 
-yum install -y yum-utils device-mapper-persistent-data lvm2
-yum install ansible
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">yum install python-devel libffi-devel gcc openssl-devel git python-pip -y
+</span></span><span class="highlight-line"><span class="highlight-cl">pip install -U pip 
+</span></span><span class="highlight-line"><span class="highlight-cl">yum install -y yum-utils device-mapper-persistent-data lvm2
+</span></span><span class="highlight-line"><span class="highlight-cl">yum install ansible
+</span></span></code></pre>
 <p class="indent--2">controller 网卡（外网桥接网卡）配置：</p>
 <blockquote>
 <p>注意：各个节点网卡名称必须一致</p>
 </blockquote>
-<pre><code class="highlight-chroma">[root@controller ~]# cat /etc/sysconfig/network-scripts/ifcfg-eth3
-TYPE=Ethernet
-PROXY_METHOD=none
-BROWSER_ONLY=no
-BOOTPROTO=none
-DEFROUTE=yes
-IPV4_FAILURE_FATAL=no
-IPV6INIT=yes
-IPV6_AUTOCONF=yes
-IPV6_DEFROUTE=yes
-IPV6_FAILURE_FATAL=no
-IPV6_ADDR_GEN_MODE=stable-privacy
-NAME=eth3
-UUID=0bd8bc11-2190-42d6-bbaa-6fb963a6def0
-DEVICE=eth3
-ONBOOT=yes
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# cat /etc/sysconfig/network-scripts/ifcfg-eth3
+</span></span><span class="highlight-line"><span class="highlight-cl">TYPE=Ethernet
+</span></span><span class="highlight-line"><span class="highlight-cl">PROXY_METHOD=none
+</span></span><span class="highlight-line"><span class="highlight-cl">BROWSER_ONLY=no
+</span></span><span class="highlight-line"><span class="highlight-cl">BOOTPROTO=none
+</span></span><span class="highlight-line"><span class="highlight-cl">DEFROUTE=yes
+</span></span><span class="highlight-line"><span class="highlight-cl">IPV4_FAILURE_FATAL=no
+</span></span><span class="highlight-line"><span class="highlight-cl">IPV6INIT=yes
+</span></span><span class="highlight-line"><span class="highlight-cl">IPV6_AUTOCONF=yes
+</span></span><span class="highlight-line"><span class="highlight-cl">IPV6_DEFROUTE=yes
+</span></span><span class="highlight-line"><span class="highlight-cl">IPV6_FAILURE_FATAL=no
+</span></span><span class="highlight-line"><span class="highlight-cl">IPV6_ADDR_GEN_MODE=stable-privacy
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME=eth3
+</span></span><span class="highlight-line"><span class="highlight-cl">UUID=0bd8bc11-2190-42d6-bbaa-6fb963a6def0
+</span></span><span class="highlight-line"><span class="highlight-cl">DEVICE=eth3
+</span></span><span class="highlight-line"><span class="highlight-cl">ONBOOT=yes
+</span></span></code></pre>
 <ul>
 <li>添加 docker-ce yum 源配置文件并安装 docker（在 controller、cinder、computer 节点配置）</li>
 </ul>
-<pre><code class="highlight-chroma">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+</span></span></code></pre>
 <ul>
 <li>更新并安装 Docker-CE 社区版本(在 controller、cinder、computer 节点都配置)</li>
 </ul>
-<pre><code class="highlight-chroma">yum -y install docker-ce
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">yum -y install docker-ce
+</span></span></code></pre>
 <ul>
 <li>开启 Docker 服务</li>
 </ul>
-<pre><code class="highlight-chroma">systemctl start docker &amp;&amp; systemctl enable docker &amp;&amp; systemctl status docker
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">systemctl start docker &amp;&amp; systemctl enable docker &amp;&amp; systemctl status docker
+</span></span></code></pre>
 <h3 id="设置3台服务器的docker-volume卷挂载方式和docker镜像加速器">设置 3 台服务器的 docker volume 卷挂载方式和 docker 镜像加速器</h3>
 <ul>
 <li>卷挂载方式（在 controller、cinder、computer 节点都配置）</li>
 </ul>
-<pre><code class="highlight-chroma">[root@computer ~]# mkdir /etc/systemd/system/docker.service.d
-</code></pre>
-<pre><code class="highlight-chroma">tee /etc/systemd/system/docker.service.d/kolla.conf &lt;&lt; 'EOF' 
-[Service] 
-MountFlags=shared 
-EOF
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@computer ~]# mkdir /etc/systemd/system/docker.service.d
+</span></span></code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">tee /etc/systemd/system/docker.service.d/kolla.conf &lt;&lt; 'EOF' 
+</span></span><span class="highlight-line"><span class="highlight-cl">[Service] 
+</span></span><span class="highlight-line"><span class="highlight-cl">MountFlags=shared 
+</span></span><span class="highlight-line"><span class="highlight-cl">EOF
+</span></span></code></pre>
 <ul>
 <li>设置 docker 镜像加速器（在 controller、cinder、computer 节点都配置）</li>
 </ul>
-<pre><code class="highlight-chroma">curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io  
-systemctl daemon-reload
-systemctl enable docker &amp;&amp; systemctl restart docker &amp;&amp; systemctl status docker
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io  
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl daemon-reload
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl enable docker &amp;&amp; systemctl restart docker &amp;&amp; systemctl status docker
+</span></span></code></pre>
 <ul>
 <li>配置 pip 软件源</li>
 </ul>
-<pre><code class="highlight-chroma">mkdir ~/.pip
-vim ~/.pip/pip.conf
-[global]
-index-url = http://mirrors.aliyun.com/pypi/simple/
-[install]
-trusted-host=mirrors.aliyun.com
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">mkdir ~/.pip
+</span></span><span class="highlight-line"><span class="highlight-cl">vim ~/.pip/pip.conf
+</span></span><span class="highlight-line"><span class="highlight-cl">[global]
+</span></span><span class="highlight-line"><span class="highlight-cl">index-url = http://mirrors.aliyun.com/pypi/simple/
+</span></span><span class="highlight-line"><span class="highlight-cl">[install]
+</span></span><span class="highlight-line"><span class="highlight-cl">trusted-host=mirrors.aliyun.com
+</span></span></code></pre>
 <ul>
 <li><a href="https://docs.openstack.org/kolla-ansible/latest/reference/storage/cinder-guide.html" target="_blank">LVM 存储环境配置</a></li>
 </ul>
-<pre><code class="highlight-chroma">[root@localhost ~]# pvcreate /dev/sda4
-WARNING: xfs signature detected on /dev/sda4 at offset 0. Wipe it? [y/n]: y
-  Wiping xfs signature on /dev/sda4.
-  Physical volume "/dev/sda4" successfully created.
-[root@localhost ~]# vgcreate cinder-volumes /dev/sda4
-  Volume group "cinder-volumes" successfully created
-[root@localhost ~]# systemctl  enable lvm2-lvmetad.service
-[root@localhost ~]# vgs
-  VG             #PV #LV #SN Attr   VSize   VFree  
-  cinder-volumes   1   0   0 wz--n- 461.12g 461.12g
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@localhost ~]# pvcreate /dev/sda4
+</span></span><span class="highlight-line"><span class="highlight-cl">WARNING: xfs signature detected on /dev/sda4 at offset 0. Wipe it? [y/n]: y
+</span></span><span class="highlight-line"><span class="highlight-cl">  Wiping xfs signature on /dev/sda4.
+</span></span><span class="highlight-line"><span class="highlight-cl">  Physical volume "/dev/sda4" successfully created.
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@localhost ~]# vgcreate cinder-volumes /dev/sda4
+</span></span><span class="highlight-line"><span class="highlight-cl">  Volume group "cinder-volumes" successfully created
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@localhost ~]# systemctl  enable lvm2-lvmetad.service
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@localhost ~]# vgs
+</span></span><span class="highlight-line"><span class="highlight-cl">  VG             #PV #LV #SN Attr   VSize   VFree  
+</span></span><span class="highlight-line"><span class="highlight-cl">  cinder-volumes   1   0   0 wz--n- 461.12g 461.12g
+</span></span></code></pre>
 <p class="indent--2">基础环境完成。</p>
 <h2 id="storage配置cinder存储信息">storage 配置 cinder 存储信息</h2>
 <ul>
 <li>安装 lvm 相关的软件包</li>
 </ul>
-<pre><code class="highlight-chroma">yum install -y yum-utils device-mapper-persistent-data lvm2
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">yum install -y yum-utils device-mapper-persistent-data lvm2
+</span></span></code></pre>
 <h2 id="在controller节点安装kolla-ansible">在 controller 节点安装 kolla-ansible</h2>
-<pre><code class="highlight-chroma">pip install kolla-ansible --ignore-installed PyYAML
-#赋值kolla相关配置文件
-cp -r /usr/share/kolla-ansible/etc_examples/kolla /etc/
-cp /usr/share/kolla-ansible/ansible/inventory/* /etc/kolla/
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">pip install kolla-ansible --ignore-installed PyYAML
+</span></span><span class="highlight-line"><span class="highlight-cl">#赋值kolla相关配置文件
+</span></span><span class="highlight-line"><span class="highlight-cl">cp -r /usr/share/kolla-ansible/etc_examples/kolla /etc/
+</span></span><span class="highlight-line"><span class="highlight-cl">cp /usr/share/kolla-ansible/ansible/inventory/* /etc/kolla/
+</span></span></code></pre>
 <h3 id="自定义kolla-ansible安装openstack的相关配置文件">自定义 kolla-ansible 安装 openstack 的相关配置文件</h3>
 <ol>
 <li>自动生成 openstack 各服务的密码</li>
 </ol>
-<pre><code class="highlight-chroma">[root@controller ~]# kolla-genpwd
-[root@controller ~]# vim /etc/kolla/passwords.yml
-keystone_admin_password: 598941324
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# kolla-genpwd
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# vim /etc/kolla/passwords.yml
+</span></span><span class="highlight-line"><span class="highlight-cl">keystone_admin_password: 598941324
+</span></span></code></pre>
 <ol start="2">
 <li>配置/etc/kolla/globals.yml 自定义部署事项</li>
 </ol>
-<pre><code class="highlight-chroma">[root@controller ~]# grep -v "^#\|^$" /etc/kolla/globals.yml 
----
-kolla_base_distro: "centos"
-kolla_install_type: "binary"
-openstack_release: "stein"
-kolla_internal_vip_address: "192.168.51.212"
-network_interface: "enp61s0f0"
-kolla_external_vip_interface: "{{ network_interface }}"
-api_interface: "{{ network_interface }}"
-storage_interface: "{{ network_interface }}"
-cluster_interface: "{{ network_interface }}"
-tunnel_interface: "{{ network_interface }}"
-dns_interface: "{{ network_interface }}"
-neutron_external_interface: "enp61s0f3"
-enable_haproxy: "no"
-enable_cinder: "yes"
-enable_cinder_backend_lvm: "yes"
-glance_enable_rolling_upgrade: "no"
-cinder_volume_group: "cinder-volumes"
-ironic_dnsmasq_dhcp_range:
-tempest_image_id:
-tempest_flavor_ref_id:
-tempest_public_network_id:
-tempest_floating_network_name:
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# grep -v "^#\|^$" /etc/kolla/globals.yml 
+</span></span><span class="highlight-line"><span class="highlight-cl">---
+</span></span><span class="highlight-line"><span class="highlight-cl">kolla_base_distro: "centos"
+</span></span><span class="highlight-line"><span class="highlight-cl">kolla_install_type: "binary"
+</span></span><span class="highlight-line"><span class="highlight-cl">openstack_release: "stein"
+</span></span><span class="highlight-line"><span class="highlight-cl">kolla_internal_vip_address: "192.168.51.212"
+</span></span><span class="highlight-line"><span class="highlight-cl">network_interface: "enp61s0f0"
+</span></span><span class="highlight-line"><span class="highlight-cl">kolla_external_vip_interface: "{{ network_interface }}"
+</span></span><span class="highlight-line"><span class="highlight-cl">api_interface: "{{ network_interface }}"
+</span></span><span class="highlight-line"><span class="highlight-cl">storage_interface: "{{ network_interface }}"
+</span></span><span class="highlight-line"><span class="highlight-cl">cluster_interface: "{{ network_interface }}"
+</span></span><span class="highlight-line"><span class="highlight-cl">tunnel_interface: "{{ network_interface }}"
+</span></span><span class="highlight-line"><span class="highlight-cl">dns_interface: "{{ network_interface }}"
+</span></span><span class="highlight-line"><span class="highlight-cl">neutron_external_interface: "enp61s0f3"
+</span></span><span class="highlight-line"><span class="highlight-cl">enable_haproxy: "no"
+</span></span><span class="highlight-line"><span class="highlight-cl">enable_cinder: "yes"
+</span></span><span class="highlight-line"><span class="highlight-cl">enable_cinder_backend_lvm: "yes"
+</span></span><span class="highlight-line"><span class="highlight-cl">glance_enable_rolling_upgrade: "no"
+</span></span><span class="highlight-line"><span class="highlight-cl">cinder_volume_group: "cinder-volumes"
+</span></span><span class="highlight-line"><span class="highlight-cl">ironic_dnsmasq_dhcp_range:
+</span></span><span class="highlight-line"><span class="highlight-cl">tempest_image_id:
+</span></span><span class="highlight-line"><span class="highlight-cl">tempest_flavor_ref_id:
+</span></span><span class="highlight-line"><span class="highlight-cl">tempest_public_network_id:
+</span></span><span class="highlight-line"><span class="highlight-cl">tempest_floating_network_name:
+</span></span></code></pre>
 <blockquote>
 <p>cinder_volume_group: "cinder-volumes"对应 cinder 中 lvm 挂载卷</p>
 </blockquote>
-<pre><code class="highlight-chroma">[root@cinder ~]# vgs
-  VG             #PV #LV #SN Attr   VSize   VFree  
-  cinder-volumes   1   0   0 wz--n- 461.12g 461.12g
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@cinder ~]# vgs
+</span></span><span class="highlight-line"><span class="highlight-cl">  VG             #PV #LV #SN Attr   VSize   VFree  
+</span></span><span class="highlight-line"><span class="highlight-cl">  cinder-volumes   1   0   0 wz--n- 461.12g 461.12g
+</span></span></code></pre>
 <ol start="3">
 <li>配置 SSH key，授信节点</li>
 </ol>
-<pre><code class="highlight-chroma">ssh-keygen 
-ssh-copy-id -i ~/.ssh/id_rsa.pub root@computer
-ssh-copy-id -i ~/.ssh/id_rsa.pub root@computer2
-ssh-copy-id -i ~/.ssh/id_rsa.pub root@cinder
-ssh-copy-id -i ~/.ssh/id_rsa.pub root@controller
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">ssh-keygen 
+</span></span><span class="highlight-line"><span class="highlight-cl">ssh-copy-id -i ~/.ssh/id_rsa.pub root@computer
+</span></span><span class="highlight-line"><span class="highlight-cl">ssh-copy-id -i ~/.ssh/id_rsa.pub root@computer2
+</span></span><span class="highlight-line"><span class="highlight-cl">ssh-copy-id -i ~/.ssh/id_rsa.pub root@cinder
+</span></span><span class="highlight-line"><span class="highlight-cl">ssh-copy-id -i ~/.ssh/id_rsa.pub root@controller
+</span></span></code></pre>
 <ul>
 <li>配置 nultinode 多节点主机清单文件</li>
 </ul>
-<pre><code class="highlight-chroma">[control]
-# These hostname must be resolvable from your deployment host
-controller
-# The above can also be specified as follows:
-#control[01:03]     ansible_user=kolla
-
-# The network nodes are where your l3-agent and loadbalancers will run
-# This can be the same as a host in the control group
-[network]
-controller
-
-[compute]
-computer1
-computer2
-
-[monitoring]
-controller
-
-# When compute nodes and control nodes use different interfaces,
-# you need to comment out "api_interface" and other interfaces from the globals.yml
-# and specify like below:
-#compute01 neutron_external_interface=eth0 api_interface=em1 storage_interface=em1 tunnel_interface=em1
-
-[storage]
-cinder
-
-[deployment]
-controller
-
-[baremetal:children]
-control
-network
-compute
-storage
-monitoring
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[control]
+</span></span><span class="highlight-line"><span class="highlight-cl"># These hostname must be resolvable from your deployment host
+</span></span><span class="highlight-line"><span class="highlight-cl">controller
+</span></span><span class="highlight-line"><span class="highlight-cl"># The above can also be specified as follows:
+</span></span><span class="highlight-line"><span class="highlight-cl">#control[01:03]     ansible_user=kolla
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl"># The network nodes are where your l3-agent and loadbalancers will run
+</span></span><span class="highlight-line"><span class="highlight-cl"># This can be the same as a host in the control group
+</span></span><span class="highlight-line"><span class="highlight-cl">[network]
+</span></span><span class="highlight-line"><span class="highlight-cl">controller
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">[compute]
+</span></span><span class="highlight-line"><span class="highlight-cl">computer1
+</span></span><span class="highlight-line"><span class="highlight-cl">computer2
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">[monitoring]
+</span></span><span class="highlight-line"><span class="highlight-cl">controller
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl"># When compute nodes and control nodes use different interfaces,
+</span></span><span class="highlight-line"><span class="highlight-cl"># you need to comment out "api_interface" and other interfaces from the globals.yml
+</span></span><span class="highlight-line"><span class="highlight-cl"># and specify like below:
+</span></span><span class="highlight-line"><span class="highlight-cl">#compute01 neutron_external_interface=eth0 api_interface=em1 storage_interface=em1 tunnel_interface=em1
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">[storage]
+</span></span><span class="highlight-line"><span class="highlight-cl">cinder
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">[deployment]
+</span></span><span class="highlight-line"><span class="highlight-cl">controller
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">[baremetal:children]
+</span></span><span class="highlight-line"><span class="highlight-cl">control
+</span></span><span class="highlight-line"><span class="highlight-cl">network
+</span></span><span class="highlight-line"><span class="highlight-cl">compute
+</span></span><span class="highlight-line"><span class="highlight-cl">storage
+</span></span><span class="highlight-line"><span class="highlight-cl">monitoring
+</span></span></code></pre>
 <p class="indent--2">其他配置不用修改</p>
 <ul>
 <li>配置完成后，我们可以进入部署阶段。 首先，我们需要设置基本的主机的软件包的依赖项，例如 docker。Kolla-Ansible 提供了一个将以正确版本安装所有必需服务的剧本 playbook。先安装具有 kolla 部署依赖关系的引导服务 bootstrap-servers</li>
 </ul>
-<pre><code class="highlight-chroma">kolla-ansible -i /etc/kolla/multinode bootstrap-servers
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">kolla-ansible -i /etc/kolla/multinode bootstrap-servers
+</span></span></code></pre>
 <ul>
 <li>如果出现如下错误：</li>
 </ul>
-<pre><code class="highlight-chroma">TASK [baremetal : Install docker SDK for python] *****************************************************************************************************************************************************************
-ok: [controller]
-fatal: [cinder]: FAILED! =&gt; {"changed": false, "cmd": ["/bin/pip2", "install", "-U", "docker"], "msg": "stdout: Collecting docker\n  Using cached https://files.pythonhosted.org/packages/cc/ca/699d4754a932787ef353a157ada74efd1ceb6d1fc0bfb7989ae1e7b33111/docker-4.1.0-py2.py3-none-any.whl\nCollecting requests!=2.18.0,&gt;=2.14.2\n  Using cached https://files.pythonhosted.org/packages/51/bd/23c926cd341ea6b7dd0b2a00aba99ae0f828be89d72b2190f27c11d4b7fb/requests-2.22.0-py2.py3-none-any.whl\nCollecting websocket-client&gt;=0.32.0\n  Using cached https://files.pythonhosted.org/packages/29/19/44753eab1fdb50770ac69605527e8859468f3c0fd7dc5a76dd9c4dbd7906/websocket_client-0.56.0-py2.py3-none-any.whl\nRequirement already satisfied, skipping upgrade: ipaddress&gt;=1.0.16; python_version &lt; \"3.3\" in /usr/lib/python2.7/site-packages (from docker) (1.0.16)\nRequirement already satisfied, skipping upgrade: backports.ssl-match-hostname&gt;=3.5; python_version &lt; \"3.5\" in /usr/lib/python2.7/site-packages (from docker) (3.5.0.1)\nRequirement already satisfied, skipping upgrade: six&gt;=1.4.0 in /usr/lib/python2.7/site-packages (from docker) (1.9.0)\nRequirement already satisfied, skipping upgrade: chardet&lt;3.1.0,&gt;=3.0.2 in /usr/lib/python2.7/site-packages (from requests!=2.18.0,&gt;=2.14.2-&gt;docker) (3.0.4)\nRequirement already satisfied, skipping upgrade: idna&lt;2.9,&gt;=2.5 in /usr/lib/python2.7/site-packages (from requests!=2.18.0,&gt;=2.14.2-&gt;docker) (2.8)\nRequirement already satisfied, skipping upgrade: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /usr/lib/python2.7/site-packages (from requests!=2.18.0,&gt;=2.14.2-&gt;docker) (1.25.6)\nRequirement already satisfied, skipping upgrade: certifi&gt;=2017.4.17 in /usr/lib/python2.7/site-packages (from requests!=2.18.0,&gt;=2.14.2-&gt;docker) (2019.9.11)\nInstalling collected packages: requests, websocket-client, docker\n  Found existing installation: requests 2.6.0\n\n:stderr: DEPRECATION: Python 2.7 will reach the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 won't be maintained after that date. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support\nERROR: Cannot uninstall 'requests'. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.\n"}
-</code></pre>
-<p class="indent--2"><img src="https://img.hacpai.com/file/2019/11/image-2ec2382c.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">TASK [baremetal : Install docker SDK for python] *****************************************************************************************************************************************************************
+</span></span><span class="highlight-line"><span class="highlight-cl">ok: [controller]
+</span></span><span class="highlight-line"><span class="highlight-cl">fatal: [cinder]: FAILED! =&gt; {"changed": false, "cmd": ["/bin/pip2", "install", "-U", "docker"], "msg": "stdout: Collecting docker\n  Using cached https://files.pythonhosted.org/packages/cc/ca/699d4754a932787ef353a157ada74efd1ceb6d1fc0bfb7989ae1e7b33111/docker-4.1.0-py2.py3-none-any.whl\nCollecting requests!=2.18.0,&gt;=2.14.2\n  Using cached https://files.pythonhosted.org/packages/51/bd/23c926cd341ea6b7dd0b2a00aba99ae0f828be89d72b2190f27c11d4b7fb/requests-2.22.0-py2.py3-none-any.whl\nCollecting websocket-client&gt;=0.32.0\n  Using cached https://files.pythonhosted.org/packages/29/19/44753eab1fdb50770ac69605527e8859468f3c0fd7dc5a76dd9c4dbd7906/websocket_client-0.56.0-py2.py3-none-any.whl\nRequirement already satisfied, skipping upgrade: ipaddress&gt;=1.0.16; python_version &lt; \"3.3\" in /usr/lib/python2.7/site-packages (from docker) (1.0.16)\nRequirement already satisfied, skipping upgrade: backports.ssl-match-hostname&gt;=3.5; python_version &lt; \"3.5\" in /usr/lib/python2.7/site-packages (from docker) (3.5.0.1)\nRequirement already satisfied, skipping upgrade: six&gt;=1.4.0 in /usr/lib/python2.7/site-packages (from docker) (1.9.0)\nRequirement already satisfied, skipping upgrade: chardet&lt;3.1.0,&gt;=3.0.2 in /usr/lib/python2.7/site-packages (from requests!=2.18.0,&gt;=2.14.2-&gt;docker) (3.0.4)\nRequirement already satisfied, skipping upgrade: idna&lt;2.9,&gt;=2.5 in /usr/lib/python2.7/site-packages (from requests!=2.18.0,&gt;=2.14.2-&gt;docker) (2.8)\nRequirement already satisfied, skipping upgrade: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /usr/lib/python2.7/site-packages (from requests!=2.18.0,&gt;=2.14.2-&gt;docker) (1.25.6)\nRequirement already satisfied, skipping upgrade: certifi&gt;=2017.4.17 in /usr/lib/python2.7/site-packages (from requests!=2.18.0,&gt;=2.14.2-&gt;docker) (2019.9.11)\nInstalling collected packages: requests, websocket-client, docker\n  Found existing installation: requests 2.6.0\n\n:stderr: DEPRECATION: Python 2.7 will reach the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 won't be maintained after that date. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support\nERROR: Cannot uninstall 'requests'. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.\n"}
+</span></span></code></pre>
+<p class="indent--2"><img src="https://b3logfile.com/file/2019/11/image-2ec2382c.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <p class="indent--2">解决方法：（在对应节点进行配置）</p>
-<pre><code class="highlight-chroma">yum install -y python-pip
-yum remove python-docker-py
-pip install -U docker
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">yum install -y python-pip
+</span></span><span class="highlight-line"><span class="highlight-cl">yum remove python-docker-py
+</span></span><span class="highlight-line"><span class="highlight-cl">pip install -U docker
+</span></span></code></pre>
 <ul>
 <li>另一个错误：</li>
 </ul>
-<pre><code class="highlight-chroma">TASK [baremetal : Install pip] ***********************************************************************************************************************************************************************************
-ok: [cinder]
-ok: [controller]
-fatal: [computer]: FAILED! =&gt; {"changed": false, "msg": "Download error on https://pypi.python.org/simple/pip/: [Errno 101] Network is unreachable -- Some packages may not be found!\nCouldn't find index page for 'pip' (maybe misspelled?)\nDownload error on https://pypi.python.org/simple/: [Errno 101] Network is unreachable -- Some packages may not be found!\nNo local packages or download links found for pip\nerror: Could not find suitable distribution for Requirement.parse('pip')\n"}
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">TASK [baremetal : Install pip] ***********************************************************************************************************************************************************************************
+</span></span><span class="highlight-line"><span class="highlight-cl">ok: [cinder]
+</span></span><span class="highlight-line"><span class="highlight-cl">ok: [controller]
+</span></span><span class="highlight-line"><span class="highlight-cl">fatal: [computer]: FAILED! =&gt; {"changed": false, "msg": "Download error on https://pypi.python.org/simple/pip/: [Errno 101] Network is unreachable -- Some packages may not be found!\nCouldn't find index page for 'pip' (maybe misspelled?)\nDownload error on https://pypi.python.org/simple/: [Errno 101] Network is unreachable -- Some packages may not be found!\nNo local packages or download links found for pip\nerror: Could not find suitable distribution for Requirement.parse('pip')\n"}
+</span></span></code></pre>
 <p class="indent--2">解决：（在对应节点 computer 进行配置）</p>
-<pre><code class="highlight-chroma">pip install --upgrade pip
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">pip install --upgrade pip
+</span></span></code></pre>
 <h3 id="对主机进行预部署检查">对主机进行预部署检查</h3>
-<pre><code class="highlight-chroma">kolla-ansible -i /etc/kolla/multinode prechecks
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">kolla-ansible -i /etc/kolla/multinode prechecks
+</span></span></code></pre>
 <ul>
 <li>安装</li>
 </ul>
-<pre><code class="highlight-chroma">kolla-ansible -i /etc/kolla/multinode deploy
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">kolla-ansible -i /etc/kolla/multinode deploy
+</span></span></code></pre>
 <ul>
 <li>部署验证：</li>
 </ul>
-<pre><code class="highlight-chroma">kolla-ansible -i /etc/kolla/multinode post-deploy
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">kolla-ansible -i /etc/kolla/multinode post-deploy
+</span></span></code></pre>
 <h1 id="安装openstack-client端">安装 openstack client 端</h1>
-<pre><code class="highlight-chroma">pip install python-openstackclient python-glanceclient python-neutronclient
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">pip install python-openstackclient python-glanceclient python-neutronclient
+</span></span></code></pre>
 <p class="indent--2">如有报错：</p>
-<pre><code class="highlight-chroma">ERROR: dogpile-cache 0.9.0 has requirement decorator&gt;=4.0.0, but you'll have decorator 3.4.0 which is incompatible.
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">ERROR: dogpile-cache 0.9.0 has requirement decorator&gt;=4.0.0, but you'll have decorator 3.4.0 which is incompatible.
+</span></span></code></pre>
 <p class="indent--2">解决：</p>
-<pre><code class="highlight-chroma">pip install -U decorator
-pip install --upgrade decorate
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">pip install -U decorator
+</span></span><span class="highlight-line"><span class="highlight-cl">pip install --upgrade decorate
+</span></span></code></pre>
 <ul>
 <li>报错 2：</li>
 </ul>
-<pre><code class="highlight-chroma">ERROR: Package 'more-itertools' requires a different Python: 2.7.5 not in '&gt;=3.4'
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">ERROR: Package 'more-itertools' requires a different Python: 2.7.5 not in '&gt;=3.4'
+</span></span></code></pre>
 <p class="indent--2">解决：</p>
-<pre><code class="highlight-chroma"> pip install more-itertools==5.0.0
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">pip install more-itertools==5.0.0
+</span></span></code></pre>
 <ul>
 <li>再执行</li>
 </ul>
-<pre><code class="highlight-chroma">pip install PyYAML --ignore-installed PyYAML
-pip install python-openstackclient
-</code></pre>
-<pre><code class="highlight-chroma">pip install python-neutronclient
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">pip install PyYAML --ignore-installed PyYAML
+</span></span><span class="highlight-line"><span class="highlight-cl">pip install python-openstackclient
+</span></span></code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">pip install python-neutronclient
+</span></span></code></pre>
 <ul>
 <li>报错：</li>
 </ul>
-<pre><code class="highlight-chroma">ImportError: No module named 'requests.packages.urllib3'
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">ImportError: No module named 'requests.packages.urllib3'
+</span></span></code></pre>
 <p class="indent--2">解决：</p>
-<pre><code class="highlight-chroma">pip install requests urllib3 pyOpenSSL --force --upgrade
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">pip install requests urllib3 pyOpenSSL --force --upgrade
+</span></span></code></pre>
 <h3 id="调整配置及重新部署">调整配置及重新部署</h3>
 <p class="indent--2">如果需要调整配置. 那么编辑 globals.yml 后, 然后运行 reconfigure. 使用 -t 参数可以只对变动的模块进行调整.</p>
-<pre><code class="highlight-chroma">kolla-ansible -i /etc/kolla/multinode reconfigure -t neutron
-kolla-ansible -i /etc/kolla/multinode  deploy -t neutron
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">kolla-ansible -i /etc/kolla/multinode reconfigure -t neutron
+</span></span><span class="highlight-line"><span class="highlight-cl">kolla-ansible -i /etc/kolla/multinode  deploy -t neutron
+</span></span></code></pre>
 <ul>
 <li>编辑：/usr/share/kolla-ansible/init-runonce</li>
 </ul>
-<pre><code class="highlight-chroma">EXT_NET_CIDR='192.168.50.0/24'  
-EXT_NET_RANGE='start=192.168.50.10,end=192.168.50.90'  
-EXT_NET_GATEWAY='192.168.50.1'  
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">EXT_NET_CIDR='192.168.50.0/24'  
+</span></span><span class="highlight-line"><span class="highlight-cl">EXT_NET_RANGE='start=192.168.50.10,end=192.168.50.90'  
+</span></span><span class="highlight-line"><span class="highlight-cl">EXT_NET_GATEWAY='192.168.50.1'
+</span></span></code></pre>
 <p class="indent--2">执行：</p>
-<pre><code class="highlight-chroma">[root@controller ~]# cd /usr/share/kolla-ansible  
-[root@controller kolla-ansible]# source /etc/kolla/admin-openrc.sh  
-[root@controller kolla-ansible]# ./init-runonce   
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# cd /usr/share/kolla-ansible  
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@controller kolla-ansible]# source /etc/kolla/admin-openrc.sh  
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@controller kolla-ansible]# ./init-runonce
+</span></span></code></pre>
 <p class="indent--2">输出：</p>
-<pre><code class="highlight-chroma">Done.  
-  
-To deploy a demo instance, run:  
-  
-openstack server create \  
- --image cirros \  
- --flavor m1.tiny \  
- --key-name mykey \  
- --network demo-net \  
- demo1  
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">Done.  
+</span></span><span class="highlight-line"><span class="highlight-cl">  
+</span></span><span class="highlight-line"><span class="highlight-cl">To deploy a demo instance, run:  
+</span></span><span class="highlight-line"><span class="highlight-cl">  
+</span></span><span class="highlight-line"><span class="highlight-cl">openstack server create \  
+</span></span><span class="highlight-line"><span class="highlight-cl"> --image cirros \  
+</span></span><span class="highlight-line"><span class="highlight-cl"> --flavor m1.tiny \  
+</span></span><span class="highlight-line"><span class="highlight-cl"> --key-name mykey \  
+</span></span><span class="highlight-line"><span class="highlight-cl"> --network demo-net \  
+</span></span><span class="highlight-line"><span class="highlight-cl"> demo1
+</span></span></code></pre>
 <p class="indent--2">执行如上命令即可创建 demo1 实例</p>
-<pre><code class="highlight-chroma">[root@controller kolla-ansible]# openstack server create \  
-&gt;     --image cirros \  
-&gt;     --flavor m1.tiny \  
-&gt;     --key-name mykey \  
-&gt;     --network demo-net \  
-&gt;     demo1  
-+-------------------------------------+-----------------------------------------------+  
-| Field                               | Value                                         |  
-+-------------------------------------+-----------------------------------------------+  
-| OS-DCF:diskConfig                   | MANUAL                                        |  
-| OS-EXT-AZ:availability_zone         |                                               |  
-| OS-EXT-SRV-ATTR:host                | None                                          |  
-| OS-EXT-SRV-ATTR:hypervisor_hostname | None                                          |  
-| OS-EXT-SRV-ATTR:instance_name       |                                               |  
-| OS-EXT-STS:power_state              | NOSTATE                                       |  
-| OS-EXT-STS:task_state               | scheduling                                    |  
-| OS-EXT-STS:vm_state                 | building                                      |  
-| OS-SRV-USG:launched_at              | None                                          |  
-| OS-SRV-USG:terminated_at            | None                                          |  
-| accessIPv4                          |                                               |  
-| accessIPv6                          |                                               |  
-| addresses                           |                                               |  
-| adminPass                           | XMHWD9M9iRAE                                  |  
-| config_drive                        |                                               |  
-| created                             | 2019-11-03T00:25:49Z                          |  
-| flavor                              | m1.tiny (1)                                   |  
-| hostId                              |                                               |  
-| id                                  | 1c4c6ba2-7a76-4207-a534-c7dbacf6a883          |  
-| image                               | cirros (4992fc52-b1e1-4a5d-88af-1c7c8ac94d9c) |  
-| key_name                            | mykey                                         |  
-| name                                | demo1                                         |  
-| progress                            | 0                                             |  
-| project_id                          | fda196dacffd4f35b3c3118035edff0e              |  
-| properties                          |                                               |  
-| security_groups                     | name='default'                                |  
-| status                              | BUILD                                         |  
-| updated                             | 2019-11-03T00:25:49Z                          |  
-| user_id                             | 5afd82c446e64186918b911e1f587388              |  
-| volumes_attached                    |                                               |  
-+-------------------------------------+-----------------------------------------------+  
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller kolla-ansible]# openstack server create \  
+</span></span><span class="highlight-line"><span class="highlight-cl">&gt;     --image cirros \  
+</span></span><span class="highlight-line"><span class="highlight-cl">&gt;     --flavor m1.tiny \  
+</span></span><span class="highlight-line"><span class="highlight-cl">&gt;     --key-name mykey \  
+</span></span><span class="highlight-line"><span class="highlight-cl">&gt;     --network demo-net \  
+</span></span><span class="highlight-line"><span class="highlight-cl">&gt;     demo1  
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------------------------+-----------------------------------------------+  
+</span></span><span class="highlight-line"><span class="highlight-cl">| Field                               | Value                                         |  
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------------------------+-----------------------------------------------+  
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-DCF:diskConfig                   | MANUAL                                        |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-EXT-AZ:availability_zone         |                                               |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-EXT-SRV-ATTR:host                | None                                          |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-EXT-SRV-ATTR:hypervisor_hostname | None                                          |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-EXT-SRV-ATTR:instance_name       |                                               |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-EXT-STS:power_state              | NOSTATE                                       |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-EXT-STS:task_state               | scheduling                                    |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-EXT-STS:vm_state                 | building                                      |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-SRV-USG:launched_at              | None                                          |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| OS-SRV-USG:terminated_at            | None                                          |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| accessIPv4                          |                                               |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| accessIPv6                          |                                               |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| addresses                           |                                               |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| adminPass                           | XMHWD9M9iRAE                                  |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| config_drive                        |                                               |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| created                             | 2019-11-03T00:25:49Z                          |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| flavor                              | m1.tiny (1)                                   |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| hostId                              |                                               |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| id                                  | 1c4c6ba2-7a76-4207-a534-c7dbacf6a883          |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| image                               | cirros (4992fc52-b1e1-4a5d-88af-1c7c8ac94d9c) |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| key_name                            | mykey                                         |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| name                                | demo1                                         |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| progress                            | 0                                             |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| project_id                          | fda196dacffd4f35b3c3118035edff0e              |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| properties                          |                                               |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| security_groups                     | name='default'                                |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| status                              | BUILD                                         |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| updated                             | 2019-11-03T00:25:49Z                          |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| user_id                             | 5afd82c446e64186918b911e1f587388              |  
+</span></span><span class="highlight-line"><span class="highlight-cl">| volumes_attached                    |                                               |  
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------------------------+-----------------------------------------------+
+</span></span></code></pre>
 <h2 id="使用openstack">使用 openstack</h2>
 <ul>
 <li>添加公网</li>
 </ul>
-<pre><code class="highlight-chroma">[root@controller kolla-ansible]# openstack network create --external --provider-physical-network physnet1 --provider-network-type flat public
-+---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Field                     | Value                                                                                                                                                            |
-+---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| admin_state_up            | UP                                                                                                                                                               |
-| availability_zone_hints   |                                                                                                                                                                  |
-| availability_zones        |                                                                                                                                                                  |
-| created_at                | 2019-11-02T03:56:09Z                                                                                                                                             |
-| description               |                                                                                                                                                                  |
-| dns_domain                | None                                                                                                                                                             |
-| id                        | 686fc9c2-4cea-4096-b98c-5f99c42cf3a9                                                                                                                             |
-| ipv4_address_scope        | None                                                                                                                                                             |
-| ipv6_address_scope        | None                                                                                                                                                             |
-| is_default                | False                                                                                                                                                            |
-| is_vlan_transparent       | None                                                                                                                                                             |
-| location                  | cloud='', project.domain_id=, project.domain_name='Default', project.id='1cac8b32fb3047f48ced3d85811bc327', project.name='admin', region_name='RegionOne', zone= |
-| mtu                       | 1500                                                                                                                                                             |
-| name                      | public                                                                                                                                                           |
-| port_security_enabled     | True                                                                                                                                                             |
-| project_id                | 1cac8b32fb3047f48ced3d85811bc327                                                                                                                                 |
-| provider:network_type     | flat                                                                                                                                                             |
-| provider:physical_network | physnet1                                                                                                                                                         |
-| provider:segmentation_id  | None                                                                                                                                                             |
-| qos_policy_id             | None                                                                                                                                                             |
-| revision_number           | 1                                                                                                                                                                |
-| router:external           | External                                                                                                                                                         |
-| segments                  | None                                                                                                                                                             |
-| shared                    | False                                                                                                                                                            |
-| status                    | ACTIVE                                                                                                                                                           |
-| subnets                   |                                                                                                                                                                  |
-| tags                      |                                                                                                                                                                  |
-| updated_at                | 2019-11-02T03:56:09Z                                                                                                                                             |
-+---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller kolla-ansible]# openstack network create --external --provider-physical-network physnet1 --provider-network-type flat public
+</span></span><span class="highlight-line"><span class="highlight-cl">+---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| Field                     | Value                                                                                                                                                            |
+</span></span><span class="highlight-line"><span class="highlight-cl">+---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| admin_state_up            | UP                                                                                                                                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| availability_zone_hints   |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| availability_zones        |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| created_at                | 2019-11-02T03:56:09Z                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| description               |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| dns_domain                | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| id                        | 686fc9c2-4cea-4096-b98c-5f99c42cf3a9                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ipv4_address_scope        | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ipv6_address_scope        | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| is_default                | False                                                                                                                                                            |
+</span></span><span class="highlight-line"><span class="highlight-cl">| is_vlan_transparent       | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| location                  | cloud='', project.domain_id=, project.domain_name='Default', project.id='1cac8b32fb3047f48ced3d85811bc327', project.name='admin', region_name='RegionOne', zone= |
+</span></span><span class="highlight-line"><span class="highlight-cl">| mtu                       | 1500                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| name                      | public                                                                                                                                                           |
+</span></span><span class="highlight-line"><span class="highlight-cl">| port_security_enabled     | True                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| project_id                | 1cac8b32fb3047f48ced3d85811bc327                                                                                                                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| provider:network_type     | flat                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| provider:physical_network | physnet1                                                                                                                                                         |
+</span></span><span class="highlight-line"><span class="highlight-cl">| provider:segmentation_id  | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| qos_policy_id             | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| revision_number           | 1                                                                                                                                                                |
+</span></span><span class="highlight-line"><span class="highlight-cl">| router:external           | External                                                                                                                                                         |
+</span></span><span class="highlight-line"><span class="highlight-cl">| segments                  | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| shared                    | False                                                                                                                                                            |
+</span></span><span class="highlight-line"><span class="highlight-cl">| status                    | ACTIVE                                                                                                                                                           |
+</span></span><span class="highlight-line"><span class="highlight-cl">| subnets                   |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| tags                      |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| updated_at                | 2019-11-02T03:56:09Z                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">+---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span></code></pre>
 <ul>
 <li>给 public 添加子网</li>
 </ul>
-<pre><code class="highlight-chroma">[root@controller ~]# openstack subnet create --no-dhcp --allocation-pool 'start=192.168.50.10,end=192.168.50.100' --network public --subnet-range 192.168.50.0/24 --gateway 192.168.50.1 public-subnet
-+-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Field             | Value                                                                                                                                                            |
-+-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| allocation_pools  | 192.168.50.10-192.168.50.100                                                                                                                                     |
-| cidr              | 192.168.50.0/24                                                                                                                                                  |
-| created_at        | 2019-11-02T03:59:14Z                                                                                                                                             |
-| description       |                                                                                                                                                                  |
-| dns_nameservers   |                                                                                                                                                                  |
-| enable_dhcp       | False                                                                                                                                                            |
-| gateway_ip        | 192.168.50.1                                                                                                                                                     |
-| host_routes       |                                                                                                                                                                  |
-| id                | c24ca524-beb7-4cb0-a8dc-01a910563fa3                                                                                                                             |
-| ip_version        | 4                                                                                                                                                                |
-| ipv6_address_mode | None                                                                                                                                                             |
-| ipv6_ra_mode      | None                                                                                                                                                             |
-| location          | cloud='', project.domain_id=, project.domain_name='Default', project.id='1cac8b32fb3047f48ced3d85811bc327', project.name='admin', region_name='RegionOne', zone= |
-| name              | public-subnet                                                                                                                                                    |
-| network_id        | 686fc9c2-4cea-4096-b98c-5f99c42cf3a9                                                                                                                             |
-| prefix_length     | None                                                                                                                                                             |
-| project_id        | 1cac8b32fb3047f48ced3d85811bc327                                                                                                                                 |
-| revision_number   | 0                                                                                                                                                                |
-| segment_id        | None                                                                                                                                                             |
-| service_types     |                                                                                                                                                                  |
-| subnetpool_id     | None                                                                                                                                                             |
-| tags              |                                                                                                                                                                  |
-| updated_at        | 2019-11-02T03:59:14Z                                                                                                                                             |
-+-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# openstack subnet create --no-dhcp --allocation-pool 'start=192.168.50.10,end=192.168.50.100' --network public --subnet-range 192.168.50.0/24 --gateway 192.168.50.1 public-subnet
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| Field             | Value                                                                                                                                                            |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| allocation_pools  | 192.168.50.10-192.168.50.100                                                                                                                                     |
+</span></span><span class="highlight-line"><span class="highlight-cl">| cidr              | 192.168.50.0/24                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| created_at        | 2019-11-02T03:59:14Z                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| description       |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| dns_nameservers   |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| enable_dhcp       | False                                                                                                                                                            |
+</span></span><span class="highlight-line"><span class="highlight-cl">| gateway_ip        | 192.168.50.1                                                                                                                                                     |
+</span></span><span class="highlight-line"><span class="highlight-cl">| host_routes       |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| id                | c24ca524-beb7-4cb0-a8dc-01a910563fa3                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ip_version        | 4                                                                                                                                                                |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ipv6_address_mode | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ipv6_ra_mode      | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| location          | cloud='', project.domain_id=, project.domain_name='Default', project.id='1cac8b32fb3047f48ced3d85811bc327', project.name='admin', region_name='RegionOne', zone= |
+</span></span><span class="highlight-line"><span class="highlight-cl">| name              | public-subnet                                                                                                                                                    |
+</span></span><span class="highlight-line"><span class="highlight-cl">| network_id        | 686fc9c2-4cea-4096-b98c-5f99c42cf3a9                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| prefix_length     | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| project_id        | 1cac8b32fb3047f48ced3d85811bc327                                                                                                                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| revision_number   | 0                                                                                                                                                                |
+</span></span><span class="highlight-line"><span class="highlight-cl">| segment_id        | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| service_types     |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| subnetpool_id     | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| tags              |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| updated_at        | 2019-11-02T03:59:14Z                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span></code></pre>
 <ul>
 <li>创建私有网络</li>
 </ul>
-<pre><code class="highlight-chroma">[root@controller ~]# openstack network create --provider-network-type vxlan demo-net
-+---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Field                     | Value                                                                                                                                                            |
-+---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| admin_state_up            | UP                                                                                                                                                               |
-| availability_zone_hints   |                                                                                                                                                                  |
-| availability_zones        |                                                                                                                                                                  |
-| created_at                | 2019-11-02T03:59:55Z                                                                                                                                             |
-| description               |                                                                                                                                                                  |
-| dns_domain                | None                                                                                                                                                             |
-| id                        | 684dc2b5-dda3-4280-81f6-5906d6c2f48d                                                                                                                             |
-| ipv4_address_scope        | None                                                                                                                                                             |
-| ipv6_address_scope        | None                                                                                                                                                             |
-| is_default                | False                                                                                                                                                            |
-| is_vlan_transparent       | None                                                                                                                                                             |
-| location                  | cloud='', project.domain_id=, project.domain_name='Default', project.id='1cac8b32fb3047f48ced3d85811bc327', project.name='admin', region_name='RegionOne', zone= |
-| mtu                       | 1450                                                                                                                                                             |
-| name                      | demo-net                                                                                                                                                         |
-| port_security_enabled     | True                                                                                                                                                             |
-| project_id                | 1cac8b32fb3047f48ced3d85811bc327                                                                                                                                 |
-| provider:network_type     | vxlan                                                                                                                                                            |
-| provider:physical_network | None                                                                                                                                                             |
-| provider:segmentation_id  | 48                                                                                                                                                               |
-| qos_policy_id             | None                                                                                                                                                             |
-| revision_number           | 1                                                                                                                                                                |
-| router:external           | Internal                                                                                                                                                         |
-| segments                  | None                                                                                                                                                             |
-| shared                    | False                                                                                                                                                            |
-| status                    | ACTIVE                                                                                                                                                           |
-| subnets                   |                                                                                                                                                                  |
-| tags                      |                                                                                                                                                                  |
-| updated_at                | 2019-11-02T03:59:55Z                                                                                                                                             |
-+---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# openstack network create --provider-network-type vxlan demo-net
+</span></span><span class="highlight-line"><span class="highlight-cl">+---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| Field                     | Value                                                                                                                                                            |
+</span></span><span class="highlight-line"><span class="highlight-cl">+---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| admin_state_up            | UP                                                                                                                                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| availability_zone_hints   |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| availability_zones        |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| created_at                | 2019-11-02T03:59:55Z                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| description               |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| dns_domain                | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| id                        | 684dc2b5-dda3-4280-81f6-5906d6c2f48d                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ipv4_address_scope        | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ipv6_address_scope        | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| is_default                | False                                                                                                                                                            |
+</span></span><span class="highlight-line"><span class="highlight-cl">| is_vlan_transparent       | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| location                  | cloud='', project.domain_id=, project.domain_name='Default', project.id='1cac8b32fb3047f48ced3d85811bc327', project.name='admin', region_name='RegionOne', zone= |
+</span></span><span class="highlight-line"><span class="highlight-cl">| mtu                       | 1450                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| name                      | demo-net                                                                                                                                                         |
+</span></span><span class="highlight-line"><span class="highlight-cl">| port_security_enabled     | True                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| project_id                | 1cac8b32fb3047f48ced3d85811bc327                                                                                                                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| provider:network_type     | vxlan                                                                                                                                                            |
+</span></span><span class="highlight-line"><span class="highlight-cl">| provider:physical_network | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| provider:segmentation_id  | 48                                                                                                                                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| qos_policy_id             | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| revision_number           | 1                                                                                                                                                                |
+</span></span><span class="highlight-line"><span class="highlight-cl">| router:external           | Internal                                                                                                                                                         |
+</span></span><span class="highlight-line"><span class="highlight-cl">| segments                  | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| shared                    | False                                                                                                                                                            |
+</span></span><span class="highlight-line"><span class="highlight-cl">| status                    | ACTIVE                                                                                                                                                           |
+</span></span><span class="highlight-line"><span class="highlight-cl">| subnets                   |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| tags                      |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| updated_at                | 2019-11-02T03:59:55Z                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">+---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span></code></pre>
 <ul>
 <li>给私网添加子网</li>
 </ul>
-<pre><code class="highlight-chroma">[root@controller ~]# openstack subnet create --subnet-range 10.0.0.0/24 --network demo-net --gateway 10.0.0.1 --dns-nameserver 8.8.8.8 demo-subnet
-+-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Field             | Value                                                                                                                                                            |
-+-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| allocation_pools  | 10.0.0.2-10.0.0.254                                                                                                                                              |
-| cidr              | 10.0.0.0/24                                                                                                                                                      |
-| created_at        | 2019-11-02T04:00:27Z                                                                                                                                             |
-| description       |                                                                                                                                                                  |
-| dns_nameservers   | 8.8.8.8                                                                                                                                                          |
-| enable_dhcp       | True                                                                                                                                                             |
-| gateway_ip        | 10.0.0.1                                                                                                                                                         |
-| host_routes       |                                                                                                                                                                  |
-| id                | 6ddb71f1-9deb-4e55-ac7a-667d70bf21a1                                                                                                                             |
-| ip_version        | 4                                                                                                                                                                |
-| ipv6_address_mode | None                                                                                                                                                             |
-| ipv6_ra_mode      | None                                                                                                                                                             |
-| location          | cloud='', project.domain_id=, project.domain_name='Default', project.id='1cac8b32fb3047f48ced3d85811bc327', project.name='admin', region_name='RegionOne', zone= |
-| name              | demo-subnet                                                                                                                                                      |
-| network_id        | 684dc2b5-dda3-4280-81f6-5906d6c2f48d                                                                                                                             |
-| prefix_length     | None                                                                                                                                                             |
-| project_id        | 1cac8b32fb3047f48ced3d85811bc327                                                                                                                                 |
-| revision_number   | 0                                                                                                                                                                |
-| segment_id        | None                                                                                                                                                             |
-| service_types     |                                                                                                                                                                  |
-| subnetpool_id     | None                                                                                                                                                             |
-| tags              |                                                                                                                                                                  |
-| updated_at        | 2019-11-02T04:00:27Z                                                                                                                                             |
-+-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# openstack subnet create --subnet-range 10.0.0.0/24 --network demo-net --gateway 10.0.0.1 --dns-nameserver 8.8.8.8 demo-subnet
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| Field             | Value                                                                                                                                                            |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| allocation_pools  | 10.0.0.2-10.0.0.254                                                                                                                                              |
+</span></span><span class="highlight-line"><span class="highlight-cl">| cidr              | 10.0.0.0/24                                                                                                                                                      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| created_at        | 2019-11-02T04:00:27Z                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| description       |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| dns_nameservers   | 8.8.8.8                                                                                                                                                          |
+</span></span><span class="highlight-line"><span class="highlight-cl">| enable_dhcp       | True                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| gateway_ip        | 10.0.0.1                                                                                                                                                         |
+</span></span><span class="highlight-line"><span class="highlight-cl">| host_routes       |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| id                | 6ddb71f1-9deb-4e55-ac7a-667d70bf21a1                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ip_version        | 4                                                                                                                                                                |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ipv6_address_mode | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ipv6_ra_mode      | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| location          | cloud='', project.domain_id=, project.domain_name='Default', project.id='1cac8b32fb3047f48ced3d85811bc327', project.name='admin', region_name='RegionOne', zone= |
+</span></span><span class="highlight-line"><span class="highlight-cl">| name              | demo-subnet                                                                                                                                                      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| network_id        | 684dc2b5-dda3-4280-81f6-5906d6c2f48d                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| prefix_length     | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| project_id        | 1cac8b32fb3047f48ced3d85811bc327                                                                                                                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| revision_number   | 0                                                                                                                                                                |
+</span></span><span class="highlight-line"><span class="highlight-cl">| segment_id        | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| service_types     |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| subnetpool_id     | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| tags              |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| updated_at        | 2019-11-02T04:00:27Z                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span></code></pre>
 <p class="indent--2">*给外网和私网添加路由</p>
-<pre><code class="highlight-chroma">[root@controller ~]# openstack router create demo-router
-+-------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Field                   | Value                                                                                                                                                            |
-+-------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| admin_state_up          | UP                                                                                                                                                               |
-| availability_zone_hints |                                                                                                                                                                  |
-| availability_zones      |                                                                                                                                                                  |
-| created_at              | 2019-11-02T04:28:22Z                                                                                                                                             |
-| description             |                                                                                                                                                                  |
-| distributed             | False                                                                                                                                                            |
-| external_gateway_info   | null                                                                                                                                                             |
-| flavor_id               | None                                                                                                                                                             |
-| ha                      | False                                                                                                                                                            |
-| id                      | 6dc8c9c1-2391-4b95-b376-b647a3d2ff90                                                                                                                             |
-| location                | cloud='', project.domain_id=, project.domain_name='Default', project.id='1cac8b32fb3047f48ced3d85811bc327', project.name='admin', region_name='RegionOne', zone= |
-| name                    | demo-router                                                                                                                                                      |
-| project_id              | 1cac8b32fb3047f48ced3d85811bc327                                                                                                                                 |
-| revision_number         | 1                                                                                                                                                                |
-| routes                  |                                                                                                                                                                  |
-| status                  | ACTIVE                                                                                                                                                           |
-| tags                    |                                                                                                                                                                  |
-| updated_at              | 2019-11-02T04:28:22Z                                                                                                                                             |
-+-------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-[root@controller ~]# 
-[root@controller ~]# openstack router add subnet demo-router demo-subnet
-[root@controller ~]# openstack router set --external-gateway public demo-router
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# openstack router create demo-router
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| Field                   | Value                                                                                                                                                            |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| admin_state_up          | UP                                                                                                                                                               |
+</span></span><span class="highlight-line"><span class="highlight-cl">| availability_zone_hints |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| availability_zones      |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| created_at              | 2019-11-02T04:28:22Z                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| description             |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| distributed             | False                                                                                                                                                            |
+</span></span><span class="highlight-line"><span class="highlight-cl">| external_gateway_info   | null                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| flavor_id               | None                                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| ha                      | False                                                                                                                                                            |
+</span></span><span class="highlight-line"><span class="highlight-cl">| id                      | 6dc8c9c1-2391-4b95-b376-b647a3d2ff90                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">| location                | cloud='', project.domain_id=, project.domain_name='Default', project.id='1cac8b32fb3047f48ced3d85811bc327', project.name='admin', region_name='RegionOne', zone= |
+</span></span><span class="highlight-line"><span class="highlight-cl">| name                    | demo-router                                                                                                                                                      |
+</span></span><span class="highlight-line"><span class="highlight-cl">| project_id              | 1cac8b32fb3047f48ced3d85811bc327                                                                                                                                 |
+</span></span><span class="highlight-line"><span class="highlight-cl">| revision_number         | 1                                                                                                                                                                |
+</span></span><span class="highlight-line"><span class="highlight-cl">| routes                  |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| status                  | ACTIVE                                                                                                                                                           |
+</span></span><span class="highlight-line"><span class="highlight-cl">| tags                    |                                                                                                                                                                  |
+</span></span><span class="highlight-line"><span class="highlight-cl">| updated_at              | 2019-11-02T04:28:22Z                                                                                                                                             |
+</span></span><span class="highlight-line"><span class="highlight-cl">+-------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# 
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# openstack router add subnet demo-router demo-subnet
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# openstack router set --external-gateway public demo-router
+</span></span></code></pre>
 <ul>
 <li>通过下面的命令可以查询刚刚所建的网络信息：</li>
 </ul>
-<pre><code class="highlight-chroma">[root@controller ~]# neutron net-list
-neutron CLI is deprecated and will be removed in the future. Use openstack CLI instead.
-+--------------------------------------+----------+----------------------------------+------------------------------------------------------+
-| id                                   | name     | tenant_id                        | subnets                                              |
-+--------------------------------------+----------+----------------------------------+------------------------------------------------------+
-| 684dc2b5-dda3-4280-81f6-5906d6c2f48d | demo-net | 1cac8b32fb3047f48ced3d85811bc327 | 6ddb71f1-9deb-4e55-ac7a-667d70bf21a1 10.0.0.0/24     |
-| 686fc9c2-4cea-4096-b98c-5f99c42cf3a9 | public   | 1cac8b32fb3047f48ced3d85811bc327 | c24ca524-beb7-4cb0-a8dc-01a910563fa3 192.168.50.0/24 |
-+--------------------------------------+----------+----------------------------------+------------------------------------------------------+
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# neutron net-list
+</span></span><span class="highlight-line"><span class="highlight-cl">neutron CLI is deprecated and will be removed in the future. Use openstack CLI instead.
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+----------+----------------------------------+------------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| id                                   | name     | tenant_id                        | subnets                                              |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+----------+----------------------------------+------------------------------------------------------+
+</span></span><span class="highlight-line"><span class="highlight-cl">| 684dc2b5-dda3-4280-81f6-5906d6c2f48d | demo-net | 1cac8b32fb3047f48ced3d85811bc327 | 6ddb71f1-9deb-4e55-ac7a-667d70bf21a1 10.0.0.0/24     |
+</span></span><span class="highlight-line"><span class="highlight-cl">| 686fc9c2-4cea-4096-b98c-5f99c42cf3a9 | public   | 1cac8b32fb3047f48ced3d85811bc327 | c24ca524-beb7-4cb0-a8dc-01a910563fa3 192.168.50.0/24 |
+</span></span><span class="highlight-line"><span class="highlight-cl">+--------------------------------------+----------+----------------------------------+------------------------------------------------------+
+</span></span></code></pre>
 <h2 id="引用认证">引用认证</h2>
-<pre><code class="highlight-chroma">[root@controller ~]# source /etc/kolla/admin-openrc.sh 
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@controller ~]# source /etc/kolla/admin-openrc.sh
+</span></span></code></pre>
                 <div>
                     <hr>
 
@@ -687,13 +678,6 @@ neutron CLI is deprecated and will be removed in the future. Use openstack CLI i
 
 <!-- 签名档内可使用 HTML、JavaScript -->
 <br>
-<pre><p style="font-size:15px"><font color="#008000">
-<b>到头来
-我们记住的
-不是敌人的攻击
-而是朋友的沉默
-       ---马丁·路德·金</b></p><pre>
-
                 </div>
         </div>
     </div>
@@ -737,7 +721,7 @@ neutron CLI is deprecated and will be removed in the future. Use openstack CLI i
         <div class="wrapper comment">
                 <div id="gitalk-container" style="padding: 30px 0;"></div>
                 <div id="b3logsolocomments"></div>
-                <div id="vcomment" style="padding: 30px 0;" data-name="cuijianzhe" data-postId="1572607586305"></div>
+                <div id="vcomment" style="padding: 30px 0;" data-name="cuijianzhe" data-postId="1572607586025"></div>
 
             <div class="post__list fn__flex">
                 <div class="fn__flex-1">
@@ -765,7 +749,7 @@ neutron CLI is deprecated and will be removed in the future. Use openstack CLI i
                       data-title="kolla-ansible部署openstack多节点"
                       data-blogtitle="邯城往事"
                       data-url="https://cuijianzhe.github.io/articles/2019/11/01/1572607586305.html"
-                      data-avatar="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100">
+                      data-avatar="https://b3logfile.com/avatar/1551626533851_1560155807399.gif?imageView2/1/w/128/h/128/interlace/0/q/100">
                     WeChat
                     <span class="qrcode"></span>
                 </span>
@@ -857,7 +841,7 @@ neutron CLI is deprecated and will be removed in the future. Use openstack CLI i
             <a class="ft__link" href="/my-github-repos" target="_self" rel="section">
                 我的开源
             </a>
-            <a class="ft__link" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+            <a class="ft__link" href="http://times.cjzshilong.cn/time/" target="_blank" rel="section">
                 服务器倒计时
             </a>
         <a class="ft__link" rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">RSS</a>
@@ -865,93 +849,24 @@ neutron CLI is deprecated and will be removed in the future. Use openstack CLI i
     <div class="footer__border mobile__none"></div>
     <div class="wrapper fn__flex">
         <div class="fn__flex-1 mobile__none">
-            <div class="ft__fade">cuijianzhe -                >>>  展颜笑夙愿，一笑泯恩仇 <<<</div>
+            <div class="ft__fade">cuijianzhe - 来自邯郸社畜的呐喊</div>
             <br>
-                <!-- MetingJS音乐播放器 不能放到 head 导致系统功能加载异常-->
-<link rel="stylesheet" href="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css">
-<script src="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-<meting-js server="netease" type="playlist" id="728729850"  autoplay="false" fixed ="true" order = "random"</meting-js>
-
-<h1><p style="font-size:10px"><font color="#2F4F4F">红笺小字，说尽平生意。<br/>鸿雁在云鱼在水，惆怅此情难寄。<br/>             ——晏殊· 《清平乐》</font> </p></h1>
+                <h1 class="title" id="character" ><p style="font-size:10px"><font color="#FF00FF">红笺小字，说尽平生意。<br/>鸿雁在云鱼在水，惆怅此情难寄。<br/>             ——晏殊· 《清平乐》</font> </p></h1>
 
         </div>
 
-            <div class="footer__mid fn__flex-1 mobile__none">
-                <div class="ft__fade">分类</div>
-                <br>
-                    <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="36 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        人生苦短,我用Python</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="0 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        Java是世界上最好的语言</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="52 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        Linux系列</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/network"
-                       aria-label="4 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        Network系列</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/young"
-                       aria-label="8 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        江湖就是人情世故</a> &nbsp; &nbsp;
-            </div>
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                115
+                166
                 文章
             </a>
            <br>
-            <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> <span class="ft-gray">浏览</span>
+            <span data-uvstaturl="https://cuijianzhe.github.io">0</span> <span class="ft-gray">浏览</span>
  <br>
-            &copy; 2021
+            &copy; 2023
             <a class="ft__link" href="https://cuijianzhe.github.io">邯城往事</a>
-            <img style="width: 20px; height: 20px;" src="https://img.hacpai.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">冀ICP备19005901号-1</a> 
-
-<!--切换标签实现网页标题变化-->
-<script type="text/javascript">
-    /*自动刷新页面，避免无法访问*/
-    var OriginTitile = document.title;
-    var titleTime;
-    document.addEventListener('visibilitychange', function () {
-        if (document.hidden) {
-            document.title = '一杯茶，一包烟，混过一天是一天';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '哈哈，我是大佬ヾ(ﾟ∀ﾟゞ)';
-            titleTime = setTimeout(function () {
-                document.title = OriginTitile;
-            }, 3000);
-        }
-    });
-</script>
-<!--切换标签实现网页标题变化 结束-->
-
-
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '4e3eaf0bc17bd516ba5b',
-        clientSecret: '644d549c51d9fece70856677fc92411e6b6ced0e',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
-
+            <img style="width: 20px; height: 20px;" src="https://b3logfile.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">冀ICP备19005901号-1</a>
         </div>
     </div>
 </footer>
@@ -959,68 +874,37 @@ neutron CLI is deprecated and will be removed in the future. Use openstack CLI i
   var Label = {
     speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources",
+    staticServePath: "https://cuijianzhe.github.io",
     luteAvailable: true,
-    hljsStyle: 'monokai',
+    hljsStyle: 'vs',
     langLabel: "zh_CN",
-    version: "4.3.1",
+    version: "4.4.0",
     staticSite: true,
     showCodeBlockLn: false,
-    articleId: "1572607586305",
+    articleId: "1572607586025",
   }
 </script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/skins/Pinghsu/js/common.min.js?1617776880435"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1701918811548"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
-<div class="solo-kanbanniang">
-    <div class="solo-kanbanniang__tip"></div>
-    <canvas id="soloKanbanniang" width="280" height="250"></canvas>
-    <div class="solo-kanbanniang__tool">
-        <svg id="soloKanbanniangHome" viewBox="0 0 32 32" width="100%" height="100%">
-            <path d="M32 18.967l-16-12.42-16 12.42v-5.064l16-12.42 16 12.42zM28 18.516v12h-8v-8h-8v8h-8v-12l12-9z"></path>
-        </svg>
-        <svg id="soloKanbanniangRSS" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M320.364 768q0 45.728-32 77.728t-77.728 32-77.728-32-32-77.728 32-77.728 77.728-32 77.728 32 32 77.728zM612.94 838.272q1.152 16-9.728 27.424-10.272 12-26.848 12h-77.152q-14.272 0-24.576-9.44t-11.424-23.712q-12.576-130.848-105.44-223.712t-223.712-105.44q-14.272-1.152-23.712-11.424t-9.44-24.576V402.24q0-16.576 12-26.848 9.728-9.728 24.576-9.728h2.848q91.424 7.424 174.848 46.016t148 103.712q65.152 64.576 103.712 148t46.016 174.848z m292.576 1.152q1.152 15.424-10.272 26.848-10.272 11.424-26.272 11.424h-81.728q-14.848 0-25.44-10.016t-11.136-24.288q-6.848-122.848-57.728-233.44t-132.288-192-192-132.288-233.44-58.272q-14.272-0.576-24.288-11.136t-10.016-24.864V109.664q0-16 11.424-26.272 10.272-10.272 25.152-10.272h1.728q149.728 7.424 286.56 68.576t243.136 168q106.848 106.272 168 243.136t68.576 286.56z"></path>
-        </svg>
-        <svg id="soloKanbanniangChat" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M802.42709 96.163153H219.476155c-84.48109 0-154.896836 71.746044-154.896836 157.840888v393.119449c0 86.072331 70.415746 157.819398 154.896836 157.819399h214.038818V925.470963s22.526039 40.168862 64.767096 5.734608c30.965246-25.819039 126.721123-91.828428 171.775248-123.385145h132.369773c84.502579 0 154.896836-83.21526 154.896836-157.839865V251.125481c0-86.094844-70.394257-154.962328-154.896836-154.962328zM301.144176 518.002714c-39.427988 0-70.416769-31.576159-70.416769-71.746044 0-40.168862 30.988782-71.746044 70.416769-71.746044 39.426965 0 70.393233 31.577183 70.393234 71.746044 0 40.169885-30.966269 71.746044-70.393234 71.746044z m208.411657 0c-39.450501 0-70.415746-31.576159-70.415746-71.746044 0-40.168862 30.965246-71.746044 70.415746-71.746044 39.405475 0 70.394257 31.577183 70.394257 71.746044 0 40.169885-30.988782 71.746044-70.394257 71.746044z m211.203236 0c-39.426965 0-70.416769-31.576159-70.416769-71.746044 0-40.168862 30.988782-71.746044 70.416769-71.746044s70.415746 31.577183 70.415746 71.746044c-0.001023 40.169885-30.988782 71.746044-70.415746 71.746044z"></path>
-        </svg>
-        <svg id="soloKanbanniangChange" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M936.672 193.216l-226.88-64c-8.704-2.528-18.112-1.12-25.824 3.776-7.68 4.864-12.896 12.736-14.432 21.728C655.712 236.928 595.328 288 512 288c-71.424 0-142.464-103.296-163.776-143.104-7.136-13.28-22.528-19.84-37.024-15.68l-224 64C73.472 197.152 64 209.728 64 224v256a31.93 31.93 0 0 0 11.712 24.736c7.392 6.08 17.152 8.512 26.56 6.624L224 487.04V832c0 52.928 43.072 96 96 96h384c52.928 0 96-43.072 96-96V519.04l121.728 24.352c9.44 1.92 19.2-0.544 26.56-6.624C955.68 530.656 960 521.6 960 512V224c0-14.336-9.536-26.912-23.328-30.784zM672 800H352c-17.664 0-32-14.304-32-32s14.336-32 32-32h320c17.696 0 32 14.304 32 32s-14.304 32-32 32z"></path>
-        </svg>
-        <svg id="soloKanbanniangPhoto" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M898.048 258.048q23.552-1.024 46.592 9.216t40.96 27.136 28.672 39.424 10.752 46.08l0 390.144q0 24.576-10.752 47.104t-28.672 40.448-40.96 28.16-47.616 10.24l-697.344 0q-24.576 0-48.64-10.24t-42.496-27.648-29.696-40.448-11.264-48.64l0-381.952q0-22.528 10.752-45.568t28.672-41.472 39.936-30.208 44.544-11.776l63.488 0 13.312-83.968q3.072-20.48 18.432-32.768t34.816-12.288l456.704 0q19.456 0 34.304 10.752t16.896 34.304l14.336 83.968 54.272 0zM548.864 712.704q40.96 0 77.824-15.872t63.488-42.496 42.496-62.976 15.872-77.312-15.872-77.312-42.496-62.976-63.488-42.496-77.824-15.872-77.312 15.872-63.488 42.496-43.008 62.976-15.872 77.312 15.872 77.312 43.008 62.976 63.488 42.496 77.312 15.872z"></path>
-        </svg>
-        <svg id="soloKanbanniangGithub" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M1024 524.8c0 114.346667-32.554667 217.216-97.706667 308.565333-65.066667 91.306667-149.162667 154.538667-252.288 189.610667-11.989333 2.304-20.778667 0.682667-26.325333-4.778667a27.605333 27.605333 0 0 1-8.362667-20.48v-144.213333c0-44.16-11.52-76.501333-34.645333-97.024 25.344-2.730667 48.085333-6.826667 68.309333-12.288a268.629333 268.629333 0 0 0 62.72-26.666667 187.434667 187.434667 0 0 0 53.973334-45.44c14.421333-18.005333 26.197333-41.898667 35.328-71.765333 9.088-29.824 13.653333-64.128 13.653333-102.826667 0-55.125333-17.536-102.058667-52.650667-140.8 16.426667-41.429333 14.677333-87.893333-5.333333-139.392-12.458667-4.096-30.464-1.578667-54.016 7.509334a355.328 355.328 0 0 0-61.312 30.08L640 271.274667a462.336 462.336 0 0 0-128-17.749334c-43.989333 0-86.656 5.930667-128 17.749334a589.824 589.824 0 0 0-28.330667-18.432c-11.776-7.253333-30.336-16.042667-55.68-26.325334-25.344-10.24-44.416-13.312-57.301333-9.216-19.584 51.498667-21.12 97.962667-4.693333 139.434667-35.114667 38.698667-52.650667 85.632-52.650667 140.757333 0 38.698667 4.565333 72.874667 13.653333 102.485334 9.130667 29.610667 20.778667 53.546667 34.986667 71.765333 14.250667 18.218667 32.128 33.493333 53.674667 45.781333 21.546667 12.288 42.453333 21.205333 62.677333 26.666667 20.224 5.461333 43.008 9.557333 68.309333 12.288-17.749333 16.384-28.629333 39.850667-32.64 70.4a130.005333 130.005333 0 0 1-29.994666 10.24c-10.666667 2.261333-23.338667 3.413333-37.973334 3.413333-14.72 0-29.269333-4.906667-43.690666-14.677333-14.464-9.813333-26.794667-24.064-36.992-42.709333a109.226667 109.226667 0 0 0-32.341334-35.541334c-13.141333-9.130667-24.106667-14.592-33.024-16.426666l-13.312-2.048c-9.344 0-15.786667 1.024-19.328 3.072-3.584 2.090667-4.693333 4.693333-3.328 7.893333 1.28 3.157333 3.328 6.4 5.973334 9.557333 2.688 3.2 5.546667 5.930667 8.661333 8.192l4.693333 3.413334c9.770667 4.565333 19.413333 13.226667 29.013334 25.984 9.514667 12.757333 16.512 24.362667 20.992 34.858666l6.656 15.701334c5.76 17.322667 15.530667 31.317333 29.312 42.026666 13.781333 10.666667 28.672 17.536 44.672 20.48 16 2.986667 31.445333 4.565333 46.336 4.821334 14.890667 0.213333 27.221333-0.597333 36.992-2.389334l15.36-2.730666c0 17.28 0.085333 37.546667 0.298666 60.8l0.341334 36.906666a27.050667 27.050667 0 0 1-8.661334 20.48c-5.76 5.461333-14.677333 7.082667-26.666666 4.778667-103.125333-35.072-187.221333-98.261333-252.330667-189.610667C32.554667 742.058667 0 639.146667 0 524.8c0-95.232 22.869333-183.04 68.693333-263.466667A516.266667 516.266667 0 0 1 254.976 70.4C333.44 23.466667 419.114667 0 512 0c92.885333 0 178.56 23.466667 256.981333 70.4a516.266667 516.266667 0 0 1 186.368 190.976C1001.130667 341.802667 1024 429.653333 1024 524.842667z"></path>
-        </svg>
-        <svg id="soloKanbanniangClose" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M517.572566143763 1018.6748601482986C238.26554897656422 1018.6748601482986 11.897910175114305 792.2714997690043 11.897910175114305 513.0002041796496c0-279.3070171671984 226.36763880144977-505.71037754649296 505.6746559686481-505.71037754649296 279.2712955893538 0 505.6746559686481 226.40336037929444 505.6746559686481 505.71037754649296C1023.2472221124112 792.2714997690043 796.8795833109612 1018.6748601482986 517.572566143763 1018.6748601482986zM754.7281214542927 339.25044954334646c13.752807470184345-13.752807470184345 9.680547595895998-40.186775075214015-9.073280772537204-58.94060344364717l-2.143294670678079-2.1075730928334457c-18.7538283684332-18.7538283684332-45.15207439561819-22.861809820566194-58.90488186580257-9.073280772537204l-168.21291007038468 168.24863164822932-180.42968969324974-180.46541127109438c-13.967136937252159-13.967136937252159-40.72259874288353-9.823433907274534-59.72647815622916 9.216167083915742l-2.143294670678079 2.143294670678079c-19.039600991190277 19.003879413345654-23.111860865478626 45.75934121897699-9.180445506071107 59.655035000539876l180.42968969324974 180.46541127109438-176.07165719620428 176.03593561835962c-13.788529048028984 13.824250625873615-9.716269173740633 40.151053497369375 9.073280772537204 58.94060344364717l2.1075730928334457 2.1075730928334457c18.7538283684332 18.7538283684332 45.15207439561819 22.897531398410823 58.90488186580257 9.073280772537204l176.10737877404887-176.10737877404887 170.39192631890742 170.42764789675192c13.967136937252159 13.931415359407513 40.686877165038865 9.85915548511917 59.690756578384516-9.180445506071107l2.1790162485227142-2.1790162485227142c19.039600991190277-18.968157835501014 23.147582443323273-45.72361964113239 9.180445506071107-59.690756578384516l-170.39192631890742-170.42764789675192L754.7281214542927 339.25044954334646z"></path>
-        </svg>
-    </div>
-</div>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/js/page.min.js?1617776880435', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1701918811548', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
-        "oId": "1572607586305",
+        "oId": "1572607586025",
         "blogHost": "https://cuijianzhe.github.io",
         "randomArticles1Label": "随机阅读：",
         "externalRelevantArticles1Label": "站外相关阅读："
     });
     $(document).ready(function () {
         page.load();
-    page.tips.externalRelevantArticlesDisplayCount = "5";
+    page.tips.externalRelevantArticlesDisplayCount = "0";
     page.loadRandomArticles('<h3>RECOMMEND POSTS</h3>');
-    page.loadExternalRelevantArticles("Linux,openstack",
-    '<h3>HACPAI POSTS</h3>');
-    page.loadRelevantArticles('1572607586305', '<h3>RELEVANT POSTS</h3>');
+    page.loadRelevantArticles('1572607586025', '<h3>RELEVANT POSTS</h3>');
 Skin.initArticle()
     });
 </script>
@@ -1028,4 +912,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 68ms, 2021/04/07 15:43:07 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 42ms, 2023/12/11 19:00:41 -->

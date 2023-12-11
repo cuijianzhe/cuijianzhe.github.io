@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>K8S基础搭建使用 - 邯城往事</title><meta name="description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/><meta property="og:description" content="you are just one of my many many crush。——你只是我众多迷恋之一。"/>    <meta name="keywords" content="包容、开放、任性、桀骜"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources"><link rel="icon" type="image/png" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="apple-touch-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><link rel="shortcut icon" type="image/x-icon" href="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="K8S基础搭建使用 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/12/12/1576117964389.html?"/><meta property="og:image" content="https://img.hacpai.com/file/2019/11/guohui-e67e7b3b.png"/><link rel="search" type="application/opensearchdescription+xml" title="K8S基础搭建使用 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/12/12/1576117964389.html">        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/skins/Pinghsu/css/base.css?1617776880435"/>
-            <link rel="prev" title="Our love history" href="https://cuijianzhe.github.io/articles/2019/12/11/1576058698755.html">
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>K8S基础搭建使用 - 邯城往事</title><meta name="description" content="一、 K8S 架构 除了核心组件，还有一些推荐的 Add-ons： 组件名称 说明 kube-dns 负责为整个集群提供 DNS 服务 Ingress Controller 为服务提供外网入口 Heapster 提供资源监控 Dashboard 提供 GUI Federation 提供跨可用区的集群 Fluentd-elasticsearch 提供集群日志采集、存储与查询 K8S 核心功能： 自愈: 重新启动失败的容器，在节点不可用时，替换和重新调度节点上的容器，对用户定义的健康检查不响应的容器会被中止，并且在容器准备好服务之前不会把其向客户端广播。 弹性伸缩: 通过监控容器的 CPU 的负载值,如果这个平均高于 80%,增加容器的数量,如果这个平均低于 10%,减少容器的数量 服务的自动发现和负载均衡: 不需要修改您的应用程序来使用不熟悉的服务发现机制，Kubernetes 为容器提供了自己的 IP 地址和一组容器的单个 DNS 名称，并可以在它们之间进行负载均衡。 滚动升级和一键回滚: Kubernetes 逐渐部署对应用程序或其配置的更改，同时监视应用程序运行状况，以确保它不会同时终止所有实例。 ...."/><meta property="og:description" content="一、 K8S 架构 除了核心组件，还有一些推荐的 Add-ons： 组件名称 说明 kube-dns 负责为整个集群提供 DNS 服务 Ingress Controller 为服务提供外网入口 Heapster 提供资源监控 Dashboard 提供 GUI Federation 提供跨可用区的集群 Fluentd-elasticsearch 提供集群日志采集、存储与查询 K8S 核心功能： 自愈: 重新启动失败的容器，在节点不可用时，替换和重新调度节点上的容器，对用户定义的健康检查不响应的容器会被中止，并且在容器准备好服务之前不会把其向客户端广播。 弹性伸缩: 通过监控容器的 CPU 的负载值,如果这个平均高于 80%,增加容器的数量,如果这个平均低于 10%,减少容器的数量 服务的自动发现和负载均衡: 不需要修改您的应用程序来使用不熟悉的服务发现机制，Kubernetes 为容器提供了自己的 IP 地址和一组容器的单个 DNS 名称，并可以在它们之间进行负载均衡。 滚动升级和一键回滚: Kubernetes 逐渐部署对应用程序或其配置的更改，同时监视应用程序运行状况，以确保它不会同时终止所有实例。 ...."/>    <meta name="keywords" content="Solo,Java,博客,开源"/><link rel="dns-prefetch" href="https://cuijianzhe.github.io"/><link rel="dns-prefetch" href="https://unpkg.com"/><link rel="preconnect" href="https://cuijianzhe.github.io"><link rel="icon" type="image/png" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"/><link rel="apple-touch-icon" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"><link rel="shortcut icon" type="image/x-icon" href="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="K8S基础搭建使用 - 邯城往事"/><meta property="og:site_name" content="邯城往事"/><meta property="og:url"      content="https://cuijianzhe.github.io/articles/2019/12/12/1576117964389.html?"/><meta property="og:image" content="https://b3logfile.com/avatar/1551626533851_1558961734838.jpeg"/><link rel="search" type="application/opensearchdescription+xml" title="K8S基础搭建使用 - 邯城往事" href="/opensearch.xml"><link href="https://cuijianzhe.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://cuijianzhe.github.io/manifest.json">        <link rel="canonical" href="https://cuijianzhe.github.io/articles/2019/12/12/1576117964389.html">        <link rel="stylesheet"
+              href="https://cuijianzhe.github.io/skins/Pinghsu/css/base.css?1701918811548"/>
+            <link rel="prev" title="吐槽" href="https://cuijianzhe.github.io/articles/2019/12/11/1598194311807.html">
             <link rel="next" title="K8S二进制部署过程-v1.17.0" href="https://cuijianzhe.github.io/articles/2019/12/24/1577178596028.html">
-    <!--鼠标点击特效-->
-<script src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/custom/click.min.js"></script>
-<!--页面动态樱花-->
-<!--script type="text/javascript"src="https://cdn.jsdelivr.net/gh/fz6m/Private-web@1.2/js/sakura/sakura-original.js"--></script>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vditor@3.8.4/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
+    <script src="https://unpkg.com/vditor@3.8.15/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
 <body>
 <header class="header">
     <div class="wrapper">
         <a href="https://cuijianzhe.github.io" rel="start" class="header__logo">
-            <img src="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100" alt="邯城往事"/>
+            <img src="https://b3logfile.com/avatar/1551626533851_1560155807399.gif?imageView2/1/w/128/h/128/interlace/0/q/100" alt="邯城往事"/>
             邯城往事
         </a>
 
@@ -46,7 +39,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+                        <a href="http://times.cjzshilong.cn/time/" target="_blank" rel="section">
                             服务器倒计时
                         </a>
                     </li>
@@ -83,20 +76,19 @@
             </a>
         </h2>
         <div class="ft__fade item__meta">
-                Updated on
+                Published on
             <time>
-                Aug 15, 2020
+                Dec 12, 2019
             </time>
-                in <a href="https://cuijianzhe.github.io/category/linux">Linux系列</a>
             with <span data-uvstaturl="https://cuijianzhe.github.io/articles/2019/12/12/1576117964389.html">0</span> views
-                and <a href="#b3logsolocomments"><span data-uvstatcmt="1576117964389">0</span> comments</a>
+                and <a href="#b3logsolocomments"><span data-uvstatcmt="1576117964099">0</span> comments</a>
         </div>
         <div class="item__tags">
-                <a rel="tag" class="tag tag--0" href="https://cuijianzhe.github.io/tags/Linux">
-                    <b># Linux</b>
+                <a rel="tag" class="tag tag--0" href="https://cuijianzhe.github.io/tags/Kubernetes">
+                    <b># Kubernetes</b>
                 </a>
-                <a rel="tag" class="tag tag--1" href="https://cuijianzhe.github.io/tags/kubernetes">
-                    <b># kubernetes</b>
+                <a rel="tag" class="tag tag--1" href="https://cuijianzhe.github.io/tags/Linux">
+                    <b># Linux</b>
                 </a>
         </div>
         <div class="vditor-reset">
@@ -145,256 +137,256 @@
 <li>滚动升级和一键回滚: Kubernetes 逐渐部署对应用程序或其配置的更改，同时监视应用程序运行状况，以确保它不会同时终止所有实例。 如果出现问题，Kubernetes 会为您恢复更改，利用日益增长的部署解决方案的生态系统。</li>
 </ul>
 <h2 id="1-1环境准备">1.1 环境准备</h2>
-<pre><code class="language-bash highlight-chroma">cat &gt;&gt; /etc/hosts <span class="highlight-s">&lt;&lt;EOF
-</span><span class="highlight-s">10.0.0.202 master
-</span><span class="highlight-s">10.0.0.215 etcd
-</span><span class="highlight-s">10.0.0.197 node1
-</span><span class="highlight-s">10.0.0.163 node2
-</span><span class="highlight-s">EOF</span>
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl">cat &gt;&gt; /etc/hosts <span class="highlight-s">&lt;&lt;EOF
+</span></span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-s">10.0.0.202 master
+</span></span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-s">10.0.0.215 etcd
+</span></span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-s">10.0.0.197 node1
+</span></span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-s">10.0.0.163 node2
+</span></span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-s">EOF</span>
+</span></span></code></pre>
 <h2 id="1-2-etcd节点安装">1.2 etcd 节点安装</h2>
-<pre><code class="highlight-chroma">[root@etcd ~]# yum install etcd -y
-vim /etc/etcd/etcd.conf
-6行：ETCD_LISTEN_CLIENT_URLS="http://0.0.0.0:2379"
-21行：ETCD_ADVERTISE_CLIENT_URLS="http://10.0.0.215:2379"
-systemctl start etcd.service
-systemctl enable etcd.service
-</code></pre>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@etcd ~<span class="highlight-o">]</span><span class="highlight-c1"># etcdctl -C http://10.0.0.215:2379 cluster-health</span>
-member 8e9e05c52164694d is healthy: got healthy result from http://10.0.0.215:2379
-cluster is healthy
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@etcd ~]# yum install etcd -y
+</span></span><span class="highlight-line"><span class="highlight-cl">vim /etc/etcd/etcd.conf
+</span></span><span class="highlight-line"><span class="highlight-cl">6行：ETCD_LISTEN_CLIENT_URLS="http://0.0.0.0:2379"
+</span></span><span class="highlight-line"><span class="highlight-cl">21行：ETCD_ADVERTISE_CLIENT_URLS="http://10.0.0.215:2379"
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl start etcd.service
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl enable etcd.service
+</span></span></code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@etcd ~<span class="highlight-o">]</span><span class="highlight-c1"># etcdctl -C http://10.0.0.215:2379 cluster-health</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">member 8e9e05c52164694d is healthy: got healthy result from http://10.0.0.215:2379
+</span></span><span class="highlight-line"><span class="highlight-cl">cluster is healthy
+</span></span></code></pre>
 <h2 id="1-3-master节点安装-">1.3 master 节点安装：</h2>
-<pre><code class="language-bash highlight-chroma">yum install kubernetes-master.x86_64 -y
-</code></pre>
-<pre><code class="language-bash highlight-chroma">vim /etc/kubernetes/apiserver 
-8行:  <span class="highlight-nv">KUBE_API_ADDRESS</span><span class="highlight-o">=</span><span class="highlight-s2">"--insecure-bind-address=0.0.0.0"</span>
-11行：KUBE_API_PORT<span class="highlight-o">=</span><span class="highlight-s2">"--port=8080"</span>
-17行：KUBE_ETCD_SERVERS<span class="highlight-o">=</span><span class="highlight-s2">"--etcd-servers=http://10.0.0.215:2379"</span>
-23行：KUBE_ADMISSION_CONTROL<span class="highlight-o">=</span><span class="highlight-s2">"--admission-control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ResourceQuota"</span>
-
-vim /etc/kubernetes/config
-22行：KUBE_MASTER<span class="highlight-o">=</span><span class="highlight-s2">"--master=http://10.0.0.202:8080"</span>
-
-systemctl <span class="highlight-nb">enable</span> kube-apiserver.service
-systemctl restart kube-apiserver.service
-systemctl <span class="highlight-nb">enable</span> kube-controller-manager.service
-systemctl restart kube-controller-manager.service
-systemctl <span class="highlight-nb">enable</span> kube-scheduler.service
-systemctl restart kube-scheduler.service
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl">yum install kubernetes-master.x86_64 -y
+</span></span></code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl">vim /etc/kubernetes/apiserver 
+</span></span><span class="highlight-line"><span class="highlight-cl">8行:  <span class="highlight-nv">KUBE_API_ADDRESS</span><span class="highlight-o">=</span><span class="highlight-s2">"--insecure-bind-address=0.0.0.0"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">11行：KUBE_API_PORT<span class="highlight-o">=</span><span class="highlight-s2">"--port=8080"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">17行：KUBE_ETCD_SERVERS<span class="highlight-o">=</span><span class="highlight-s2">"--etcd-servers=http://10.0.0.215:2379"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">23行：KUBE_ADMISSION_CONTROL<span class="highlight-o">=</span><span class="highlight-s2">"--admission-control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ResourceQuota"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">vim /etc/kubernetes/config
+</span></span><span class="highlight-line"><span class="highlight-cl">22行：KUBE_MASTER<span class="highlight-o">=</span><span class="highlight-s2">"--master=http://10.0.0.202:8080"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl <span class="highlight-nb">enable</span> kube-apiserver.service
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl restart kube-apiserver.service
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl <span class="highlight-nb">enable</span> kube-controller-manager.service
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl restart kube-controller-manager.service
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl <span class="highlight-nb">enable</span> kube-scheduler.service
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl restart kube-scheduler.service
+</span></span></code></pre>
 <p class="indent--2"><strong>检查服务是否正常</strong></p>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@master ~<span class="highlight-o">]</span><span class="highlight-c1"># kubectl get componentstatus </span>
-NAME                 STATUS    MESSAGE             ERROR
-scheduler            Healthy   ok                  
-controller-manager   Healthy   ok                  
-etcd-0               Healthy   <span class="highlight-o">{</span><span class="highlight-s2">"health"</span>:<span class="highlight-s2">"true"</span><span class="highlight-o">}</span>
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@master ~<span class="highlight-o">]</span><span class="highlight-c1"># kubectl get componentstatus </span>
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME                 STATUS    MESSAGE             ERROR
+</span></span><span class="highlight-line"><span class="highlight-cl">scheduler            Healthy   ok                  
+</span></span><span class="highlight-line"><span class="highlight-cl">controller-manager   Healthy   ok                  
+</span></span><span class="highlight-line"><span class="highlight-cl">etcd-0               Healthy   <span class="highlight-o">{</span><span class="highlight-s2">"health"</span>:<span class="highlight-s2">"true"</span><span class="highlight-o">}</span>
+</span></span></code></pre>
 <h2 id="1-3-node节点安装">1.3 node 节点安装</h2>
-<pre><code class="language-bash highlight-chroma">yum install kubernetes-node.x86_64 -y
-
-vim /etc/kubernetes/config 
-22行：KUBE_MASTER<span class="highlight-o">=</span><span class="highlight-s2">"--master=http://10.0.0.202:8080"</span>
-
-vim /etc/kubernetes/kubelet
-5行：KUBELET_ADDRESS<span class="highlight-o">=</span><span class="highlight-s2">"--address=0.0.0.0"</span>
-8行：KUBELET_PORT<span class="highlight-o">=</span><span class="highlight-s2">"--port=10250"</span>
-11行：KUBELET_HOSTNAME<span class="highlight-o">=</span><span class="highlight-s2">"--hostname-override=10.0.0.163"</span> <span class="highlight-c1">#node节点ip</span>
-14行：KUBELET_API_SERVER<span class="highlight-o">=</span><span class="highlight-s2">"--api-servers=http://10.0.0.202:8080"</span>
-17行：KUBELET_POD_INFRA_CONTAINER<span class="highlight-o">=</span><span class="highlight-s2">"--pod-infra-container-image=10.0.0.202:5000/rhel7/pod-infrastructure:latest"</span>   <span class="highlight-c1">#这里需要把pod-infrastructure镜像做到本地镜像仓库</span>
-
-systemctl <span class="highlight-nb">enable</span> kubelet.service
-systemctl restart kubelet.service
-systemctl <span class="highlight-nb">enable</span> kube-proxy.service
-systemctl restart kube-proxy.service
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl">yum install kubernetes-node.x86_64 -y
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">vim /etc/kubernetes/config 
+</span></span><span class="highlight-line"><span class="highlight-cl">22行：KUBE_MASTER<span class="highlight-o">=</span><span class="highlight-s2">"--master=http://10.0.0.202:8080"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">vim /etc/kubernetes/kubelet
+</span></span><span class="highlight-line"><span class="highlight-cl">5行：KUBELET_ADDRESS<span class="highlight-o">=</span><span class="highlight-s2">"--address=0.0.0.0"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">8行：KUBELET_PORT<span class="highlight-o">=</span><span class="highlight-s2">"--port=10250"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">11行：KUBELET_HOSTNAME<span class="highlight-o">=</span><span class="highlight-s2">"--hostname-override=10.0.0.163"</span> <span class="highlight-c1">#node节点ip</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">14行：KUBELET_API_SERVER<span class="highlight-o">=</span><span class="highlight-s2">"--api-servers=http://10.0.0.202:8080"</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">17行：KUBELET_POD_INFRA_CONTAINER<span class="highlight-o">=</span><span class="highlight-s2">"--pod-infra-container-image=10.0.0.202:5000/rhel7/pod-infrastructure:latest"</span>   <span class="highlight-c1">#这里需要把pod-infrastructure镜像做到本地镜像仓库</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl <span class="highlight-nb">enable</span> kubelet.service
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl restart kubelet.service
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl <span class="highlight-nb">enable</span> kube-proxy.service
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl restart kube-proxy.service
+</span></span></code></pre>
 <p class="indent--2"><strong>在 master 节点检查</strong></p>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@master ~<span class="highlight-o">]</span><span class="highlight-c1"># kubectl get node</span>
-NAME         STATUS    AGE
-10.0.0.163   Ready     1d
-10.0.0.197   Ready     1d
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@master ~<span class="highlight-o">]</span><span class="highlight-c1"># kubectl get node</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME         STATUS    AGE
+</span></span><span class="highlight-line"><span class="highlight-cl">10.0.0.163   Ready     1d
+</span></span><span class="highlight-line"><span class="highlight-cl">10.0.0.197   Ready     1d
+</span></span></code></pre>
 <h2 id="1-4-所有节点配置flannel网络">1.4 所有节点配置 flannel 网络</h2>
-<pre><code class="language-bash highlight-chroma">yum install flannel -y
-sed -i <span class="highlight-s1">'s#http://127.0.0.1:2379#http://10.0.0.215:2379#g'</span> /etc/sysconfig/flanneld
-
-<span class="highlight-c1">##etcd节点：</span>
-etcdctl mk /atomic.io/network/config   <span class="highlight-s1">'{ "Network": "172.18.0.0/16" }'</span>
-
-<span class="highlight-c1">##master节点</span>
-yum install docker -y
-systemctl <span class="highlight-nb">enable</span> flanneld.service 
-systemctl restart flanneld.service 
-service docker restart
-systemctl restart kube-apiserver.service
-systemctl restart kube-controller-manager.service
-systemctl restart kube-scheduler.service
-
-<span class="highlight-c1">##node节点：</span>
-systemctl <span class="highlight-nb">enable</span> flanneld.service 
-systemctl restart flanneld.service 
-service docker restart
-systemctl restart kubelet.service
-systemctl restart kube-proxy.service
-
-vim /usr/lib/systemd/system/docker.service
-<span class="highlight-c1">#在[Service]区域下增加一行</span>
-<span class="highlight-nv">ExecStartPost</span><span class="highlight-o">=</span>/usr/sbin/iptables -P FORWARD ACCEPT
-systemctl daemon-reload 
-systemctl restart docker
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl">yum install flannel -y
+</span></span><span class="highlight-line"><span class="highlight-cl">sed -i <span class="highlight-s1">'s#http://127.0.0.1:2379#http://10.0.0.215:2379#g'</span> /etc/sysconfig/flanneld
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-c1">##etcd节点：</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">etcdctl mk /atomic.io/network/config   <span class="highlight-s1">'{ "Network": "172.18.0.0/16" }'</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-c1">##master节点</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">yum install docker -y
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl <span class="highlight-nb">enable</span> flanneld.service 
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl restart flanneld.service 
+</span></span><span class="highlight-line"><span class="highlight-cl">service docker restart
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl restart kube-apiserver.service
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl restart kube-controller-manager.service
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl restart kube-scheduler.service
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-c1">##node节点：</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl <span class="highlight-nb">enable</span> flanneld.service 
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl restart flanneld.service 
+</span></span><span class="highlight-line"><span class="highlight-cl">service docker restart
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl restart kubelet.service
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl restart kube-proxy.service
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">vim /usr/lib/systemd/system/docker.service
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-c1">#在[Service]区域下增加一行</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-nv">ExecStartPost</span><span class="highlight-o">=</span>/usr/sbin/iptables -P FORWARD ACCEPT
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl daemon-reload 
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl restart docker
+</span></span></code></pre>
 <h2 id="1-5-配置master为镜像仓库">1.5 配置 master 为镜像仓库</h2>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-c1">#所有节点</span>
-vim /etc/sysconfig/docker
-<span class="highlight-nv">OPTIONS</span><span class="highlight-o">=</span><span class="highlight-s1">'--selinux-enabled --log-driver=journald --signature-verification=false --registry-mirror=https://registry.docker-cn.com --insecure-registry=10.0.0.202:5000'</span>
-
-systemctl restart docker
-
-<span class="highlight-c1">#master节点（如有网络问题，多试几次）</span>
-docker run -d -p 5000:5000 --restart<span class="highlight-o">=</span>always --name registry -v /opt/myregistry:/var/lib/registry  registry
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl"><span class="highlight-c1">#所有节点</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">vim /etc/sysconfig/docker
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-nv">OPTIONS</span><span class="highlight-o">=</span><span class="highlight-s1">'--selinux-enabled --log-driver=journald --signature-verification=false --registry-mirror=https://registry.docker-cn.com --insecure-registry=10.0.0.202:5000'</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl restart docker
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-c1">#master节点（如有网络问题，多试几次）</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">docker run -d -p 5000:5000 --restart<span class="highlight-o">=</span>always --name registry -v /opt/myregistry:/var/lib/registry  registry
+</span></span></code></pre>
 <h1 id="二--K8S常用资源">二、 K8S 常用资源</h1>
 <h2 id="2-1-pod资源">2.1 pod 资源</h2>
 <p class="indent--2">pod 是最小资源单位.</p>
 <p class="indent--2">k8s YAML 的主要组成</p>
-<pre><code class="highlight-chroma">apiVersion: v1  api版本
-kind: pod   资源类型
-metadata:   属性
-spec:       详细
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">apiVersion: v1  api版本
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: pod   资源类型
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:   属性
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:       详细
+</span></span></code></pre>
 <ol>
 <li>创建一个 YAML 文件：</li>
 </ol>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># cat k8s_pod.yaml </span>
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nginx
-  labels:
-    app: web
-spec:
-  containers:
-    - name: nginx
-      image: 10.0.0.202:5000/nginx:latest
-      ports:
-        - containerPort: <span class="highlight-m">80</span>
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># cat k8s_pod.yaml </span>
+</span></span><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: Pod
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: nginx
+</span></span><span class="highlight-line"><span class="highlight-cl">  labels:
+</span></span><span class="highlight-line"><span class="highlight-cl">    app: web
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">  containers:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - name: nginx
+</span></span><span class="highlight-line"><span class="highlight-cl">      image: 10.0.0.202:5000/nginx:latest
+</span></span><span class="highlight-line"><span class="highlight-cl">      ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">        - containerPort: <span class="highlight-m">80</span>
+</span></span></code></pre>
 <p class="indent--2">基于 YAML 创建 pod：</p>
-<pre><code class="highlight-chroma">[root@master pod]# kubectl create -f k8s_pod.yaml 
-pod "nginx1" created
-[root@master pod]# kubectl get pod
-NAME      READY     STATUS              RESTARTS   AGE
-nginx     0/1       ContainerCreating   0          12s
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master pod]# kubectl create -f k8s_pod.yaml 
+</span></span><span class="highlight-line"><span class="highlight-cl">pod "nginx1" created
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@master pod]# kubectl get pod
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME      READY     STATUS              RESTARTS   AGE
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx     0/1       ContainerCreating   0          12s
+</span></span></code></pre>
 <blockquote>
 <p>此时发现 pod 创建没能成功，通过 <code>kubectl describe  pod nginx</code> 查看详细信息：</p>
 </blockquote>
-<pre><code class="highlight-chroma">Events:
-  FirstSeen	LastSeen	Count	From			SubObjectPath	Type		Reason		Message
-  ---------	--------	-----	----			-------------	--------	------		-------
-  2m		2m		1	{default-scheduler }			Normal		Scheduled	Successfully assigned nginx to 10.0.0.197
-  2m		43s		4	{kubelet 10.0.0.197}			Warning		FailedSync	Error syncing pod, skipping: failed to "StartContainer" for "POD" with ErrImagePull: "image pull failed for registry.access.redhat.com/rhel7/pod-infrastructure:latest, this may be because there are no credentials on this request.  details: (open /etc/docker/certs.d/registry.access.redhat.com/redhat-ca.crt: no such file or directory)"
-
-  1m	6s	6	{kubelet 10.0.0.197}		Warning	FailedSync	Error syncing pod, skipping: failed to "StartContainer" for "POD" with ImagePullBackOff: "Back-off pulling image \"registry.access.redhat.com/rhel7/pod-infrastructure:latest\""
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">Events:
+</span></span><span class="highlight-line"><span class="highlight-cl">  FirstSeen	LastSeen	Count	From			SubObjectPath	Type		Reason		Message
+</span></span><span class="highlight-line"><span class="highlight-cl">  ---------	--------	-----	----			-------------	--------	------		-------
+</span></span><span class="highlight-line"><span class="highlight-cl">  2m		2m		1	{default-scheduler }			Normal		Scheduled	Successfully assigned nginx to 10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">  2m		43s		4	{kubelet 10.0.0.197}			Warning		FailedSync	Error syncing pod, skipping: failed to "StartContainer" for "POD" with ErrImagePull: "image pull failed for registry.access.redhat.com/rhel7/pod-infrastructure:latest, this may be because there are no credentials on this request.  details: (open /etc/docker/certs.d/registry.access.redhat.com/redhat-ca.crt: no such file or directory)"
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">  1m	6s	6	{kubelet 10.0.0.197}		Warning	FailedSync	Error syncing pod, skipping: failed to "StartContainer" for "POD" with ImagePullBackOff: "Back-off pulling image \"registry.access.redhat.com/rhel7/pod-infrastructure:latest\""
+</span></span></code></pre>
 <p class="indent--2">由上可见，需要本地镜像仓库需要 pod-infrastructure:latest 这个 pod 基础镜像，所以需要在拉取镜像<br>
 <code>docker pull tianyebj/pod-infrastructure</code>，并且 push 到本地镜像仓库</p>
-<pre><code class="highlight-chroma">docker pull tianyebj/pod-infrastructure
-docker tag docker.io/tianyebj/pod-infrastructure 10.0.0.202:5000/rhel7/pod-infrastructure:latest
-docker push 10.0.0.202:5000/rhel7/pod-infrastructure:latest
-#同时改下node节点： /etc/kubernetes/kubelet
-#更改配置：KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=10.0.0.202:5000/rhel7/pod-infrastructure:latest"
-
-systemctl restart kubelet.service
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">docker pull tianyebj/pod-infrastructure
+</span></span><span class="highlight-line"><span class="highlight-cl">docker tag docker.io/tianyebj/pod-infrastructure 10.0.0.202:5000/rhel7/pod-infrastructure:latest
+</span></span><span class="highlight-line"><span class="highlight-cl">docker push 10.0.0.202:5000/rhel7/pod-infrastructure:latest
+</span></span><span class="highlight-line"><span class="highlight-cl">#同时改下node节点： /etc/kubernetes/kubelet
+</span></span><span class="highlight-line"><span class="highlight-cl">#更改配置：KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=10.0.0.202:5000/rhel7/pod-infrastructure:latest"
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">systemctl restart kubelet.service
+</span></span></code></pre>
 <p class="indent--2">在此查看 pod 创建过程：</p>
-<pre><code class="highlight-chroma">Events:
-  FirstSeen	LastSeen	Count	From			SubObjectPath	Type		Reason		Message
-  ---------	--------	-----	----			-------------	--------	------		-------
-  14m		14m		1	{default-scheduler }			Normal		Scheduled	Successfully assigned nginx to 10.0.0.197
-  13m		3m		7	{kubelet 10.0.0.197}			Warning		FailedSync	Error syncing pod, skipping: failed to "StartContainer" for "POD" with ErrImagePull: "image pull failed for registry.access.redhat.com/rhel7/pod-infrastructure:latest, this may be because there are no credentials on this request.  details: (open /etc/docker/certs.d/registry.access.redhat.com/redhat-ca.crt: no such file or directory)"
-
-  13m	58s	54	{kubelet 10.0.0.197}		Warning	FailedSync	Error syncing pod, skipping: failed to "StartContainer" for "POD" with ImagePullBackOff: "Back-off pulling image \"registry.access.redhat.com/rhel7/pod-infrastructure:latest\""
-
-  45s	45s	1	{kubelet 10.0.0.197}	spec.containers{nginx}	Normal	Pulling			pulling image "10.0.0.202:5000/nginx:1.13"
-  46s	41s	2	{kubelet 10.0.0.197}				Warning	MissingClusterDNS	kubelet does not have ClusterDNS IP configured and cannot create Pod using "ClusterFirst" policy. Falling back to DNSDefault policy.
-  41s	41s	1	{kubelet 10.0.0.197}	spec.containers{nginx}	Normal	Pulled			Successfully pulled image "10.0.0.202:5000/nginx:1.13"
-  41s	41s	1	{kubelet 10.0.0.197}	spec.containers{nginx}	Normal	Created			Created container with docker id 9254a49fc62c; Security:[seccomp=unconfined]
-  41s	41s	1	{kubelet 10.0.0.197}	spec.containers{nginx}	Normal	Started			Started container with docker id 9254a49fc62c
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">Events:
+</span></span><span class="highlight-line"><span class="highlight-cl">  FirstSeen	LastSeen	Count	From			SubObjectPath	Type		Reason		Message
+</span></span><span class="highlight-line"><span class="highlight-cl">  ---------	--------	-----	----			-------------	--------	------		-------
+</span></span><span class="highlight-line"><span class="highlight-cl">  14m		14m		1	{default-scheduler }			Normal		Scheduled	Successfully assigned nginx to 10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">  13m		3m		7	{kubelet 10.0.0.197}			Warning		FailedSync	Error syncing pod, skipping: failed to "StartContainer" for "POD" with ErrImagePull: "image pull failed for registry.access.redhat.com/rhel7/pod-infrastructure:latest, this may be because there are no credentials on this request.  details: (open /etc/docker/certs.d/registry.access.redhat.com/redhat-ca.crt: no such file or directory)"
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">  13m	58s	54	{kubelet 10.0.0.197}		Warning	FailedSync	Error syncing pod, skipping: failed to "StartContainer" for "POD" with ImagePullBackOff: "Back-off pulling image \"registry.access.redhat.com/rhel7/pod-infrastructure:latest\""
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">  45s	45s	1	{kubelet 10.0.0.197}	spec.containers{nginx}	Normal	Pulling			pulling image "10.0.0.202:5000/nginx:1.13"
+</span></span><span class="highlight-line"><span class="highlight-cl">  46s	41s	2	{kubelet 10.0.0.197}				Warning	MissingClusterDNS	kubelet does not have ClusterDNS IP configured and cannot create Pod using "ClusterFirst" policy. Falling back to DNSDefault policy.
+</span></span><span class="highlight-line"><span class="highlight-cl">  41s	41s	1	{kubelet 10.0.0.197}	spec.containers{nginx}	Normal	Pulled			Successfully pulled image "10.0.0.202:5000/nginx:1.13"
+</span></span><span class="highlight-line"><span class="highlight-cl">  41s	41s	1	{kubelet 10.0.0.197}	spec.containers{nginx}	Normal	Created			Created container with docker id 9254a49fc62c; Security:[seccomp=unconfined]
+</span></span><span class="highlight-line"><span class="highlight-cl">  41s	41s	1	{kubelet 10.0.0.197}	spec.containers{nginx}	Normal	Started			Started container with docker id 9254a49fc62c
+</span></span></code></pre>
 <p class="indent--2"><strong>到此 pod 创建完成</strong></p>
 <h3 id="详细">详细</h3>
 <p class="indent--2"><strong>在这里需要把 pod 容器 tag 改成需要用的：</strong></p>
-<pre><code class="highlight-chroma">[root@master pod]# docker tag docker.io/tianyebj/pod-infrastructure 10.0.0.202:5000/rhel7/pod-infrastructure:latest
-[root@master pod]# docker images
-REPOSITORY                                 TAG                 IMAGE ID            CREATED             SIZE
-docker.io/registry                         latest              f32a97de94e1        9 months ago        25.8 MB
-docker.io/tianyebj/pod-infrastructure      latest              34d3450d733b        2 years ago         205 MB
-10.0.0.202:5000/rhel7/pod-infrastructure   latest              34d3450d733b        2 years ago         205 MB
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master pod]# docker tag docker.io/tianyebj/pod-infrastructure 10.0.0.202:5000/rhel7/pod-infrastructure:latest
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@master pod]# docker images
+</span></span><span class="highlight-line"><span class="highlight-cl">REPOSITORY                                 TAG                 IMAGE ID            CREATED             SIZE
+</span></span><span class="highlight-line"><span class="highlight-cl">docker.io/registry                         latest              f32a97de94e1        9 months ago        25.8 MB
+</span></span><span class="highlight-line"><span class="highlight-cl">docker.io/tianyebj/pod-infrastructure      latest              34d3450d733b        2 years ago         205 MB
+</span></span><span class="highlight-line"><span class="highlight-cl">10.0.0.202:5000/rhel7/pod-infrastructure   latest              34d3450d733b        2 years ago         205 MB
+</span></span></code></pre>
 <p class="indent--2"><strong>强制删除 pod 资源：</strong></p>
-<pre><code class="highlight-chroma">[root@master pod]# kubectl delete pod nginx --force  --grace-period=0 -n  default
-warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
-pod "nginx" deleted
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master pod]# kubectl delete pod nginx --force  --grace-period=0 -n  default
+</span></span><span class="highlight-line"><span class="highlight-cl">warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
+</span></span><span class="highlight-line"><span class="highlight-cl">pod "nginx" deleted
+</span></span></code></pre>
 <h4 id="安装docker镜像并且push到本地镜像仓库">安装 docker 镜像并且 push 到本地镜像仓库</h4>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># docker images</span>
-REPOSITORY                                 TAG                 IMAGE ID            CREATED             SIZE
-docker.io/b3log/solo                       latest              4e49320bec76        <span class="highlight-m">2</span> days ago          <span class="highlight-m">152</span> MB
-10.0.0.202:5000/b3log/solo                 latest              4e49320bec76        <span class="highlight-m">2</span> days ago          <span class="highlight-m">152</span> MB
-docker.io/mysql                            5.7                 1e4405fe1ea9        <span class="highlight-m">2</span> weeks ago         <span class="highlight-m">437</span> MB
-10.0.0.202:5000/nginx                      latest              231d40e811cd        <span class="highlight-m">2</span> weeks ago         <span class="highlight-m">126</span> MB
-docker.io/nginx                            latest              231d40e811cd        <span class="highlight-m">2</span> weeks ago         <span class="highlight-m">126</span> MB
-docker.io/registry                         latest              f32a97de94e1        <span class="highlight-m">9</span> months ago        25.8 MB
-10.0.0.202:5000/rhel7/pod-infrastructure   latest              34d3450d733b        <span class="highlight-m">2</span> years ago         <span class="highlight-m">205</span> MB
-docker.io/tianyebj/pod-infrastructure      latest              34d3450d733b        <span class="highlight-m">2</span> years ago         <span class="highlight-m">205</span> MB
-<span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># docker tag docker.io/nginx 10.0.0.202:5000/nginx:latest</span>
-<span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># docker push 10.0.0.202:5000/nginx</span>
-<span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># docker tag docker.io/mysql:5.7  10.0.0.202:5000/mysql:5.7</span>
-<span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># docker push 10.0.0.202:5000/mysql</span>
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># docker images</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">REPOSITORY                                 TAG                 IMAGE ID            CREATED             SIZE
+</span></span><span class="highlight-line"><span class="highlight-cl">docker.io/b3log/solo                       latest              4e49320bec76        <span class="highlight-m">2</span> days ago          <span class="highlight-m">152</span> MB
+</span></span><span class="highlight-line"><span class="highlight-cl">10.0.0.202:5000/b3log/solo                 latest              4e49320bec76        <span class="highlight-m">2</span> days ago          <span class="highlight-m">152</span> MB
+</span></span><span class="highlight-line"><span class="highlight-cl">docker.io/mysql                            5.7                 1e4405fe1ea9        <span class="highlight-m">2</span> weeks ago         <span class="highlight-m">437</span> MB
+</span></span><span class="highlight-line"><span class="highlight-cl">10.0.0.202:5000/nginx                      latest              231d40e811cd        <span class="highlight-m">2</span> weeks ago         <span class="highlight-m">126</span> MB
+</span></span><span class="highlight-line"><span class="highlight-cl">docker.io/nginx                            latest              231d40e811cd        <span class="highlight-m">2</span> weeks ago         <span class="highlight-m">126</span> MB
+</span></span><span class="highlight-line"><span class="highlight-cl">docker.io/registry                         latest              f32a97de94e1        <span class="highlight-m">9</span> months ago        25.8 MB
+</span></span><span class="highlight-line"><span class="highlight-cl">10.0.0.202:5000/rhel7/pod-infrastructure   latest              34d3450d733b        <span class="highlight-m">2</span> years ago         <span class="highlight-m">205</span> MB
+</span></span><span class="highlight-line"><span class="highlight-cl">docker.io/tianyebj/pod-infrastructure      latest              34d3450d733b        <span class="highlight-m">2</span> years ago         <span class="highlight-m">205</span> MB
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># docker tag docker.io/nginx 10.0.0.202:5000/nginx:latest</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># docker push 10.0.0.202:5000/nginx</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># docker tag docker.io/mysql:5.7  10.0.0.202:5000/mysql:5.7</span>
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># docker push 10.0.0.202:5000/mysql</span>
+</span></span></code></pre>
 <h4 id="创建pod">创建 pod</h4>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># kubectl create -f k8s_pod.yaml </span>
-pod <span class="highlight-s2">"nginx"</span> created
-<span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># kubectl get pod</span>
-NAME      READY     STATUS    RESTARTS   AGE
-nginx     1/1       Running   <span class="highlight-m">0</span>          7s
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># kubectl create -f k8s_pod.yaml </span>
+</span></span><span class="highlight-line"><span class="highlight-cl">pod <span class="highlight-s2">"nginx"</span> created
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># kubectl get pod</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME      READY     STATUS    RESTARTS   AGE
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx     1/1       Running   <span class="highlight-m">0</span>          7s
+</span></span></code></pre>
 <h4 id="pod运行多个容器-">pod 运行多个容器：</h4>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># cat k8s_pod2.yaml   </span>
-apiVersion: v1  
-kind: Pod  
-metadata:  
- name: <span class="highlight-nb">test</span>  
- labels:  
- app: web  
-spec:  
- containers:  
- - name: nginx  
- image: 10.0.0.202:5000/nginx:latest  
- ports:  
- - containerPort: <span class="highlight-m">80</span>  
- - name: solo  
- image: 10.0.0.202:5000/b3log/solo:latest  
- command: <span class="highlight-o">[</span><span class="highlight-s2">"sleep"</span>,<span class="highlight-s2">"10000"</span><span class="highlight-o">]</span>  
-<span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># kubectl create -f k8s_pod2.yaml   </span>
-pod <span class="highlight-s2">"test"</span> created  
-<span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># kubectl get pod -o wide   </span>
-NAME      READY     STATUS    RESTARTS   AGE       IP            NODE  
-nginx     1/1       Running   <span class="highlight-m">0</span>          15h       172.18.57.2   10.0.0.197  
-<span class="highlight-nb">test</span>      2/2       Running   <span class="highlight-m">0</span>          15s       172.18.39.2   10.0.0.163
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># cat k8s_pod2.yaml   </span>
+</span></span><span class="highlight-line"><span class="highlight-cl">apiVersion: v1  
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: Pod  
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:  
+</span></span><span class="highlight-line"><span class="highlight-cl"> name: <span class="highlight-nb">test</span>  
+</span></span><span class="highlight-line"><span class="highlight-cl"> labels:  
+</span></span><span class="highlight-line"><span class="highlight-cl"> app: web  
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:  
+</span></span><span class="highlight-line"><span class="highlight-cl"> containers:  
+</span></span><span class="highlight-line"><span class="highlight-cl"> - name: nginx  
+</span></span><span class="highlight-line"><span class="highlight-cl"> image: 10.0.0.202:5000/nginx:latest  
+</span></span><span class="highlight-line"><span class="highlight-cl"> ports:  
+</span></span><span class="highlight-line"><span class="highlight-cl"> - containerPort: <span class="highlight-m">80</span>  
+</span></span><span class="highlight-line"><span class="highlight-cl"> - name: solo  
+</span></span><span class="highlight-line"><span class="highlight-cl"> image: 10.0.0.202:5000/b3log/solo:latest  
+</span></span><span class="highlight-line"><span class="highlight-cl"> command: <span class="highlight-o">[</span><span class="highlight-s2">"sleep"</span>,<span class="highlight-s2">"10000"</span><span class="highlight-o">]</span>  
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># kubectl create -f k8s_pod2.yaml   </span>
+</span></span><span class="highlight-line"><span class="highlight-cl">pod <span class="highlight-s2">"test"</span> created  
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@master pod<span class="highlight-o">]</span><span class="highlight-c1"># kubectl get pod -o wide   </span>
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME      READY     STATUS    RESTARTS   AGE       IP            NODE  
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx     1/1       Running   <span class="highlight-m">0</span>          15h       172.18.57.2   10.0.0.197  
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-nb">test</span>      2/2       Running   <span class="highlight-m">0</span>          15s       172.18.39.2   10.0.0.163
+</span></span></code></pre>
 <h4 id="查看k8s-pod的容器资源详细信息-">查看 k8s pod 的容器资源详细信息：</h4>
-<pre><code class="highlight-chroma">docker inspect 3f6cdafa32f5
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">docker inspect 3f6cdafa32f5
+</span></span></code></pre>
 <p class="indent--2"><strong>创建一个 pod 资源，才能实现 k8s 的高级功能.</strong><br>
 pod 容器：基础架构容器<br>
 nginx 容器： 业务容器</p>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># docker ps   </span>
-CONTAINER ID        IMAGE                                             COMMAND                  CREATED             STATUS              PORTS               NAMES  
-3f6cdafa32f5        10.0.0.202:5000/nginx:latest                      <span class="highlight-s2">"nginx -g 'daemon ..."</span>   <span class="highlight-m">17</span> hours ago        Up <span class="highlight-m">17</span> hours                             k8s_nginx.c74a033c_nginx_default_e5a7a5ea-1bf8-11ea-950d-fa163ef9cf10_5e72b386  
-d0198f64f479        10.0.0.202:5000/rhel7/pod-infrastructure:latest   <span class="highlight-s2">"/pod"</span>                   <span class="highlight-m">17</span> hours ago        Up <span class="highlight-m">17</span> hours                             k8s_POD.7b6a03f3_nginx_default_e5a7a5ea-1bf8-11ea-950d-fa163ef9cf10_7ee05d13
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@node1 ~<span class="highlight-o">]</span><span class="highlight-c1"># docker ps   </span>
+</span></span><span class="highlight-line"><span class="highlight-cl">CONTAINER ID        IMAGE                                             COMMAND                  CREATED             STATUS              PORTS               NAMES  
+</span></span><span class="highlight-line"><span class="highlight-cl">3f6cdafa32f5        10.0.0.202:5000/nginx:latest                      <span class="highlight-s2">"nginx -g 'daemon ..."</span>   <span class="highlight-m">17</span> hours ago        Up <span class="highlight-m">17</span> hours                             k8s_nginx.c74a033c_nginx_default_e5a7a5ea-1bf8-11ea-950d-fa163ef9cf10_5e72b386  
+</span></span><span class="highlight-line"><span class="highlight-cl">d0198f64f479        10.0.0.202:5000/rhel7/pod-infrastructure:latest   <span class="highlight-s2">"/pod"</span>                   <span class="highlight-m">17</span> hours ago        Up <span class="highlight-m">17</span> hours                             k8s_POD.7b6a03f3_nginx_default_e5a7a5ea-1bf8-11ea-950d-fa163ef9cf10_7ee05d13
+</span></span></code></pre>
 <h2 id="2-2-ReplicationController资源">2.2 ReplicationController 资源</h2>
 <blockquote>
 <p>k8s 资源的常见操作:<br>
@@ -408,143 +400,143 @@ rc:保证指定数量的 pod 始终存活,rc 通过标签选择器来关联 pod<
 <p class="indent--2">POD 资源被关闭也会及时启动自愈。</p>
 <h2 id="rc资源">rc 资源</h2>
 <h3 id="pod资源的高可用行">pod 资源的高可用行</h3>
-<pre><code class="highlight-chroma">[root@node2 ~]# docker ps -a -q
-f14a9650d408
-5a4a70671124
-[root@node2 ~]# docker rm -f `docker ps -a -q`
-f14a9650d408
-5a4a70671124
-[root@node2 ~]# docker ps -a -q
-7f4142ea7eb9
-2ec639b32132
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@node2 ~]# docker ps -a -q
+</span></span><span class="highlight-line"><span class="highlight-cl">f14a9650d408
+</span></span><span class="highlight-line"><span class="highlight-cl">5a4a70671124
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@node2 ~]# docker rm -f `docker ps -a -q`
+</span></span><span class="highlight-line"><span class="highlight-cl">f14a9650d408
+</span></span><span class="highlight-line"><span class="highlight-cl">5a4a70671124
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@node2 ~]# docker ps -a -q
+</span></span><span class="highlight-line"><span class="highlight-cl">7f4142ea7eb9
+</span></span><span class="highlight-line"><span class="highlight-cl">2ec639b32132
+</span></span></code></pre>
 <p class="indent--2">pod 资源被强制删除停止后，这些资源会立即重新生成并启动。</p>
 <h3 id="rc创建">rc 创建</h3>
 <p class="indent--2">rc:保证指定数量的 pod 始终够存活，rc 通过标签选择器来关联 pod</p>
 <ul>
 <li>创建 YAML 文件</li>
 </ul>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@master rc<span class="highlight-o">]</span><span class="highlight-c1"># cat  k8s_rc.yaml </span>
-apiVersion: v1
-kind: ReplicationController
-metadata:
-  name: nginx
-spec:
-  replicas: <span class="highlight-m">5</span>
-  selector:
-    app: myweb
-  template:
-    metadata:
-      labels:
-        app: myweb
-    spec:
-      containers:
-      - name: myweb
-        image: 10.0.0.202:5000/nginx:1.13
-        ports:
-        - containerPort: <span class="highlight-m">80</span>
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@master rc<span class="highlight-o">]</span><span class="highlight-c1"># cat  k8s_rc.yaml </span>
+</span></span><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: ReplicationController
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: nginx
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">  replicas: <span class="highlight-m">5</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">  selector:
+</span></span><span class="highlight-line"><span class="highlight-cl">    app: myweb
+</span></span><span class="highlight-line"><span class="highlight-cl">  template:
+</span></span><span class="highlight-line"><span class="highlight-cl">    metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">      labels:
+</span></span><span class="highlight-line"><span class="highlight-cl">        app: myweb
+</span></span><span class="highlight-line"><span class="highlight-cl">    spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">      containers:
+</span></span><span class="highlight-line"><span class="highlight-cl">      - name: myweb
+</span></span><span class="highlight-line"><span class="highlight-cl">        image: 10.0.0.202:5000/nginx:1.13
+</span></span><span class="highlight-line"><span class="highlight-cl">        ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">        - containerPort: <span class="highlight-m">80</span>
+</span></span></code></pre>
 <ul>
 <li>创建 rc：</li>
 </ul>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@master rc<span class="highlight-o">]</span><span class="highlight-c1"># pwd</span>
-/root/k8s/rc
-<span class="highlight-o">[</span>root@master rc<span class="highlight-o">]</span><span class="highlight-c1"># kubectl create -f k8s_rc.yaml </span>
-replicationcontroller <span class="highlight-s2">"nginx"</span> created
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@master rc<span class="highlight-o">]</span><span class="highlight-c1"># pwd</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">/root/k8s/rc
+</span></span><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@master rc<span class="highlight-o">]</span><span class="highlight-c1"># kubectl create -f k8s_rc.yaml </span>
+</span></span><span class="highlight-line"><span class="highlight-cl">replicationcontroller <span class="highlight-s2">"nginx"</span> created
+</span></span></code></pre>
 <p class="indent--2">查看状态：</p>
-<pre><code class="language-bash highlight-chroma"><span class="highlight-o">[</span>root@master rc<span class="highlight-o">]</span><span class="highlight-c1"># kubectl  get rc</span>
-NAME      DESIRED   CURRENT   READY     AGE
-nginx     <span class="highlight-m">5</span>         <span class="highlight-m">5</span>         <span class="highlight-m">5</span>         9m
-</code></pre>
+<pre><code class="language-bash highlight-chroma"><span class="highlight-line"><span class="highlight-cl"><span class="highlight-o">[</span>root@master rc<span class="highlight-o">]</span><span class="highlight-c1"># kubectl  get rc</span>
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME      DESIRED   CURRENT   READY     AGE
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx     <span class="highlight-m">5</span>         <span class="highlight-m">5</span>         <span class="highlight-m">5</span>         9m
+</span></span></code></pre>
 <ul>
 <li>启动了多个 pod</li>
 </ul>
-<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-a9d3296e.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://b3logfile.com/file/2019/12/image-a9d3296e.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <p class="indent--2">rc 作用：<br>
 当 node 节点上的 pod 资源在其中一个 node 挂掉之后，rc 会将挂掉的 node 上的 pod 资源驱逐到存活的 node 之上。</p>
 <p class="indent--2"><strong>示例 1：</strong><br>
 pod 资源删除后，会马上重新创建新的 pod。</p>
-<pre><code class="highlight-chroma">[root@master rc]# kubectl get pod -o wide 
-NAME          READY     STATUS    RESTARTS   AGE       IP            NODE
-nginx         1/1       Running   0          3d        172.18.42.2   10.0.0.197
-nginx-0lrwh   1/1       Running   0          37m       172.18.96.4   10.0.0.163
-nginx-7wss6   1/1       Running   0          37m       172.18.42.4   10.0.0.197
-nginx-g3pnd   1/1       Running   0          37m       172.18.96.3   10.0.0.163
-nginx-j173g   1/1       Running   0          37m       172.18.96.5   10.0.0.163
-nginx-pxlbx   1/1       Running   0          37m       172.18.42.5   10.0.0.197
-nginxmysql    2/2       Running   0          1h        172.18.42.3   10.0.0.197
-test          1/1       Running   0          1h        172.18.96.2   10.0.0.163
-[root@master rc]# kubectl delete pod nginx-7wss6 
-pod "nginx-7wss6" deleted
-[root@master rc]# kubectl get pod -o wide 
-NAME          READY     STATUS    RESTARTS   AGE       IP            NODE
-nginx         1/1       Running   0          3d        172.18.42.2   10.0.0.197
-nginx-0lrwh   1/1       Running   0          38m       172.18.96.4   10.0.0.163
-nginx-g3pnd   1/1       Running   0          38m       172.18.96.3   10.0.0.163
-nginx-j173g   1/1       Running   0          38m       172.18.96.5   10.0.0.163
-nginx-j7jrw   1/1       Running   0          3s        172.18.42.6   10.0.0.197
-nginx-pxlbx   1/1       Running   0          38m       172.18.42.5   10.0.0.197
-nginxmysql    2/2       Running   0          1h        172.18.42.3   10.0.0.197
-test          1/1       Running   0          1h        172.18.96.2   10.0.0.163
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master rc]# kubectl get pod -o wide 
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME          READY     STATUS    RESTARTS   AGE       IP            NODE
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx         1/1       Running   0          3d        172.18.42.2   10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-0lrwh   1/1       Running   0          37m       172.18.96.4   10.0.0.163
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-7wss6   1/1       Running   0          37m       172.18.42.4   10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-g3pnd   1/1       Running   0          37m       172.18.96.3   10.0.0.163
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-j173g   1/1       Running   0          37m       172.18.96.5   10.0.0.163
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-pxlbx   1/1       Running   0          37m       172.18.42.5   10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">nginxmysql    2/2       Running   0          1h        172.18.42.3   10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">test          1/1       Running   0          1h        172.18.96.2   10.0.0.163
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@master rc]# kubectl delete pod nginx-7wss6 
+</span></span><span class="highlight-line"><span class="highlight-cl">pod "nginx-7wss6" deleted
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@master rc]# kubectl get pod -o wide 
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME          READY     STATUS    RESTARTS   AGE       IP            NODE
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx         1/1       Running   0          3d        172.18.42.2   10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-0lrwh   1/1       Running   0          38m       172.18.96.4   10.0.0.163
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-g3pnd   1/1       Running   0          38m       172.18.96.3   10.0.0.163
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-j173g   1/1       Running   0          38m       172.18.96.5   10.0.0.163
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-j7jrw   1/1       Running   0          3s        172.18.42.6   10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-pxlbx   1/1       Running   0          38m       172.18.42.5   10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">nginxmysql    2/2       Running   0          1h        172.18.42.3   10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">test          1/1       Running   0          1h        172.18.96.2   10.0.0.163
+</span></span></code></pre>
 <ul>
 <li>示例 2：把 node2 删掉，会出现如下现象</li>
 </ul>
-<pre><code class="highlight-chroma">[root@master rc]# kubectl get pod -o wide 
-NAME          READY     STATUS    RESTARTS   AGE       IP            NODE
-nginx         1/1       Running   0          3d        172.18.42.2   10.0.0.197
-nginx-0lrwh   1/1       Running   0          3h        172.18.96.4   10.0.0.163
-nginx-g3pnd   1/1       Running   0          3h        172.18.96.3   10.0.0.163
-nginx-j173g   1/1       Running   0          3h        172.18.96.5   10.0.0.163
-nginx-j7jrw   1/1       Running   0          2h        172.18.42.6   10.0.0.197
-nginx-pxlbx   1/1       Running   0          3h        172.18.42.5   10.0.0.197
-nginxmysql    2/2       Running   1          3h        172.18.42.3   10.0.0.197
-test          1/1       Running   0          3h        172.18.96.2   10.0.0.163
-[root@master rc]# kubectl delete node 10.0.0.163
-node "10.0.0.163" deleted
-[root@master rc]# kubectl get pod -o wide 
-NAME          READY     STATUS    RESTARTS   AGE       IP            NODE
-nginx         1/1       Running   0          3d        172.18.42.2   10.0.0.197
-nginx-fl07j   1/1       Running   0          2s        172.18.42.7   10.0.0.197
-nginx-j7jrw   1/1       Running   0          2h        172.18.42.6   10.0.0.197
-nginx-jp6jg   1/1       Running   0          2s        172.18.42.4   10.0.0.197
-nginx-pxlbx   1/1       Running   0          3h        172.18.42.5   10.0.0.197
-nginx-zr9mw   1/1       Running   0          2s        172.18.42.8   10.0.0.197
-nginxmysql    2/2       Running   1          3h        172.18.42.3   10.0.0.197
-</code></pre>
-<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-e9cf09d5.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
-<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-dae346c1.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master rc]# kubectl get pod -o wide 
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME          READY     STATUS    RESTARTS   AGE       IP            NODE
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx         1/1       Running   0          3d        172.18.42.2   10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-0lrwh   1/1       Running   0          3h        172.18.96.4   10.0.0.163
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-g3pnd   1/1       Running   0          3h        172.18.96.3   10.0.0.163
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-j173g   1/1       Running   0          3h        172.18.96.5   10.0.0.163
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-j7jrw   1/1       Running   0          2h        172.18.42.6   10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-pxlbx   1/1       Running   0          3h        172.18.42.5   10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">nginxmysql    2/2       Running   1          3h        172.18.42.3   10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">test          1/1       Running   0          3h        172.18.96.2   10.0.0.163
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@master rc]# kubectl delete node 10.0.0.163
+</span></span><span class="highlight-line"><span class="highlight-cl">node "10.0.0.163" deleted
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@master rc]# kubectl get pod -o wide 
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME          READY     STATUS    RESTARTS   AGE       IP            NODE
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx         1/1       Running   0          3d        172.18.42.2   10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-fl07j   1/1       Running   0          2s        172.18.42.7   10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-j7jrw   1/1       Running   0          2h        172.18.42.6   10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-jp6jg   1/1       Running   0          2s        172.18.42.4   10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-pxlbx   1/1       Running   0          3h        172.18.42.5   10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-zr9mw   1/1       Running   0          2s        172.18.42.8   10.0.0.197
+</span></span><span class="highlight-line"><span class="highlight-cl">nginxmysql    2/2       Running   1          3h        172.18.42.3   10.0.0.197
+</span></span></code></pre>
+<p class="indent--2"><img src="https://b3logfile.com/file/2019/12/image-e9cf09d5.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://b3logfile.com/file/2019/12/image-dae346c1.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <p class="indent--2"><strong>node2 的 kubelet 重启后会自动注册到集群</strong></p>
 <h3 id="rc是通过什么来关联pod的呢-">rc 是通过什么来关联 pod 的呢？</h3>
 <p class="indent--2">通过更改 <code>[root@master rc]# kubectl edit pod nginx </code> 同一标签为 myweb 后，默认会把 pod 存活年龄最小的剔除<br>
 所以 rc 的 pod 资源是有标签选择器来进行维护。</p>
-<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-55c155e6.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://b3logfile.com/file/2019/12/image-55c155e6.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <h3 id="rc滚动升级">rc 滚动升级</h3>
 <ul>
 <li>版本升级：<br>
-<img src="https://img.hacpai.com/file/2019/12/image-06c91e57.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></li>
+<img src="https://b3logfile.com/file/2019/12/image-06c91e57.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></li>
 </ul>
-<pre><code class="highlight-chroma">[root@master rc]# kubectl rolling-update nginx -f k8s_rc1.yaml --update-period=10s
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master rc]# kubectl rolling-update nginx -f k8s_rc1.yaml --update-period=10s
+</span></span></code></pre>
 <blockquote>
 <p>--update-period=10s：升级间隔 10s</p>
 </blockquote>
-<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-149b6e69.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://b3logfile.com/file/2019/12/image-149b6e69.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <p class="indent--2">找一个 pod 容器进行 nginx 版本测试<br>
-<img src="https://img.hacpai.com/file/2019/12/image-fc6c83ca.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"><br>
+<img src="https://b3logfile.com/file/2019/12/image-fc6c83ca.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"><br>
 <strong>升级成功</strong></p>
 <ul>
 <li>版本回滚：</li>
 </ul>
-<pre><code class="highlight-chroma">[root@master rc]# kubectl rolling-update nginx2 -f k8s_rc.yaml --update-period=1s
-</code></pre>
-<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-d770a071.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"><br>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master rc]# kubectl rolling-update nginx2 -f k8s_rc.yaml --update-period=1s
+</span></span></code></pre>
+<p class="indent--2"><img src="https://b3logfile.com/file/2019/12/image-d770a071.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"><br>
 版本测试：<br>
-<img src="https://img.hacpai.com/file/2019/12/image-cc187399.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<img src="https://b3logfile.com/file/2019/12/image-cc187399.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <ul>
 <li>升级回滚配置文件：<br>
-<img src="https://img.hacpai.com/file/2019/12/image-46856f78.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></li>
+<img src="https://b3logfile.com/file/2019/12/image-46856f78.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></li>
 </ul>
 <p class="indent--2"><strong>最后总结一下 RC（Replica Set）的一些特性与作用。</strong></p>
 <p class="indent--2">◎　在大多数情况下，我们通过定义一个 RC 实现 Pod 的创建及副本数量的自动控制。<br>
@@ -555,221 +547,221 @@ nginxmysql    2/2       Running   1          3h        172.18.42.3   10.0.0.197
 <h2 id="2-3-service资源">2.3 service 资源</h2>
 <p class="indent--2">service 帮助 pod 暴露端口，通过架构图看出通过任何服务可通过 kube-proxy 组件进行通信。</p>
 <h3 id="创建一个service">创建一个 service</h3>
-<pre><code class="highlight-chroma">[root@master svc]# cat k8s_svc.yaml 
-apiVersion: v1
-kind: Service
-metadata:
-  name: myweb
-spec:
-  type: NodePort  #ClusterIP
-  ports:
-    - port: 80          #clusterIP
-      nodePort: 30000   #node port
-      targetPort: 80    #pod port
-  selector:
-    app: myweb2
-</code></pre>
-<pre><code class="highlight-chroma">[root@master svc]# kubectl create -f k8s_svc.yaml
-</code></pre>
-<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-6dfbc9aa.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master svc]# cat k8s_svc.yaml 
+</span></span><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: Service
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: myweb
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">  type: NodePort  #ClusterIP
+</span></span><span class="highlight-line"><span class="highlight-cl">  ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - port: 80          #clusterIP
+</span></span><span class="highlight-line"><span class="highlight-cl">      nodePort: 30000   #node port
+</span></span><span class="highlight-line"><span class="highlight-cl">      targetPort: 80    #pod port
+</span></span><span class="highlight-line"><span class="highlight-cl">  selector:
+</span></span><span class="highlight-line"><span class="highlight-cl">    app: myweb2
+</span></span></code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master svc]# kubectl create -f k8s_svc.yaml
+</span></span></code></pre>
+<p class="indent--2"><img src="https://b3logfile.com/file/2019/12/image-6dfbc9aa.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <blockquote>
 <p><strong>注意：</strong><br>
 svc 标签选择器和 rc 的标签需要一致，不然访问不了后端服务。</p>
 </blockquote>
-<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-7647eb53.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://b3logfile.com/file/2019/12/image-7647eb53.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <p class="indent--2">通过：<code>[root@master svc]# kubectl edit svc myweb</code> 修改标签和 rc 标签一致。</p>
 <ul>
 <li>再次查看：</li>
 </ul>
-<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-7fc5ae92.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<p class="indent--2"><img src="https://b3logfile.com/file/2019/12/image-7fc5ae92.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <ul>
 <li>并且现在和 pod 的 ip 相对应<br>
-<img src="https://img.hacpai.com/file/2019/12/image-57d29fb9.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></li>
+<img src="https://b3logfile.com/file/2019/12/image-57d29fb9.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></li>
 <li>查看 node 服务 L:<br>
-<img src="https://img.hacpai.com/file/2019/12/image-e2daf64e.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></li>
+<img src="https://b3logfile.com/file/2019/12/image-e2daf64e.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></li>
 <li>测试服务：<br>
-<img src="https://img.hacpai.com/file/2019/12/image-b3c79566.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></li>
+<img src="https://b3logfile.com/file/2019/12/image-b3c79566.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></li>
 </ul>
 <h3 id="测试负载均衡">测试负载均衡</h3>
 <ul>
 <li>减少 pod 节点进行测试</li>
 </ul>
-<pre><code class="highlight-chroma">[root@master svc]# kubectl scale rc nginx --replicas=2
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master svc]# kubectl scale rc nginx --replicas=2
+</span></span></code></pre>
 <blockquote>
 <p>调整副本数量的命令<br>
-<img src="https://img.hacpai.com/file/2019/12/image-770f1a01.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<img src="https://b3logfile.com/file/2019/12/image-770f1a01.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 </blockquote>
 <ul>
 <li>进入容器修改 index 页面</li>
 </ul>
-<pre><code class="highlight-chroma">[root@master svc]# kubectl exec -it nginx-175x8 /bin/bash
-root@nginx-175x8:/# cd /usr/share/nginx/html/
-root@nginx-175x8:/usr/share/nginx/html# ls                  
-50x.html  index.html
-root@nginx-175x8:/usr/share/nginx/html# echo 'cuijianzhe' &gt; index.html
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master svc]# kubectl exec -it nginx-175x8 /bin/bash
+</span></span><span class="highlight-line"><span class="highlight-cl">root@nginx-175x8:/# cd /usr/share/nginx/html/
+</span></span><span class="highlight-line"><span class="highlight-cl">root@nginx-175x8:/usr/share/nginx/html# ls                  
+</span></span><span class="highlight-line"><span class="highlight-cl">50x.html  index.html
+</span></span><span class="highlight-line"><span class="highlight-cl">root@nginx-175x8:/usr/share/nginx/html# echo 'cuijianzhe' &gt; index.html
+</span></span></code></pre>
 <p class="indent--2">测试：<br>
-<img src="https://img.hacpai.com/file/2019/12/image-7232ecd5.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<img src="https://b3logfile.com/file/2019/12/image-7232ecd5.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <ul>
 <li>默认端口范围是 30000-32767<br>
 修改 ports 端口数量：</li>
 </ul>
-<pre><code class="highlight-chroma">[root@master svc]# vim /etc/kubernetes/apiserver
-KUBE_API_ARGS="--service-node-port-range=3000-50000"
-
-[root@master svc]# systemctl restart kube-apiserver
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master svc]# vim /etc/kubernetes/apiserver
+</span></span><span class="highlight-line"><span class="highlight-cl">KUBE_API_ARGS="--service-node-port-range=3000-50000"
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@master svc]# systemctl restart kube-apiserver
+</span></span></code></pre>
 <ul>
 <li>添加 svc 3000 端口</li>
 </ul>
-<pre><code class="highlight-chroma">[root@master svc]# cat k8s_svc2.yaml 
-apiVersion: v1
-kind: Service
-metadata:
-  name: myweb2
-spec:
-  type: NodePort  #ClusterIP
-  ports:
-    - port: 80          #clusterIP
-      nodePort: 3000   #node port
-      targetPort: 80    #pod port
-  selector:
-    app: myweb2
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master svc]# cat k8s_svc2.yaml 
+</span></span><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: Service
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: myweb2
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">  type: NodePort  #ClusterIP
+</span></span><span class="highlight-line"><span class="highlight-cl">  ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - port: 80          #clusterIP
+</span></span><span class="highlight-line"><span class="highlight-cl">      nodePort: 3000   #node port
+</span></span><span class="highlight-line"><span class="highlight-cl">      targetPort: 80    #pod port
+</span></span><span class="highlight-line"><span class="highlight-cl">  selector:
+</span></span><span class="highlight-line"><span class="highlight-cl">    app: myweb2
+</span></span></code></pre>
 <p class="indent--2"><strong>修改 svc 统一标签 myweb</strong></p>
-<pre><code class="highlight-chroma">kubectl edit svc myweb
-</code></pre>
-<pre><code class="highlight-chroma">[root@master svc]# kubectl  get svc -o wide
-NAME         CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE       SELECTOR
-kubernetes   10.254.0.1       &lt;none&gt;        443/TCP        3d        &lt;none&gt;
-myweb        10.254.134.169   &lt;nodes&gt;       80:30000/TCP   55m       app=myweb
-myweb2       10.254.55.214    &lt;nodes&gt;       80:3000/TCP    2m        app=myweb
-</code></pre>
-<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-2ced6720.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">kubectl edit svc myweb
+</span></span></code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master svc]# kubectl  get svc -o wide
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME         CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE       SELECTOR
+</span></span><span class="highlight-line"><span class="highlight-cl">kubernetes   10.254.0.1       &lt;none&gt;        443/TCP        3d        &lt;none&gt;
+</span></span><span class="highlight-line"><span class="highlight-cl">myweb        10.254.134.169   &lt;nodes&gt;       80:30000/TCP   55m       app=myweb
+</span></span><span class="highlight-line"><span class="highlight-cl">myweb2       10.254.55.214    &lt;nodes&gt;       80:3000/TCP    2m        app=myweb
+</span></span></code></pre>
+<p class="indent--2"><img src="https://b3logfile.com/file/2019/12/image-2ced6720.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <h3 id="通过一条命令添加service资源">通过一条命令添加 service 资源</h3>
-<pre><code class="highlight-chroma">kubectl scale rc nginx --replicas=2
-kubectl exec -it pod_name /bin/bash
-kubectl expose rc nginx --type=NodePort --port=80
-</code></pre>
-<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-9f3051f7.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">kubectl scale rc nginx --replicas=2
+</span></span><span class="highlight-line"><span class="highlight-cl">kubectl exec -it pod_name /bin/bash
+</span></span><span class="highlight-line"><span class="highlight-cl">kubectl expose rc nginx --type=NodePort --port=80
+</span></span></code></pre>
+<p class="indent--2"><img src="https://b3logfile.com/file/2019/12/image-9f3051f7.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <h2 id="2-4-deployment资源">2.4 deployment 资源</h2>
 <p class="indent--2">有 rc 在滚动升级之后,会造成服务访问中断,于是 k8s 引入了 deployment 资源</p>
 <ul>
 <li>创建 deployment</li>
 </ul>
-<pre><code class="highlight-chroma">[root@master deploy]# cat k8s_deploy.yaml 
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: nginx-deployment
-spec:
-  replicas: 3
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: 10.0.0.202:5000/nginx:1.13
-        ports:
-        - containerPort: 80
-        resources:
-          limits:
-            cpu: 100m
-          requests:
-            cpu: 100m
-</code></pre>
-<pre><code class="highlight-chroma">[root@master deploy]# kubectl create -f k8s_deploy.yaml 
-deployment "nginx-deployment" created
-[root@master deploy]# kubectl get deploy
-NAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-nginx-deployment   3         3         3            3           18s
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master deploy]# cat k8s_deploy.yaml 
+</span></span><span class="highlight-line"><span class="highlight-cl">apiVersion: extensions/v1beta1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: Deployment
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: nginx-deployment
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">  replicas: 3
+</span></span><span class="highlight-line"><span class="highlight-cl">  template:
+</span></span><span class="highlight-line"><span class="highlight-cl">    metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">      labels:
+</span></span><span class="highlight-line"><span class="highlight-cl">        app: nginx
+</span></span><span class="highlight-line"><span class="highlight-cl">    spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">      containers:
+</span></span><span class="highlight-line"><span class="highlight-cl">      - name: nginx
+</span></span><span class="highlight-line"><span class="highlight-cl">        image: 10.0.0.202:5000/nginx:1.13
+</span></span><span class="highlight-line"><span class="highlight-cl">        ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">        - containerPort: 80
+</span></span><span class="highlight-line"><span class="highlight-cl">        resources:
+</span></span><span class="highlight-line"><span class="highlight-cl">          limits:
+</span></span><span class="highlight-line"><span class="highlight-cl">            cpu: 100m
+</span></span><span class="highlight-line"><span class="highlight-cl">          requests:
+</span></span><span class="highlight-line"><span class="highlight-cl">            cpu: 100m
+</span></span></code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master deploy]# kubectl create -f k8s_deploy.yaml 
+</span></span><span class="highlight-line"><span class="highlight-cl">deployment "nginx-deployment" created
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@master deploy]# kubectl get deploy
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-deployment   3         3         3            3           18s
+</span></span></code></pre>
 <p class="indent--2">给 deployment 分配端口，出现一个新的 svc：</p>
-<pre><code class="highlight-chroma">[root@master deploy]# kubectl expose deployment nginx-deployment --type=NodePort --port=80
-service "nginx-deployment" exposed
-[root@master deploy]# kubectl get svc 
-NAME               CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
-kubernetes         10.254.0.1       &lt;none&gt;        443/TCP        3d
-myweb              10.254.134.169   &lt;nodes&gt;       80:30000/TCP   17h
-myweb2             10.254.55.214    &lt;nodes&gt;       80:3000/TCP    16h
-nginx-deployment   10.254.2.186     &lt;nodes&gt;       80:33604/TCP   13s
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master deploy]# kubectl expose deployment nginx-deployment --type=NodePort --port=80
+</span></span><span class="highlight-line"><span class="highlight-cl">service "nginx-deployment" exposed
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@master deploy]# kubectl get svc 
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME               CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+</span></span><span class="highlight-line"><span class="highlight-cl">kubernetes         10.254.0.1       &lt;none&gt;        443/TCP        3d
+</span></span><span class="highlight-line"><span class="highlight-cl">myweb              10.254.134.169   &lt;nodes&gt;       80:30000/TCP   17h
+</span></span><span class="highlight-line"><span class="highlight-cl">myweb2             10.254.55.214    &lt;nodes&gt;       80:3000/TCP    16h
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-deployment   10.254.2.186     &lt;nodes&gt;       80:33604/TCP   13s
+</span></span></code></pre>
 <p class="indent--2">通过 curl 测试：<br>
-<img src="https://img.hacpai.com/file/2019/12/image-a50cf025.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<img src="https://b3logfile.com/file/2019/12/image-a50cf025.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <h4 id="滚动升级-">滚动升级：</h4>
 <p class="indent--2">更改 <code>[root@master deploy]# kubectl edit deployment nginx-deployment </code> 配置文件</p>
-<pre><code class="highlight-chroma">[root@master deploy]# kubectl edit deployment nginx-deployment 
-#将 - image: 10.0.0.202:5000/nginx:1.13 改为
-- image: 10.0.0.202:5000/nginx:latest
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master deploy]# kubectl edit deployment nginx-deployment 
+</span></span><span class="highlight-line"><span class="highlight-cl">#将 - image: 10.0.0.202:5000/nginx:1.13 改为
+</span></span><span class="highlight-line"><span class="highlight-cl">- image: 10.0.0.202:5000/nginx:latest
+</span></span></code></pre>
 <p class="indent--2">curl 测试升级完成：<br>
-<img src="https://img.hacpai.com/file/2019/12/image-91898a31.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<img src="https://b3logfile.com/file/2019/12/image-91898a31.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <h4 id="升级策略">升级策略</h4>
-<pre><code class="highlight-chroma">[root@master deploy]# kubectl edit deployment nginx-deployment
-...
-  strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
-    type: RollingUpdate
-...
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master deploy]# kubectl edit deployment nginx-deployment
+</span></span><span class="highlight-line"><span class="highlight-cl">...
+</span></span><span class="highlight-line"><span class="highlight-cl">  strategy:
+</span></span><span class="highlight-line"><span class="highlight-cl">    rollingUpdate:
+</span></span><span class="highlight-line"><span class="highlight-cl">      maxSurge: 1
+</span></span><span class="highlight-line"><span class="highlight-cl">      maxUnavailable: 1
+</span></span><span class="highlight-line"><span class="highlight-cl">    type: RollingUpdate
+</span></span><span class="highlight-line"><span class="highlight-cl">...
+</span></span></code></pre>
 <h4 id="升级回滚">升级回滚</h4>
 <ul>
 <li>第一种</li>
 </ul>
-<pre><code class="highlight-chroma">[root@master deploy]# kubectl rollout history deployment nginx-deployment
-deployments "nginx-deployment"
-REVISION	CHANGE-CAUSE
-2		&lt;none&gt;
-3		&lt;none&gt;
-[root@master deploy]# kubectl rollout undo deployment nginx-deployment
-deployment "nginx-deployment" rolled back
-[root@master deploy]# kubectl rollout history deployment nginx-deployment
-deployments "nginx-deployment"
-REVISION	CHANGE-CAUSE
-3		&lt;none&gt;
-4		&lt;none&gt;
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master deploy]# kubectl rollout history deployment nginx-deployment
+</span></span><span class="highlight-line"><span class="highlight-cl">deployments "nginx-deployment"
+</span></span><span class="highlight-line"><span class="highlight-cl">REVISION	CHANGE-CAUSE
+</span></span><span class="highlight-line"><span class="highlight-cl">2		&lt;none&gt;
+</span></span><span class="highlight-line"><span class="highlight-cl">3		&lt;none&gt;
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@master deploy]# kubectl rollout undo deployment nginx-deployment
+</span></span><span class="highlight-line"><span class="highlight-cl">deployment "nginx-deployment" rolled back
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@master deploy]# kubectl rollout history deployment nginx-deployment
+</span></span><span class="highlight-line"><span class="highlight-cl">deployments "nginx-deployment"
+</span></span><span class="highlight-line"><span class="highlight-cl">REVISION	CHANGE-CAUSE
+</span></span><span class="highlight-line"><span class="highlight-cl">3		&lt;none&gt;
+</span></span><span class="highlight-line"><span class="highlight-cl">4		&lt;none&gt;
+</span></span></code></pre>
 <p class="indent--2">回滚之后版本：<br>
-<img src="https://img.hacpai.com/file/2019/12/image-7b055160.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<img src="https://b3logfile.com/file/2019/12/image-7b055160.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <p class="indent--2">指定回滚版本号：</p>
-<pre><code class="highlight-chroma">[root@master deploy]# kubectl rollout undo deployment nginx-deployment --to-revision=4
-deployment "nginx-deployment" rolled back
-</code></pre>
-<p class="indent--2"><img src="https://img.hacpai.com/file/2019/12/image-bd584960.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master deploy]# kubectl rollout undo deployment nginx-deployment --to-revision=4
+</span></span><span class="highlight-line"><span class="highlight-cl">deployment "nginx-deployment" rolled back
+</span></span></code></pre>
+<p class="indent--2"><img src="https://b3logfile.com/file/2019/12/image-bd584960.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
 <ul>
 <li>第二种：因为第一种版本号镜像版本没有详细版本，删除 deplotment 用命令行启动 deployment，再次查看会发现具体到相关镜像版本号等信息</li>
 </ul>
-<pre><code class="highlight-chroma">[root@master deploy]# kubectl delete deployment nginx-deployment
-deployment "nginx-deployment" deleted
-[root@master deploy]# kubectl rollout history deployment nginx 
-deployments "nginx"
-REVISION	CHANGE-CAUSE
-1		kubectl run nginx --image=10.0.0.202:5000/nginx:1.13 --replicas=3 --record
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master deploy]# kubectl delete deployment nginx-deployment
+</span></span><span class="highlight-line"><span class="highlight-cl">deployment "nginx-deployment" deleted
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@master deploy]# kubectl rollout history deployment nginx 
+</span></span><span class="highlight-line"><span class="highlight-cl">deployments "nginx"
+</span></span><span class="highlight-line"><span class="highlight-cl">REVISION	CHANGE-CAUSE
+</span></span><span class="highlight-line"><span class="highlight-cl">1		kubectl run nginx --image=10.0.0.202:5000/nginx:1.13 --replicas=3 --record
+</span></span></code></pre>
 <p class="indent--2"><strong>升级版本</strong></p>
-<pre><code class="highlight-chroma">[root@master deploy]# kubectl set image deployment nginx nginx=10.0.0.202:5000/nginx:1.16
-deployment "nginx" image updated
-[root@master deploy]# kubectl rollout history deployment nginx 
-deployments "nginx"
-REVISION	CHANGE-CAUSE
-1		kubectl run nginx --image=10.0.0.202:5000/nginx:1.13 --replicas=3 --record
-2		kubectl edit deployment nginx
-3		kubectl set image deployment nginx nginx=10.0.0.202:5000/nginx:1.16
-
-[root@master deploy]# kubectl set image deployment nginx nginx=10.0.0.202:5000/nginx:latest
-deployment "nginx" image updated
-[root@master deploy]# kubectl rollout history deployment nginx 
-deployments "nginx"
-REVISION	CHANGE-CAUSE
-1		kubectl run nginx --image=10.0.0.202:5000/nginx:1.13 --replicas=3 --record
-3		kubectl set image deployment nginx nginx=10.0.0.202:5000/nginx:1.16
-4		kubectl set image deployment nginx nginx=10.0.0.202:5000/nginx:latest
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master deploy]# kubectl set image deployment nginx nginx=10.0.0.202:5000/nginx:1.16
+</span></span><span class="highlight-line"><span class="highlight-cl">deployment "nginx" image updated
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@master deploy]# kubectl rollout history deployment nginx 
+</span></span><span class="highlight-line"><span class="highlight-cl">deployments "nginx"
+</span></span><span class="highlight-line"><span class="highlight-cl">REVISION	CHANGE-CAUSE
+</span></span><span class="highlight-line"><span class="highlight-cl">1		kubectl run nginx --image=10.0.0.202:5000/nginx:1.13 --replicas=3 --record
+</span></span><span class="highlight-line"><span class="highlight-cl">2		kubectl edit deployment nginx
+</span></span><span class="highlight-line"><span class="highlight-cl">3		kubectl set image deployment nginx nginx=10.0.0.202:5000/nginx:1.16
+</span></span><span class="highlight-line"><span class="highlight-cl">
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@master deploy]# kubectl set image deployment nginx nginx=10.0.0.202:5000/nginx:latest
+</span></span><span class="highlight-line"><span class="highlight-cl">deployment "nginx" image updated
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@master deploy]# kubectl rollout history deployment nginx 
+</span></span><span class="highlight-line"><span class="highlight-cl">deployments "nginx"
+</span></span><span class="highlight-line"><span class="highlight-cl">REVISION	CHANGE-CAUSE
+</span></span><span class="highlight-line"><span class="highlight-cl">1		kubectl run nginx --image=10.0.0.202:5000/nginx:1.13 --replicas=3 --record
+</span></span><span class="highlight-line"><span class="highlight-cl">3		kubectl set image deployment nginx nginx=10.0.0.202:5000/nginx:1.16
+</span></span><span class="highlight-line"><span class="highlight-cl">4		kubectl set image deployment nginx nginx=10.0.0.202:5000/nginx:latest
+</span></span></code></pre>
 <blockquote>
 <p><strong>deployment 升级和回滚</strong><br>
 命令行创建 deployment<br>
@@ -788,106 +780,106 @@ deployment 回滚到指定版本<br>
 <ol>
 <li>启动 MySQL YAML 配置文件，创建 Rc 资源</li>
 </ol>
-<pre><code class="highlight-chroma">[root@master tomcat_demo]# cat mysql-rc.yaml 
-apiVersion: v1
-kind: ReplicationController
-metadata:
-  name: mysql
-spec:
-  replicas: 1
-  selector:
-    app: mysql
-  template:
-    metadata:
-      labels:
-        app: mysql
-    spec:
-      containers:
-      - name: mysql
-        image: 10.0.0.202:5000/mysql:5.7
-        ports:
-        - containerPort: 3306
-        env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: '598941324'
-</code></pre>
-<pre><code class="highlight-chroma">[root@master tomcat_demo]# kubectl create -f mysql-rc.yaml 
-replicationcontroller "mysql" created
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master tomcat_demo]# cat mysql-rc.yaml 
+</span></span><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: ReplicationController
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">  replicas: 1
+</span></span><span class="highlight-line"><span class="highlight-cl">  selector:
+</span></span><span class="highlight-line"><span class="highlight-cl">    app: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">  template:
+</span></span><span class="highlight-line"><span class="highlight-cl">    metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">      labels:
+</span></span><span class="highlight-line"><span class="highlight-cl">        app: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">    spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">      containers:
+</span></span><span class="highlight-line"><span class="highlight-cl">      - name: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">        image: 10.0.0.202:5000/mysql:5.7
+</span></span><span class="highlight-line"><span class="highlight-cl">        ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">        - containerPort: 3306
+</span></span><span class="highlight-line"><span class="highlight-cl">        env:
+</span></span><span class="highlight-line"><span class="highlight-cl">        - name: MYSQL_ROOT_PASSWORD
+</span></span><span class="highlight-line"><span class="highlight-cl">          value: '598941324'
+</span></span></code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master tomcat_demo]# kubectl create -f mysql-rc.yaml 
+</span></span><span class="highlight-line"><span class="highlight-cl">replicationcontroller "mysql" created
+</span></span></code></pre>
 <p class="indent--2">2.创建 Mysql-svc YAML 配置文件，创建 Service 资源</p>
-<pre><code class="highlight-chroma">[root@master tomcat_demo]# cat mysql-svc.yaml 
-apiVersion: v1
-kind: Service
-metadata:
-  name: mysql
-spec:
- # type: NodePort  #ClusterIP
-  ports:
-    - port: 3306          
-      targetPort: 3306    #pod port
-  selector:
-    app: mysql
-</code></pre>
-<pre><code class="highlight-chroma">[root@master tomcat_demo]# kubectl create -f mysql-svc.yaml 
-service "mysql" created
-[root@master tomcat_demo]# kubectl get svc
-NAME               CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
-kubernetes         10.254.0.1       &lt;none&gt;        443/TCP        4d
-mysql              10.254.76.200    &lt;none&gt;        3306/TCP       1m
-myweb              10.254.134.169   &lt;nodes&gt;       80:30000/TCP   1d
-myweb2             10.254.55.214    &lt;nodes&gt;       80:3000/TCP    1d
-nginx-deployment   10.254.2.186     &lt;nodes&gt;       80:33604/TCP   1d
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master tomcat_demo]# cat mysql-svc.yaml 
+</span></span><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: Service
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: mysql
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl"> # type: NodePort  #ClusterIP
+</span></span><span class="highlight-line"><span class="highlight-cl">  ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - port: 3306          
+</span></span><span class="highlight-line"><span class="highlight-cl">      targetPort: 3306    #pod port
+</span></span><span class="highlight-line"><span class="highlight-cl">  selector:
+</span></span><span class="highlight-line"><span class="highlight-cl">    app: mysql
+</span></span></code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master tomcat_demo]# kubectl create -f mysql-svc.yaml 
+</span></span><span class="highlight-line"><span class="highlight-cl">service "mysql" created
+</span></span><span class="highlight-line"><span class="highlight-cl">[root@master tomcat_demo]# kubectl get svc
+</span></span><span class="highlight-line"><span class="highlight-cl">NAME               CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+</span></span><span class="highlight-line"><span class="highlight-cl">kubernetes         10.254.0.1       &lt;none&gt;        443/TCP        4d
+</span></span><span class="highlight-line"><span class="highlight-cl">mysql              10.254.76.200    &lt;none&gt;        3306/TCP       1m
+</span></span><span class="highlight-line"><span class="highlight-cl">myweb              10.254.134.169   &lt;nodes&gt;       80:30000/TCP   1d
+</span></span><span class="highlight-line"><span class="highlight-cl">myweb2             10.254.55.214    &lt;nodes&gt;       80:3000/TCP    1d
+</span></span><span class="highlight-line"><span class="highlight-cl">nginx-deployment   10.254.2.186     &lt;nodes&gt;       80:33604/TCP   1d
+</span></span></code></pre>
 <ol start="3">
 <li>Tomcat YAML 配置文件，创建 Tomcat Rc 资源</li>
 </ol>
-<pre><code class="highlight-chroma">[root@master tomcat_demo]# cat tomcat-rc.yaml 
-apiVersion: v1
-kind: ReplicationController
-metadata:
-  name: tomcat
-spec:
-  replicas: 1
-  selector:
-    app: tomcat
-  template:
-    metadata:
-      labels:
-        app: tomcat
-    spec:
-      containers:
-      - name: tomcat
-        image: 10.0.0.202:5000/tomcat:latest
-        ports:
-        - containerPort: 8080
-        env:
-        - name: MYSQL_SERVICE_HOST
-          value: '10.254.76.200'     #此处是上面查看svc的MySQL  CLUSTER-IP
-        - name: MYSQL_SERVICE_PORT
-          value: '3306'
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master tomcat_demo]# cat tomcat-rc.yaml 
+</span></span><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: ReplicationController
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: tomcat
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">  replicas: 1
+</span></span><span class="highlight-line"><span class="highlight-cl">  selector:
+</span></span><span class="highlight-line"><span class="highlight-cl">    app: tomcat
+</span></span><span class="highlight-line"><span class="highlight-cl">  template:
+</span></span><span class="highlight-line"><span class="highlight-cl">    metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">      labels:
+</span></span><span class="highlight-line"><span class="highlight-cl">        app: tomcat
+</span></span><span class="highlight-line"><span class="highlight-cl">    spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">      containers:
+</span></span><span class="highlight-line"><span class="highlight-cl">      - name: tomcat
+</span></span><span class="highlight-line"><span class="highlight-cl">        image: 10.0.0.202:5000/tomcat:latest
+</span></span><span class="highlight-line"><span class="highlight-cl">        ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">        - containerPort: 8080
+</span></span><span class="highlight-line"><span class="highlight-cl">        env:
+</span></span><span class="highlight-line"><span class="highlight-cl">        - name: MYSQL_SERVICE_HOST
+</span></span><span class="highlight-line"><span class="highlight-cl">          value: '10.254.76.200'     #此处是上面查看svc的MySQL  CLUSTER-IP
+</span></span><span class="highlight-line"><span class="highlight-cl">        - name: MYSQL_SERVICE_PORT
+</span></span><span class="highlight-line"><span class="highlight-cl">          value: '3306'
+</span></span></code></pre>
 <ol start="4">
 <li>创建 tomcat-svc YAML 配置文件，启动 tomcat-svc 资源</li>
 </ol>
-<pre><code class="highlight-chroma">[root@master tomcat_demo]# cat tomcat-svc.yaml 
-apiVersion: v1
-kind: Service
-metadata:
-  name: tomcat
-spec:
-  type: NodePort  #ClusterIP
-  ports:
-    - port: 8080          #clusterIP
-      nodePort: 30008   #node port
-      targetPort: 8080    #pod port
-  selector:
-    app: tomcat
-</code></pre>
-<pre><code class="highlight-chroma">[root@master tomcat_demo]# kubectl create -f tomcat-svc.yaml 
-service "tomcat" created
-</code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master tomcat_demo]# cat tomcat-svc.yaml 
+</span></span><span class="highlight-line"><span class="highlight-cl">apiVersion: v1
+</span></span><span class="highlight-line"><span class="highlight-cl">kind: Service
+</span></span><span class="highlight-line"><span class="highlight-cl">metadata:
+</span></span><span class="highlight-line"><span class="highlight-cl">  name: tomcat
+</span></span><span class="highlight-line"><span class="highlight-cl">spec:
+</span></span><span class="highlight-line"><span class="highlight-cl">  type: NodePort  #ClusterIP
+</span></span><span class="highlight-line"><span class="highlight-cl">  ports:
+</span></span><span class="highlight-line"><span class="highlight-cl">    - port: 8080          #clusterIP
+</span></span><span class="highlight-line"><span class="highlight-cl">      nodePort: 30008   #node port
+</span></span><span class="highlight-line"><span class="highlight-cl">      targetPort: 8080    #pod port
+</span></span><span class="highlight-line"><span class="highlight-cl">  selector:
+</span></span><span class="highlight-line"><span class="highlight-cl">    app: tomcat
+</span></span></code></pre>
+<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-cl">[root@master tomcat_demo]# kubectl create -f tomcat-svc.yaml 
+</span></span><span class="highlight-line"><span class="highlight-cl">service "tomcat" created
+</span></span></code></pre>
 <p class="indent--2">测试 Tomcat 服务：<br>
-<img src="https://img.hacpai.com/file/2019/12/image-a7e1d5c9.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
+<img src="https://b3logfile.com/file/2019/12/image-a7e1d5c9.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image.png"></p>
                 <div>
                     <hr>
 
@@ -897,13 +889,6 @@ service "tomcat" created
 
 <!-- 签名档内可使用 HTML、JavaScript -->
 <br>
-<pre><p style="font-size:15px"><font color="#008000">
-<b>到头来
-我们记住的
-不是敌人的攻击
-而是朋友的沉默
-       ---马丁·路德·金</b></p><pre>
-
                 </div>
         </div>
     </div>
@@ -1004,7 +989,7 @@ service "tomcat" created
         <div class="wrapper comment">
                 <div id="gitalk-container" style="padding: 30px 0;"></div>
                 <div id="b3logsolocomments"></div>
-                <div id="vcomment" style="padding: 30px 0;" data-name="cuijianzhe" data-postId="1576117964389"></div>
+                <div id="vcomment" style="padding: 30px 0;" data-name="cuijianzhe" data-postId="1576117964099"></div>
 
             <div class="post__list fn__flex">
                 <div class="fn__flex-1">
@@ -1032,16 +1017,16 @@ service "tomcat" created
                       data-title="K8S基础搭建使用"
                       data-blogtitle="邯城往事"
                       data-url="https://cuijianzhe.github.io/articles/2019/12/12/1576117964389.html"
-                      data-avatar="https://img.hacpai.com/avatar/1551626533851_1579241477243.png?imageView2/1/w/128/h/128/interlace/0/q/100">
+                      data-avatar="https://b3logfile.com/avatar/1551626533851_1560155807399.gif?imageView2/1/w/128/h/128/interlace/0/q/100">
                     WeChat
                     <span class="qrcode"></span>
                 </span>
             </span>
             <span class="post__arrow">
-                    <a href="https://cuijianzhe.github.io/articles/2019/12/11/1576058698755.html" rel="prev"
+                    <a href="https://cuijianzhe.github.io/articles/2019/12/11/1598194311807.html" rel="prev"
                        class="vditor-tooltipped__n vditor-tooltipped"
-                       pjax-title="Our love history"
-                       aria-label="旧一篇: Our love history">←</a>
+                       pjax-title="吐槽"
+                       aria-label="旧一篇: 吐槽">←</a>
 
                     <a href="https://cuijianzhe.github.io/articles/2019/12/24/1577178596028.html" rel="next"
                        class="vditor-tooltipped__n vditor-tooltipped"
@@ -1124,7 +1109,7 @@ service "tomcat" created
             <a class="ft__link" href="/my-github-repos" target="_self" rel="section">
                 我的开源
             </a>
-            <a class="ft__link" href="http://times.cjzshilong.cn/time/time.html" target="_blank" rel="section">
+            <a class="ft__link" href="http://times.cjzshilong.cn/time/" target="_blank" rel="section">
                 服务器倒计时
             </a>
         <a class="ft__link" rel="alternate" href="https://cuijianzhe.github.io/rss.xml" rel="section">RSS</a>
@@ -1132,93 +1117,24 @@ service "tomcat" created
     <div class="footer__border mobile__none"></div>
     <div class="wrapper fn__flex">
         <div class="fn__flex-1 mobile__none">
-            <div class="ft__fade">cuijianzhe -                >>>  展颜笑夙愿，一笑泯恩仇 <<<</div>
+            <div class="ft__fade">cuijianzhe - 来自邯郸社畜的呐喊</div>
             <br>
-                <!-- MetingJS音乐播放器 不能放到 head 导致系统功能加载异常-->
-<link rel="stylesheet" href="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css">
-<script src="//cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-<meting-js server="netease" type="playlist" id="728729850"  autoplay="false" fixed ="true" order = "random"</meting-js>
-
-<h1><p style="font-size:10px"><font color="#2F4F4F">红笺小字，说尽平生意。<br/>鸿雁在云鱼在水，惆怅此情难寄。<br/>             ——晏殊· 《清平乐》</font> </p></h1>
+                <h1 class="title" id="character" ><p style="font-size:10px"><font color="#FF00FF">红笺小字，说尽平生意。<br/>鸿雁在云鱼在水，惆怅此情难寄。<br/>             ——晏殊· 《清平乐》</font> </p></h1>
 
         </div>
 
-            <div class="footer__mid fn__flex-1 mobile__none">
-                <div class="ft__fade">分类</div>
-                <br>
-                    <a href="https://cuijianzhe.github.io/category/python"
-                       aria-label="36 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        人生苦短,我用Python</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/java"
-                       aria-label="0 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        Java是世界上最好的语言</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/linux"
-                       aria-label="52 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        Linux系列</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/network"
-                       aria-label="4 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        Network系列</a> &nbsp; &nbsp;
-                    <a href="https://cuijianzhe.github.io/category/young"
-                       aria-label="8 文章"
-                       class="ft__link ft__nowrap vditor-tooltipped vditor-tooltipped__n">
-                        江湖就是人情世故</a> &nbsp; &nbsp;
-            </div>
 
         <div class="fn__flex-1 footer__copyright">
             <a class="ft__link" href="https://cuijianzhe.github.io/archives.html">
-                115
+                166
                 文章
             </a>
            <br>
-            <span data-uvstaturl="https://cuijianzhe.github.io">92571</span> <span class="ft-gray">浏览</span>
+            <span data-uvstaturl="https://cuijianzhe.github.io">0</span> <span class="ft-gray">浏览</span>
  <br>
-            &copy; 2021
+            &copy; 2023
             <a class="ft__link" href="https://cuijianzhe.github.io">邯城往事</a>
-            <img style="width: 20px; height: 20px;" src="https://img.hacpai.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">冀ICP备19005901号-1</a> 
-
-<!--切换标签实现网页标题变化-->
-<script type="text/javascript">
-    /*自动刷新页面，避免无法访问*/
-    var OriginTitile = document.title;
-    var titleTime;
-    document.addEventListener('visibilitychange', function () {
-        if (document.hidden) {
-            document.title = '一杯茶，一包烟，混过一天是一天';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '哈哈，我是大佬ヾ(ﾟ∀ﾟゞ)';
-            titleTime = setTimeout(function () {
-                document.title = OriginTitile;
-            }, 3000);
-        }
-    });
-</script>
-<!--切换标签实现网页标题变化 结束-->
-
-
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-    if (Label.articleId) {
-      const gitalk = new Gitalk({
-        clientID: '4e3eaf0bc17bd516ba5b',
-        clientSecret: '644d549c51d9fece70856677fc92411e6b6ced0e',
-        repo: 'solo-blog',
-        owner: 'cuijianzhe',
-        admin: ['cuijianzhe'],
-        id: Label.articleId,
-        distractionFreeMode: false
-      })
-
-      gitalk.render('gitalk-container')
-    }
-  })
-</script>
-
+            <img style="width: 20px; height: 20px;" src="https://b3logfile.com/file/2019/10/jinghuibeian-30e807bb.png" alt="备案标识" /><a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">冀ICP备19005901号-1</a>
         </div>
     </div>
 </footer>
@@ -1226,68 +1142,37 @@ service "tomcat" created
   var Label = {
     speech: true,
     servePath: "https://cuijianzhe.github.io",
-    staticServePath: "https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources",
+    staticServePath: "https://cuijianzhe.github.io",
     luteAvailable: true,
-    hljsStyle: 'monokai',
+    hljsStyle: 'vs',
     langLabel: "zh_CN",
-    version: "4.3.1",
+    version: "4.4.0",
     staticSite: true,
     showCodeBlockLn: false,
-    articleId: "1576117964389",
+    articleId: "1576117964099",
   }
 </script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/skins/Pinghsu/js/headroom.min.js"></script>
+<script type="text/javascript" src="https://cuijianzhe.github.io/skins/Pinghsu/js/headroom.min.js"></script>
 <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/skins/Pinghsu/js/common.min.js?1617776880435"
+        src="https://cuijianzhe.github.io/skins/Pinghsu/js/common.min.js?1701918811548"
         charset="utf-8"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
-<script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
-<div class="solo-kanbanniang">
-    <div class="solo-kanbanniang__tip"></div>
-    <canvas id="soloKanbanniang" width="280" height="250"></canvas>
-    <div class="solo-kanbanniang__tool">
-        <svg id="soloKanbanniangHome" viewBox="0 0 32 32" width="100%" height="100%">
-            <path d="M32 18.967l-16-12.42-16 12.42v-5.064l16-12.42 16 12.42zM28 18.516v12h-8v-8h-8v8h-8v-12l12-9z"></path>
-        </svg>
-        <svg id="soloKanbanniangRSS" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M320.364 768q0 45.728-32 77.728t-77.728 32-77.728-32-32-77.728 32-77.728 77.728-32 77.728 32 32 77.728zM612.94 838.272q1.152 16-9.728 27.424-10.272 12-26.848 12h-77.152q-14.272 0-24.576-9.44t-11.424-23.712q-12.576-130.848-105.44-223.712t-223.712-105.44q-14.272-1.152-23.712-11.424t-9.44-24.576V402.24q0-16.576 12-26.848 9.728-9.728 24.576-9.728h2.848q91.424 7.424 174.848 46.016t148 103.712q65.152 64.576 103.712 148t46.016 174.848z m292.576 1.152q1.152 15.424-10.272 26.848-10.272 11.424-26.272 11.424h-81.728q-14.848 0-25.44-10.016t-11.136-24.288q-6.848-122.848-57.728-233.44t-132.288-192-192-132.288-233.44-58.272q-14.272-0.576-24.288-11.136t-10.016-24.864V109.664q0-16 11.424-26.272 10.272-10.272 25.152-10.272h1.728q149.728 7.424 286.56 68.576t243.136 168q106.848 106.272 168 243.136t68.576 286.56z"></path>
-        </svg>
-        <svg id="soloKanbanniangChat" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M802.42709 96.163153H219.476155c-84.48109 0-154.896836 71.746044-154.896836 157.840888v393.119449c0 86.072331 70.415746 157.819398 154.896836 157.819399h214.038818V925.470963s22.526039 40.168862 64.767096 5.734608c30.965246-25.819039 126.721123-91.828428 171.775248-123.385145h132.369773c84.502579 0 154.896836-83.21526 154.896836-157.839865V251.125481c0-86.094844-70.394257-154.962328-154.896836-154.962328zM301.144176 518.002714c-39.427988 0-70.416769-31.576159-70.416769-71.746044 0-40.168862 30.988782-71.746044 70.416769-71.746044 39.426965 0 70.393233 31.577183 70.393234 71.746044 0 40.169885-30.966269 71.746044-70.393234 71.746044z m208.411657 0c-39.450501 0-70.415746-31.576159-70.415746-71.746044 0-40.168862 30.965246-71.746044 70.415746-71.746044 39.405475 0 70.394257 31.577183 70.394257 71.746044 0 40.169885-30.988782 71.746044-70.394257 71.746044z m211.203236 0c-39.426965 0-70.416769-31.576159-70.416769-71.746044 0-40.168862 30.988782-71.746044 70.416769-71.746044s70.415746 31.577183 70.415746 71.746044c-0.001023 40.169885-30.988782 71.746044-70.415746 71.746044z"></path>
-        </svg>
-        <svg id="soloKanbanniangChange" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M936.672 193.216l-226.88-64c-8.704-2.528-18.112-1.12-25.824 3.776-7.68 4.864-12.896 12.736-14.432 21.728C655.712 236.928 595.328 288 512 288c-71.424 0-142.464-103.296-163.776-143.104-7.136-13.28-22.528-19.84-37.024-15.68l-224 64C73.472 197.152 64 209.728 64 224v256a31.93 31.93 0 0 0 11.712 24.736c7.392 6.08 17.152 8.512 26.56 6.624L224 487.04V832c0 52.928 43.072 96 96 96h384c52.928 0 96-43.072 96-96V519.04l121.728 24.352c9.44 1.92 19.2-0.544 26.56-6.624C955.68 530.656 960 521.6 960 512V224c0-14.336-9.536-26.912-23.328-30.784zM672 800H352c-17.664 0-32-14.304-32-32s14.336-32 32-32h320c17.696 0 32 14.304 32 32s-14.304 32-32 32z"></path>
-        </svg>
-        <svg id="soloKanbanniangPhoto" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M898.048 258.048q23.552-1.024 46.592 9.216t40.96 27.136 28.672 39.424 10.752 46.08l0 390.144q0 24.576-10.752 47.104t-28.672 40.448-40.96 28.16-47.616 10.24l-697.344 0q-24.576 0-48.64-10.24t-42.496-27.648-29.696-40.448-11.264-48.64l0-381.952q0-22.528 10.752-45.568t28.672-41.472 39.936-30.208 44.544-11.776l63.488 0 13.312-83.968q3.072-20.48 18.432-32.768t34.816-12.288l456.704 0q19.456 0 34.304 10.752t16.896 34.304l14.336 83.968 54.272 0zM548.864 712.704q40.96 0 77.824-15.872t63.488-42.496 42.496-62.976 15.872-77.312-15.872-77.312-42.496-62.976-63.488-42.496-77.824-15.872-77.312 15.872-63.488 42.496-43.008 62.976-15.872 77.312 15.872 77.312 43.008 62.976 63.488 42.496 77.312 15.872z"></path>
-        </svg>
-        <svg id="soloKanbanniangGithub" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M1024 524.8c0 114.346667-32.554667 217.216-97.706667 308.565333-65.066667 91.306667-149.162667 154.538667-252.288 189.610667-11.989333 2.304-20.778667 0.682667-26.325333-4.778667a27.605333 27.605333 0 0 1-8.362667-20.48v-144.213333c0-44.16-11.52-76.501333-34.645333-97.024 25.344-2.730667 48.085333-6.826667 68.309333-12.288a268.629333 268.629333 0 0 0 62.72-26.666667 187.434667 187.434667 0 0 0 53.973334-45.44c14.421333-18.005333 26.197333-41.898667 35.328-71.765333 9.088-29.824 13.653333-64.128 13.653333-102.826667 0-55.125333-17.536-102.058667-52.650667-140.8 16.426667-41.429333 14.677333-87.893333-5.333333-139.392-12.458667-4.096-30.464-1.578667-54.016 7.509334a355.328 355.328 0 0 0-61.312 30.08L640 271.274667a462.336 462.336 0 0 0-128-17.749334c-43.989333 0-86.656 5.930667-128 17.749334a589.824 589.824 0 0 0-28.330667-18.432c-11.776-7.253333-30.336-16.042667-55.68-26.325334-25.344-10.24-44.416-13.312-57.301333-9.216-19.584 51.498667-21.12 97.962667-4.693333 139.434667-35.114667 38.698667-52.650667 85.632-52.650667 140.757333 0 38.698667 4.565333 72.874667 13.653333 102.485334 9.130667 29.610667 20.778667 53.546667 34.986667 71.765333 14.250667 18.218667 32.128 33.493333 53.674667 45.781333 21.546667 12.288 42.453333 21.205333 62.677333 26.666667 20.224 5.461333 43.008 9.557333 68.309333 12.288-17.749333 16.384-28.629333 39.850667-32.64 70.4a130.005333 130.005333 0 0 1-29.994666 10.24c-10.666667 2.261333-23.338667 3.413333-37.973334 3.413333-14.72 0-29.269333-4.906667-43.690666-14.677333-14.464-9.813333-26.794667-24.064-36.992-42.709333a109.226667 109.226667 0 0 0-32.341334-35.541334c-13.141333-9.130667-24.106667-14.592-33.024-16.426666l-13.312-2.048c-9.344 0-15.786667 1.024-19.328 3.072-3.584 2.090667-4.693333 4.693333-3.328 7.893333 1.28 3.157333 3.328 6.4 5.973334 9.557333 2.688 3.2 5.546667 5.930667 8.661333 8.192l4.693333 3.413334c9.770667 4.565333 19.413333 13.226667 29.013334 25.984 9.514667 12.757333 16.512 24.362667 20.992 34.858666l6.656 15.701334c5.76 17.322667 15.530667 31.317333 29.312 42.026666 13.781333 10.666667 28.672 17.536 44.672 20.48 16 2.986667 31.445333 4.565333 46.336 4.821334 14.890667 0.213333 27.221333-0.597333 36.992-2.389334l15.36-2.730666c0 17.28 0.085333 37.546667 0.298666 60.8l0.341334 36.906666a27.050667 27.050667 0 0 1-8.661334 20.48c-5.76 5.461333-14.677333 7.082667-26.666666 4.778667-103.125333-35.072-187.221333-98.261333-252.330667-189.610667C32.554667 742.058667 0 639.146667 0 524.8c0-95.232 22.869333-183.04 68.693333-263.466667A516.266667 516.266667 0 0 1 254.976 70.4C333.44 23.466667 419.114667 0 512 0c92.885333 0 178.56 23.466667 256.981333 70.4a516.266667 516.266667 0 0 1 186.368 190.976C1001.130667 341.802667 1024 429.653333 1024 524.842667z"></path>
-        </svg>
-        <svg id="soloKanbanniangClose" viewBox="0 0 1024 1024" width="32" height="32">
-            <path d="M517.572566143763 1018.6748601482986C238.26554897656422 1018.6748601482986 11.897910175114305 792.2714997690043 11.897910175114305 513.0002041796496c0-279.3070171671984 226.36763880144977-505.71037754649296 505.6746559686481-505.71037754649296 279.2712955893538 0 505.6746559686481 226.40336037929444 505.6746559686481 505.71037754649296C1023.2472221124112 792.2714997690043 796.8795833109612 1018.6748601482986 517.572566143763 1018.6748601482986zM754.7281214542927 339.25044954334646c13.752807470184345-13.752807470184345 9.680547595895998-40.186775075214015-9.073280772537204-58.94060344364717l-2.143294670678079-2.1075730928334457c-18.7538283684332-18.7538283684332-45.15207439561819-22.861809820566194-58.90488186580257-9.073280772537204l-168.21291007038468 168.24863164822932-180.42968969324974-180.46541127109438c-13.967136937252159-13.967136937252159-40.72259874288353-9.823433907274534-59.72647815622916 9.216167083915742l-2.143294670678079 2.143294670678079c-19.039600991190277 19.003879413345654-23.111860865478626 45.75934121897699-9.180445506071107 59.655035000539876l180.42968969324974 180.46541127109438-176.07165719620428 176.03593561835962c-13.788529048028984 13.824250625873615-9.716269173740633 40.151053497369375 9.073280772537204 58.94060344364717l2.1075730928334457 2.1075730928334457c18.7538283684332 18.7538283684332 45.15207439561819 22.897531398410823 58.90488186580257 9.073280772537204l176.10737877404887-176.10737877404887 170.39192631890742 170.42764789675192c13.967136937252159 13.931415359407513 40.686877165038865 9.85915548511917 59.690756578384516-9.180445506071107l2.1790162485227142-2.1790162485227142c19.039600991190277-18.968157835501014 23.147582443323273-45.72361964113239 9.180445506071107-59.690756578384516l-170.39192631890742-170.42764789675192L754.7281214542927 339.25044954334646z"></path>
-        </svg>
-    </div>
-</div>
 
 
 
 <script type="text/javascript">
-    Util.addScript('https://cdn.jsdelivr.net/gh/88250/solo@e845024/src/main/resources/js/page.min.js?1617776880435', 'soloPageScript')
+    Util.addScript('https://cuijianzhe.github.io/js/page.min.js?1701918811548', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
-        "oId": "1576117964389",
+        "oId": "1576117964099",
         "blogHost": "https://cuijianzhe.github.io",
         "randomArticles1Label": "随机阅读：",
         "externalRelevantArticles1Label": "站外相关阅读："
     });
     $(document).ready(function () {
         page.load();
-    page.tips.externalRelevantArticlesDisplayCount = "5";
+    page.tips.externalRelevantArticlesDisplayCount = "0";
     page.loadRandomArticles('<h3>RECOMMEND POSTS</h3>');
-    page.loadExternalRelevantArticles("Linux,kubernetes",
-    '<h3>HACPAI POSTS</h3>');
-    page.loadRelevantArticles('1576117964389', '<h3>RELEVANT POSTS</h3>');
+    page.loadRelevantArticles('1576117964099', '<h3>RELEVANT POSTS</h3>');
 Skin.initArticle()
     });
 </script>
@@ -1295,4 +1180,4 @@ Skin.initArticle()
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 66ms, 2021/04/07 15:43:06 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 48ms, 2023/12/11 19:00:40 -->

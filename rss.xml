@@ -4,101 +4,108 @@
     <title>邯城往事</title>
     <link>https://cuijianzhe.github.io</link>
     <atom:link href="https://cuijianzhe.github.io/rss.xml" rel="self" type="application/rss+xml"/>
-    <description>               &gt;&gt;&gt;  展颜笑夙愿，一笑泯恩仇 &lt;&lt;&lt;</description>
-    <generator>Solo, v4.3.1, https://b3log.org/solo</generator>
-    <lastBuildDate>Wed, 07 Apr 2021 15:43:02 +0800</lastBuildDate>
+    <description>来自邯郸社畜的呐喊</description>
+    <generator>Solo, v4.4.0, https://b3log.org/solo</generator>
+    <lastBuildDate>Mon, 11 Dec 2023 19:00:37 +0800</lastBuildDate>
     <language>zh-cn</language>
     <item>
-      <title>zabbix自动发现华为AC6605管理AP状态以及连接数</title>
-      <link>https://cuijianzhe.github.io/articles/2019/08/05/1564987766272.html</link>
-      <description><![CDATA[<p class="indent--2">金纵买相如赋，脉脉此情谁诉。</p>]]></description>
+      <title>思源笔记Docker伺服</title>
+      <link>https://cuijianzhe.github.io/articles/2022/07/10/1657460213914.html</link>
+      <description><![CDATA[<p class="indent--2">服务端使用 Docker 版思源进行伺服搭建配置 镜像地址 启动参数： docker run \  --detach \  --name siyuan \  -v /data/siyuan:/data/siyuan \  -p 6806:6806 \  -u 1000:1000 b3log/siyuan \  --ssl=true \  --resident=true \  --lang=zh_CN \  --workspace=/data/siyuan/  nginx 反代，需要配置反代 WebSocket，以下配置 HTTPS 和 wss upstream siyuan {  server 127.0.0.1:6806; # ip + 端口 }  map <span class="language-math">http_upgrade </span>conn_upgrade {  default upgrade;  '' close;  }  server {  listen 80;  listen 443 ssl;  server_name siyuan.cjzshilong.cn;  access_log /var/log/nginx/siyuan.cjz....</p>]]></description>
       <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2019/08/05/1564987766272.html</guid>
-      <category>Linux</category>
-      <category>zabbix</category>
-      <pubDate>Wed, 07 Apr 2021 14:30:22 +0800</pubDate>
+      <guid>https://cuijianzhe.github.io/articles/2022/07/10/1657460213914.html</guid>
+      <category>思源笔记</category>
+      <pubDate>Mon, 11 Dec 2023 18:25:22 +0800</pubDate>
     </item>
     <item>
-      <title>redis 命令行查询</title>
-      <link>https://cuijianzhe.github.io/articles/2021/04/03/1617425338282.html</link>
-      <description><![CDATA[<p class="indent--2">拨云见日终有时，守得云开见月明</p>]]></description>
+      <title>关于人情往来？你还在问GPT？</title>
+      <link>https://cuijianzhe.github.io/articles/2023/12/08/1702016120155.html</link>
+      <description><![CDATA[<p class="indent--2">我曾饱览古老的书籍</p>]]></description>
       <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2021/04/03/1617425338282.html</guid>
-      <category>redis</category>
-      <pubDate>Sat, 03 Apr 2021 12:48:58 +0800</pubDate>
-    </item>
-    <item>
-      <title>用Python实现widows下ping程序</title>
-      <link>https://cuijianzhe.github.io/articles/2020/04/18/1587188601330.html</link>
-      <description><![CDATA[<p class="indent--2">理想一生有温暖有阳光有沙发有鲜花有猪还有你</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/04/18/1587188601330.html</guid>
-      <category>Python</category>
-      <pubDate>Fri, 02 Apr 2021 14:25:45 +0800</pubDate>
-    </item>
-    <item>
-      <title>语录</title>
-      <link>https://cuijianzhe.github.io/articles/2019/07/23/1563852507972.html</link>
-      <description><![CDATA[<p class="indent--2"><img src="https://img.hacpai.com/file/2019/08/crowwingsbirdswing850551920x108074a91101-4beea9f3.jpg?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="crowwingsbirdswing850551920x108074a91101.jpg"></p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2019/07/23/1563852507972.html</guid>
-      <category>鸡汤</category>
-      <pubDate>Wed, 17 Mar 2021 14:39:51 +0800</pubDate>
-    </item>
-    <item>
-      <title>vnote初始配置</title>
-      <link>https://cuijianzhe.github.io/articles/2021/03/11/1615446222120.html</link>
-      <description><![CDATA[<p class="indent--2">我卑微了自己，躲在心底想你。</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2021/03/11/1615446222120.html</guid>
-      <category>笔记</category>
-      <pubDate>Thu, 11 Mar 2021 15:03:42 +0800</pubDate>
-    </item>
-    <item>
-      <title>yapi 集成LDAP配置文件</title>
-      <link>https://cuijianzhe.github.io/articles/2021/02/28/1614504777881.html</link>
-      <description><![CDATA[<p class="indent--2">拨云见日终有时,守得云开见月明</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2021/02/28/1614504777881.html</guid>
-      <category>Linux</category>
-      <pubDate>Sun, 28 Feb 2021 17:32:57 +0800</pubDate>
-    </item>
-    <item>
-      <title>温夏</title>
-      <link>https://cuijianzhe.github.io/articles/2021/01/31/1612104113027.html</link>
-      <description><![CDATA[<p class="indent--2">我从不喜欢迁就，却用真心为你妥协了很久。</p>]]></description>
-      <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2021/01/31/1612104113027.html</guid>
-      <category>人情世故</category>
-      <pubDate>Sun, 31 Jan 2021 22:41:53 +0800</pubDate>
+      <guid>https://cuijianzhe.github.io/articles/2023/12/08/1702016120155.html</guid>
+      <category>ChatGPT</category>
+      <pubDate>Mon, 11 Dec 2023 15:06:13 +0800</pubDate>
     </item>
     <item>
       <title>感想</title>
-      <link>https://cuijianzhe.github.io/articles/2021/01/28/1611838945032.html</link>
-      <description><![CDATA[<p class="indent--2">那些可以在一起的人，请好好珍惜。因为，有些人想在一起，却不能。</p>]]></description>
+      <link>https://cuijianzhe.github.io/articles/2023/12/10/1702199730580.html</link>
+      <description/>
       <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2021/01/28/1611838945032.html</guid>
-      <category>人情世故</category>
-      <pubDate>Thu, 28 Jan 2021 21:02:25 +0800</pubDate>
+      <guid>https://cuijianzhe.github.io/articles/2023/12/10/1702199730580.html</guid>
+      <category>随笔</category>
+      <pubDate>Sun, 10 Dec 2023 17:15:30 +0800</pubDate>
     </item>
     <item>
-      <title>阿里云同步资产信息到Jumpserver</title>
-      <link>https://cuijianzhe.github.io/articles/2020/07/16/1594900059981.html</link>
-      <description><![CDATA[<p class="indent--2">欲寄彩笺兼尺素。山长水阔知何处。</p>]]></description>
+      <title>关于思源笔记的同步</title>
+      <link>https://cuijianzhe.github.io/articles/2021/07/18/1626590767973.html</link>
+      <description><![CDATA[<p class="indent--2">首先关键部位： 工作空间 data 文件夹 Git 程序 上面完工就万事俱备了 gitee 同步 新建私有仓库，此仓库数据存的就是你得思源数据目录里的东西 进行 Git 授权 #已有仓库 cd D:\SiYuanData Git remote add origin <a href="https://gitee.com/cuijianzhe/ssgage.git" target="_blank">https://gitee.com/cuijianzhe/ssgage.git</a> Git push -u origin master  写个同步程序 其实无非就是把 Git 自己完成而已，这其中有一个问题，刚改完建议不要马上执行同步，因为 D:\siyuan\data.siyuan\conf.json 这个文件好像还没修正好时间数据，需耐心等待他完成，不过我的程序已在等待…… import os import time from subprocess import call GIT_BASE_DIR = 'D:\siyuan' gitdate = time.strftime("%Y%m%d%H%M%S", time.localtime()) GIT_DIR_DATA = GIT_BASE_DIR + '\data.siyuan\conf....</p>]]></description>
       <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/07/16/1594900059981.html</guid>
-      <category>Jumpserver</category>
-      <category>Python</category>
-      <pubDate>Fri, 08 Jan 2021 15:38:51 +0800</pubDate>
+      <guid>https://cuijianzhe.github.io/articles/2021/07/18/1626590767973.html</guid>
+      <category>思源笔记</category>
+      <pubDate>Sat, 09 Dec 2023 16:53:04 +0800</pubDate>
     </item>
     <item>
-      <title>Django 添加ldap认证细节注意</title>
-      <link>https://cuijianzhe.github.io/articles/2020/12/26/1608967635869.html</link>
-      <description><![CDATA[<p class="indent--2">后来我才发现，很多人的世界根本不缺我。</p>]]></description>
+      <title>七宗罪·独身</title>
+      <link>https://cuijianzhe.github.io/articles/2023/11/30/1701325847000.html</link>
+      <description/>
       <author>cuijianzhe</author>
-      <guid>https://cuijianzhe.github.io/articles/2020/12/26/1608967635869.html</guid>
+      <guid>https://cuijianzhe.github.io/articles/2023/11/30/1701325847000.html</guid>
+      <category>随笔</category>
+      <pubDate>Thu, 30 Nov 2023 14:32:41 +0800</pubDate>
+    </item>
+    <item>
+      <title>修改服务器IB卡工作模式</title>
+      <link>https://cuijianzhe.github.io/articles/2023/11/24/1700809604864.html</link>
+      <description/>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2023/11/24/1700809604864.html</guid>
+      <category>InfiniBand</category>
+      <pubDate>Fri, 24 Nov 2023 15:10:07 +0800</pubDate>
+    </item>
+    <item>
+      <title>2023梦三战力毕业</title>
+      <link>https://cuijianzhe.github.io/articles/2023/11/19/1700396078814.html</link>
+      <description><![CDATA[<p class="indent--2">寄蜉蝣于天地，渺沧海之一粟。哀吾生之须臾，羡长江之无穷。挟飞仙以遨游，抱明月而长终。知不可乎骤得，托遗响于悲风</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2023/11/19/1700396078814.html</guid>
+      <category>游戏</category>
+      <pubDate>Sun, 19 Nov 2023 20:14:38 +0800</pubDate>
+    </item>
+    <item>
+      <title>zabbix agent 隔离网络ICMP监控实现</title>
+      <link>https://cuijianzhe.github.io/articles/2023/11/19/1700395999304.html</link>
+      <description><![CDATA[<p class="indent--2">寄蜉蝣于天地，渺沧海之一粟。哀吾生之须臾，羡长江之无穷。挟飞仙以遨游，抱明月而长终。知不可乎骤得，托遗响于悲风</p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2023/11/19/1700395999304.html</guid>
+      <category>Linux</category>
+      <pubDate>Sun, 19 Nov 2023 20:13:19 +0800</pubDate>
+    </item>
+    <item>
+      <title>IB网卡流量带宽监控</title>
+      <link>https://cuijianzhe.github.io/articles/2023/11/18/1700290073339.html</link>
+      <description/>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2023/11/18/1700290073339.html</guid>
       <category>Python</category>
-      <pubDate>Wed, 30 Dec 2020 14:26:49 +0800</pubDate>
+      <category>InfiniBand</category>
+      <category>zabbix</category>
+      <pubDate>Sat, 18 Nov 2023 14:49:13 +0800</pubDate>
+    </item>
+    <item>
+      <title>当你意识到这辈子都不可能结婚了，你会不会难过？</title>
+      <link>https://cuijianzhe.github.io/articles/2023/11/12/1699781181238.html</link>
+      <description><![CDATA[<p class="indent--2"><strong>无人与我立黄昏，无人问我粥可温。</strong></p>
+<p class="indent--2"><strong>无人与我捻熄灯，无人共我书半生。</strong></p>
+<p class="indent--2"><strong>无人陪我夜已深，无人与我把酒分。</strong></p>
+<p class="indent--2"><strong>无人拭我相思泪，无人梦我与前尘。</strong></p>
+<p class="indent--2"><strong>无人陪我顾星辰，无人醒我茶已冷。</strong></p>
+<p class="indent--2"><strong>无人听我述衷肠，无人解我心头梦。</strong></p>
+<p class="indent--2"><strong>无人拘我言中泪，无人愁我独行路。</strong></p>
+<p class="indent--2"><strong>回首向来萧瑟处，无人等在灯火阑珊处。</strong></p>]]></description>
+      <author>cuijianzhe</author>
+      <guid>https://cuijianzhe.github.io/articles/2023/11/12/1699781181238.html</guid>
+      <category>婚姻</category>
+      <pubDate>Sun, 12 Nov 2023 17:26:21 +0800</pubDate>
     </item>
   </channel>
 </rss>
